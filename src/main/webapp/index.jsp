@@ -8,7 +8,6 @@
 <title>산책갈개</title>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <link rel="stylesheet" href="/css/main.css">
-<link rel="stylesheet" href="/css/header.css">
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>

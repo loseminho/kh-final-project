@@ -9,5 +9,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Member {
 	private String memberId;
-	private String memberPw;
+	private String memberName;
+	private String memberPhone;
+	private String memberPW;
+	private String memberCity;
+	private String memberPhoto;
+	private String memberIntro;
+	private String enrollDate;
+	private String memberLevel;
+	private String joinType;
 }
