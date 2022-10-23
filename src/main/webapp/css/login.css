@@ -7,13 +7,16 @@
 
 .page-content {
     width: 1200px;
-    margin: 0 auto;
+    margin: 100px auto;
+    display: flex;
+   	flex-direction: row;
+   	justify-content: center;
+   	align-items: center;
+   	flex-grow: 1; /* 컨텐츠 길이가 짧을 때 남은 공간을 이 요소가 차지하도록 해서 푸터를 아래 붙이기 위해 */
 }
 
 .wrap {
     width: 500px;
-    margin: 200px auto;
-    /* border: 1px solid #ccc; */
 }
 
 .wrap > div {
