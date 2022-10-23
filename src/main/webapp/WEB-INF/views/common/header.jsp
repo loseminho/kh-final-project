@@ -44,9 +44,14 @@
 							<a href="/loginFrm.do">로그인</a>
 						</c:when>
 						<c:otherwise>
-							<a href="https://kauth.kakao.com/oauth/logout?client_id=e400fe38f12604a2937ea759fe0166f7&logout_redirect_uri=http://localhost/kakaoLogout.do">로그아웃</a>
-							<br>
-							<a href="/kakaoUnlink.do">카카오로 회원 탈퇴</a>
+							<c:if test="${sessionScope.m.joinType eq '카카오'}">
+								<a href="https://kauth.kakao.com/oauth/logout?client_id=e400fe38f12604a2937ea759fe0166f7&logout_redirect_uri=http://localhost/logout.do">카카오 로그아웃</a>
+								<br>
+								<a href="/kakaoUnlink.do">카카오로 회원 탈퇴</a>
+							</c:if>
+							<c:if test="${sessionScope.m.joinType eq '일반가입'}">
+								<a href="/logout.do">일반 로그아웃</a>
+							</c:if>
 						</c:otherwise>
 					</c:choose>
 				</div>

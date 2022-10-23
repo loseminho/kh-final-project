@@ -56,9 +56,8 @@
     position: absolute;
 }
 
-.innerLabel {
-    top: 27px;
-    left: 30px;
+.afterColor {
+	color :#1abc9c;
 }
 
 .box > input {

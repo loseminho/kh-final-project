@@ -46,7 +46,7 @@
 	<div class="page-content">
 		<div class="wrap">
 			<h1>회원가입을 축하드립니다.</h1>
-			<a href="/" class="btn">로그인하러 가기</a>		
+			<a href="/loginFrm.do" class="btn">로그인하러 가기</a>		
 		</div>
 	</div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
