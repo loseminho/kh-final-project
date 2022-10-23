@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="member">
-	<select id="checkId" parameterType="string" resultType="m">
+	<select id="selectOneMember" parameterType="m" resultType="m">
 		select
 			member_id as memberId,
 			member_name as memberName,
@@ -13,7 +13,10 @@
 			member_level as memberLevel,
 			join_type as joinType
 		from member_tbl
-		where member_id = #{_parameter}
+		where member_id = #{memberId} 
+		<if test="memberPw != null">
+		and member_pw = #{memberPw}
+		</if>
 	</select>
 	
 	<insert id="insertKakao" parameterType="m">

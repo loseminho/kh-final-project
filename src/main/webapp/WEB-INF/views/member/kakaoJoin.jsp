@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>카카오 추가 정보 입력</title>
+<link rel="icon" href="/img/favicon.ico" type="image/x-icon" sizes="16x16">
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>

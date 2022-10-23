@@ -17,9 +17,9 @@ public class MemberService {
 	@Autowired
 	private MemberDao dao;
 
-	public Member checkId(String kakao_email) {
-		return dao.checkId(kakao_email);
-	}
+//	public Member checkId(String kakao_email) {
+//		return dao.checkId(kakao_email);
+//	}
 
 	public int insertKakao(Member m) {
 		return dao.insertKakao(m);
@@ -78,6 +78,10 @@ public class MemberService {
 	    }
 	    
 	    return deleteResult;
+	}
+
+	public Member selectOneMember(Member member) {
+		return dao.selectOneMember(member);
 	}
 
 }

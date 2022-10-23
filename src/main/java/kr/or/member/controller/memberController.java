@@ -60,7 +60,9 @@ public class memberController {
         String kakao_email = (String)userInfo.get("email"); // 회원 아이디
         String kakao_nickname = (String)userInfo.get("nickname");   // 회원 이름
         
-        Member m = service.checkId(kakao_email);
+        Member member = new Member();
+        member.setMemberId(kakao_email);
+        Member m = service.selectOneMember(member);
         
         if(m == null){
         	System.out.println("새로 가입할 회원");
@@ -228,6 +230,15 @@ public class memberController {
 		int result = service.kakaoUnlink((String)session.getAttribute("access_Token"), memberId);
 		System.out.println(result);
 		session.invalidate();
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value="/login.do")
+	public String login(Member member, HttpSession session) {
+		Member m = service.selectOneMember(member);
+		if(m!=null) {
+			session.setAttribute("m", m);
+		}
 		return "redirect:/";
 	}
 }

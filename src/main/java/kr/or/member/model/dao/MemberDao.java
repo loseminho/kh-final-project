@@ -11,9 +11,9 @@ public class MemberDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
-	public Member checkId(String kakao_email) {
-		return sqlSession.selectOne("member.checkId", kakao_email);
-	}
+//	public Member checkId(String kakao_email) {
+//		return sqlSession.selectOne("member.checkId", kakao_email);
+//	}
 
 	public int insertKakao(Member m) {
 		return sqlSession.insert("member.insertKakao", m);
@@ -21,5 +21,9 @@ public class MemberDao {
 
 	public int deleteKakao(String memberId) {
 		return sqlSession.delete("member.deleteKakao", memberId);
+	}
+
+	public Member selectOneMember(Member member) {
+		return sqlSession.selectOne("member.selectOneMember", member);
 	}
 }

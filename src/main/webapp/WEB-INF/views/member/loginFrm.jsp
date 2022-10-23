@@ -7,6 +7,7 @@
 <title>로그인</title>
 <link rel="stylesheet" href="/css/login.css">
 <script src="https://kit.fontawesome.com/7b7a761eb5.js" crossorigin="anonymous"></script>
+<link rel="icon" href="/img/favicon.ico" type="image/x-icon" sizes="16x16">
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
@@ -23,17 +24,17 @@
                             <i class="fa-solid fa-id-card-clip"></i>
                         </span>
                         <label for="id" class="innerLabel">이메일<span class="comment"></span></label>
-                        <input type="text" name="id" id="id">
+                        <input type="text" name="memberId" id="id">
                     </div>
                     <div class="box">
                         <span class="icon">
                             <i class="fa-solid fa-lock"></i>
                         </span>
                         <label for="pw" class="innerLabel">비밀번호<span class="comment"></span></label>
-                        <input type="password" name="pw" id="pw">
+                        <input type="password" name="memberPw" id="pw">
                     </div>
                     <div class="btn-box">
-                        <button class="btn">로그인</button>
+                        <button type="submit" class="btn">로그인</button>
                         <div class="link-box">
                             <a href="/findId.do">아이디(이메일) 찾기</a>
                             <a href="/findPw.do">비밀번호 찾기</a>
