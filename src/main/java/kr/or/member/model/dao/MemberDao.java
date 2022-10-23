@@ -26,4 +26,8 @@ public class MemberDao {
 	public Member selectOneMember(Member member) {
 		return sqlSession.selectOne("member.selectOneMember", member);
 	}
+
+	public Member findId(Member member) {
+		return sqlSession.selectOne("member.findId", member);
+	}
 }

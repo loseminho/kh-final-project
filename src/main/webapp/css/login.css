@@ -19,9 +19,14 @@
     width: 500px;
 }
 
-.wrap > div {
+.wrap > .title, .content {
     width: 300px;
     margin: 50px auto;
+}
+
+.wrap > .resultDiv {
+	width: 100%;
+	text-align : center;
 }
 
 .title {
@@ -127,4 +132,8 @@
 
 .hrDiv > span {
     font-size: 12px;
+}
+
+.resultSpan {
+	color : red;
 }

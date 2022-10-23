@@ -23,20 +23,20 @@
                         <span class="icon">
                             <i class="fa-solid fa-id-card-clip"></i>
                         </span>
-                        <label for="id">이메일<span class="comment"></span></label>
+                        <label for="memberId">이메일<span class="comment"></span></label>
                         <input type="text" name="memberId" id="memberId">
                     </div>
                     <div class="box">
                         <span class="icon">
                             <i class="fa-solid fa-lock"></i>
                         </span>
-                        <label for="pw">비밀번호<span class="comment"></span></label>
+                        <label for="memberPw">비밀번호<span class="comment"></span></label>
                         <input type="password" name="memberPw" id="memberPw">
                     </div>
                     <div class="btn-box">
                         <button type="button" class="btn">로그인</button>
                         <div class="link-box">
-                            <a href="/findId.do">아이디(이메일) 찾기</a>
+                            <a href="/findIdFrm.do">아이디(이메일) 찾기</a>
                             <a href="/findPw.do">비밀번호 찾기</a>
                             <a href="/joinFrm.do">회원가입</a>
                         </div>
@@ -51,9 +51,8 @@
             </div>
         </div>
     </div>
-
-    <script src="/js/login.js"></script>
 	
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+    <script src="/js/login.js"></script>
 </body>
 </html>

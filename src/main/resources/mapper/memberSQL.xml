@@ -27,4 +27,13 @@
 	<delete id="deleteKakao" parameterType="string">
 		delete from member_tbl where member_id = #{_parameter}
 	</delete>
+	
+	<select id="findId" parameterType="m" resultType="m">
+		select
+			member_id as memberId,
+			join_type as joinType
+		from member_tbl
+		where member_name = #{memberName}
+		and member_phone = #{memberPhone}
+	</select>
 </mapper>

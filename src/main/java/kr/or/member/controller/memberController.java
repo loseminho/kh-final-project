@@ -247,4 +247,22 @@ public class memberController {
 			return "fail";
 		}
 	}
+	
+	@RequestMapping(value="/findIdFrm.do")
+	public String findIdFrm() {
+		return "member/findIdFrm";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/findId.do", produces="application/json;charset=utf-8")
+	public String login(Member member) {
+		Member m = service.findId(member);
+		String text = "";
+		if(m != null) {
+			text = m.getMemberId() + "/" + m.getJoinType();
+		} else {
+			text = "일치하는 회원 정보가 없습니다.";
+		}
+		return new Gson().toJson(text);
+	}
 }

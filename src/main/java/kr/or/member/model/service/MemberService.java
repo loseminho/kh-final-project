@@ -84,4 +84,8 @@ public class MemberService {
 		return dao.selectOneMember(member);
 	}
 
+	public Member findId(Member member) {
+		return dao.findId(member);
+	}
+
 }
