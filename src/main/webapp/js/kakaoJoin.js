@@ -1,33 +1,6 @@
 
-// 아이디(이메일) 정규표현식
-const idReg = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-
 //휴대전화 정규식
 const phoneReg = /^010-\d{4}-\d{4}$/;
-
-function findPw() {
-	const idVal = $("#memberId").val();
-	const phoneVal = $("#memberPhone").val();
-	const resultDiv = $(".resultDiv");
-	resultDiv.html("");
-	const p = $("<p>");
-	$.ajax({
-        url  : '/findPw.do',
-        type : 'post',
-        data : {memberId : idVal, memberPhone : phoneVal},
-        success : function(data){
-        	if(data == "find") {
-        		location.href="/updatePwFrm.do";
-        	} else if(data == "kakao") {
-        		p.append("카카오로 가입하셨습니다. (비밀번호 찾기 불가)");
-        		resultDiv.append(p);
-        	} else {
-        		p.append(data);
-        		resultDiv.append(p);
-        	}
-        }
-    });
-}
 
 function verifyCount() {
 	const span = $("#timeZone");
@@ -76,7 +49,6 @@ $("#verifyBtn").on("click", function(){
 			clearInterval(intervalId); // 시간 카운트 함수 멈춤
 			$("#verifyChk").val("true");
 			$("#memberPhone").attr("readonly", true);
-			$("#memberId").attr("readonly", true);
 			$("#memberPhone").removeClass("shortInput");
 			$(".verifyInput").attr("disabled", true);
 			$("#timeZone").hide();
@@ -122,22 +94,6 @@ $("#sendBtn").on("click", function() {
     }
 });
 
-
-
-$("#memberId").focusin(function() {
-	$(this).css("border-color", "#1abc9c");
-    $(this).prev().prev().addClass("afterColor");
-})
- 
-$("#memberId").focusout(function() {
-	const idVal = $("#memberId").val();
-	
-	if(idVal == "") {
-		$(this).css("border-color", "#ccc");
-    	$(this).prev().prev().removeClass("afterColor");
-    }
-});
-
 $("#memberPhone").focusin(function() {
 	$(this).css("border-color", "#1abc9c");
     $(this).prev().prev().addClass("afterColor");
@@ -153,20 +109,12 @@ $("#memberPhone").focusout(function() {
 });
 
 $(".btn").on("click", function(){
-	const idVal = $("#memberId").val();
 	const phoneVal = $("#memberPhone").val();
-	const idComment = $("#memberId").prev().children();
 	const phoneComment = $("#memberPhone").prev().children();
 	const verifyChk = $("#verifyChk").val();
+	const form = $("#kakaoJoinFrm");
 	
-	idComment.text("");
 	phoneComment.text("");
-	
-	if(idVal == "") {
-		idComment.text("아이디를 입력해주세요.");
-	} else if (!idReg.test(idVal)) { // 정규표현식을 만족하지 않는다면
-        idComment.text("이메일 형식으로 입력해주세요");
-    }
     
 	if (phoneVal == "") {
 		phoneComment.text("전화번호를 입력해주세요.");
@@ -174,9 +122,9 @@ $(".btn").on("click", function(){
         phoneComment.text("전화번호 형식으로 입력해주세요.");
     }
 	
-	if(phoneReg.test(phoneVal) && (idVal != "")) {
+	if(phoneReg.test(phoneVal)) {
 		if(verifyChk == "true") {
-			findPw();
+			form.submit();
 		} else {
 			phoneComment.text("전화번호를 인증해주세요.");
 		}

@@ -5,61 +5,47 @@
 <head>
 <meta charset="UTF-8">
 <title>카카오 추가 정보 입력</title>
+<link rel="stylesheet" href="/css/login.css">
+<script src="https://kit.fontawesome.com/7b7a761eb5.js" crossorigin="anonymous"></script>
 <link rel="icon" href="/img/favicon.ico" type="image/x-icon" sizes="16x16">
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<div style="margin-top:300px;">
-		<p>카카오 연동 중~</p>
-		<input type="text" name="memberPhone" id="memberPhone" placeholder="010-0000-0000 형식">
-		<button onclick="getCode();">전화번호 제출</button>
-	</div>
-	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	
-	<script type="text/javascript">
-    // 카카오 최초 로그인시 DB에 정보넣기
-    function getCode() {
-    	const memberPhone = $("#memberPhone").val();
-    	console.log(memberPhone);
-    	if(memberPhone == "") {
-    		alert("전화번호를 입력해주세요.");
-    		return;
-    	}
-    	
-        // 인가코드 가져오기
-        let codeURL = new URL(window.location.href);
-        let code= codeURL.searchParams.get('code');
-
-        // 인가코드 유무 확인
-        if(code != null){
-            console.log("codeURL: " + codeURL);
-            console.log("code: " + code);
-
-            /* 토큰 가져오기 */
-        	function selectMyAccessTocken() {
-        	
-        	    $.ajax({
-        	        url  : '/selectMyAccessTocken.do',
-        	        type : 'get',
-        	        data : {"code" : code, "memberPhone" : memberPhone},    // 인가코드 보내기
-        	        contentType: "application/json; charset=UTF-8",
-        	        success : function(res){
-        	        	if(res == "join") {
-        	                location.href= "/joinSuccess.do";  // 가입 환영 페이지로 이동하기                           	        	        		
-        	        	}
-        	        },
-        	        error: function(xhr, type){
-        	            console.log(xhr);
-        	            console.log(type);
-        	        }
-        	    })
-        	}
-            
-            selectMyAccessTocken();
-        }else {
-            console.log("코드 존재하지 않음")
-        }
-    }
-    </script>
+	<div class="page-content">
+        <div class="wrap">
+            <div class="title">
+                <h1>전화번호 등록</h1>
+            </div>
+            <div class="content">
+                <form action="/selectMyAccessTocken.do" id="kakaoJoinFrm" method="post" autocomplete="off">
+                    <div class="box">
+                        <span class="icon">
+                            <i class="fa-solid fa-phone"></i>
+                        </span>
+                        <label for="memberPhone">전화번호<span class="comment"></span></label>
+                        <input type="text" name="memberPhone" id="memberPhone" class="input shortInput" placeholder="010-0000-0000 형식">
+                        <input type="hidden" id="verifyChk" value="false">
+                        <button type="button" id="sendBtn">인증번호발송</button>
+                    </div>
+                    <div class="verifyBox" style="display:none;">
+                    	<input type="text" class="verifyInput" placeholder="인증번호 입력">
+                    	<span id="timeZone"></span>
+                    	<button type="button" id="verifyBtn">인증하기</button>
+                    	<span class="verifyMsg"></span>
+                    </div>
+                    <div class="btn-box">
+                        <button type="button" class="btn">전화번호 등록</button>
+                    </div>
+                </form>
+            </div>
+            <div class="resultDiv">
+            </div>
+        </div>
+    </div>
+	
+	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+	<script src="/js/kakaoJoin.js"></script>
+	
 </body>
 </html>

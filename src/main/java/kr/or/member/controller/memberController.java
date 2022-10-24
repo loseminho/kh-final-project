@@ -84,11 +84,11 @@ public class memberController {
 	}
 	
 	// 카카오로 처음 로그인할 때 전화번호 받아서 회원가입
-	@ResponseBody
     @RequestMapping(value = "/selectMyAccessTocken.do")
-    public String oauthKakao(@RequestParam(value = "code", required = false) String code, @RequestParam(value = "memberPhone", required = false) String memberPhone, HttpServletRequest req, HttpSession session) throws Exception {
+    public String oauthKakao(@RequestParam(value = "code", required = false) String code, String memberPhone, HttpServletRequest req, HttpSession session) throws Exception {
 
         System.out.println("--------- 카카오 정보조회 들어옴 ---------");
+        System.out.println("--------- 카카오 신규 가입");
 
         // 발급받은 인가코드(reqUrl)를 통해 토큰 발급받기
         System.out.println("#########" + code);   
@@ -107,11 +107,11 @@ public class memberController {
         Member m = new Member();
         m.setMemberId(kakao_email);
         m.setMemberName(kakao_nickname);
-        m.setMemberPhone(memberPhone);;
+        m.setMemberPhone(memberPhone);
         int result = service.insertKakao(m);
         
         System.out.println(result);
-        return "join";
+        return "redirect:/joinSuccess.do";
     }
 	
 	// 카카오 로그인 시 필요한 토큰 발급

@@ -52,6 +52,6 @@
     </div>
 	
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
-	 <script src="/js/findPw.js"></script>
+	<script src="/js/findPw.js"></script>
 </body>
 </html>
