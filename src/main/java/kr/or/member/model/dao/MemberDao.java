@@ -30,4 +30,8 @@ public class MemberDao {
 	public Member findId(Member member) {
 		return sqlSession.selectOne("member.findId", member);
 	}
+
+	public int updatePw(Member m) {
+		return sqlSession.update("member.updatePw", m);
+	}
 }

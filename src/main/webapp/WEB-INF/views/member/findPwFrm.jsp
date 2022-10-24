@@ -38,8 +38,8 @@
                     <div class="verifyBox" style="display:none;">
                     	<input type="text" class="verifyInput" placeholder="인증번호 입력">
                     	<span id="timeZone"></span>
-                    	<span class="verifyMsg"></span>
                     	<button type="button" id="verifyBtn">인증하기</button>
+                    	<span class="verifyMsg"></span>
                     </div>
                     <div class="btn-box">
                         <button type="button" class="btn">비밀번호 찾기</button>

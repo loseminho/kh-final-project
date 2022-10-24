@@ -39,4 +39,10 @@
 		where member_name = #{memberName}
 		and member_phone = #{memberPhone}
 	</select>
+	
+	<update id="updatePw" parameterType="m">
+		update member_tbl
+		set member_pw = #{memberPw}
+		where member_id = #{memberId}
+	</update>
 </mapper>

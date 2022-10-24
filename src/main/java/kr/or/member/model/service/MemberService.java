@@ -88,4 +88,8 @@ public class MemberService {
 		return dao.findId(member);
 	}
 
+	public int updatePw(Member m) {
+		return dao.updatePw(m);
+	}
+
 }

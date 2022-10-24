@@ -235,7 +235,6 @@ public class memberController {
 		Member m = (Member)session.getAttribute("m");
 		String memberId = m.getMemberId();
 		int result = service.kakaoUnlink((String)session.getAttribute("access_Token"), memberId);
-		System.out.println(result);
 		session.invalidate();
 		return "redirect:/";
 	}
@@ -277,11 +276,16 @@ public class memberController {
 	
 	@ResponseBody
 	@RequestMapping(value="/findPw.do", produces="application/json;charset=utf-8")
-	public String findPw(Member member) {
+	public String findPw(Member member, HttpSession session) {
 		Member m = service.selectOneMember(member);
 		String text = "";
 		if(m != null) {
-			text = "find";
+			if(m.getJoinType().equals("카카오")) {
+				text = "kakao";
+			} else {				
+				session.setAttribute("updatePw", m);
+				text = "find";
+			}
 		} else {
 			text = "일치하는 회원 정보가 없습니다.";
 		}
@@ -305,5 +309,22 @@ public class memberController {
 		
 		msgService.sendMessage(memberPhone, resultCode);
 		return resultCode;
+	}
+	
+	@RequestMapping("/updatePwFrm.do")
+	public String updatePwFrm() {
+		return "member/updatePwFrm";
+	}
+	
+	@RequestMapping("/updatePw.do")
+	public String updatePw(String updatePw, HttpSession session) {
+		Member m = (Member)session.getAttribute("updatePw");
+		m.setMemberPw(updatePw);
+		int result = service.updatePw(m);
+		if(result > 0) {
+			return "member/updatePwSuccess";			
+		} else {
+			return "redirect:/";
+		}
 	}
 }
