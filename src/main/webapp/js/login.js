@@ -16,7 +16,6 @@ function login() {
     });
 }
 
-
 $("#memberId").focusin(function() {
 	$(this).css("border-color", "#1abc9c");
     $(this).prev().prev().addClass("afterColor");
@@ -71,4 +70,21 @@ $(".btn").on("click", function(){
 		login();
 		
 	}
+});
+
+
+
+
+
+// 회원가입 고르는 모달창
+function joinModal() {
+	$("#join-modal").css("display", "flex");
+}
+
+function closeModal() {
+	$("#join-modal").hide();
+}
+
+$(".joinBtn").on("click", function(){
+	location.href="/joinFrm.do";
 });

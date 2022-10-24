@@ -148,3 +148,53 @@
 .resultSpan {
 	color : red;
 }
+
+
+
+
+/* 회원가입 고르는 모달창 */
+@charset "UTF-8";
+
+.modal-wrapper{
+	position : fixed;
+	width:100vw;
+	height:100vh;
+	background-color:rgba(0,0,0,0.5);
+	top:0;
+	left:0;
+	display:none;
+	justify-content:center;
+	align-items:center;
+}
+
+.modal{
+	width:350px;
+	background-color:#fff;
+}
+
+.modal-header{
+	padding:10px;
+	text-align : right;
+	/*color : #1abc9c;*/
+}
+
+.modal-content{
+	padding: 0px 20px 40px 20px;
+	text-align : center;
+}
+
+.joinBtn {
+    width: 300px;
+    height: 45px;
+    margin-top: 20px;
+    border: none;
+    background-color: #1abc9c;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.joinHr {
+	padding-top: 0px;
+}

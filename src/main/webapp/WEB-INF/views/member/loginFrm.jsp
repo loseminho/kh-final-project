@@ -38,11 +38,11 @@
                         <div class="link-box">
                             <a href="/findIdFrm.do">아이디(이메일) 찾기</a>
                             <a href="/findPwFrm.do">비밀번호 찾기</a>
-                            <a href="/joinFrm.do">회원가입</a>
+                            <a onclick="joinModal();">회원가입</a>
                         </div>
                     </div>
                     <div class="hrDiv">
-                        <hr><span id="easyLogin">간편 로그인</span><hr>
+                        <hr><span class="easyLogin">간편 로그인</span><hr>
                     </div>
                     <a href="https://kauth.kakao.com/oauth/authorize?client_id=e400fe38f12604a2937ea759fe0166f7&redirect_uri=http://localhost/kakaoLogin.do&response_type=code">
                         <img src="/img/kakao_login_medium_wide.png">
@@ -51,6 +51,26 @@
             </div>
         </div>
     </div>
+	
+	<!-- 회원가입 모달 -->
+	<div id="join-modal" class="modal-wrapper">
+		<div class="modal">
+			<div class="modal-header">				
+				<button onclick="closeModal();">닫기</button>
+			</div>
+			<div class="modal-content">
+				<div class="join-select">
+					<button type="button" class="joinBtn">회원가입하기</button>
+					<div class="hrDiv joinHr">
+                        <hr><span class="easyLogin">간편 회원가입</span><hr>
+                    </div>
+					<a href="https://kauth.kakao.com/oauth/authorize?client_id=e400fe38f12604a2937ea759fe0166f7&redirect_uri=http://localhost/kakaoLogin.do&response_type=code">
+                        <img src="/img/kakao_join_medium_wide.png">
+                    </a>
+				</div>
+			</div>
+		</div>
+	</div>
 	
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
     <script src="/js/login.js"></script>

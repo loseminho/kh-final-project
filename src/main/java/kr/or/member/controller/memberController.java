@@ -327,4 +327,9 @@ public class memberController {
 			return "redirect:/";
 		}
 	}
+	
+	@RequestMapping("/joinFrm.do")
+	public String joinFrm() {
+		return "member/joinFrm";
+	}
 }
