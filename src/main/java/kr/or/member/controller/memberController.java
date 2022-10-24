@@ -8,6 +8,7 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -24,12 +25,15 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import kr.or.member.model.service.MemberService;
+import kr.or.member.model.service.MessageService;
 import kr.or.member.model.vo.Member;
 
 @Controller
 public class memberController {
 	@Autowired
 	private MemberService service;
+	@Autowired
+	private MessageService msgService;
 	
 	@RequestMapping(value="/loginFrm.do")
 	public String loginFrm() {
@@ -255,7 +259,7 @@ public class memberController {
 	
 	@ResponseBody
 	@RequestMapping(value="/findId.do", produces="application/json;charset=utf-8")
-	public String login(Member member) {
+	public String findId(Member member) {
 		Member m = service.findId(member);
 		String text = "";
 		if(m != null) {
@@ -264,5 +268,42 @@ public class memberController {
 			text = "일치하는 회원 정보가 없습니다.";
 		}
 		return new Gson().toJson(text);
+	}
+	
+	@RequestMapping(value="/findPwFrm.do")
+	public String findPwFrm() {
+		return "member/findPwFrm";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/findPw.do", produces="application/json;charset=utf-8")
+	public String findPw(Member member) {
+		Member m = service.selectOneMember(member);
+		String text = "";
+		if(m != null) {
+			text = "find";
+		} else {
+			text = "일치하는 회원 정보가 없습니다.";
+		}
+		return new Gson().toJson(text);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/sendMsg.do")
+	public String sendMsg(String memberPhone) {
+		// 6자리 랜덤숫자 생성
+		Random r = new Random();
+		int rdNum = 0;
+		String rdCode = "";
+		String resultCode = "";
+		
+		for(int i=0; i<6; i++) {
+			rdNum = r.nextInt(9);
+			rdCode = Integer.toString(rdNum);
+			resultCode += rdCode;
+		}
+		
+		msgService.sendMessage(memberPhone, resultCode);
+		return resultCode;
 	}
 }

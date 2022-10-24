@@ -24,20 +24,20 @@
                             <i class="fa-solid fa-id-card-clip"></i>
                         </span>
                         <label for="memberId">이메일<span class="comment"></span></label>
-                        <input type="text" name="memberId" id="memberId">
+                        <input type="text" name="memberId" id="memberId" class="input">
                     </div>
                     <div class="box">
                         <span class="icon">
                             <i class="fa-solid fa-lock"></i>
                         </span>
                         <label for="memberPw">비밀번호<span class="comment"></span></label>
-                        <input type="password" name="memberPw" id="memberPw">
+                        <input type="password" name="memberPw" id="memberPw" class="input">
                     </div>
                     <div class="btn-box">
                         <button type="button" class="btn">로그인</button>
                         <div class="link-box">
                             <a href="/findIdFrm.do">아이디(이메일) 찾기</a>
-                            <a href="/findPw.do">비밀번호 찾기</a>
+                            <a href="/findPwFrm.do">비밀번호 찾기</a>
                             <a href="/joinFrm.do">회원가입</a>
                         </div>
                     </div>

@@ -17,6 +17,9 @@
 		<if test="memberPw != null">
 		and member_pw = #{memberPw}
 		</if>
+		<if test="memberPhone != null">
+		and member_phone = #{memberPhone}
+		</if>
 	</select>
 	
 	<insert id="insertKakao" parameterType="m">

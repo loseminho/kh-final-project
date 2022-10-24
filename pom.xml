@@ -14,6 +14,14 @@
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
 	<dependencies>
+	
+		<!-- json-simple (인증문자 전송용) -->
+		<dependency>
+		    <groupId>com.googlecode.json-simple</groupId>
+		    <artifactId>json-simple</artifactId>
+		    <version>1.1</version>
+		</dependency>
+	
 		<!-- gson -->
 		<dependency>
 		    <groupId>com.google.code.gson</groupId>
