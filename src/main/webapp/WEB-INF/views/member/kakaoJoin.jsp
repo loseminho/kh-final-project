@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>카카오 추가 정보 입력</title>
-<link rel="stylesheet" href="/css/login.css">
+<link rel="stylesheet" href="/css/member/login.css">
 <script src="https://kit.fontawesome.com/7b7a761eb5.js" crossorigin="anonymous"></script>
 <link rel="icon" href="/img/favicon.ico" type="image/x-icon" sizes="16x16">
 </head>
@@ -45,7 +45,7 @@
     </div>
 	
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
-	<script src="/js/kakaoJoin.js"></script>
+	<script src="/js/member/kakaoJoin.js"></script>
 	
 </body>
 </html>

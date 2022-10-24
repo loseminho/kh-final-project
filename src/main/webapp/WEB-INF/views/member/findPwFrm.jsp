@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>비밀번호 찾기</title>
-<link rel="stylesheet" href="/css/login.css">
+<link rel="stylesheet" href="/css/member/login.css">
 <script src="https://kit.fontawesome.com/7b7a761eb5.js" crossorigin="anonymous"></script>
 <link rel="icon" href="/img/favicon.ico" type="image/x-icon" sizes="16x16">
 </head>
@@ -52,6 +52,6 @@
     </div>
 	
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
-	<script src="/js/findPw.js"></script>
+	<script src="/js/member/findPw.js"></script>
 </body>
 </html>
