@@ -41,3 +41,31 @@ html, body {
 	position:relative;
     display:inline-block;
 }
+@keyframes mainTitleAni{
+    0%{
+        transform: translateY(45px);
+    }
+    10%{
+        transform: translateY(0px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}
+.mainTitle{
+	width:100%;
+	display: flex;
+	justify-content: right;
+	overflow: hidden;
+}
+.mainTitle>a{
+	transform: translateY(45px);
+	animation-name: mainTitleAni;
+	animation-duration: 15s;
+	animation-fill-mode:forwards;
+	margin-right:550px;
+	font-size: 40px;
+	font-weight: 800;
+	color: #fff;
+	text-decoration: none;
+}
