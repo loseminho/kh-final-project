@@ -16,22 +16,18 @@ html, body {
 }
 
 #section1 {
-    background-image: url(/img/main2.jpg);
+    background-image: url(/img/main1.jpg);
     background-size:100%;
     display:flex;
     justify-items: center;
     align-items: center;
 }
+#section2 {
+    background-image: url(/img/main3.jpg);
+    background-size:100%;
+}
 #section1_detail{
     width:100%;
-}
-
-#section2 {
-	background-image: url(/img/main-img2.png);
-	background-size:150% 44%;
-	background-position:150px 100px;
-	background-repeat:no-repeat;
-    background-color: rgb(33,33,33);
 }
 
 #section3 {
@@ -63,9 +59,45 @@ html, body {
 	animation-name: mainTitleAni;
 	animation-duration: 15s;
 	animation-fill-mode:forwards;
-	margin-right:550px;
+	margin-right:180px;
 	font-size: 40px;
 	font-weight: 800;
 	color: #fff;
 	text-decoration: none;
+}
+.section2Content{
+	padding-top:45px;
+	width:100%;
+	height:100%;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+}
+.section2Content>div{
+	width:40%;
+	height:70%;
+	border-radius: 30px;
+	background-color: rgba(255,255,255,0.7);
+	display:flex;
+	justify-content: center;
+}
+.mbtiTitle{
+	padding-top:20px;
+	color: #DE4B3F;
+	font-size:30px;
+	font-weight:900;
+}
+
+<!-- 세션3 -->
+.section3Content{
+	width:100%;
+	height:100%;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+}
+.section3Content>div{
+	display:flex;
+	width:50%;
+	height:50%;
 }

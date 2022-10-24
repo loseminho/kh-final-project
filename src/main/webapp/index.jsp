@@ -14,11 +14,36 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div class="section" id="section1">
 		<div class="mainTitle">
-			<a href="#">산책갈개</a>
+			<a href="#">산책 메이트를 만들고 싶어?</a>
 		</div>
 	</div>
-	<div class="section" id="section2"></div>
+	<div class="section" id="section2">
+		<div class="section2Content">
+			<div>
+				<ul>
+					<li class="mbtiTitle">반려견 성격 유형 테스트</li>
+					<li></li>
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+					<li>4</li>
+				</ul>
+			</div>
+		</div>
+	</div>
 	<div class="section" id="section3">
+		<div class="section3Content">
+			<div>
+				<ul>
+					<li>
+					고객센터
+					</li>
+					<li>
+					010-1111-1111
+					</li>
+				</ul>
+			</div>
+		</div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	</div>
 <script src="/js/main.js"></script>
