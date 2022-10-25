@@ -23,7 +23,7 @@
 			<div>
 				<ul>
 					<li class="mbtiTitle">반려견 성격 유형 테스트</li>
-					<li></li>
+					<li>1 </li>
 					<li>1</li>
 					<li>2</li>
 					<li>3</li>
