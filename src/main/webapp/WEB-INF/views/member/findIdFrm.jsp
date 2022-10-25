@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>아이디 찾기</title>
 <link rel="stylesheet" href="/resources/css/member/login.css">
+<link rel="stylesheet" href="/resources/css/gmarket.css">
 <script src="https://kit.fontawesome.com/7b7a761eb5.js" crossorigin="anonymous"></script>
 <link rel="icon" href="/resources/img/favicon.ico" type="image/x-icon" sizes="16x16">
 </head>
