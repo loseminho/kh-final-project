@@ -8,8 +8,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Member {
+	private int memberNo;
 	private String memberId;
-	private String memberName;
+	private String memberNickname;
 	private String memberPhone;
 	private String memberPw;
 	private String memberCity;

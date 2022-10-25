@@ -46,8 +46,8 @@
                         <span class="icon">
                             <i class="fa-solid fa-user"></i>
                         </span>
-                        <label for="memberName">이름<span class="comment"></span></label>
-                        <input type="text" name="memberName" id="memberName" class="input">
+                        <label for="memberNickname">닉네임<span class="comment"></span></label>
+                        <input type="text" name="memberNickname" id="memberNickname" class="input">
                     </div>
                     <div class="box">
                         <span class="icon">

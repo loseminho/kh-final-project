@@ -107,9 +107,9 @@ $("#memberPwChk").on("change", function(){
     }
 });
 
-$("#memberName").on("change", function(){
-	const nameVal = $("#memberName").val();
-	const nameComment = $("#memberName").prev().children();
+$("#memberNickname").on("change", function(){
+	const nameVal = $("#memberNickname").val();
+	const nameComment = $("#memberNickname").prev().children();
 	
 	nameComment.text("");
 	
@@ -135,13 +135,13 @@ $(".btn").on("click", function(){
 	const idVal = $("#memberId").val();
 	const pwVal = $("#memberPw").val();
 	const pwChkVal = $("#memberPwChk").val();
-	const nameVal = $("#memberName").val();
+	const nameVal = $("#memberNickname").val();
 	const phoneVal = $("#memberPhone").val();
 	
 	const idComment = $("#memberId").prev().children();
 	const pwComment = $("#memberPw").prev().children();
 	const pwChkComment = $("#memberPwChk").prev().children();
-	const nameComment = $("#memberName").prev().children();
+	const nameComment = $("#memberNickname").prev().children();
 	const phoneComment = $("#memberPhone").prev().children();
 	
 	idComment.text("");

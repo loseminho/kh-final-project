@@ -3,8 +3,9 @@
 <mapper namespace="member">
 	<select id="selectOneMember" parameterType="m" resultType="m">
 		select
+			member_no as memberNo,
 			member_id as memberId,
-			member_name as memberName,
+			member_nickname as memberNickname,
 			member_phone as memberPhone,
 			member_city as memberCity,
 			member_photo as memberPhoto,
@@ -24,7 +25,7 @@
 	
 	<insert id="insertKakao" parameterType="m">
 		insert into member_tbl
-		values(#{memberId}, #{memberName}, #{memberPhone}, NULL, NULL, NULL, NULL, TO_CHAR(SYSDATE, 'YYYY-MM-DD'), 1, '카카오')
+		values(MEMBER_SEQ.NEXTVAL, #{memberId}, #{memberNickname}, #{memberPhone}, NULL, NULL, NULL, NULL, TO_CHAR(SYSDATE, 'YYYY-MM-DD'), 1, '카카오')
 	</insert>
 	
 	<delete id="deleteKakao" parameterType="string">
@@ -36,7 +37,7 @@
 			member_id as memberId,
 			join_type as joinType
 		from member_tbl
-		where member_name = #{memberName}
+		where member_nickname = #{memberNickname} and member_phone = #{memberPhone}
 	</select>
 	
 	<update id="updatePw" parameterType="m">
@@ -47,6 +48,6 @@
 	
 	<insert id="insertMember" parameterType="m">
 		insert into member_tbl
-		values(#{memberId}, #{memberName}, #{memberPhone}, #{memberPw}, NULL, NULL, NULL, TO_CHAR(SYSDATE, 'YYYY-MM-DD'), 1, '일반가입')
+		values(MEMBER_SEQ.NEXTVAL, #{memberId}, #{memberNickname}, #{memberPhone}, #{memberPw}, NULL, NULL, NULL, TO_CHAR(SYSDATE, 'YYYY-MM-DD'), 1, '일반가입')
 	</insert>
 </mapper>

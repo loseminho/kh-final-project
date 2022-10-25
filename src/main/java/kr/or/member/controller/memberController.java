@@ -106,7 +106,7 @@ public class memberController {
 
         Member m = new Member();
         m.setMemberId(kakao_email);
-        m.setMemberName(kakao_nickname);
+        m.setMemberNickname(kakao_nickname);
         m.setMemberPhone(memberPhone);
         int result = service.insertKakao(m);
         
