@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입 성공</title>
-<link rel="icon" href="/img/favicon.ico" type="image/x-icon" sizes="16x16">
+<link rel="icon" href="/resources/img/favicon.ico" type="image/x-icon" sizes="16x16">
 <style>
 	.page-content {
 		width : 1200px;
