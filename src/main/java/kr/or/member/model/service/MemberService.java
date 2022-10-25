@@ -96,4 +96,8 @@ public class MemberService {
 		return dao.insertMember(m);
 	}
 
+	public Member checkPhone(Member m) {
+		return dao.checkPhone(m);
+	}
+
 }

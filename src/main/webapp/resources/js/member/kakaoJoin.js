@@ -63,6 +63,25 @@ $("#verifyBtn").on("click", function(){
 	}
 })
 
+function sendMsg() {
+	const div = $(".verifyBox");
+	const phVal = $("#memberPhone").val().replace('-', '');
+	$.ajax({
+        url  : '/sendMsg.do',
+        type : 'post',
+        data : {memberPhone : phVal},
+        success : function(data){
+        	div.show();
+			$("#timeZone").show();
+			$("#verifyBtn").show();
+        	$(".verifyInput").val("");
+        	$(".verifyMsg").text("");
+        	resultCode = data;
+        	verifyCount();
+        }
+    });
+}
+
 $("#sendBtn").on("click", function() {
 	const phoneComment = $("#memberPhone").prev().children();
 	const phoneVal = $("#memberPhone").val();
@@ -71,20 +90,17 @@ $("#sendBtn").on("click", function() {
 	phoneComment.text("");
 	
 	if ((phoneVal != "") && phoneReg.test(phoneVal)) {
-		const phVal = $("#memberPhone").val().replace('-', '');
 		$.ajax({
-	        url  : '/sendMsg.do',
-	        type : 'post',
-	        data : {memberPhone : phVal},
-	        success : function(data){
-	        	div.show();
-				$("#timeZone").show();
-				$("#verifyBtn").show();
-	        	$(".verifyInput").val("");
-	        	$(".verifyMsg").text("");
-	        	resultCode = data;
-	        	// console.log(resultCode);
-	        	verifyCount();
+	        url: "/checkPhone.do",  
+	        type: "POST",
+	        data : {memberPhone : phoneVal},
+	        success: function(result) {
+	            if(result == "possible") {
+	            	sendMsg();
+	            } else {
+	            	phoneComment.text("이미 가입된 번호입니다.");
+	            	return;
+	            }
 	        }
 	    });
 	} else if (phoneVal == "") {

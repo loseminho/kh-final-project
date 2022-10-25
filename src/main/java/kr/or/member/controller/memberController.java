@@ -360,4 +360,15 @@ public class memberController {
 			return "possible";			
 		}
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/checkPhone.do")
+	public String checkPhone(Member m) {
+		Member member = service.checkPhone(m);
+		if(member != null) { // 이미 등록된 전화번호면
+			return "already";
+		} else {
+			return "possible";
+		}
+	}
 }
