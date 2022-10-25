@@ -1,6 +1,6 @@
 
 function findId() {
-	const nameVal = $("#memberName").val();
+	const nameVal = $("#memberNickname").val();
 	const phoneVal = $("#memberPhone").val();
 	const resultDiv = $(".resultDiv");
 	resultDiv.html("");
@@ -8,7 +8,7 @@ function findId() {
 	$.ajax({
         url  : '/findId.do',
         type : 'post',
-        data : {memberName : nameVal, memberPhone : phoneVal},
+        data : {memberNickname : nameVal, memberPhone : phoneVal},
         success : function(data){
         	if(data.includes("/")) {
         		const result = data.split("/");
@@ -25,13 +25,13 @@ function findId() {
 }
 
 
-$("#memberName").focusin(function() {
+$("#memberNickname").focusin(function() {
 	$(this).css("border-color", "#1abc9c");
     $(this).prev().prev().addClass("afterColor");
 })
  
-$("#memberName").focusout(function() {
-	const nameVal = $("#memberName").val();
+$("#memberNickname").focusout(function() {
+	const nameVal = $("#memberNickname").val();
 	
 	if(nameVal == "") {
 		$(this).css("border-color", "#ccc");
@@ -57,9 +57,9 @@ $("#memberPhone").focusout(function() {
 const phoneReg = /^010-\d{4}-\d{4}$/;
 
 $(".btn").on("click", function(){
-	const nameVal = $("#memberName").val();
+	const nameVal = $("#memberNickname").val();
 	const phoneVal = $("#memberPhone").val();
-	const nameComment = $("#memberName").prev().children();
+	const nameComment = $("#memberNickname").prev().children();
 	const phoneComment = $("#memberPhone").prev().children();
 	
 	nameComment.text("");

@@ -33,6 +33,7 @@
                     	<input type="text" class="verifyInput" placeholder="인증번호 입력">
                     	<span id="timeZone"></span>
                     	<button type="button" id="verifyBtn">인증하기</button>
+                    	<br>
                     	<span class="verifyMsg"></span>
                     </div>
                     <div class="btn-box">

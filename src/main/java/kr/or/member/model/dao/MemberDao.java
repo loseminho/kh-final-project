@@ -38,4 +38,8 @@ public class MemberDao {
 	public int insertMember(Member m) {
 		return sqlSession.insert("member.insertMember", m);
 	}
+
+	public Member checkPhone(Member m) {
+		return sqlSession.selectOne("member.checkPhone", m);
+	}
 }

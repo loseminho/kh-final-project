@@ -46,8 +46,8 @@
                         <span class="icon">
                             <i class="fa-solid fa-user"></i>
                         </span>
-                        <label for="memberName">이름<span class="comment"></span></label>
-                        <input type="text" name="memberName" id="memberName" class="input">
+                        <label for="memberNickname">닉네임<span class="comment"></span></label>
+                        <input type="text" name="memberNickname" id="memberNickname" class="input">
                     </div>
                     <div class="box">
                         <span class="icon">
@@ -62,7 +62,7 @@
                     	<input type="text" class="verifyInput" placeholder="인증번호 입력">
                     	<span id="timeZone"></span>
                     	<button type="button" id="verifyBtn">인증하기</button>
-                    	<span class="verifyMsg"></span>
+	                   	<span class="verifyMsg"></span>
                     </div>
                     <div class="btn-box">
                         <button type="button" class="btn">회원가입</button>

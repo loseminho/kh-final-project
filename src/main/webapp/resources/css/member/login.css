@@ -151,7 +151,18 @@
 	color : red;
 }
 
+.verifyBox {
+	position:relative;
+}
 
+#verifyBtn {
+	position:absolute;
+	right:0;
+}
+
+.verifyMsg {
+	display:block;
+}
 
 
 /* 회원가입 고르는 모달창 */

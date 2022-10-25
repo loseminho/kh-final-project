@@ -107,9 +107,9 @@ $("#memberPwChk").on("change", function(){
     }
 });
 
-$("#memberName").on("change", function(){
-	const nameVal = $("#memberName").val();
-	const nameComment = $("#memberName").prev().children();
+$("#memberNickname").on("change", function(){
+	const nameVal = $("#memberNickname").val();
+	const nameComment = $("#memberNickname").prev().children();
 	
 	nameComment.text("");
 	
@@ -135,13 +135,13 @@ $(".btn").on("click", function(){
 	const idVal = $("#memberId").val();
 	const pwVal = $("#memberPw").val();
 	const pwChkVal = $("#memberPwChk").val();
-	const nameVal = $("#memberName").val();
+	const nameVal = $("#memberNickname").val();
 	const phoneVal = $("#memberPhone").val();
 	
 	const idComment = $("#memberId").prev().children();
 	const pwComment = $("#memberPw").prev().children();
 	const pwChkComment = $("#memberPwChk").prev().children();
-	const nameComment = $("#memberName").prev().children();
+	const nameComment = $("#memberNickname").prev().children();
 	const phoneComment = $("#memberPhone").prev().children();
 	
 	idComment.text("");
@@ -256,6 +256,25 @@ $("#verifyBtn").on("click", function(){
 	}
 })
 
+function sendMsg() {
+	const div = $(".verifyBox");
+	const phVal = $("#memberPhone").val().replace('-', '');
+	$.ajax({
+        url  : '/sendMsg.do',
+        type : 'post',
+        data : {memberPhone : phVal},
+        success : function(data){
+        	div.show();
+			$("#timeZone").show();
+			$("#verifyBtn").show();
+        	$(".verifyInput").val("");
+        	$(".verifyMsg").text("");
+        	resultCode = data;
+        	verifyCount();
+        }
+    });
+}
+
 $("#sendBtn").on("click", function() {
 	const phoneComment = $("#memberPhone").prev().children();
 	const phoneVal = $("#memberPhone").val();
@@ -264,19 +283,17 @@ $("#sendBtn").on("click", function() {
 	phoneComment.text("");
 	
 	if ((phoneVal != "") && phoneReg.test(phoneVal)) {
-		const phVal = $("#memberPhone").val().replace('-', '');
 		$.ajax({
-	        url  : '/sendMsg.do',
-	        type : 'post',
-	        data : {memberPhone : phVal},
-	        success : function(data){
-	        	div.show();
-				$("#timeZone").show();
-				$("#verifyBtn").show();
-	        	$(".verifyInput").val("");
-	        	$(".verifyMsg").text("");
-	        	resultCode = data;
-	        	verifyCount();
+	        url: "/checkPhone.do",  
+	        type: "POST",
+	        data : {memberPhone : phoneVal},
+	        success: function(result) {
+	            if(result == "possible") {
+	            	sendMsg();
+	            } else {
+	            	phoneComment.text("이미 가입된 번호입니다.");
+	            	return;
+	            }
 	        }
 	    });
 	} else if (phoneVal == "") {
