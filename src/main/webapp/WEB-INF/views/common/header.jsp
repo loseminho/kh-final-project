@@ -8,7 +8,7 @@
 	<div class="header-wrap">
 		<div class="header">
 			<li id="logo-wrap"><a href="/index.jsp"><img
-					src="/img/dogfoot.png"></a></li>
+					src="/resources/img/dogfoot.png"></a></li>
 			<ul>
 				<div>
 					<li><a href="#">산책갈개 소개</a></li>

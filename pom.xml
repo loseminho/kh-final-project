@@ -14,7 +14,14 @@
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
 	<dependencies>
-	
+		<!-- Websocket 사용을 위한 라이브러리(spring-websocket, jackson-databind) -->
+		<!-- spring-websocket -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-websocket</artifactId>
+		    <version>5.0.6.RELEASE</version>
+		</dependency>
+		
 		<!-- json-simple (인증문자 전송용) -->
 		<dependency>
 		    <groupId>com.googlecode.json-simple</groupId>

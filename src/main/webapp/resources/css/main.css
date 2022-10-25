@@ -16,14 +16,14 @@ html, body {
 }
 
 #section1 {
-    background-image: url(/img/main1.jpg);
+    background-image: url(/resources/img/main1.jpg);
     background-size:100%;
     display:flex;
     justify-items: center;
     align-items: center;
 }
 #section2 {
-    background-image: url(/img/main3.jpg);
+    background-image: url(/resources/img/main3.jpg);
     background-size:100%;
 }
 
