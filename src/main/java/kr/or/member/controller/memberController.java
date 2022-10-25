@@ -311,12 +311,12 @@ public class memberController {
 		return resultCode;
 	}
 	
-	@RequestMapping("/updatePwFrm.do")
+	@RequestMapping(value="/updatePwFrm.do")
 	public String updatePwFrm() {
 		return "member/updatePwFrm";
 	}
 	
-	@RequestMapping("/updatePw.do")
+	@RequestMapping(value="/updatePw.do")
 	public String updatePw(String updatePw, HttpSession session) {
 		Member m = (Member)session.getAttribute("updatePw");
 		m.setMemberPw(updatePw);
@@ -328,8 +328,29 @@ public class memberController {
 		}
 	}
 	
-	@RequestMapping("/joinFrm.do")
+	@RequestMapping(value="/joinFrm.do")
 	public String joinFrm() {
 		return "member/joinFrm";
+	}
+	
+	@RequestMapping(value="/join.do")
+	public String insertMember(Member m) {
+		int result = service.insertMember(m);
+		if(result > 0) {
+			return "member/joinSuccess";
+		} else {
+			return "redirect:/";
+		}
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/checkId.do")
+	public String checkId(Member m) {
+		Member member = service.selectOneMember(m);
+		if(member != null) {
+			return "already";
+		} else {
+			return "possible";			
+		}
 	}
 }

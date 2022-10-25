@@ -92,4 +92,8 @@ public class MemberService {
 		return dao.updatePw(m);
 	}
 
+	public int insertMember(Member m) {
+		return dao.insertMember(m);
+	}
+
 }

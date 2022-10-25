@@ -23,7 +23,7 @@
                         <span class="icon">
                             <i class="fa-solid fa-id-card-clip"></i>
                         </span>
-                        <label for="memberId">이메일<span class="comment"></span></label>
+                        <label for="memberId">아이디(이메일)<span class="comment"></span></label>
                         <input type="text" name="memberId" id="memberId" class="input">
                     </div>
                     <div class="box">
