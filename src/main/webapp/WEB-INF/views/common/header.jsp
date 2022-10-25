@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-	<link rel="stylesheet" href="/css/header.css">
+	<link rel="stylesheet" href="/resources/css/header.css">
+	<link rel="stylesheet" href="/resources/css/gmarket.css">
 <header>
 	<div class="header-wrap">
 		<div class="header">

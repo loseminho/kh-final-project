@@ -7,8 +7,8 @@
 <meta charset="UTF-8">
 <title>산책갈개</title>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<link rel="stylesheet" href="/css/main.css">
-<link rel="styleSheet" href="/css/gmarket.css">
+<link rel="stylesheet" href="/resources/css/main.css">
+<link rel="styleSheet" href="/resources/gmarket.css">
 <link rel="icon" href="/img/favicon.ico" type="image/x-icon" sizes="16x16">
 </head>
 <body>
@@ -33,7 +33,7 @@
 		</div>
 	</div>
 	<div class="section" id="section3">
-		<div class="section3Content">
+		<div class="section3Content"> 
 			<div>
 				<ul>
 					<li>

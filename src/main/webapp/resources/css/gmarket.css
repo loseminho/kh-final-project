@@ -1,0 +1,13 @@
+@charset "UTF-8";
+@font-face{
+    font-family : gs-Light;
+    src: url(/resources/font/GmarketSansOTF/GmarketSansLight.otf);
+}
+@font-face{
+    font-family : gs-Medium;
+    src: url(/resources/font/GmarketSansOTF/GmarketSansLight.otf)
+}
+@font-face{
+    font-family : gs-Bold;
+    src: url(/resources/font/GmarketSansOTF/GmarketSansLight.otf)
+}
