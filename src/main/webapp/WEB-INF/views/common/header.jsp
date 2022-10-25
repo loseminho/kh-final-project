@@ -38,6 +38,13 @@
 					</div>
 				</div>
 			</ul>
+						<ul>
+				<div>
+					<div>
+						<li><a href= "/faqQnaBoardFrm.do ">고객서비스</a></li>
+					</div>
+				</div>
+			</ul>
 			<ul>
 				<div class="signwrap">
 					<c:choose>
