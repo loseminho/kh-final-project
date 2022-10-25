@@ -160,6 +160,10 @@
 	right:0;
 }
 
+.verifyMsg {
+	display:block;
+}
+
 
 /* 회원가입 고르는 모달창 */
 @charset "UTF-8";
