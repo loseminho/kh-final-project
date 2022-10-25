@@ -9,7 +9,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <link rel="stylesheet" href="/resources/css/main.css">
 <link rel="styleSheet" href="/resources/css/gmarket.css">
-<link rel="icon" href="/img/favicon.ico" type="image/x-icon" sizes="16x16">
+<link rel="icon" href="/resources/img/favicon.ico" type="image/x-icon" sizes="16x16">
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>

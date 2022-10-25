@@ -5,9 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인</title>
-<link rel="stylesheet" href="/css/member/login.css">
+<link rel="stylesheet" href="/resources/css/member/login.css">
+<link rel="stylesheet" href="/resources/css/gmarket.css">
 <script src="https://kit.fontawesome.com/7b7a761eb5.js" crossorigin="anonymous"></script>
-<link rel="icon" href="/img/favicon.ico" type="image/x-icon" sizes="16x16">
+<link rel="icon" href="/resources/img/favicon.ico" type="image/x-icon" sizes="16x16">
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
@@ -45,7 +46,7 @@
                         <hr><span class="easyLogin">간편 로그인</span><hr>
                     </div>
                     <a href="https://kauth.kakao.com/oauth/authorize?client_id=e400fe38f12604a2937ea759fe0166f7&redirect_uri=http://localhost/kakaoLogin.do&response_type=code">
-                        <img src="/img/kakao_login_medium_wide.png">
+                        <img src="/resources/img/kakao_login_medium_wide.png">
                     </a>
                 </form>
             </div>
@@ -65,7 +66,7 @@
                         <hr><span class="easyLogin">간편 회원가입</span><hr>
                     </div>
 					<a href="https://kauth.kakao.com/oauth/authorize?client_id=e400fe38f12604a2937ea759fe0166f7&redirect_uri=http://localhost/kakaoLogin.do&response_type=code">
-                        <img src="/img/kakao_join_medium_wide.png">
+                        <img src="/resources/img/kakao_join_medium_wide.png">
                     </a>
 				</div>
 			</div>
@@ -73,6 +74,6 @@
 	</div>
 	
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
-    <script src="/js/member/login.js"></script>
+    <script src="/resources/js/member/login.js"></script>
 </body>
 </html>

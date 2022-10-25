@@ -5,9 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>비밀번호 변경</title>
-<link rel="stylesheet" href="/css/member/login.css">
+<link rel="stylesheet" href="/resources/css/member/login.css">
+<link rel="stylesheet" href="/resources/css/gmarket.css">
 <script src="https://kit.fontawesome.com/7b7a761eb5.js" crossorigin="anonymous"></script>
-<link rel="icon" href="/img/favicon.ico" type="image/x-icon" sizes="16x16">
+<link rel="icon" href="/resources/img/favicon.ico" type="image/x-icon" sizes="16x16">
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
@@ -42,6 +43,6 @@
     </div>
 	
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
-	 <script src="/js/member/updatePw.js"></script>
+	 <script src="/resources/js/member/updatePw.js"></script>
 </body>
 </html>

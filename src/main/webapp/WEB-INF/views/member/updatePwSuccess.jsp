@@ -5,8 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>비밀번호 변경 완료</title>
-<link rel="icon" href="/img/favicon.ico" type="image/x-icon" sizes="16x16">
+<link rel="stylesheet" href="/resources/css/gmarket.css">
+<link rel="icon" href="/resources/img/favicon.ico" type="image/x-icon" sizes="16x16">
 <style>
+	* {
+		font-family : gs-light;
+	}
 	.page-content {
 		width : 1200px;
 		margin: 100px auto;
