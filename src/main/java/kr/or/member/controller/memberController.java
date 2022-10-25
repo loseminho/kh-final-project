@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -47,7 +48,7 @@ public class memberController {
 	
 	// 카카오로 로그인
 	@RequestMapping(value="/kakaoLogin.do")
-	public String kakaoLogin(@RequestParam(value = "code", required = false) String code, HttpServletRequest req) throws Exception {
+	public String kakaoLogin(@RequestParam(value = "code", required = false) String code, HttpServletRequest req, Model model) throws Exception {
 		System.out.println("--------- 카카오 정보조회 들어옴 ---------");
 
         // 발급받은 인가코드(reqUrl)를 통해 토큰 발급받기
@@ -68,18 +69,24 @@ public class memberController {
         member.setMemberId(kakao_email);
         Member m = service.selectOneMember(member);
         
-        if(m == null){
+        if(m == null){ // 어느 방식으로도 가입한 적 없는 회원
         	System.out.println("새로 가입할 회원");
         	HttpSession session = req.getSession(); // session 생성
         	session.setAttribute("access_Token", access_Token); // session 저장하기
             return "member/kakaoJoin"; // 만약 DB에 해당 회원의 ID가 없다면 회원가입 페이지로 넘기기
-        } else {
-        	// 만약 이미 회원가입 된 회원이라면 로그인하기
-        	System.out.println("이미 가입한 회원");
-            HttpSession session = req.getSession(); // session 생성
-            session.setAttribute("m", m); // session 저장하기
-            session.setAttribute("access_Token", access_Token); // session 저장하기
-            return "redirect:/";
+        } else { // 만약 이미 회원가입 된 회원이라면
+        	if(m.getJoinType().equals("카카오")) {
+        		System.out.println("카카오로 가입한 회원");
+        		HttpSession session = req.getSession(); // session 생성
+        		session.setAttribute("m", m); // session 저장하기
+        		session.setAttribute("access_Token", access_Token); // session 저장하기
+        		return "redirect:/";        		
+        	} else {
+        		System.out.println("일반으로 가입한 회원");
+        		model.addAttribute("nickname", m.getMemberNickname());
+        		model.addAttribute("jointype", m.getJoinType());
+        		return "member/alreadyJoin";
+        	}
         }
 	}
 	
