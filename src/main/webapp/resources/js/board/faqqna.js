@@ -60,17 +60,66 @@ question.on("click", function(){
 
 $(".faqqna-tab>li").eq(0).click();
 
+/* qna ajax */
 
-/*
-for(let i = 6; i<11; i++){
-    question.eq(i).hide();
-    $(".add-btn>button").show();
-}
-
-$(".add-btn>button").on("click",function(){
-    for(let i = 6; i<11; i++){
-        question.eq(i).show();
-    }
-    $(this).hide();
+$("#allQnaAjax").on("click",function(){
+    $.ajax({
+        url : "/allQnaAjax.do",
+        type : "post",
+        success : function(data){
+        console.log(data);
+            const table = $("<table>");
+            table.attr('class','qna-table');
+            const titleTr = $("<tr>");
+            titleTr.html("<th>글번호</th><th>문의유형</th><th>제목</th><th>작성자</th><th>처리상태</th><th>문의날짜</th><th>조회수</th>");
+            titleTr.attr('class','qna-tr');
+            titleTr.attr("scope","col");
+            table.append(titleTr);
+            for(let i=0; i<data.length; i++){
+                const tr = $("<tr>");
+                tr.append("<td>"+data[i].qnaNo+"</td>");
+                
+              if(data[i].qnaCateNo == 1) {
+              	tr.append("<td>"+"산책메이트 찾기"+"</td>"); 
+              }
+              if(data[i].qnaCateNo == 2) {
+              	tr.append("<td>"+"애견용품 나눔"+"</td>"); 
+              }
+              if(data[i].qnaCateNo == 3) {
+              	tr.append("<td>"+"입양"+"</td>"); 
+              }
+              if(data[i].qnaCateNo == 4) {
+              	tr.append("<td>"+"회원관련"+"</td>"); 
+              }
+              if(data[i].qnaCateNo == 5) {
+              	tr.append("<td>"+"기타"+"</td>"); 
+              }
+                tr.append("<td>"+data[i].qnaCateNo+"</td>");     
+                tr.append("<td>"+data[i].qnaTitle+"</td>");
+                tr.append("<td>"+data[i].qnaWriter+"</td>");
+              
+              if(data[i].qnaStatus == 1) {
+              	tr.append("<td>"+"답변대기중"+"</td>"); 
+              }
+              if(data[i].qnaStatus == 2) {
+              	tr.append("<td>"+"답변완료"+"</td>"); 
+              }
+                tr.append("<td>"+data[i].qnaStatus+"</td>");
+                tr.append("<td>"+data[i].qnaDate+"</td>");
+                tr.append("<td>"+data[i].qnaViews+"</td>");
+                table.append(tr);
+                
+                
+            }
+            console.log(data);
+            $("#qnaAjaxResult").html(table);
+        }
+    });
 });
-*/
+
+
+/* write 폼 이동  */
+
+$("#writeQna").on("click",function(){
+	location.href="/writeQnaFrm.do"
+});

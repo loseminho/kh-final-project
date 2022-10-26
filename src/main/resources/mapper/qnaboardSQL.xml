@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="qnaboard">
+<select id="allQnaBoard" resultType="q">
+	select
+		qna_no as qnaNo,
+		qna_writer as qnaWriter,
+		qna_title as qnaTitle,
+		qna_content as qnaContent,
+		qna_views as qnaViews,
+		qna_date as qnaDate,
+		qna_cate_no as qnaCateNo,
+		qna_status as qnaStatus
+	from qna_tbl
+</select>
+</mapper>
