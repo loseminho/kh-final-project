@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="chat">
+	<insert id="insertRoomList">
+		insert into
+		chat
+		values(chat_seq.nextval,#{boardNo},#{memberId},#{msg})
+	</insert>
+	
+	<insert id="require" parameterType="map">
+		insert into join_member values(#{boardNo},#{memberId},#{boardTitle},#{writer},0)
+	</insert>
+	
+	<select id="requireList" parameterType="rl" resultType="rl">
+		select
+			board_no as boardNo,
+			member_id as memberId,
+			writer,
+			status,
+			boardTitle
+		from join_member
+		<choose>
+		<when test="writer == null and !memberId.equals('')">
+			where member_Id = #{memberId}
+		</when>
+		<when test="memberId == null and !writer.equals('')">
+			where writer = #{writer}
+		</when>
+		</choose>
+	</select>
+	<update id="changeStatus" parameterType="rl">
+		update
+			join_member
+		<choose>
+			<when test="status == 0">
+				set status = 1
+			</when>
+			<when test="status == 1">
+				set status = 0
+			</when>
+		</choose>
+		where member_id = #{memberId}
+	</update>
+</mapper>

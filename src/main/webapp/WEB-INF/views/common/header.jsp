@@ -34,17 +34,26 @@
 			<ul>
 				<div>
 					<div>
-						<li><a href="#">용품판매</a></li>
+						<li><a href="/myPage.do">용품판매</a></li>
 					</div>
 				</div>
 			</ul>
-						<ul>
+			<ul>
 				<div>
 					<div>
 						<li><a href= "/faqQnaBoardFrm.do ">고객서비스</a></li>
 					</div>
 				</div>
 			</ul>
+			<c:if test="${not empty sessionScope.m }">
+			<ul>
+				<div>
+					<div>
+						<li><a href= "/myPage.do ">마이페이지</a></li>
+					</div>
+				</div>
+			</ul>
+			</c:if>
 			<ul>
 				<div class="signwrap">
 					<c:choose>

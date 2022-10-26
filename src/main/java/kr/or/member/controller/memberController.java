@@ -19,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -371,4 +372,10 @@ public class memberController {
 			return "possible";
 		}
 	}
+	@RequestMapping(value="/myPage.do")
+	public String myPage(@SessionAttribute Member m) {
+		System.out.println(m.getMemberId());
+		return "member/myPage";
+	}
+	
 }

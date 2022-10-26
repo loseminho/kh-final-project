@@ -15,7 +15,7 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	<div class="section" id="section1">
 		<div class="mainTitle">
-			<a href="#">산책 메이트를 만들고 싶어?</a>
+			<a href="/joinChatting.do">산책 메이트를 만들고 싶어?</a>
 		</div>
 	</div>
 	<div class="section" id="section2">
