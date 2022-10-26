@@ -7,5 +7,6 @@
 	</settings>
 	<typeAliases>
 		<typeAlias type="kr.or.member.model.vo.Member" alias="m"/>
+		<typeAlias type="kr.or.board.model.vo.QnaBoard" alias="q"/>
 	</typeAliases>
 </configuration>
