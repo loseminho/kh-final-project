@@ -18,4 +18,9 @@ public class BoardController {
 		return "board/faqQna";
 	}
 	
+	@RequestMapping(value="/walkMateList.do")
+	public String walkMateList() {
+		return "chat/walkMateList";
+	}
+	
 }

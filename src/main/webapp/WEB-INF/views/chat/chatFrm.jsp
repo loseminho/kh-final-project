@@ -115,7 +115,7 @@
 		boardTitle = $("[name=boardTitle]").val();
 		console.log(boardTitle);
 		memberId = param;
-		ws = new WebSocket("ws://192.168.35.51/chat.do");
+		ws = new WebSocket("ws://192.168.10.33/chat.do");
 		ws.onopen = startChat;
 		ws.onmessage = receiveMsg;
 		ws.onclose = endChat;

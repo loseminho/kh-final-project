@@ -16,7 +16,7 @@
 			</ul>
 			<ul>
 				<div>
-					<li><a href="#">산책 메이트 찾기</a></li>
+					<li><a href="/walkMateList.do">산책 메이트 찾기</a></li>
 				</div>
 			</ul>
 			<ul>
