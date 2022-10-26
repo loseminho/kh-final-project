@@ -41,26 +41,26 @@ content{
 .dogMarket-tab a{
     font-family: gs-Medium;
 }
-.faq-content{
+.getDog-content{
     margin: 0 auto;
     margin-top: 40px;
     padding: 0;
     width: 1000px;
 }
-.dogMarket-header{
+.getDog-header{
     margin: 0 auto;
     padding: 0;
     width: 1000px;
     overflow: hidden;
 }
-.dogMarket-header>p{
+.getDog-header>p{
     display: block;
     text-align: center;
     padding-bottom: 20px;
     margin-bottom: 40px;
     font-family: gs-Medium;
 }
-.dogMarket-category{
+.getDog-category{
     margin: 0 auto;
     padding: 0;
     list-style: none;
@@ -69,7 +69,7 @@ content{
     display: flex;
     overflow: hidden;
 }
-.dogMarket-category>li{
+.getDog-category>li{
     margin: 0 auto;
     padding: 0;
     border: 1px solid #1abc9c;
@@ -79,75 +79,43 @@ content{
     border-radius: 10px;
     font-family: gs-Medium;
 }
-.dogMarket-category>li:first-child{
+.getDog-category>li:first-child{
     background-color: #1abc9c;
     color: #fff;
 }
-.dogMarket-category>li:last-child{
+.getDog-category>li:last-child{
     margin: 0;
 }
-.dogMarket-category>li:hover{
+.getDog-category>li:hover{
     cursor: pointer;
     background-color: #1abc9c;
     color: #fff;
 }
-.faqList{
+.saleList{
     margin: 0 auto;
     margin-top: 50px;
     padding: 0;
     border-top: 2px solid #1abc9c;
 }
-.faq-box{
+
+.sale-wrap{
+	display:flex;
+	justify-content:space-between;
+	flex-wrap: wrap;
+	
+}
+.sale-box{
     padding: 24px;
-    padding-top: 0;
-}
-.question{
-    overflow: hidden;
-    height: 60px;
-    width: 100%;
-    padding-top: 24px;
+    padding-top: 10px;
 }
 
-.question span:first-child{
-    display: block;
-    float: left;
-    line-height: 40px;
-    margin: 0;
-    padding: 0;
-    width: 180px;
-    text-align: center;
-    overflow: hidden;
-    font-family: gs-Medium;
-    
-}
-.question-title{
-    display: block;
-    float: left;
-    line-height: 40px;
-    width: 610px;
-    text-align: center;
-}
-.question span:last-child{
-    display: block;
-    float: right;
-    font-size: 35px;
+.sale{
+	margin:10px;
+	height: 300px;
+	width: 250px;
+	background-color: #1abc9c;
 }
 
-.answer{
-    height: 60px;
-    padding-left: 180px;
-    padding-right: 72px;
-    text-align: center;
-    overflow: hidden;
-    border-bottom: 1px solid #1abc9c;
-    display: none;
-}
-.answer span{
-    display: block;
-    float: center;
-    text-align: center;
-    width: 610px;
-}
 .add-btn{
     margin: 0 auto;
     padding: 30px;
@@ -174,17 +142,19 @@ content{
     margin: 0 auto;
     padding: 0;
     width: 800px;
-    height: 50px;
-    background-color: #e1e1e1;
+    height: 30px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-evenly;
     border-radius: 5px;
+    overflow: hidden;
 }
 .saleDog-header>p{
     padding-left: 15px;
     text-align: center;
     font-family: gs-Medium;
+    animation-name:dogMarketAni;
+    animation-duration:10s;
 }
 .write-btn-box{
     margin-top: 5px;
@@ -210,4 +180,13 @@ content{
     height: 50px;
     border-top: 2px solid #1e1e1e;
     border-bottom: 2px solid #1e1e1e;
+}
+
+@keyframes dogMarketAni{
+    0%{
+        transform: translateY(30px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
 }

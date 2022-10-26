@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQ</title>
+    <title>산책갈개</title>
     <!--fonts-->
     <link rel="stylesheet" href="/resources/css/gmarket.css">
     <!--css-->
@@ -29,10 +29,10 @@
                             <li><h1><a>입양보내기</a></h1></li>
                         </ul>
                     </div>
-                    <div class="faq-content">
-                        <div class="dogMarket-header">
+                    <div class="getDog-content">
+                        <div class="getDog-header">
                             <p>-너 나랑 같이 살래?-</p>
-                            <ul class="dogMarket-category">
+                            <ul class="getDog-category">
                                 <li>전체</li>
                                 <li>우리동네 산책 찾기</li>
                                 <li>애견 용품 나눔</li>
@@ -41,10 +41,25 @@
                                 <li>기타</li>
                             </ul>
                         </div>
-                        <div class="faqList">
-                            <div class="faq-box">
-                                <div class="faq-wrap" id="walk-question">
-
+                        <div class="saleList">
+                            <div class="sale-box">
+                                <div class="sale-wrap" id="walk-question">
+									<a href="/saleDogInfo.do"><div class="sale"></div></a>
+									<div class="sale">
+										
+									</div>
+									<div class="sale">
+										
+									</div>
+									<div class="sale">
+										
+									</div>
+									<div class="sale">
+										
+									</div>
+									<div class="sale">
+										
+									</div>
                                 <div class="add-btn">
                                     <button>더보기</button>
                                 </div>
@@ -54,13 +69,10 @@
                 </div><!--faq-box 끝-->
                 <div class="saleDog-box">
                     <div class="saleDog-content">
-                        <div class="dogMarket-header">
+                        <div class="saleDog-header">
                             <p>-너 나랑 같이 살래?-</p>
                             <p>-너 나랑 같이 살래?-</p>
                             <p>-너 나랑 같이 살래?-</p>
-                            <div class="write-btn-box">
-                                <button> 1:1 문의 신청</button>
-                            </div>
                         </div>
                         <div class="saleDog-board">
                             <table class="saleDog-table">

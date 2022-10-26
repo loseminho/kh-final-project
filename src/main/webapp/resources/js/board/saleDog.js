@@ -11,7 +11,7 @@ tabs.on("click",function(){
             "border-bottom" : "2px solid #e1e1e1"
         });
         $(".saleDog-content").hide();
-        $(".dogMarket-content").show();
+        $(".getDog-content").show();
     }else{
         tabs.eq(1).css({
             "border-bottom" : "2px solid #1abc9c"
@@ -19,12 +19,12 @@ tabs.on("click",function(){
         tabs.eq(0).css({
             "border-bottom" : "2px solid #e1e1e1"
         });
-        $(".dogMarket-content").hide();
+        $(".getDog-content").hide();
         $(".saleDog-content").show();
     }
 });
 
-const category = $(".faq-category>li");
+const category = $(".dogMarket-category>li");
 category.on("click",function(){
     const categoryIndex = category.index(this);
     console.log(categoryIndex);
