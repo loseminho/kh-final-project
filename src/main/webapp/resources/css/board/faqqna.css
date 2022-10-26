@@ -40,6 +40,8 @@ content{
 }
 .faqqna-tab a{
     font-family: gs-Medium;
+    text-decoration: none;
+    color: black;
 }
 .faq-content{
     margin: 0 auto;
@@ -182,7 +184,8 @@ content{
     border-radius: 5px;
 }
 .qna-header>p{
-    padding-left: 15px;
+    padding-left: 17px;
+   	margin-top: 15px;
     text-align: center;
     font-family: gs-Medium;
 }
