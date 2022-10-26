@@ -8,6 +8,7 @@ import java.net.URL;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.member.model.dao.MemberDao;
 import kr.or.member.model.vo.Member;
@@ -21,6 +22,7 @@ public class MemberService {
 //		return dao.checkId(kakao_email);
 //	}
 
+	@Transactional
 	public int insertKakao(Member m) {
 		return dao.insertKakao(m);
 	}
@@ -50,6 +52,7 @@ public class MemberService {
 	    }
 	}
 
+	@Transactional
 	public int kakaoUnlink(String access_Token, String memberId) {
 		String reqURL = "https://kapi.kakao.com/v1/user/unlink";
 		int deleteResult = 0;
@@ -80,7 +83,7 @@ public class MemberService {
 	    return deleteResult;
 	}
 
-	public Member selectOneMember(Member member) {
+	public Member selectOneMemberEnc(Member member) {
 		return dao.selectOneMember(member);
 	}
 
@@ -88,11 +91,13 @@ public class MemberService {
 		return dao.findId(member);
 	}
 
-	public int updatePw(Member m) {
+	@Transactional
+	public int updatePwEnc(Member m) {
 		return dao.updatePw(m);
 	}
 
-	public int insertMember(Member m) {
+	@Transactional
+	public int insertMemberEnc(Member m) {
 		return dao.insertMember(m);
 	}
 
