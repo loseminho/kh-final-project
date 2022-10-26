@@ -27,7 +27,7 @@
 			<ul>
 				<div>
 					<div>
-						<li><a href="#">분양받기</a></li>
+						<li><a href="/saleDogList.do">분양받기</a></li>
 					</div>
 				</div>
 			</ul>

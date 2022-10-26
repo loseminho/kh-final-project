@@ -23,4 +23,10 @@ public class BoardController {
 		return "chat/walkMateList";
 	}
 	
+	@RequestMapping(value="/saleDogList.do")
+	public String saleDogList() {
+		return "sale/saleDog";
+	}
+	
+	
 }
