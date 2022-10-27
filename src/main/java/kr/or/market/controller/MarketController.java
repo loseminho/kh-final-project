@@ -17,7 +17,7 @@ public class MarketController {
 	
 	@RequestMapping(value="/success.do")
 	public String seccess() {
-		return "sale/paySuccess";
+		return "market/paySuccess";
 	}
 	
 	@ResponseBody
@@ -25,5 +25,10 @@ public class MarketController {
 	public String selectOneSaleDog(int marketNo) {
 		MarketDog md = service.selectOne(marketNo);
 		return new Gson().toJson(md);
+	}
+	
+	@RequestMapping(value="/saleDogList.do")
+	public String saleDogList() {
+		return "market/saleDog";
 	}
 }

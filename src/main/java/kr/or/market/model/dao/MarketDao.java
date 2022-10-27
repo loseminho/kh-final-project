@@ -12,6 +12,7 @@ public class MarketDao {
 	private SqlSessionTemplate sqlSession;
 
 	public MarketDog selectOne(int marketNo) {
+		System.out.println(marketNo);
 		return sqlSession.selectOne("market.selectOne",marketNo);
 	}
 }

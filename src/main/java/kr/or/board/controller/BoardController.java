@@ -28,14 +28,6 @@ public class BoardController {
 		return "chat/walkMateList";
 	}
 	
-	@RequestMapping(value="/saleDogList.do")
-	public String saleDogList() {
-		return "sale/saleDog";
-	}
-	
-	
-	
-	
 	@ResponseBody
 	@RequestMapping(value="/allQnaAjax.do", produces = "application/json;charset=utf-8")
 	public String allQnaAjax() {
@@ -45,8 +37,6 @@ public class BoardController {
 		System.out.println(result);
 		return result;
 	}
-	
-
 	
 	@RequestMapping(value="/writeQnaFrm.do")
 	public String writeQnaFrm() {

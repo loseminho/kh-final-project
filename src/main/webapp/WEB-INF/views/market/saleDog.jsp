@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -56,11 +57,11 @@
                                 <div class="sale-wrap" id="walk-question">
 									<div class="sale">
 										<div class="photo-session">
-										<input type="hidden" name="marketNo" value="1">
+										<input type="hidden" name="marketNo" value="2">
 										</div>
 										<span>포메라니안</span>
 										<li>분양가격 : 400,000원</li>
-									</div>
+										</div>
                                 <div class="add-btn">
                                     <button>더보기</button>
                                 </div>
@@ -103,19 +104,21 @@
             </div><!--faqqna-content 끝-->
         </div><!--faqqna-wrap 끝-->
     </content><!--컨텐츠 끝-->
+    <!-- 모달시작 -->
+	<jsp:include page="/WEB-INF/views/market/modal.jsp"/>
     <script>
     	const sale = $(".sale");
     	const marketNo = $("[name=marketNo]");
     	console.log(sale);
     	console.log(marketNo.val());
     	$(".sale").on("click",function(){
+    		$("#modal-wrap").css('display','flex');
     		let idx = sale.index(this);
     		let data = marketNo.eq(idx).val();
     		$.ajax({
     			url: "/searchOneInfo.do",
     			data: {marketNo:data},
     			success : function(data){
-    				alert("조회성공");
     			}
     		});
     	});

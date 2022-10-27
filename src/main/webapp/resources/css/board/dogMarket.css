@@ -1,3 +1,14 @@
+::-webkit-scrollbar {
+    width: 15px;
+}
+::-webkit-scrollbar-track {
+    background-color: #fff;
+}
+::-webkit-scrollbar-thumb {
+	background-color:#DDD7CB;
+	border-radius:10px;
+}
+
 *{
     font-family: gs-Light;
 }
@@ -260,4 +271,140 @@ content{
 	height:80%;
 	width:95%;
 	background-color: #fff;
+}
+
+/*모달*/
+#modal-wrap{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	position: fixed;
+	top:0;
+	left:0;
+	height: 100vh;
+	width: 100vw;
+	z-index:9999;
+	background: rgba(255, 255, 255, 0.25);
+	backdrop-filter: blur(1.5px);
+}
+
+.modal-content{
+	overflow:scroll;
+	overflow-x:hidden;
+	padding:50px;
+	box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+	border-radius: 8px;
+	height:70%;
+	width:40%;
+	background-color: #fff;
+}
+.detail-box-title{
+	margin-bottom:10px;
+	text-align:center;
+	font-family: gs-Bold;
+	font-size: 30px;
+}
+.detail-box-title+pre{
+	margin:0 auto;
+	white-space:pre-line;
+	text-align:center;
+	line-height:30px;
+	width:500px;
+}
+
+.detail-table-subtitle{
+	margin-top:10px;
+	margin-bottom:10px;
+	font-family:gs-Medium;
+	text-align: center;
+	font-size: 20px;
+}
+
+.detail-info{
+	display:flex;
+	justify-content: center;
+}
+.detail-info-table{
+	border:1px solid lightgray;
+}
+.detail-info-table td{
+	box-sizing:border-box;
+	text-align:center;
+	border:1px solid lightgray;
+	width:250px;
+	height:30px;
+	line-height: 30px;
+}
+.detail-info-table th{
+	width:100px;
+}
+
+.photo-session-wrap{
+	display:flex;
+	justify-content:space-around;
+	margin-top:10px;
+	width:100%;
+}
+.photo-session-wrap div{
+	border:1px solid gray;
+	width:310px;
+	height: 400px;
+	padding: 10px;
+	overflow: hidden;
+}
+.photo-session-wrap div img{
+	width:100%;
+}
+.market-middle-img{
+	position:relative;
+	margin:0 auto;
+	margin-top:10px;
+	width:712px;
+	height:110px;
+	background-image: url("/resources/img/market/market_img1.png");
+}
+.market-middle-img>span:first-child{
+	font-family:gs-Bold;
+	color: #DE4B3F;
+	font-size:20px;
+	position:absolute;
+	top:10px;
+	left:80px;
+}
+.market-middle-img>span:nth-child(2){
+	font-family:gs-Medium;
+	color: black;
+	font-size:15px;
+	position:absolute;
+	top:40px;
+	left:80px;
+}
+.market-middle-img>span:nth-child(3){
+	font-family:gs-Medium;
+	color: black;
+	font-size:15px;
+	position:absolute;
+	top:60px;
+	left:80px;
+}
+.market-middle-img>span:nth-child(4){
+	font-family:gs-Medium;
+	color: black;
+	font-size:15px;
+	position:absolute;
+	top:80px;
+	left:80px;
+}
+.require-btn{
+	margin:0 auto;
+	text-align:center;
+	line-height:100px;
+	width:700px;
+	height:100px;
+}
+.require-btn button{
+	font-family:gs-Medium;
+	font-size:15px;
+	width: 200px;
+	height: 50px;
 }
