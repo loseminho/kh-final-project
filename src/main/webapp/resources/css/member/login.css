@@ -3,8 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     outline: none;
-    font-family:gs-bold;
-    font-weight:600;
+	font-family : gs-Medium;
 }
 
 .page-content {
@@ -15,6 +14,7 @@
    	justify-content: center;
    	align-items: center;
    	flex-grow: 1; /* 컨텐츠 길이가 짧을 때 남은 공간을 이 요소가 차지하도록 해서 푸터를 아래 붙이기 위해 */
+   	font-weight:600;
 }
 
 .wrap {
@@ -79,15 +79,15 @@
     padding-left: 7px;
     font-size: 16px;
 }
-
+/*
 .box > .shortInput {
 	right: 20%;
 	width: 70%;
 }
-
+*/
 .box > button {
 	position: absolute;
-    bottom: 0;
+    bottom: 5px;
     right: 0%;
 }
 

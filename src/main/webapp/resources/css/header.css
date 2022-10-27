@@ -5,6 +5,13 @@
 	padding:0;
 	}
 
+body {
+	display: flex;
+	flex-direction: column;
+	min-height:100vh;
+    overflow-y: scroll;
+}
+
 .header a{
 	font-family:gs-Bold;
 	font-size: 18px;
@@ -23,7 +30,7 @@
 }
 .header{
     display: flex;
-    justify-content: right;
+    justify-content: space-between;
     /*
     width:100vw;
     min-width: 100rem;
@@ -33,27 +40,36 @@
     margin-bottom: 20px;
     background-color:#1abc9c;
 }
-.header>ul{
+
+#menu-wrap {
+	display: flex;
+	justify-content: space-between;
+	height: 80px;
+	margin-right:20px;
+}
+
+.header ul{
     height: 45px;
-    width:150px;
     font-size : 15px;
     font-weight: 500;
     line-height: 80px;
     cursor: pointer;
+    margin: 0 30px;
 }
-.header>li>img{
-    height:45px;
-    cursor: pointer;
-}
-`
+
 #logo-wrap{
-    width:150px;
+    width:200px;
     display : flex;
     justify-content: center;
     align-items: center;
+    margin-left:20px;
 }
-#logo-wrap>a>img{
-	width: 30px;
+#logo-wrap>a {
+	font-size:30px;
+}
+#logo-wrap>a>i{
+	font-size:30px;
+	color:white;
 }
 
 .menu-panel{
@@ -73,11 +89,13 @@
 	color:#fff;
 }
 
+/*
 .signwrap{
     width: 150px;
     height: 200px;
     display: inline-block;
 }
+*/
 
 
 .search-sub>li{
@@ -128,4 +146,34 @@
     font-style:italic;
     border-radius: 30px;
     color: rgb(100,97,97);
+}
+
+
+
+/* 푸터 부분 */
+footer {
+    width: 100%;
+    min-width: 1000px;
+    background-color: #f8f8f8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: gray;
+    text-decoration: none;
+}
+
+footer p {
+	margin-bottom : 10px;
+}
+
+footer > .footer-title {
+	margin : 0 auto;
+    width: 1000px;
+    line-height: 50px;
+}
+
+footer > .footer-content {
+	margin : 0 auto;
+    width: 1000px;
+    height : 100px;
 }

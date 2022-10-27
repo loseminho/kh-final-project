@@ -3,6 +3,7 @@
 }
 content{
     width: 1200px;
+    margin: 0 auto;
 }
 .dogMarket-wrap{
     margin: 0 auto;
@@ -56,9 +57,10 @@ content{
 .getDog-header>p{
     display: block;
     text-align: center;
-    padding-bottom: 20px;
-    margin-bottom: 40px;
     font-family: gs-Medium;
+}
+.getDog-header>p:first-child{
+	margin-top:40px;
 }
 .getDog-category{
     margin: 0 auto;
@@ -67,6 +69,7 @@ content{
     text-align: center;
     float: center;
     display: flex;
+    justify-content:center;
     overflow: hidden;
 }
 .getDog-category>li{
@@ -82,9 +85,6 @@ content{
 .getDog-category>li:first-child{
     background-color: #1abc9c;
     color: #fff;
-}
-.getDog-category>li:last-child{
-    margin: 0;
 }
 .getDog-category>li:hover{
     cursor: pointer;
@@ -110,6 +110,9 @@ content{
 }
 
 .sale{
+	display: flex;
+	flex-direction:column;
+	align-items:center;
 	margin:10px;
 	height: 300px;
 	width: 250px;
@@ -152,7 +155,7 @@ content{
 .saleDog-header>p{
     padding-left: 15px;
     text-align: center;
-    font-family: gs-Medium;
+    font-family: gs-Light;
     animation-name:dogMarketAni;
     animation-duration:10s;
 }
@@ -176,17 +179,85 @@ content{
     width: 100%;
 }
 .saleDog-table{
+	text-align:center;
     width: 100%;
     height: 50px;
     border-top: 2px solid #1e1e1e;
     border-bottom: 2px solid #1e1e1e;
 }
+.saleDog-table td{
+	tab
+}
 
-@keyframes dogMarketAni{
-    0%{
-        transform: translateY(30px);
-    }
-    100%{
-        transform: translateY(0px);
-    }
+/* 슬롯머신 */
+@keyframes slide {
+  0% {
+    margin-top: 0;
+  }
+  10% {
+    margin-top: -50px;
+  }
+  20% {
+    margin-top: -100px;
+  }
+  30% {
+    margin-top: -150px;
+  }
+  40% {
+    margin-top: -200px;
+  }
+  50% {
+    margin-top: -250px;
+  }
+  60% {
+    margin-top: -300px;
+  }
+  70% {
+    margin-top: -350px;
+  }
+  80% {
+    margin-top: -400px;
+  }
+  90% {
+    margin-top: -450px;
+  }
+  100% {
+    margin-top: -500px;
+  }
+}
+
+.slide_box{
+  width: 300px;
+  height: 50px*5;
+  animation: slide 40s infinite;
+  color: black;
+}
+.slide_box p {
+  width: 300px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+.container {
+  margin: auto 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 400px;
+}
+
+.test{
+	height:50px;
+	overflow:hidden;
+}
+
+.photo-session{
+	margin-top:5px;
+	margin-bottom:5px;
+	height:80%;
+	width:95%;
+	background-color: #fff;
 }
