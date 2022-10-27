@@ -25,13 +25,6 @@ public class ChatController {
 		return "board/boardList";
 	}
 	
-	
-	@RequestMapping(value="/joinChatting.do")
-	public String joinChatting(RequireList rl, Model model) {
-		model.addAttribute("rl",rl);
-		return "chat/chatFrm";
-	}
-	
 	@ResponseBody
 	@RequestMapping(value="/requireList.do",produces = "application/json;charset=utf-8")
 		public String requireList(RequireList rl) {
@@ -50,5 +43,11 @@ public class ChatController {
 	@RequestMapping(value="/mypage.do")
 	public String mypage() {
 		return "member/mypage";
+	}
+	
+	@RequestMapping(value="/joinChatting.do")
+	public String joinChattin(RequireList rl,Model model) {
+		model.addAttribute("rl",rl);
+		return "chat/chatFrm";
 	}
 }

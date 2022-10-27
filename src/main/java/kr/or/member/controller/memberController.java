@@ -68,7 +68,7 @@ public class memberController {
         
         Member member = new Member();
         member.setMemberId(kakao_email);
-        Member m = service.selectOneMember(member);
+        Member m = service.selectOneMemberEnc(member);
         
         if(m == null){ // 어느 방식으로도 가입한 적 없는 회원
         	System.out.println("새로 가입할 회원");
@@ -250,7 +250,7 @@ public class memberController {
 	@ResponseBody
 	@RequestMapping(value="/login.do")
 	public String login(Member member, HttpSession session) {
-		Member m = service.selectOneMember(member);
+		Member m = service.selectOneMemberEnc(member);
 		if(m!=null) {
 			session.setAttribute("m", m);
 			return "success";
@@ -285,7 +285,7 @@ public class memberController {
 	@ResponseBody
 	@RequestMapping(value="/findPw.do", produces="application/json;charset=utf-8")
 	public String findPw(Member member, HttpSession session) {
-		Member m = service.selectOneMember(member);
+		Member m = service.selectOneMemberEnc(member);
 		String text = "";
 		if(m != null) {
 			if(m.getJoinType().equals("카카오")) {
@@ -328,7 +328,7 @@ public class memberController {
 	public String updatePw(String updatePw, HttpSession session) {
 		Member m = (Member)session.getAttribute("updatePw");
 		m.setMemberPw(updatePw);
-		int result = service.updatePw(m);
+		int result = service.updatePwEnc(m);
 		if(result > 0) {
 			return "member/updatePwSuccess";			
 		} else {
@@ -343,7 +343,7 @@ public class memberController {
 	
 	@RequestMapping(value="/join.do")
 	public String insertMember(Member m) {
-		int result = service.insertMember(m);
+		int result = service.insertMemberEnc(m);
 		if(result > 0) {
 			return "member/joinSuccess";
 		} else {
@@ -354,7 +354,7 @@ public class memberController {
 	@ResponseBody
 	@RequestMapping(value="/checkId.do")
 	public String checkId(Member m) {
-		Member member = service.selectOneMember(m);
+		Member member = service.selectOneMemberEnc(m);
 		if(member != null) {
 			return "already";
 		} else {

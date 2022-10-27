@@ -8,7 +8,7 @@
 	width: 1200px;
 	margin: 0 auto;
 	margin-top:100px;
-	font-family : gs-Bold;
+	font-family : gs-Medium;
 	flex-grow: 1;
 }
 
@@ -68,6 +68,6 @@
 #rowSession2{
 	width:950px;
 	height:100%;
-	margin-left: 30px;
+	margin-left: 50px;
 	min-height: 700px;
 }

@@ -1,0 +1,162 @@
+@charset "UTF-8";
+
+
+/* 내 정보 */
+.myprofile {
+    position: relative;
+    width: 100%;
+    /* background-color: rebeccapurple; */
+}
+
+.myprofile > h1 {
+    margin: 0;
+}
+
+/* 프로필 사진 영역 */
+#photo-section {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    /* background-color: rebeccapurple; */
+}
+
+#photo-section #photoBtn {
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.photo-box {
+    width: 150px;
+    height: 150px;
+    border: 1px solid #ccc;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.photo-box > img {
+    max-width: 100%;
+}
+
+
+/* 프로필 정보 영역 */
+#info-section {
+    width: 650px;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    /* background-color: green; */
+}
+
+.box {
+    height: 40px;
+    margin-bottom: 15px;
+}
+
+.box > label {
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.box > .input {
+    width: 230px;
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    background-color: transparent;
+    padding-left: 10px;
+    font-size: 16px;
+    outline: none;
+}
+
+/* 자기소개 및 버튼 영역 */
+
+#last-section {
+    width: 650px;
+    position: absolute;
+    top: 300px;
+    left: 0;
+    /* background-color: rebeccapurple; */
+}
+
+.intro-box{
+    height: 50px;
+    margin-bottom: 50px;
+}
+
+.intro-box > label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.intro-box > textarea {
+    border: 1px solid #ccc;
+    width: 650px;
+    height: 40px;
+    border-radius: 10px;
+    outline: none;
+    font-size: 16px;
+    resize: none;
+    padding: 0 10px;
+}
+
+
+
+.btn {
+    width: 300px;
+    height: 45px;
+    margin-top: 20px;
+    border: none;
+    background-color: #1abc9c;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.comment {
+    font-size: 12px;
+    color: red;
+    padding: 5px;
+}
+
+.verifyBox {
+	position:relative;
+}
+
+#verifyBtn {
+	position:absolute;
+	right:0;
+}
+
+.verifyMsg {
+	display:block;
+}
+
+.btn-box {
+    text-align: center;
+}
+
+.link-box {
+    text-align: right;
+}
+
+.link-box > a {
+    margin-top: 10px;
+    font-size: 12px;
+    text-decoration: none;
+    color: #616568;
+}
+
+.link-box > a:hover {
+    text-decoration: underline;
+}

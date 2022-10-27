@@ -4,25 +4,25 @@
 content{
     width: 1200px;
     margin: 0 auto;
-    flex-grow:1;
 }
-.faqqna-wrap{
+.dogMarket-wrap{
     margin: 0 auto;
     margin-top: 200px;
     padding: 0;
+    
 }
 .tab-header{
     width: 500px;
     margin: 0 auto;
     padding: 0;
 }
-.faqqna-tab{
+.dogMarket-tab{
     margin: 0 auto;
     padding: 0;
     list-style: none;
     overflow: hidden;
 }
-.faqqna-tab>li{
+.dogMarket-tab>li{
     float: left;
     border-bottom: 2px solid #e1e1e1;
     width: 250px;
@@ -36,43 +36,43 @@ content{
     border-bottom: 2px solid #1abc9c;
     cursor: pointer;
 }
-.faqqna-tab h1{
+.dogMarket-tab h1{
     font-family: gs-Medium;
 }
-.faqqna-tab a{
+.dogMarket-tab a{
     font-family: gs-Medium;
-    text-decoration: none;
-    color: black;
 }
-.faq-content{
+.getDog-content{
     margin: 0 auto;
     margin-top: 40px;
     padding: 0;
     width: 1000px;
 }
-.faq-header{
+.getDog-header{
     margin: 0 auto;
     padding: 0;
     width: 1000px;
     overflow: hidden;
 }
-.faq-header>p{
+.getDog-header>p{
     display: block;
     text-align: center;
-    padding-bottom: 20px;
-    margin-bottom: 40px;
     font-family: gs-Medium;
 }
-.faq-category{
+.getDog-header>p:first-child{
+	margin-top:40px;
+}
+.getDog-category{
     margin: 0 auto;
     padding: 0;
     list-style: none;
     text-align: center;
     float: center;
     display: flex;
+    justify-content:center;
     overflow: hidden;
 }
-.faq-category>li{
+.getDog-category>li{
     margin: 0 auto;
     padding: 0;
     border: 1px solid #1abc9c;
@@ -82,75 +82,43 @@ content{
     border-radius: 10px;
     font-family: gs-Medium;
 }
-.faq-category>li:first-child{
+.getDog-category>li:first-child{
     background-color: #1abc9c;
     color: #fff;
 }
-.faq-category>li:last-child{
-    margin: 0;
-}
-.faq-category>li:hover{
+.getDog-category>li:hover{
     cursor: pointer;
     background-color: #1abc9c;
     color: #fff;
 }
-.faqList{
+.saleList{
     margin: 0 auto;
     margin-top: 50px;
     padding: 0;
     border-top: 2px solid #1abc9c;
 }
-.faq-box{
+
+.sale-wrap{
+	display:flex;
+	justify-content:space-between;
+	flex-wrap: wrap;
+	
+}
+.sale-box{
     padding: 24px;
-    padding-top: 0;
-}
-.question{
-    overflow: hidden;
-    height: 60px;
-    width: 100%;
-    padding-top: 24px;
+    padding-top: 10px;
 }
 
-.question span:first-child{
-    display: block;
-    float: left;
-    line-height: 40px;
-    margin: 0;
-    padding: 0;
-    width: 180px;
-    text-align: center;
-    overflow: hidden;
-    font-family: gs-Medium;
-    
-}
-.question-title{
-    display: block;
-    float: left;
-    line-height: 40px;
-    width: 610px;
-    text-align: center;
-}
-.question span:last-child{
-    display: block;
-    float: right;
-    font-size: 35px;
+.sale{
+	display: flex;
+	flex-direction:column;
+	align-items:center;
+	margin:10px;
+	height: 300px;
+	width: 250px;
+	background-color: #1abc9c;
 }
 
-.answer{
-    height: 60px;
-    padding-left: 180px;
-    padding-right: 72px;
-    text-align: center;
-    overflow: hidden;
-    border-bottom: 1px solid #1abc9c;
-    display: none;
-}
-.answer span{
-    display: block;
-    float: center;
-    text-align: center;
-    width: 610px;
-}
 .add-btn{
     margin: 0 auto;
     padding: 30px;
@@ -166,29 +134,30 @@ content{
 
 /* 문의게시판 start */
 
-.qna-content{
+.saleDog-content{
     margin: 0 auto;
-    margin-top: 20px;
+    margin-top: 40px;
     padding: 0;
     width: 1000px;
     overflow: hidden;
 }
-.qna-header{
+.saleDog-header{
     margin: 0 auto;
     padding: 0;
     width: 800px;
-    height: 50px;
-    background-color: #e1e1e1;
+    height: 30px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-evenly;
     border-radius: 5px;
+    overflow: hidden;
 }
-.qna-header>p{
-    padding-left: 17px;
-   	margin-top: 15px;
+.saleDog-header>p{
+    padding-left: 15px;
     text-align: center;
-    font-family: gs-Medium;
+    font-family: gs-Light;
+    animation-name:dogMarketAni;
+    animation-duration:10s;
 }
 .write-btn-box{
     margin-top: 5px;
@@ -203,15 +172,92 @@ content{
     font-family: gs-Medium;
     font-size: large;
 }
-.qna-board{
+.saleDog-board{
     margin: 0 auto;
     padding: 0;
     padding-top: 50px;
     width: 100%;
 }
-.qna-table{
+.saleDog-table{
+	text-align:center;
     width: 100%;
     height: 50px;
     border-top: 2px solid #1e1e1e;
     border-bottom: 2px solid #1e1e1e;
+}
+.saleDog-table td{
+	tab
+}
+
+/* 슬롯머신 */
+@keyframes slide {
+  0% {
+    margin-top: 0;
+  }
+  10% {
+    margin-top: -50px;
+  }
+  20% {
+    margin-top: -100px;
+  }
+  30% {
+    margin-top: -150px;
+  }
+  40% {
+    margin-top: -200px;
+  }
+  50% {
+    margin-top: -250px;
+  }
+  60% {
+    margin-top: -300px;
+  }
+  70% {
+    margin-top: -350px;
+  }
+  80% {
+    margin-top: -400px;
+  }
+  90% {
+    margin-top: -450px;
+  }
+  100% {
+    margin-top: -500px;
+  }
+}
+
+.slide_box{
+  width: 300px;
+  height: 50px*5;
+  animation: slide 40s infinite;
+  color: black;
+}
+.slide_box p {
+  width: 300px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+.container {
+  margin: auto 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 400px;
+}
+
+.test{
+	height:50px;
+	overflow:hidden;
+}
+
+.photo-session{
+	margin-top:5px;
+	margin-bottom:5px;
+	height:80%;
+	width:95%;
+	background-color: #fff;
 }
