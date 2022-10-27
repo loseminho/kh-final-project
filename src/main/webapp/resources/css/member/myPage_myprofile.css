@@ -56,6 +56,10 @@ input, button, #photoBtn {
     max-width: 100%;
 }
 
+.photo-box > label {
+	display:block;
+}
+
 
 /* 프로필 정보 영역 */
 #info-section {
@@ -146,15 +150,22 @@ input, button, #photoBtn {
 
 .verifyBox {
 	position:relative;
+	width:350px;
+	height:30px;
+	left:100px;
 }
 
-#verifyBtn {
-	position:absolute;
-	right:0;
+.verifyInput {
+	width:100px;
+}
+
+#timeZone {
+	display : inline-block;
+	width: 70px;
 }
 
 .verifyMsg {
-	display:block;
+	display:inline-block;
 }
 
 .btn-box {

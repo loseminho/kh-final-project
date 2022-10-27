@@ -11,6 +11,7 @@
 <script src="https://kit.fontawesome.com/7b7a761eb5.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<link rel="icon" href="/resources/img/favicon.ico" type="image/x-icon" sizes="16x16">
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
@@ -46,7 +47,7 @@
 			        <h1>반려견 정보</h1>
 			    </div>
 			    <div class="matelist" style="display: none;">
-			        <h1>산책 메이트 목록</h1>
+			        <jsp:include page="/WEB-INF/views/member/mypage/mateList.jsp"/>
 			    </div>
 			    <div style="display: none;">
 			        <h1>신고하기</h1>
