@@ -22,6 +22,7 @@ body{
     margin-top: 150px;
     position: relative;
 }
+
 #content-middle{
     width: 1200px;
     height: 140px;
@@ -40,35 +41,35 @@ body{
     height: 60px;
     float: left;
     line-height: 60px;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    border: 1px solid white;
-    background-color: rgb(243, 242, 251);
+    border-bottom: 2px solid #1abc9c;
     margin-top: 20px;
     margin-left: 150px;
-    font-weight: 500;
-}
-.content-top-button-left:hover{
-    color: rgb(51, 102, 255);
-    font-weight: bold;
-    border: 1px solid rgb(51, 102, 255);
-}
-.content-top-button-right:hover{
-    color: rgb(51, 102, 255);
-    font-weight: bold;
-    border: 1px solid rgb(51, 102, 255);
+    font-weight: 900;
+    font-size:32px;
 }
 .content-top-button-right{
     width: 449px;
     height: 60px;
     float: left;
     line-height: 60px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    border: 1px solid white;
-    background-color: rgb(242, 251, 245);
+	border-bottom: 2px solid #e1e1e1;
+	font-weight: 900;
     margin-top: 20px;
+    font-size:32px;
 }
+.content-top-button-left:hover{
+    border-bottom: 2px solid #1abc9c;
+    cursor: pointer;
+}
+
+.content-top-button-right:hover{
+    /*
+    color: #1abc9c;
+    border-bottom: 2px solid #1abc9c;
+    */
+    cursor: pointer;
+}
+
 #content-middle>.content-middle-title{
     font-size: 24px;
     font-weight: bold;
@@ -167,7 +168,7 @@ body{
     margin-top: 20px;
     list-style: none;
 }
-.bottom-list-box{
+li .bottom-list-box{
     width: 950px;
     height: 160px;
     margin: 0 auto;
@@ -176,6 +177,10 @@ body{
     border-style: none;
     box-shadow: rgb(0 0 0 / 18%) 1px 1px 10px 0px;
     margin-bottom: 40px;
+}
+li .bottom-list-box:hover{
+	box-shadow: rgb(0 0 0 / 18%) 2px 2px 20px 0px;
+	cursor : pointer;
 }
 .box-list-num{
     width: 99px;
