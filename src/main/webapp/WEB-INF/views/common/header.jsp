@@ -4,6 +4,7 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<link rel="stylesheet" href="/resources/css/header.css">
 	<link rel="stylesheet" href="/resources/css/gmarket.css">
+	<script src="https://kit.fontawesome.com/7b7a761eb5.js" crossorigin="anonymous"></script>
 <header>
 	<div class="header-wrap">
 		<div class="header">
