@@ -25,7 +25,7 @@
 				<div id="menu-wrap">
 					<ul>
 						<div>
-							<li><a href="/walkMateList.do">메이트 찾기</a></li>
+							<li><a href="/walkMateFrm.do">메이트 찾기</a></li>
 						</div>
 					</ul>
 					<ul>
@@ -35,7 +35,7 @@
 					</ul>
 					<ul>
 						<div>
-							<li><a href= "/faqQnaBoardFrm.do">고객서비스</a></li>
+							<li><a href= "/faqQnaBoardFrm.do ">고객서비스</a></li>
 						</div>
 					</ul>
 					<c:if test="${not empty sessionScope.m }">

@@ -15,7 +15,7 @@
 			<div id="menu-wrap">
 				<ul>
 					<div>
-						<li><a href="/walkMateList.do">메이트 찾기</a></li>
+						<li><a href="/walkMateFrm.do">메이트 찾기</a></li>
 					</div>
 				</ul>
 				<ul>
