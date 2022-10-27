@@ -29,12 +29,12 @@
 					</ul>
 					<ul>
 						<div>
-							<li><a href="/walkMateList.do">산책 메이트 찾기</a></li>
+							<li><a href="/walkMateFrm.do">산책 메이트 찾기</a></li>
 						</div>
 					</ul>
 					<ul>
 						<div>
-							<li><a href="#">💖메이트 찾기</li>
+							<li><a href="walkMateList.do">💖메이트 찾기</li>
 						</div>
 					</ul>
 					<ul>
