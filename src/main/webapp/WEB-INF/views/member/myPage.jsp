@@ -47,7 +47,7 @@
 			        <h1>반려견 정보</h1>
 			    </div>
 			    <div class="matelist" style="display: none;">
-			        <h1>산책 메이트 목록</h1>
+			        <jsp:include page="/WEB-INF/views/member/mypage/mateList.jsp"/>
 			    </div>
 			    <div style="display: none;">
 			        <h1>신고하기</h1>
