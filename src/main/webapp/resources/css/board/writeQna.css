@@ -1,0 +1,153 @@
+*{
+    font-family: gs-Light;
+}
+content{
+    width: 1200px;
+}
+.writeQna-wrap{
+    margin: 0 auto;
+    margin-top: 200px;
+    margin-bottom: 100px;
+    padding: 0;
+}
+.writeQna-box{
+    margin: 0 auto;
+    width: 1000px;
+}
+.writeQna-header{
+    margin: 0 auto;
+    padding: 0;
+    padding-left: 50px;
+    border-bottom: 2px solid #1abc9c;
+}
+.writeQna-header>h1{
+	font-family: gs-Medium;
+	margin-bottom: 20px;
+}
+.writeQna-content{
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 800px;
+}
+.writeQna-content>form{
+    overflow: hidden;
+}
+.qna-input-box{
+    overflow: hidden;
+    width: 100%;
+    padding-bottom: 20px;
+}
+.qna-input-box:first-child{
+    padding-top: 10px;
+}
+.qna-input-box>label{
+    font-size: 20px;
+    overflow: hidden;
+}
+.qna-input-box>select{
+    width: 502px;
+    float: right;
+    border-style: none;
+    border: 1px solid #5e5e5e;
+    border-radius: 3px;
+    font-size: 18px;
+}
+.qna-input-box>input{
+    width: 500px;
+    float: right;
+    border: 1px solid #5e5e5e;
+    border-radius: 3px;
+    font-size: 18px;
+}
+.qna-input-box>textarea{
+    width: 500px;
+    float: right;
+    border: 1px solid #5e5e5e;
+    border-radius: 3px;
+    font-size: 18px;
+    resize: none;
+}
+#qnaContent{
+    height: 200px;
+}
+#file-input-box>label{
+    position: relative;
+    bottom: 82px;
+}
+.write-qna-form{
+    width: 500px;
+    height: 50px;
+}
+.fileZone{
+    width: 150px;
+    height: 150px;
+    display: inline-block;
+    margin-left: 215px;
+    border: 1px solid #5e5e5e;
+    border-radius: 3px;
+}
+.fileZone>span{
+    display: block;
+    text-align: center;
+    font-size: 50px;
+    padding-top: 50px;
+    color: #5e5e5e;
+}
+.fileMsg{
+    padding-left: 295px;
+    margin-bottom: 20px;
+}
+.fileMsg>input:last-child{
+    display: none;
+}
+.qna-check-box{
+    width: 100%;
+    padding-bottom: 20px;
+}
+.qna-check-box>label{
+    font-size: 20px;
+    position: relative;
+    bottom: 8px;
+}
+.qna-check-box>input{
+    zoom: 2;
+    margin-left: 100px;
+}
+.writeQna-footer{
+    margin: 0 auto;
+    margin-top: 10px;
+    padding: 0;
+    border-top: 2px solid #1abc9c;
+}
+.submit-btn{
+    margin-top: 50px;
+    text-align: center;
+}
+.submit-btn>button{
+    border: 1px solid #1abc9c;
+    border-radius: 5px;
+    width: 200px;
+    height: 40px;
+    font-family: gs-Medium;
+    font-size: 20px;
+}
+.submit-btn>button:first-child{
+    border: 1px solid #1abc9c;
+    color: #1abc9c;
+    background-color: #fff;
+    margin-right: 5px;
+}
+.submit-btn>button:first-child:hover{
+    cursor: pointer;
+    transform: scale(1.03,1.03);
+}
+.submit-btn>button:last-child{
+    background-color: #1abc9c;
+    color: #fff;
+}
+.submit-btn>button:last-child:hover{
+    cursor: pointer;
+    transform: scale(1.03,1.03);
+}
+

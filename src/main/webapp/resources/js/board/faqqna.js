@@ -64,7 +64,7 @@ $(".faqqna-tab>li").eq(0).click();
 
 $("#allQnaAjax").on("click",function(){
     $.ajax({
-        url : "/allQnaAjax.do",
+        url : "/allQnaAjax.do?reqPage=1",
         type : "post",
         success : function(data){
         console.log(data);
