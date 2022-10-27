@@ -19,7 +19,7 @@
 			<div class="header">
 				<div id="logo-wrap">
 					<a href="/">
-						<i class="fa-solid fa-paw"></i>
+						<i class="fa-solid fa-paw"></i>산책갈개
 					</a>
 				</div>
 				<div id="menu-wrap">
@@ -54,8 +54,6 @@
 								<c:otherwise>
 									<c:if test="${sessionScope.m.joinType eq '카카오'}">
 										<a href="https://kauth.kakao.com/oauth/logout?client_id=e400fe38f12604a2937ea759fe0166f7&logout_redirect_uri=http://localhost/logout.do">로그아웃</a>
-										<br>
-										<a href="/kakaoUnlink.do">카카오로 회원 탈퇴</a>
 									</c:if>
 									<c:if test="${sessionScope.m.joinType eq '일반가입'}">
 										<a href="/logout.do">로그아웃</a>

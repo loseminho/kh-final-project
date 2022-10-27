@@ -16,7 +16,7 @@
 	<div class="page-content">
         <div class="wrap">
             <div class="title">
-                <h1>산책갈개 <i class="fa-solid fa-paw"></i></h1>
+                <h1><i class="fa-solid fa-paw"></i>산책갈개</h1>
             </div>
             <div class="content">
                 <form action="/login.do" method="post" autocomplete="off">

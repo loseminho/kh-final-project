@@ -374,7 +374,6 @@ public class memberController {
 	}
 	@RequestMapping(value="/myPage.do")
 	public String myPage(@SessionAttribute Member m) {
-		System.out.println(m.getMemberId());
 		return "member/myPage";
 	}
 	

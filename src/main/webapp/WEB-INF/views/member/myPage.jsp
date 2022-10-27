@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="/resources/css/member/myPage_myprofile.css">
 <script src="https://kit.fontawesome.com/7b7a761eb5.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
@@ -70,5 +71,6 @@
 		
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	<script src="/resources/js/member/myPage.js"></script>
+	<script src="/resources/js/member/myPage_myprofile.js"></script>
 </body>
 </html>
