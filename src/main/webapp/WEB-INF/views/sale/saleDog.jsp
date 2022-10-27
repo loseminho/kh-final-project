@@ -34,18 +34,14 @@
                     <div class="getDog-content">
                     	<div class="test">
                         	<div class="getDog-header slide_box">
-	                            <p>-안녕? 반가워..-</p>
-	                            <p></p>
-	                            <p>-너 나랑 같이 살래?-</p>
-	                            <p></p>
-	                            <p>-내가 책임질게-</p>
-	                            <p></p>
-	                            <p>-내꺼하자-</p>
-	                            <p></p>
-	                            <p>-산책도 가고-</p>
-	                            <p></p>
-	                            <p>-우리 행복하게 살자-</p>
-	                            <p></p>
+	                            <p>안녕? 반가워^^</p>
+	                            <p>너, 참 이쁘다</p>
+	                            <p>너 나랑 같이 살래?</p>
+	                            <p>내가 책임질게</p>
+	                            <p>내꺼하자</p>
+	                            <p>산책도 가고</p>
+	                            <p>같이 밥도 먹고</p>
+	                            <p>우리 행복하게 살자</p>
                             </div>
                         </div>
                             <ul class="getDog-category">
