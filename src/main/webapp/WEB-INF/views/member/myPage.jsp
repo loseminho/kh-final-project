@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>마이페이지</title>
 <link rel="stylesheet" href="/resources/css/member/myPage.css">
+<link rel="stylesheet" href="/resources/css/member/myPage_myprofile.css">
 <script src="https://kit.fontawesome.com/7b7a761eb5.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 </head>
@@ -38,7 +39,7 @@
 			</div>
 			<div id="rowSession2">
 				<div class="myprofile">
-					<h1>내 정보</h1>
+					<jsp:include page="/WEB-INF/views/member/myPage_myprofile.jsp"/>
 			    </div>
 			    <div class="dogprofile" style="display: none;">
 			        <h1>반려견 정보</h1>
@@ -68,6 +69,6 @@
 		</div>
 		
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
-	<script src="/resources/js/member/mypage.js"></script>
+	<script src="/resources/js/member/myPage.js"></script>
 </body>
 </html>

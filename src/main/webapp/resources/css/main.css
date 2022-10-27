@@ -154,6 +154,7 @@ html, body {
 	display: flex;
 	justify-content: space-between;
 	height: 80px;
+	margin-right:20px;
 }
 
 .header ul{
@@ -171,8 +172,9 @@ html, body {
     justify-content: center;
     align-items: center;
 }
-#logo-wrap>a>img{
-	width: 45px;
+#logo-wrap>a>i{
+	font-size:50px;
+	color:white;
 }
 
 .menu-panel{
