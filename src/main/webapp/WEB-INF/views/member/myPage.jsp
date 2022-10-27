@@ -11,6 +11,7 @@
 <script src="https://kit.fontawesome.com/7b7a761eb5.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<link rel="icon" href="/resources/img/favicon.ico" type="image/x-icon" sizes="16x16">
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>

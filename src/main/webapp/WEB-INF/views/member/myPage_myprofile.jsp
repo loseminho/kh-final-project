@@ -2,23 +2,15 @@
 	pageEncoding="UTF-8"%>
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <h1>내 정보</h1>
-<div id="photo-section">
-    <form action="">
-        <div class="photo-box">
-        	<c:choose>
-	    		<c:when test="${sessionScope.m.memberPhoto == null}">
-		            <img src="/resources/img/default_profile.png">
-				</c:when>
-				<c:otherwise>
-			        <img src="/resources/img/dogfoot.png">
-				</c:otherwise>
-			</c:choose>
-        </div>
-        <input type="hidden" name="memberId" value="${sessionScope.m.memberId }">
-        <input type="submit" id="photoBtn" value="변경하기">
-    </form>
-</div>
 <form>
+	<div id="photo-section">
+	        <div class="photo-box">
+			    <img id="preview" src="/resources/img/default_profile.png">
+	        </div>
+	        <input type="hidden" name="memberId" value="${sessionScope.m.memberId }">
+	        <input type="file" name="memberPhoto" id="memberPhoto" style="display:none;" accept="image/*">
+	        <button type="button" id="photoBtn" onclick="addFile();">파일 선택</button>
+	</div>
 	<div id="info-section">
 	    <div class="box">
 	        <label for="memberId"><span>*</span>아이디(이메일)</label>
@@ -30,17 +22,18 @@
 	    </div>
 	    <div class="box">
 	        <label for="memberPhone"><span>*</span>전화번호</label>
-	        <input type="text" name="memberPhone" id="memberPhone" class="input shortInput" placeholder="010-0000-0000 형식" value="${sessionScope.m.memberPhone}" readonly>
+	        <input type="text" name="memberPhone" id="memberPhone" class="input shortInput" placeholder="010-0000-0000 형식" value="${sessionScope.m.memberPhone}" disabled>
 	        <input type="hidden" id="verifyChk" value="false">
 	        <button type="button" id="changeBtn">변경하기</button>
 	        <button type="button" id="sendBtn" style="display:none;">인증번호발송</button>
+	        <span class="comment" id="phoneComment"></span>
 	    </div>
 	    <div class="verifyBox" style="display:none;">
-	        <input type="text" class="verifyInput" placeholder="인증번호 입력">
-	        <span id="timeZone"></span>
-	        <button type="button" id="verifyBtn">인증하기</button>
-	           <span class="verifyMsg"></span>
-	    </div>
+        	<input type="text" class="verifyInput" placeholder="인증번호 입력">
+        	<span id="timeZone"></span>
+        	<button type="button" id="verifyBtn">인증하기</button>
+        	<span class="verifyMsg"></span>
+        </div>
 	    <div class="box">
 	        <label for="memberCity">활동지역</label>
 	        <input type="text" name="memberCity" id="memberCity" class="input" readonly>
