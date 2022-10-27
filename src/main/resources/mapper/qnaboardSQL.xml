@@ -4,7 +4,7 @@
 <select id="allQnaBoard" resultType="q">
 	select
 		qna_no as qnaNo,
-		qna_writer as qnaWriter,
+		rpad(substr(qna_writer,1,3),length(substr(qna_writer,1,instr(qna_writer,'@',1,1)-1)),'*')as qnaWriter,
 		qna_title as qnaTitle,
 		qna_content as qnaContent,
 		qna_views as qnaViews,

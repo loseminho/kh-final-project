@@ -19,4 +19,5 @@ public class BoardDao {
 		List list = sqlsession.selectList("qnaboard.allQnaBoard");
 		return (ArrayList<QnaBoard>)list;
 		}
+
 }
