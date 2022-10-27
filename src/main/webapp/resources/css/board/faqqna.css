@@ -3,12 +3,13 @@
 }
 content{
     width: 1200px;
+    margin: 0 auto;
+    flex-grow:1;
 }
 .faqqna-wrap{
     margin: 0 auto;
     margin-top: 200px;
     padding: 0;
-    
 }
 .tab-header{
     width: 500px;
