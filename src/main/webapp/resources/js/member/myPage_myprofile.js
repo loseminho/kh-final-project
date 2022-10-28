@@ -30,6 +30,27 @@ function searchAddr() {
     }).open();
 }
 
+// 전화번호 모달창
+function phoneModal() {
+	$("#newPhone").attr("disabled", false);
+	$("#newPhone").val("");
+	$("#sendBtn").show();
+	$(".verifyInput").attr("disabled", false);
+	$(".verifyInput").val("");
+	$(".verifyInput").hide();
+	$(".verifyMsg").text("");
+	$("#changePhoneBtn").hide();
+	$("#phone-modal").css("display", "flex");
+}
+
+$("#changeBtn").on("click", function(){
+	phoneModal();
+});
+
+function closeModal() {
+	$("#phone-modal").hide();
+}
+
 //휴대전화 정규식
 const phoneReg = /^010-\d{4}-\d{4}$/;
 
@@ -73,18 +94,16 @@ $("#verifyBtn").on("click", function(){
 	// console.log(inputValue);
 	if(resultCode != null){
 		if(inputValue == resultCode) {
-			// console.log(resultCode);
-			//$(".verifyMsg").text("인증 성공");
 			$(".verifyMsg").append("인증 성공<i class='fa-solid fa-circle-check'></i>");
 			$(".verifyMsg").css("color", "#1abc9c");
 			clearInterval(intervalId); // 시간 카운트 함수 멈춤
 			$("#verifyChk").val("true");
-			$("#memberPhone").attr("readonly", true);
 			$(".verifyInput").attr("disabled", true);
+			$("#newPhone").attr("disabled", true);
 			$("#timeZone").hide();
-			$("#verifyBtn").hide;
+			$("#verifyBtn").hide();
 			$("#sendBtn").hide();
-			$(this).hide();
+			$("#changePhoneBtn").show();
 		} else {
 			//$(".verifyMsg").text("인증 실패");
 			$(".verifyMsg").append("인증 실패<i class='fa-solid fa-circle-xmark'></i>");
@@ -93,28 +112,26 @@ $("#verifyBtn").on("click", function(){
 	}
 })
 
-$("#changeBtn").on("click", function(){
-	$(this).next().show();
-	$(this).prev().prev().attr("disabled", false);
-	$(this).prev().prev().val("");
-	$(this).hide();
-});
+$("#changePhoneBtn").on("click", function(){
+	const inputValue = $("#newPhone").val();
+	$("#memberPhone").val(inputValue);
+	closeModal();
+})
 
 function sendMsg() {
-	const div = $(".verifyBox");
-	const phVal = $("#memberPhone").val().replace('-', '');
+	const phVal = $("#newPhone").val().replace('-', '');
 	$.ajax({
         url  : '/sendMsg.do',
         type : 'post',
         data : {memberPhone : phVal},
         success : function(data){
-        	div.prev().css("margin-bottom", "0");
-        	div.show();
 			$("#timeZone").show();
 			$("#verifyBtn").show();
+        	$(".verifyInput").show();
         	$(".verifyInput").val("");
         	$(".verifyMsg").text("");
         	resultCode = data;
+        	console.log(resultCode);
         	verifyCount();
         }
     });
@@ -122,9 +139,7 @@ function sendMsg() {
 
 $("#sendBtn").on("click", function() {
 	const phoneComment = $("#phoneComment");
-	const phoneVal = $("#memberPhone").val();
-	const div = $(".verifyBox");
-	div.hide();
+	const phoneVal = $("#newPhone").val();
 	phoneComment.text("");
 	
 	if ((phoneVal != "") && phoneReg.test(phoneVal)) {
@@ -146,4 +161,8 @@ $("#sendBtn").on("click", function() {
 	} else if (!phoneReg.test(phoneVal)) { // 정규표현식을 만족하지 않는다면
         phoneComment.text("전화번호 형식으로 입력해주세요.");
     }
+});
+
+$(".btn").on("click", function(){
+	
 });

@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<link rel="stylesheet" href="/resources/css/member/myPage_myprofile.css">
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 <h1>내 정보</h1>
-<form>
+<form action="/updateMember.do" method="post" autocomplete="off">
 	<div id="photo-section">
 	        <div class="photo-box">
 			    <img id="preview" src="/resources/img/default_profile.png">
@@ -22,18 +25,10 @@
 	    </div>
 	    <div class="box">
 	        <label for="memberPhone"><span>*</span>전화번호</label>
-	        <input type="text" name="memberPhone" id="memberPhone" class="input shortInput" placeholder="010-0000-0000 형식" value="${sessionScope.m.memberPhone}" disabled>
+	        <input type="text" name="memberPhone" id="memberPhone" class="input shortInput" placeholder="010-0000-0000 형식" value="${sessionScope.m.memberPhone}" readonly>
 	        <input type="hidden" id="verifyChk" value="false">
 	        <button type="button" id="changeBtn">변경하기</button>
-	        <button type="button" id="sendBtn" style="display:none;">인증번호발송</button>
-	        <span class="comment" id="phoneComment"></span>
 	    </div>
-	    <div class="verifyBox" style="display:none;">
-        	<input type="text" class="verifyInput" placeholder="인증번호 입력">
-        	<span id="timeZone"></span>
-        	<button type="button" id="verifyBtn">인증하기</button>
-        	<span class="verifyMsg"></span>
-        </div>
 	    <div class="box">
 	        <label for="memberCity">활동지역</label>
 	        <input type="text" name="memberCity" id="memberCity" class="input" readonly>
@@ -54,9 +49,33 @@
 					<a href="/kakaoUnlink.do">탈퇴하기</a>
 				</c:when>
 				<c:otherwise>
+					<a href="">비밀번호 변경</a>
 			        <a href="">탈퇴하기</a>
 				</c:otherwise>
 			</c:choose>
 	    </div>
 	</div>
 </form>
+
+
+
+<!-- 전화번호 인증 모달 -->
+<div id="phone-modal" class="modal-wrapper">
+	<div class="modal">
+		<div class="modal-header">				
+			<button id="closeModalBtn" onclick="closeModal();">닫기</button>
+		</div>
+		<div class="modal-content">
+			<div class="verifyBox">
+				<input type="text" name="newPhone" id="newPhone" class="input shortInput" placeholder="010-0000-0000 형식">
+				<button type="button" id="sendBtn">인증번호발송</button>
+        		<span class="comment" id="phoneComment"></span>
+	        	<input type="text" class="verifyInput" placeholder="인증번호 입력" style="display:none;">
+	        	<span id="timeZone" style="display:none;"></span>
+	        	<button type="button" id="verifyBtn" style="display:none;">인증하기</button>
+	        	<span class="verifyMsg"></span>
+	        	<button id="changePhoneBtn" type="button" style="display:none;">번호 변경</button>
+       		</div>
+		</div>
+	</div>
+</div>
