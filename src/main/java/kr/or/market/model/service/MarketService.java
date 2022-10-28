@@ -1,5 +1,7 @@
 package kr.or.market.model.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,5 +15,10 @@ public class MarketService {
 
 	public MarketDog selectOne(int marketNo) {
 		return dao.selectOne(marketNo);
+	}
+
+	public ArrayList<MarketDog> saleDogList() {
+		// TODO Auto-generated method stub
+		return dao.saleDogList();
 	}
 }
