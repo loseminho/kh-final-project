@@ -19,6 +19,8 @@ public class PasswordEncAdvice {
 	
 	@Before(value="encPointcut()")
 	public void passwordEnc(JoinPoint jp) throws Exception{
+		String methodName = jp.getSignature().getName();
+		System.out.println("비밀번호 암호화 적용 메소드 : " + methodName);
 		Object[] args = jp.getArgs();
 		Member m = (Member)args[0];
 		if(m.getMemberPw() != null) {
