@@ -105,4 +105,8 @@ public class MemberService {
 		return dao.checkPhone(m);
 	}
 
+	public int updateMember(Member m) {
+		return dao.updateMember(m);
+	}
+
 }

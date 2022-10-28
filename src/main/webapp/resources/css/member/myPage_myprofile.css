@@ -144,10 +144,17 @@ input, button, #photoBtn {
 }
 
 .comment {
-	display:block;
     font-size: 12px;
     color: red;
     padding: 5px;
+}
+
+#nameComment {
+	display:inline-block;
+}
+
+#phoneComment {
+	display:block;
 }
 
 .verifyBox {

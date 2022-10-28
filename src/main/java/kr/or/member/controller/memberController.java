@@ -1,7 +1,11 @@
 package kr.or.member.controller;
 
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -20,12 +24,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import common.FileRename;
 import kr.or.member.model.service.MemberService;
 import kr.or.member.model.service.MessageService;
 import kr.or.member.model.vo.Member;
@@ -36,6 +44,8 @@ public class memberController {
 	private MemberService service;
 	@Autowired
 	private MessageService msgService;
+	@Autowired
+	private FileRename fileRename;
 	
 	@RequestMapping(value="/loginFrm.do")
 	public String loginFrm() {
@@ -372,9 +382,43 @@ public class memberController {
 			return "possible";
 		}
 	}
+	
 	@RequestMapping(value="/myPage.do")
 	public String myPage(@SessionAttribute Member m) {
 		return "member/myPage";
 	}
 	
+	@RequestMapping(value="/updateMember.do")
+	public String updateMember(Member m, MultipartFile[] photo, HttpSession session, HttpServletRequest request) {
+		String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/member/");
+		
+		if(photo != null) {
+			for(MultipartFile file : photo) {
+				String filename = file.getOriginalFilename();
+				String filepath = fileRename.fileRename(savePath, filename);
+				File upFile = new File(savePath + filepath);
+				try {
+					FileOutputStream fos = new FileOutputStream(upFile);
+					BufferedOutputStream bos = new BufferedOutputStream(fos);
+					byte[] bytes = file.getBytes();
+					bos.write(bytes);
+					bos.close();
+					m.setMemberPhoto(filepath);
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			} // forEach문 끝		
+		}
+		
+		int result = service.updateMember(m);
+		if(result > 0) {
+			Member member = service.selectOneMemberEnc(m);
+			session.setAttribute("m", member);
+			return "member/myPage";
+		} else {			
+			return "redirect:/";
+		}
+	}
 }

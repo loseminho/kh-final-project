@@ -42,4 +42,8 @@ public class MemberDao {
 	public Member checkPhone(Member m) {
 		return sqlSession.selectOne("member.checkPhone", m);
 	}
+
+	public int updateMember(Member m) {
+		return sqlSession.update("member.updateMember", m);
+	}
 }
