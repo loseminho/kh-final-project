@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,11 +54,11 @@
                         <div class="fileMsg">* 첨부파일을 놓아주세요</div>
                         <div class="qna-check-box">
                             <label class="secret-check-label">비밀글 설정</label>
-                            <input class="form-check-input" type="checkbox" name="secret" id="secret">
+                            <input class="form-check-input" type="checkbox" name="qnaSecret" id="qnaSecret" value="1">
                         </div>
                         <!--display: none-->
                         <input type="file" name="boardFile" multiple style="display:none;">
-                        <input type="hidden" name="qnaWriter" id="qnaWriter" class="write-qna-form" value="${sesseionScope.m.memberId }">
+                        <input type="hidden" name="qnaWriter" id="qnaWriter" class="write-qna-form" value="${sessionScope.m.memberId }">
                     </div><!--writeqna content 끝-->
                     <div class="writeQna-footer">
                         <div class="submit-btn">
@@ -69,5 +70,7 @@
             </div><!--qna box 끝 -->
         </div><!--qna-wrap 끝-->
     </content>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+	<script src="/resources/js/board/writeQna.js"></script>
 </body>
 </html>
