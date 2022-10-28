@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -53,17 +54,12 @@
                             </ul>
                         <div class="saleList">
                             <div class="sale-box">
+                       			<div>분양 리스트</div>
                                 <div class="sale-wrap" id="walk-question">
-									<div class="sale">
-										<div class="photo-session">
-										<input type="hidden" name="marketNo" value="1">
-										</div>
-										<span>포메라니안</span>
-										<li>분양가격 : 400,000원</li>
-									</div>
-                                <div class="add-btn">
-                                    <button>더보기</button>
-                                </div>
+                                	<!-- 분양목록 -->
+                            	</div>
+                            <div class="add-btn">
+                                <button>더보기</button>
                             </div>
                         </div>
                     </div><!--faq-content 끝-->
@@ -103,21 +99,74 @@
             </div><!--faqqna-content 끝-->
         </div><!--faqqna-wrap 끝-->
     </content><!--컨텐츠 끝-->
+    <!-- 모달시작 -->
+	<jsp:include page="/WEB-INF/views/market/modal.jsp"/>
+	
+	
     <script>
-    	const sale = $(".sale");
-    	const marketNo = $("[name=marketNo]");
-    	console.log(sale);
-    	console.log(marketNo.val());
-    	$(".sale").on("click",function(){
+    $(document).ready(function(){
+    	$.ajax({
+    		url: "/selectSaleDogList.do",
+    		success:function(data){
+    			console.log(data);
+    			var html = "";
+    			$.each(data,function(idx,value){
+    				html += "<div class='sale'>";
+    				html += "<div class='photo-session'>";
+    				html += "<input type='hidden' name='marketNo' value="+value.marketNo+">";
+    				html += "</div>";
+    				html += "<span>"+value.typeName+"</span>";
+    				html += "<li>분양가격 : "+value.price+"원</li>";
+    				html += "</div>";
+    			});
+    			$(".sale-wrap").html(html);
+    		},
+    	});
+    });
+
+    	$(document).on("click",".sale",function(){
+    		const marketNo = $("[name=marketNo]");
+    		console.log(marketNo.val());
+   	 		const sale = $(".sale");
+    		console.log($(".sale-info").text());
+    		$("#modal-wrap").css('display','flex');
+    		$("body").css("overflow","hidden");
     		let idx = sale.index(this);
     		let data = marketNo.eq(idx).val();
     		$.ajax({
     			url: "/searchOneInfo.do",
     			data: {marketNo:data},
     			success : function(data){
-    				alert("조회성공");
+    				console.log(data);
+    				$(".sale-info").text(data.saleInfo);
+    				$(".detail-box-title").text(data.typeName);
+    				var html = "";
+    				html += "<tr>";
+    				html += "<th>견종</th>";
+    				html += "<td>"+data.typeName+"</td>";
+    				html += "<th>성별</th>";
+    				html += "<td>"+data.gender+"</td>";
+    				html += "</tr>";
+    				html += "<tr>";
+    				html += "<th>나이</th>";
+    				html += "<td>"+data.age+"개월</td>";
+    				html += "<th>분양가</th>";
+    				html += "<td>"+data.price+"원</td>";
+    				html += "</tr>";
+    				html += "<tr>";
+    				html += "<th>품종명</th>";
+    				html += "<td>"+data.typeName+"</td>";
+    				html += "<th>접종</th>";
+    				html += "<td>1차</td>";
+    				html += "</tr>";
+    				$(".detail-info-table").html(html);
     			}
     		});
+    	});
+    	
+    	$("#close-modal").on("click",function(){
+    		$("#modal-wrap").css("display","none");
+    		$("body").css("overflow","inherit");
     	});
     </script>
     <script src="/resources/js/board/saleDog.js"></script>

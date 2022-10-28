@@ -1,5 +1,16 @@
 @charset "UTF-8";
 
+input::placeholder {
+  font-family : gs-Medium;
+}
+textarea::placeholder {
+  font-family : gs-Medium;
+}
+
+input, button, #photoBtn {
+	font-family:gs-Medium;
+	outline:none;
+}
 
 /* 내 정보 */
 .myprofile {
@@ -9,7 +20,9 @@
 }
 
 .myprofile > h1 {
-    margin: 0;
+   position: absolute;
+   top: 20px;
+   left: 0;
 }
 
 /* 프로필 사진 영역 */
@@ -21,7 +34,7 @@
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 70px;
+    top: 90px;
     left: 0;
     /* background-color: rebeccapurple; */
 }
@@ -44,12 +57,16 @@
     max-width: 100%;
 }
 
+.photo-box > label {
+	display:block;
+}
+
 
 /* 프로필 정보 영역 */
 #info-section {
     width: 650px;
     position: absolute;
-    top: 70px;
+    top: 90px;
     right: 0;
     /* background-color: green; */
 }
@@ -64,6 +81,10 @@
     width: 100px;
     text-align: center;
     font-size: 14px;
+}
+
+.box > label > span {
+	color: red;
 }
 
 .box > .input {
@@ -82,7 +103,7 @@
 #last-section {
     width: 650px;
     position: absolute;
-    top: 300px;
+    top: 330px;
     left: 0;
     /* background-color: rebeccapurple; */
 }
@@ -106,15 +127,14 @@
     outline: none;
     font-size: 16px;
     resize: none;
-    padding: 0 10px;
+    padding: 10px;
+	font-family:gs-Medium;
 }
-
-
 
 .btn {
     width: 300px;
     height: 45px;
-    margin-top: 20px;
+    margin-top: 30px;
     border: none;
     background-color: #1abc9c;
     border-radius: 5px;
@@ -124,21 +144,29 @@
 }
 
 .comment {
+	display:block;
     font-size: 12px;
     color: red;
     padding: 5px;
 }
 
 .verifyBox {
-	position:relative;
+	width:300px;
+	height:30px;
+	margin:0 auto;
 }
 
-#verifyBtn {
-	position:absolute;
-	right:0;
+.verifyInput {
+	width:100px;
+}
+
+#timeZone {
+	display:inline-block;
+	width: 70px;
 }
 
 .verifyMsg {
+	margin:5px 0;
 	display:block;
 }
 
@@ -159,4 +187,37 @@
 
 .link-box > a:hover {
     text-decoration: underline;
+}
+
+
+
+/* 전화번호 모달창 */
+
+.modal-wrapper{
+	position : fixed;
+	width:100vw;
+	height:100vh;
+	background-color:rgba(0,0,0,0.5);
+	top:0;
+	left:0;
+	display:none;
+	justify-content:center;
+	align-items:center;
+}
+
+.modal{
+	width:350px;
+	min-height:150px;
+	background-color:#fff;
+}
+
+.modal-header{
+	padding:10px;
+	text-align : right;
+	/*color : #1abc9c;*/
+}
+
+.modal-content{
+	padding: 0px 20px 40px 20px;
+	text-align : center;
 }

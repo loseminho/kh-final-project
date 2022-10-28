@@ -1,15 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>마이페이지</title>
 <link rel="stylesheet" href="/resources/css/member/myPage.css">
-<link rel="stylesheet" href="/resources/css/member/myPage_myprofile.css">
-<script src="https://kit.fontawesome.com/7b7a761eb5.js" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+<link rel="icon" href="/resources/img/favicon.ico" type="image/x-icon" sizes="16x16">
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
@@ -45,7 +43,7 @@
 			        <h1>반려견 정보</h1>
 			    </div>
 			    <div class="matelist" style="display: none;">
-			        <h1>산책 메이트 목록</h1>
+			        <jsp:include page="/WEB-INF/views/member/mypage/mateList.jsp"/>
 			    </div>
 			    <div style="display: none;">
 			        <h1>신고하기</h1>
@@ -70,5 +68,6 @@
 		
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	<script src="/resources/js/member/myPage.js"></script>
+	<script src="/resources/js/member/myPage_myprofile.js"></script>
 </body>
 </html>

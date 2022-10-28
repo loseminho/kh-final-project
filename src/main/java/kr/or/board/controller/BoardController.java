@@ -99,6 +99,4 @@ public class BoardController {
 		int result = service.insertQnaBoard(q);
 		return "board/faqQna";
 	}
-	
-	
 }
