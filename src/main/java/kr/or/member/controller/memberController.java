@@ -336,13 +336,24 @@ public class memberController {
 	
 	@RequestMapping(value="/updatePw.do")
 	public String updatePw(String updatePw, HttpSession session) {
-		Member m = (Member)session.getAttribute("updatePw");
-		m.setMemberPw(updatePw);
-		int result = service.updatePwEnc(m);
-		if(result > 0) {
-			return "member/updatePwSuccess";			
+		Member m = (Member)session.getAttribute("m");
+		if(m == null) {
+			m = (Member)session.getAttribute("updatePw");
+			m.setMemberPw(updatePw);
+			int result = service.updatePwEnc(m);
+			if(result > 0) {
+				return "member/updatePwSuccess";			
+			} else {
+				return "redirect:/";
+			}
 		} else {
-			return "redirect:/";
+			m.setMemberPw(updatePw);
+			int result = service.updatePwEnc(m);
+			if(result > 0) {
+				return "redirect:/myPage.do";			
+			} else {
+				return "redirect:/updatePwFrm.do";
+			}
 		}
 	}
 	
@@ -425,5 +436,30 @@ public class memberController {
 	@RequestMapping(value="/showProfile.do")
 	public String showProfile() {
 		return "member/profile";
+	}
+	
+	@RequestMapping(value="/deleteMember.do")
+	public String deleteMember(String memberId) {
+		int result = service.deleteMember(memberId);
+		if(result > 0) {
+			return "redirect:/logout.do";
+		} else {
+			return "redirect:/myPage.do";
+		}
+	}
+	
+	@RequestMapping(value="/currentPw.do")
+	public String currentPw() {
+		return "member/currentPwFrm";
+	}
+	
+	@RequestMapping(value="/checkPw.do")
+	public String checkPw(Member m) {
+		Member member = service.selectOneMemberEnc(m);
+		if(member != null) {
+			return "redirect:/updatePwFrm.do";
+		} else {
+			return "redirect:/currentPw.do";
+		}
 	}
 }

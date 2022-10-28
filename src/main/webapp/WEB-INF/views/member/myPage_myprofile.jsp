@@ -56,8 +56,9 @@
 					<a href="/kakaoUnlink.do">탈퇴하기</a>
 				</c:when>
 				<c:otherwise>
-					<a href="">비밀번호 변경</a>
-			        <a href="">탈퇴하기</a>
+					<a href="/currentPw.do">비밀번호 변경</a>
+					<span> / </span>
+			        <a href="/deleteMember.do?memberId=${sessionScope.m.memberId }">탈퇴하기</a>
 				</c:otherwise>
 			</c:choose>
 	    </div>

@@ -18,8 +18,8 @@ $("#memberPhoto").on("change", function(event) {
     }
     const name = $("#memberPhoto").attr("name");
     
-    console.log(name);
-    console.log(val);
+    //console.log(name);
+    //console.log(val);
 });
  
 

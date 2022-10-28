@@ -204,18 +204,28 @@ input, button, #photoBtn {
 	position : fixed;
 	width:100vw;
 	height:100vh;
-	background-color:rgba(0,0,0,0.5);
 	top:0;
 	left:0;
 	display:none;
 	justify-content:center;
 	align-items:center;
+	background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(1.5px);
+    -webkit-backdrop-filter: blur(1.5px);
+    z-index:9999;
 }
 
 .modal{
 	width:350px;
-	min-height:150px;
+	height:150px;
 	background-color:#fff;
+	z-index: 100;
+	backdrop-filter: blur( 13.5px );
+    -webkit-backdrop-filter: blur( 13.5px );
+    border-radius: 21px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    background: white;
 }
 
 .modal-header{
@@ -225,6 +235,6 @@ input, button, #photoBtn {
 }
 
 .modal-content{
-	padding: 0px 20px 40px 20px;
+	padding: 10px 20px 40px 20px;
 	text-align : center;
 }

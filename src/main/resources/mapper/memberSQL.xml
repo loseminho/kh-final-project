@@ -28,7 +28,7 @@
 		values(MEMBER_SEQ.NEXTVAL, #{memberId}, #{memberNickname}, #{memberPhone}, NULL, NULL, NULL, NULL, TO_CHAR(SYSDATE, 'YYYY-MM-DD'), 1, '카카오')
 	</insert>
 	
-	<delete id="deleteKakao" parameterType="string">
+	<delete id="deleteMember" parameterType="string">
 		delete from member_tbl where member_id = #{_parameter}
 	</delete>
 	

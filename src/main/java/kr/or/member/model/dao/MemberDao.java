@@ -19,9 +19,9 @@ public class MemberDao {
 		return sqlSession.insert("member.insertKakao", m);
 	}
 
-	public int deleteKakao(String memberId) {
-		return sqlSession.delete("member.deleteKakao", memberId);
-	}
+//	public int deleteKakao(String memberId) {
+//		return sqlSession.delete("member.deleteMember", memberId);
+//	}
 
 	public Member selectOneMember(Member member) {
 		return sqlSession.selectOne("member.selectOneMember", member);
@@ -45,5 +45,9 @@ public class MemberDao {
 
 	public int updateMember(Member m) {
 		return sqlSession.update("member.updateMember", m);
+	}
+
+	public int deleteMember(String memberId) {
+		return sqlSession.delete("member.deleteMember", memberId);
 	}
 }
