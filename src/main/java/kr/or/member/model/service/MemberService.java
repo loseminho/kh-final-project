@@ -105,4 +105,9 @@ public class MemberService {
 		return dao.checkPhone(m);
 	}
 
+	@Transactional
+	public int updateMember(Member m) {
+		return dao.updateMember(m);
+	}
+
 }
