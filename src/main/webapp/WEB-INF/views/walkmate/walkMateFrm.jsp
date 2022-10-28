@@ -43,7 +43,6 @@
 
 
                         <!--산책갈게 게시물 보기-->
-                        
                         <div class="box-list-num">
                             1
                         </div>
