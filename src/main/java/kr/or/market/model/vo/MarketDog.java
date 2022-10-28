@@ -10,8 +10,7 @@ import lombok.NoArgsConstructor;
 public class MarketDog {
 	private int marketNo;
 	private int age;
-	private String typeName;
-	private int typeSize;
+	private int typeCode;
 	private String saleInfo;
 	private String gender;
 	private int price;

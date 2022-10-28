@@ -60,6 +60,7 @@ question.on("click", function(){
 
 $(".dogMarket-tab>li").eq(0).click();
 
+
 /*
 for(let i = 6; i<11; i++){
     question.eq(i).hide();

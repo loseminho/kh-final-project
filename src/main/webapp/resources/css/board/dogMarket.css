@@ -111,8 +111,8 @@ content{
 
 .sale-wrap{
 	display:flex;
-	justify-content:space-evenly;
-	flex-flow: wrap;
+	justify-content:space-between;
+	flex-wrap: wrap;
 	
 }
 .sale-box{
@@ -249,7 +249,7 @@ content{
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: gs-Light;
+  font-weight: bold;
 }
 .container {
   margin: auto 0;
@@ -295,7 +295,7 @@ content{
 	box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
 	border-radius: 8px;
 	height:70%;
-	width:50%;
+	width:40%;
 	background-color: #fff;
 }
 .detail-box-title{
@@ -323,8 +323,6 @@ content{
 .detail-info{
 	display:flex;
 	justify-content: center;
-	width:700px;
-	margin:0 auto;
 }
 .detail-info-table{
 	border:1px solid lightgray;
@@ -343,14 +341,14 @@ content{
 
 .photo-session-wrap{
 	display:flex;
-	justify-content:space-between;
-	margin:0 auto;
+	justify-content:space-around;
 	margin-top:10px;
-	width:700px;
+	width:100%;
 }
 .photo-session-wrap div{
 	border:1px solid gray;
-	width:calc(100%/2);
+	width:310px;
+	height: 400px;
 	padding: 10px;
 	overflow: hidden;
 }
@@ -361,10 +359,9 @@ content{
 	position:relative;
 	margin:0 auto;
 	margin-top:10px;
-	width:700px;
+	width:712px;
 	height:110px;
 	background-image: url("/resources/img/market/market_img1.png");
-	background-repeat: no-repeat;
 }
 .market-middle-img>span:first-child{
 	font-family:gs-Bold;
@@ -405,20 +402,9 @@ content{
 	width:700px;
 	height:100px;
 }
-.require-btn button:hover{
-	cursor: pointer;
-}
-.require-btn button:nth-child(2){
-	margin-left: 10px;
-	margin-right: 10px;
-}
 .require-btn button{
 	font-family:gs-Medium;
 	font-size:15px;
 	width: 200px;
 	height: 50px;
-	color:#fff;
-	background-color: #1abc9c;
-	border:none;
-	border-radius: 10px;
 }
