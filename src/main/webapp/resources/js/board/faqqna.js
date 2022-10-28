@@ -123,3 +123,4 @@ $("#allQnaAjax").on("click",function(){
 $("#writeQna").on("click",function(){
 	location.href="/writeQnaFrm.do"
 });
+

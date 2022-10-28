@@ -3,6 +3,8 @@
 }
 content{
     width: 1200px;
+    margin: 0 auto;
+    flex-grow:1;
 }
 .writeQna-wrap{
     margin: 0 auto;

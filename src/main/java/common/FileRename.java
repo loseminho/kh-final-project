@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class FileRename {
-	public String fileRename(String path, String filename) {
+	public static String fileRename(String path, String filename) {
 		// 파일명만
 		String onlyFilename = filename.substring(0, filename.lastIndexOf("."));
 		// .확장자만

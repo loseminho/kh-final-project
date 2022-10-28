@@ -1,5 +1,7 @@
 package kr.or.board.model.vo;
 
+import java.util.ArrayList;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,4 +18,6 @@ public class QnaBoard {
 	private String qnaDate;
 	private int qnaCateNo;
 	private int qnaStatus;
+	private int qnaSecret;
+	ArrayList<QnaFile> fileList;
 }

@@ -421,4 +421,9 @@ public class memberController {
 			return "redirect:/";
 		}
 	}
+	
+	@RequestMapping(value="/showProfile.do")
+	public String showProfile() {
+		return "member/profile";
+	}
 }
