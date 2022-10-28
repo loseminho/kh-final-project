@@ -42,6 +42,4 @@ public class BoardController {
 	public String writeQnaFrm() {
 		return "board/writeQnaFrm";
 	}
-	
-	
 }

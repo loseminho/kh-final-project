@@ -1,31 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<div id="modal-wrap" style="display: flex;">
+<div id="modal-wrap" style="display: none;">
 	<div class="modal-content">
-		<div class="detail-box-title">포메라리안</div>
-		<pre>포메라리안은 귀엽고 짱이야 이뻐죽겟어 포메라리안은 귀엽고 짱이야 이뻐죽겟어</pre>
+		<div class="detail-box-title">
+		<!-- 품종데이터 -->
+		</div>
+		<pre class="sale-info">강아지한줄소개</pre>
 		<hr>
 		<div class="detail-table-subtitle">품종정보</div>
 		<div class="detail-info">
 			<table class="detail-info-table">
-				<tr>
-					<th>견종</th>
-					<td></td>
-					<th>성별</th>
-					<td></td>
-				</tr>
-				<tr>
-					<th>나이</th>
-					<td></td>
-					<th>분양가</th>
-					<td></td>
-				</tr>
-				<tr>
-					<th>품종명</th>
-					<td></td>
-					<th>접종</th>
-					<td></td>
-				</tr>
+			<!-- 강아지 정보 입력 테이블칸 -->
 			</table>
 		</div>
 		<div class="market-middle-img">
@@ -46,7 +31,7 @@
 		<div class="require-btn">
 			<button>분양신청하기</button>
 			<button>쪽지보내기</button>
-			<button>닫기</button>
+			<button id="close-modal">닫기</button>
 		</div>
 	</div>
 </div>
