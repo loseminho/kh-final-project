@@ -150,9 +150,11 @@
 				<div class="qna-content">
 					<div class="qna-header">
 						<p>문의하신 내용에 대한 답변은 업무일 기준으로 2~3일 정도 소요 될 수 있습니다.</p>
+						<c:if test ="${not empty sessionScope.m }">
 						<div class="write-btn-box">
 							<button id ="writeQna">1:1 문의 신청</button>
 						</div>
+						</c:if>
 					</div>
 					<div class="qna-board">
 						<div id="qnaAjaxResult"></div>

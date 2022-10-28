@@ -4,7 +4,7 @@
 <select id="allQnaBoard" resultType="q">
 	select
 		qna_no as qnaNo,
-		rpad(substr(qna_writer,1,3),length(substr(qna_writer,1,instr(qna_writer,'@',1,1)-1)),'*')as qnaWriter,
+		substr(replace(qna_writer,substr(qna_writer,2,2),'**'),1,instr(qna_writer,'@',1,1)-1)as qnaWriter,
 		qna_title as qnaTitle,
 		qna_content as qnaContent,
 		qna_views as qnaViews,
@@ -13,4 +13,16 @@
 		qna_status as qnaStatus
 	from qna_tbl
 </select>
+<insert id="insertQnaBoard" parameterType="q">
+	insert into qna_tbl values
+	(seq_qna_no.nextval,#{qnaWriter},#{qnaTitle},#{qnaContent},#{qnaViews},to_char(sysdate,'yyyy-mm-dd'),#{qnaCateNo},1,#{qnaSecret})
+</insert>
+<select id="selectQnaBoardNo" resultType="_int">
+	select max(qna_no) from qna_tbl
+</select>
+<insert id="insertFile" parameterType="qf">
+	insert into qna_file_tbl values(
+		qna_file_seq.nextval,#{boardNo},#{filename},#{filepath}
+	)
+</insert>
 </mapper>
