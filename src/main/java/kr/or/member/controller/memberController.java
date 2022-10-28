@@ -377,4 +377,9 @@ public class memberController {
 		return "member/myPage";
 	}
 	
+	
+	@RequestMapping(value="/showProfile.do")
+	public String showProfile() {
+		return "member/profile";
+	}
 }

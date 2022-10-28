@@ -3,30 +3,32 @@
 	margin: 0 auto;
 }
 
-.content>div{
+.content>.meet{
 	margin-top: 50px;
 }
 
-h1{
+.meet>h1{
     margin: 0;
 }
 
-table{
+.meet>table{
+	border: 1px solid black;
     border-collapse: collapse;
     width: 800px;
     table-layout: fixed;
 }
 
-th, td{
+.meet>table th, .meet>table td{
 	text-align: center;
+	border: 1px solid black;
 }
 
-th{
+.meet>table th{
 	background-color: #1abc9c;
 }
 
-td{
-	overflow:hidden;
-	white-space : nowrap;
+.meet>table td{
+	overflow: hidden;
+	white-space: nowrap;
 	text-overflow: ellipsis;
 }
