@@ -33,18 +33,7 @@ public class BoardController {
 	public String faqQnaBoardFrm() {
 		return "board/faqQna";
 	}
-	
-	@RequestMapping(value="/walkMateList.do")
-	public String walkMateList() {
-		return "chat/walkMateList";
-	}
-	
-	@RequestMapping(value="/saleDogList.do")
-	public String saleDogList() {
-		return "sale/saleDog";
-	}
-	
-	
+		
 	
 	//문의게시판 list ajax
 	@ResponseBody
