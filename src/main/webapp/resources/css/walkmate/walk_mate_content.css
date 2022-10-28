@@ -344,6 +344,7 @@ li .bottom-list-box:hover{
 #modal .modal-content-img-post{
     width: 50%;
     height: 5%;
+    margin-left: 80px;
 }
 #modal .modal-content-img-post img{
     width: 100%;
