@@ -21,112 +21,122 @@
                     <div class="bottom-list-box">
 
                         <!--게시물 쓰기 헤더-->
-                        <!-- 
-                        <div class="input-title">
-                            	제목:
-                            <input type="text" id="" class="" name="" placeholder="제목을 입력해주세요.">
+                        <div id="modal-write-title">
+	                        <div class="input-title">
+	                            	제목:
+	                            <input type="text" id="" class="" name="" placeholder="제목을 입력해주세요.">
+	                        </div>
+	                        <div class="input-title-sub left">
+	                            	분류: 
+	                            <select name="" id="">
+	                                <option value="1">목록 보기</option>
+	                                <option value="2">산책갈개</option>
+	                                <option value="3">강아지 자랑</option>
+	                            </select>
+	                        </div>
+	                        <div class="input-title-sub left">
+	                            	부 제목: 
+	                            <input type="text" id="" class="" name="" placeholder="당신의 게시물을 설명 해주세요.">
+	                        </div>
                         </div>
-                        <div class="input-title-sub left">
-                            	분류: 
-                            <select name="" id="">
-                                <option value="1">목록 보기</option>
-                                <option value="2">산책갈개</option>
-                                <option value="3">강아지 자랑</option>
-                            </select>
-                        </div>
-                        <div class="input-title-sub left">
-                            	부 제목: 
-                            <input type="text" id="" class="" name="" placeholder="당신의 게시물을 설명 해주세요.">
-                        </div>
-                         -->
+                         
                         <!-- End 게시물 쓰기 헤더-->
 
 
                         <!--산책갈게 게시물 보기-->
-                        <div class="box-list-num">
-                            1
-                        </div>
-                        <div class="box-list-tag">
-                            <div class="tag-wrapper">
-                                <div class="tag-box" id="tag1">1:1 산책</div>
-                                <div class="tag-box" id="tag2">N:N 산책</div>
-                                <div class="tag-box" id="tag3">인증된 모임</div>
-                                <div class="tag-box" id="tag4">산책할개 문화</div>
-                                <div class="tag-box" id="tag5">산책할개 문화</div>
-                                <div class="tag-box" id="tag6">산책할개 문화</div>
-                            </div>
-                        </div>
-                        <div class="box-list-main">
-                            <div class="box-list-main-title">골든 리트리버 팟 구해요~</div>
-                            <div class="box-list-main-name">
-                                	사과는 맛있어 맛있으면 바나나 바나나는 높아 높으면 민머리
-                            </div>
-                        </div>
-                        <div class="box-list-limit">
-                            <div class="limit-box">1 / 5</div>
-                        </div>
-                        <div class="box-list-stat">
-                            <input type="button" id="stat-box" class="stat-box" onclick="himinho('');" value="신청">
+                        <div id="modal-post-title">
+	                        <div class="box-list-num">
+	                            1
+	                        </div>
+	                        <div class="box-list-tag">
+	                            <div class="tag-wrapper">
+	                                <div class="tag-box" id="tag1">1:1 산책</div>
+	                                <div class="tag-box" id="tag2">N:N 산책</div>
+	                                <div class="tag-box" id="tag3">인증된 모임</div>
+	                                <div class="tag-box" id="tag4">산책할개 문화</div>
+	                                <div class="tag-box" id="tag5">산책할개 문화</div>
+	                                <div class="tag-box" id="tag6">산책할개 문화</div>
+	                            </div>
+	                        </div>
+	                        <div class="box-list-main">
+	                            <div class="box-list-main-title">골든 리트리버 팟 구해요~</div>
+	                            <div class="box-list-main-name">
+	                                	사과는 맛있어 맛있으면 바나나 바나나는 높아 높으면 민머리
+	                            </div>
+	                        </div>
+	                        <div class="box-list-limit">
+	                            <div class="limit-box">1 / 5</div>
+	                        </div>
+	                        <div class="box-list-stat">
+	                            <input type="button" id="stat-box" class="stat-box" onclick="himinho('');" value="신청">
+	                        </div>
                         </div>
                     </div>
                 </div>
                 <!-- 모달 타이틀 끝-->
 
 				<!-- 글쓰기 컨텐츠 시작 -->
-				<!-- 
-                <div class="input-content">
-                    <div class="input-content-tag-title">태그 설정 (복수 선택 가능)</div>
-                    <div class="input-content-tag-content">
-                        <input type="checkbox" id="tag1" name="">
-                        <label for="tag1"><button type="" class="tags" id="tag1" value="" disabled>1:1 산책</button></label>
-                        <input type="checkbox" id="tag2" name="">
-                        <label for="tag2"><button type="" class="tags" id="tag2" value="" disabled>N:N 산책</button></label>
-                        <input type="checkbox" id="tag3" name="">
-                        <label for="tag3"><button type="" class="tags" id="tag3" value="" disabled>인증된 모임</button></label>
-                        <input type="checkbox" id="tag4" name="">
-                        <label for="tag4"><button type="" class="tags" id="tag4" value="" disabled>산책할개 문화</button></label>
-                        <input type="checkbox" id="tag5" name="">
-                        <label for="tag5"><button type="" class="tags" id="tag5" value="" disabled>산책할개 문화</button></label>
-                        <input type="checkbox" id="tag6" name="">
-                        <label for="tag6"><button type="" class="tags" id="tag6" value="" disabled>산책할개 문화</button></label>
-                    </div>
-                    <div class="input-content-titles">
-                        <div class="input-content-place-title">산책 만남 장소</div>
-                        <div class="input-content-range-title">1인 반려견 최대 마리수</div>
-                    </div>
-                    <div class="input-content-contents">
-                        <div class="input-content-place-input">
-                            <input type="text" id="" class="" name="" placeholder="ex) 서울-용산">
-                        </div>
-                        <div class="input-content-range-input">
-                            <input type="text" id="" class="" name="" placeholder="ex) 3">
-                        </div>
-                    </div>
-                    <div class="bottom-content time">
-                        <div class="titles">모임 시간</div>
-                        <div class="content-time start">
-                            <div class="starting-title">시작 시간</div>
-                            <input type="text" id="" name="" placeholder="ex)00시-00분">
-                        </div>
-                        <div class="content-time and">
-                            ~
-                        </div>
-                        <div class="content-time end">
-                            <div class="starting-title">끝 시간</div>
-                            <input type="text" id="" name="" placeholder="ex)00시-00분">
-                        </div>
-                    </div>
-                    <div class="input-main-content">
-                        <textarea name="" id="" placeholder="내용을 입력해주세요."></textarea>
-                    </div>
-                        <button class="btn-input-content">등록하기</button>
-                </div>
-                 -->
+				<div id="modal-write-content">
+	                <div class="input-content">
+	                    <div class="input-content-tag-title">태그 설정 (복수 선택 가능)</div>
+	                    <div class="input-content-tag-content">
+	                        <input type="checkbox" id="tag1" name="">
+	                        <label for="tag1"><button type="" class="tags" id="tag1" value="" disabled>1:1 산책</button></label>
+	                        <input type="checkbox" id="tag2" name="">
+	                        <label for="tag2"><button type="" class="tags" id="tag2" value="" disabled>N:N 산책</button></label>
+	                        <input type="checkbox" id="tag3" name="">
+	                        <label for="tag3"><button type="" class="tags" id="tag3" value="" disabled>인증된 모임</button></label>
+	                        <input type="checkbox" id="tag4" name="">
+	                        <label for="tag4"><button type="" class="tags" id="tag4" value="" disabled>산책할개 문화</button></label>
+	                        <input type="checkbox" id="tag5" name="">
+	                        <label for="tag5"><button type="" class="tags" id="tag5" value="" disabled>산책할개 문화</button></label>
+	                        <input type="checkbox" id="tag6" name="">
+	                        <label for="tag6"><button type="" class="tags" id="tag6" value="" disabled>산책할개 문화</button></label>
+	                    </div>
+	                    <div class="input-content-titles">
+	                        <div class="input-content-place-title">산책 만남 장소</div>
+	                        <div class="input-content-range-title">1인 반려견 최대 수</div>
+	                        <div class="input-content-limit-title">모임 인원</div>
+	                    </div>
+	                    
+	                    <div class="input-content-contents">
+	                        <div class="input-content-place-input">
+	                            <input type="text" id="" class="" name="" placeholder="ex) 서울-용산">
+	                        </div>
+	                        <div class="input-content-range-input">
+	                            <input type="text" id="" class="" name="" placeholder="ex) 3">
+	                        </div>
+	                        <div class="input-content-limit-input">
+	                            <input type="text" id="" class="" name="" placeholder="ex) 5">
+	                        </div>
+	                    </div>
+	                    <div class="bottom-content time">
+	                        <div class="titles">모임 시간 설정</div>
+	                        <div class="content-time start">
+	                            <div class="starting-title">시작 시간</div>
+	                            <input type="text" id="" name="" placeholder="ex)00시-00분">
+	                        </div>
+	                        <div class="content-time and">
+	                            ~
+	                        </div>
+	                        <div class="content-time end">
+	                            <div class="starting-title">끝 시간</div>
+	                            <input type="text" id="" name="" placeholder="ex)00시-00분">
+	                        </div>
+	                    </div>
+	                    <div class="input-main-content">
+	                        <textarea name="" id="" placeholder="내용을 입력해주세요."></textarea>
+	                    </div>
+	                        <button class="btn-input-content">등록하기</button>
+	                </div>
+				</div>
+                 
                 <!-- 글쓰기 컨텐츠 끝 -->
 
                 <!--모달 컨텐츠 시작(post)-->
                 
                 <div class="modal-content-post" id="modal-post-main">
+                	<input type="button" id="report-box" class="" onclick="" value="신고하기">
                     <div class="modal-tag-post">
                         #골든리트리버, #1마리 #산책광
                     </div>
@@ -331,7 +341,7 @@
                         <option value="진행목록">현재 진행중인 목록</option>
                         <option value="종료목록">현재 종료된 모임 목록</option>
                     </select>
-                    <input type="button" onclick="makeWalkMate('');" value="모임 만들기" class="write-modal">
+                    <input type="button" onclick="modalWritePostOn();" value="모임 만들기" class="write-modal">
                 </div>
                 <ul>
                     <li>
@@ -373,7 +383,6 @@
                         <div class="bottom-list-box">
                             <div class="box-list-num">3</div>
                             <div class="box-list-tag"></div>
-                            
                         </div>
                     </li>
                     <li>
@@ -382,21 +391,38 @@
                             <div class="box-list-tag"></div>
                         </div>
                     </li>
+                    <li>
+                        <div class="bottom-list-box">
+                            <div class="box-list-num">5</div>
+                            <div class="box-list-tag"></div>
+                        </div>
+                    </li>
                 </ul>
             </section>
             <!-- End content-bottom section -->
         </div>
         <!-- End content -->
-
     </div>
+    <!-- Start footer -->
+        <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+        <!-- End footer -->
     
     <script>
         const modal = document.getElementById("modal");
+        const modalPostTitle = document.getElementById("modal-post-title");
 		const modalLeader = document.getElementById("modal-post-leader");
 		const modalMain = document.getElementById("modal-post-main");
 		const modalReport = document.getElementById("modal-post-report");
 		const modalMyinfo = document.getElementById("modal-post-myinfo");
-        
+		const modalWriteTitle = document.getElementById("modal-write-title");
+		const modalWriteContent = document.getElementById("modal-write-content");
+		 
+		/* 모달 window 창 이외 클릭 시 modal 종료,, duration이 안잡혀서 ..0
+		$(".modal-overlay").on("click",function(){
+			modalOff();
+		})
+		*/
+		
         function modalOn() {
             modal.style.display = "flex"
         }
@@ -405,24 +431,37 @@
         }
         function modalOff() {
             modal.style.display = "none";
+            modalPostTitle.style.display = "none";
             modalLeader.style.display = "none";
             modalReport.style.display = "none";
             modalMyinfo.style.display = "none";
-            modalMain.style.display = "none"; 
+            modalMain.style.display = "none";
+            modalWriteTitle.style.display = "none";
+            modalWriteContent.style.display = "none";
         }
         function modalPostOff(){
+        	modalPostTitle.style.display = "none";
             modalLeader.style.display = "none";
             modalReport.style.display = "none";
             modalMyinfo.style.display = "none";
-            modalMain.style.display = "none";        	
+            modalMain.style.display = "none";  
+            modalWriteTitle.style.display = "none";
+            modalWriteContent.style.display = "none";
+        }
+        function modalWriteOn(){
+        	modalWriteTitle.style.display = "block";
+        	modalWriteContent.style.display = "block";
         }
         function modalMainOn() {
+        	modalPostTitle.style.display = "block";
             modalMain.style.display = "block"
         }
         function modalLeaderOn(){
+        	modalPostTitle.style.display = "block";
         	modalLeader.style.display = "block"
         }
         function modalMyinfoOn(){
+        	modalPostTitle.style.display = "block";
         	modalMyinfo.style.display = "block"
         }
         const closeBtn = modal.querySelector(".close-area")
@@ -431,6 +470,14 @@
         })
         function closeBtns(){
         	modalOff();
+        }
+        
+
+        //board 글쓰기
+        function modalWritePostOn(){
+        	modalOn();
+        	modalPostOff();
+        	modalWriteOn();
         }
         //board list 메인 게시물 보기 (첫화면)
 		function walkMate(){
@@ -444,17 +491,13 @@
         	modalPostOff();
         	modalLeaderOn();
         }
+      	//board list 상세 신청하기 페이지 (세번째 화면)
       	function walkMyinfo(){
       		modalOn();
         	modalPostOff();
         	modalMyinfoOn();
       	}  
       
-        //모임 만들기 버튼
-        function makeWalkMate(){
-
-        }
-
         modalOff();
     </script>
 </body>
