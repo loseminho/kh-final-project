@@ -29,7 +29,7 @@
                     <div class="tab-header">
                         <ul class="dogMarket-tab">
                             <li><h1>입양받기</h1></li>
-                            <li><h1><a>입양보내기</a></h1></li>
+                            <li><h1><a>물품거래</a></h1></li>
                         </ul>
                     </div>
                     <div class="getDog-content">
@@ -54,12 +54,15 @@
                             </ul>
                         <div class="saleList">
                             <div class="sale-box">
-                       			<div>분양 리스트</div>
+	                            <div class="market-list-title">
+	                       			<div>분양 리스트</div>
+	                       			<button>글쓰기</button>
+	                       		</div>
                                 <div class="sale-wrap" id="walk-question">
                                 	<!-- 분양목록 -->
                             	</div>
                             <div class="add-btn">
-                                <button>더보기</button>
+                                <button style="cursor:pointer;">더보기</button>
                             </div>
                         </div>
                     </div><!--faq-content 끝-->
@@ -102,28 +105,71 @@
     <!-- 모달시작 -->
 	<jsp:include page="/WEB-INF/views/market/modal.jsp"/>
 	
-	
+	<script src="/resources/js/board/saleDog.js"></script>
     <script>
+
+
+    console.log(category);
+    
+   	const addBtn = $(".add-btn").children();
+    let totalCnt; //리스트갯수
+    let totalList;//db저장 전체 갯수
+    
+    $(document).ready(function(){
+    	$.ajax({
+    		url : "/marketListCnt.do",
+    		success: function(result){
+    			totalList = result;
+    		}
+    	});
+    });
     $(document).ready(function(){
     	$.ajax({
     		url: "/selectSaleDogList.do",
     		success:function(data){
     			console.log(data);
     			var html = "";
-    			$.each(data,function(idx,value){
+    			for(let i=0;i<totalCnt;i++){
     				html += "<div class='sale'>";
     				html += "<div class='photo-session'>";
-    				html += "<input type='hidden' name='marketNo' value="+value.marketNo+">";
+    				html += "<input type='hidden' name='marketNo' value="+data[i].marketNo+">";
     				html += "</div>";
-    				html += "<span>"+value.typeName+"</span>";
-    				html += "<li>분양가격 : "+value.price+"원</li>";
+    				html += "<span>"+data[i].typeName+"</span>";
+    				html += "<li>분양가격 : "+data[i].price+"원</li>";
     				html += "</div>";
-    			});
+    			};
     			$(".sale-wrap").html(html);
     		},
     	});
+    	totalCnt = 9;
     });
-
+	addBtn.on("click",function(){
+    	$.ajax({
+    		url: "/selectSaleDogList.do",
+    		success:function(data){
+    			console.log(data);
+    			var html = "";
+    			for(let i=0;i<totalCnt;i++){
+    				html += "<div class='sale'>";
+    				html += "<div class='photo-session'>";
+    				html += "<input type='hidden' name='marketNo' value="+data[i].marketNo+">";
+    				html += "</div>";
+    				html += "<span>"+data[i].typeName+"</span>";
+    				html += "<li>분양가격 : "+data[i].price+"원</li>";
+    				html += "</div>";
+    			};
+    			$(".sale-wrap").html(html);
+    		},
+    	});
+	 		for(let i=0;i<3;i++){
+	 			if(totalCnt == totalList){
+	 				$(".add-btn").text("더 이상 목록이 없습니다.");
+	 				break;
+	 			}else{
+					totalCnt ++;;
+	 			}
+			};
+	});
     	$(document).on("click",".sale",function(){
     		const marketNo = $("[name=marketNo]");
     		console.log(marketNo.val());
@@ -169,6 +215,5 @@
     		$("body").css("overflow","inherit");
     	});
     </script>
-    <script src="/resources/js/board/saleDog.js"></script>
 </body>
 </html>

@@ -24,21 +24,74 @@ tabs.on("click",function(){
     }
 });
 
-const category = $(".dogMarket-category>li");
+const category = $(".getDog-category>li");
 category.on("click",function(){
-    const categoryIndex = category.index(this);
+    let categoryIndex = category.index(this);
     console.log(categoryIndex);
-    if(categoryIndex - page <6){
-        if(categoryIndex == 0){
-            $(".faq-wrap").show();
-            $(".answer").hide();
-        }else{
-            $(".faq-wrap").hide();
-            $(".answer").hide();
-            $(".faq-wrap").eq(categoryIndex-1).show();
-            $(".add-btn>button").hide();
-        }
-        
+    page = categoryIndex;
+    if(categoryIndex == 0){
+    
+    }else if(categoryIndex == 1){
+    	    $.ajax({
+    		url: "/selectFilterList.do",
+    		data: {typeSize : 0},
+    		success:function(data){
+    			console.log(data);
+    			var html = "";
+    			for(let i=0;i<data.length;i++){
+    				html += "<div class='sale'>";
+    				html += "<div class='photo-session'>";
+    				html += "<input type='hidden' name='marketNo' value="+data[i].marketNo+">";
+    				html += "</div>";
+    				html += "<span>"+data[i].typeName+"</span>";
+    				html += "<li>분양가격 : "+data[i].price+"원</li>";
+    				html += "</div>";
+    			};
+    			$(".sale-wrap").html(html);
+    		},
+    	});
+    }else if(categoryIndex == 2){
+    	    $.ajax({
+    		url: "/selectFilterList.do",
+    		data: {typeSize : 1},
+    		success:function(data){
+    			console.log(data);
+    			var html = "";
+    			for(let i=0;i<data.length;i++){
+    				html += "<div class='sale'>";
+    				html += "<div class='photo-session'>";
+    				html += "<input type='hidden' name='marketNo' value="+data[i].marketNo+">";
+    				html += "</div>";
+    				html += "<span>"+data[i].typeName+"</span>";
+    				html += "<li>분양가격 : "+data[i].price+"원</li>";
+    				html += "</div>";
+    			};
+    			$(".sale-wrap").html(html);
+    		},
+    	});
+    
+    }else if(categoryIndex == 3){
+        	    $.ajax({
+    		url: "/selectFilterList.do",
+    		data: {typeSize : 2},
+    		success:function(data){
+    			console.log(data);
+    			var html = "";
+    			for(let i=0;i<data.length;i++){
+    				html += "<div class='sale'>";
+    				html += "<div class='photo-session'>";
+    				html += "<input type='hidden' name='marketNo' value="+data[i].marketNo+">";
+    				html += "</div>";
+    				html += "<span>"+data[i].typeName+"</span>";
+    				html += "<li>분양가격 : "+data[i].price+"원</li>";
+    				html += "</div>";
+    			};
+    			$(".sale-wrap").html(html);
+    		},
+    	});
+    }else if(categoryIndex == 4){
+    
+    }
         category.css({
             "background-color":"#fff",
             "color":"black"
@@ -47,7 +100,6 @@ category.on("click",function(){
             "background-color":"#1abc9c",
             "color":"#fff"
         });
-    }
 });
 
 let question = $(".question");

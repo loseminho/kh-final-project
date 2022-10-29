@@ -21,4 +21,12 @@ public class MarketService {
 		// TODO Auto-generated method stub
 		return dao.saleDogList();
 	}
+
+	public int marketListCnt() {
+		return dao.marketListCnt();
+	}
+
+	public ArrayList<MarketDog> filterSelect(int typeSize) {
+		return dao.fiterSelect(typeSize);
+	}
 }

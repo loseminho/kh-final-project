@@ -39,4 +39,16 @@ public class MarketController {
 		ArrayList<MarketDog> list = service.saleDogList();
 		return new Gson().toJson(list);
 	}
+	@ResponseBody
+	@RequestMapping(value="/marketListCnt.do", produces="application/json;charset=utf-8")
+	public String marketListCnt() {
+		int result = service.marketListCnt();
+		return new Gson().toJson(result);
+	}
+	@ResponseBody
+	@RequestMapping(value="/selectFilterList.do", produces="application/json;charset=utf-8")
+	public String filterSelect(int typeSize) {
+		ArrayList<MarketDog> list = service.filterSelect(typeSize);
+		return new Gson().toJson(list);
+	}
 }
