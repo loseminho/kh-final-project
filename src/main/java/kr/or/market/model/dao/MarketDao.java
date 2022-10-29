@@ -23,4 +23,14 @@ public class MarketDao {
 		List list = sqlSession.selectList("market.saleDogList"); 
 		return (ArrayList<MarketDog>)list;
 	}
+
+	public int marketListCnt() {
+		int result = sqlSession.selectOne("market.marketListCnt");
+		return result;
+	}
+
+	public ArrayList<MarketDog> fiterSelect(int typeSize) {
+		List list = sqlSession.selectList("market.filterSelect",typeSize); 
+		return (ArrayList<MarketDog>)list;
+	}
 }
