@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<link rel="stylesheet" href="/resources/css/member/myPage_myprofile.css">
+<link rel="stylesheet" href="/resources/css/member/mypage/myPage_myprofile.css">
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
@@ -49,7 +49,7 @@
 	        <textarea name="memberIntro" id="memberIntro" placeholder="1000자 이하로 입력해주세요" maxlength="1000" value="${sessionScope.m.memberIntro }">${sessionScope.m.memberIntro }</textarea>
 	    </div>
 	    <div class="btn-box">
-	        <button type="button" class="btn">정보수정</button>
+	        <button type="button" class="btn" id="updateBtn">정보수정</button>
 	    </div>
 	    <div class="link-box">
 	    	<c:choose>
@@ -88,3 +88,5 @@
 		</div>
 	</div>
 </div>
+
+<script src="/resources/js/member/mypage/myPage_myprofile.js"></script>
