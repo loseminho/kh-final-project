@@ -166,7 +166,7 @@ $("#sendBtn").on("click", function() {
     }
 });
 
-$("#updateBtn").on("click", function(){
+$(".btn").on("click", function(){
 	const nameVal = $("#memberNickname").val();
 	const nameComment = $("#nameComment");
 	const verifyChk = $("#verifyChk");
