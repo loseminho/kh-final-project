@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" href="/resources/css/member/myPage_myprofile.css">
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <h1>내 정보</h1>
 <form action="/updateMember.do" id="updateMemberForm" method="post" autocomplete="off" enctype="multipart/form-data">
@@ -53,12 +54,12 @@
 	    <div class="link-box">
 	    	<c:choose>
 	    		<c:when test="${sessionScope.m.joinType eq '카카오'}">
-					<a href="/kakaoUnlink.do">탈퇴하기</a>
+					<a onclick="deleteKakao();">탈퇴하기</a>
 				</c:when>
 				<c:otherwise>
 					<a href="/currentPw.do">비밀번호 변경</a>
 					<span> / </span>
-			        <a href="/deleteMember.do?memberId=${sessionScope.m.memberId }">탈퇴하기</a>
+			        <a onclick="deleteMember('${sessionScope.m.memberId }');">탈퇴하기</a>
 				</c:otherwise>
 			</c:choose>
 	    </div>

@@ -244,17 +244,25 @@ public class memberController {
 			service.kakaoLogout((String)session.getAttribute("access_Token"));			
 		}
 		session.invalidate();
-		System.out.println("로그아웃 완료");
 		return "redirect:/";
 	}
 	
 	@RequestMapping(value="/kakaoUnlink.do")
-	public String unlink(HttpSession session) {
+	public String unlink(HttpSession session, Model model) {
 		Member m = (Member)session.getAttribute("m");
 		String memberId = m.getMemberId();
 		int result = service.kakaoUnlink((String)session.getAttribute("access_Token"), memberId);
-		session.invalidate();
-		return "redirect:/";
+		if(result > 0) {
+			session.invalidate();
+			model.addAttribute("title", "탈퇴 완료");
+			model.addAttribute("msg", "회원 탈퇴가 완료되었습니다.");
+			model.addAttribute("icon", "success");
+			model.addAttribute("loc", "/");
+			return "common/msg";
+		} else {
+			session.invalidate();
+			return "redirect:/";
+		}
 	}
 	
 	@ResponseBody
@@ -335,9 +343,9 @@ public class memberController {
 	}
 	
 	@RequestMapping(value="/updatePw.do")
-	public String updatePw(String updatePw, HttpSession session) {
+	public String updatePw(String updatePw, HttpSession session, Model model) {
 		Member m = (Member)session.getAttribute("m");
-		if(m == null) {
+		if(m == null) { // 로그인 안 한 상태에서 비밀번호 찾기일 때
 			m = (Member)session.getAttribute("updatePw");
 			m.setMemberPw(updatePw);
 			int result = service.updatePwEnc(m);
@@ -346,11 +354,15 @@ public class memberController {
 			} else {
 				return "redirect:/";
 			}
-		} else {
+		} else { // 로그인한 회원이 비밀번호 변경할 때
 			m.setMemberPw(updatePw);
 			int result = service.updatePwEnc(m);
 			if(result > 0) {
-				return "redirect:/myPage.do";			
+				model.addAttribute("title", "변경 완료");
+				model.addAttribute("msg", "비밀번호가 변경되었습니다.");
+				model.addAttribute("icon", "success");
+				model.addAttribute("loc", "/myPage.do");
+				return "common/msg";			
 			} else {
 				return "redirect:/updatePwFrm.do";
 			}
@@ -400,7 +412,7 @@ public class memberController {
 	}
 	
 	@RequestMapping(value="/updateMember.do")
-	public String updateMember(Member m, MultipartFile[] photo, HttpSession session, HttpServletRequest request) {
+	public String updateMember(Member m, MultipartFile[] photo, HttpSession session, HttpServletRequest request, Model model) {
 		String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/member/");
 		
 		if(photo != null) {
@@ -427,7 +439,11 @@ public class memberController {
 		if(result > 0) {
 			Member member = service.selectOneMemberEnc(m);
 			session.setAttribute("m", member);
-			return "member/myPage";
+			model.addAttribute("title", "수정 완료");
+			model.addAttribute("msg", "수정이 완료되었습니다.");
+			model.addAttribute("icon", "success");
+			model.addAttribute("loc", "/myPage.do");
+			return "common/msg";
 		} else {			
 			return "redirect:/";
 		}
@@ -439,10 +455,14 @@ public class memberController {
 	}
 	
 	@RequestMapping(value="/deleteMember.do")
-	public String deleteMember(String memberId) {
+	public String deleteMember(String memberId, Model model) {
 		int result = service.deleteMember(memberId);
 		if(result > 0) {
-			return "redirect:/logout.do";
+			model.addAttribute("title", "탈퇴 완료");
+			model.addAttribute("msg", "회원 탈퇴가 완료되었습니다.");
+			model.addAttribute("icon", "success");
+			model.addAttribute("loc", "/logout.do");
+			return "common/msg";
 		} else {
 			return "redirect:/myPage.do";
 		}

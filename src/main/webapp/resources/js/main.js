@@ -1,6 +1,22 @@
-/**
- * 
- */
+
+function logout() {
+	Swal.fire({
+        title: '로그아웃',
+        text: "로그아웃하시겠습니까?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#ccc',
+        confirmButtonText: '로그아웃',
+        cancelButtonText: '취소'
+    }).then((result) => {
+        if (result.isConfirmed) {
+			location.href="/logout.do";
+        }
+    })
+}
+
+
  		var mHtml = $("html");
 		var page = 1;
 		const headerWrap = $(".header-wrap");
@@ -34,3 +50,5 @@
 			if (page != 1) {
 			}
 		});
+		
+

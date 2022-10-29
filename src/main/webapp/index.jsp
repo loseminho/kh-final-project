@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="/resources/css/main.css">
 <link rel="styleSheet" href="/resources/css/gmarket.css">
 <script src="https://kit.fontawesome.com/7b7a761eb5.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <link rel="icon" href="/resources/img/favicon.ico" type="image/x-icon" sizes="16x16">
 </head>
 <body>
@@ -56,7 +57,7 @@
 										<a href="https://kauth.kakao.com/oauth/logout?client_id=e400fe38f12604a2937ea759fe0166f7&logout_redirect_uri=http://localhost/logout.do">로그아웃</a>
 									</c:if>
 									<c:if test="${sessionScope.m.joinType eq '일반가입'}">
-										<a href="/logout.do">로그아웃</a>
+										<a onclick="logout();">로그아웃</a>
 									</c:if>
 								</c:otherwise>
 							</c:choose>

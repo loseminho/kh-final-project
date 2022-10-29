@@ -176,8 +176,55 @@ $(".btn").on("click", function(){
 		nameComment.text("이름을 입력해주세요.");
 	} else {
 		if(verifyChk.val()) {
-			verifyChk.prev().attr("name", "memberPhone");
-			$("#updateMemberForm").submit();
+			Swal.fire({
+	            title: '회원 정보 수정',
+	            text: "회원 정보를 수정하시겠습니까?",
+	            icon: 'warning',
+	            showCancelButton: true,
+	            confirmButtonColor: '#1abc9c',
+	            cancelButtonColor: '#ccc',
+	            confirmButtonText: '수정',
+	            cancelButtonText: '취소'
+	        }).then((result) => {
+	            if (result.isConfirmed) {
+					verifyChk.prev().attr("name", "memberPhone");
+					$("#updateMemberForm").submit();
+	            }
+	        })
 		}
 	}
 });
+
+function deleteMember(memberId) {
+	Swal.fire({
+        title: '회원 탈퇴',
+        text: "탈퇴하시겠습니까?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#ccc',
+        confirmButtonText: '탈퇴',
+        cancelButtonText: '취소'
+    }).then((result) => {
+        if (result.isConfirmed) {
+			location.href="/deleteMember.do?memberId="+memberId;
+        }
+    })
+}
+
+function deleteKakao() {
+	Swal.fire({
+        title: '회원 탈퇴',
+        text: "탈퇴하시겠습니까?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#ccc',
+        confirmButtonText: '탈퇴',
+        cancelButtonText: '취소'
+    }).then((result) => {
+        if (result.isConfirmed) {
+			location.href="/kakaoUnlink.do";
+        }
+    })
+}
