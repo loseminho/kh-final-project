@@ -68,7 +68,7 @@
 	                            <div class="limit-box">1 / 5</div>
 	                        </div>
 	                        <div class="box-list-stat">
-	                            <input type="button" id="stat-box" class="stat-box" onclick="himinho('');" value="신청">
+	                            <input type="button" id="stat-box" class="stat-box" onclick="walkMyinfo();" value="신청">
 	                        </div>
                         </div>
                     </div>
@@ -136,7 +136,7 @@
                 <!--모달 컨텐츠 시작(post)-->
                 
                 <div class="modal-content-post" id="modal-post-main">
-                	<input type="button" id="report-box" class="" onclick="" value="신고하기">
+                	<input type="button" id="report-box" class="" onclick="modalReportPost();" value="신고하기">
                     <div class="modal-tag-post">
                         #골든리트리버, #1마리 #산책광
                     </div>
@@ -158,7 +158,6 @@
                 <!--모달 컨텐츠 끝(post)-->
 
                 <!--모달 컨텐츠 시작(post-leader)-->
-                
                 <div class="modal-content-post-leader" id="modal-post-leader">
                     <div class="modal-leader-title">모임장(犬) 정보</div>
                     <div class="leader-info-tops">
@@ -369,7 +368,7 @@
                                 <div class="limit-box">1 / 5</div>
                             </div>
                             <div class="box-list-stat">
-                                <input type="button" id="stat-box" class="stat-box" onclick="himinho('');" value="신청">
+                                <input type="button" id="stat-box" class="stat-box" onclick="walkMyinfo();" value="신청">
                             </div>
                         </div>
                     </li>
@@ -464,6 +463,10 @@
         	modalPostTitle.style.display = "block";
         	modalMyinfo.style.display = "block"
         }
+        function modalReportOn(){
+        	modalPostTitle.style.display = "block";
+        	modalReport.style.display = "block";
+        }
         const closeBtn = modal.querySelector(".close-area")
         closeBtn.addEventListener("click", e => {
             modalOff();
@@ -472,7 +475,11 @@
         	modalOff();
         }
         
-
+		function modalReportPost(){
+			modalOn();
+			modalPostOff();
+			modalReportOn();
+		}
         //board 글쓰기
         function modalWritePostOn(){
         	modalOn();
