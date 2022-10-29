@@ -2,6 +2,6 @@ function dogModal() {
 	$("#dog-modal").css("display", "flex");
 }
 
-function closeModal() {
+function closeDogModal() {
 	$("#dog-modal").hide();
 }

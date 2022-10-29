@@ -45,7 +45,7 @@
 <div id="dog-modal" class="modal-wrapper">
     <div class="modal">
         <div class="modal-header">				
-            <button id="closeModalBtn" onclick="closeModal();">닫기</button>
+            <button id="closeModalBtn" onclick="closeDogModal();">닫기</button>
         </div>
         <div class="modal-content">
             <div class="dog-info">

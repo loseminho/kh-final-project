@@ -72,17 +72,19 @@
 <div id="phone-modal" class="modal-wrapper">
 	<div class="modal">
 		<div class="modal-header">				
-			<button id="closeModalBtn" onclick="closeModal();">닫기</button>
+			<button id="closeModalBtn" onclick="closePhoneModal();">닫기</button>
 		</div>
 		<div class="modal-content">
 			<div class="verifyBox">
 				<input type="text" name="newPhone" id="newPhone" class="input shortInput" placeholder="010-0000-0000 형식">
 				<button type="button" id="sendBtn">인증번호발송</button>
         		<span class="comment" id="phoneComment"></span>
-	        	<input type="text" class="verifyInput" placeholder="인증번호 입력" style="display:none;">
-	        	<span id="timeZone" style="display:none;"></span>
-	        	<button type="button" id="verifyBtn" style="display:none;">인증하기</button>
-	        	<span class="verifyMsg"></span>
+        		<div>
+        			<input type="text" class="verifyInput" placeholder="인증번호 입력" style="display:none;">
+	        		<span id="timeZone" style="display:none;"></span>
+	        		<button type="button" id="verifyBtn" style="display:none;">인증하기</button>
+        		</div>
+		        <span class="verifyMsg"></span>
 	        	<button id="changePhoneBtn" type="button" style="display:none;">번호 변경</button>
        		</div>
 		</div>

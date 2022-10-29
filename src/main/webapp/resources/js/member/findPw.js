@@ -69,8 +69,6 @@ $("#verifyBtn").on("click", function(){
 	// console.log(inputValue);
 	if(resultCode != null){
 		if(inputValue == resultCode) {
-			// console.log(resultCode);
-			//$(".verifyMsg").text("인증 성공");
 			$(".verifyMsg").append("인증 성공<i class='fa-solid fa-circle-check'></i>");
 			$(".verifyMsg").css("color", "#1abc9c");
 			clearInterval(intervalId); // 시간 카운트 함수 멈춤
@@ -78,7 +76,7 @@ $("#verifyBtn").on("click", function(){
 			$("#memberPhone").attr("readonly", true);
 			$("#memberId").attr("readonly", true);
 			$("#memberPhone").removeClass("shortInput");
-			$(".verifyInput").attr("disabled", true);
+			$(".verifyInput").hide();
 			$("#timeZone").hide();
 			$("#verifyBtn").hide;
 			$("#sendBtn").hide();
@@ -111,7 +109,7 @@ $("#sendBtn").on("click", function() {
 	        	$(".verifyInput").val("");
 	        	$(".verifyMsg").text("");
 	        	resultCode = data;
-	        	// console.log(resultCode);
+	        	console.log(resultCode);
 	        	verifyCount();
 	        }
 	    });
