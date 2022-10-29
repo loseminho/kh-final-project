@@ -37,10 +37,10 @@
 			</div>
 			<div id="rowSession2">
 				<div class="myprofile">
-					<jsp:include page="/WEB-INF/views/member/myPage_myprofile.jsp"/>
+					<jsp:include page="/WEB-INF/views/member/mypage/myPage_myprofile.jsp"/>
 			    </div>
 			    <div class="dogprofile" style="display: none;">
-			        <h1>반려견 정보</h1>
+			        <jsp:include page="/WEB-INF/views/member/mypage/myPage_dogprofile.jsp"/>
 			    </div>
 			    <div class="matelist" style="display: none;">
 			        <jsp:include page="/WEB-INF/views/member/mypage/mateList.jsp"/>
@@ -68,6 +68,5 @@
 		
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	<script src="/resources/js/member/myPage.js"></script>
-	<script src="/resources/js/member/myPage_myprofile.js"></script>
 </body>
 </html>
