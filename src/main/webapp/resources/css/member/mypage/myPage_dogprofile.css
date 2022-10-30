@@ -16,7 +16,7 @@
     right: 0;
 }
 
-.dogprofile #dog-wrap {
+.dogprofile .wrap {
     width: 100%;
     position: absolute;
     top: 80px;
