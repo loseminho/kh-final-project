@@ -24,8 +24,9 @@ public class MarketDao {
 		return (ArrayList<MarketDog>)list;
 	}
 
-	public int marketListCnt() {
-		int result = sqlSession.selectOne("market.marketListCnt");
+	public int marketListCnt(int typeSize) {
+		System.out.println("다오typeSize"+typeSize);
+		int result = sqlSession.selectOne("market.marketListCnt",typeSize);
 		return result;
 	}
 

@@ -118,7 +118,9 @@
     $(document).ready(function(){
     	$.ajax({
     		url : "/marketListCnt.do",
+    		data: {typeSize:-1},
     		success: function(result){
+    			console.log(result);
     			totalList = result;
     		}
     	});
@@ -144,10 +146,10 @@
     	totalCnt = 9;
     });
 	addBtn.on("click",function(){
+		console.log(page);
     	$.ajax({
     		url: "/selectSaleDogList.do",
     		success:function(data){
-    			console.log(data);
     			var html = "";
     			for(let i=0;i<totalCnt;i++){
     				html += "<div class='sale'>";
