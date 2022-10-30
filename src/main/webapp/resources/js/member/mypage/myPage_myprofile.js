@@ -49,7 +49,7 @@ $("#changeBtn").on("click", function(){
 	phoneModal();
 });
 
-function closeModal() {
+function closePhoneModal() {
 	$("#timeZone").html("");
 	$("#verifyBtn").hide();
 	$("#phone-modal").hide();
@@ -101,8 +101,8 @@ $("#verifyBtn").on("click", function(){
 			$(".verifyMsg").css("color", "#1abc9c");
 			clearInterval(intervalId); // 시간 카운트 함수 멈춤
 			$("#verifyChk").val("true");
-			$(".verifyInput").attr("disabled", true);
 			$("#newPhone").attr("disabled", true);
+			$(".verifyInput").hide();
 			$("#timeZone").hide();
 			$("#verifyBtn").hide();
 			$("#sendBtn").hide();
@@ -118,7 +118,7 @@ $("#verifyBtn").on("click", function(){
 $("#changePhoneBtn").on("click", function(){
 	const inputValue = $("#newPhone").val();
 	$("#memberPhone").val(inputValue);
-	closeModal();
+	closePhoneModal();
 })
 
 function sendMsg() {
@@ -166,7 +166,7 @@ $("#sendBtn").on("click", function() {
     }
 });
 
-$(".btn").on("click", function(){
+$("#updateBtn").on("click", function(){
 	const nameVal = $("#memberNickname").val();
 	const nameComment = $("#nameComment");
 	const verifyChk = $("#verifyChk");
