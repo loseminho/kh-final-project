@@ -15,23 +15,16 @@ public class MarketDao {
 	private SqlSessionTemplate sqlSession;
 
 	public MarketDog selectOne(int marketNo) {
-		System.out.println(marketNo);
 		return sqlSession.selectOne("market.selectOne",marketNo);
 	}
 
-	public ArrayList<MarketDog> saleDogList() {
-		List list = sqlSession.selectList("market.saleDogList"); 
-		return (ArrayList<MarketDog>)list;
-	}
-
-	public int marketListCnt(int typeSize) {
-		System.out.println("다오typeSize"+typeSize);
-		int result = sqlSession.selectOne("market.marketListCnt",typeSize);
+	public int marketListCnt(MarketDog md) {
+		int result = sqlSession.selectOne("market.marketListCnt",md);
 		return result;
 	}
 
-	public ArrayList<MarketDog> fiterSelect(int typeSize) {
-		List list = sqlSession.selectList("market.filterSelect",typeSize); 
+	public ArrayList<MarketDog> fiterSelect(MarketDog md) {
+		List list = sqlSession.selectList("market.filterSelect",md); 
 		return (ArrayList<MarketDog>)list;
 	}
 }

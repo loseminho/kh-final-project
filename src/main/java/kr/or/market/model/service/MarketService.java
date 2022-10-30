@@ -17,17 +17,11 @@ public class MarketService {
 		return dao.selectOne(marketNo);
 	}
 
-	public ArrayList<MarketDog> saleDogList() {
-		// TODO Auto-generated method stub
-		return dao.saleDogList();
+	public int marketListCnt(MarketDog md) {
+		return dao.marketListCnt(md);
 	}
 
-	public int marketListCnt(int typeSize) {
-		System.out.println("서비스typeSizeCnt"+typeSize);
-		return dao.marketListCnt(typeSize);
-	}
-
-	public ArrayList<MarketDog> filterSelect(int typeSize) {
-		return dao.fiterSelect(typeSize);
+	public ArrayList<MarketDog> filterSelect(MarketDog md) {
+		return dao.fiterSelect(md);
 	}
 }
