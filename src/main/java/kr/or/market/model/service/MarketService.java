@@ -22,8 +22,9 @@ public class MarketService {
 		return dao.saleDogList();
 	}
 
-	public int marketListCnt() {
-		return dao.marketListCnt();
+	public int marketListCnt(int typeSize) {
+		System.out.println("서비스typeSizeCnt"+typeSize);
+		return dao.marketListCnt(typeSize);
 	}
 
 	public ArrayList<MarketDog> filterSelect(int typeSize) {

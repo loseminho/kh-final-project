@@ -1,4 +1,5 @@
 let page = 0;
+
 const tabs = $(".dogMarket-tab>li");
 
 tabs.on("click",function(){
@@ -27,6 +28,15 @@ tabs.on("click",function(){
 const category = $(".getDog-category>li");
 category.on("click",function(){
     let categoryIndex = category.index(this);
+    let typeSize = categoryIndex-1;
+    	$.ajax({
+    		url : "/marketListCnt.do",
+    		data: {typeSize:typeSize},
+    		success: function(result){
+    			console.log(result);
+    			totalList = result;
+    		}
+    	});
     console.log(categoryIndex);
     page = categoryIndex;
     if(categoryIndex == 0){
