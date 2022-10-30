@@ -11,5 +11,6 @@
 		<typeAlias type="kr.or.market.model.vo.MarketDog" alias="md"/>
 		<typeAlias type="kr.or.board.model.vo.QnaBoard" alias="q"/>
 		<typeAlias type="kr.or.board.model.vo.QnaFile" alias="qf"/>
+		<typeAlias type="kr.or.dog.model.vo.Dog" alias="d"/>
 	</typeAliases>
 </configuration>
