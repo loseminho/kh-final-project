@@ -57,8 +57,80 @@
     margin: 5px 0 0 0;
 }
 
+/* 강아지 사진 영역 */
+.dogprofile #photo-section{
+	width : 300px;
+	height: 300px;
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.dogprofile #photo-section #dogPhotoBtn {
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.dogprofile .photo-box {
+    width: 250px;
+    height: 250px;
+    border: 1px solid #ccc;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.dogprofile .photo-box > img {
+    max-width: 100%;
+}
+
+.dogprofile .photo-box > label {
+	display:block;
+}
+
+/* 프로필 정보 영역 */
+.dogprofile #info-section{
+	width: 650px;
+}
+
+.dogprofile #info-section .info-box {
+	width: 300px;
+	display:inline-block;
+	margin: 25px auto;
+}
+
+.dogprofile .info-box > label {
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.dogprofile .info-box > label > span {
+	color: red;
+}
+
+.dogprofile .info-box > .input {
+    width: 230px;
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    background-color: transparent;
+    padding-left: 10px;
+    font-size: 16px;
+    outline: none;
+    text-align:center;
+}
+
+.dogprofile .info-box > .shortInput {
+	width: 200px;
+}
+
+
 /* 모달창 */
-.modal-wrapper{
+.dogprofile .modal-wrapper{
 	position : fixed;
 	width:100vw;
 	height:100vh;
@@ -73,8 +145,8 @@
     z-index:9999;
 }
 
-.modal{
-	width:350px;
+.dogprofile .modal{
+	width:700px;
 	/* height:150px; */
 	background-color:#fff;
 	z-index: 100;
@@ -86,13 +158,17 @@
     background: white;
 }
 
-.modal-header{
+.dogprofile .modal-header{
 	padding:10px;
 	text-align : right;
 	/*color : #1abc9c;*/
 }
 
-.modal-content{
-	padding: 0px 20px 40px 20px;
+.dogprofile .modal-header > h3 {
+	text-align : center;
+}
+
+.dogprofile .modal-content{
+	padding: 20px 20px 40px 20px;
 	text-align : center;
 }
