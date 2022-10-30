@@ -7,7 +7,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.or.market.model.vo.DogType;
 import kr.or.market.model.vo.MarketDog;
+import kr.or.market.model.vo.MarketDogFile;
 
 @Repository
 public class MarketDao {
@@ -26,5 +28,14 @@ public class MarketDao {
 	public ArrayList<MarketDog> fiterSelect(MarketDog md) {
 		List list = sqlSession.selectList("market.filterSelect",md); 
 		return (ArrayList<MarketDog>)list;
+	}
+
+	public int inputMarket(MarketDogFile mdf) {
+		return sqlSession.insert("market.inputMarket",mdf);
+	}
+
+	public ArrayList<DogType> selectTypeList() {
+		List list = sqlSession.selectList("market.selectTypeList");
+		return (ArrayList<DogType>)list;
 	}
 }

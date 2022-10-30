@@ -45,4 +45,18 @@
 		</otherwise>
 		</choose>		
 	</select>	
+	<insert id="inputMarket">
+		insert into market_file_tbl values(
+		#{marketNo},
+		#{fileName},
+		#{filePath}
+		)
+	</insert>
+	<select id="selectTypeList" resultType="dt">
+		select
+			type_code as typeCode,
+			type_name as typeName,
+			type_size as typeSize
+		from dog_type
+	</select>
 </mapper>

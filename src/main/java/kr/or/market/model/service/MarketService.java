@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.or.market.model.dao.MarketDao;
+import kr.or.market.model.vo.DogType;
 import kr.or.market.model.vo.MarketDog;
+import kr.or.market.model.vo.MarketDogFile;
 
 @Service
 public class MarketService {
@@ -23,5 +25,14 @@ public class MarketService {
 
 	public ArrayList<MarketDog> filterSelect(MarketDog md) {
 		return dao.fiterSelect(md);
+	}
+
+	public int inputMarket(MarketDogFile mdf) {
+		// TODO Auto-generated method stub
+		return dao.inputMarket(mdf);
+	}
+
+	public ArrayList<DogType> selectTypeList() {
+		return dao.selectTypeList();
 	}
 }

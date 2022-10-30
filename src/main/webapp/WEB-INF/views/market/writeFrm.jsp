@@ -6,17 +6,29 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 </head>
 <body>
-	<h1>kdf</h1>
-	<h3>파일 input test</h3>
+	<h1>분양글쓰기</h1>
 	<form action="/inputMarket.do" method="post" enctype="multipart/form-data">
-		<span>
-		
-		</span>
-		<input type="hidden" name="marketNo" value="2">
+		<select id="select-box">
+		</select>
 		<input type="file" name="photo">
 		<input type="submit" value="전송">
 	</form>
 </body>
+<script>
+	$(document).ready(function(){
+		$.ajax({
+			url:"/selectTypeList.do",
+			success:function(data){
+				$.each(data,function(idx,value){
+					var option = "<option>"+value.typeName+"</option>";
+					option += "<input type='hidden' name=typeCode value="+value.typeCode+">";
+					$("#select-box").append(option);
+				});
+			}
+		});
+	});
+</script>
 </html>

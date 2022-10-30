@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +19,9 @@ import com.google.gson.Gson;
 
 import common.FileRename;
 import kr.or.market.model.service.MarketService;
+import kr.or.market.model.vo.DogType;
 import kr.or.market.model.vo.MarketDog;
+import kr.or.market.model.vo.MarketDogFile;
 
 @Controller
 public class MarketController {
@@ -64,19 +65,23 @@ public class MarketController {
 	@RequestMapping(value="/inputMarket.do")
 	public String inputMarket(int marketNo, MultipartFile[] photo,HttpServletRequest request) {
 		String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/market/");
-		System.out.println(marketNo);
 		System.out.println(photo.length);
 		for(MultipartFile file : photo) {
-			String filename = file.getOriginalFilename();
-			String filepath = fileRename.fileRename(savePath, filename);
+			String fileName = file.getOriginalFilename();
+			String filePath = fileRename.fileRename(savePath, fileName);
 			
-			File upFile = new File(savePath+filepath);
+			File upFile = new File(savePath+filePath);
 			try {
 				FileOutputStream fos = new FileOutputStream(upFile);
 				BufferedOutputStream bos = new BufferedOutputStream(fos);
 				byte[] bytes = file.getBytes();
 				bos.write(bytes);
 				bos.close();
+				MarketDogFile mdf = new MarketDogFile();
+				mdf.setMarketNo(marketNo);
+				mdf.setFilePath(filePath);
+				mdf.setFileName(fileName);
+				int result = service.inputMarket(mdf);
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -86,5 +91,12 @@ public class MarketController {
 			}
 		}
 		return "market/saleDog";
+	}
+	@ResponseBody
+	@RequestMapping(value="/selectTypeList.do", produces="application/json;charset=utf-8")
+	public String selectTypeList() {
+		ArrayList<DogType> list = service.selectTypeList();
+		System.out.println(list.get(0).getTypeName());
+		return new Gson().toJson(list);
 	}
 }
