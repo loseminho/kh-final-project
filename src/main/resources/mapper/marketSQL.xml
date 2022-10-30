@@ -14,35 +14,19 @@
 		from market_tbl mt join dog_type dt on(mt.type_code=dt.type_code)
 		where market_no = #{_parameter}
 	</select>
-	<select id="saleDogList" resultType="md">
-			select
-			mt.market_no as marketNo,
-			mt.age,
-			mt.type_code as typeCode,
-			mt.sale_info as saleInfo,
-			mt.gender,
-			dt.type_size as typeSize,
-			dt.type_name as typeName,
-			mt.price
-		from market_tbl mt join dog_type dt on(mt.type_code=dt.type_code)
-	</select>
-	<select id="marketListCnt">
-		select count(type_code) from market_tbl join dog_type using(type_code)
+	<select id="marketListCnt" parameterType="md" resultType="int">
+		select count(type_code)
+		
+		from market_tbl join dog_type using(type_code)
 		<choose>
 		<when test="typeSize==-1">
 		</when>
-		<when test="typeSize==0">
-		where type_size = 0
-		</when>
-		<when test="typeSize==1">
-		where type_size = 1
-		</when>
-		<when test="typeSize==2">
-		where type_size = 2
-		</when>
-		</choose>		
+		<otherwise>
+		where type_size = #{typeSize}
+		</otherwise>
+		</choose>
 	</select>
-	<select id="filterSelect" resultType="md">
+	<select id="filterSelect" parameterType="md" resultType="md">
 		select
 			mt.market_no as marketNo,
 			mt.age,
@@ -53,6 +37,26 @@
 			dt.type_name as typeName,
 			mt.price
 		from market_tbl mt join dog_type dt on(mt.type_code=dt.type_code)
-		where type_size = #{_parameter}
+		<choose>
+		<when test="typeSize==-1">
+		</when>
+		<otherwise>
+		where type_size = #{typeSize}
+		</otherwise>
+		</choose>		
 	</select>	
+	<insert id="inputMarket">
+		insert into market_file_tbl values(
+		#{marketNo},
+		#{fileName},
+		#{filePath}
+		)
+	</insert>
+	<select id="selectTypeList" resultType="dt">
+		select
+			type_code as typeCode,
+			type_name as typeName,
+			type_size as typeSize
+		from dog_type
+	</select>
 </mapper>
