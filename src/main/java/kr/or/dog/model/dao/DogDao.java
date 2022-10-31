@@ -37,5 +37,9 @@ public class DogDao {
 	public int deleteMyDog(int dogNo) {
 		return sqlSession.delete("dog.deleteMyDog", dogNo);
 	}
+
+	public int updateMyDog(Dog d) {
+		return sqlSession.update("dog.updateMyDog", d);
+	}
 	
 }
