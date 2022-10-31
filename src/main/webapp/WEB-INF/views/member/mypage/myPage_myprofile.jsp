@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="/resources/css/member/mypage/myPage_myprofile.css">
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
 <h1>내 정보</h1>
 <form action="/updateMember.do" id="updateMemberForm" method="post" autocomplete="off" enctype="multipart/form-data">
 	<div id="photo-section">

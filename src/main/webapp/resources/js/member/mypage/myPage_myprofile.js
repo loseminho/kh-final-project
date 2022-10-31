@@ -187,7 +187,6 @@ $("#updateBtn").on("click", function(){
 	            cancelButtonText: '취소'
 	        }).then((result) => {
 	            if (result.isConfirmed) {
-	            	$.cookie("tab", 0);
 					verifyChk.prev().attr("name", "memberPhone");
 					$("#updateMemberForm").submit();
 	            }
