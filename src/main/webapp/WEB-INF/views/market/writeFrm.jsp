@@ -12,7 +12,7 @@
 	<h1>분양글쓰기</h1>
 	<form action="/inputMarket.do" method="post" enctype="multipart/form-data">
 		<div>품종선택</div>
-		<select id="select-box">
+		<select id="select-box" name="typeCode">
 		<!-- 강아지 종류 option 넣는 자리 -->
 		</select>
 		<div>나이</div>
@@ -46,7 +46,7 @@
 			url:"/selectTypeList.do",
 			success:function(data){
 				$.each(data,function(idx,value){
-					var option = "<option value="+value.typeCode+">"+value.typeName+"</option>";
+					var option = "<option value='"+value.typeCode+"'>"+value.typeName+"</option>";
 					$("#select-box").append(option);
 				});
 			}
