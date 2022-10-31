@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,30 +22,32 @@
                 <div class="qnaView-header">
                     <h1>문의내역</h1>
                     <ul>
-                        <li><a>삭제하기</a></li>
-                        <li><a>수정하기</a></li>
+                        <li><a href="#">삭제하기</a></li>
+                        <li><a href="#">수정하기</a></li>
                     </ul>
                 </div>
                 <table class="qnaView-content">
                         <tr>
                             <th>작성자</th>
-                            <td>작성자 데이터값</td>
+                            <td>${qb.qnaNo }</td>
                             <th>작성일</th>
-                            <td>작성일 데이터값</td>
+                            <td>${qb.qnaDate }</td>
                             <th>조회수</th>
-                            <td>조회수 데이터값</td>
+                            <td>${qb.qnaViews }</td>
                         </tr>
                     <tr>
                         <th>제목</th>
-                        <td colspan="9">제목 데이터값</td>
+                        <td colspan="9">${qb.qnaTitle }</td>
                     </tr>
                     <tr>
                         <th>첨부파일</th>
-                        <td>첨부파일 값</td>
+                        <c:forEach items="${qb.fileList}" var="qf">
+                        <td>${qf.filename}</td>
+                        </c:forEach>
                     </tr>
                     <tr>
                         <th>내용</th>
-                        <td colspan="9">내용입니당</td>
+                        <td colspan="9">${qb.qnaContent}</td>
                     </tr>
                 </table>
                 <!--댓글 등록-->

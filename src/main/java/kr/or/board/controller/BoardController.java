@@ -88,14 +88,13 @@ public class BoardController {
 		int result = service.insertQnaBoard(q);
 		return "board/faqQna";
 	}
-	
-	/*
-	//문의게시판 view 
+	/* 문의게시판 이동 */ 
 	@RequestMapping(value="/qnaView.do")
 	public String qnaView(int qnaNo, Model model) {
+		System.out.println(qnaNo);
 		QnaBoard qb = service.selectOneQna(qnaNo);
 		model.addAttribute("qb",qb);
+		System.out.println(qb);
 		return "board/qnaView";
 	}
-	*/
 }

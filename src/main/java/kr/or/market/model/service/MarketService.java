@@ -27,9 +27,19 @@ public class MarketService {
 		return dao.fiterSelect(md);
 	}
 
-	public int inputMarket(MarketDogFile mdf) {
+	public int inputMarket(MarketDog md) {
 		// TODO Auto-generated method stub
-		return dao.inputMarket(mdf);
+		dao.inputMarket(md);
+		int marketNo = dao.selectMarketNo();
+		
+		ArrayList<MarketDogFile> mdf = new ArrayList<MarketDogFile>();
+		mdf = md.getFileList();
+		
+		for(int i=0;i<mdf.size();i++) {
+			mdf.get(i).setMarketNo(marketNo);
+			dao.inputMarketFile(mdf.get(i));
+		}
+		return 0;
 	}
 
 	public ArrayList<DogType> selectTypeList() {

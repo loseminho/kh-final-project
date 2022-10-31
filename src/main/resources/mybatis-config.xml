@@ -7,8 +7,10 @@
 	</settings>
 	<typeAliases>
 		<typeAlias type="kr.or.member.model.vo.Member" alias="m"/>
+		<typeAlias type="kr.or.walk.model.vo.Walk" alias="w"/>
 		<typeAlias type="kr.or.chat.model.vo.RequireList" alias="rl"/>
 		<typeAlias type="kr.or.market.model.vo.MarketDog" alias="md"/>
+		<typeAlias type="kr.or.market.model.vo.MarketDogFile" alias="mdf"/>
 		<typeAlias type="kr.or.market.model.vo.DogType" alias="dt"/>
 		<typeAlias type="kr.or.board.model.vo.QnaBoard" alias="q"/>
 		<typeAlias type="kr.or.board.model.vo.QnaFile" alias="qf"/>
