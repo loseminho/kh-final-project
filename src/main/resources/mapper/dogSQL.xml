@@ -40,4 +40,13 @@
 	from dog_type
 	order by type_code desc
 	</select>
+	
+	<insert id="insertMyDog" parameterType="d">
+		insert into dog_tbl
+		values(DOG_NO_SEQ.NEXTVAL, #{memberNo}, #{dogName}, #{dogTypeNo}, #{dogGender}, #{dogNeutral}, #{dogVacc}, #{dogAge}, #{dogWeight}, #{dogPhoto})
+	</insert>
+	
+	<delete id="deleteMyDog" parameterType="int">
+		delete from dog_tbl where dog_no = #{_parameter}
+	</delete>
 </mapper>

@@ -46,11 +46,12 @@
     width: 150px;
     height: 150px;
     margin: 0 auto;
+    overflow:hidden;
+    border-radius: 20px;
 }
 
 .dogprofile .box .photo img {
     max-width: 100%;
-    border-radius: 20px;
 }
 
 .dogprofile .box h3 {

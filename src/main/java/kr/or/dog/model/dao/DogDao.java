@@ -29,5 +29,13 @@ public class DogDao {
 		List list = sqlSession.selectList("dog.selectAllDogType");
 		return (ArrayList<DogType>) list;
 	}
+
+	public int insertMyDog(Dog d) {
+		return sqlSession.insert("dog.insertMyDog", d);
+	}
+
+	public int deleteMyDog(int dogNo) {
+		return sqlSession.delete("dog.deleteMyDog", dogNo);
+	}
 	
 }

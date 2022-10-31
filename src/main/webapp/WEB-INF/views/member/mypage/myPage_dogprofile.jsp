@@ -36,7 +36,7 @@
         <div class="modal-content">
         	<form action="" id="dogProfileForm" method="post" autocomplete="off" enctype="multipart/form-data">
             <div class="dog-info">
-        		<input type="hidden" name="dogNo" id="dogNo">
+        		<input type="hidden" name="memberNo" value="${sessionScope.m.memberNo }">
             	<div id="photo-section">
 			        <div class="photo-box">
 			        	<img id="dogPreview" src="/resources/img/default_dog.png">					
@@ -52,8 +52,8 @@
 			    </div>
 			    <div class="info-box">
 			        <label for="dogType"><span>*</span>품종</label>
-			        <input type="text" name="dogType" id="dogType1" class="input">
-			        <select id="dogType2" name="dogType" style="display:none;">
+			        <input type="text" name="" id="dogType1" class="input">
+			        <select id="dogType2" name="" style="display:none;">
 			        </select>
 			    </div>
 			    <div class="info-box">
@@ -81,6 +81,7 @@
 			    </div>
 			    <div class="btn-box">
 			        <button type="button" class="btn" id="dogBtn"></button>
+			        <button type="button" class="btn" id="deleteDogBtn" style="background-color:white; color:red; border:1px solid red;">삭제하기</button>
 			    </div>
 			</div>
 			</form>

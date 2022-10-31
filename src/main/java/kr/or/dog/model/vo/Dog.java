@@ -11,6 +11,7 @@ public class Dog {
 	private int dogNo;
 	private int memberNo;
 	private String dogName;
+	private int dogTypeNo;
 	private String dogType; // 품종 이름 + 품종 사이즈 (소형견, 중형견, 대형견)
 	private String dogGender;
 	private String dogNeutral;
