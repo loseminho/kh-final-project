@@ -66,11 +66,13 @@ public class DogController {
 	}
 	
 	@RequestMapping(value="/insertMyDog.do")
-	public String insertMyDog(Dog d, MultipartFile[] photo2, HttpServletRequest request, Model model) {
+	public String insertMyDog(Dog d, MultipartFile[] photodog, HttpServletRequest request, Model model) {
+		System.out.println(d);
+		System.out.println(photodog);
 		String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/dog/");
 		
-		if(photo2 != null) {
-			for(MultipartFile file : photo2) {
+		if(photodog != null) {
+			for(MultipartFile file : photodog) {
 				String filename = file.getOriginalFilename();
 				String filepath = fileRename.fileRename(savePath, filename);
 				File upFile = new File(savePath + filepath);
