@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.or.dog.model.vo.Dog;
+import kr.or.market.model.vo.DogType;
 
 @Repository
 public class DogDao {
@@ -22,6 +23,11 @@ public class DogDao {
 
 	public Dog selectMyOneDog(int dogNo) {
 		return sqlSession.selectOne("dog.selectMyOneDog", dogNo);
+	}
+
+	public ArrayList<DogType> selectAllDogType() {
+		List list = sqlSession.selectList("dog.selectAllDogType");
+		return (ArrayList<DogType>) list;
 	}
 	
 }
