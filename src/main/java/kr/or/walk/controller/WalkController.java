@@ -33,4 +33,9 @@ public class WalkController {
 	// 게시물 선택화면 - 모달 첫번째 페이지(index 1 - file, content,)
 	
 	// 게시물 선택화면 - 
+	
+	@RequestMapping(value="/walkMetePage.do")
+	public String currentPw() {
+		return "walkmate/walkMetePage";
+	}
 }
