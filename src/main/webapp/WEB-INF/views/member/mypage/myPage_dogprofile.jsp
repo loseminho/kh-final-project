@@ -35,55 +35,56 @@
         </div>
         <div class="modal-content">
         	<form action="" id="dogProfileForm" method="post" autocomplete="off" enctype="multipart/form-data">
-            <div class="dog-info">
-        		<input type="hidden" name="memberNo" value="${sessionScope.m.memberNo }">
-            	<div id="photo-section">
-			        <div class="photo-box">
-			        	<img id="dogPreview" src="/resources/img/default_dog.png">					
-			        </div>
-			        <input type="file" name="" id="dogPhoto" style="display:none;" accept="image/*">
-			        <button type="button" id="dogPhotoBtn" onclick="addDogFile();">파일 선택</button>	
+        		<input type="hidden" id="dogNo">
+	            <div class="dog-info">
+	        		<input type="hidden" name="memberNo" value="${sessionScope.m.memberNo }">
+	            	<div id="photo-section">
+				        <div class="photo-box">
+				        	<img id="dogPreview" src="/resources/img/default_dog.png">					
+				        </div>
+				        <input type="file" name="" id="dogPhoto" style="display:none;" accept="image/*">
+				        <button type="button" id="dogPhotoBtn" onclick="addDogFile();">파일 선택</button>	
+					</div>
+	            </div>
+	            <div id="info-section">
+				    <div class="info-box">
+				        <label for="dogName"><span>*</span>이름</label>
+				        <input type="text" name="dogName" id="dogName" class="input">
+				    </div>
+				    <div class="info-box">
+				        <label for="dogType"><span>*</span>품종</label>
+				        <input type="text" name="" id="dogType1" class="input">
+				        <select id="dogType2" name="" style="display:none;">
+				        </select>
+				    </div>
+				    <div class="info-box">
+				        <label for="dogAge"><span>*</span>나이</label>
+				        <input type="text" name="dogAge" id="dogAge" class="input shortInput">살
+				    </div>
+				    <div class="info-box">
+				        <label for="dogGender"><span>*</span>성별</label><br>
+				        <label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogGender" value="남아"> 남아</label>
+	      				<label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogGender" value="여아"> 여아</label>
+				    </div>
+				    <div class="info-box">
+				        <label for="dogWeight"><span>*</span>몸무게</label>
+				        <input type="text" name="dogWeight" id="dogWeight" class="input shortInput">KG
+				    </div>
+				    <div class="info-box">
+				        <label for="dogNeutral"><span>*</span>중성화 여부</label><br>
+				        <label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogNeutral" value="O"> 했어요</label>
+	      				<label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogNeutral" value="X"> 안 했어요</label>
+				    </div>
+				    <div class="info-box">
+				        <label for="dogVacc"><span>*</span>예방접종 여부</label><br>
+				        <label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogVacc" value="O"> 했어요</label>
+	      				<label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogVacc" value="X"> 안 했어요</label>
+				    </div>
+				    <div class="btn-box">
+				        <button type="button" class="btn" id="dogBtn"></button>
+				        <button type="button" class="btn" id="deleteDogBtn" style="background-color:white; color:red; border:1px solid red;">삭제하기</button>
+				    </div>
 				</div>
-            </div>
-            <div id="info-section">
-			    <div class="info-box">
-			        <label for="dogName"><span>*</span>이름</label>
-			        <input type="text" name="dogName" id="dogName" class="input">
-			    </div>
-			    <div class="info-box">
-			        <label for="dogType"><span>*</span>품종</label>
-			        <input type="text" name="" id="dogType1" class="input">
-			        <select id="dogType2" name="" style="display:none;">
-			        </select>
-			    </div>
-			    <div class="info-box">
-			        <label for="dogAge"><span>*</span>나이</label>
-			        <input type="text" name="dogAge" id="dogAge" class="input shortInput">살
-			    </div>
-			    <div class="info-box">
-			        <label for="dogGender"><span>*</span>성별</label><br>
-			        <label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogGender" value="남아"> 남아</label>
-      				<label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogGender" value="여아"> 여아</label>
-			    </div>
-			    <div class="info-box">
-			        <label for="dogWeight"><span>*</span>몸무게</label>
-			        <input type="text" name="dogWeight" id="dogWeight" class="input shortInput">KG
-			    </div>
-			    <div class="info-box">
-			        <label for="dogNeutral"><span>*</span>중성화 여부</label><br>
-			        <label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogNeutral" value="O"> 했어요</label>
-      				<label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogNeutral" value="X"> 안 했어요</label>
-			    </div>
-			    <div class="info-box">
-			        <label for="dogVacc"><span>*</span>예방접종 여부</label><br>
-			        <label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogVacc" value="O"> 했어요</label>
-      				<label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogVacc" value="X"> 안 했어요</label>
-			    </div>
-			    <div class="btn-box">
-			        <button type="button" class="btn" id="dogBtn"></button>
-			        <button type="button" class="btn" id="deleteDogBtn" style="background-color:white; color:red; border:1px solid red;">삭제하기</button>
-			    </div>
-			</div>
 			</form>
         </div>
     </div>
