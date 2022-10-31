@@ -15,6 +15,7 @@ import com.google.gson.Gson;
 
 import kr.or.dog.model.service.DogService;
 import kr.or.dog.model.vo.Dog;
+import kr.or.market.model.vo.DogType;
 import kr.or.member.model.vo.Member;
 
 @Controller
@@ -42,4 +43,14 @@ public class DogController {
 		}
 	} 
 	
+	@ResponseBody
+	@RequestMapping(value="/selectAllDogType.do", produces="application/json;charset=utf-8")
+	public String selectAllDogType() {
+		ArrayList<DogType> list = service.selectAllDogType();
+		if(list != null) {
+			return new Gson().toJson(list);
+		} else {
+			return "null";
+		}
+	}
 }

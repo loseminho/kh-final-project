@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.or.dog.model.dao.DogDao;
 import kr.or.dog.model.vo.Dog;
+import kr.or.market.model.vo.DogType;
 
 @Service
 public class DogService {
@@ -20,6 +21,10 @@ public class DogService {
 
 	public Dog SelectMyOneDog(int dogNo) {
 		return dao.selectMyOneDog(dogNo);
+	}
+
+	public ArrayList<DogType> selectAllDogType() {
+		return dao.selectAllDogType();
 	}
 	
 }

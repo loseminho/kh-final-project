@@ -1,33 +1,32 @@
-.content{
-	width: 800px;
-	margin: 0 auto;
+.attend-meet{
+	padding-top:15px;
 }
 
-.content>.meet{
+.past-meet, .fail-meet{
 	margin-top: 50px;
 }
 
-.meet>h1{
+.mateList>h1{
     margin: 0;
 }
 
-.meet>table{
+.mateList>table{
 	border: 1px solid black;
     border-collapse: collapse;
     width: 800px;
     table-layout: fixed;
 }
 
-.meet>table th, .meet>table td{
+.mateList>table th, .mateList>table td{
 	text-align: center;
 	border: 1px solid black;
 }
 
-.meet>table th{
+.mateList>table th{
 	background-color: #1abc9c;
 }
 
-.meet>table td{
+.mateList>table td{
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;

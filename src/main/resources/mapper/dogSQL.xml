@@ -32,4 +32,12 @@
 		from dog_tbl d left join dog_type t on (d.dog_type_no = t.type_code) 
 		where dog_no = #{_parameter}
 	</select>
+	
+	<select id="selectAllDogType" resultType="dt">
+	select
+		type_code as typeCode,
+		type_name as typeName
+	from dog_type
+	order by type_code desc
+	</select>
 </mapper>

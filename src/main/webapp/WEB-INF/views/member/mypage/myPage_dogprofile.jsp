@@ -5,7 +5,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <h1>반려견 정보</h1>
-<a href="" id="addDog">반려견 추가</a>
+<a id="addDog">반려견 추가</a>
 <div id="dog-wrap">
 	<c:forEach items="${sessionScope.myDogList }" var="myDog">
 	    <div class="box">
@@ -34,8 +34,9 @@
             <h3>반려견 상세 정보</h3>
         </div>
         <div class="modal-content">
+        	<form action="" id="dogProfileForm" method="post" autocomplete="off" enctype="multipart/form-data">
             <div class="dog-info">
-        		<input type="text" name="dogNo" id="dogNo">
+        		<input type="hidden" name="dogNo" id="dogNo">
             	<div id="photo-section">
 			        <div class="photo-box">
 			        	<img id="dogPreview" src="/resources/img/default_dog.png">					
@@ -51,32 +52,38 @@
 			    </div>
 			    <div class="info-box">
 			        <label for="dogType"><span>*</span>품종</label>
-			        <input type="text" name="dogType" id="dogType" class="input">
+			        <input type="text" name="dogType" id="dogType1" class="input">
+			        <select id="dogType2" name="dogType" style="display:none;">
+			        </select>
 			    </div>
 			    <div class="info-box">
 			        <label for="dogAge"><span>*</span>나이</label>
 			        <input type="text" name="dogAge" id="dogAge" class="input shortInput">살
 			    </div>
 			    <div class="info-box">
-			        <label for="dogGender">성별</label><br>
+			        <label for="dogGender"><span>*</span>성별</label><br>
 			        <label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogGender" value="남아"> 남아</label>
       				<label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogGender" value="여아"> 여아</label>
 			    </div>
 			    <div class="info-box">
-			        <label for="dogWeight">몸무게</label>
+			        <label for="dogWeight"><span>*</span>몸무게</label>
 			        <input type="text" name="dogWeight" id="dogWeight" class="input shortInput">KG
 			    </div>
 			    <div class="info-box">
-			        <label for="dogNeutral">중성화 여부</label><br>
+			        <label for="dogNeutral"><span>*</span>중성화 여부</label><br>
 			        <label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogNeutral" value="O"> 했어요</label>
       				<label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogNeutral" value="X"> 안 했어요</label>
 			    </div>
 			    <div class="info-box">
-			        <label for="dogVacc">예방접종 여부</label><br>
+			        <label for="dogVacc"><span>*</span>예방접종 여부</label><br>
 			        <label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogVacc" value="O"> 했어요</label>
       				<label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogVacc" value="X"> 안 했어요</label>
 			    </div>
+			    <div class="btn-box">
+			        <button type="button" class="btn" id="dogBtn"></button>
+			    </div>
 			</div>
+			</form>
         </div>
     </div>
 </div>
