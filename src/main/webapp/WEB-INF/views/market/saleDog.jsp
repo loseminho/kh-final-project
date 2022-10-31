@@ -13,7 +13,7 @@
     <!--fonts-->
     <link rel="stylesheet" href="/resources/css/gmarket.css">
     <!--css-->
-    <link rel="stylesheet" href="/resources/css/board/dogMarket.css">
+    <link rel="stylesheet" href="/resources/css/market/dogMarket.css">
     <!--jQuery-->       
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <!--구글 아이콘-->

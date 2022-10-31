@@ -461,3 +461,7 @@ content{
 	border-bottom: 2px solid black;
 	cursor: pointer;
 }
+
+.previewImg{
+	width:100%;
+}
