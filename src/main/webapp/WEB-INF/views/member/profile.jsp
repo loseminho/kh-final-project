@@ -4,27 +4,27 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>프로필</title>
 	<link rel="stylesheet" href="/resources/css/member/profile.css">
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
-<div class="content-wrap">
-	<div class="left">
+<div class="profile-content-wrap">
+	<div class="profile-left">
 	
 	</div>
 
-	<div class="content">
+	<div class="profile-content">
         <!-- 사람 프로필 -->
         <div class="person-profile">
             <h1 class="profile-header">닉네임</h1>
             
-	        <div class="photo-box">
-	        	<img class="photo" src="/resources/img/member/사람 임시 프로필.png">
+	        <div class="profile-photo-box">
+	        	<img class="profile-photo" src="/resources/img/member/사람 임시 프로필.png">
 	        </div>
 	        
-	        <div class="person-intro">
+	        <div class="person-introduce">
 	           	자기 소개
 	        </div>  
         </div>
@@ -34,8 +34,8 @@
             <h1 class="profile-header">반려견 이름</h1>
 
             <!-- 반려견 프로필 사진 -->
-            <div class="photo-box">
-                <img class="photo" src="/resources/img/member/반려견 임시 프로필.png">
+            <div class="profile-photo-box">
+                <img class="profile-photo" src="/resources/img/member/반려견 임시 프로필.png">
             </div>
             
             <!-- 반려견 정보 -->
@@ -83,7 +83,7 @@
         </div>
 	</div>
 	
-	<div class="right">
+	<div class="profile-right">
 		<!-- 반려견 리스트 -->
 		<div class="dog-list">
 			<table>

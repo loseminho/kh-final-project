@@ -1,0 +1,48 @@
+.walkMatePage-wrap{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	width: 1200px;
+	margin: 0 auto;
+	margin-top:80px;
+	font-family : gs-Medium;
+	flex-grow: 1;
+}
+
+.walkMatePage-menu{
+	width: 250px;
+	height: 100%;
+	border-right:1px solid #ccc;
+	min-height: 700px;
+	padding-top:30px;
+}
+
+.walkMatePage-menu ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.walkMatePage-menu li:hover>a{
+	text-decoration: underline;
+}
+
+.walkMatePage-menu a{
+    height: 50px;
+    line-height: 50px;
+    display: block;
+    text-decoration: none;
+    padding-left: 20px;
+    color: #1abc9c;
+    position: relative;
+	font-size:18px;	
+}
+
+.walkMatePage-content{
+	width:950px;
+	height:100%;
+	margin-left: 50px;
+	min-height: 700px;
+	padding-top:30px;
+}
