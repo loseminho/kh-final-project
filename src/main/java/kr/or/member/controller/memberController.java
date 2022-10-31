@@ -34,6 +34,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import common.FileRename;
+import kr.or.dog.controller.DogController;
 import kr.or.member.model.service.MemberService;
 import kr.or.member.model.service.MessageService;
 import kr.or.member.model.vo.Member;
@@ -271,7 +272,7 @@ public class memberController {
 		Member m = service.selectOneMemberEnc(member);
 		if(m!=null) {
 			session.setAttribute("m", m);
-			return "success";
+			return "success";				
 		} else {
 			return "fail";
 		}
@@ -408,7 +409,8 @@ public class memberController {
 	
 	@RequestMapping(value="/myPage.do")
 	public String myPage(@SessionAttribute Member m) {
-		return "member/myPage";
+//		return "member/myPage";
+		return "redirect:/selectMyDogList.do";
 	}
 	
 	@RequestMapping(value="/updateMember.do")

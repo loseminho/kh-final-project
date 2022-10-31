@@ -21,7 +21,6 @@ public class WalkController {
 	public String walkMate() {
 		return "walkmate/walkMateFrm";
 	}
-	
 	// WalkMate ajax 시작
 	// WalkMate 모든 게시물 띄우기..
 	@ResponseBody
@@ -34,5 +33,4 @@ public class WalkController {
 	// 게시물 선택화면 - 모달 첫번째 페이지(index 1 - file, content,)
 	
 	// 게시물 선택화면 - 
-	
 }

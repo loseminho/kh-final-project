@@ -6,9 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +20,9 @@ import com.google.gson.Gson;
 
 import common.FileRename;
 import kr.or.market.model.service.MarketService;
+import kr.or.market.model.vo.DogType;
 import kr.or.market.model.vo.MarketDog;
+import kr.or.market.model.vo.MarketDogFile;
 
 @Controller
 public class MarketController {
@@ -62,29 +64,43 @@ public class MarketController {
 		return "market/writeFrm";
 	}
 	@RequestMapping(value="/inputMarket.do")
-	public String inputMarket(int marketNo, MultipartFile[] photo,HttpServletRequest request) {
+	public String inputMarket(MarketDog md, MultipartFile[] photo,HttpServletRequest request) {
 		String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/market/");
-		System.out.println(marketNo);
-		System.out.println(photo.length);
-		for(MultipartFile file : photo) {
-			String filename = file.getOriginalFilename();
-			String filepath = fileRename.fileRename(savePath, filename);
-			
-			File upFile = new File(savePath+filepath);
-			try {
-				FileOutputStream fos = new FileOutputStream(upFile);
-				BufferedOutputStream bos = new BufferedOutputStream(fos);
-				byte[] bytes = file.getBytes();
-				bos.write(bytes);
-				bos.close();
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		ArrayList<MarketDogFile> list = new ArrayList<MarketDogFile>();
+		if(photo[0].isEmpty()) {
+		}else{
+			for(MultipartFile file : photo) {
+				String fileName = file.getOriginalFilename();
+				String filePath = fileRename.fileRename(savePath, fileName);
+				
+				File upFile = new File(savePath+filePath);
+				try {
+					FileOutputStream fos = new FileOutputStream(upFile);
+					BufferedOutputStream bos = new BufferedOutputStream(fos);
+					byte[] bytes = file.getBytes();
+					bos.write(bytes);
+					bos.close();
+					MarketDogFile mdf = new MarketDogFile();
+					mdf.setFilePath(filePath);
+					mdf.setFileName(fileName);
+					list.add(mdf);
+					md.setFileList(list);
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
+		int result = service.inputMarket(md);
 		return "market/saleDog";
+	}
+	@ResponseBody
+	@RequestMapping(value="/selectTypeList.do", produces="application/json;charset=utf-8")
+	public String selectTypeList() {
+		ArrayList<DogType> list = service.selectTypeList();
+		return new Gson().toJson(list);
 	}
 }
