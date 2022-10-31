@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+.photo-box {
+	margin-top:10px;
+	margin-right:10px;
+    width: 150px;
+    height: 150px;
+    border: 1px solid #ccc;
+    border-radius: 100%;
+    overflow: hidden;
+    float:left;
+}

@@ -70,4 +70,12 @@
 	<insert id="inputFile" parameterType="mdf">
 		insert into market_file_tbl values(#{marketNo},#{fileName},#{filePath})
 	</insert>
+	
+	<select id="selectFile" resultType="mdf">
+		select
+		market_no as marketNo,
+		file_name as fileName,
+		file_path as filePath
+		from market_file_tbl
+	</select>
 </mapper>

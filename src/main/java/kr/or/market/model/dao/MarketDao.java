@@ -26,7 +26,7 @@ public class MarketDao {
 	}
 
 	public ArrayList<MarketDog> fiterSelect(MarketDog md) {
-		List list = sqlSession.selectList("market.filterSelect",md); 
+		List list = sqlSession.selectList("market.filterSelect",md);
 		return (ArrayList<MarketDog>)list;
 	}
 
@@ -45,5 +45,10 @@ public class MarketDao {
 
 	public int selectMarketNo() {
 		return sqlSession.selectOne("market.selectMaxSeq");
+	}
+
+	public ArrayList<MarketDogFile> selectFile() {
+		List list = sqlSession.selectList("market.selectFile");
+		return (ArrayList<MarketDogFile>)list;
 	}
 }

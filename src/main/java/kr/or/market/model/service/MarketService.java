@@ -24,7 +24,18 @@ public class MarketService {
 	}
 
 	public ArrayList<MarketDog> filterSelect(MarketDog md) {
-		return dao.fiterSelect(md);
+		ArrayList<MarketDog>list = dao.fiterSelect(md);
+		ArrayList<MarketDogFile>fileList = dao.selectFile();
+		for(MarketDog m : list) {
+			ArrayList<MarketDogFile> inputList = new ArrayList<MarketDogFile>();
+			for(int i=0;i<fileList.size();i++) {
+				if(fileList.get(i).getMarketNo() == m.getMarketNo()) {
+					inputList.add(fileList.get(i));
+					m.setFileList(inputList);
+				}
+			}
+		}
+		return list;
 	}
 
 	public int inputMarket(MarketDog md) {
