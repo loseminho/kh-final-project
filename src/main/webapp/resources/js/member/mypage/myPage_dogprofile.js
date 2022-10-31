@@ -4,6 +4,8 @@ $("#addDog").on("click", function(){
 	$("#dogBtn").text("추가하기");
 	$("#dogType1").css("display", "none");
 	$("#dogType2").css("display", "block");
+	$("#dogType2").empty();
+	$("#dogType2").append("<option value='none' selected disabled>선택해주세요</option>")
 	
 	$("#dogNo").val("");
 	$("#dogName").prop("readonly", false);
@@ -105,4 +107,44 @@ $("#dogPhoto").on("change", function(event) {
     
     console.log(name);
     console.log(val);
+});
+
+// 정규표현식
+// 이름 (아무 글자나 1글자 이상)
+nameReg = /^[a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ]+$/;
+// 나이, 몸무게 (숫자로만 1글자 이상)
+numReg = /^[0-9]+$/;
+
+$("#dogBtn").on("click", function(){
+	// 추가하기일 경우 이름, 품종, 나이, 성별, 몸무게, 중성화, 예방접종 체크
+	// 수정하기일 경우 나이, 성별, 몸무게, 중성화, 예방접종만 체크
+
+	const btnText = $("#dogBtn").text();
+	
+	const nameVal = $("#dogName").val();
+	const ageVal = $("#dogAge").val();
+	const weightVal = $("#dogWeight").val();
+	let selectVal;
+	
+	// 성별, 중성화, 예방접종 (radio 체크했는지 확인)
+	const genderChk = $('input:radio[name=dogGender]').is(':checked');
+	const neutralChk = $('input:radio[name=dogNeutral]').is(':checked');
+	const vaccChk = $('input:radio[name=dogVacc]').is(':checked');
+	
+	if(btnText == "추가하기") { // 반려견 추가하는 경우
+		// 품종 (select 선택했는지 확인)
+		selectVal = $("#dogType2 option:selected").val();
+		
+		if(nameReg.test(nameVal) && selectVal != "none" && numReg.test(ageVal) && genderChk && numReg.test(weightVal) && neutralChk && vaccChk) {
+			alert("추가 성공");
+		} else {		
+			alert("추가 실패");
+		}
+	} else { // 반려견 수정하는 경우
+		if(numReg.test(ageVal) && genderChk && numReg.test(weightVal) && neutralChk && vaccChk) {
+			alert("수정 성공");
+		} else {		
+			alert("수정 실패");
+		}
+	}
 });
