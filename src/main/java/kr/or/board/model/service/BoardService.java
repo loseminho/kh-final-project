@@ -37,6 +37,12 @@ public class BoardService {
 		return result;
 	}
 
+	/**문의게시판 view 
+	public QnaBoard selectOneQna(int qnaNo) {
+		QnaBoard qb = dao.selectOneQna(qnaNo);
+		return null;
+	}
 
+*/
 
 }

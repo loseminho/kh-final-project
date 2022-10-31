@@ -170,7 +170,6 @@ content{
     margin: 0 auto;
     margin-top: 20px;
     padding: 0;
-    width: 1000px;
     overflow: hidden;
 }
 .qna-header{
@@ -210,9 +209,66 @@ content{
     width: 100%;
 }
 .qna-table{
-    width: 100%;
-    height: 50px;
-    text-align: center;
-    border-top: 2px solid #1e1e1e;
-    border-bottom: 2px solid #1e1e1e;
+	margin: 0 auto;
+    width: 1200px;
+    table-layout: fixed;
+    word-break: break-all;
+    height:auto;
+    background-color: #fff;
+    border-collapse: collapse;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    border-top: 2px solid #1abc9c;
+    border-bottom: 2px solid #1abc9c;
+    overflow: hidden;
 }
+.qna-table tr{
+	border-bottom: 1px solid #e1e1e1;
+}
+.qna-table tr:last-child{
+	border: none;
+}
+.qna-table th{
+	width: 100%;
+	padding: 20px;
+	text-align:center;
+	font-size: 20px;
+}
+.qna-table td{
+	padding: 20px;
+	height: auto;
+	text-align:center;
+	font-size: 18px;
+}
+.qna-table tr th{
+	background-color: #1abc9c;
+	font-family: gs-medium;
+	color: #fff;
+}
+.qna-table th,td:first-child{
+	width: 7%;
+}
+/*
+.qna-table tr th:last-child{
+	width: 80px;
+}
+.qna-table tr th:nth-child(3){
+	width: 40%;
+}
+.qna-table tr th:nth-child(3){
+	width: 40%;
+}
+.qna-table tr:first-child{
+	display:flex;
+}
+.qna-table tr th:last-child{
+	width: 10%;
+}
+.qna-table tr th:nth-child(2){
+	width: 10%;
+}
+.qna-table tr th:nth-child(3){
+	width: 40%;
+}
+
+*/
