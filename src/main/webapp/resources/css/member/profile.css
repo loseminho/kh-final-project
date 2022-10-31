@@ -1,18 +1,18 @@
-.content-wrap{
+.profile-content-wrap{
 	display: flex;
 }
 
-.content{
+.profile-content{
 	width: 620px;
 	margin-top: 180px;
 	margin-bottom: 100px;
 }
 
-.left{
+.profile-left{
 	width: calc(calc(100% - 620px) / 2);
 }
 
-.right{
+.profile-right{
 	width: calc(calc(100% - 620px) / 2);
 	height: 100%;
 	margin-top: 516px;
@@ -24,7 +24,7 @@
 	overflow: auto;
 }
 
-.photo-box{
+.profile-photo-box{
     width: 198px;
     height: 198px;
     float: left;
@@ -32,13 +32,13 @@
     border: 1px solid black;
 }
 
-.photo{
+.profile-photo{
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.person-intro{
+.person-introduce{
 	width: 398px;
     height: 198px;
     float: right;

@@ -15,4 +15,9 @@ public class WalkController {
 	public String walkMate() {
 		return "walkmate/walkMateFrm";
 	}
+	
+	@RequestMapping(value="/walkMetePage.do")
+	public String walkMetePage() {
+		return "walkmate/walkMetePage";
+	}
 }

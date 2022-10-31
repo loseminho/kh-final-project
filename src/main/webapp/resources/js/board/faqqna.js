@@ -67,7 +67,6 @@ $("#allQnaAjax").on("click",function(){
         url : "/allQnaAjax.do?reqPage=1",
         type : "post",
         success : function(data){
-        console.log(data);
             const table = $("<table>");
             table.attr('class','qna-table');
             const titleTr = $("<tr>");
@@ -77,8 +76,8 @@ $("#allQnaAjax").on("click",function(){
             table.append(titleTr);
             for(let i=0; i<data.length; i++){
                 const tr = $("<tr>");
+                tr.attr('class','qna-row');
                 tr.append("<td>"+data[i].qnaNo+"</td>");
-                
               if(data[i].qnaCateNo == 1) {
               	tr.append("<td>"+"산책메이트 찾기"+"</td>"); 
               }
@@ -93,8 +92,7 @@ $("#allQnaAjax").on("click",function(){
               }
               if(data[i].qnaCateNo == 5) {
               	tr.append("<td>"+"기타"+"</td>"); 
-              }
-                tr.append("<td>"+data[i].qnaCateNo+"</td>");     
+              } 
                 tr.append("<td>"+data[i].qnaTitle+"</td>");
                 tr.append("<td>"+data[i].qnaWriter+"</td>");
               
@@ -104,14 +102,12 @@ $("#allQnaAjax").on("click",function(){
               if(data[i].qnaStatus == 2) {
               	tr.append("<td>"+"답변완료"+"</td>"); 
               }
-                tr.append("<td>"+data[i].qnaStatus+"</td>");
                 tr.append("<td>"+data[i].qnaDate+"</td>");
                 tr.append("<td>"+data[i].qnaViews+"</td>");
                 table.append(tr);
                 
                 
             }
-            console.log(data);
             $("#qnaAjaxResult").html(table);
         }
     });
@@ -124,3 +120,4 @@ $("#writeQna").on("click",function(){
 	location.href="/writeQnaFrm.do"
 });
 
+/* qnaview  폼 이동 */
