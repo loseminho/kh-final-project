@@ -294,11 +294,7 @@
 	                </div>
                 </div>                
                 <!--모달 컨텐츠 끝(post-myinfo)-->
-
-
             </div>
-            
-
         </div>
         <!--End Content Modal-->
 
@@ -342,61 +338,8 @@
                     </select>
                     <input type="button" onclick="modalWritePostOn();" value="모임 만들기" class="write-modal">
                 </div>
-                <ul>
-                    <li>
-                        <div class="bottom-list-box" onclick="walkMate();">
-                            <div class="box-list-num">
-                                1
-                            </div>
-                            <div class="box-list-tag">
-                                <div class="tag-wrapper">
-                                    <div class="tag-box" id="tag1">1:1 산책</div>
-                                    <div class="tag-box" id="tag2">N:N 산책</div>
-                                    <div class="tag-box" id="tag3">인증된 모임</div>
-                                    <div class="tag-box" id="tag4">산책할개 문화</div>
-                                    <div class="tag-box" id="tag5">산책할개 문화</div>
-                                    <div class="tag-box" id="tag6">산책할개 문화</div>
-                                </div>
-                            </div>
-                            <div class="box-list-main">
-                                <div class="box-list-main-title">골든 리트리버 팟 구해요~</div>
-                                <div class="box-list-main-name">
-                                   	 사과는 맛있어 맛있으면 바나나 바나나는 높아 높으면 민머리
-                                </div>
-                            </div>
-                            <div class="box-list-limit">
-                                <div class="limit-box">1 / 5</div>
-                            </div>
-                            <div class="box-list-stat">
-                                <input type="button" id="stat-box" class="stat-box" onclick="walkMyinfo();" value="신청">
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="bottom-list-box">
-                            <div class="box-list-num">2</div>
-                            <div class="box-list-tag"></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="bottom-list-box">
-                            <div class="box-list-num">3</div>
-                            <div class="box-list-tag"></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="bottom-list-box">
-                            <div class="box-list-num">4</div>
-                            <div class="box-list-tag"></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="bottom-list-box">
-                            <div class="box-list-num">5</div>
-                            <div class="box-list-tag"></div>
-                        </div>
-                    </li>
-                </ul>
+                <ul></ul>
+                
             </section>
             <!-- End content-bottom section -->
         </div>
@@ -507,5 +450,6 @@
       
         modalOff();
     </script>
+    <script src="/resources/js/walk/walk.js"></script>
 </body>
 </html>
