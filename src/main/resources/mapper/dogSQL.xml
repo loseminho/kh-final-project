@@ -49,4 +49,16 @@
 	<delete id="deleteMyDog" parameterType="int">
 		delete from dog_tbl where dog_no = #{_parameter}
 	</delete>
+	
+	<update id="updateMyDog" parameterType="d">
+		update dog_tbl 
+		set 
+			dog_age = #{dogAge}, 
+			dog_gender = #{dogGender},
+			dog_weight = #{dogWeight},
+			dog_neutral = #{dogNeutral},
+			dog_vacc = #{dogVacc},
+			dog_photo = #{dogPhoto}
+		where dog_no = #{dogNo}
+	</update>
 </mapper>

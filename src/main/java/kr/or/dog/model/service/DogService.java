@@ -37,5 +37,10 @@ public class DogService {
 	public int deleteMyDog(int dogNo) {
 		return dao.deleteMyDog(dogNo);
 	}
+
+	@Transactional
+	public int updateMyDog(Dog d) {
+		return dao.updateMyDog(d);
+	}
 	
 }

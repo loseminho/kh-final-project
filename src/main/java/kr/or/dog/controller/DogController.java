@@ -67,7 +67,6 @@ public class DogController {
 	
 	@RequestMapping(value="/insertMyDog.do")
 	public String insertMyDog(Dog d, MultipartFile[] photo2, HttpServletRequest request, Model model) {
-		System.out.println(d);
 		String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/dog/");
 		
 		if(photo2 != null) {
@@ -107,7 +106,43 @@ public class DogController {
 		int result = service.deleteMyDog(dogNo);
 		if(result > 0) {
 			model.addAttribute("title", "정보 삭제 완료");
-			model.addAttribute("msg", "반려견 장보가 삭제되었습니다.");
+			model.addAttribute("msg", "반려견 정보가 삭제되었습니다.");
+			model.addAttribute("icon", "success");
+			model.addAttribute("loc", "/myPage.do");
+			return "common/msg";
+		} else {
+			return "redirect:/";
+		}
+	}
+	
+	@RequestMapping(value="/updateMyDog.do")
+	public String updateMyDog(Dog d, MultipartFile[] photo2, HttpServletRequest request, Model model) {
+		String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/dog/");
+		
+		if(photo2 != null) {
+			for(MultipartFile file : photo2) {
+				String filename = file.getOriginalFilename();
+				String filepath = fileRename.fileRename(savePath, filename);
+				File upFile = new File(savePath + filepath);
+				try {
+					FileOutputStream fos = new FileOutputStream(upFile);
+					BufferedOutputStream bos = new BufferedOutputStream(fos);
+					byte[] bytes = file.getBytes();
+					bos.write(bytes);
+					bos.close();
+					d.setDogPhoto(filepath);
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			} // forEach문 끝		
+		}
+		
+		int result = service.updateMyDog(d);
+		if(result > 0) {
+			model.addAttribute("title", "정보 수정 완료");
+			model.addAttribute("msg", "반려견 정보가 수정되었습니다.");
 			model.addAttribute("icon", "success");
 			model.addAttribute("loc", "/myPage.do");
 			return "common/msg";
