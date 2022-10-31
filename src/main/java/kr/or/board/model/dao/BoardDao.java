@@ -33,10 +33,9 @@ public class BoardDao {
 	public int insertFile(QnaFile qf) {
 		return sqlsession.insert("qnaboard.insertFile",qf);
 	}
-	/*문의내역 view
+	/*문의내역 view */
 	public QnaBoard selectOneQna(int qnaNo) {
 		return sqlsession.selectOne("qnaboard.selectOneQna",qnaNo);
 	}
-	*/
 	
 }

@@ -121,3 +121,11 @@ $("#writeQna").on("click",function(){
 });
 
 /* qnaview  폼 이동 */
+$(document).on("click",".qna-row",function(){
+	const tr = $(".qna-row");
+	var idx = tr.index(this);
+	console.log(idx);
+	console.log(tr.eq(idx).children().first().text());
+	$("#qnaBoardNo").val(tr.eq(idx).children().first().text());
+	$("#qnaViewFrm").submit();
+});

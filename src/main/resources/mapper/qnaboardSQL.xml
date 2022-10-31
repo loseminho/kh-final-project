@@ -22,7 +22,33 @@
 </select>
 <insert id="insertFile" parameterType="qf">
 	insert into qna_file_tbl values(
-		qna_file_seq.nextval,#{boardNo},#{filename},#{filepath}
+		qna_file_seq.nextval,#{qnaNo},#{filename},#{filepath}
 	)
 </insert>
+<select id="selectFileList" parameterType="_int" resultType="qf">
+		select
+			file_no as fileNo,
+			qna_no as qnaNo,
+			filename,
+			filepath
+		from qna_file_tbl where qna_no = #{_parameter}
+</select>
+<select id="selectOneQna" parameterType="_int" resultMap="getQnaBoard">
+ select * from qna_tbl
+ where qna_no = #{_parameter}
+</select>
+	<resultMap type="q" id="getQnaBoard">
+		<result column="qna_no" property="qnaNo"/>
+		<result column="qna_title" property="qnaTitle"/>
+		<result column="qna_writer" property="qnaWriter"/>
+		<result column="qna_content" property="qnaContent"/>
+		<result column="qna_views" property="qnaViews"/>
+		<result column="qna_date" property="qnaDate"/>
+		<collection property="fileList"
+			select="selectFileList"
+			column = "qna_no"
+			ofType="qf"
+			javaType="java.util.ArrayList"
+		/>
+	</resultMap>
 </mapper>
