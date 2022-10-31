@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class QnaFile {
 	private int fileNo;
-	private int boardNo;
+	private int qnaNo;
 	private String filename;
 	private String filepath;
 }

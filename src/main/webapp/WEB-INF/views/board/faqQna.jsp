@@ -147,6 +147,10 @@
 			</div>
 			<!--faq-box 끝-->
 			<div class="qna-box">
+			<!-- 상세보기 이동 form -->
+				<form action="/qnaView.do" method="post" id="qnaViewFrm">
+				<input type="hidden" id="qnaBoardNo" type="text" name=qnaNo value="">
+				</form>
 				<div class="qna-content">
 					<div class="qna-header">
 						<p>문의하신 내용에 대한 답변은 업무일 기준으로 2~3일 정도 소요 될 수 있습니다.</p>
