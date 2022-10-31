@@ -1,0 +1,174 @@
+.dogprofile {
+    position: relative;
+    width: 100%;
+    /* background-color: rebeccapurple; */
+}
+
+.dogprofile > h1 {
+   position: absolute;
+   top: 20px;
+   left: 0;
+}
+
+.dogprofile #addDog {
+    position: absolute;
+    top: 40px;
+    right: 0;
+}
+
+.dogprofile #dog-wrap {
+    width: 100%;
+    position: absolute;
+    top: 80px;
+    left: 0;
+}
+
+.dogprofile .box {
+    width: 180px;
+    height: 180px;
+    margin: 0 20px 20px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+    border-radius: 20px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    box-shadow: 0 5px 10px 0 rgba(77, 79, 109, 0.37);
+    display: inline-block;
+}
+
+.dogprofile .box a {
+    display: block;
+    text-decoration: none;
+    color:black
+}
+
+.dogprofile .box .photo {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+}
+
+.dogprofile .box .photo img {
+    max-width: 100%;
+    border-radius: 20px;
+}
+
+.dogprofile .box h3 {
+    margin: 5px 0 0 0;
+}
+
+/* 강아지 사진 영역 */
+.dogprofile #photo-section{
+	width : 300px;
+	height: 300px;
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.dogprofile #photo-section #dogPhotoBtn {
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.dogprofile .photo-box {
+    width: 250px;
+    height: 250px;
+    border: 1px solid #ccc;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.dogprofile .photo-box > img {
+    max-width: 100%;
+}
+
+.dogprofile .photo-box > label {
+	display:block;
+}
+
+/* 프로필 정보 영역 */
+.dogprofile #info-section{
+	width: 650px;
+}
+
+.dogprofile #info-section .info-box {
+	width: 300px;
+	display:inline-block;
+	margin: 25px auto;
+}
+
+.dogprofile .info-box > label {
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.dogprofile .info-box > label > span {
+	color: red;
+}
+
+.dogprofile .info-box > .input {
+    width: 230px;
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    background-color: transparent;
+    padding-left: 10px;
+    font-size: 16px;
+    outline: none;
+    text-align:center;
+}
+
+.dogprofile .info-box > .shortInput {
+	width: 200px;
+}
+
+
+/* 모달창 */
+.dogprofile .modal-wrapper{
+	position : fixed;
+	width:100vw;
+	height:100vh;
+	top:0;
+	left:0;
+	display:none;
+	justify-content:center;
+	align-items:center;
+	background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(1.5px);
+    -webkit-backdrop-filter: blur(1.5px);
+    z-index:9999;
+}
+
+.dogprofile .modal{
+	width:700px;
+	/* height:150px; */
+	background-color:#fff;
+	z-index: 100;
+	backdrop-filter: blur( 13.5px );
+    -webkit-backdrop-filter: blur( 13.5px );
+    border-radius: 21px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    background: white;
+}
+
+.dogprofile .modal-header{
+	padding:10px;
+	text-align : right;
+	/*color : #1abc9c;*/
+}
+
+.dogprofile .modal-header > h3 {
+	text-align : center;
+}
+
+.dogprofile .modal-content{
+	padding: 20px 20px 40px 20px;
+	text-align : center;
+}

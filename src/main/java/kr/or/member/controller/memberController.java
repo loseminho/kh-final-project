@@ -1,7 +1,11 @@
 package kr.or.member.controller;
 
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -20,12 +24,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import common.FileRename;
+import kr.or.dog.controller.DogController;
 import kr.or.member.model.service.MemberService;
 import kr.or.member.model.service.MessageService;
 import kr.or.member.model.vo.Member;
@@ -36,6 +45,8 @@ public class memberController {
 	private MemberService service;
 	@Autowired
 	private MessageService msgService;
+	@Autowired
+	private FileRename fileRename;
 	
 	@RequestMapping(value="/loginFrm.do")
 	public String loginFrm() {
@@ -234,17 +245,25 @@ public class memberController {
 			service.kakaoLogout((String)session.getAttribute("access_Token"));			
 		}
 		session.invalidate();
-		System.out.println("로그아웃 완료");
 		return "redirect:/";
 	}
 	
 	@RequestMapping(value="/kakaoUnlink.do")
-	public String unlink(HttpSession session) {
+	public String unlink(HttpSession session, Model model) {
 		Member m = (Member)session.getAttribute("m");
 		String memberId = m.getMemberId();
 		int result = service.kakaoUnlink((String)session.getAttribute("access_Token"), memberId);
-		session.invalidate();
-		return "redirect:/";
+		if(result > 0) {
+			session.invalidate();
+			model.addAttribute("title", "탈퇴 완료");
+			model.addAttribute("msg", "회원 탈퇴가 완료되었습니다.");
+			model.addAttribute("icon", "success");
+			model.addAttribute("loc", "/");
+			return "common/msg";
+		} else {
+			session.invalidate();
+			return "redirect:/";
+		}
 	}
 	
 	@ResponseBody
@@ -253,7 +272,7 @@ public class memberController {
 		Member m = service.selectOneMemberEnc(member);
 		if(m!=null) {
 			session.setAttribute("m", m);
-			return "success";
+			return "success";				
 		} else {
 			return "fail";
 		}
@@ -325,14 +344,29 @@ public class memberController {
 	}
 	
 	@RequestMapping(value="/updatePw.do")
-	public String updatePw(String updatePw, HttpSession session) {
-		Member m = (Member)session.getAttribute("updatePw");
-		m.setMemberPw(updatePw);
-		int result = service.updatePwEnc(m);
-		if(result > 0) {
-			return "member/updatePwSuccess";			
-		} else {
-			return "redirect:/";
+	public String updatePw(String updatePw, HttpSession session, Model model) {
+		Member m = (Member)session.getAttribute("m");
+		if(m == null) { // 로그인 안 한 상태에서 비밀번호 찾기일 때
+			m = (Member)session.getAttribute("updatePw");
+			m.setMemberPw(updatePw);
+			int result = service.updatePwEnc(m);
+			if(result > 0) {
+				return "member/updatePwSuccess";			
+			} else {
+				return "redirect:/";
+			}
+		} else { // 로그인한 회원이 비밀번호 변경할 때
+			m.setMemberPw(updatePw);
+			int result = service.updatePwEnc(m);
+			if(result > 0) {
+				model.addAttribute("title", "변경 완료");
+				model.addAttribute("msg", "비밀번호가 변경되었습니다.");
+				model.addAttribute("icon", "success");
+				model.addAttribute("loc", "/myPage.do");
+				return "common/msg";			
+			} else {
+				return "redirect:/updatePwFrm.do";
+			}
 		}
 	}
 	
@@ -372,9 +406,82 @@ public class memberController {
 			return "possible";
 		}
 	}
+	
 	@RequestMapping(value="/myPage.do")
 	public String myPage(@SessionAttribute Member m) {
-		return "member/myPage";
+//		return "member/myPage";
+		return "redirect:/selectMyDogList.do";
 	}
 	
+	@RequestMapping(value="/updateMember.do")
+	public String updateMember(Member m, MultipartFile[] photo, HttpSession session, HttpServletRequest request, Model model) {
+		String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/member/");
+		
+		if(photo != null) {
+			for(MultipartFile file : photo) {
+				String filename = file.getOriginalFilename();
+				String filepath = fileRename.fileRename(savePath, filename);
+				File upFile = new File(savePath + filepath);
+				try {
+					FileOutputStream fos = new FileOutputStream(upFile);
+					BufferedOutputStream bos = new BufferedOutputStream(fos);
+					byte[] bytes = file.getBytes();
+					bos.write(bytes);
+					bos.close();
+					m.setMemberPhoto(filepath);
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			} // forEach문 끝		
+		}
+		
+		int result = service.updateMember(m);
+		if(result > 0) {
+			Member member = service.selectOneMemberEnc(m);
+			session.setAttribute("m", member);
+			model.addAttribute("title", "수정 완료");
+			model.addAttribute("msg", "수정이 완료되었습니다.");
+			model.addAttribute("icon", "success");
+			model.addAttribute("loc", "/myPage.do");
+			return "common/msg";
+		} else {			
+			return "redirect:/";
+		}
+	}
+	
+	@RequestMapping(value="/showProfile.do")
+	public String showProfile() {
+		return "member/profile";
+	}
+	
+	@RequestMapping(value="/deleteMember.do")
+	public String deleteMember(String memberId, Model model) {
+		int result = service.deleteMember(memberId);
+		if(result > 0) {
+			model.addAttribute("title", "탈퇴 완료");
+			model.addAttribute("msg", "회원 탈퇴가 완료되었습니다.");
+			model.addAttribute("icon", "success");
+			model.addAttribute("loc", "/logout.do");
+			return "common/msg";
+		} else {
+			return "redirect:/myPage.do";
+		}
+	}
+	
+	@RequestMapping(value="/currentPw.do")
+	public String currentPw() {
+		return "member/currentPwFrm";
+	}
+	
+	@RequestMapping(value="/checkPw.do")
+	public String checkPw(Member m) {
+		Member member = service.selectOneMemberEnc(m);
+		if(member != null) {
+			return "redirect:/updatePwFrm.do";
+		} else {
+			return "redirect:/currentPw.do";
+		}
+	}
 }

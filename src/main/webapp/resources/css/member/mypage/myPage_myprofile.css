@@ -26,7 +26,7 @@ input, button, #photoBtn {
 }
 
 /* 프로필 사진 영역 */
-#photo-section {
+.myprofile #photo-section {
     width: 200px;
     height: 200px;
     display: flex;
@@ -39,13 +39,13 @@ input, button, #photoBtn {
     /* background-color: rebeccapurple; */
 }
 
-#photo-section #photoBtn {
+.myprofile #photo-section #photoBtn {
     display: block;
     margin: 0 auto;
     margin-top: 10px;
 }
 
-.photo-box {
+.myprofile .photo-box {
     width: 150px;
     height: 150px;
     border: 1px solid #ccc;
@@ -53,17 +53,17 @@ input, button, #photoBtn {
     overflow: hidden;
 }
 
-.photo-box > img {
+.myprofile .photo-box > img {
     max-width: 100%;
 }
 
-.photo-box > label {
+.myprofile .photo-box > label {
 	display:block;
 }
 
 
 /* 프로필 정보 영역 */
-#info-section {
+.myprofile #info-section {
     width: 650px;
     position: absolute;
     top: 90px;
@@ -71,23 +71,23 @@ input, button, #photoBtn {
     /* background-color: green; */
 }
 
-.box {
+.myprofile .box {
     height: 40px;
     margin-bottom: 15px;
 }
 
-.box > label {
+.myprofile .box > label {
     display: inline-block;
     width: 100px;
     text-align: center;
     font-size: 14px;
 }
 
-.box > label > span {
+.myprofile .box > label > span {
 	color: red;
 }
 
-.box > .input {
+.myprofile .box > .input {
     width: 230px;
     height: 30px;
     border: none;
@@ -100,7 +100,7 @@ input, button, #photoBtn {
 
 /* 자기소개 및 버튼 영역 */
 
-#last-section {
+.myprofile #last-section {
     width: 650px;
     position: absolute;
     top: 330px;
@@ -108,18 +108,18 @@ input, button, #photoBtn {
     /* background-color: rebeccapurple; */
 }
 
-.intro-box{
+.myprofile .intro-box{
     height: 50px;
     margin-bottom: 50px;
 }
 
-.intro-box > label {
+.myprofile .intro-box > label {
     display: block;
     margin-bottom: 10px;
     font-size: 14px;
 }
 
-.intro-box > textarea {
+.myprofile .intro-box > textarea {
     border: 1px solid #ccc;
     width: 650px;
     height: 40px;
@@ -131,7 +131,7 @@ input, button, #photoBtn {
 	font-family:gs-Medium;
 }
 
-.btn {
+.myprofile .btn {
     width: 300px;
     height: 45px;
     margin-top: 30px;
@@ -143,49 +143,56 @@ input, button, #photoBtn {
     font-size: 14px;
 }
 
-.comment {
-	display:block;
+.myprofile .comment {
     font-size: 12px;
     color: red;
     padding: 5px;
 }
 
-.verifyBox {
+.myprofile #nameComment {
+	display:inline-block;
+}
+
+.myprofile #phoneComment {
+	display:block;
+}
+
+.myprofile .verifyBox {
 	width:300px;
 	height:30px;
 	margin:0 auto;
 }
 
-.verifyInput {
+.myprofile .verifyInput {
 	width:100px;
 }
 
-#timeZone {
+.myprofile #timeZone {
 	display:inline-block;
 	width: 70px;
 }
 
-.verifyMsg {
+.myprofile .verifyMsg {
 	margin:5px 0;
 	display:block;
 }
 
-.btn-box {
+.myprofile .btn-box {
     text-align: center;
 }
 
-.link-box {
+.myprofile .link-box {
     text-align: right;
 }
 
-.link-box > a {
+.myprofile .link-box > a {
     margin-top: 10px;
     font-size: 12px;
     text-decoration: none;
     color: #616568;
 }
 
-.link-box > a:hover {
+.myprofile .link-box > a:hover {
     text-decoration: underline;
 }
 
@@ -193,31 +200,41 @@ input, button, #photoBtn {
 
 /* 전화번호 모달창 */
 
-.modal-wrapper{
+.myprofile .modal-wrapper{
 	position : fixed;
 	width:100vw;
 	height:100vh;
-	background-color:rgba(0,0,0,0.5);
 	top:0;
 	left:0;
 	display:none;
 	justify-content:center;
 	align-items:center;
+	background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(1.5px);
+    -webkit-backdrop-filter: blur(1.5px);
+    z-index:9999;
 }
 
-.modal{
+.myprofile .modal{
 	width:350px;
-	min-height:150px;
+	height:150px;
 	background-color:#fff;
+	z-index: 100;
+	backdrop-filter: blur( 13.5px );
+    -webkit-backdrop-filter: blur( 13.5px );
+    border-radius: 21px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    background: white;
 }
 
-.modal-header{
+.myprofile .modal-header{
 	padding:10px;
 	text-align : right;
 	/*color : #1abc9c;*/
 }
 
-.modal-content{
-	padding: 0px 20px 40px 20px;
+.myprofile .modal-content{
+	padding: 10px 20px 40px 20px;
 	text-align : center;
 }

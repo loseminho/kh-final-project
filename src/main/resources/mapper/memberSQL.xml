@@ -28,7 +28,7 @@
 		values(MEMBER_SEQ.NEXTVAL, #{memberId}, #{memberNickname}, #{memberPhone}, NULL, NULL, NULL, NULL, TO_CHAR(SYSDATE, 'YYYY-MM-DD'), 1, '카카오')
 	</insert>
 	
-	<delete id="deleteKakao" parameterType="string">
+	<delete id="deleteMember" parameterType="string">
 		delete from member_tbl where member_id = #{_parameter}
 	</delete>
 	
@@ -58,4 +58,19 @@
 		from member_tbl
 		where member_phone = #{memberPhone}
 	</select>
+	
+	<update id="updateMember" parameterType="m">
+		update member_tbl
+		set 
+			<if test="memberPhoto != null">
+			member_photo = #{memberPhoto},
+			</if>
+			member_nickname = #{memberNickname},
+			<if test="memberPhone != null">
+			member_phone = #{memberPhone},
+			</if>
+			member_city = #{memberCity},
+			member_intro = #{memberIntro}
+		where member_id = #{memberId}
+	</update>
 </mapper>

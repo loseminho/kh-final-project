@@ -47,6 +47,9 @@ $("#memberPw").focusout(function() {
 // 아이디(이메일) 정규표현식
 const idReg = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 
+//비밀번호 정규식
+const pwReg = /^(?=.*?[a-zA-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,12}$/;
+
 $(".btn").on("click", function(){
 	const idVal = $("#memberId").val();
 	const pwVal = $("#memberPw").val();
@@ -64,11 +67,12 @@ $(".btn").on("click", function(){
     
 	if (pwVal == "") {
 		pwComment.text("비밀번호를 입력해주세요.");
-	} 
+	} else if (!pwReg.test(pwVal)) { // 정규표현식을 만족하지 않는다면
+        pwComment.text("영문, 숫자, 특수문자 포함 8~12자리 입력");
+    }
 	
-	if(idReg.test(idVal) && (pwVal != "")) {
+	if(idReg.test(idVal) && pwReg.test(pwVal)) {
 		login();
-		
 	}
 });
 

@@ -75,7 +75,7 @@ public class MemberService {
 	        }
 	        System.out.println(result);
 	        
-	        deleteResult = dao.deleteKakao(memberId);
+	        deleteResult = dao.deleteMember(memberId);
 	    } catch (IOException e) {
 	        e.printStackTrace();
 	    }
@@ -103,6 +103,16 @@ public class MemberService {
 
 	public Member checkPhone(Member m) {
 		return dao.checkPhone(m);
+	}
+
+	@Transactional
+	public int updateMember(Member m) {
+		return dao.updateMember(m);
+	}
+
+	@Transactional
+	public int deleteMember(String memberId) {
+		return dao.deleteMember(memberId);
 	}
 
 }

@@ -287,6 +287,19 @@ content{
 	background: rgba(255, 255, 255, 0.25);
 	backdrop-filter: blur(1.5px);
 }
+#write-modal-wrap{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	position: fixed;
+	top:0;
+	left:0;
+	height: 100vh;
+	width: 100vw;
+	z-index:9999;
+	background: rgba(255, 255, 255, 0.25);
+	backdrop-filter: blur(1.5px);
+}
 
 .modal-content{
 	overflow:scroll;
@@ -421,4 +434,30 @@ content{
 	background-color: #1abc9c;
 	border:none;
 	border-radius: 10px;
+}
+
+.market-list-title{
+	width:700px;
+	height:50px;
+	margin:0 auto;
+	margin-top:10px;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.market-list-title>div{
+	font-family:gs-Medium;
+	font-size:25px;
+	width:650px;
+	height: 50px;
+	line-height:50px;
+}
+.market-list-title>button{
+	widht: 50px;
+	height: 30px;
+	border: none;
+	border-bottom: 2px solid black;
+	cursor: pointer;
 }

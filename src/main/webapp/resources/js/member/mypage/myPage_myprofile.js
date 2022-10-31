@@ -11,7 +11,14 @@ $("#memberPhoto").on("change", function(event) {
         $("#preview").attr("src", e.target.result);
     }
     reader.readAsDataURL(file);
-    //const val = $(this).val();
+    
+    const val = $(this).val();
+    if(val != null) {
+    	$("#memberPhoto").attr("name", "photo");
+    }
+    const name = $("#memberPhoto").attr("name");
+    
+    //console.log(name);
     //console.log(val);
 });
  
@@ -20,12 +27,7 @@ $("#memberPhoto").on("change", function(event) {
 function searchAddr() {
     new daum.Postcode({
         oncomplete: function(data) {
-            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
-            // 예제를 참고하여 다양한 활용법을 확인해 보세요.
-            // console.log(data);
-            // $("#postcode").val(data.zonecode);
             $("#memberCity").val(data.sido + " " + data.sigungu);
-            // $("#shippingAddr2").focus();
         }
     }).open();
 }
@@ -47,7 +49,9 @@ $("#changeBtn").on("click", function(){
 	phoneModal();
 });
 
-function closeModal() {
+function closePhoneModal() {
+	$("#timeZone").html("");
+	$("#verifyBtn").hide();
 	$("#phone-modal").hide();
 }
 
@@ -91,15 +95,14 @@ function timeCount() {
 $("#verifyBtn").on("click", function(){
 	const inputValue = $(".verifyInput").val();
 	$(".verifyMsg").text("");
-	// console.log(inputValue);
 	if(resultCode != null){
 		if(inputValue == resultCode) {
 			$(".verifyMsg").append("인증 성공<i class='fa-solid fa-circle-check'></i>");
 			$(".verifyMsg").css("color", "#1abc9c");
 			clearInterval(intervalId); // 시간 카운트 함수 멈춤
 			$("#verifyChk").val("true");
-			$(".verifyInput").attr("disabled", true);
 			$("#newPhone").attr("disabled", true);
+			$(".verifyInput").hide();
 			$("#timeZone").hide();
 			$("#verifyBtn").hide();
 			$("#sendBtn").hide();
@@ -115,7 +118,7 @@ $("#verifyBtn").on("click", function(){
 $("#changePhoneBtn").on("click", function(){
 	const inputValue = $("#newPhone").val();
 	$("#memberPhone").val(inputValue);
-	closeModal();
+	closePhoneModal();
 })
 
 function sendMsg() {
@@ -163,6 +166,65 @@ $("#sendBtn").on("click", function() {
     }
 });
 
-$(".btn").on("click", function(){
+$("#updateBtn").on("click", function(){
+	const nameVal = $("#memberNickname").val();
+	const nameComment = $("#nameComment");
+	const verifyChk = $("#verifyChk");
+	nameComment.text("");
 	
+	if(nameVal == "") {
+		nameComment.text("이름을 입력해주세요.");
+	} else {
+		if(verifyChk.val()) {
+			Swal.fire({
+	            title: '회원 정보 수정',
+	            text: "회원 정보를 수정하시겠습니까?",
+	            icon: 'warning',
+	            showCancelButton: true,
+	            confirmButtonColor: '#1abc9c',
+	            cancelButtonColor: '#ccc',
+	            confirmButtonText: '수정',
+	            cancelButtonText: '취소'
+	        }).then((result) => {
+	            if (result.isConfirmed) {
+					verifyChk.prev().attr("name", "memberPhone");
+					$("#updateMemberForm").submit();
+	            }
+	        })
+		}
+	}
 });
+
+function deleteMember(memberId) {
+	Swal.fire({
+        title: '회원 탈퇴',
+        text: "탈퇴하시겠습니까?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#ccc',
+        confirmButtonText: '탈퇴',
+        cancelButtonText: '취소'
+    }).then((result) => {
+        if (result.isConfirmed) {
+			location.href="/deleteMember.do?memberId="+memberId;
+        }
+    })
+}
+
+function deleteKakao() {
+	Swal.fire({
+        title: '회원 탈퇴',
+        text: "탈퇴하시겠습니까?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#ccc',
+        confirmButtonText: '탈퇴',
+        cancelButtonText: '취소'
+    }).then((result) => {
+        if (result.isConfirmed) {
+			location.href="/kakaoUnlink.do";
+        }
+    })
+}

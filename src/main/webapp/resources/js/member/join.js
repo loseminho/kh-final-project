@@ -243,7 +243,7 @@ $("#verifyBtn").on("click", function(){
 			$("#memberPhone").attr("readonly", true);
 			$("#memberId").attr("readonly", true);
 			$("#memberPhone").removeClass("shortInput");
-			$(".verifyInput").attr("disabled", true);
+			$(".verifyInput").hide();
 			$("#timeZone").hide();
 			$("#verifyBtn").hide;
 			$("#sendBtn").hide();
@@ -270,6 +270,7 @@ function sendMsg() {
         	$(".verifyInput").val("");
         	$(".verifyMsg").text("");
         	resultCode = data;
+        	console.log(resultCode);
         	verifyCount();
         }
     });
