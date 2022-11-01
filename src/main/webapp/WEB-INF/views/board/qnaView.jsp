@@ -54,7 +54,7 @@
                 </table>
                 <!--댓글 등록-->
                 <div class="inputComment-box">
-                    <form action="insertQnaComment" method="post">
+                    <form action="/insertQnaComment.do" method="post">
                         <ul class="comment-box">
                             <li><span class="material-symbols-outlined">pets</span></li>
                             <li>
