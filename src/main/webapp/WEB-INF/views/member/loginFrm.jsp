@@ -35,7 +35,7 @@
                         <input type="password" name="memberPw" id="memberPw" class="input">
                     </div>
                     <div class="btn-box">
-                        <button type="button" class="btn">로그인</button>
+                        <button type="button" class="btn" id="loginBtn">로그인</button>
                         <div class="link-box">
                             <a href="/findIdFrm.do">아이디(이메일) 찾기</a>
                             <a href="/findPwFrm.do">비밀번호 찾기</a>
