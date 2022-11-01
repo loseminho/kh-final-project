@@ -58,6 +58,7 @@ function closePhoneModal() {
 //휴대전화 정규식
 const phoneReg = /^010-\d{4}-\d{4}$/;
 
+let intervalId;
 function verifyCount() {
 	const span = $("#timeZone");
 	span.html("<span id='min'>3</span> : <span id='sec'>00</span>");
@@ -128,6 +129,9 @@ function sendMsg() {
         type : 'post',
         data : {memberPhone : phVal},
         success : function(data){
+        	if(intervalId != undefined) {
+	        	clearInterval(intervalId);
+        	}
 			$("#timeZone").show();
 			$("#verifyBtn").show();
         	$(".verifyInput").show();
