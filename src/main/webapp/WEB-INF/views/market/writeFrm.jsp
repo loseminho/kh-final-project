@@ -27,8 +27,19 @@
 			<br>
 		<form action="/inputMarket.do" method="post" enctype="multipart/form-data">
 			<div class="sub-title"><span>*</span>사진</div>
-			<div class="row-part">
-				<input type="file" name="photo" multiple>
+			<div class="row-part" style="height:150px;">
+				<div class="preview-box">
+				<input id="imageFile"  type="file" name="photo" style="display:none;">
+				<img src="" id="preview">
+				</div>
+				<div class="preview-box">
+				<input id="imageFile"  type="file" name="photo" style="display:none;">
+				<img src="" id="preview">
+				</div>
+				<div class="preview-box">
+				<input id="imageFile" type="file" name="photo" style="display:none;">
+				<img src="" id="preview">
+				</div>
 			</div>
 			<div class="row-part">
 			<div class="sub-title"><span>*</span>품종선택 :</div>
