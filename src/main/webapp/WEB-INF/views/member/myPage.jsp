@@ -20,9 +20,8 @@
 	                <li>
 	                    <a href="#">신고</a>
 	                    <ul class="sub-menu">
-	                        <li class="section"><a href="#">- 신고하기</a></li>
-	                        <li class="section"><a href="#">- 신고한 기록</a></li>
-	                        <li class="section"><a href="#">- 신고 받은 기록</a></li>
+	                        <li class="section"><a href="#">- 신고 내역</a></li>
+	                        <li class="section"><a href="#">- 제재 내역</a></li>
 	                    </ul>
 	                </li>
 	                <li>
@@ -45,14 +44,11 @@
 			    <div class="matelist" style="display: none;">
 			        <jsp:include page="/WEB-INF/views/member/mypage/mateList.jsp"/>
 			    </div>
-			    <div style="display: none;">
-			        <h1>신고하기</h1>
+			    <div class="reportList" style="display: none;">
+			        <jsp:include page="/WEB-INF/views/member/mypage/reportList.jsp"/>
 			    </div>
-			    <div style="display: none;">
-			        <h1>신고한 기록</h1>
-			    </div>
-			    <div style="display: none;">
-			        <h1>신고 받은 기록</h1>
+			    <div class="penaltyList" style="display: none;">
+			        <jsp:include page="/WEB-INF/views/member/mypage/penaltyList.jsp"/>
 			    </div>
 			    <div style="display: none;">
 			        <h1>받은 쪽지함</h1>

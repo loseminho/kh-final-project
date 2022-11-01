@@ -24,6 +24,15 @@
 	overflow: auto;
 }
 
+.profile-header{
+	display: flex;
+	justify-content: space-between;
+}
+
+#report-modal-open{
+	cursor: pointer;
+}
+
 .profile-photo-box{
     width: 198px;
     height: 198px;
@@ -101,4 +110,24 @@
 .before-link-box{
 	margin-top: 20px;
 	text-align: right;
+}
+
+.report-modal{
+	width: 0;
+	height: 0;
+	
+	position: fixed;
+	
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+	
+	display: flex;
+	justify-content: center;
+    align-items: center;
+    
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(1.5px);
+    
+    overflow: hidden;
 }
