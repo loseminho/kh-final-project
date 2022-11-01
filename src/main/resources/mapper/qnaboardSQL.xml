@@ -51,4 +51,7 @@
 			javaType="java.util.ArrayList"
 		/>
 	</resultMap>
+<delete id="qnaBoardDelete" parameterType="_int">
+	delete from qna_tbl where qna_no = #{_parameter}
+</delete>
 </mapper>

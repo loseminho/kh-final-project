@@ -16,8 +16,8 @@ function logout() {
     })
 }
 
-
- 		var mHtml = $("html");
+$(function(){
+	var mHtml = $("html");
 		var page = 1;
 		const headerWrap = $(".header-wrap");
 		const header = $(".header");
@@ -50,5 +50,8 @@ function logout() {
 			if (page != 1) {
 			}
 		});
+});
+
+ 		
 		
 

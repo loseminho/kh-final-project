@@ -129,3 +129,4 @@ $(document).on("click",".qna-row",function(){
 	$("#qnaBoardNo").val(tr.eq(idx).children().first().text());
 	$("#qnaViewFrm").submit();
 });
+

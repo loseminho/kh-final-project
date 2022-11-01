@@ -43,4 +43,19 @@ public class BoardService {
 		return qb;
 	}
 
+
+	public ArrayList<QnaFile> qnaBoardDelete(int qnaNo) {
+		//file_tbl에서 해당되는 파일 삭제 
+		ArrayList<QnaFile> fileList = dao.selectFileList(qnaNo);
+		System.out.println(fileList);
+		//board 테이블에서 삭제
+		int result = dao.qnaBoardDelete(qnaNo);
+		System.out.println(result);
+		if(result >0) {
+			return fileList;
+		} else {
+			return null;
+		}
+	}
+
 }
