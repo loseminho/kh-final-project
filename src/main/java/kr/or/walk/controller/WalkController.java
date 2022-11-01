@@ -32,7 +32,12 @@ public class WalkController {
 	}
 	
 	// 게시물 선택화면 - 모달 첫번째 페이지(index 1 - file, content,)
-	
+	@ResponseBody
+	@RequestMapping(value="/selectWalkListAjax.do", produces="application/json;charset=utf-8")
+	public String selectWalkListAjax(int wmNo) {
+		Walk w = service.selectWalkListAjax(wmNo);
+		return new Gson().toJson(w);
+	}
 	// 게시물 선택화면 - 
 	
 }

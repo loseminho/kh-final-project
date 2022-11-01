@@ -39,24 +39,18 @@
 	                            <input type="text" id="" class="" name="" placeholder="당신의 게시물을 설명 해주세요.">
 	                        </div>
                         </div>
-                         
                         <!-- End 게시물 쓰기 헤더-->
 
 
                         <!--산책갈게 게시물 보기-->
+                        
                         <div id="modal-post-title">
 	                        <div class="box-list-num">
-	                            1
+	                            
 	                        </div>
 	                        <div class="box-list-tag">
-	                            <div class="tag-wrapper">
-	                                <div class="tag-box" id="tag1">1:1 산책</div>
-	                                <div class="tag-box" id="tag2">N:N 산책</div>
-	                                <div class="tag-box" id="tag3">인증된 모임</div>
-	                                <div class="tag-box" id="tag4">산책할개 문화</div>
-	                                <div class="tag-box" id="tag5">산책할개 문화</div>
-	                                <div class="tag-box" id="tag6">산책할개 문화</div>
-	                            </div>
+	                        	
+	                             
 	                        </div>
 	                        <div class="box-list-main">
 	                            <div class="box-list-main-title">골든 리트리버 팟 구해요~</div>
@@ -71,6 +65,7 @@
 	                            <input type="button" id="stat-box" class="stat-box" onclick="walkMyinfo();" value="신청">
 	                        </div>
                         </div>
+                        
                     </div>
                 </div>
                 <!-- 모달 타이틀 끝-->
@@ -94,13 +89,13 @@
 	                        <label for="tag6"><button type="" class="tags" id="tag6" value="" disabled>산책할개 문화</button></label>
 	                    </div>
 	                    <div class="input-content-titles">
-	                        <div class="input-content-place-title">산책 만남 장소</div>
+	                        <div class="input-content-addr-title">산책 만남 장소</div>
 	                        <div class="input-content-range-title">1인 반려견 최대 수</div>
 	                        <div class="input-content-limit-title">모임 인원</div>
 	                    </div>
 	                    
 	                    <div class="input-content-contents">
-	                        <div class="input-content-place-input">
+	                        <div class="input-content-addr-input">
 	                            <input type="text" id="" class="" name="" placeholder="ex) 서울-용산">
 	                        </div>
 	                        <div class="input-content-range-input">
@@ -314,7 +309,7 @@
 
             <!-- content-midle section -->
             <section id="content-middle">
-                <div class="content-middle-title">산책 찾기</div>
+                <div class="content-middle-title">산책 태그 찾기</div>
                 <div class="tag-track">
                     <button type="" class="tags" id="tag1" value="">1:1 산책</button>
                     <button type="" class="tags" id="tag2" value="">N:N 산책</button>
@@ -430,7 +425,7 @@
         	modalWriteOn();
         }
         //board list 메인 게시물 보기 (첫화면)
-		function walkMate(){
+		function walkMates(){
         	modalOn();
         	modalPostOff();
         	modalMainOn();
