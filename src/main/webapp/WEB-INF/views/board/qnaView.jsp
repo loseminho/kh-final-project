@@ -21,15 +21,17 @@
             <div class="qnaView-box">
                 <div class="qnaView-header">
                     <h1>문의내역</h1>
+                    <c:if test="${sessionScope.m.memberId eq qb.qnaWriter }">
                     <ul>
-                        <li><a href="#">삭제하기</a></li>
-                        <li><a href="#">수정하기</a></li>
+                        <li><a href="/qnaBoardDelete.do?qnaNo=${qb.qnaNo }">삭제하기</a></li>
+                        <li><a href="/qnaBoardUpdateFrm.do?qnaNo=${qb.qnaNo }">수정하기</a></li>
                     </ul>
+                    </c:if>
                 </div>
                 <table class="qnaView-content">
                         <tr>
                             <th>작성자</th>
-                            <td>${qb.qnaNo }</td>
+                            <td>${qb.qnaWriter }</td>
                             <th>작성일</th>
                             <td>${qb.qnaDate }</td>
                             <th>조회수</th>
@@ -52,7 +54,7 @@
                 </table>
                 <!--댓글 등록-->
                 <div class="inputComment-box">
-                    <form action="#" method="post">
+                    <form action="insertQnaComment" method="post">
                         <ul class="comment-box">
                             <li><span class="material-symbols-outlined">pets</span></li>
                             <li>
@@ -90,5 +92,6 @@
             </div><!--qnaView-box 끝-->
         </div><!--qnaView-wrap 끝-->
     </content>
+    <script></script>
 </body>
 </html>

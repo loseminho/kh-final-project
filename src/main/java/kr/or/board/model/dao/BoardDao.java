@@ -33,9 +33,17 @@ public class BoardDao {
 	public int insertFile(QnaFile qf) {
 		return sqlsession.insert("qnaboard.insertFile",qf);
 	}
-	/*문의내역 view */
+	//문의내역 view
 	public QnaBoard selectOneQna(int qnaNo) {
 		return sqlsession.selectOne("qnaboard.selectOneQna",qnaNo);
+	}
+	public ArrayList<QnaFile> selectFileList(int qnaNo) {
+		List list = sqlsession.selectList("qnaboard.selectFileList");
+		return (ArrayList<QnaFile>) list;
+	}
+	//게시판 삭제 
+	public int qnaBoardDelete(int qnaNo) {
+		return sqlsession.delete("qnaboard.qnaBoardDelete",qnaNo);
 	}
 	
 }

@@ -91,10 +91,26 @@ public class BoardController {
 	/* 문의게시판 이동 */ 
 	@RequestMapping(value="/qnaView.do")
 	public String qnaView(int qnaNo, Model model) {
-		System.out.println(qnaNo);
 		QnaBoard qb = service.selectOneQna(qnaNo);
 		model.addAttribute("qb",qb);
-		System.out.println(qb);
 		return "board/qnaView";
 	}
+	
+	/* 문의게시판 삭제  */
+	@RequestMapping(value="/qnaBoardDelete.do")
+	public String qnaBoardDelete(int qnaNo, HttpServletRequest request) {
+		System.out.println(qnaNo);
+		//qnaBoard 삭제
+		ArrayList<QnaFile> list = service.qnaBoardDelete(qnaNo);
+		//파일삭제 
+		if(list != null) {
+			String path = request.getSession().getServletContext().getRealPath("/resources/upload/board/");
+			for(QnaFile file : list) {
+				File delFile = new File(path+file.getFilepath());
+				delFile.delete();
+			}
+		}
+		return "board/faqQna";
+	}
+
 }
