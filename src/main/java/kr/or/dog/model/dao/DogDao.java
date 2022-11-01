@@ -41,5 +41,13 @@ public class DogDao {
 	public int updateMyDog(Dog d) {
 		return sqlSession.update("dog.updateMyDog", d);
 	}
+
+	public int insertDogType(DogType dt) {
+		return sqlSession.insert("dog.insertDogType", dt);
+	}
+
+	public int selectDogTypeCode() {
+		return sqlSession.selectOne("dog.selectDogTypeCode");
+	}
 	
 }

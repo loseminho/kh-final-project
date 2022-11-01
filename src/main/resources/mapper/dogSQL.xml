@@ -63,4 +63,13 @@
 			dog_vacc = #{dogVacc}
 		where dog_no = #{dogNo}
 	</update>
+	
+	<insert id="insertDogType" parameterType="dt">
+		insert into dog_type
+		values(DOG_SEQ.nextval, #{typeName}, #{typeSize}, 1)
+	</insert>
+	
+	<select id="selectDogTypeCode" resultType="int">
+		select max(type_code) from dog_type
+	</select>
 </mapper>

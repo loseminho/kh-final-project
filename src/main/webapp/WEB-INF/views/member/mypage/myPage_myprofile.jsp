@@ -20,9 +20,6 @@
 	        </div>
 	        <input type="file" name="" id="memberPhoto" style="display:none;" accept="image/*">
 	        <button type="button" id="photoBtn" onclick="addFile();">파일 선택</button>
-	        <div class="deletePhotoBtn">
-	        	<i class="fa-regular fa-circle-xmark"></i>
-	        </div>
 	</div>
 	<div id="info-section">
 	    <div class="box">

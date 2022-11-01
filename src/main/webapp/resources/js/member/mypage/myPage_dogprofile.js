@@ -7,10 +7,13 @@ $("#addDog").on("click", function(){
     $("#dogNo").attr("name", "");
 	$("#dogType1").css("display", "none");
 	$("#dogType1").attr("name", "");
+	$("#typeSize").css("display", "none");
+	$("#typeSize").attr("name", "");
 	$("#dogType2").css("display", "block");
 	$("#dogType2").attr("name", "dogTypeNo");
 	$("#dogType2").empty();
 	$("#dogType2").append("<option value='none' selected disabled>선택해주세요</option>")
+	$("#dogType2").append("<option value='user'>직접 입력</option>")
 	$("#dogPhoto").prop("name", "");
 	$("#dogPhoto").val("");
 	
@@ -39,11 +42,31 @@ $("#addDog").on("click", function(){
     });
 });
 
+$("#dogType2").on("change", function(){
+	const result = $("#dogType2").val();
+	console.log(result);
+	if(result == "user") {
+		$("#dogType1").show();
+		$("#dogType1").css("width", "200px");
+		$("#dogType1").attr("name", "typeName");
+		$("#typeSize").show();
+		$("#typeSize").attr("name", "typeSize");
+		$("#dogType2").attr("name", "");
+		$("#dogType2").hide();
+	}
+});
+
+$("#typeSize").on("change", function(){
+	const size = $(this).val();
+	console.log(size);
+});
+
 function dogModal(dogNo) {
 	$("#dog-modal").css("display", "flex");
 	$("#dogProfileForm").attr("action", "/updateMyDog.do");
 	$("#dogType1").css("display", "block");
-	//$("#dogType1").attr("name", "dogTypeNo");
+	$("#typeSize").css("display", "none");
+	$("#typeSize").attr("name", "");
 	$("#dogType2").css("display", "none");
 	$("#dogType2").attr("name", "");
 	$("#dogBtn").text("수정하기");

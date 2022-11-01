@@ -64,7 +64,12 @@
 				    <div class="info-box">
 				        <label for="dogType"><span>*</span>품종</label>
 				        <input type="text" name="" id="dogType1" class="input">
-				        <select id="dogType2" name="" style="display:none; margin-top:10px;">
+				        <select id="dogType2" name="" style="display:none;">
+				        </select>
+				        <select id="typeSize" name="" style="display:none;">
+				        	<option value="0">소형견</option>
+				        	<option value="1">중형견</option>
+				        	<option value="2">대형견</option>
 				        </select>
 				    </div>
 				    <div class="info-box">
