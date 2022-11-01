@@ -3,6 +3,9 @@ body{
     margin: 0;
     font-family: gs-Medium;
 }
+input, select, button{
+	font-family: gs-Medium;
+}
 
 .wrapper{
     height: auto;
@@ -28,7 +31,7 @@ body{
 #content-top{
     width: 1200px;
     height: 110px;
-    border-bottom: 1px solid gray;
+    border-bottom: 2px solid rgb(225, 225, 225);
     margin: 0 auto;
     text-align: center;
     margin-top: 150px;
@@ -38,7 +41,7 @@ body{
 #content-middle{
     width: 1200px;
     height: 140px;
-    border-bottom: 1px solid gray;
+    border-bottom: 2px solid #1abc9c;
     margin: 0 auto;
     position: relative;
 }
@@ -48,6 +51,10 @@ body{
     margin: 0 auto;
     position: relative;
 }
+#content-bottom ul li{
+	margin-top : 10px;
+	margin-bottom: 60px;
+	}
 .content-top-button-left{
     width: 449px;
     height: 60px;
@@ -143,6 +150,15 @@ body{
     padding-left: 50px;
     float: left;
 }
+.content-bottom-list> select{
+	margin: 0 auto;
+    padding: 0;
+    border: 1px solid #1abc9c;
+    float: left;
+    width: 180px;
+    padding: 8px;
+    border-radius: 10px;
+}
 .content-bottom-list>.write-modal{
     width: 142px;
     height: 50px;
@@ -225,6 +241,17 @@ li .bottom-list-box:hover{
     cursor: pointer;
     margin-bottom: 8px;
 }
+.no-tag-box{
+    width: 150px;
+    height: 100px;
+    border: 1px solid white;
+    display: inline-block;
+    text-align: center;
+    font-size: 13px;
+    line-height: 100px;
+	color : #9e9e9e;
+    margin-bottom: 8px;
+}
 .list-master{
     text-align: center;
     font-size: 17px;
@@ -235,7 +262,7 @@ li .bottom-list-box:hover{
 .box-list-main{
     width: 349px;
     height: 135px;
-    margin-top: 25px;
+    margin-top: 55px;
     font-size: 24px;
     font-weight: bold;
     float: left;
@@ -307,7 +334,6 @@ li .bottom-list-box:hover{
 
 #modal{
     z-index: 100;
-    
 }
 #modal.modal-overlay {
     width: 100%;
@@ -357,15 +383,28 @@ li .bottom-list-box:hover{
     float: right;
     position: absolute;
     right: 20px;
-    top: 170px;
+    top: 190px;
     cursor: pointer;
-    color: #fff;
     font-size: 17px;
     border-radius: 7px;
     border:none;
-    background-color: #1abc9c;
-    height: 40px;
+    height: 50px;
+    line-height: 50px;
+	background-color: #fff;
+	color: #1abc9c;
     width: 100px;
+    border: 2px solid #1abc9c;
+}
+#modal-post-main #report-box:hover{
+    background-color: #1abc9c;
+    color: #fff;
+	font-size: 1.1em;
+	transition-duration : 0.5s
+	}
+#modal-post-title{
+	height: 160px;
+	border-bottom : 2px solid #ccc;
+
 }
 /* 모달 - 현재 게시물 타이틀*/
 .title>.bottom-list-box{
@@ -373,6 +412,7 @@ li .bottom-list-box:hover{
     padding: 0;
     color: black;
     z-index: 101;
+    height: 160px;
 }
 /* 모달 - 현재 게시물 상세보기*/
 #modal .modal-tag-post{
@@ -701,31 +741,36 @@ li .bottom-list-box:hover{
     padding-left: 50px;
 }
 .input-content-titles{
-    height: 83px;
+	width: 950px;
+    height: 73px;
+    margin-top: 30px;
 }
 .input-content-contents{
-    height: 80px;
+	width: 950px;
+    height: 100px;
+}
+.input-content-contents div{
+    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    font-size: 20px;
+    width: 20%;
+    float: left;
 }
 .input-content label button{
     color: #393939;
 }
-.input-content-place-title, .input-content-range-title, .input-content-limit-title{
-    padding: 20px;
+.input-content-addr-title, .input-content-range-title, .input-content-limit-title{
     padding-top: 40px;
+    padding-left: 20px;
     font-size: 20px;
     width: 20%;
     float: left;
 }
-.input-content-place-input, .input-content-range-input, .input-content-limit-input{
-    margin-left: 20px;
-    font-size: 20px;
-    width: 20%;
-    padding-left: 15px;
-    float: left;
-    padding-bottom: 30px;
-}
-.input-content-place-input input, .input-content-range-input input, .input-content-limit-input input{
+
+.input-content-addr-input input, .input-content-range-input input, .input-content-limit-input input{
 	border:none;
+	width: 170px;
     border-bottom: 2px solid #1abc9c;
     height: 40px;
 }
@@ -774,4 +819,7 @@ li .bottom-list-box:hover{
     cursor: pointer;
     margin-bottom: 50px;
     margin-left: 385px;
+}
+#modal-post-title .box-list-main{
+	height: 80px;
 }
