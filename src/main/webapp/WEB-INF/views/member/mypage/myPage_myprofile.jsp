@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="/resources/css/member/mypage/myPage_myprofile.css">
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <h1>내 정보</h1>
 <form action="/updateMember.do" id="updateMemberForm" method="post" autocomplete="off" enctype="multipart/form-data">
 	<div id="photo-section">
@@ -20,6 +20,9 @@
 	        </div>
 	        <input type="file" name="" id="memberPhoto" style="display:none;" accept="image/*">
 	        <button type="button" id="photoBtn" onclick="addFile();">파일 선택</button>
+	        <div class="deletePhotoBtn">
+	        	<i class="fa-regular fa-circle-xmark"></i>
+	        </div>
 	</div>
 	<div id="info-section">
 	    <div class="box">
@@ -58,7 +61,7 @@
 				</c:when>
 				<c:otherwise>
 					<a href="/currentPw.do">비밀번호 변경</a>
-					<span> / </span>
+					<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
 			        <a onclick="deleteMember('${sessionScope.m.memberId }');">탈퇴하기</a>
 				</c:otherwise>
 			</c:choose>
@@ -72,7 +75,9 @@
 <div id="phone-modal" class="modal-wrapper">
 	<div class="modal">
 		<div class="modal-header">				
-			<button id="closeModalBtn" onclick="closePhoneModal();">닫기</button>
+			<button id="closeModalBtn" onclick="closePhoneModal();">
+				<i class="fa-solid fa-xmark"></i>
+			</button>
 		</div>
 		<div class="modal-content">
 			<div class="verifyBox">

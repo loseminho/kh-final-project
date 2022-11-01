@@ -26,16 +26,29 @@ public class MarketDao {
 	}
 
 	public ArrayList<MarketDog> fiterSelect(MarketDog md) {
-		List list = sqlSession.selectList("market.filterSelect",md); 
+		List list = sqlSession.selectList("market.filterSelect",md);
 		return (ArrayList<MarketDog>)list;
 	}
 
-	public int inputMarket(MarketDogFile mdf) {
-		return sqlSession.insert("market.inputMarket",mdf);
+	public int inputMarket(MarketDog md) {
+		return sqlSession.insert("market.inputMarket",md);
 	}
 
 	public ArrayList<DogType> selectTypeList() {
 		List list = sqlSession.selectList("market.selectTypeList");
 		return (ArrayList<DogType>)list;
+	}
+
+	public void inputMarketFile(MarketDogFile mdf) {
+		sqlSession.insert("market.inputFile",mdf);
+	}
+
+	public int selectMarketNo() {
+		return sqlSession.selectOne("market.selectMaxSeq");
+	}
+
+	public ArrayList<MarketDogFile> selectFile() {
+		List list = sqlSession.selectList("market.selectFile");
+		return (ArrayList<MarketDogFile>)list;
 	}
 }

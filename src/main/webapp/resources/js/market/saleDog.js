@@ -58,15 +58,14 @@ $(".add-btn>button").on("click",function(){
     $(document).ready(function(){
     	category.eq(0).trigger("click");
     	//화면에 출력 할 갯수
-    });
+    });		
     const category = $(".getDog-category>li");
     category.on("click",function(){
 		var button = "<button style='cursor:pointer;'>더보기</button>";
     	$(".add-btn").html(button);
     	totalCnt = 9;
-    	
         let categoryIndex = category.index(this); //카테고리 선택
-        
+        	
         typeSize = categoryIndex-1; //해당 카테고리의 리스트 갯수 가져오기 위한 변수
         	$.ajax({
         		url : "/marketListCnt.do",
@@ -75,23 +74,39 @@ $(".add-btn>button").on("click",function(){
         			totalList = result;
         		}
         	});
-        
         if(categoryIndex == 0){
-            	$.ajax({
+        	$.ajax({
         		url: "/selectFilterList.do",
         		data: {typeSize : -1},
         		success:function(data){
         			console.log(data);
         			var html = "";
-        			for(let i=0;i<totalCnt;i++){
-        				html += "<div class='sale'>";
-        				html += "<div class='photo-session'>";
-        				html += "<input type='hidden' name='marketNo' value="+data[i].marketNo+">";
-        				html += "</div>";
-        				html += "<span>"+data[i].typeName+"</span>";
-        				html += "<li>분양가격 : "+data[i].price+"원</li>";
-        				html += "</div>";
-        			};
+        			console.log(totalCnt);
+        			console.log(data.length);
+        		if(totalCnt >= data.length){
+        			for(let i=0;i<data.length;i++){
+	        				html += "<div class='sale'>";
+	        				html += "<div class='photo-session'>";
+	        				html += "<img class='previewImg' src='/resources/upload/market/"+data[i].fileList[0].filePath+"'>";
+	        				html += "<input type='hidden' name='marketNo' value="+data[i].marketNo+">";
+	        				html += "</div>";
+	        				html += "<span>"+data[i].typeName+"</span>";
+	        				html += "<li>분양가격 : "+data[i].price+"원</li>";
+	        				html += "</div>";
+	        				$(".add-btn").text("더 이상 목록이 없습니다.");
+	        			};
+        			}else{
+	        			for(let i=0;i<totalCnt;i++){
+	        				html += "<div class='sale'>";
+	        				html += "<div class='photo-session'>";
+	        				html += "<img class='previewImg' src='/resources/upload/market/"+data[i].fileList[0].filePath+"'>";
+	        				html += "<input type='hidden' name='marketNo' value="+data[i].marketNo+">";
+	        				html += "</div>";
+	        				html += "<span>"+data[i].typeName+"</span>";
+	        				html += "<li>분양가격 : "+data[i].price+"원</li>";
+	        				html += "</div>";
+	        			};
+        			}
         			$(".sale-wrap").html(html);
         		},
         	});
@@ -104,10 +119,11 @@ $(".add-btn>button").on("click",function(){
         			var html = "";
         			console.log(totalCnt);
         			console.log(data.length);
-        			if(totalCnt > data.length){
+        		if(totalCnt >= data.length){
         			for(let i=0;i<data.length;i++){
 	        				html += "<div class='sale'>";
 	        				html += "<div class='photo-session'>";
+	        				html += "<img class='previewImg' src='/resources/upload/market/"+data[i].fileList[0].filePath+"'>";
 	        				html += "<input type='hidden' name='marketNo' value="+data[i].marketNo+">";
 	        				html += "</div>";
 	        				html += "<span>"+data[i].typeName+"</span>";
@@ -115,11 +131,11 @@ $(".add-btn>button").on("click",function(){
 	        				html += "</div>";
 	        				$(".add-btn").text("더 이상 목록이 없습니다.");
 	        			};
-	        			
         			}else{
 	        			for(let i=0;i<totalCnt;i++){
 	        				html += "<div class='sale'>";
 	        				html += "<div class='photo-session'>";
+	        				html += "<img class='previewImg' src='/resources/upload/market/"+data[i].fileList[0].filePath+"'>";
 	        				html += "<input type='hidden' name='marketNo' value="+data[i].marketNo+">";
 	        				html += "</div>";
 	        				html += "<span>"+data[i].typeName+"</span>";
@@ -139,10 +155,11 @@ $(".add-btn>button").on("click",function(){
         			var html = "";
         			console.log(totalCnt);
         			console.log(data.length);
-        			if(totalCnt > data.length){
+        		if(totalCnt >= data.length){
         			for(let i=0;i<data.length;i++){
 	        				html += "<div class='sale'>";
 	        				html += "<div class='photo-session'>";
+	        				html += "<img class='previewImg' src='/resources/upload/market/"+data[i].fileList[0].filePath+"'>";
 	        				html += "<input type='hidden' name='marketNo' value="+data[i].marketNo+">";
 	        				html += "</div>";
 	        				html += "<span>"+data[i].typeName+"</span>";
@@ -150,11 +167,11 @@ $(".add-btn>button").on("click",function(){
 	        				html += "</div>";
 	        				$(".add-btn").text("더 이상 목록이 없습니다.");
 	        			};
-	        			
         			}else{
 	        			for(let i=0;i<totalCnt;i++){
 	        				html += "<div class='sale'>";
 	        				html += "<div class='photo-session'>";
+	        				html += "<img class='previewImg' src='/resources/upload/market/"+data[i].fileList[0].filePath+"'>";
 	        				html += "<input type='hidden' name='marketNo' value="+data[i].marketNo+">";
 	        				html += "</div>";
 	        				html += "<span>"+data[i].typeName+"</span>";
@@ -174,10 +191,11 @@ $(".add-btn>button").on("click",function(){
         			var html = "";
         			console.log(totalCnt);
         			console.log(data.length);
-        			if(totalCnt > data.length){
+        		if(totalCnt >= data.length){
         			for(let i=0;i<data.length;i++){
 	        				html += "<div class='sale'>";
 	        				html += "<div class='photo-session'>";
+	        				html += "<img class='previewImg' src='/resources/upload/market/"+data[i].fileList[0].filePath+"'>";
 	        				html += "<input type='hidden' name='marketNo' value="+data[i].marketNo+">";
 	        				html += "</div>";
 	        				html += "<span>"+data[i].typeName+"</span>";
@@ -190,6 +208,7 @@ $(".add-btn>button").on("click",function(){
 	        			for(let i=0;i<totalCnt;i++){
 	        				html += "<div class='sale'>";
 	        				html += "<div class='photo-session'>";
+	        				html += "<img class='previewImg' src='/resources/upload/market/"+data[i].fileList[0].filePath+"'>";
 	        				html += "<input type='hidden' name='marketNo' value="+data[i].marketNo+">";
 	        				html += "</div>";
 	        				html += "<span>"+data[i].typeName+"</span>";
@@ -211,8 +230,7 @@ $(".add-btn>button").on("click",function(){
                 "background-color":"#1abc9c",
                 "color":"#fff"
             });
-    });
-
+    }); 
 	$(document).on("click",".add-btn>button",function(){
     	$.ajax({
     		url: "/selectFilterList.do",
@@ -223,6 +241,7 @@ $(".add-btn>button").on("click",function(){
     			for(let i=0;i<totalCnt;i++){
     				html += "<div class='sale'>";
     				html += "<div class='photo-session'>";
+    				html += "<img class='previewImg' src='/resources/upload/market/"+data[i].fileList[0].filePath+"'>";
     				html += "<input type='hidden' name='marketNo' value="+data[i].marketNo+">";
     				html += "</div>";
     				html += "<span>"+data[i].typeName+"</span>";
@@ -241,7 +260,7 @@ $(".add-btn>button").on("click",function(){
 					totalCnt ++;;
 	 			}
 			};
-	});
+		});
     	$(document).on("click",".sale",function(){
     		const marketNo = $("[name=marketNo]");
     		console.log(marketNo.val());

@@ -2,12 +2,16 @@ $("#addDog").on("click", function(){
 	$("#dog-modal").css("display", "flex");
 	$("#dogProfileForm").attr("action", "/insertMyDog.do");
 	$("#dogBtn").text("추가하기");
+	$("#deleteDogBtn").hide();
+	$("#dogNo").val(""); 
+    $("#dogNo").attr("name", "");
 	$("#dogType1").css("display", "none");
+	$("#dogType1").attr("name", "");
 	$("#dogType2").css("display", "block");
+	$("#dogType2").attr("name", "dogTypeNo");
 	$("#dogType2").empty();
 	$("#dogType2").append("<option value='none' selected disabled>선택해주세요</option>")
 	
-	$("#dogNo").val("");
 	$("#dogName").prop("readonly", false);
 	$("#dogName").val("");
 	$("#dogType1").val("");
@@ -37,21 +41,26 @@ function dogModal(dogNo) {
 	$("#dog-modal").css("display", "flex");
 	$("#dogProfileForm").attr("action", "/updateMyDog.do");
 	$("#dogType1").css("display", "block");
+	//$("#dogType1").attr("name", "dogTypeNo");
 	$("#dogType2").css("display", "none");
+	$("#dogType2").attr("name", "");
+	$("#dogBtn").text("수정하기");
+	$("#deleteDogBtn").show();
+	$("#deleteDogBtn").attr("onclick", "deleteMyDog("+dogNo+");");
+	
 	$.ajax({
         url  : '/selectMyOneDog.do',
         data : {dogNo : dogNo},
         type : 'post',
         success : function(data){
-        	//console.log(data);
-			$("#dogNo").val(data.dogNo);
         	$("#dogName").val(data.dogName);
         	$("#dogName").prop("readonly", true);
         	$("#dogType1").val(data.dogType);
         	$("#dogType1").prop("readonly", true);
         	$("#dogAge").val(data.dogAge);
         	$("#dogWeight").val(data.dogWeight);
-        	$("#dogBtn").text("수정하기");
+        	$("#dogNo").val(data.dogNo); 
+        	$("#dogNo").attr("name", "dogNo"); 
         	
         	if(data.dogPhoto != null) {
         		$("#dogPreview").attr("src", "/resources/upload/dog/"+data.dogPhoto);
@@ -80,11 +89,9 @@ function dogModal(dogNo) {
     });
 }
 
-
 function closeDogModal() {
 	$("#dog-modal").hide();
 }
-
 
 function addDogFile() {
 	$("#dogPhoto").click();
@@ -101,13 +108,15 @@ $("#dogPhoto").on("change", function(event) {
     
     const val = $(this).val();
     if(val != null) {
-    	$("#dogPhoto").attr("name", "photo2");
+    	$("#dogPhoto").prop("name", "photodog");
     }
     const name = $("#dogPhoto").attr("name");
     
     console.log(name);
     console.log(val);
 });
+
+
 
 // 정규표현식
 // 이름 (아무 글자나 1글자 이상)
@@ -136,15 +145,49 @@ $("#dogBtn").on("click", function(){
 		selectVal = $("#dogType2 option:selected").val();
 		
 		if(nameReg.test(nameVal) && selectVal != "none" && numReg.test(ageVal) && genderChk && numReg.test(weightVal) && neutralChk && vaccChk) {
-			alert("추가 성공");
+			$("#dogProfileForm").submit();
 		} else {		
 			alert("추가 실패");
 		}
 	} else { // 반려견 수정하는 경우
 		if(numReg.test(ageVal) && genderChk && numReg.test(weightVal) && neutralChk && vaccChk) {
-			alert("수정 성공");
+			closeDogModal();
+			Swal.fire({
+		        title: '반려견 정보 수정',
+		        text: "반려견 정보를 수정하시겠습니까?",
+		        icon: 'warning',
+		        showCancelButton: true,
+		        confirmButtonColor: '#1abc9c',
+		        cancelButtonColor: '#ccc',
+		        confirmButtonText: '수정',
+		        cancelButtonText: '취소'
+		    }).then((result) => {
+		        if (result.isConfirmed) {
+		        	$.cookie("tab", 1);
+					$("#dogProfileForm").submit();
+		        }
+		    })
 		} else {		
 			alert("수정 실패");
 		}
 	}
 });
+
+function deleteMyDog(dogNo) {
+	closeDogModal();
+	Swal.fire({
+        title: '반려견 정보 삭제',
+        text: "반려견 정보를 삭제하시겠습니까?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: 'red',
+        cancelButtonColor: '#ccc',
+        confirmButtonText: '삭제',
+        cancelButtonText: '취소'
+    }).then((result) => {
+        if (result.isConfirmed) {
+        	$.cookie("tab", 1);
+			location.href = "/deleteMyDog.do?dogNo="+dogNo;			
+        }
+    })
+}

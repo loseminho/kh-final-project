@@ -45,18 +45,37 @@
 		</otherwise>
 		</choose>		
 	</select>	
-	<insert id="inputMarket">
-		insert into market_file_tbl values(
-		#{marketNo},
-		#{fileName},
-		#{filePath}
-		)
-	</insert>
 	<select id="selectTypeList" resultType="dt">
 		select
 			type_code as typeCode,
 			type_name as typeName,
 			type_size as typeSize
 		from dog_type
+	</select>
+	<select id="selectMaxSeq" resultType="int">
+		select 
+			max(market_no)
+		from market_tbl
+	</select>
+	<insert id="inputMarket" parameterType="md">
+		insert into market_tbl values(
+		market_seq.nextval,
+		#{age},
+		#{typeCode},
+		#{saleInfo},
+		#{gender},
+		#{price}
+		)
+	</insert>
+	<insert id="inputFile" parameterType="mdf">
+		insert into market_file_tbl values(#{marketNo},#{fileName},#{filePath})
+	</insert>
+	
+	<select id="selectFile" resultType="mdf">
+		select
+		market_no as marketNo,
+		file_name as fileName,
+		file_path as filePath
+		from market_file_tbl
 	</select>
 </mapper>

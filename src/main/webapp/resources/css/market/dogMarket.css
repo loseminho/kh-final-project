@@ -271,6 +271,8 @@ content{
 	height:80%;
 	width:95%;
 	background-color: #fff;
+	overflow:hidden;
+	position:relative;
 }
 
 /*모달*/
@@ -365,7 +367,6 @@ content{
 	border:1px solid gray;
 	width:calc(100%/2);
 	padding: 10px;
-	overflow: hidden;
 }
 .photo-session-wrap div img{
 	width:100%;
@@ -460,4 +461,12 @@ content{
 	border: none;
 	border-bottom: 2px solid black;
 	cursor: pointer;
+}
+
+.previewImg{
+	height:100%;
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform: translate(-50%, -50%);
 }

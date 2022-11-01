@@ -6,25 +6,83 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/resources/css/market/writeFrm.css">
+<link rel="stylesheet" href="/resources/css/market/writeFrmContent.css">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 </head>
 <body>
-	<h1>분양글쓰기</h1>
-	<form action="/inputMarket.do" method="post" enctype="multipart/form-data">
-		<select id="select-box">
-		</select>
-		<input type="file" name="photo">
-		<input type="submit" value="전송">
-	</form>
+	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+		<div class="page-content">
+			<div id="rowSession1">
+				<ul class="main-menu">
+	                <li class="section"><a href="#">분양등록</a></li>
+	                <li class="section"><a href="#">사진순서바꾸기</a></li>
+	                <li class="section"><a href="#">산책 메이트 목록</a></li>
+	            </ul>	
+			</div>
+			<div id="rowSession2">
+			<h1>분양등록</h1>
+			<br>
+			<hr>
+			<br>
+		<form action="/inputMarket.do" method="post" enctype="multipart/form-data">
+			<div class="sub-title"><span>*</span>사진</div>
+			<div class="row-part">
+				<input type="file" name="photo" multiple>
+			</div>
+			<div class="row-part">
+			<div class="sub-title"><span>*</span>품종선택 :</div>
+				<select id="select-box" name="typeCode">
+				<!-- 강아지 종류 option 넣는 자리 -->
+				</select>
+			</div>
+			<div class="row-part">
+			<div class="sub-title"><span>*</span>나이(개월) :</div>
+			<input type="number" name="age" min="0" max="24" placeholder="0~24개월">
+			<span style="color:red; font-size:12px;">*입력해주세요</span>
+			</div>
+			<div class="row-part">
+			<div class="sub-title"><span>*</span>성별선택 :</div>	
+			<input type="radio" name="gender" id="male" value="남자">
+			<label for="male">남자</label>
+			<input type="radio" name="gender" id="female" value="여자">
+			<label for="female">여자</label>
+			</div>
+			<div class="row-part">
+			<div class="sub-title">
+			<label for="dogVacc"><span>*</span>예방접종 여부 :</label><br>
+			</div>
+			    <label style="font-size: 14px; margin-right:5px;"><input type="radio" name="dogVacc" value="O"> 했어요</label>
+      			<label style="font-size: 14px; margin-right:5px;"><input type="radio" name="dogVacc" value="X"> 안 했어요</label>
+			</div>
+			<div class="row-part">
+			<div class="sub-title">
+		    <label for="price"><span>*</span>분양가격 :</label>
+		    </div>
+		    <div class="box">
+		        <input type="number" name="price" id="price" min="0" step="10000" placeholder="숫자만입력해주세요">\
+		        <span style="color:red; font-size:12px;"> *만원단위로 입력 할 수 있어요</span>
+		    </div>
+		    </div>
+			<div class="sub-title">*소개</div>
+			<div class="row-part">
+			<textarea name="saleInfo"></textarea>
+	        </div>
+	        <br>
+			<input type="submit" id="submit-btn" value="전송">
+		</form>
+		</div>
+	</div>
+	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 </body>
+<script src="/resources/js/market/writeFrmContent.js"></script>
 <script>
 	$(document).ready(function(){
 		$.ajax({
 			url:"/selectTypeList.do",
 			success:function(data){
 				$.each(data,function(idx,value){
-					var option = "<option>"+value.typeName+"</option>";
-					option += "<input type='hidden' name=typeCode value="+value.typeCode+">";
+					var option = "<option value='"+value.typeCode+"'>"+value.typeName+"</option>";
 					$("#select-box").append(option);
 				});
 			}

@@ -8,7 +8,6 @@
 	<h1>모집 글 제목</h1>
 </div>
 
-<!--  -->
 <div class="mateInfo-main">
 	<table>
 		<tr>
