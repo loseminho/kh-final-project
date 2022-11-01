@@ -236,3 +236,7 @@
 	line-height:25px;
 	font-size:25px;
 }
+
+.swal2-container {
+  z-index:100000;
+}

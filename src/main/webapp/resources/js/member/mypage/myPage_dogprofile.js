@@ -157,7 +157,6 @@ $("#dogBtn").on("click", function(){
 		}
 	} else { // 반려견 수정하는 경우
 		if(numReg.test(ageVal) && genderChk && numReg.test(weightVal) && neutralChk && vaccChk) {
-			closeDogModal();
 			Swal.fire({
 		        title: '반려견 정보 수정',
 		        text: "반려견 정보를 수정하시겠습니까?",
@@ -180,7 +179,6 @@ $("#dogBtn").on("click", function(){
 });
 
 function deleteMyDog(dogNo) {
-	closeDogModal();
 	Swal.fire({
         title: '반려견 정보 삭제',
         text: "반려견 정보를 삭제하시겠습니까?",
