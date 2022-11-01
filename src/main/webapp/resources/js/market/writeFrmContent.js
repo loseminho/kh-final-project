@@ -1,15 +1,15 @@
-/**
- * 
-const inputBtn= $(".photo-box").children("span");
-inputBtn.on("click",function(){
- 	const idx = inputBtn.index(this);
- 	$("[name=photo]").eq(idx).trigger("click");
+const previewBox= $(".preview-box");
+previewBox.on("click",function(){
+ 	const idx = previewBox.index(this);
+	console.log(idx);
+ 	$("#imageFile").eq(idx).trigger("click");
+ 	
  });
  
+/**
+ * 
 $("#imageFile").change(function(){
-	const idx = $("#imageFile").index(this);
-	console.log(idx);
-    setImageFromFile(this, '#preview',idx);
+
 });
 
 function setImageFromFile(input, expression, idx) {
