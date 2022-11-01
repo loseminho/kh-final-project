@@ -43,27 +43,7 @@
 
 
                         <!--산책갈게 게시물 보기-->
-                        
                         <div id="modal-post-title">
-	                        <div class="box-list-num">
-	                            
-	                        </div>
-	                        <div class="box-list-tag">
-	                        	
-	                             
-	                        </div>
-	                        <div class="box-list-main">
-	                            <div class="box-list-main-title">골든 리트리버 팟 구해요~</div>
-	                            <div class="box-list-main-name">
-	                                	사과는 맛있어 맛있으면 바나나 바나나는 높아 높으면 민머리
-	                            </div>
-	                        </div>
-	                        <div class="box-list-limit">
-	                            <div class="limit-box">1 / 5</div>
-	                        </div>
-	                        <div class="box-list-stat">
-	                            <input type="button" id="stat-box" class="stat-box" onclick="walkMyinfo();" value="신청">
-	                        </div>
                         </div>
                         
                     </div>
@@ -359,6 +339,19 @@
 			modalOff();
 		})
 		*/
+		
+		
+		$(document).on("mouseover",".bottom-list-box",function(){
+			const idx = $(".bottom-list-box").index(this);
+			$(".stat-box").eq(idx-1).css("transition-duration","0.5s").css("background-color","rgb(51, 102, 255)").css("font-size","1.2em").css("border","1px solid white").css("color","white");
+			$(".box-list-stat .end").css("background-color","#fff").css("font-size","15px").css("border","2px solid #9e9e9e").css("color","#ccc");
+		});
+		$(document).on("mouseover",".bottom-list-box",function(){
+			const idx = $(".bottom-list-box").index(this);
+			$(".stat-box").eq(idx-1).css("transition-duration","0.5s").css("background-color","rgb(51, 102, 255)").css("font-size","1.2em").css("border","1px solid white").css("color","white");
+			$(".box-list-stat .end").css("background-color","#fff").css("font-size","15px").css("border","2px solid #9e9e9e").css("color","#ccc");
+		});
+		
 		
         function modalOn() {
             modal.style.display = "flex"
