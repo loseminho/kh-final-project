@@ -16,8 +16,9 @@
             <th>상태</th>
         </tr>
         <tr>
-        	<td><a href="/walkMetePage.do">산책 메이트 구해요</a></td>		<!-- 누르면 해당 모임 페이지(정보)로 이동(모임장이거나 수락된 경우) -->
-        	<td><a href="/showProfile.do">닉네임</a></td>				<!-- 누르면 해당 닉네임의 프로필 페이지로 이동 -->
+        	<!-- /walkMetePage.do?산책 메이트 번호&모임 페이지에서 보여줄 부분 -->
+        	<td><a href="/walkMetePage.do?wmNo=1&index=0">산책 메이트 구해요</a></td>			<!-- 누르면 해당 모임 페이지(정보)로 이동(모임장이거나 수락된 경우) -->
+        	<td><a href="/showProfile.do">닉네임</a></td>									<!-- 누르면 해당 닉네임의 프로필 페이지로 이동 -->
         	<td>xxxx-xx-xx xx:xx</td>
         	<td>금천구</td>
         	<td>수락</td>

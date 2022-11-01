@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -35,7 +36,14 @@ public class WalkController {
 	// 게시물 선택화면 - 
 	
 	@RequestMapping(value="/walkMetePage.do")
-	public String currentPw() {
+	public String walkMetePage(int wmNo, int index, Model model) {	
+		model.addAttribute("index", index);
+		return "walkmate/walkMetePage";
+	}
+	public String walkMetePage(int wmNo, int reviewNo, int index, Model model) {	
+		// 해당 후기 가져오기
+		
+		model.addAttribute("index", index);
 		return "walkmate/walkMetePage";
 	}
 }
