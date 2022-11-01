@@ -7,23 +7,31 @@
 <h1>반려견 정보</h1>
 <a id="addDog">반려견 추가</a>
 <div id="dog-wrap">
-	<c:forEach items="${sessionScope.myDogList }" var="myDog">
-	    <div class="box">
-	        <a onclick="dogModal('${myDog.dogNo}');">
-	            <div class="photo">
-		            <c:choose>
-		            	<c:when test="${myDog.dogPhoto eq null}">
-			                <img src="/resources/img/default_dog.png">
-		            	</c:when>
-		            	<c:otherwise>
-			                <img src="/resources/upload/dog/${myDog.dogPhoto }">
-		            	</c:otherwise>
-		            </c:choose>	
-	            </div>
-	            <h3>${myDog.dogName }</h3>
-	        </a>
-	    </div>
-	</c:forEach>
+	<c:choose>
+		<c:when test="${sessionScope.myDogList[0] ne null}">
+			<c:forEach items="${sessionScope.myDogList }" var="myDog">
+			    <div class="box">
+			        <a onclick="dogModal('${myDog.dogNo}');">
+			            <div class="photo">
+				            <c:choose>
+				            	<c:when test="${myDog.dogPhoto eq null}">
+					                <img src="/resources/img/default_dog.png">
+				            	</c:when>
+				            	<c:otherwise>
+					                <img src="/resources/upload/dog/${myDog.dogPhoto }">
+				            	</c:otherwise>
+				            </c:choose>	
+			            </div>
+			            <h3>${myDog.dogName }</h3>
+			        </a>
+			    </div>
+			</c:forEach>
+	    </c:when>
+		<c:otherwise>
+			<br>
+			<p>등록된 반려견이 없습니다.</p>
+		</c:otherwise>
+    </c:choose>
 </div>
 
 <!-- 강아지 모달 -->

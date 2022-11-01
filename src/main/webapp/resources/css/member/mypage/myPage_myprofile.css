@@ -203,11 +203,12 @@ input, button, #photoBtn {
 }
 
 .myprofile .link-box {
+	width:670px;
     text-align: right;
+    margin-top: 20px;
 }
 
 .myprofile .link-box > a {
-    margin-top: 10px;
     font-size: 12px;
     text-decoration: none;
     color: #616568;

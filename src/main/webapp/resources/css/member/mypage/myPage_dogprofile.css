@@ -101,6 +101,7 @@
 /* 프로필 정보 영역 */
 .dogprofile #info-section{
 	width: 650px;
+	margin : 0 auto;
 }
 
 .dogprofile #info-section .info-box {

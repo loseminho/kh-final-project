@@ -58,7 +58,7 @@
 				</c:when>
 				<c:otherwise>
 					<a href="/currentPw.do">비밀번호 변경</a>
-					<span> / </span>
+					<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
 			        <a onclick="deleteMember('${sessionScope.m.memberId }');">탈퇴하기</a>
 				</c:otherwise>
 			</c:choose>
