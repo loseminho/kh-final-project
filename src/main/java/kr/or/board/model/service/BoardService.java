@@ -27,16 +27,20 @@ public class BoardService {
 		System.out.println("dao 전 :" +q.getQnaNo());
 		if(result>0) {
 			//insert 된 qnaboard no 조회 
-			int boardNo = dao.selectQnaBoardNo();
+			int qnaNo = dao.selectQnaBoardNo();
 			//file_tbl insert 
 			for(QnaFile qf : q.getFileList()) {
-				qf.setBoardNo(boardNo);
+				qf.setQnaNo(qnaNo);
 				result += dao.insertFile(qf);
 			}
 		}
 		return result;
 	}
 
-
+	/* 문의게시판 view */ 
+	public QnaBoard selectOneQna(int qnaNo) {
+		QnaBoard qb = dao.selectOneQna(qnaNo);
+		return qb;
+	}
 
 }

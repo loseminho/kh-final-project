@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -42,7 +43,6 @@ public class BoardController {
 		ArrayList<QnaBoard> list = service.allQnaBoard();
 		Gson gson = new Gson();
 		String result = gson.toJson(list);
-		System.out.println(result);
 		return result;
 	}
 	
@@ -87,5 +87,14 @@ public class BoardController {
 		System.out.println(q);
 		int result = service.insertQnaBoard(q);
 		return "board/faqQna";
+	}
+	/* 문의게시판 이동 */ 
+	@RequestMapping(value="/qnaView.do")
+	public String qnaView(int qnaNo, Model model) {
+		System.out.println(qnaNo);
+		QnaBoard qb = service.selectOneQna(qnaNo);
+		model.addAttribute("qb",qb);
+		System.out.println(qb);
+		return "board/qnaView";
 	}
 }
