@@ -28,18 +28,18 @@
 		<form action="/inputMarket.do" method="post" enctype="multipart/form-data">
 			<div class="sub-title"><span>*</span>사진</div>
 			<div class="row-part" style="height:150px;">
-				<div class="preview-box">
-				<input id="imageFile"  type="file" name="photo" style="display:none;">
-				<img src="" id="preview">
-				</div>
-				<div class="preview-box">
-				<input id="imageFile"  type="file" name="photo" style="display:none;">
-				<img src="" id="preview">
-				</div>
-				<div class="preview-box">
-				<input id="imageFile" type="file" name="photo" style="display:none;">
-				<img src="" id="preview">
-				</div>
+				<input id="imageFile1"  type="file" class="photo" name="photo" style="display:none;">
+			<div class="preview-box">
+				<img src="" class="preview">
+			</div>
+			<input id="imageFile2"  type="file" class="photo" name="photo" style="display:none;">
+			<div class="preview-box">
+				<img src="" class="preview">
+			</div>
+			<input id="imageFile3" type="file" class="photo" name="photo" style="display:none;">
+			<div class="preview-box">
+				<img src="" class="preview">
+			</div>
 			</div>
 			<div class="row-part">
 			<div class="sub-title"><span>*</span>품종선택 :</div>
@@ -71,7 +71,7 @@
 		    <label for="price"><span>*</span>분양가격 :</label>
 		    </div>
 		    <div class="box">
-		        <input type="number" name="price" id="price" min="0" step="10000" placeholder="숫자만입력해주세요">\
+		        <input type="number" name="price" id="price" min="0" max="100000000" step="10000" placeholder="숫자만입력해주세요">\
 		        <span style="color:red; font-size:12px;"> *만원단위로 입력 할 수 있어요</span>
 		    </div>
 		    </div>
