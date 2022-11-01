@@ -21,38 +21,61 @@
 	            </ul>	
 			</div>
 			<div id="rowSession2">
-		<h1>분양글쓰기</h1>
-			<div class="photo-box"></div>
-			<div class="photo-box"></div>
-			<div class="photo-box"></div>
-			<input type="file" name="photo" multiple>
+			<h1>분양등록</h1>
+			<br>
+			<hr>
+			<br>
 		<form action="/inputMarket.do" method="post" enctype="multipart/form-data">
-			<div>품종선택</div>
-			<select id="select-box" name="typeCode">
-			<!-- 강아지 종류 option 넣는 자리 -->
-			</select>
-			<div>나이</div>
-			<input type="text" name="age">
-			<div>성별선택</div>
+			<div class="sub-title"><span>*</span>사진</div>
+			<div class="row-part">
+				<input type="file" name="photo" multiple>
+			</div>
+			<div class="row-part">
+			<div class="sub-title"><span>*</span>품종선택 :</div>
+				<select id="select-box" name="typeCode">
+				<!-- 강아지 종류 option 넣는 자리 -->
+				</select>
+			</div>
+			<div class="row-part">
+			<div class="sub-title"><span>*</span>나이(개월) :</div>
+			<input type="number" name="age" min="0" max="24" placeholder="0~24개월">
+			<span style="color:red; font-size:12px;">*입력해주세요</span>
+			</div>
+			<div class="row-part">
+			<div class="sub-title"><span>*</span>성별선택 :</div>	
 			<input type="radio" name="gender" id="male" value="남자">
 			<label for="male">남자</label>
 			<input type="radio" name="gender" id="female" value="여자">
 			<label for="female">여자</label>
-			    <div class="info-box">
-			        <label for="dogVacc"><span>*</span>예방접종 여부</label><br>
-			        <label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogVacc" value="O"> 했어요</label>
-      				<label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogVacc" value="X"> 안 했어요</label>
-			    </div>
-			<div>가격입력</div>
-			<input type="text" name="price">
-			<div>소개</div>
+			</div>
+			<div class="row-part">
+			<div class="sub-title">
+			<label for="dogVacc"><span>*</span>예방접종 여부 :</label><br>
+			</div>
+			    <label style="font-size: 14px; margin-right:5px;"><input type="radio" name="dogVacc" value="O"> 했어요</label>
+      			<label style="font-size: 14px; margin-right:5px;"><input type="radio" name="dogVacc" value="X"> 안 했어요</label>
+			</div>
+			<div class="row-part">
+			<div class="sub-title">
+		    <label for="price"><span>*</span>분양가격 :</label>
+		    </div>
+		    <div class="box">
+		        <input type="number" name="price" id="price" min="0" step="10000" placeholder="숫자만입력해주세요">\
+		        <span style="color:red; font-size:12px;"> *만원단위로 입력 할 수 있어요</span>
+		    </div>
+		    </div>
+			<div class="sub-title">*소개</div>
+			<div class="row-part">
 			<textarea name="saleInfo"></textarea>
-			<input type="submit" value="전송">
+	        </div>
+	        <br>
+			<input type="submit" id="submit-btn" value="전송">
 		</form>
 		</div>
 	</div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 </body>
+<script src="/resources/js/market/writeFrmContent.js"></script>
 <script>
 	$(document).ready(function(){
 		$.ajax({

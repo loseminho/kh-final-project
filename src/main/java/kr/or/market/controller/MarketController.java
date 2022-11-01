@@ -57,6 +57,7 @@ public class MarketController {
 	@RequestMapping(value="/selectFilterList.do", produces="application/json;charset=utf-8")
 	public String filterSelect(MarketDog md) {
 		ArrayList<MarketDog> list = service.filterSelect(md);
+		System.out.println(list);
 		return new Gson().toJson(list);
 	}
 	@RequestMapping(value="/writeFrm.do")
@@ -95,7 +96,7 @@ public class MarketController {
 			}
 		}
 		int result = service.inputMarket(md);
-		return "market/saleDog";
+		return "redirect:/";
 	}
 	@ResponseBody
 	@RequestMapping(value="/selectTypeList.do", produces="application/json;charset=utf-8")
