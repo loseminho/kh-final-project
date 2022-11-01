@@ -11,6 +11,8 @@ $("#addDog").on("click", function(){
 	$("#dogType2").attr("name", "dogTypeNo");
 	$("#dogType2").empty();
 	$("#dogType2").append("<option value='none' selected disabled>선택해주세요</option>")
+	$("#dogPhoto").prop("name", "");
+	$("#dogPhoto").val("");
 	
 	$("#dogName").prop("readonly", false);
 	$("#dogName").val("");
@@ -47,6 +49,9 @@ function dogModal(dogNo) {
 	$("#dogBtn").text("수정하기");
 	$("#deleteDogBtn").show();
 	$("#deleteDogBtn").attr("onclick", "deleteMyDog("+dogNo+");");
+	$("#dogPhoto").prop("name", "");
+	$("#dogPhoto").val("");
+	$("#dogPreview").attr("src", "");
 	
 	$.ajax({
         url  : '/selectMyOneDog.do',
@@ -145,6 +150,7 @@ $("#dogBtn").on("click", function(){
 		selectVal = $("#dogType2 option:selected").val();
 		
 		if(nameReg.test(nameVal) && selectVal != "none" && numReg.test(ageVal) && genderChk && numReg.test(weightVal) && neutralChk && vaccChk) {
+			$.cookie("tab", 1);
 			$("#dogProfileForm").submit();
 		} else {		
 			alert("추가 실패");
