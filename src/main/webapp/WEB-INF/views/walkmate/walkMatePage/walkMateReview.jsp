@@ -20,7 +20,8 @@
 			<!-- 후기 수만큼 출력 -->
 			<tr>
 				<td><a href="/showProfile.do">닉네임</a></td>		<!-- 해당 닉네임의 프로필로 이동 -->
-				<td><a href="#">제목</a></td>						<!-- 해당 후기 내용 보기 -->
+				<!-- /walkMetePage.do?후기 번호&모임 페이지에서 보여줄 부분 -->
+				<td><a href="/walkMetePage.do?wmNo=1&reviewNo=1&index=3">제목</a></td>		<!-- 해당 후기 내용 보기 -->
 				<td>2022-10-31</td>
 				<td>10</td>
 			</tr>
@@ -48,7 +49,7 @@
 		</div>
 		
 		<div class="review-write-btn-box">
-			<button type="submit">후기 쓰기</button>
+			<button type="submit">등록</button>
 		</div>
 	</form>
 </div>
