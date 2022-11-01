@@ -9,11 +9,22 @@ body {
 	display: flex;
 	flex-direction: column;
 	min-height:100vh;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 a, button {
 	cursor:pointer;
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+}
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+	background-color:#DDD7CB;
+	border-radius:10px;
 }
 
 .header a{
