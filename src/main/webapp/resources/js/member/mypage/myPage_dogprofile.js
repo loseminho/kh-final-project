@@ -147,8 +147,8 @@ $("#dogPhoto").on("change", function(event) {
 
 
 // 정규표현식
-// 이름 (아무 글자나 1글자 이상)
-nameReg = /^[a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ]+$/;
+// 이름 (아무 글자나 1글자 ~ 10글자)
+nameReg = /^[a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ]{1,10}$/;
 // 나이, 몸무게 (숫자로만 1글자 이상)
 numReg = /^[0-9]+$/;
 
@@ -171,14 +171,109 @@ $("#dogBtn").on("click", function(){
 	if(btnText == "추가하기") { // 반려견 추가하는 경우
 		// 품종 (select 선택했는지 확인)
 		selectVal = $("#dogType2 option:selected").val();
+		const typeVal = $("#dogType1").val();
 		
-		if(nameReg.test(nameVal) && selectVal != "none" && numReg.test(ageVal) && genderChk && numReg.test(weightVal) && neutralChk && vaccChk) {
-			$.cookie("tab", 1);
-			$("#dogProfileForm").submit();
-		} else {		
-			alert("추가 실패");
+		if(nameVal == "") {
+			Swal.fire({
+				text: '이름을 입력해주세요.',
+				confirmButtonColor: '#1abc9c'
+			})
+		} else if(!nameReg.test(nameVal)) {
+			Swal.fire({
+				text: '10글자까지만 입력 가능합니다.',
+				confirmButtonColor: '#1abc9c'
+			})
+		} 
+		
+		if(ageVal == "") {
+			Swal.fire({
+				text: '나이를 입력해주세요.',
+				confirmButtonColor: '#1abc9c'
+			})
 		}
+		
+		if(weightVal == "") {
+			Swal.fire({
+				text: '몸무게를 입력해주세요.',
+				confirmButtonColor: '#1abc9c'
+			})
+		}
+		
+		if(!genderChk) {
+			Swal.fire({
+				text: '성별을 선택해주세요.',
+				confirmButtonColor: '#1abc9c'
+			})
+		}
+		
+		if(!neutralChk) {
+			Swal.fire({
+				text: '중성화 여부를 선택해주세요.',
+				confirmButtonColor: '#1abc9c'
+			})
+		}
+		
+		if(!vaccChk) {
+			Swal.fire({
+				text: '예방접종 여부를 선택해주세요.',
+				confirmButtonColor: '#1abc9c'
+			})
+		}
+		
+				
+		if(selectVal == "none") {
+			Swal.fire({
+				text: '품종을 선택하거나 직접 입력해주세요.',
+				confirmButtonColor: '#1abc9c'
+			})
+		} else if(selectVal == "user" && typeVal == "") {
+			Swal.fire({
+				text: '품종을 직접 입력해주세요.',
+				confirmButtonColor: '#1abc9c'
+			})
+		} else {
+			if(nameReg.test(nameVal) && numReg.test(ageVal) && genderChk && numReg.test(weightVal) && neutralChk && vaccChk) {
+				$.cookie("tab", 1);
+				$("#dogProfileForm").submit();
+			}
+		}
+		
 	} else { // 반려견 수정하는 경우
+		if(ageVal == "") {
+			Swal.fire({
+				text: '나이를 입력해주세요.',
+				confirmButtonColor: '#1abc9c'
+			})
+		}
+		
+		if(weightVal == "") {
+			Swal.fire({
+				text: '몸무게를 입력해주세요.',
+				confirmButtonColor: '#1abc9c'
+			})
+		}
+	
+		if(!genderChk) {
+			Swal.fire({
+				text: '성별을 선택해주세요.',
+				confirmButtonColor: '#1abc9c'
+			})
+		}
+		
+		if(!neutralChk) {
+			Swal.fire({
+				text: '중성화 여부를 선택해주세요.',
+				confirmButtonColor: '#1abc9c'
+			})
+		}
+		
+		if(!vaccChk) {
+			Swal.fire({
+				text: '예방접종 여부를 선택해주세요.',
+				confirmButtonColor: '#1abc9c'
+			})
+		}
+		
 		if(numReg.test(ageVal) && genderChk && numReg.test(weightVal) && neutralChk && vaccChk) {
 			Swal.fire({
 		        title: '반려견 정보 수정',
@@ -195,8 +290,6 @@ $("#dogBtn").on("click", function(){
 					$("#dogProfileForm").submit();
 		        }
 		    })
-		} else {		
-			alert("수정 실패");
 		}
 	}
 });

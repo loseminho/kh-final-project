@@ -67,7 +67,7 @@ public class DogController {
 	
 	@RequestMapping(value="/insertMyDog.do")
 	public String insertMyDog(Dog d, DogType dt, MultipartFile[] photodog, HttpServletRequest request, Model model) {
-		if(dt != null) {
+		if(dt.getTypeName() != null) {
 			int result = service.insertDogType(dt);
 			int typeCode = service.selectDogTypeCode();
 			d.setDogTypeNo(typeCode);

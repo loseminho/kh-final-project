@@ -55,6 +55,9 @@ function closePhoneModal() {
 	$("#phone-modal").hide();
 }
 
+// 정규표현식
+// 이름 (아무 글자나 1글자 ~ 10글자)
+nameReg = /^[a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ]{1,10}$/;
 //휴대전화 정규식
 const phoneReg = /^010-\d{4}-\d{4}$/;
 
@@ -178,6 +181,8 @@ $("#updateBtn").on("click", function(){
 	
 	if(nameVal == "") {
 		nameComment.text("이름을 입력해주세요.");
+	} else if(!nameReg.test(nameVal)) {
+		nameComment.text("10글자까지만 입력 가능합니다.");
 	} else {
 		if(verifyChk.val()) {
 			Swal.fire({

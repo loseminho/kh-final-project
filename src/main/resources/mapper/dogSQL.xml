@@ -38,6 +38,7 @@
 		type_code as typeCode,
 		type_name as typeName
 	from dog_type
+	where user_input = 0
 	order by type_code desc
 	</select>
 	
