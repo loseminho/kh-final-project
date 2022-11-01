@@ -57,8 +57,10 @@
 			dog_gender = #{dogGender},
 			dog_weight = #{dogWeight},
 			dog_neutral = #{dogNeutral},
-			dog_vacc = #{dogVacc},
-			dog_photo = #{dogPhoto}
+			<if test="dogPhoto != null">
+			dog_photo = #{dogPhoto},
+			</if>
+			dog_vacc = #{dogVacc}
 		where dog_no = #{dogNo}
 	</update>
 </mapper>

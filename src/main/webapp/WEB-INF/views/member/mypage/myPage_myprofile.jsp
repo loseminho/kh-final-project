@@ -58,7 +58,7 @@
 				</c:when>
 				<c:otherwise>
 					<a href="/currentPw.do">비밀번호 변경</a>
-					<span> / </span>
+					<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
 			        <a onclick="deleteMember('${sessionScope.m.memberId }');">탈퇴하기</a>
 				</c:otherwise>
 			</c:choose>
@@ -72,7 +72,9 @@
 <div id="phone-modal" class="modal-wrapper">
 	<div class="modal">
 		<div class="modal-header">				
-			<button id="closeModalBtn" onclick="closePhoneModal();">닫기</button>
+			<button id="closeModalBtn" onclick="closePhoneModal();">
+				<i class="fa-solid fa-xmark"></i>
+			</button>
 		</div>
 		<div class="modal-content">
 			<div class="verifyBox">

@@ -18,4 +18,8 @@ public class WalkDao {
 		List list = sqlSession.selectList("walkmate.allWalkList");
 		return (ArrayList<Walk>)list;
 	}
+
+	public Walk selectWalkListAjax(int wmNo) {
+		return sqlSession.selectOne("walkmate.selectWalkListOne",wmNo);
+	}
 }

@@ -12,6 +12,10 @@ body {
     overflow-y: scroll;
 }
 
+a, button {
+	cursor:pointer;
+}
+
 .header a{
 	font-family:gs-Bold;
 	font-size: 18px;
@@ -176,5 +180,5 @@ footer > .footer-title {
 footer > .footer-content {
 	margin : 0 auto;
     width: 1000px;
-    height : 100px;
+    height : 80px;
 }

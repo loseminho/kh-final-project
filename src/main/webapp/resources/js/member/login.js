@@ -16,6 +16,18 @@ function login() {
     });
 }
 
+$("#memberId").keydown(function(keyNum){
+	if(keyNum.keyCode == 13) {
+		$("#loginBtn").click();
+	}
+});
+
+$("#memberPw").keydown(function(keyNum){
+	if(keyNum.keyCode == 13) {
+		$("#loginBtn").click();
+	}
+});
+
 $("#memberId").focusin(function() {
 	$(this).css("border-color", "#1abc9c");
     $(this).prev().prev().addClass("afterColor");

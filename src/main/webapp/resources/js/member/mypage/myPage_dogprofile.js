@@ -3,6 +3,8 @@ $("#addDog").on("click", function(){
 	$("#dogProfileForm").attr("action", "/insertMyDog.do");
 	$("#dogBtn").text("추가하기");
 	$("#deleteDogBtn").hide();
+	$("#dogNo").val(""); 
+    $("#dogNo").attr("name", "");
 	$("#dogType1").css("display", "none");
 	$("#dogType1").attr("name", "");
 	$("#dogType2").css("display", "block");
@@ -57,8 +59,8 @@ function dogModal(dogNo) {
         	$("#dogType1").prop("readonly", true);
         	$("#dogAge").val(data.dogAge);
         	$("#dogWeight").val(data.dogWeight);
-        	const num = $("<input type='hidden' name='dogNo' value='"+data.dogNo+"'>");
-        	$("#dogProfileForm").append(num);
+        	$("#dogNo").val(data.dogNo); 
+        	$("#dogNo").attr("name", "dogNo"); 
         	
         	if(data.dogPhoto != null) {
         		$("#dogPreview").attr("src", "/resources/upload/dog/"+data.dogPhoto);
@@ -149,9 +151,22 @@ $("#dogBtn").on("click", function(){
 		}
 	} else { // 반려견 수정하는 경우
 		if(numReg.test(ageVal) && genderChk && numReg.test(weightVal) && neutralChk && vaccChk) {
-			//closeDogModal();
-			alert("수정 성공");
-			$("#dogProfileForm").submit();
+			closeDogModal();
+			Swal.fire({
+		        title: '반려견 정보 수정',
+		        text: "반려견 정보를 수정하시겠습니까?",
+		        icon: 'warning',
+		        showCancelButton: true,
+		        confirmButtonColor: '#1abc9c',
+		        cancelButtonColor: '#ccc',
+		        confirmButtonText: '수정',
+		        cancelButtonText: '취소'
+		    }).then((result) => {
+		        if (result.isConfirmed) {
+		        	$.cookie("tab", 1);
+					$("#dogProfileForm").submit();
+		        }
+		    })
 		} else {		
 			alert("수정 실패");
 		}

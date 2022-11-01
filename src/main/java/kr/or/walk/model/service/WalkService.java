@@ -16,6 +16,10 @@ public class WalkService {
 	public ArrayList<Walk> allWalkList() {
 		return dao.allWalkList();
 	}
+
+	public Walk selectWalkListAjax(int wmNo) {
+		return dao.selectWalkListAjax(wmNo);
+	}
 	
 	
 }
