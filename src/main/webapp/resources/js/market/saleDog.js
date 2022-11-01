@@ -80,7 +80,6 @@ $(".add-btn>button").on("click",function(){
         		data: {typeSize : -1},
         		success:function(data){
         			console.log(data);
-        			console.log(data[0].fileList[0].filePath);
         			var html = "";
         			console.log(totalCnt);
         			console.log(data.length);

@@ -13,7 +13,7 @@
     <!--fonts-->
     <link rel="stylesheet" href="/resources/css/gmarket.css">
     <!--css-->
-    <link rel="stylesheet" href="/resources/css/board/dogMarket.css">
+    <link rel="stylesheet" href="/resources/css/market/dogMarket.css">
     <!--jQuery-->       
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <!--구글 아이콘-->
@@ -104,7 +104,7 @@
     </content><!--컨텐츠 끝-->
     <!-- 모달시작 -->
 	<jsp:include page="/WEB-INF/views/market/modal.jsp"/>
-	<script src="/resources/js/board/saleDog.js"></script>
+	<script src="/resources/js/market/saleDog.js"></script>
     <script>
     </script>
 </body>

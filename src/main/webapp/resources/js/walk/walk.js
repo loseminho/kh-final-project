@@ -1,7 +1,6 @@
 $(document).ready(function(){
     $.ajax({
         url : "/allWalkListAjax.do",
-        
         type : "post",
         success : function(data){
             console.log(data)
@@ -15,22 +14,25 @@ $(document).ready(function(){
                 html += "<div class='box-list-tag'>";
                 html += "<div class='tag-wrapper'>";
                 if(data[i].tag1==1){
-                html += "<div class='tag-box' id='tag1'>1:1 산책</div>";                
+                	html += "<div class='tag-box' id='tag1'>1:1 산책</div>";                
                 }
                 if(data[i].tag2==1){
-                html += "<div class='tag-box' id='tag2'>N:N 산책</div>";
+                	html += "<div class='tag-box' id='tag2'>N:N 산책</div>";
                 }
                 if(data[i].tag3==1){
-                html += "<div class='tag-box' id='tag3'>인증된 모임</div>";
+                	html += "<div class='tag-box' id='tag3'>인증된 모임</div>";
                 }
                 if(data[i].tag4==1){
-                html += "<div class='tag-box' id='tag4'>산책갈개 문화</div>";
+                	html += "<div class='tag-box' id='tag4'>산책갈개 문화</div>";
                 }
                 if(data[i].tag5==1){
-                html += "<div class='tag-box' id='tag5'>산책갈개 문화</div>";
+                	html += "<div class='tag-box' id='tag5'>산책갈개 문화</div>";
                 }
                 if(data[i].tag6==1){
-                html += "<div class='tag-box' id='tag6'>산책갈개 문화</div>";                           
+                	html += "<div class='tag-box' id='tag6'>산책갈개 문화</div>";                           
+                }
+                if(data[i].tag1==0 && data[i].tag2==0 && data[i].tag3==0 && data[i].tag4==0 && data[i].tag5==0 && data[i].tag6==0){
+                	html += "<div class='no-tag-box'>등록한 태그가 없습니다.</div>";
                 }
                 
                 html += "</div>";
@@ -60,10 +62,43 @@ $(document).ready(function(){
 function walkMate(e){
 	console.log(e);
 		$.ajax({
-		url : "/.do",
+		url : "/selectWalkListAjax.do",
 		data:{wmNo:e},
 		success:function(data){
-		
+			var html = "";
+			html += data.rnum;
+			$("#modal-post-title .box-list-num").html(html);
+			
+			
+			var tag = "";
+            tag += "<div class='tag-wrapper'>";
+            if(data.tag1==1){
+            	tag += "<div class='tag-box' id='tag1'>1:1 산책</div>";                
+            }
+            if(data.tag2==1){
+            	tag += "<div class='tag-box' id='tag2'>N:N 산책</div>";
+            }
+            if(data.tag3==1){
+            	tag += "<div class='tag-box' id='tag3'>인증된 모임</div>";
+            }
+            if(data.tag4==1){
+            	tag += "<div class='tag-box' id='tag4'>산책갈개 문화</div>";
+            }
+            if(data.tag5==1){
+            	tag += "<div class='tag-box' id='tag5'>산책갈개 문화</div>";
+            }
+            if(data.tag6==1){
+            	tag += "<div class='tag-box' id='tag6'>산책갈개 문화</div>";                           
+            }
+            if(data.tag1==0 && data.tag2==0 && data.tag3==0 && data.tag4==0 && data.tag5==0 && data.tag6==0){
+            	tag += "<div class='no-tag-box'>등록한 태그가 없습니다.</div>";
+            }
+            
+            tag += "</div>";
+            $("#modal-post-title .box-list-tag").html(tag);
+            
+            
+            walkMates();
 		}
 		
 	});

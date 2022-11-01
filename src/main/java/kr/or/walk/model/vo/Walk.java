@@ -24,6 +24,7 @@ public class Walk {
 	private int wmView;						// 산책갈개 조회수
 	private String wmDate;					// 산책갈개 작성일
 	private String wmStat;					// 산책갈개 종료 유무
+	private String rnum;
 	private String tag1;
 	private String tag2;
 	private String tag3;
