@@ -57,7 +57,9 @@
 	<div id="join-modal" class="modal-wrapper">
 		<div class="modal">
 			<div class="modal-header">				
-				<button onclick="closeModal();">닫기</button>
+				<button id="closeModalBtn" onclick="closeModal();">
+					<i class="fa-solid fa-xmark"></i>
+				</button>
 			</div>
 			<div class="modal-content">
 				<div class="join-select">

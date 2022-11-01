@@ -61,6 +61,16 @@ input, button, #photoBtn {
 	display:block;
 }
 
+.myprofile #photoBtn {
+	background-color:#1abc9c;
+	color:white;
+	border:none;
+	height:22px;
+	width:60px;
+	border-radius:5px;
+	line-height:25px;
+}
+
 
 /* 프로필 정보 영역 */
 .myprofile #info-section {
@@ -96,6 +106,17 @@ input, button, #photoBtn {
     padding-left: 10px;
     font-size: 16px;
     outline: none;
+}
+
+.myprofile #changeBtn, 
+.myprofile #addr-btn {
+	background-color:#1abc9c;
+	color:white;
+	border:none;
+	height:22px;
+	width:60px;
+	border-radius:5px;
+	line-height:25px;
 }
 
 /* 자기소개 및 버튼 영역 */
@@ -237,4 +258,40 @@ input, button, #photoBtn {
 .myprofile .modal-content{
 	padding: 10px 20px 40px 20px;
 	text-align : center;
+}
+
+#newPhone {
+	height:18px;
+}
+
+.myprofile .modal-content #sendBtn {
+	background-color:#1abc9c;
+	color:white;
+	border:none;
+	height:22px;
+	width:80px;
+	border-radius:5px;
+	line-height:25px;
+}
+
+.myprofile .modal-content #verifyBtn,
+.myprofile .modal-content #changePhoneBtn {
+	background-color:#1abc9c;
+	color:white;
+	border:none;
+	height:22px;
+	width:60px;
+	border-radius:5px;
+	line-height:25px;
+}
+
+.myprofile #closeModalBtn {
+	background-color:white;
+	color:black;
+	border:none;
+	height:22px;
+	width:40px;
+	border-radius:5px;
+	line-height:25px;
+	font-size:18px;
 }

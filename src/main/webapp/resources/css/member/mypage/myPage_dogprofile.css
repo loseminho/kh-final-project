@@ -72,7 +72,14 @@
 .dogprofile #photo-section #dogPhotoBtn {
     display: block;
     margin: 0 auto;
-    margin-top: 10px;
+    margin-top: 5px;
+	background-color:#1abc9c;
+	color:white;
+	border:none;
+	height:22px;
+	width:60px;
+	border-radius:5px;
+	line-height:25px;
 }
 
 .dogprofile .photo-box {
@@ -200,4 +207,15 @@
 .dogprofile .modal-content{
 	padding: 20px 20px 40px 20px;
 	text-align : center;
+}
+
+.dogprofile #closeModalBtn {
+	background-color:white;
+	color:black;
+	border:none;
+	height:22px;
+	width:40px;
+	border-radius:5px;
+	line-height:25px;
+	font-size:18px;
 }

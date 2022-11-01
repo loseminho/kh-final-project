@@ -72,7 +72,9 @@
 <div id="phone-modal" class="modal-wrapper">
 	<div class="modal">
 		<div class="modal-header">				
-			<button id="closeModalBtn" onclick="closePhoneModal();">닫기</button>
+			<button id="closeModalBtn" onclick="closePhoneModal();">
+				<i class="fa-solid fa-xmark"></i>
+			</button>
 		</div>
 		<div class="modal-content">
 			<div class="verifyBox">

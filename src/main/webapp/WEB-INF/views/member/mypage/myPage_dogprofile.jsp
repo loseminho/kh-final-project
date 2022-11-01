@@ -30,7 +30,9 @@
 <div id="dog-modal" class="modal-wrapper">
     <div class="modal">
         <div class="modal-header">				
-            <button id="closeModalBtn" onclick="closeDogModal();">닫기</button>
+            <button id="closeModalBtn" onclick="closeDogModal();">
+            	<i class="fa-solid fa-xmark"></i>
+            </button>
             <h3>반려견 상세 정보</h3>
         </div>
         <div class="modal-content">
