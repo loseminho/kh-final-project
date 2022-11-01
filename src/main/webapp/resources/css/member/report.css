@@ -1,0 +1,82 @@
+.report-wrap{
+	width: 400px;
+	height: 600px;
+	
+	display: flex;
+	justify-content: center;
+    align-items: center;
+
+    position: relative;
+
+    box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%);
+    
+    background-color: white;
+}
+
+#report-modal-close{
+    margin: 0px;
+    width: 30px;
+    font-size: 30px;
+    line-height: 30px;
+
+    position: absolute;
+    top: 0px;
+    left: 370px;
+}
+
+#report-modal-close:hover{
+	cursor: pointer;
+}
+
+.report-content{
+	width: 300px;
+	overflow: auto;
+}
+
+.report-content>h1{
+    margin: 0px;
+}
+
+.report-form p{
+    margin: 0px;
+    width: 150px;
+    font-weight: bold;
+}
+
+.report-type{
+	margin-top: 10px;
+	display: flex;
+}
+
+.report-type>select{
+	width: 150px;
+}
+
+.report-reason{
+	margin-top: 10px;
+}
+
+.report-input{
+	margin-top: 10px;
+}
+
+.report-input>textarea{
+	resize: none;
+	font-size: 16px;
+	width: 294px;
+	height: 294px;
+}
+
+.report-btn-box{
+	margin-top: 15px;
+	width: 300px;
+	text-align: right;	
+}
+
+.report-btn-box>button{
+	background-color: white;
+	border: 1px solid black;
+	width: 100px;
+	height: 27px;
+	font-weight: bold;
+}
