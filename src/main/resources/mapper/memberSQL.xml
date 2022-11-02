@@ -73,4 +73,16 @@
 			member_intro = #{memberIntro}
 		where member_id = #{memberId}
 	</update>
+	
+	<select id="selectMyCalendar" parameterType="string" resultType="mc">
+		select 
+		    wm_no as wmNo,
+		    wm_title as wmTitle,
+		    substr(wm_meet_start, 0, 10) as startdate,
+		    substr(wm_meet_end, 0, 10) as enddate
+		from walk_mate_tbl inner join wm_apply_tbl using(wm_no)
+		where 
+		    member_id = #{_parameter}
+		    and apply_stat = 2	
+	</select>
 </mapper>

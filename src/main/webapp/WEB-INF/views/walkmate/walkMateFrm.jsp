@@ -15,94 +15,69 @@
         <!--Content Modal-->
         <div id="modal" class="modal-overlay">
             <div class="modal-window">
-                
                 <div class="title">
                     <div class="close-area">X</div>
                     <div class="bottom-list-box">
-
-                        <!--게시물 쓰기 헤더-->
+                        <!-- 모달 - 새 글쓰기 타이틀 -->
                         <div id="modal-write-title">
-	                        <div class="input-title">
-	                            	제목:
-	                            <input type="text" id="" class="" name="" placeholder="제목을 입력해주세요.">
-	                        </div>
-	                        <div class="input-title-sub left">
-	                            	분류: 
-	                            <select name="" id="">
-	                                <option value="1">목록 보기</option>
-	                                <option value="2">산책갈개</option>
-	                                <option value="3">강아지 자랑</option>
-	                            </select>
-	                        </div>
-	                        <div class="input-title-sub left">
-	                            	부 제목: 
-	                            <input type="text" id="" class="" name="" placeholder="당신의 게시물을 설명 해주세요.">
-	                        </div>
+							모임 만들기
                         </div>
-                        <!-- End 게시물 쓰기 헤더-->
-
-
+                        <!-- End 모달 - 새 글쓰기 타이틀 -->
                         <!--산책갈게 게시물 보기-->
                         <div id="modal-post-title">
                         </div>
-                        
                     </div>
                 </div>
                 <!-- 모달 타이틀 끝-->
 
 				<!-- 글쓰기 컨텐츠 시작 -->
 				<div id="modal-write-content">
-	                <div class="input-content">
-	                    <div class="input-content-tag-title">태그 설정 (복수 선택 가능)</div>
-	                    <div class="input-content-tag-content">
-	                        <input type="checkbox" id="tag1" name="">
-	                        <label for="tag1"><button type="" class="tags" id="tag1" value="" disabled>1:1 산책</button></label>
-	                        <input type="checkbox" id="tag2" name="">
-	                        <label for="tag2"><button type="" class="tags" id="tag2" value="" disabled>N:N 산책</button></label>
-	                        <input type="checkbox" id="tag3" name="">
-	                        <label for="tag3"><button type="" class="tags" id="tag3" value="" disabled>인증된 모임</button></label>
-	                        <input type="checkbox" id="tag4" name="">
-	                        <label for="tag4"><button type="" class="tags" id="tag4" value="" disabled>산책할개 문화</button></label>
-	                        <input type="checkbox" id="tag5" name="">
-	                        <label for="tag5"><button type="" class="tags" id="tag5" value="" disabled>산책할개 문화</button></label>
-	                        <input type="checkbox" id="tag6" name="">
-	                        <label for="tag6"><button type="" class="tags" id="tag6" value="" disabled>산책할개 문화</button></label>
-	                    </div>
-	                    <div class="input-content-titles">
-	                        <div class="input-content-addr-title">산책 만남 장소</div>
-	                        <div class="input-content-range-title">1인 반려견 최대 수</div>
-	                        <div class="input-content-limit-title">모임 인원</div>
-	                    </div>
-	                    
-	                    <div class="input-content-contents">
-	                        <div class="input-content-addr-input">
-	                            <input type="text" id="" class="" name="" placeholder="ex) 서울-용산">
+	                <div class="write-content">
+	                	<div class="bottom-list-box">
+	                        <div class="box-list-tag">
+	                            <div class="tag-wrapper">
+	                                <div class="tag-box" id="tag1">1:1 산책</div>
+	                                <div class="tag-box" id="tag2">N:N 산책</div>
+	                                <div class="tag-box" id="tag3">인증된 모임</div>
+	                                <div class="tag-box" id="tag4">산책할개 문화</div>
+	                                <div class="tag-box" id="tag5">산책할개 문화</div>
+	                                <div class="tag-box" id="tag6">산책할개 문화</div>
+	                            </div>
 	                        </div>
-	                        <div class="input-content-range-input">
-	                            <input type="text" id="" class="" name="" placeholder="ex) 3">
+	                        <div class="box-list-main">
+	                            <div class="box-list-main-title">골든 리트리버 팟 구해요~</div>
+	                            <div class="box-list-main-name">
+	                                	사과는 맛있어 맛있으면 바나나 바나나는 높아 높으면 민머리
+	                            </div>
 	                        </div>
-	                        <div class="input-content-limit-input">
-	                            <input type="text" id="" class="" name="" placeholder="ex) 5">
+	                        <div class="box-list-limit">
+	                            <div class="limit-box">1 / 5</div>
 	                        </div>
-	                    </div>
-	                    <div class="bottom-content time">
-	                        <div class="titles">모임 시간 설정</div>
-	                        <div class="content-time start">
-	                            <div class="starting-title">시작 시간</div>
-	                            <input type="text" id="" name="" placeholder="ex)00시-00분">
+	                        <div class="box-list-stat">
+	                            <input type="button" id="stat-box" class="stat-box" onclick="himinho('');" value="신청">
 	                        </div>
-	                        <div class="content-time and">
-	                            ~
-	                        </div>
-	                        <div class="content-time end">
-	                            <div class="starting-title">끝 시간</div>
-	                            <input type="text" id="" name="" placeholder="ex)00시-00분">
-	                        </div>
-	                    </div>
-	                    <div class="input-main-content">
-	                        <textarea name="" id="" placeholder="내용을 입력해주세요."></textarea>
-	                    </div>
-	                        <button class="btn-input-content">등록하기</button>
+	                	</div>
+	                
+	                	<div class="write-content-input-box titles">
+	                		<label for="writeTitle"><span>*</span>제목</label>
+	                		<input type="text" name="writeTitle" id="writeTitle"> 
+	                	</div>
+	                	<div class="write-content-input-box titles">
+	                		<label for="writeTitle2"><span>*</span>분류</label>
+	                		<input type="text" name="writeTitle2" id="writeTitle2"> 
+	                	</div>
+	                	<div class="write-content-input-box titles">
+	                		<label for="writeTitle2"><span>*</span>부제목</label>
+	                		<input type="text" name="writeTitle2" id="writeTitle2"> 
+	                	</div>
+	                	<div class="write-content-input-box titles">
+	                		<label for="writeTitle2"><span>*</span>모임 최대 인원</label>
+	                		<input type="text" name="writeTitle2" id="writeTitle2" placeholder="ex) 5"> 
+	                	</div>
+	                	<div class="write-content-input-box titles">
+	                		<label for="writeTitle2"><span>*</span>모임 최대 인원</label>
+	                		<input type="text" name="writeTitle2" id="writeTitle2" placeholder="ex) 5"> 
+	                	</div>
 	                </div>
 				</div>
                  
@@ -346,9 +321,9 @@
 			$(".stat-box").eq(idx-1).css("transition-duration","0.5s").css("background-color","rgb(51, 102, 255)").css("font-size","1.2em").css("border","1px solid white").css("color","white");
 			$(".box-list-stat .end").css("background-color","#fff").css("font-size","15px").css("border","2px solid #9e9e9e").css("color","#ccc");
 		});
-		$(document).on("mouseover",".bottom-list-box",function(){
+		$(document).on("mouseleave",".bottom-list-box",function(){
 			const idx = $(".bottom-list-box").index(this);
-			$(".stat-box").eq(idx-1).css("transition-duration","0.5s").css("background-color","rgb(51, 102, 255)").css("font-size","1.2em").css("border","1px solid white").css("color","white");
+			$(".stat-box").eq(idx-1).css("transition-duration","0.5s").css("font-size","15px").css("background-color","white").css("border","2px solid rgb(51, 102, 255)").css("color","rgb(51, 102, 255)");
 			$(".box-list-stat .end").css("background-color","#fff").css("font-size","15px").css("border","2px solid #9e9e9e").css("color","#ccc");
 		});
 		
@@ -437,6 +412,8 @@
       	}  
       
         modalOff();
+        modalWritePostOn();
+        
     </script>
     <script src="/resources/js/walk/walk.js"></script>
 </body>

@@ -10,7 +10,7 @@
 			mt.gender,
 			dt.type_size as typeSize,
 			dt.type_name as typeName,
-			mt.price
+			to_char(mt.price,'FM999,999,999,999') as price
 		from market_tbl mt join dog_type dt on(mt.type_code=dt.type_code)
 		where market_no = #{_parameter}
 	</select>
@@ -35,7 +35,7 @@
 			mt.gender,
 			dt.type_size as typeSize,
 			dt.type_name as typeName,
-			mt.price
+			to_char(mt.price,'FM999,999,999,999') as price
 		from market_tbl mt join dog_type dt on(mt.type_code=dt.type_code)
 		<choose>
 		<when test="typeSize==-1">
@@ -64,11 +64,12 @@
 		#{typeCode},
 		#{saleInfo},
 		#{gender},
-		#{price}
+		#{price},
+		#{memberId}
 		)
 	</insert>
 	<insert id="inputFile" parameterType="mdf">
-		insert into market_file_tbl values(#{marketNo},#{fileName},#{filePath})
+		insert into market_file_tbl values(#{marketNo},#{fileName},#{filePath},file_seq.nextval)
 	</insert>
 	
 	<select id="selectFile" resultType="mdf">
@@ -77,5 +78,26 @@
 		file_name as fileName,
 		file_path as filePath
 		from market_file_tbl
+	</select>
+	<select id="selectNoFile" resultType="mdf">
+		select
+		file_no as fileNo,
+		market_no as marketNo,
+		file_name as fileName,
+		file_path as filePath
+		from market_file_tbl
+		where market_no = #{_parameter}
+	</select>
+	<select id="myMarketList" parameterType="m" resultType="md">
+		select
+			mt.market_no as marketNo,
+			mt.age,
+			mt.type_code as typeCode,
+			mt.sale_info as saleInfo,
+			mt.gender,
+			dt.type_size as typeSize,
+			dt.type_name as typeName,
+			to_char(mt.price,'FM999,999,999,999') as price
+		from market_tbl mt join dog_type dt on(mt.type_code=dt.type_code)
 	</select>
 </mapper>

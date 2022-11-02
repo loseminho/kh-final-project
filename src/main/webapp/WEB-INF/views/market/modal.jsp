@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div id="modal-wrap" style="display: none;">
 	<div class="modal-content">
 		<div class="detail-box-title">
@@ -19,18 +20,25 @@
 			<span>2. 인내심을 가지고 훈련할 필요가 있어요!</span>
 			<span>3. 끝까지 함께 해야 해요!</span>
 		</div>
-		<div class="detail-table-subtitle">나 데려가고 싶지 않아?</div>
+		<div class="detail-table-subtitle">이렇게나 이뻐요!</div>
 		<div class="photo-session-wrap">
 			<div>
-				<img src="/resources/img/walkmate/liry1.jpg">
+				<img class="detail-image" src="">
 			</div>
 			<div>
-				<img src="/resources/img/walkmate/liry1.jpg">
+				<img class="detail-image" src="">
 			</div>
 		</div>
 		<div class="require-btn">
+			<c:choose>
+			<c:when test="${empty sessionScope.m }">
+			<button onclick="location.href='/loginFrm.do'">로그인</button>
+			</c:when>
+			<c:otherwise>
 			<button>분양신청하기</button>
-			<button>쪽지보내기</button>
+			<button onclick="dmModalOn();">쪽지보내기</button>
+			</c:otherwise>
+			</c:choose>
 			<button id="close-modal">닫기</button>
 		</div>
 	</div>

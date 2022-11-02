@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.member.model.dao.MemberDao;
 import kr.or.member.model.vo.Member;
+import kr.or.member.model.vo.MyCalendar;
 
 @Service
 public class MemberService {
@@ -113,6 +115,10 @@ public class MemberService {
 	@Transactional
 	public int deleteMember(String memberId) {
 		return dao.deleteMember(memberId);
+	}
+
+	public ArrayList<MyCalendar> selectMyCalendar(String memberId) {
+		return dao.selectMyCalendar(memberId);
 	}
 
 }

@@ -6,14 +6,15 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
@@ -23,6 +24,7 @@ import kr.or.market.model.service.MarketService;
 import kr.or.market.model.vo.DogType;
 import kr.or.market.model.vo.MarketDog;
 import kr.or.market.model.vo.MarketDogFile;
+import kr.or.member.model.vo.Member;
 
 @Controller
 public class MarketController {
@@ -106,5 +108,12 @@ public class MarketController {
 	public String selectTypeList() {
 		ArrayList<DogType> list = service.selectTypeList();
 		return new Gson().toJson(list);
+	}
+	@RequestMapping(value="/myMarketList.do")
+	public String myMarketList(Model model, @SessionAttribute Member m) {
+		ArrayList<MarketDog> list = service.myMarketList(m);
+		System.out.println(list);
+		model.addAttribute("list",list);
+		return "market/myMarketList";
 	}
 }

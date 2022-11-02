@@ -56,7 +56,11 @@
                             <div class="sale-box">
 	                            <div class="market-list-title">
 	                       			<div>분양 리스트</div>
-	                       			<button onclick="location.href='writeFrm.do'">글쓰기</button>
+	                       			<c:choose>
+	                       			<c:when test="${not empty sessionScope.m }">
+	                       			<button onclick="location.href='writeFrm.do'">분양관리</button>
+	                       			</c:when>
+	                       			</c:choose>
 	                       		</div>
                                 <div class="sale-wrap" id="walk-question">
                                 	<!-- 분양목록 -->

@@ -171,7 +171,7 @@ input, select, button{
     line-height: 50px;
     font-weight: bold;
     text-decoration: none;
-    border: 2px solid #1abc9c;;
+    border: 2px solid #1abc9c;
     cursor: pointer;
     margin-top: 20px;
     margin-left: 500px;
@@ -284,12 +284,12 @@ li .bottom-list-box:hover{
     margin-left: 60px;
     height: 60px;
     width: 60px;
-    border: 2px solid #ff0000;
+    border: 2px solid #ff4c4c;
     text-align: center;
     font-size: 15px;
     line-height: 64px;
     border-radius: 15px;
-    color: #ff0000;
+    color: #ff4c4c;
 }
 
 .box-list-stat{
@@ -691,134 +691,101 @@ li .bottom-list-box:hover{
 }
 
 /* 모달 - 새 글쓰기*/
-.input-title{
-    height: 30px;
-    font-size: 28px;
-    padding: 25px;
-    padding-top: 40px;
-    /* font-family: gs-bold; */
+#modal-write-title{
+	width: 100%;
+	height: 120px;
+	line-height: 120px;
+	text-align: center;
+	font-size: 19px;
+	border-bottom: 2px solid #1abc9c;
 }
-.input-title input{
-    height: 30px;
-    border:none;
-    border-bottom: 1px solid #9e9e9e;
-    font-size: 18px;
-    color: #ccc;
-    width: 350px;
+#modal-write-content{
+	width: 840px;
+	margin: 0 auto;
 }
-.input-title-sub{
-    font-family: gs-Medium;
-    font-size: 23px;
-    padding-left: 30px;
-    display: inline-block;
-}
-.input-title-sub select{
-    height: 30px;
-    border:none;
-    font-size: 15px;
-    color: #393939;
-    width: 100px;
-}
-.input-title-sub input{
-    height: 30px;
-    border:none;
-    border-bottom: 1px solid #9e9e9e;
-    font-size: 18px;
-    color: #ccc;
-    width: 350px;
-}
-.iunput-content{
-    width: 90%;
+#modal-write-content .bottom-list-box{
+	width: 100%;
+    height: 160px;
     margin: 0 auto;
+    border-radius: 21px;
+    border-width: 0px;
+    border-style: none;
+    box-shadow: rgb(0 0 0 / 18%) 1px 1px 10px 0px;
+    margin-bottom: 10px;
 }
-.input-content-tag-title{
-    padding: 20px;
-    padding-top: 40px;
-    font-size: 20px;
+.write-content-input-box{
+  width: 250px; 
+  box-sizeing: border-box;
+  height: 80px;
+  position: relative;
+  margin-bottom: 10px;
+  display: inline-block;
+  margin-right: 15px;
 }
-.input-content-tag-content{
-    padding-left: 50px;
+
+
+.write-content-input-box label{
+  display: inline-block;
+  position: absolute;
+  top: 5px;
+  left: 14px;
+  padding: 0 10px;
+  background: white;
+  font-size: 14px;
+  color: #000000;
+  font-weight: bold;
 }
-.input-content-titles{
-	width: 950px;
-    height: 73px;
-    margin-top: 30px;
+.write-content-input-box label span{
+  color: #da4841;
+  vertical-align: -1px;
 }
-.input-content-contents{
-	width: 950px;
-    height: 100px;
-}
-.input-content-contents div{
-    padding: 20px;
-    padding-top: 10px;
-    padding-bottom: 30px;
-    font-size: 20px;
-    width: 20%;
-    float: left;
-}
-.input-content label button{
-    color: #393939;
-}
-.input-content-addr-title, .input-content-range-title, .input-content-limit-title{
-    padding-top: 40px;
+.write-content-input-box input{
+    width: 230px;
+    border: 1px solid #dddddd !important;
+    height: 30px;
+    font-size: 16px;
+    line-height: 1.45;
+    border-radius: 8px;
     padding-left: 20px;
-    font-size: 20px;
-    width: 20%;
-    float: left;
+    padding-top: 13px;
+    padding-bottom : 7px;
+    margin-top: 10px;
+}
+.write-content-input-box input:focus{
+	outline: none;
+}
+.write-content-input-box:nth-child(2){
+	width:650px;
+}
+.write-content-input-box:nth-child(2) input{
+	width:620px;
+	font-size : 24px;
+	
+}
+.write-content-input-box:nth-child(3){
+	width:150px;
+}
+.write-content-input-box:nth-child(3) input{
+	width:130px;
+}
+.write-content-input-box:nth-child(4){
+	width:550px;
+}
+.write-content-input-box:nth-child(4) input{
+	width:520px;
+	font-size : 13px;
+}
+.write-content-input-box:focus-within label{
+	font-size: 16px;
+	top:0px;
+	transition-duration: 0.3s;
 }
 
-.input-content-addr-input input, .input-content-range-input input, .input-content-limit-input input{
-	border:none;
-	width: 170px;
-    border-bottom: 2px solid #1abc9c;
-    height: 40px;
-}
-.input-content>.time{
-    width: 100%;
-}
-.input-content>.time .start{
-    width: 20%;
-}
-.input-content>.time input{
-    width: 60%;
-    border-bottom: 2px solid #1abc9c
-}
-.input-content>.time .and{
-    width: 5%;
-    line-height: 100px;
-}
-.input-content>.time .end{
-    width: 30%;
-}
 
-.input-main-content{
-    padding-bottom: 30px;
-}
-.input-main-content textarea{
-    width: 90%;
-    height: 400px;
-    margin-left: 30px;
-    margin-top: 20px;
-    border-radius: 10px;
-    resize: none;
-}
-.btn-input-content{
-    text-align: center;
-    width: 142px;
-    height: 67px;
-    color: #393939;
-    background-color: rgb(238, 250, 249);
-    border-radius: 20px;
-    font-size: 19px;
-    text-align: center;
-    line-height: 3.1em;
-    font-weight: bold;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    margin-bottom: 50px;
-    margin-left: 385px;
-}
+
+
 #modal-post-title .box-list-main{
 	height: 80px;
 }
+
+
