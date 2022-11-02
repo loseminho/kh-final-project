@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import kr.or.market.model.vo.DogType;
 import kr.or.market.model.vo.MarketDog;
 import kr.or.market.model.vo.MarketDogFile;
+import kr.or.member.model.vo.Member;
 
 @Repository
 public class MarketDao {
@@ -55,5 +56,10 @@ public class MarketDao {
 	public ArrayList<MarketDogFile> selectMarketNoFile(int marketNo) {
 		List list = sqlSession.selectList("market.selectNoFile",marketNo);
 		return (ArrayList<MarketDogFile>)list;
+	}
+
+	public ArrayList<MarketDog> myMarketList(Member m) {
+		List list = sqlSession.selectList("market.myMarketList",m);
+		return (ArrayList<MarketDog>)list;
 	}
 }
