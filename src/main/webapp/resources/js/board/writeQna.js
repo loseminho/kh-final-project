@@ -47,6 +47,7 @@ fileZone.on("drop",function(e){
             $(this).append(fileNameDiv);
         }
         fileSetting();
+        $(".material-symbols-outlined").hide();
     });
 function deleteFile(obj){
     const deleteFilename = $(obj).prev().text();
@@ -61,6 +62,7 @@ function deleteFile(obj){
     if(files.length == 0){
         $(".fileMsg").show();
         fileZone.css("border","1px solid #5e5e5e");
+    	$(".material-symbols-outlined").show();
     }
     $(obj).parent().remove();
     fileSetting();

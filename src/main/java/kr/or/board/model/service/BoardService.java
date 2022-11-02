@@ -44,7 +44,7 @@ public class BoardService {
 		return qb;
 	}
 
-	//문의게시판 삭
+	//문의게시판 삭제  
 	public ArrayList<QnaFile> qnaBoardDelete(int qnaNo) {
 		//file_tbl에서 해당되는 파일 삭제 
 		ArrayList<QnaFile> fileList = dao.selectFileList(qnaNo);
@@ -63,10 +63,40 @@ public class BoardService {
 	public int insertQnaComment(QnaComment qc) {
 		return dao.insertQnaComment(qc);
 	}
+	//댓글 delete 
+	public int deleteQnaComment(QnaComment qc) {
+		return dao.deleteQnaComment(qc);
+	}
+	//댓글 update 
+	public int updateQnaComment(QnaComment qc) {
+		return dao.updateQnaComment(qc);
+	}
 	
 	//댓글 list 조회 
 	public ArrayList<QnaComment> commentListView(int qnaNo) {
 		return dao.commentListView(qnaNo);
 	}
+
+	//문의내역 수정  
+	public int updateQnaBoard(QnaBoard q) {
+		int result = dao.updateQnaBoard(q);
+		if(result>0) {
+			int qnaNo = dao.selectQnaBoardNo();
+			for(QnaFile qf : q.getFileList()) {
+				qf.setQnaNo(qnaNo);
+				result += dao.updateFile(qf);
+			}
+		}
+		return result;
+	}
+
+
+	public int delFile(QnaBoard q) {
+		// TODO Auto-generated method stub
+		return dao.delFile(q);
+	}
+
+
+
 
 }

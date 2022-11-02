@@ -8,10 +8,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class QnaComment {
-	private int qCommentNo;
-	private String qCommentWriter;
+	private int qcommentNo;
+	private String qcommentWriter;
 	private int qnaNo;
-	private String qCommentContent;
-	private String qCommentTime;
-	private int qCommentRef;
+	private String qcommentContent;
+	private String qcommentTime;
+	private int qcommentRef;
 }

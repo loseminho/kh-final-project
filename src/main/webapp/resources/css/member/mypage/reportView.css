@@ -1,0 +1,56 @@
+.report-view-wrap{
+	width: 400px;
+	height: 500px;
+	
+	display: flex;
+	justify-content: center;
+    align-items: center;
+    
+	box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%);
+    background-color: white;
+}
+
+.report-view-content{
+	width: 300px;
+	overflow: auto;
+}
+
+.report-info>table{
+    width: 300px;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.report-info>table th{
+	text-align: left;
+}
+
+.report-reason-box{
+	margin-top: 15px;
+}
+
+.report-reason-box>p{
+	margin: 0px;
+	font-weight: bold;
+}
+
+.report-reason{
+	width: 298px;
+	height: 198px;
+	border: 1px solid black;
+}
+
+.report-view-close-box{
+	width: 300px;
+	margin-top: 15px;
+	text-align: center;
+}
+
+#report-view-close{
+	width: 100px;
+	height: 27px;
+	font-weight: bold;
+	
+	border: 1px solid black;
+	background-color: #1abc9c;
+}
