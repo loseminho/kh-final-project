@@ -56,11 +56,44 @@
 </delete>
 <insert id="insertQnaComment" parameterType="qc">
 	insert into qna_comment values(
-		qna_comment_seq.nextval,#{qCommentWriter},#{qnaNo},#{qCommentContent},to_char(sysdate,'yyyy-mm-dd hh24:mi'),null
+		qna_comment_seq.nextval,#{qcommentWriter},#{qnaNo},#{qcommentContent},to_char(sysdate,'yyyy-mm-dd hh24:mi'),null
 	)
 </insert>
 <select id="commentListView" parameterType="_int" resultType="qc">
-	select * from qna_comment
+	select 
+	qcomment_no as qcommentNo,
+	qcomment_writer as qcommentWriter,
+	qna_no as qnaNo,
+	qcomment_content as qcommentContent,
+	qcomment_time as qcommentTime,
+	qcomment_ref as qcommentRef
+	from qna_comment
 	where qna_no = #{_parameter}
 </select>
+<update id="updateQnaBoard" parameterType="q">
+	update qna_tbl set 
+	qna_title = #{qnaTitle},
+	qna_content = #{qnaContent},
+	qna_cate_no = #{qnaCateNo},
+	qna_secret = #{qnaSecret},
+	where qna_no = #{qnaNo}
+</update>
+<update id="updateQnaFile" parameterType="qf">
+	update qna_file_tbl set
+	filename = #{filename},
+	filepath = #{filepath}
+ 	where qna_no = #{qnaNo}
+</update>
+<delete id="delFile" parameterType="q">
+	delete from qna_file_tbl where qna_no = #{qnaNo}
+</delete>
+<delete id="deleteQnaComment" parameterType="qc">
+	delete from qna_comment where qcomment_no = #{qcommentNo}
+</delete>
+<update id="updateQnaComment" parameterType="qc">
+	update qna_comment set
+	qcomment_content = #{qcommentContent},
+	qcomment_time = to_char(sysdate,'yyyy-mm-dd hh24:mi')
+	where qcomment_no = #{qcommentNo}
+</update>
 </mapper>

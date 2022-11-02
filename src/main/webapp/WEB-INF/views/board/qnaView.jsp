@@ -58,10 +58,9 @@
                         <ul class="comment-box">
                             <li><span class="material-symbols-outlined">pets</span></li>
                             <li>
-                                <input type="hidden" name="qCommentWriter" value="${sessionScope.m.memberId}">
+                                <input type="hidden" name="qcommentWriter" value="${sessionScope.m.memberId}">
                                 <input type="hidden" name="qnaNo" value="${qb.qnaNo }">
-                                <!-- <input type="hidden" name="qCommentRef" value="${qc.qCommentRef }">-->
-                                <textarea class="qCommentContent" name="qCommentContent"></textarea>
+                                <textarea class="qcommentContent" name="qcommentContent"></textarea>
                             </li>
                             <li>
                                 <button type="submit" class="addComment">댓글쓰기</button>
@@ -76,19 +75,20 @@
                         <li><span class="material-symbols-outlined">pets</span></li>
                         <li>
                             <p class="comment-info">
-                                <span>${qc.qCommentWriter}</span><span>${qc.qCommentTime }</span>
+                                <span>${qc.qcommentWriter}</span><span>${qc.qcommentTime }</span>
                             </p>
-                            <p class="comment-content">${qc.qCommentContent }</p>
+                            <p class="comment-content">${qc.qcommentContent }</p>
                             <!--display none 수정 클릭시에만 보임-->
                             <textarea style="display: none;"></textarea>
                             <p class="comment-link">
                                 <!--로그인한사람에게만 수정 부여-->
-                                <c:if test="${sessionScope.m.memberId eq qc.qCommentWriter }">
-                                <a href="#">수정</a>
+                                <c:if test="${sessionScope.m.memberId eq qc.qcommentWriter }">
+                                <a href="/updateQnaComment.do?qcommentNo=${qc.qcommentNo }">수정</a>
+                                <!-- <a href="javascript:void(0)" onclick="modifyQnaComment(this,${qc.qcommentNo }, ${qb.qnaNo });">수정</a> -->
                                 <!--관리자에게만 삭제권한 부여-->
-                                <a href="#">삭제</a>
+                                <a href="/deleteQnaComment.do?qcommentNo=${qc.qcommentNo }">삭제</a>
+                                <!-- <a href="javascript:void(0)" onclick="deleteQnaComment(this,${qc.qcommentNo }, ${qb.qnaNo });">삭제</a> -->
                                 </c:if>
-                                <a href="#">답글달기</a>
                             </p>
                         </li>
                     </ul>
@@ -96,6 +96,6 @@
                 </c:forEach>
         </div><!--qnaView-wrap 끝-->
     </content>
-    <script></script>
+    <script src="/resources/js/board/qnaView.js"></script>
 </body>
 </html>

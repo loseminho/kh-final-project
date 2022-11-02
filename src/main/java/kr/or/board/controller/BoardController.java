@@ -84,7 +84,6 @@ public class BoardController {
 			}
 		}
 		q.setFileList(fileList);
-		System.out.println(q);
 		int result = service.insertQnaBoard(q);
 		return "redirect:/faqQnaBoardFrm.do";
 	}
@@ -120,7 +119,6 @@ public class BoardController {
 	//문의게시판 댓글 insert 
 	@RequestMapping(value="/insertQnaComment.do")
 	public String insertQnaComment(QnaComment qc,Model model) {
-		System.out.println(qc);
 		int result = service.insertQnaComment(qc);
 		if(result >0) {
 			model.addAttribute("qc",qc);
@@ -129,4 +127,72 @@ public class BoardController {
 			return "null";
 		}
 	}
+	//문의게시판 댓글 수정 
+	@RequestMapping(value="/updateQnaComment.do")
+	public String updateQnaComment(QnaComment qc, Model model) {
+		int result = service.updateQnaComment(qc);
+		if(result>0) {
+			model.addAttribute("qc",qc);
+			return "redirect:/qnaView.do?qnaNo="+qc.getQnaNo();
+		} else {
+			return "null";
+		}
+	}
+	//문의게시판 댓글 삭제 
+	@RequestMapping(value="/deleteQnaComment.do")
+	public String deleteQnaComment(QnaComment qc, Model model) {
+		int result = service.deleteQnaComment(qc);
+		if(result>0) {
+			model.addAttribute("qc",qc);
+			System.out.println(qc);
+			return "board/faqQna";
+		} else {
+			return "null";
+		}
+	}
+	//문의게시판 수정 페이지 이동 
+	@RequestMapping(value="/qnaBoardUpdateFrm.do")
+	public String qnaBoardUpdateFrm(int qnaNo, Model model) {
+		QnaBoard qb = service.selectOneQna(qnaNo);
+		model.addAttribute("qb",qb);
+		System.out.println(qb);
+		return "board/qnaUpdate";
+	}
+	
+	//문의게시판 수정  
+	@RequestMapping(value="/qnaUpdate.do")
+	public String qnaUpdate(QnaBoard q, MultipartFile[] boardFile, HttpServletRequest request, Model model) {
+		System.out.println(q);
+		ArrayList<QnaFile> fileList = new ArrayList<QnaFile>();
+		int result1 = service.delFile(q);
+		if(!boardFile[0].isEmpty()) {
+			String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/board/");
+			for(MultipartFile file : boardFile) {
+				String filename = file.getOriginalFilename();
+				String filepath = FileRename.fileRename(savePath,filename);
+				try {
+					FileOutputStream fos = new FileOutputStream(new File(savePath+filepath));
+					BufferedOutputStream bos  = new BufferedOutputStream(fos);
+					byte[] bytes = file.getBytes();
+					bos.write(bytes);
+					bos.close();
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				QnaFile qf = new QnaFile();
+				qf.setFilename(filename);
+				qf.setFilepath(filepath);
+				fileList.add(qf);
+			}
+		}
+		q.setFileList(fileList);
+		int result = service.updateQnaBoard(q);
+		return "redirect:/qnaView.do?qnaNo="+q.getQnaNo();
+	}
+	
 }
