@@ -17,7 +17,7 @@
 				<ul class="main-menu">
 	                <li class="section"><a href="/writeFrm.do">분양등록</a></li>
 	                <li class="section"><a href="/myMarketList.do">분양목록</a></li>
-	                <li class="section"><a href="#">분양쪽지함❤</a></li>
+	                <li class="section"><a href="/sendDmFrm.do">분양쪽지함❤</a></li>
 	            </ul>	
 			</div>
 			<div id="rowSession2">

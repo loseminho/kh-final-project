@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+.dm-list-wrap{
+	width:100%;
+	height:500px;
+	background-color: #DDD7CB;
+	opacity: 50%;
+	padding: 10px;
+	overflow: hidden;
+}
+
+.list-title{
+	width:100%;
+	height:30px;
+	line-height: 30px;
+}
+.list-title span{
+	font-family:gs-Bold;
+	display:inline-block;
+	text-align: center;
+}
+.dm-content-wrap{
+	width:100%;
+	height:450px;
+}
+.dm-content{
+	width:100%;
+	height:30px;
+	line-height: 30px;
+}
+.dm-content span{
+	display:inline-block;
+	text-align: center;
+	cursor:pointer;
+}
