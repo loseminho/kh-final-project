@@ -80,5 +80,6 @@
 	<context:component-scan base-package="kr.or.market" />
 	<context:component-scan base-package="kr.or.walk" />
 	<context:component-scan base-package="kr.or.dog" />
+	<context:component-scan base-package="kr.or.dm" />
 	<context:component-scan base-package="common" />	
 </beans:beans>

@@ -16,7 +16,10 @@ public class MarketService {
 	private MarketDao dao;
 
 	public MarketDog selectOne(int marketNo) {
-		return dao.selectOne(marketNo);
+		MarketDog md = dao.selectOne(marketNo);
+		ArrayList<MarketDogFile>fileList = dao.selectMarketNoFile(marketNo);
+		md.setFileList(fileList);
+		return md;
 	}
 
 	public int marketListCnt(MarketDog md) {

@@ -51,4 +51,9 @@ public class MarketDao {
 		List list = sqlSession.selectList("market.selectFile");
 		return (ArrayList<MarketDogFile>)list;
 	}
+
+	public ArrayList<MarketDogFile> selectMarketNoFile(int marketNo) {
+		List list = sqlSession.selectList("market.selectNoFile",marketNo);
+		return (ArrayList<MarketDogFile>)list;
+	}
 }

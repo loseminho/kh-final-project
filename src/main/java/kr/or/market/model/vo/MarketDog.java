@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class MarketDog {
 	private int marketNo;
+	private String memberId;
 	private int age;
 	private String typeName;
 	private int typeSize;

@@ -64,11 +64,12 @@
 		#{typeCode},
 		#{saleInfo},
 		#{gender},
-		#{price}
+		#{price},
+		#{memberId}
 		)
 	</insert>
 	<insert id="inputFile" parameterType="mdf">
-		insert into market_file_tbl values(#{marketNo},#{fileName},#{filePath})
+		insert into market_file_tbl values(#{marketNo},#{fileName},#{filePath},file_seq.nextval)
 	</insert>
 	
 	<select id="selectFile" resultType="mdf">
@@ -77,5 +78,14 @@
 		file_name as fileName,
 		file_path as filePath
 		from market_file_tbl
+	</select>
+	<select id="selectNoFile" resultType="mdf">
+		select
+		file_no as fileNo,
+		market_no as marketNo,
+		file_name as fileName,
+		file_path as filePath
+		from market_file_tbl
+		where market_no = #{_parameter}
 	</select>
 </mapper>

@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class MarketDogFile {
 	private int marketNo;
+	private int fileNo;
 	private String filePath;
 	private String fileName; 
 }

@@ -15,9 +15,9 @@
 		<div class="page-content">
 			<div id="rowSession1">
 				<ul class="main-menu">
-	                <li class="section"><a href="#">분양등록</a></li>
-	                <li class="section"><a href="#">사진순서바꾸기</a></li>
-	                <li class="section"><a href="#">산책 메이트 목록</a></li>
+	                <li class="section"><a href="/writeFrm.do">분양등록</a></li>
+	                <li class="section"><a href="/myMarketList.do">분양목록</a></li>
+	                <li class="section"><a href="#">분양쪽지함❤</a></li>
 	            </ul>	
 			</div>
 			<div id="rowSession2">
@@ -26,18 +26,22 @@
 			<hr>
 			<br>
 		<form action="/inputMarket.do" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="memberId" value="${sessionScope.m.memberId }">
 			<div class="sub-title"><span>*</span>사진</div>
 			<div class="row-part" style="height:150px;">
 				<input id="imageFile1"  type="file" class="photo" name="photo" style="display:none;">
 			<div class="preview-box">
+				<div class="input-btn">+</div>
 				<img src="" class="preview">
 			</div>
 			<input id="imageFile2"  type="file" class="photo" name="photo" style="display:none;">
 			<div class="preview-box">
+				<div class="input-btn">+</div>
 				<img src="" class="preview">
 			</div>
 			<input id="imageFile3" type="file" class="photo" name="photo" style="display:none;">
 			<div class="preview-box">
+				<div class="input-btn">+</div>
 				<img src="" class="preview">
 			</div>
 			</div>

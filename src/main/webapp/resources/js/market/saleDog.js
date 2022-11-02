@@ -90,8 +90,8 @@ $(".add-btn>button").on("click",function(){
 	        				html += "<img class='previewImg' src='/resources/upload/market/"+data[i].fileList[0].filePath+"'>";
 	        				html += "<input type='hidden' name='marketNo' value="+data[i].marketNo+">";
 	        				html += "</div>";
-	        				html += "<span>"+data[i].typeName+"</span>";
-	        				html += "<li>분양가격 : "+data[i].price+"원</li>";
+	        				html += "<span class='list-sub-title'>"+data[i].typeName+"</span>";
+	        				html += "<li>책임비 : "+data[i].price+"원</li>";
 	        				html += "</div>";
 	        				$(".add-btn").text("더 이상 목록이 없습니다.");
 	        			};
@@ -102,8 +102,8 @@ $(".add-btn>button").on("click",function(){
 	        				html += "<img class='previewImg' src='/resources/upload/market/"+data[i].fileList[0].filePath+"'>";
 	        				html += "<input type='hidden' name='marketNo' value="+data[i].marketNo+">";
 	        				html += "</div>";
-	        				html += "<span>"+data[i].typeName+"</span>";
-	        				html += "<li>분양가격 : "+data[i].price+"원</li>";
+	        				html += "<span class='list-sub-title'>"+data[i].typeName+"</span>";
+	        				html += "<li>책임비 : "+data[i].price+"원</li>";
 	        				html += "</div>";
 	        			};
         			}
@@ -126,8 +126,8 @@ $(".add-btn>button").on("click",function(){
 	        				html += "<img class='previewImg' src='/resources/upload/market/"+data[i].fileList[0].filePath+"'>";
 	        				html += "<input type='hidden' name='marketNo' value="+data[i].marketNo+">";
 	        				html += "</div>";
-	        				html += "<span>"+data[i].typeName+"</span>";
-	        				html += "<li>분양가격 : "+data[i].price+"원</li>";
+	        				html += "<span class='list-sub-title'>"+data[i].typeName+"</span>";
+	        				html += "<li>책임비 : "+data[i].price+"원</li>";
 	        				html += "</div>";
 	        				$(".add-btn").text("더 이상 목록이 없습니다.");
 	        			};
@@ -138,8 +138,8 @@ $(".add-btn>button").on("click",function(){
 	        				html += "<img class='previewImg' src='/resources/upload/market/"+data[i].fileList[0].filePath+"'>";
 	        				html += "<input type='hidden' name='marketNo' value="+data[i].marketNo+">";
 	        				html += "</div>";
-	        				html += "<span>"+data[i].typeName+"</span>";
-	        				html += "<li>분양가격 : "+data[i].price+"원</li>";
+	        				html += "<span class='list-sub-title'>"+data[i].typeName+"</span>";
+	        				html += "<li>책임비 : "+data[i].price+"원</li>";
 	        				html += "</div>";
 	        			};
         			}
@@ -162,8 +162,8 @@ $(".add-btn>button").on("click",function(){
 	        				html += "<img class='previewImg' src='/resources/upload/market/"+data[i].fileList[0].filePath+"'>";
 	        				html += "<input type='hidden' name='marketNo' value="+data[i].marketNo+">";
 	        				html += "</div>";
-	        				html += "<span>"+data[i].typeName+"</span>";
-	        				html += "<li>분양가격 : "+data[i].price+"원</li>";
+	        				html += "<span class='list-sub-title'>"+data[i].typeName+"</span>";
+	        				html += "<li>책임비 : "+data[i].price+"원</li>";
 	        				html += "</div>";
 	        				$(".add-btn").text("더 이상 목록이 없습니다.");
 	        			};
@@ -174,8 +174,8 @@ $(".add-btn>button").on("click",function(){
 	        				html += "<img class='previewImg' src='/resources/upload/market/"+data[i].fileList[0].filePath+"'>";
 	        				html += "<input type='hidden' name='marketNo' value="+data[i].marketNo+">";
 	        				html += "</div>";
-	        				html += "<span>"+data[i].typeName+"</span>";
-	        				html += "<li>분양가격 : "+data[i].price+"원</li>";
+	        				html += "<span class='list-sub-title'>"+data[i].typeName+"</span>";
+	        				html += "<li>책임비 : "+data[i].price+"원</li>";
 	        				html += "</div>";
 	        			};
         			}
@@ -198,8 +198,8 @@ $(".add-btn>button").on("click",function(){
 	        				html += "<img class='previewImg' src='/resources/upload/market/"+data[i].fileList[0].filePath+"'>";
 	        				html += "<input type='hidden' name='marketNo' value="+data[i].marketNo+">";
 	        				html += "</div>";
-	        				html += "<span>"+data[i].typeName+"</span>";
-	        				html += "<li>분양가격 : "+data[i].price+"원</li>";
+	        				html += "<span class='list-sub-title'>"+data[i].typeName+"</span>";
+	        				html += "<li>책임비 : "+data[i].price+"원</li>";
 	        				html += "</div>";
 	        				$(".add-btn").text("더 이상 목록이 없습니다.");
 	        			};
@@ -211,8 +211,8 @@ $(".add-btn>button").on("click",function(){
 	        				html += "<img class='previewImg' src='/resources/upload/market/"+data[i].fileList[0].filePath+"'>";
 	        				html += "<input type='hidden' name='marketNo' value="+data[i].marketNo+">";
 	        				html += "</div>";
-	        				html += "<span>"+data[i].typeName+"</span>";
-	        				html += "<li>분양가격 : "+data[i].price+"원</li>";
+	        				html += "<span class='list-sub-title'>"+data[i].typeName+"</span>";
+	        				html += "<li>책임비 : "+data[i].price+"원</li>";
 	        				html += "</div>";
 	        			};
         			}
@@ -245,7 +245,7 @@ $(".add-btn>button").on("click",function(){
     				html += "<input type='hidden' name='marketNo' value="+data[i].marketNo+">";
     				html += "</div>";
     				html += "<span>"+data[i].typeName+"</span>";
-    				html += "<li>분양가격 : "+data[i].price+"원</li>";
+    				html += "<li>책임비 : "+data[i].price+"원</li>";
     				html += "</div>";
     			};
     			$(".sale-wrap").html(html);
@@ -262,8 +262,8 @@ $(".add-btn>button").on("click",function(){
 			};
 		});
     	$(document).on("click",".sale",function(){
+    		const detailImg = $(".detail-image");
     		const marketNo = $("[name=marketNo]");
-    		console.log(marketNo.val());
    	 		const sale = $(".sale");
     		console.log($(".sale-info").text());
     		$("#modal-wrap").css('display','flex');
@@ -275,6 +275,15 @@ $(".add-btn>button").on("click",function(){
     			data: {marketNo:data},
     			success : function(data){
     				console.log(data);
+    				if(data.fileList.length == 1){
+    					detailImg.eq(0).attr("src","/resources/upload/market/"+data.fileList[0].filePath+"");
+    				}else if(data.fileList.length == 2){
+    					detailImg.eq(0).attr("src","/resources/upload/market/"+data.fileList[0].filePath+"");
+    					detailImg.eq(1).attr("src","/resources/upload/market/"+data.fileList[1].filePath+"");
+    				}else if(data.fileList.length == 3){
+    					detailImg.eq(0).attr("src","/resources/upload/market/"+data.fileList[1].filePath+"");
+    					detailImg.eq(1).attr("src","/resources/upload/market/"+data.fileList[2].filePath+"");
+    				}
     				$(".sale-info").text(data.saleInfo);
     				$(".detail-box-title").text(data.typeName);
     				var html = "";
@@ -287,7 +296,7 @@ $(".add-btn>button").on("click",function(){
     				html += "<tr>";
     				html += "<th>나이</th>";
     				html += "<td>"+data.age+"개월</td>";
-    				html += "<th>분양가</th>";
+    				html += "<th>책임비</th>";
     				html += "<td>"+data.price+"원</td>";
     				html += "</tr>";
     				html += "<tr>";
@@ -305,3 +314,7 @@ $(".add-btn>button").on("click",function(){
     		$("#modal-wrap").css("display","none");
     		$("body").css("overflow","inherit");
     	});
+    	
+ function dmModalOn(){
+ 	console.log(1);
+ };
