@@ -34,3 +34,19 @@ $(document).ready(function(){
 		$.removeCookie("tab"); 
 	}
 });
+
+$(".report-view-wrap").hide();
+
+$(".report-view-open").on("click", function(){
+	$(".report-view-modal").css("width", "100vw");
+	$(".report-view-modal").css("height", "100vh");
+
+	$(".report-view-wrap").show();
+});
+
+$("#report-view-close").on("click", function(){
+	$(".report-view-modal").css("width", "0");
+	$(".report-view-modal").css("height", "0");
+
+	$(".report-view-wrap").hide();
+});

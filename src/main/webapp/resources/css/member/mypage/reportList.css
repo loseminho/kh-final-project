@@ -6,64 +6,38 @@
 	margin: 0px;
 }
 
-.report-list-menu{
-	margin-top: 30px;
-}
-
-.report-list-menu>ul{
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    overflow: hidden;		
-}
-
-.report-list-menu>ul>li{
-	float: left;
-	width: 150px;
-	font-size: 24px;
-}
-
-.report-select{
-	overflow: auto;
-}
-
-.report-select:hover{
-	cursor: pointer;
-	color: #1abc9c;
+.report-list-table{
+	width: 800px;
 }
 
 .report-list-table table{
-    border-collapse: collapse;
-    width: 800px;
     table-layout: fixed;
+    border-collapse: collapse;
 }
 
 .report-list-table table tr{
+	width: 800px;
 	border: 1px solid black;
-}
-
-.report-list-table>table tr{
-	border-bottom: none;
 }
 
 .report-list-table table th{
 	background-color: #1abc9c;
 }
 
-.report-list-table table th:nth-child(3){
-	width: 250px;
+.report-list-table table th:nth-child(1){
+	width: 150px;
 }
 
-.report-list-table table td:nth-child(3){
-	width: 250px;
+.report-list-table table th:nth-child(2){
+	width: 150px;
+}
+
+.report-list-table table th:nth-child(3){
+	width: 300px;
 }
 
 .report-list-table table th:nth-child(4){
-	width: 100px;
-}
-
-.report-list-table table td:nth-child(4){
-	width: 100px;
+	width: 200px;
 }
 
 .report-list-table table td{
@@ -71,8 +45,7 @@
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	text-align: center;
-}
-
-.report-list{
-	display: none;
+	
+	padding-left: 25px;
+	padding-right: 25px;
 }
