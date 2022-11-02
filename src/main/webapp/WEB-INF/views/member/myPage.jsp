@@ -16,6 +16,7 @@
 				<ul class="main-menu">
 	                <li class="section"><a href="#">내 정보</a></li>
 	                <li class="section"><a href="#">반려견 정보</a></li>
+	                <li class="section"><a href="#">내 일정 보기</a></li>
 	                <li class="section"><a href="#">산책 메이트 목록</a></li>
 	                <li>
 	                    <a href="#">신고</a>
@@ -40,6 +41,9 @@
 			    </div>
 			    <div class="dogprofile" style="display: none;">
 			        <jsp:include page="/WEB-INF/views/member/mypage/myPage_dogprofile.jsp"/>
+			    </div>
+			    <div class="mycalendar" style="display: none;">
+			        <jsp:include page="/WEB-INF/views/member/mypage/myPage_mycalendar.jsp"/>
 			    </div>
 			    <div class="matelist" style="display: none;">
 			        <jsp:include page="/WEB-INF/views/member/mypage/mateList.jsp"/>
