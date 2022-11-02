@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.or.board.model.dao.BoardDao;
 import kr.or.board.model.vo.QnaBoard;
+import kr.or.board.model.vo.QnaComment;
 import kr.or.board.model.vo.QnaFile;
 
 @Service
@@ -43,7 +44,7 @@ public class BoardService {
 		return qb;
 	}
 
-
+	//문의게시판 삭
 	public ArrayList<QnaFile> qnaBoardDelete(int qnaNo) {
 		//file_tbl에서 해당되는 파일 삭제 
 		ArrayList<QnaFile> fileList = dao.selectFileList(qnaNo);
@@ -56,6 +57,16 @@ public class BoardService {
 		} else {
 			return null;
 		}
+	}
+
+	//댓글 insert
+	public int insertQnaComment(QnaComment qc) {
+		return dao.insertQnaComment(qc);
+	}
+	
+	//댓글 list 조회 
+	public ArrayList<QnaComment> commentListView(int qnaNo) {
+		return dao.commentListView(qnaNo);
 	}
 
 }

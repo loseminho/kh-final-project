@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.or.board.model.vo.QnaBoard;
+import kr.or.board.model.vo.QnaComment;
 import kr.or.board.model.vo.QnaFile;
 
 @Repository
@@ -41,9 +42,18 @@ public class BoardDao {
 		List list = sqlsession.selectList("qnaboard.selectFileList");
 		return (ArrayList<QnaFile>) list;
 	}
-	//게시판 삭제 
+	//문의내역  삭제 
 	public int qnaBoardDelete(int qnaNo) {
 		return sqlsession.delete("qnaboard.qnaBoardDelete",qnaNo);
+	}
+	//문의내역 댓글 insert
+	public int insertQnaComment(QnaComment qc) {
+		return sqlsession.insert("qnaboard.insertQnaComment",qc);
+	}
+	//문의내역 댓글 조회 
+	public ArrayList<QnaComment> commentListView(int qnaNo) {
+		List list = sqlsession.selectList("qnaboard.commentListView",qnaNo);
+		return (ArrayList<QnaComment>)list;
 	}
 	
 }

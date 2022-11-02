@@ -1,26 +1,19 @@
 .dogprofile {
-    position: relative;
     width: 100%;
     /* background-color: rebeccapurple; */
 }
 
 .dogprofile > h1 {
-   position: absolute;
-   top: 20px;
-   left: 0;
+	margin-top:20px;
 }
 
-.dogprofile #addDog {
-    position: absolute;
-    top: 40px;
-    right: 0;
+.dogprofile .addLink {
+	text-align:right;
 }
 
 .dogprofile #dog-wrap {
     width: 100%;
-    position: absolute;
-    top: 80px;
-    left: 0;
+	margin:30px auto;
 }
 
 .dogprofile .box {

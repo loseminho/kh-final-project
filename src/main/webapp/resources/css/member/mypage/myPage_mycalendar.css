@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+.mycalendar {
+	width: 100%;
+}
+
+.mycalendar > h1 {
+	margin-top:20px;
+}
+
+.mycalendar #calendar {
+	width: 100%;
+	margin:30px auto;
+}

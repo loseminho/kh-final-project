@@ -21,6 +21,9 @@ $(".section").on("click", function(){
     $("#rowSession2").children().hide();
 	const idx = $(".section").index(this);
     $("#rowSession2").children().eq(idx).show();
+    if(idx == 2) {
+    	mycalendar();
+    }
 });
 
 $(document).ready(function(){

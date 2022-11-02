@@ -67,6 +67,7 @@ $("#allQnaAjax").on("click",function(){
         url : "/allQnaAjax.do?reqPage=1",
         type : "post",
         success : function(data){
+        	console.log(data);
             const table = $("<table>");
             table.attr('class','qna-table');
             const titleTr = $("<tr>");

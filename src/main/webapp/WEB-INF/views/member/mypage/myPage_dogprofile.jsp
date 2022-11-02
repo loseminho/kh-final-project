@@ -5,7 +5,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <h1>반려견 정보</h1>
-<a id="addDog">반려견 추가</a>
+<p class="addLink"><a id="addDog">반려견 추가</a></p>
 <div id="dog-wrap">
 	<c:choose>
 		<c:when test="${sessionScope.myDogList[0] ne null}">
