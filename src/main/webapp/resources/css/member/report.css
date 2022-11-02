@@ -11,6 +11,7 @@
     box-shadow: 0 8px 32px 0 rgb(31 38 135 / 37%);
     
     background-color: white;
+    z-index:9999;
 }
 
 #report-modal-close{
@@ -74,7 +75,7 @@
 }
 
 .report-btn-box>button{
-	background-color: white;
+	background-color: #1abc9c;
 	border: 1px solid black;
 	width: 100px;
 	height: 27px;

@@ -11,6 +11,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -38,6 +39,7 @@ import kr.or.dog.controller.DogController;
 import kr.or.member.model.service.MemberService;
 import kr.or.member.model.service.MessageService;
 import kr.or.member.model.vo.Member;
+import kr.or.member.model.vo.MyCalendar;
 
 @Controller
 public class memberController {
@@ -482,6 +484,17 @@ public class memberController {
 			return "redirect:/updatePwFrm.do";
 		} else {
 			return "redirect:/currentPw.do";
+		}
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/selectMyCalendar.do", produces="application/json;charset=utf-8")
+	public String selectMyCalendar(@SessionAttribute Member m) {
+		ArrayList<MyCalendar> list = service.selectMyCalendar(m.getMemberId());
+		if(list != null) {
+			return new Gson().toJson(list);
+		} else {
+			return "null";
 		}
 	}
 }

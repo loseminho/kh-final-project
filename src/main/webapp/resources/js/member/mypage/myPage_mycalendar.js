@@ -15,8 +15,38 @@ function mycalendar(){
 		droppable : true,
 		editable : true,
 		nowIndicator: true, // 현재 시간 마크
-		locale: 'ko' // 한국어 설정
+		eventLimit: true,
+		locale: 'ko', // 한국어 설정
+		events:function(info, successCallback, failureCallback){
+            $.ajax({
+               url: '/selectMyCalendar.do',
+               type : 'post',
+               success: function(result) {
+                   var events = [];
+                   if(result != "null"){
+	                   for(let i=0; i<result.length; i++) {
+	                       var enddate = result[i].enddate;
+	                       
+	                        if(enddate == null){
+	                            enddate = result[i].startdate;
+	                        }
+	                        
+	                        events.push({
+	                           title: result[i].wmTitle,
+	                           start: result[i].startdate,
+	                           end: enddate,
+	                           color : '#' + Math.round(Math.random() * 0xffffff).toString(16)                                           
+	                        }); // push() 끝
+	                        
+	                   } // for문 끝
+                       console.log(events);
+                   }//if문 끝                          
+                   successCallback(events);                               
+               }//success 끝                         
+        	}); //ajax 끝
+        } //events 끝
 	});
-	calendar.render();
+	
+	calendar.render(); // 달력 불러옴
 }
 
