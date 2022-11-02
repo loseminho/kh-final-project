@@ -35,7 +35,7 @@ function mycalendar(){
 	                           title: result[i].wmTitle,
 	                           start: result[i].startdate,
 	                           end: enddate,
-	                           color : result[i].wmColor                                            
+	                           color : '#' + Math.round(Math.random() * 0xffffff).toString(16)                                           
 	                        }); // push() 끝
 	                        
 	                   } // for문 끝

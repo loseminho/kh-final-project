@@ -12,5 +12,4 @@ public class MyCalendar {
 	private String wmTitle;
 	private String startdate;
 	private String enddate;
-	private String wmColor;
 }

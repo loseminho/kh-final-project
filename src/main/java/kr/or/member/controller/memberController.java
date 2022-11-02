@@ -492,21 +492,6 @@ public class memberController {
 	public String selectMyCalendar(@SessionAttribute Member m) {
 		ArrayList<MyCalendar> list = service.selectMyCalendar(m.getMemberId());
 		if(list != null) {
-			for(MyCalendar mc : list) {
-				// 6자리 랜덤숫자 생성
-				Random r = new Random();
-				int rdNum = 0;
-				String rdCode = "";
-				String colorCode = "#";
-				
-				for(int i=0; i<6; i++) {
-					rdNum = r.nextInt(9);
-					rdCode = Integer.toString(rdNum);
-					colorCode += rdCode;
-				}
-				
-				mc.setWmColor(colorCode);
-			}
 			return new Gson().toJson(list);
 		} else {
 			return "null";
