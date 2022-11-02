@@ -17,7 +17,7 @@ public class MarketDog {
 	private int typeSize;
 	private String saleInfo;
 	private String gender;
-	private int price;
+	private String price;
 	private int typeCode;
 	private ArrayList<MarketDogFile> fileList;
 }

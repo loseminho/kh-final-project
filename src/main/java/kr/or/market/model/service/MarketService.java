@@ -9,6 +9,7 @@ import kr.or.market.model.dao.MarketDao;
 import kr.or.market.model.vo.DogType;
 import kr.or.market.model.vo.MarketDog;
 import kr.or.market.model.vo.MarketDogFile;
+import kr.or.member.model.vo.Member;
 
 @Service
 public class MarketService {
@@ -58,5 +59,20 @@ public class MarketService {
 
 	public ArrayList<DogType> selectTypeList() {
 		return dao.selectTypeList();
+	}
+
+	public ArrayList<MarketDog> myMarketList(Member m) {
+		ArrayList<MarketDog>list=dao.myMarketList(m);
+		ArrayList<MarketDogFile>fileList = dao.selectFile();
+		for(MarketDog md : list) {
+			ArrayList<MarketDogFile> inputList = new ArrayList<MarketDogFile>();
+			for(int i=0;i<fileList.size();i++) {
+				if(fileList.get(i).getMarketNo() == md.getMarketNo()) {
+					inputList.add(fileList.get(i));
+					md.setFileList(inputList);
+				}
+			}
+		}
+		return list;
 	}
 }

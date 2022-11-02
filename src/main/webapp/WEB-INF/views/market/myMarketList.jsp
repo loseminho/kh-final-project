@@ -27,15 +27,12 @@
 			<br>
 			<div class="sub-title"><span></span>${sessionScope.m.memberNickname }님의 분양 목록입니다</div>
 			<div class="row-part" style="height:150px;">
-			<div class="preview-box">
-				<img src="" class="preview">
-			</div>
-			<div class="preview-box">
-				<img src="" class="preview">
-			</div>
-			<div class="preview-box">
-				<img src="" class="preview">
-			</div>
+			<c:forEach items="${list }" var="md">
+				<div class="preview-box" style="display:inline-block">
+					<img src="/resources/upload/market/${md.fileList[0].filePath }" class="preview">
+				<div>ㅅ/비ㅏㄹ</div>
+				</div>
+			</c:forEach>
 			</div>
 			</div>
 		</div>
