@@ -66,7 +66,13 @@ public class DogController {
 	}
 	
 	@RequestMapping(value="/insertMyDog.do")
-	public String insertMyDog(Dog d, MultipartFile[] photodog, HttpServletRequest request, Model model) {
+	public String insertMyDog(Dog d, DogType dt, MultipartFile[] photodog, HttpServletRequest request, Model model) {
+		if(dt.getTypeName() != null) {
+			int result = service.insertDogType(dt);
+			int typeCode = service.selectDogTypeCode();
+			d.setDogTypeNo(typeCode);
+		}
+		
 		String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/dog/");
 		
 		if(photodog != null) {

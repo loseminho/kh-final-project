@@ -195,7 +195,7 @@ $(".btn").on("click", function(){
 });
 
 
-
+let intervalId;
 function verifyCount() {
 	const span = $("#timeZone");
 	span.html("<span id='min'>3</span> : <span id='sec'>00</span>");
@@ -265,6 +265,9 @@ function sendMsg() {
         data : {memberPhone : phVal},
         success : function(data){
         	div.show();
+        	if(intervalId != undefined) {
+	        	clearInterval(intervalId);
+        	}
 			$("#timeZone").show();
 			$("#verifyBtn").show();
         	$(".verifyInput").val("");

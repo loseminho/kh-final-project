@@ -128,6 +128,7 @@ content{
 	height: 300px;
 	width: 250px;
 	background-color: #1abc9c;
+	box-shadow: 1px 3px 2px 0 rgba( 31, 38, 135, 0.37 );
 }
 
 .add-btn{
@@ -273,6 +274,7 @@ content{
 	background-color: #fff;
 	overflow:hidden;
 	position:relative;
+	box-shadow: 0 3px 3px 0 rgba( 31, 38, 135, 0.37 );
 }
 
 /*모달*/

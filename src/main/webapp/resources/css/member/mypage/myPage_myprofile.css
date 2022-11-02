@@ -51,10 +51,15 @@ input, button, #photoBtn {
     border: 1px solid #ccc;
     border-radius: 100%;
     overflow: hidden;
+    position:relative;
 }
 
 .myprofile .photo-box > img {
     max-width: 100%;
+    position:absolute;
+   	top:50%;
+   	left:50%;
+   	transform: translate(-50%, -50%);
 }
 
 .myprofile .photo-box > label {
@@ -294,5 +299,5 @@ input, button, #photoBtn {
 	width:40px;
 	border-radius:5px;
 	line-height:25px;
-	font-size:18px;
+	font-size:25px;
 }

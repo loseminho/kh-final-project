@@ -79,7 +79,7 @@
 		<div class="profile-right">
 			<!-- 전체 프로필 보기 -->
 			<div class="profile-view-link-box">
-				<a href="#">전체 프로필 보기</a>
+				<a href="/showProfile.do">전체 프로필 보기</a>
 			</div>
 			
 			<!-- 반려견 정보 일부 -->

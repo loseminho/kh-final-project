@@ -85,3 +85,14 @@
 	border:none;
 	cursor:pointer;
 }
+
+.preview-box{
+	width:130px;
+	height:130px;
+	border:1px solid #ccc;
+	overflow: hidden;
+}
+
+.preview{
+	height:100%;
+}

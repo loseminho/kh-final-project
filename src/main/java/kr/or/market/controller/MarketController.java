@@ -71,6 +71,9 @@ public class MarketController {
 		if(photo[0].isEmpty()) {
 		}else{
 			for(MultipartFile file : photo) {
+				if(file.isEmpty()) {
+					continue;
+				}
 				String fileName = file.getOriginalFilename();
 				String filePath = fileRename.fileRename(savePath, fileName);
 				

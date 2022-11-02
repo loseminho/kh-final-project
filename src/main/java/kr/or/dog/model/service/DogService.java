@@ -43,4 +43,13 @@ public class DogService {
 		return dao.updateMyDog(d);
 	}
 	
+	@Transactional
+	public int insertDogType(DogType dt) {
+		return dao.insertDogType(dt);
+	}
+
+	public int selectDogTypeCode() {
+		return dao.selectDogTypeCode();
+	}
+	
 }
