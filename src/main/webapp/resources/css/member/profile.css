@@ -114,8 +114,7 @@
 
 .report-modal{
 	width: 0;
-	height: 0;
-	
+	height: 0;	
 	position: fixed;
 	
 	margin: 0 auto;
@@ -126,8 +125,10 @@
 	justify-content: center;
     align-items: center;
     
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(1.5px);
+    z-index: 9999;
     
     overflow: hidden;
+    
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(1.5px);
 }
