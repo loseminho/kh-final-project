@@ -15,8 +15,24 @@ function mycalendar(){
 		droppable : true,
 		editable : true,
 		nowIndicator: true, // 현재 시간 마크
-		eventLimit: true,
 		locale: 'ko', // 한국어 설정
+		
+		//eventContent: {
+		//  html: "<div><img src='/resources/img/dogfoot.png' class='event-icon' /> 모임 일정</div>",
+		//},
+		
+		//eventDidMount: function(info) {
+        //    tippy(info.el, {
+        //        content:  info.event.extendedProps.title,//이벤트 디스크립션을 툴팁으로 가져옵니다. 
+        //   });
+        //},
+        
+        eventDidMount: function(info) {
+            tippy(info.el, {
+                content: "왜 안 떠..." //이벤트 디스크립션을 툴팁으로 가져옵니다. 
+           });
+        },
+		
 		events:function(info, successCallback, failureCallback){
             $.ajax({
                url: '/selectMyCalendar.do',
