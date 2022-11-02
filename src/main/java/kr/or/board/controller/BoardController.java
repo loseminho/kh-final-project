@@ -22,6 +22,7 @@ import com.google.gson.Gson;
 import common.FileRename;
 import kr.or.board.model.service.BoardService;
 import kr.or.board.model.vo.QnaBoard;
+import kr.or.board.model.vo.QnaComment;
 import kr.or.board.model.vo.QnaFile;
 
 @Controller
@@ -56,7 +57,6 @@ public class BoardController {
 	//문의게시판 insert
 	@RequestMapping(value="/writeQna.do")
 	public String writeQna(QnaBoard q, MultipartFile[] boardFile, HttpServletRequest request) {
-		System.out.println(q.getQnaWriter());
 		ArrayList<QnaFile> fileList = new ArrayList<QnaFile>();
 		if(!boardFile[0].isEmpty()) {
 			String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/board/");
@@ -86,13 +86,17 @@ public class BoardController {
 		q.setFileList(fileList);
 		System.out.println(q);
 		int result = service.insertQnaBoard(q);
-		return "board/faqQna";
+		return "redirect:/faqQnaBoardFrm.do";
 	}
 	/* 문의게시판 이동 */ 
 	@RequestMapping(value="/qnaView.do")
 	public String qnaView(int qnaNo, Model model) {
 		QnaBoard qb = service.selectOneQna(qnaNo);
 		model.addAttribute("qb",qb);
+		//해당 게시물 댓글 리스트 조회  
+		ArrayList<QnaComment>list = service.commentListView(qnaNo);
+		model.addAttribute("list",list);
+		System.out.println(list);
 		return "board/qnaView";
 	}
 	
@@ -110,7 +114,19 @@ public class BoardController {
 				delFile.delete();
 			}
 		}
-		return "board/faqQna";
+		return "redirect:/faqQnaBoardFrm.do";
 	}
-
+	
+	//문의게시판 댓글 insert 
+	@RequestMapping(value="/insertQnaComment.do")
+	public String insertQnaComment(QnaComment qc,Model model) {
+		System.out.println(qc);
+		int result = service.insertQnaComment(qc);
+		if(result >0) {
+			model.addAttribute("qc",qc);
+			return "redirect:/qnaView.do?qnaNo="+qc.getQnaNo();
+		} else {
+			return "null";
+		}
+	}
 }

@@ -54,4 +54,13 @@
 <delete id="qnaBoardDelete" parameterType="_int">
 	delete from qna_tbl where qna_no = #{_parameter}
 </delete>
+<insert id="insertQnaComment" parameterType="qc">
+	insert into qna_comment values(
+		qna_comment_seq.nextval,#{qCommentWriter},#{qnaNo},#{qCommentContent},to_char(sysdate,'yyyy-mm-dd hh24:mi'),null
+	)
+</insert>
+<select id="commentListView" parameterType="_int" resultType="qc">
+	select * from qna_comment
+	where qna_no = #{_parameter}
+</select>
 </mapper>

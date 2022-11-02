@@ -58,38 +58,42 @@
                         <ul class="comment-box">
                             <li><span class="material-symbols-outlined">pets</span></li>
                             <li>
-                                <input type="hidden" name="qCommentWriter" value="#멤버아이디">
-                                <input type="hidden" name="qnaNo" value="#게시판번호">
-                                <input type="hidden" name="qCommentRef" value="0">
+                                <input type="hidden" name="qCommentWriter" value="${sessionScope.m.memberId}">
+                                <input type="hidden" name="qnaNo" value="${qb.qnaNo }">
+                                <!-- <input type="hidden" name="qCommentRef" value="${qc.qCommentRef }">-->
                                 <textarea class="qCommentContent" name="qCommentContent"></textarea>
                             </li>
                             <li>
                                 <button type="submit" class="addComment">댓글쓰기</button>
                             </li>
                         </ul>
-                    </form>
+                    </form> 
                 </div><!--inputComment-box 끝-->
                 <!--댓글 보기-->
-                <div class="inputComment-box view">
+                <c:forEach items="${list }" var="qc" varStatus="i">
+                <div class="inputComment-box view" id="qnaCommentList">
                     <ul class="comment-box-view">
                         <li><span class="material-symbols-outlined">pets</span></li>
                         <li>
                             <p class="comment-info">
-                                <span>관리자</span><span>댓글 작성날짜</span>
+                                <span>${qc.qCommentWriter}</span><span>${qc.qCommentTime }</span>
                             </p>
-                            <p class="comment-content">댓글내용</p>
+                            <p class="comment-content">${qc.qCommentContent }</p>
                             <!--display none 수정 클릭시에만 보임-->
                             <textarea style="display: none;"></textarea>
                             <p class="comment-link">
                                 <!--로그인한사람에게만 수정 부여-->
+                                <c:if test="${sessionScope.m.memberId eq qc.qCommentWriter }">
                                 <a href="#">수정</a>
                                 <!--관리자에게만 삭제권한 부여-->
                                 <a href="#">삭제</a>
+                                </c:if>
                                 <a href="#">답글달기</a>
                             </p>
                         </li>
                     </ul>
             </div><!--qnaView-box 끝-->
+                </c:forEach>
         </div><!--qnaView-wrap 끝-->
     </content>
     <script></script>
