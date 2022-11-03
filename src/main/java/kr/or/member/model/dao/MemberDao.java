@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.or.member.model.vo.Member;
 import kr.or.member.model.vo.MyCalendar;
+import kr.or.walk.model.vo.Walk;
 
 @Repository
 public class MemberDao {
@@ -58,5 +59,10 @@ public class MemberDao {
 	public ArrayList<MyCalendar> selectMyCalendar(String memberId) {
 		List list = sqlSession.selectList("member.selectMyCalendar", memberId);
 		return (ArrayList<MyCalendar>) list;
+	}
+
+	public ArrayList<Walk> selectAllMateList() {
+		List list = sqlSession.selectList("walkmate.allWalkList");
+		return (ArrayList<Walk>)list;
 	}
 }

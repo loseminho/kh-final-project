@@ -3,6 +3,21 @@
     
 <link rel="stylesheet" href="/resources/css/member/mypage/mateList.css">
 
+<!-- 모임 전체 리스트(임시) -->
+<div class="all-meet mateList">
+    <h1>전체 모임</h1>
+    <table>
+        <tr>
+            <th>모집 글 제목</th>
+            <th>시작 일시</th>
+            <th>장소</th>       		<!--  시/군/구만 보여주기 -->
+            <th>상태</th>
+        </tr>
+        <!-- 반복문으로 리스트 가져오기 -->
+    </table>
+    <!-- 페이징 처리 -->
+</div>
+
 <!-- 앞으로 참가할 예정인 모임 리스트 -->
 <!-- 모집 전, 모집 중, 모임 전, 모임 중, 대기, 수락 -->
 <div class="attend-meet mateList">
@@ -10,15 +25,13 @@
     <table>
         <tr>
             <th>모집 글 제목</th>
-            <th>모임장</th>
             <th>시작 일시</th>
             <th>장소</th>       		<!--  시/군/구만 보여주기 -->
             <th>상태</th>
         </tr>
         <tr>
         	<!-- /walkMetePage.do?산책 메이트 번호&모임 페이지에서 보여줄 부분 -->
-        	<td><a href="/walkMetePage.do?wmNo=1&index=0">산책 메이트 구해요</a></td>			<!-- 누르면 해당 모임 페이지(정보)로 이동(모임장이거나 수락된 경우) -->
-        	<td><a href="/showProfile.do">닉네임</a></td>									<!-- 누르면 해당 닉네임의 프로필 페이지로 이동 -->
+        	<td><a href="/walkMetePage.do?wmNo=1&index=0">산책 메이트 구해요</a></td>			<!-- 누르면 해당 모임 페이지(정보)로 이동(모임장이거나 수락된 경우) -->							<!-- 누르면 해당 닉네임의 프로필 페이지로 이동 -->
         	<td>xxxx-xx-xx xx:xx</td>
         	<td>금천구</td>
         	<td>수락</td>
@@ -34,7 +47,6 @@
     <table>
         <tr>
             <th>모집 글 제목</th>
-            <th>모임장</th>
             <th>시작 일시</th>
             <th>장소</th>       		<!--  시/군/구만 보여주기 -->
             <th>상태</th>
@@ -51,7 +63,6 @@
     <table>
         <tr>
             <th>모집 글 제목</th> 
-            <th>모임장</th>
             <th>시작 일시</th>
             <th>장소</th>       		<!--  시/군/구만 보여주기 -->
             <th>상태</th>
