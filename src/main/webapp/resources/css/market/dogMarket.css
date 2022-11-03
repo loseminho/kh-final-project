@@ -478,6 +478,8 @@ content{
 }
 #send-dm-input{
 	box-sizing:border-box;
+	border: 2px solid #ccc;
+	border-radius: 10px;
 	height:50px;
 	width:500px;
 }
@@ -500,7 +502,13 @@ content{
 	border-radius: 10px;
 	
 }
+.send-dm-wrap span{
+	font-family: gs-Medium;
+}
 
+.receiver{
+	color:blue;
+}
 
 /**
 

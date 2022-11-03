@@ -243,7 +243,7 @@ $(".add-btn>button").on("click",function(){
     				html += "<img class='previewImg' src='/resources/upload/market/"+data[i].fileList[0].filePath+"'>";
     				html += "<input type='hidden' name='marketNo' value="+data[i].marketNo+">";
     				html += "</div>";
-    				html += "<span>"+data[i].typeName+"</span>";
+    				html += "<span class='list-sub-title'>"+data[i].typeName+"</span>";
     				html += "<li>책임비 : "+data[i].price+"원</li>";
     				html += "</div>";
     			};
@@ -264,7 +264,7 @@ $(".add-btn>button").on("click",function(){
     		const detailImg = $(".detail-image");
     		const marketNo = $("[name=marketNo]");
    	 		const sale = $(".sale");
-   	 		const sessionMemberId = $("#sessionMemberId").val();
+   	 		const sessionMemberNo = $("#sessionMemberNo").val();
     		console.log($(".sale-info").text());
     		$("#modal-wrap").fadeIn(300) ;
     		$("body").css("overflow","hidden");
@@ -274,15 +274,18 @@ $(".add-btn>button").on("click",function(){
     			url: "/searchOneInfo.do",
     			data: {marketNo:data},
     			success : function(data){
+    			console.log(data);
     			
-    			$("#detailMemberId").val(data.memberId);
+    			$("#detailMemberNo").val(data.memberNo);
+    			var text = ""+data.memberNickname+"("+data.memberId+")";
+    			$(".receiver").text(text);
     			
-    			if(sessionMemberId == data.memberId){
+    			if(sessionMemberNo == data.memberNo){
     				var html = "";
     				html += "<button onclick='location.href='/myMarketList.do''>관리</button>";
     				html += "<button id='close-modal'>닫기</button>";
     				$(".require-btn").html(html);
-    			}else if(sessionMemberId != data.memberId){
+    			}else if(sessionMemberNo != data.memberNo){
     				var html = "";
     				html += "<button onclick='dmModalOn();'>쪽지보내기</button>";
     				html += "<button id='close-modal'>닫기</button>";
