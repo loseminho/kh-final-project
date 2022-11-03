@@ -10,8 +10,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 <!-- fullcalendar 언어 설정관련 script -->
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales-all.js"></script>
-<script src="https://unpkg.com/@popperjs/core@2"></script>
-<script src="https://unpkg.com/tippy.js@6"></script>
+<!-- <script src="https://unpkg.com/@popperjs/core@2"></script> -->
+<!-- <script src="https://unpkg.com/tippy.js@6"></script> -->
 
 <h1>내 일정 보기</h1>
 

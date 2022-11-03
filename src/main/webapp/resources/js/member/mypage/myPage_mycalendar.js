@@ -27,12 +27,6 @@ function mycalendar(){
         //        content:  info.event.extendedProps.title,//이벤트 디스크립션을 툴팁으로 가져옵니다. 
         //   });
         //},
-        
-        eventDidMount: function(info) {
-            tippy(info.el, {
-                content: "왜 안 떠..." //이벤트 디스크립션을 툴팁으로 가져옵니다. 
-           });
-        },
 		
 		events:function(info, successCallback, failureCallback){
             $.ajax({
