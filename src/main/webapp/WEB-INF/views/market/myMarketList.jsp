@@ -30,7 +30,7 @@
 			<c:forEach items="${list }" var="md">
 				<div class="preview-box" style="display:inline-block">
 					<img src="/resources/upload/market/${md.fileList[0].filePath }" class="preview">
-				<div>ㅅ/비ㅏㄹ</div>
+				<div></div>
 				</div>
 			</c:forEach>
 			</div>

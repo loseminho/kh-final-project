@@ -3,6 +3,7 @@
 <mapper namespace="market">
 	<select id="selectOne" parameterType="_int" resultType="md">
 		select
+            mt.member_id as memberId,		
 			mt.market_no as marketNo,
 			mt.age,
 			mt.type_code as typeCode,

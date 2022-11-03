@@ -29,23 +29,17 @@
 				<img class="detail-image" src="">
 			</div>
 		</div>
+		<input type="hidden" value="${sessionScope.m.memberId }" id="sessionMemberId">
+		<input type="hidden" value="" id="detailMemberId">
 		<div class="require-btn">
-			<c:choose>
-			<c:when test="${empty sessionScope.m }">
-			<button onclick="location.href='/loginFrm.do'">로그인</button>
-			</c:when>
-			<c:otherwise>
-			<button>분양신청하기</button>
-			<button onclick="dmModalOn();">쪽지보내기</button>
-			</c:otherwise>
-			</c:choose>
-			<button id="close-modal">닫기</button>
+			
 		</div>
 		<div class="send-dm-wrap">
 			<div class="send-dm-title">받는사람</div>
 			<div class="input-box-wrap">
 				<input id="send-dm-input" type="text">
 				<button class="send-dm-btn">쪽지보내기</button>
+				<button class="cancel">취소</button>
 			</div>
 		</div>
 	</div>
