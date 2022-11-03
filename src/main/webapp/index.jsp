@@ -77,7 +77,7 @@
 	<div class="section" id="section2">
 		<div class="section2Content">
 			<div>
-				<h1 class="mbtiTitle" style="font-size:40px; color: #DE4B3F; padding-top:20px;">반려견 성격 유형 테스트</h1>
+				<h1 class="mbtiTitle" style="font-size:40px; color: #DE4B3F; padding-top:20px;">반려견 메이트 찾기</h1>
 				<p class="mbtiTitle">내 강아지는 어떤 성격일까?</p>
 				<p class="mbtiTitle">어떤 유형의 강아지와<br>
 				좋은 친구가 될 수 있을까?</p>

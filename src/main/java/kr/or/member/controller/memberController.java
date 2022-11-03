@@ -94,7 +94,7 @@ public class memberController {
         		HttpSession session = req.getSession(); // session 생성
         		session.setAttribute("m", m); // session 저장하기
         		session.setAttribute("access_Token", access_Token); // session 저장하기
-        		return "redirect:/";        		
+        		return "redirect:/selectMyDogList.do";        		
         	} else {
         		System.out.println("일반으로 가입한 회원");
         		model.addAttribute("nickname", m.getMemberNickname());
@@ -410,9 +410,9 @@ public class memberController {
 	}
 	
 	@RequestMapping(value="/myPage.do")
-	public String myPage(@SessionAttribute Member m) {
-//		return "member/myPage";
-		return "redirect:/selectMyDogList.do";
+	public String myPage() {
+		return "member/myPage";
+//		return "redirect:/selectMyDogList.do";
 	}
 	
 	@RequestMapping(value="/updateMember.do")
