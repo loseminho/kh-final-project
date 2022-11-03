@@ -24,11 +24,10 @@
                     <h1>문의내역 수정하기</h1>
                 </div>
                 <form action="/qnaUpdate.do" method="post" enctype="multipart/form-data">
-                <input type="hidden" name="qnaNo" value=${qb.qnaNo }>
                     <div class="writeQna-content">
                         <div class="qna-input-box">
                         <label for="qnaCateNo">문의유형</label>
-                        <select name="qnaCateNo" id="qnaCateNo" class="write-qna-form">
+                        <select name="qnaCateNo" id="qnaCateNo" class="write-qna-form" value="${qnaCateNo }">
                             <option value="0" selected="selected">선택해주세요</option>
                             <option value="1">산책메이트 찾기</option>
                             <option value="2">애견용품 나눔</option>
@@ -64,6 +63,7 @@
                         </div>
                         <!--display: none-->
                         <input type="file" name="boardFile" multiple style="display:none;">
+		                <input type="hidden" name="qnaNo" value=${qb.qnaNo }>
                         <input type="hidden" name="qnaWriter" id="qnaWriter" class="write-qna-form" value="${qb.qnaWriter}">
                     </div><!--writeqna content 끝-->
                     <div class="writeQna-footer">

@@ -42,6 +42,11 @@
 					</ul>
 					<c:if test="${not empty sessionScope.m }">
 					<ul>
+					<div>
+						<li><a href= "#">내 모임</a></li>
+					</div>
+					</ul>
+					<ul>
 						<div>
 							<li><a href= "/myPage.do">마이페이지</a></li>
 						</div>

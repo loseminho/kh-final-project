@@ -31,15 +31,13 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import common.FileRename;
-import kr.or.dog.controller.DogController;
 import kr.or.member.model.service.MemberService;
 import kr.or.member.model.service.MessageService;
 import kr.or.member.model.vo.Member;
 import kr.or.member.model.vo.MyCalendar;
+import kr.or.walk.model.vo.Walk;
 
 @Controller
 public class memberController {
@@ -496,5 +494,12 @@ public class memberController {
 		} else {
 			return "null";
 		}
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/selectAllMateList.do", produces="application/json;charset=utf-8")
+	public String selectAllMateList() {
+		ArrayList<Walk> list = service.selectAllMateList();
+		return new Gson().toJson(list);
 	}
 }

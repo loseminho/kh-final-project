@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.board.model.dao.BoardDao;
 import kr.or.board.model.vo.QnaBoard;
@@ -78,25 +80,33 @@ public class BoardService {
 	}
 
 	//문의내역 수정  
-	public int updateQnaBoard(QnaBoard q) {
+	public int updateQnaBoard(QnaBoard q, int[] fileNoList) {
+		//board 수정 
 		int result = dao.updateQnaBoard(q);
 		if(result>0) {
-			int qnaNo = dao.selectQnaBoardNo();
+			//새로운 첨부파일이 있으면 insert
 			for(QnaFile qf : q.getFileList()) {
-				qf.setQnaNo(qnaNo);
-				result += dao.updateFile(qf);
+				qf.setQnaNo(q.getQnaNo());
+				result += dao.insertFile(qf);
+			}
+			//삭제한 첨부파일이 있으면 delete
+			if(fileNoList != null) {
+				for(int fileNo : fileNoList) {
+					result += dao.deleteFile(fileNo);
+				}
 			}
 		}
 		return result;
 	}
 
-
-	public int delFile(QnaBoard q) {
-		// TODO Auto-generated method stub
-		return dao.delFile(q);
+	/*
+	//게시물 조회수 조회
+	@Transactional(isolation = Isolation.READ_COMMITTED)
+	@Override
+	public QnaBoard read(int qnaNo) throws Exception{
+		dao.qnaViews(qnaNo);
+		return dao.read(qnaNo);
 	}
 
-
-
-
+*/
 }

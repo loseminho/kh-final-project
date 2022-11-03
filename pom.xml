@@ -14,6 +14,8 @@
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
 	<dependencies>
+
+		
 		<!-- Websocket 사용을 위한 라이브러리(spring-websocket, jackson-databind) -->
 		<!-- spring-websocket -->
 		<dependency>
