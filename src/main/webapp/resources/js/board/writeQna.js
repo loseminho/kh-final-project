@@ -81,3 +81,4 @@ function fileSetting(){
 $(".back-btn").on("click",function(){
     location.href="/faqQnaBoardFrm.do"
 });
+

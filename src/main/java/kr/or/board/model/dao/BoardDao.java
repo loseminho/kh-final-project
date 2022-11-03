@@ -68,18 +68,21 @@ public class BoardDao {
 	public int updateFile(QnaFile qf) {
 		return sqlsession.update("qnaboard.updateQnaFile",qf);
 	}
-	public int delFile(QnaBoard q) {
-		//파일개수 구해오기  
-		int result = sqlsession.selectOne("qnaboard.contFile",q);
-		if(result==0) {
-			return result;
-		}else {
-			sqlsession.delete("qnaboard.delFile",q);	
-			return result;
-		}
-	}
+	//문의내역 댓글 수정  
 	public int updateQnaComment(QnaComment qc) {
 		return sqlsession.update("qnaboard.updateQnaComment",qc);
 	}
+	//문의내역 파일 삭제 
+	public int deleteFile(int fileNo) {
+		return sqlsession.delete("qnaboard.deleteFile",fileNo);
+	}
+	/*
+	//게시판 조회수  
+	public void qnaboardViewCount(int qnaNo) throws Exception;
 	
+	@Override
+	public void qnaboardViewCount(int qnaNo) throws Exception {
+		sqlsession.update("qnaboard.qnaBoardViewCount",qnaNo);
+	}
+	*/
 }

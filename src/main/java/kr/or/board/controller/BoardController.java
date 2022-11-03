@@ -141,11 +141,11 @@ public class BoardController {
 	//문의게시판 댓글 삭제 
 	@RequestMapping(value="/deleteQnaComment.do")
 	public String deleteQnaComment(QnaComment qc, Model model) {
+		System.out.println(qc);
 		int result = service.deleteQnaComment(qc);
 		if(result>0) {
 			model.addAttribute("qc",qc);
-			System.out.println(qc);
-			return "board/faqQna";
+			return "redirect:/qnaView.do?qnaNo="+qc.getQnaNo();
 		} else {
 			return "null";
 		}
@@ -155,27 +155,31 @@ public class BoardController {
 	public String qnaBoardUpdateFrm(int qnaNo, Model model) {
 		QnaBoard qb = service.selectOneQna(qnaNo);
 		model.addAttribute("qb",qb);
-		System.out.println(qb);
 		return "board/qnaUpdate";
 	}
 	
 	//문의게시판 수정  
 	@RequestMapping(value="/qnaUpdate.do")
-	public String qnaUpdate(QnaBoard q, MultipartFile[] boardFile, HttpServletRequest request, Model model) {
-		System.out.println(q);
+	public String qnaUpdate(QnaBoard q,int[]fileNoList,String[]filepathList, MultipartFile[] boardFile, HttpServletRequest request) {
 		ArrayList<QnaFile> fileList = new ArrayList<QnaFile>();
-		int result1 = service.delFile(q);
+		String savepath = request.getSession().getServletContext().getRealPath("/resources/upload/board/");
+		
+		//게시물 수정시 추가로 첨부한 파일 업로드 
 		if(!boardFile[0].isEmpty()) {
-			String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/board/");
 			for(MultipartFile file : boardFile) {
 				String filename = file.getOriginalFilename();
-				String filepath = FileRename.fileRename(savePath,filename);
+				String filepath = FileRename.fileRename(savepath,filename);
+				File upFile = new File(savepath+filepath);
 				try {
-					FileOutputStream fos = new FileOutputStream(new File(savePath+filepath));
+					FileOutputStream fos = new FileOutputStream(upFile);
 					BufferedOutputStream bos  = new BufferedOutputStream(fos);
 					byte[] bytes = file.getBytes();
 					bos.write(bytes);
 					bos.close();
+					QnaFile qf = new QnaFile();
+					qf.setFilename(filename);
+					qf.setFilepath(filepath);
+					fileList.add(qf);
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -184,14 +188,23 @@ public class BoardController {
 					e.printStackTrace();
 				}
 				
-				QnaFile qf = new QnaFile();
-				qf.setFilename(filename);
-				qf.setFilepath(filepath);
-				fileList.add(qf);
-			}
+			}// forEach end
 		}
 		q.setFileList(fileList);
-		int result = service.updateQnaBoard(q);
+		int result = service.updateQnaBoard(q, fileNoList);
+		if(fileNoList != null &&(result == (fileList.size()+fileNoList.length+1))) {
+			// fileList.size() = 추가로 첨부한 파일 개수
+			// fileNoList.length = 삭제할 파일 개수
+			// 1 = board 테이블 수정한 결과값
+			
+			if(filepathList != null) {
+				//서버에 업로드 되어있는 파일 삭제
+				for(String filepath : filepathList) {
+					File delFile = new File(savepath+filepath);
+					delFile.delete();
+				}
+			}
+		}
 		return "redirect:/qnaView.do?qnaNo="+q.getQnaNo();
 	}
 	
