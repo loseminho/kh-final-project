@@ -41,5 +41,12 @@
 			</c:choose>
 			<button id="close-modal">닫기</button>
 		</div>
+		<div class="send-dm-wrap">
+			<div class="send-dm-title">받는사람</div>
+			<div class="input-box-wrap">
+				<input id="send-dm-input" type="text">
+				<button class="send-dm-btn">쪽지보내기</button>
+			</div>
+		</div>
 	</div>
 </div>

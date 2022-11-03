@@ -109,6 +109,7 @@
     <!-- 모달시작 -->
 	<jsp:include page="/WEB-INF/views/market/modal.jsp"/>
 	<script src="/resources/js/market/saleDog.js"></script>
+	<script src="/resources/js/dm/sendDm.js"></script>
     <script>
     </script>
 </body>

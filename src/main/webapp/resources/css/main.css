@@ -82,19 +82,36 @@ html, body {
 }
 .section2Content>div{
 	width:35%;
-	height:70%;
+	height:35%;
 	border-radius: 30px;
 	background-color: rgba(255,255,255,0.9);
 	display:flex;
-	justify-content: center;
+	flex-direction:column;
+	justify-content: space-between;
+	align-content:center;
 	box-shadow: 12px 12px 2px 5px rgba(0, 0, 0, 0.5);
 }
 .mbtiTitle{
+	text-align:center;
 	font-family: gs-Bold;
-	padding-top:20px;
-	color: #DE4B3F;
+	/*padding-top:20px;*/
+	/*color: #DE4B3F;*/
 	font-size:30px;
 	font-weight:900;
+}
+#mbtiBtn {
+	display:block;
+	width:140px;
+	height: 50px;
+	text-decoration:none;
+	background-color: #DE4B3F;
+	border-radius:20px;
+	text-align:center;
+	line-height:53px;
+	color:white;
+	margin:0 auto;
+	margin-bottom:20px;
+	font-family: gs-Medium;
 }
 
 <!-- 세션3 -->

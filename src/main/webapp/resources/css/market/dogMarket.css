@@ -462,7 +462,37 @@ content{
 	border:none;
 	border-radius: 10px;
 }
+.input-box-wrap{
+	width:700px;
+	margin:0 auto;
+	display:flex;
+	justify-content: center;
+}
+.send-dm-title{
+	width:600px;
+	margin:0 auto;
+}
+#send-dm-input{
+	box-sizing:border-box;
+	height:50px;
+	width:500px;
+}
+.send-dm-btn{
+	margin-left:5px;
+	width:100px;
+	color:#fff;
+	background-color: #1abc9c;
+	border:none;
+	font-family:gs-Medium;
+	border-radius: 10px;
+}
 
+
+/**
+
+모달 끝
+
+**/
 .market-list-title{
 	width:850px;
 	height:100px;
