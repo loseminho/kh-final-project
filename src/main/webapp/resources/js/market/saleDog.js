@@ -1,5 +1,4 @@
 let page = 0;
-
 const tabs = $(".dogMarket-tab>li");
 
 tabs.on("click",function(){
@@ -265,8 +264,9 @@ $(".add-btn>button").on("click",function(){
     		const detailImg = $(".detail-image");
     		const marketNo = $("[name=marketNo]");
    	 		const sale = $(".sale");
+   	 		const sessionMemberId = $("#sessionMemberId").val();
     		console.log($(".sale-info").text());
-    		$("#modal-wrap").css('display','flex');
+    		$("#modal-wrap").fadeIn(300) ;
     		$("body").css("overflow","hidden");
     		let idx = sale.index(this);
     		let data = marketNo.eq(idx).val();
@@ -274,7 +274,22 @@ $(".add-btn>button").on("click",function(){
     			url: "/searchOneInfo.do",
     			data: {marketNo:data},
     			success : function(data){
-    				console.log(data);
+    			
+    			$("#detailMemberId").val(data.memberId);
+    			
+    			if(sessionMemberId == data.memberId){
+    				var html = "";
+    				html += "<button onclick='location.href='/myMarketList.do''>관리</button>";
+    				html += "<button id='close-modal'>닫기</button>";
+    				$(".require-btn").html(html);
+    			}else if(sessionMemberId != data.memberId){
+    				var html = "";
+    				html += "<button onclick='dmModalOn();'>쪽지보내기</button>";
+    				html += "<button id='close-modal'>닫기</button>";
+    				$(".require-btn").html(html);
+    			}
+    			
+    			console.log(data);
     				if(data.fileList.length == 1){
     					detailImg.eq(0).attr("src","/resources/upload/market/"+data.fileList[0].filePath+"");
     				}else if(data.fileList.length == 2){
@@ -310,7 +325,7 @@ $(".add-btn>button").on("click",function(){
     		});
     	});
     	
-    	$("#close-modal").on("click",function(){
+    	$(document).on("click","#close-modal",function(){
     		$("#modal-wrap").css("display","none");
     		$("body").css("overflow","inherit");
     	});

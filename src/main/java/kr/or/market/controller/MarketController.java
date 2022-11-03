@@ -7,14 +7,21 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.xml.ws.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.context.annotation.RequestScope;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
@@ -59,7 +66,6 @@ public class MarketController {
 	@RequestMapping(value="/selectFilterList.do", produces="application/json;charset=utf-8")
 	public String filterSelect(MarketDog md) {
 		ArrayList<MarketDog> list = service.filterSelect(md);
-		System.out.println(list);
 		return new Gson().toJson(list);
 	}
 	@RequestMapping(value="/writeFrm.do")
