@@ -208,4 +208,7 @@ public class BoardController {
 		return "redirect:/qnaView.do?qnaNo="+q.getQnaNo();
 	}
 	
+	//문의게시판 검색하기  
+	
+	
 }
