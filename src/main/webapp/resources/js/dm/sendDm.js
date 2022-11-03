@@ -17,16 +17,18 @@ const sendDmFunction = $(".send-dm-btn");
 
 sendDmFunction.on("click",function(){
 	var text = $("#send-dm-input").val();
-	const memberId = $("#detailMemberId").val();
-	console.log(text);
+	const receiver = $("#detailMemberNo").val();
+	const sender = $("#sessionMemberNo").val();
 	if(text == ''){
-		console.log('비어있음');
+		alert('뭐라도입력해주세요');
 	}else{
 		$.ajax({
 			url:"/sendDm.do",
-			data:{memberId:memberId, text:text},
+			data:{receiver:receiver, dmContent:text, sender:sender},
 			success:function(){
-				
+				console.log("보내기성공");
+				$(".cancel").trigger("click");
+				$("#send-dm-input").val('');
 			}
 		});
 		console.log(text);
