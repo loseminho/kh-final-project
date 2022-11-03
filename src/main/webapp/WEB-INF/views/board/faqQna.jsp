@@ -147,20 +147,32 @@
 			</div>
 			<!--faq-box 끝-->
 			<div class="qna-box">
-			<!-- 상세보기 이동 form -->
+				<!-- 상세보기 이동 form -->
 				<form action="/qnaView.do" method="post" id="qnaViewFrm">
-				<input type="hidden" id="qnaBoardNo" type="text" name=qnaNo value="">
+					<input type="hidden" id="qnaBoardNo" type="text" name=qnaNo
+						value="">
 				</form>
 				<div class="qna-content">
 					<div class="qna-header">
 						<p>문의하신 내용에 대한 답변은 업무일 기준으로 2~3일 정도 소요 될 수 있습니다.</p>
-						<c:if test ="${not empty sessionScope.m }">
-						<div class="write-btn-box">
-							<button id ="writeQna">1:1 문의 신청</button>
-						</div>
+						<c:if test="${not empty sessionScope.m }">
+							<div class="write-btn-box">
+								<button id="writeQna">1:1 문의 신청</button>
+							</div>
 						</c:if>
 					</div>
 					<div class="qna-board">
+						<div class="search-box">
+							<form action="#">
+								<select name="qnaCateNo" id="qnaCateNo" class="search-qna-form">
+									<option value="0" selected="selected">선택해주세요</option>
+									<option value="qnaTitle">제목</option>
+									<option value="qnaWriter">작성자</option>
+								</select> <input type="text" class="search-input"
+									placeholder="검색어를 입력하세요." name="searchText">
+								<button type="submit" class="search-btn">검색</button>
+							</form>
+						</div>
 						<div id="qnaAjaxResult"></div>
 					</div>
 				</div>
@@ -171,7 +183,7 @@
 	</div>
 	<!--faqqna-wrap 끝--> </content>
 	<!--컨텐츠 끝-->
-	
+
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	<script src="/resources/js/board/faqqna.js"></script>
 </body>

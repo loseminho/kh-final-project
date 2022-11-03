@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 </head>
 <body>
+<jsp:include page="/WEB-INF/views/common/header.jsp" />
     <content>
         <div class="qnaView-wrap">
             <div class="qnaView-box">
@@ -69,7 +70,8 @@
                     </form> 
                 </div><!--inputComment-box 끝-->
                 <!--댓글 보기-->
-                <c:forEach items="${list }" var="qc" varStatus="i">
+                <c:forEach items="${list }" var="qc">
+                <input type="hidden" id="test1" value="${qc.qcommentNo }">
                 <div class="inputComment-box view" id="qnaCommentList">
                     <ul class="comment-box-view">
                         <li><span class="material-symbols-outlined">pets</span></li>
@@ -79,15 +81,16 @@
                             </p>
                             <p class="comment-content">${qc.qcommentContent }</p>
                             <!--display none 수정 클릭시에만 보임-->
-                            <textarea style="display: none;"></textarea>
+                            <textarea style="display: none;" class="comment-modify" name="qcommentContent"></textarea>
                             <p class="comment-link">
                                 <!--로그인한사람에게만 수정 부여-->
                                 <c:if test="${sessionScope.m.memberId eq qc.qcommentWriter }">
-                                <a href="/updateQnaComment.do?qcommentNo=${qc.qcommentNo }">수정</a>
-                                <!-- <a href="javascript:void(0)" onclick="modifyQnaComment(this,${qc.qcommentNo }, ${qb.qnaNo });">수정</a> -->
+                                <!-- <a href="/updateQnaComment.do?qcommentNo=${qc.qcommentNo }">수정</a>-->
+                                <a href="javascript:void(0)" onclick="modifyQnaComment(this,${qc.qcommentNo }, ${qb.qnaNo });">수정</a>
+                                
                                 <!--관리자에게만 삭제권한 부여-->
-                                <a href="/deleteQnaComment.do?qcommentNo=${qc.qcommentNo }">삭제</a>
-                                <!-- <a href="javascript:void(0)" onclick="deleteQnaComment(this,${qc.qcommentNo }, ${qb.qnaNo });">삭제</a> -->
+                                <!-- <a href="/deleteQnaComment.do?qcommentNo=${qc.qcommentNo }">삭제</a>-->
+                                <a href="javascript:void(0)" onclick="deleteQnaComment(this,${qc.qcommentNo }, ${qb.qnaNo });">삭제</a>
                                 </c:if>
                             </p>
                         </li>

@@ -40,7 +40,7 @@ public class DogController {
 		int memberNo = m.getMemberNo();
 		ArrayList<Dog> list = service.selectMyDogList(memberNo);
 		session.setAttribute("myDogList", list);
-		return "member/myPage";
+		return "redirect:/";
 	}
 	
 	@ResponseBody

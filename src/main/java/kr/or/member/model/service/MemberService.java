@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import kr.or.member.model.dao.MemberDao;
 import kr.or.member.model.vo.Member;
 import kr.or.member.model.vo.MyCalendar;
+import kr.or.walk.model.vo.Walk;
 
 @Service
 public class MemberService {
@@ -121,4 +122,7 @@ public class MemberService {
 		return dao.selectMyCalendar(memberId);
 	}
 
+	public ArrayList<Walk> selectAllMateList() {
+		return dao.selectAllMateList();
+	}
 }

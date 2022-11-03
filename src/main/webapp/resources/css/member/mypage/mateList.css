@@ -1,8 +1,8 @@
-.attend-meet{
-	padding-top:15px;
+.all-meet{
+	padding-top: 20px;
 }
 
-.past-meet, .fail-meet{
+.attend-meet, .past-meet, .fail-meet{
 	margin-top: 50px;
 }
 
@@ -26,8 +26,27 @@
 	background-color: #1abc9c;
 }
 
+.mateList table th:nth-child(1){
+	width: 300px;
+}
+
+.mateList table th:nth-child(2){
+	width: 200px;
+}
+
+.mateList table th:nth-child(3){
+	width: 150px;
+}
+
+.mateList table th:nth-child(4){
+	width: 150px;
+}
+
 .mateList>table td{
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
+	
+	padding-left: 25px;
+	padding-right: 25px;
 }
