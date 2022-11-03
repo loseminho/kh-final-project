@@ -17,5 +17,6 @@
 		<typeAlias type="kr.or.board.model.vo.QnaFile" alias="qf"/>
 		<typeAlias type="kr.or.board.model.vo.QnaComment" alias="qc"/>
 		<typeAlias type="kr.or.dog.model.vo.Dog" alias="d"/>
+		<typeAlias type="kr.or.mbti.model.vo.MbtiData" alias="mbti"/>
 	</typeAliases>
 </configuration>
