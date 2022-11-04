@@ -449,6 +449,9 @@ public class memberController {
 		int result = service.updateMember(m);
 		if(result > 0) {
 			Member member = service.selectOneMemberEnc(m);
+			ArrayList<Dog> dogList = dogService.selectMyDogList(member.getMemberNo());
+    		member.setDogList(dogList);
+    		
 			session.setAttribute("m", member);
 			model.addAttribute("title", "수정 완료");
 			model.addAttribute("msg", "수정이 완료되었습니다.");

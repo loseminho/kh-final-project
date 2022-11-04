@@ -35,13 +35,14 @@ public class DogController {
 	@Autowired
 	private FileRename fileRename;
 	
-//	@RequestMapping(value="/selectMyDogList.do")
-//	public String selectMyDogList(@SessionAttribute Member m, HttpSession session) {
-//		int memberNo = m.getMemberNo();
-//		ArrayList<Dog> list = service.selectMyDogList(memberNo);
-//		session.setAttribute("myDogList", list);
-//		return "redirect:/";
-//	}
+	@RequestMapping(value="/selectMyDogList.do")
+	public String selectMyDogList(@SessionAttribute Member m, HttpSession session) {
+		int memberNo = m.getMemberNo();
+		ArrayList<Dog> list = service.selectMyDogList(memberNo);
+		m.setDogList(list);
+		session.setAttribute("m", m);
+		return "redirect:/myPage.do";
+	}
 	
 	@ResponseBody
 	@RequestMapping(value="/selectMyOneDog.do", produces="application/json;charset=utf-8")
@@ -101,7 +102,7 @@ public class DogController {
 			model.addAttribute("title", "정보 추가 완료");
 			model.addAttribute("msg", "반려견 정보가 추가되었습니다.");
 			model.addAttribute("icon", "success");
-			model.addAttribute("loc", "/myPage.do");
+			model.addAttribute("loc", "/selectMyDogList.do");
 			return "common/msg";
 		} else {			
 			return "redirect:/";
@@ -115,7 +116,7 @@ public class DogController {
 			model.addAttribute("title", "정보 삭제 완료");
 			model.addAttribute("msg", "반려견 정보가 삭제되었습니다.");
 			model.addAttribute("icon", "success");
-			model.addAttribute("loc", "/myPage.do");
+			model.addAttribute("loc", "/selectMyDogList.do");
 			return "common/msg";
 		} else {
 			return "redirect:/";
@@ -151,7 +152,7 @@ public class DogController {
 			model.addAttribute("title", "정보 수정 완료");
 			model.addAttribute("msg", "반려견 정보가 수정되었습니다.");
 			model.addAttribute("icon", "success");
-			model.addAttribute("loc", "/myPage.do");
+			model.addAttribute("loc", "/selectMyDogList.do");
 			return "common/msg";
 		} else {
 			return "redirect:/";
