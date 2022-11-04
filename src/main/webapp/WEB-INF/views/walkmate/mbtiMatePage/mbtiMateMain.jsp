@@ -81,18 +81,18 @@
 	           						<img src="/resources/img/mbti/1.png">
            						</div>
            						<h3 id="mbti-que">
-	           						<span class="mbti-nickname">[${sessionScope.m.memberNickname }]</span>와(과) 산책을 나갔을 때<br>
-	           						반려견의 행동은?
+	           						<span class="mbti-nickname">${sessionScope.m.memberNickname }</span>와(과) 산책을 나갔을 때<br>
+	           						<span class="mbti-dogname"></span>의 행동은?
            						</h3>
            						<button type="button" class="mbti-btn">
-           							너무 신나서 <span class="mbti-nickname">[${sessionScope.m.memberNickname }]</span>을(를) 끌고 다닌다.
+           							너무 신나서 <span class="mbti-nickname">${sessionScope.m.memberNickname }</span>을(를) 끌고 다닌다.
            						</button>
            						<button type="button" class="mbti-btn">
            							자연에 취해 냄새 맡으며,<br>
-           							<span class="mbti-nickname">[${sessionScope.m.memberNickname }]</span>와(과) 함께 나란히 걷는다.
+           							<span class="mbti-nickname">${sessionScope.m.memberNickname }</span>와(과) 함께 나란히 걷는다.
            						</button>
            						<button type="button" class="mbti-btn">
-           							<span class="mbti-nickname">[${sessionScope.m.memberNickname }]</span> 뒤를 졸졸 따라다닌다.
+           							<span class="mbti-nickname">${sessionScope.m.memberNickname }</span> 뒤를 졸졸 따라다닌다.
            						</button>
            					</div>
             			</c:otherwise>
