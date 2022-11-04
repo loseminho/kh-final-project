@@ -17,7 +17,6 @@
 	                <li class="section"><a href="#">내 정보</a></li>
 	                <li class="section"><a href="#">반려견 정보</a></li>
 	                <li class="section"><a href="#">내 일정 보기</a></li>
-	                <li class="section" id="mateList"><a href="#">산책 메이트 목록</a></li>
 	                <li>
 	                    <a href="#">신고</a>
 	                    <ul class="sub-menu">
@@ -48,11 +47,6 @@
 
 			    <div class="mycalendar" style="display: none;">
 			        <jsp:include page="/WEB-INF/views/member/mypage/myPage_mycalendar.jsp"/>
-			    </div>
-			    
-			    <!-- 산책 메이트 목록 -->
-			    <div class="matelist" style="display: none;">
-			        <jsp:include page="/WEB-INF/views/member/mypage/mateList.jsp"/>
 			    </div>
 			    
 			    <!-- 신고 내역 -->
@@ -89,7 +83,5 @@
 		
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	<script src="/resources/js/member/myPage.js"></script>
-	
-	<script src="/resources/js/member/mypage/mateList.js"></script>
 </body>
 </html>

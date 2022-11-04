@@ -461,7 +461,9 @@ public class memberController {
 	}
 	
 	@RequestMapping(value="/showProfile.do")
-	public String showProfile() {
+	public String showProfile(int memberNo, Model model) {
+		// 회원과 회원이 가지고 있는 반려견 프로필 가져와야 함
+		
 		return "member/profile";
 	}
 	
