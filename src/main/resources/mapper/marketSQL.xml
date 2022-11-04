@@ -2,16 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="market">
 	<select id="selectOne" parameterType="_int" resultType="md">
-		select
-			mt.market_no as marketNo,
-			mt.age,
-			mt.type_code as typeCode,
-			mt.sale_info as saleInfo,
-			mt.gender,
-			dt.type_size as typeSize,
-			dt.type_name as typeName,
-			to_char(mt.price,'FM999,999,999,999') as price
-		from market_tbl mt join dog_type dt on(mt.type_code=dt.type_code)
+select
+    substr(replace(mt.member_id,substr(mt.member_id,2,2),'**'),1,instr(mt.member_id,'@',1,1)-1)as memberId,		
+   	m.member_no as memberNo,
+    m.member_nickname as memberNickname,
+    mt.market_no as marketNo,
+    mt.age,
+    mt.type_code as typeCode,
+    mt.sale_info as saleInfo,
+    mt.gender,
+    dt.type_size as typeSize,
+    dt.type_name as typeName,
+    to_char(mt.price,'FM999,999,999,999') as price
+from market_tbl mt join dog_type dt on(mt.type_code=dt.type_code) left join member_tbl m on (mt.member_id = m.member_id)
 		where market_no = #{_parameter}
 	</select>
 	<select id="marketListCnt" parameterType="md" resultType="int">

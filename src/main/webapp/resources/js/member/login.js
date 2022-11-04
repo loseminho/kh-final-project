@@ -8,7 +8,7 @@ function login() {
         data : {memberId : idVal, memberPw : pwVal},
         success : function(data){
         	if(data == "success") {
-                location.href= "/";                         	        	        		
+                location.href= "/selectMyDogList.do";                         	        	        		
         	} else if(data == "fail") {
         		alert("아이디와 비밀번호를 확인해주세요.");
         	}

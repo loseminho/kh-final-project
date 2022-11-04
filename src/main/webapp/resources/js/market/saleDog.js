@@ -1,5 +1,4 @@
 let page = 0;
-
 const tabs = $(".dogMarket-tab>li");
 
 tabs.on("click",function(){
@@ -244,7 +243,7 @@ $(".add-btn>button").on("click",function(){
     				html += "<img class='previewImg' src='/resources/upload/market/"+data[i].fileList[0].filePath+"'>";
     				html += "<input type='hidden' name='marketNo' value="+data[i].marketNo+">";
     				html += "</div>";
-    				html += "<span>"+data[i].typeName+"</span>";
+    				html += "<span class='list-sub-title'>"+data[i].typeName+"</span>";
     				html += "<li>책임비 : "+data[i].price+"원</li>";
     				html += "</div>";
     			};
@@ -265,8 +264,9 @@ $(".add-btn>button").on("click",function(){
     		const detailImg = $(".detail-image");
     		const marketNo = $("[name=marketNo]");
    	 		const sale = $(".sale");
+   	 		const sessionMemberNo = $("#sessionMemberNo").val();
     		console.log($(".sale-info").text());
-    		$("#modal-wrap").css('display','flex');
+    		$("#modal-wrap").fadeIn(300) ;
     		$("body").css("overflow","hidden");
     		let idx = sale.index(this);
     		let data = marketNo.eq(idx).val();
@@ -274,7 +274,25 @@ $(".add-btn>button").on("click",function(){
     			url: "/searchOneInfo.do",
     			data: {marketNo:data},
     			success : function(data){
-    				console.log(data);
+    			console.log(data);
+    			
+    			$("#detailMemberNo").val(data.memberNo);
+    			var text = ""+data.memberNickname+"("+data.memberId+")";
+    			$(".receiver").text(text);
+    			
+    			if(sessionMemberNo == data.memberNo){
+    				var html = "";
+    				html += "<button onclick='location.href='/myMarketList.do''>관리</button>";
+    				html += "<button id='close-modal'>닫기</button>";
+    				$(".require-btn").html(html);
+    			}else if(sessionMemberNo != data.memberNo){
+    				var html = "";
+    				html += "<button onclick='dmModalOn();'>쪽지보내기</button>";
+    				html += "<button id='close-modal'>닫기</button>";
+    				$(".require-btn").html(html);
+    			}
+    			
+    			console.log(data);
     				if(data.fileList.length == 1){
     					detailImg.eq(0).attr("src","/resources/upload/market/"+data.fileList[0].filePath+"");
     				}else if(data.fileList.length == 2){
@@ -310,7 +328,7 @@ $(".add-btn>button").on("click",function(){
     		});
     	});
     	
-    	$("#close-modal").on("click",function(){
+    	$(document).on("click","#close-modal",function(){
     		$("#modal-wrap").css("display","none");
     		$("body").css("overflow","inherit");
     	});
