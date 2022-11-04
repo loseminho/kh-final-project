@@ -12,4 +12,16 @@
 		0
 		)
 	</insert>
+	
+	<select id="selectAllList" parameterType="dm" resultType="dm">
+	select 
+	    dm_no as dmNo,
+	    sender,
+	    receiver,
+	    dm_content as dmContent,
+	    dm_date as dmDate,
+	    read_check as readCheck
+	from dm
+	where receiver = #{receiver}	
+	</select>
 </mapper>

@@ -15,6 +15,9 @@ public class DirectMessage {
 	private int sender;
 	private int receiver;
 	private String dmContent;
-	private Date dmDate;
+	private String dmDate;
 	private int readCheck;
+	private String senderName;
+	private String receiverName;
+
 }
