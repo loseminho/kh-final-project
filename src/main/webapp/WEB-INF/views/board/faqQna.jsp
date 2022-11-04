@@ -164,13 +164,14 @@
 					<div class="qna-board">
 						<div class="search-box">
 							<form action="#">
-								<select name="qnaCateNo" id="qnaCateNo" class="search-qna-form">
+								<select name="searchType" id="searchType" class="search-qna-form">
 									<option value="0" selected="selected">선택해주세요</option>
-									<option value="qnaTitle">제목</option>
-									<option value="qnaWriter">작성자</option>
+									<option value="title">제목</option>
+									<option value="content">내용 </option>
+									<option value="writer">작성자</option>
 								</select> <input type="text" class="search-input"
-									placeholder="검색어를 입력하세요." name="searchText">
-								<button type="submit" class="search-btn">검색</button>
+									placeholder="검색어를 입력하세요." name="keyword" id="keyword">
+								<button type="button" class="search-btn" id="searchQnaAjax">검색</button>
 							</form>
 						</div>
 						<div id="qnaAjaxResult"></div>

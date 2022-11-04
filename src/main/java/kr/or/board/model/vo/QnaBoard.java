@@ -20,4 +20,8 @@ public class QnaBoard {
 	private int qnaStatus;
 	private int qnaSecret;
 	ArrayList<QnaFile> fileList;
+	
+	//검색필터
+	private String searchType;
+	private String keyword;
 }

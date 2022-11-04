@@ -57,7 +57,6 @@ public class BoardDao {
 	//문의내역 댓글 조회 
 	public ArrayList<QnaComment> commentListView(int qnaNo) {
 		List list = sqlsession.selectList("qnaboard.commentListView",qnaNo);
-		System.out.println(list);
 		return (ArrayList<QnaComment>)list;
 	}
 	//문의내역 수정 
@@ -85,4 +84,8 @@ public class BoardDao {
 		sqlsession.update("qnaboard.qnaBoardViewCount",qnaNo);
 	}
 	*/
+	public ArrayList<QnaBoard> searchQnaBoard(QnaBoard q) {
+		List list = sqlsession.selectList("qnaboard.searchQnaBoard",q);
+		return (ArrayList<QnaBoard>)list;
+	}
 }
