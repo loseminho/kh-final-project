@@ -8,9 +8,12 @@ function login() {
         data : {memberId : idVal, memberPw : pwVal},
         success : function(data){
         	if(data == "success") {
-                location.href= "/selectMyDogList.do";                         	        	        		
+                location.href= "/";                         	        	        		
         	} else if(data == "fail") {
-        		alert("아이디와 비밀번호를 확인해주세요.");
+        		Swal.fire({
+					text: '아이디와 비밀번호를 확인해주세요.',
+					confirmButtonColor: '#1abc9c'
+				})
         	}
         }
     });

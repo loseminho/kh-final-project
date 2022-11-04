@@ -35,18 +35,19 @@ public class DogController {
 	@Autowired
 	private FileRename fileRename;
 	
-	@RequestMapping(value="/selectMyDogList.do")
-	public String selectMyDogList(@SessionAttribute Member m, HttpSession session) {
-		int memberNo = m.getMemberNo();
-		ArrayList<Dog> list = service.selectMyDogList(memberNo);
-		session.setAttribute("myDogList", list);
-		return "redirect:/";
-	}
+//	@RequestMapping(value="/selectMyDogList.do")
+//	public String selectMyDogList(@SessionAttribute Member m, HttpSession session) {
+//		int memberNo = m.getMemberNo();
+//		ArrayList<Dog> list = service.selectMyDogList(memberNo);
+//		session.setAttribute("myDogList", list);
+//		return "redirect:/";
+//	}
 	
 	@ResponseBody
 	@RequestMapping(value="/selectMyOneDog.do", produces="application/json;charset=utf-8")
 	public String selectMyOneDog(int dogNo) {
 		Dog dog = service.SelectMyOneDog(dogNo);
+		System.out.println(dog);
 		if(dog != null) {
 			return new Gson().toJson(dog);
 		} else {

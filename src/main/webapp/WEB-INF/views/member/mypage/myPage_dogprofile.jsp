@@ -8,8 +8,8 @@
 <p class="addLink"><a id="addDog">반려견 추가</a></p>
 <div id="dog-wrap">
 	<c:choose>
-		<c:when test="${sessionScope.myDogList[0] ne null}">
-			<c:forEach items="${sessionScope.myDogList }" var="myDog">
+		<c:when test="${sessionScope.m.dogList[0] ne null}">
+			<c:forEach items="${sessionScope.m.dogList }" var="myDog">
 			    <div class="box">
 			        <a onclick="dogModal('${myDog.dogNo}');">
 			            <div class="photo">

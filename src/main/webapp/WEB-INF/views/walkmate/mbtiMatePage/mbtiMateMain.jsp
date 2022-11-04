@@ -47,24 +47,32 @@
             					<img src="/resources/img/walktogether.png">
            					</div>
            					<div id="chooseDog">
-           						<h3>반려견을 선택해주세요.</h3><br><br>
-           						<c:forEach items="${sessionScope.myDogList }" var="myDog">
-           							<div class="box">
-								        <a onclick="mbtiStart('${myDog.dogName}');">
-								            <div class="photo">
-									            <c:choose>
-									            	<c:when test="${myDog.dogPhoto eq null}">
-										                <img src="/resources/img/default_dog.png">
-									            	</c:when>
-									            	<c:otherwise>
-										                <img src="/resources/upload/dog/${myDog.dogPhoto }">
-									            	</c:otherwise>
-									            </c:choose>	
-								            </div>
-								            <h3>${myDog.dogName }</h3>
-								        </a>
-								    </div>
-           						</c:forEach>
+           						<c:choose>
+		           					<c:when test="${sessionScope.m.dogList[0] ne null}">
+		           						<h3>반려견을 선택해주세요.</h3><br><br>
+		           						<c:forEach items="${sessionScope.m.dogList }" var="myDog">
+		           							<div class="box">
+										        <a onclick="mbtiStart('${myDog.dogName}');">
+										            <div class="photo">
+											            <c:choose>
+											            	<c:when test="${myDog.dogPhoto eq null}">
+												                <img src="/resources/img/default_dog.png">
+											            	</c:when>
+											            	<c:otherwise>
+												                <img src="/resources/upload/dog/${myDog.dogPhoto }">
+											            	</c:otherwise>
+											            </c:choose>	
+										            </div>
+										            <h3>${myDog.dogName }</h3>
+										        </a>
+										    </div>
+		           						</c:forEach>
+		           					</c:when>
+									<c:otherwise>
+										<br>
+										<p>등록된 반려견이 없습니다.</p>
+									</c:otherwise>
+								</c:choose>
            					</div>
            					<div id="mbti-box" style="display:none;">
            						<h3 id="mbti-title">Q1</h3>

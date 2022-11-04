@@ -2,6 +2,7 @@
 //휴대전화 정규식
 const phoneReg = /^010-\d{4}-\d{4}$/;
 
+let intervalId;
 function verifyCount() {
 	const span = $("#timeZone");
 	span.html("<span id='min'>3</span> : <span id='sec'>00</span>");
@@ -39,10 +40,8 @@ function timeCount() {
 $("#verifyBtn").on("click", function(){
 	const inputValue = $(".verifyInput").val();
 	$(".verifyMsg").text("");
-	// console.log(inputValue);
 	if(resultCode != null){
 		if(inputValue == resultCode) {
-			// console.log(resultCode);
 			//$(".verifyMsg").text("인증 성공");
 			$(".verifyMsg").append("인증 성공<i class='fa-solid fa-circle-check'></i>");
 			$(".verifyMsg").css("color", "#1abc9c");
@@ -50,7 +49,7 @@ $("#verifyBtn").on("click", function(){
 			$("#verifyChk").val("true");
 			$("#memberPhone").attr("readonly", true);
 			$("#memberPhone").removeClass("shortInput");
-			$(".verifyInput").attr("disabled", true);
+			$(".verifyInput").hide();
 			$("#timeZone").hide();
 			$("#verifyBtn").hide;
 			$("#sendBtn").hide();
@@ -72,11 +71,15 @@ function sendMsg() {
         data : {memberPhone : phVal},
         success : function(data){
         	div.show();
+        	if(intervalId != undefined) {
+	        	clearInterval(intervalId);
+        	}
 			$("#timeZone").show();
 			$("#verifyBtn").show();
         	$(".verifyInput").val("");
         	$(".verifyMsg").text("");
         	resultCode = data;
+        	console.log(resultCode);
         	verifyCount();
         }
     });
