@@ -24,6 +24,10 @@ $(document).ready(function(){
 		data:{receiverNo:sessionMemberNo},
 		success:function(data){
 		console.log(data);
+		if(data.length == 0 ){
+			var html = "<div style='width:100%;text-align:center;color:red;'>아이고... 당신은 인기가 없어요..</div>";
+			$(".dm-content").append(html);		
+		}else{
 			var html = "";
 			$.each(data, function(idx,value){
 				html += "<div class='list-one-wrap'>";
@@ -37,6 +41,7 @@ $(document).ready(function(){
 				html += "</div>";
 			});
 			$(".dm-content").append(html);
+		}
 		}
 	});
 });
@@ -85,6 +90,10 @@ $("#searchList").on("click",function(){
 		receiverNo:receiverNo},
 		success:function(data){
 		console.log(data);
+		if(data.length == 0){
+			var html = "<div style='width:100%;text-align:center;color:red;'>아이고... 검색된게 없어요..</div>";
+			$(".dm-content").append(html);
+		}else{
 			var html = "";
 			$.each(data, function(idx,value){
 				html += "<div class='list-one-wrap'>";
@@ -98,6 +107,7 @@ $("#searchList").on("click",function(){
 				html += "</div>";
 			});
 			$(".dm-content").append(html);
+		}
 		}
 	});	
 	

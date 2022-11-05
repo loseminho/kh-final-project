@@ -26,8 +26,10 @@
 					</div>
 				</ul>
 				<ul>
-					<div>
+					<div class="managerMenu">
 						<li><a href= "/faqQnaBoardFrm.do">고객서비스</a></li>
+						<li><a href="#">공지사항</a></li>
+						<li><a href="#">FAQ/문의하기</a></li>
 					</div>
 				</ul>
 				<c:if test="${not empty sessionScope.m }">
@@ -65,6 +67,14 @@
 </header>
 
 <script>
+$(".managerMenu").on("mouseover",function(){
+	$(".managerMenu").children().css("display","block");
+});
+$(".managerMenu").on("mouseout",function(){
+	const subMenu = $(".managerMenu").children();
+	subMenu.not(subMenu.eq(0)).css("display","none");
+});
+
 function logout() {
 	Swal.fire({
         title: '로그아웃',

@@ -121,4 +121,9 @@ public class MarketController {
 		model.addAttribute("list",list);
 		return "market/myMarketList";
 	}
+	
+	@RequestMapping(value="/updateMarketFrm.do")
+	public String updateMarketFrm() {
+		return "market/updateFrm";
+	}
 }
