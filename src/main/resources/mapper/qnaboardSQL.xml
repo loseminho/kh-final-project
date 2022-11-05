@@ -102,4 +102,27 @@
 	qna_views = qna_views +1
 	where qna_no = #{_parameter}
 </update>
+<select id="searchQnaBoard" parameterType="q" resultType="q">
+	select
+	qna_no as qnaNo,
+		substr(replace(qna_writer,substr(qna_writer,2,2),'**'),1,instr(qna_writer,'@',1,1)-1)as qnaWriter,
+		qna_title as qnaTitle,
+		qna_content as qnaContent,
+		qna_views as qnaViews,
+		qna_date as qnaDate,
+		qna_cate_no as qnaCateNo,
+		qna_status as qnaStatus
+	from qna_tbl
+	<choose>
+		<when test="searchType.equals('writer')">
+			where qna_writer like '%'||#{keyword}||'%'
+		</when>
+		<when test="searchType.equals('title')">
+			where qna_title like '%'||#{keyword}||'%'
+		</when>
+		<when test="searchType.equals('content')">
+		where qna_content like '%'||#{keyword}||'%'
+		</when>
+	</choose>
+</select>
 </mapper>

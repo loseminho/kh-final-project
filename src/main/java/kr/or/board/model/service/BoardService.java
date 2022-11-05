@@ -99,6 +99,11 @@ public class BoardService {
 		return result;
 	}
 
+
+	public ArrayList<QnaBoard> searchQnaBoard(QnaBoard q) {
+		return dao.searchQnaBoard(q);
+	}
+
 	/*
 	//게시물 조회수 조회
 	@Transactional(isolation = Isolation.READ_COMMITTED)

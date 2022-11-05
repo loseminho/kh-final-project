@@ -17,9 +17,9 @@
 			<th>신고 날짜</th>
 		</tr>
 		<tr>
-			<td>개좋아1</td>
+			<td><a href="/showProfile.do?memberNo=10">일유저</a></td>
 			<td>언어 폭력</td>
-			<td class="report-view-open">개좋아1 님이 모임에서 저에게 막말을 했어요.</td>
+			<td class="report-view-open">일유저 님이 모임에서 저에게 막말을 했어요.</td>
 			<td>2022-11-02</td>
 		</tr>
 	</table>	

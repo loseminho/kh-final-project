@@ -208,7 +208,15 @@ public class BoardController {
 		return "redirect:/qnaView.do?qnaNo="+q.getQnaNo();
 	}
 	
-	//문의게시판 검색하기  
-	
+	//문의게시판 검색하기 
+	@ResponseBody
+	@RequestMapping (value="/searchQnaAjax.do",produces = "application/json;charset=utf-8")
+	public String searchQnaboard(QnaBoard q) {
+		ArrayList<QnaBoard> list = service.searchQnaBoard(q);
+		Gson gson = new Gson();
+		String result = gson.toJson(list);
+		System.out.println(result);
+		return result;
+	}
 	
 }
