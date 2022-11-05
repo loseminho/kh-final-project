@@ -37,3 +37,7 @@ $(".my-preview").on("mouseleave",function(){
 	var index = $(".my-preview").index(this);
 	tooltip.eq(index).hide();
 });
+
+$(".my-preview-box").on("click",function(){
+	$(".updateForm").submit();
+});
