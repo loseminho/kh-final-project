@@ -22,6 +22,4 @@ public class MbtiData {
 	private int k;
 	private int l;
 	private int mbtiType;
-	private int friendType;
-	private int partnerType;
 }
