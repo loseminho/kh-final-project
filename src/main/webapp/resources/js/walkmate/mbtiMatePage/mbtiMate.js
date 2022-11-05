@@ -8,12 +8,12 @@ function mbtiStart(dogName) {
 	dog = dogName;
 	$(".mbti-dogname").text(dog);
 	
-	$.ajax({
-        url  : '/crawling.do',
-        type : 'post',
-        success : function(data){
-        	console.log(data);
-        }
-    });
+//	$.ajax({
+//        url  : '/crawling.do',
+//        type : 'post',
+//        success : function(data){
+//        	console.log(data);
+//        }
+//    });
 }
 

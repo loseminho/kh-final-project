@@ -50,7 +50,6 @@ public class MbtiController {
 	@RequestMapping(value="/crawling.do")
 	public String crawling(){
         String apiurl;
-        int row = 0;
         String path = "C:/Users/dahye/Downloads/mbti/mbti.xlsx";
 
         // 엑셀 파일 생성
@@ -58,9 +57,28 @@ public class MbtiController {
         
         // 엑셀 파일의 sheet 생성
         Sheet sheet = workbook.createSheet("sheet name");
-        if(sheet == null) {
-        	System.out.println("sheet is null");
+        
+        // 첫번째 row 생성
+        Row titleRow = sheet.createRow(0);
+        
+        for(int i=0; i<13; i++) {
+        	//  cell 추가
+        	Cell titleCell = titleRow.createCell(i);
+        	System.out.println(i+"번째 칸 만들었음");
+        	String val = "";
+        	
+        	if(i != 12) {
+        		// cell에 값을 입력
+        		val = (i+1) + "번 문제";
+        	} else { // 첫번째 row의 마지막 cell에는
+        		val = "결과 유형";
+        	}
+        	
+        	titleCell.setCellValue(val);
+    		System.out.println(val+"을 입력함");
         }
+		
+        
         
         try {
             System.setProperty(WEB_DRIVER_ID, WEB_DRIVER_PATH);
@@ -92,7 +110,7 @@ public class MbtiController {
     		// 중복순열
             LinkedList<Integer> list = new LinkedList<>();
             System.out.println("****중복순열****");
-            rePermutation(driver, list, 2, 3, sheet, row);
+            rePermutation(driver, list, 2, 12, sheet);
     		list.clear();
         	
             // 창 닫기
@@ -122,8 +140,8 @@ public class MbtiController {
         return "success"; 
     }
 	
-	//중복순열
-	private void rePermutation(ChromeDriver driver, LinkedList<Integer> list, int n, int r, Sheet sheet, int row) {
+	//중복순열 : n개의 수 중에서 하나를 r번 선택
+	private void rePermutation(ChromeDriver driver, LinkedList<Integer> list, int n, int r, Sheet sheet) {
 		if(list.size() == r){ // 숫자가 12번까지 채워졌으면
 
 			// 시작 버튼 클릭하기
@@ -137,9 +155,11 @@ public class MbtiController {
         	// 시작 버튼 클릭하기
 			WebElement startBtn2 = driver.findElement(By.cssSelector("button.pb2"));
 			startBtn2.sendKeys(Keys.ENTER);
-			
+
 			// row 추가
-			Row titleRow = sheet.createRow(row);
+			int rows = sheet.getPhysicalNumberOfRows();
+			Row titleRow = sheet.createRow(rows);
+			System.out.println(rows+"번째 줄 만들었음");
 			
         	try {
 				Thread.sleep(1000);
@@ -155,11 +175,13 @@ public class MbtiController {
 				
 				// cell 추가
 				Cell titleCell = titleRow.createCell(i);
+				System.out.println(i+"번째 칸 만들었음");
 				
 				// cell에 값을 입력
 				titleCell.setCellValue(num);
+				System.out.println(num+"을 입력함");
 				
-				if(i != 2) {
+				if(i != 11) {
 					try {
 						Thread.sleep(1000);
 					} catch (InterruptedException e) {
@@ -176,32 +198,19 @@ public class MbtiController {
 					// 결과 이미지 가져오기
 					WebElement resultImg = driver.findElement(By.className("title-image"));
 					String resultVal = resultImg.getAttribute("class");
+					String resultType = resultVal.replace("title-image c", "");	
+					int result = Integer.parseInt(resultType);
 					
-					String resultType = resultVal.replace("title-image c", "");
+					// cell 추가
+					Cell resultCell = titleRow.createCell(i+1);
+					System.out.println("결과넣을 "+(i+1)+"번째 칸 만들었음");
 					
-					// 친구 이미지 가져오기
-//					WebElement friendImg = driver.findElement(By.cssSelector("div#left > .pair-img-container"));
-//					String friendVal = friendImg.getAttribute("class");
-//					
-//					String str2 = friendVal.replace("pair-img-container c", "");
-//					int friendType = Integer.parseInt(str2);
+					// cell에 값을 입력
+					resultCell.setCellValue(result);
+					System.out.println(result+"을 입력함");
 					
-					// 파트너 이미지 가져오기
-//					WebElement partnerImg = driver.findElement(By.cssSelector("div#right > .pair-img-container"));
-//					String partnerVal = partnerImg.getAttribute("class");
-//					
-//					String str3 = partnerVal.replace("pair-img-container c", "");
-//					int partnerType = Integer.parseInt(str3);
-					
-            		// MbtiData md = new MbtiData(0, list.get(0), list.get(1), list.get(2), list.get(3), list.get(4), list.get(5), list.get(6), list.get(7), list.get(8), list.get(9), list.get(10), list.get(11), resultType, friendType, partnerType);
-            		// int result = service.insertMbtiType(md);
-					
-            		// if(result > 0) {
-					// 페이지 요청
-						row++;
-                        driver.get("https://heydoggy.life/doggyschool.html");
-            			System.out.println("restart");
-            		// }
+                    driver.get("https://heydoggy.life/doggyschool.html");
+        			System.out.println("restart");
 				}
 			}
 			return;
@@ -209,7 +218,7 @@ public class MbtiController {
 		
 		for(int i=0; i<n; i++){ // 숫자가 12번까지 안 채워졌으면 0 ~ 1
 			list.add(i);
-			rePermutation(driver, list, n, r, sheet, row);
+			rePermutation(driver, list, n, r, sheet);
 			list.removeLast();// 해당 넘버를 다시 제거 (즉,뽑지 않고 다음 번호 뽑기위함)
 		}
 		
