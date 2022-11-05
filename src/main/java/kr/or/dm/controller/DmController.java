@@ -31,7 +31,7 @@ public class DmController {
 	@ResponseBody
 	@RequestMapping(value="/selectDmList.do", produces = "application/json;charset=utf-8")
 	public String selectAllList(DirectMessage dm) {
-		System.out.println(dm.getReceiver());
+		System.out.println(dm.getReceiverNo());
 		ArrayList<DirectMessage> list = service.selectAllList(dm);
 		return new Gson().toJson(list);
 	}

@@ -72,7 +72,7 @@ from market_tbl mt join dog_type dt on(mt.type_code=dt.type_code) left join memb
 		)
 	</insert>
 	<insert id="inputFile" parameterType="mdf">
-		insert into market_file_tbl values(#{marketNo},#{fileName},#{filePath},file_seq.nextval)
+		insert into market_file_tbl values(#{marketNo},file_seq.nextval,#{fileName},#{filePath})
 	</insert>
 	
 	<select id="selectFile" resultType="mdf">

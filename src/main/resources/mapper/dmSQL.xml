@@ -5,11 +5,13 @@
 		insert into dm
 		values(
 		dm_seq.nextval,
-		#{sender},
-		#{receiver},
+		#{senderNo},
+		#{receiverNo},
 		#{dmContent},
 		sysdate,
-		0
+		0,
+		#{senderId},
+		#{senderName}
 		)
 	</insert>
 	
@@ -18,10 +20,11 @@
 	    dm_no as dmNo,
 	    sender,
 	    receiver,
+	    member_nickname as senderName,
 	    dm_content as dmContent,
-	    dm_date as dmDate,
+	    to_char(dm_date,'yy-mm-dd') as dmDate,
 	    read_check as readCheck
 	from dm
-	where receiver = #{receiver}	
+	where receiver = #{receiverNo}	
 	</select>
 </mapper>

@@ -30,6 +30,7 @@ public class MarketService {
 	public ArrayList<MarketDog> filterSelect(MarketDog md) {
 		ArrayList<MarketDog>list = dao.fiterSelect(md);
 		ArrayList<MarketDogFile>fileList = dao.selectFile();
+		System.out.println(fileList);
 		for(MarketDog m : list) {
 			ArrayList<MarketDogFile> inputList = new ArrayList<MarketDogFile>();
 			for(int i=0;i<fileList.size();i++) {

@@ -17,14 +17,24 @@ const sendDmFunction = $(".send-dm-btn");
 
 sendDmFunction.on("click",function(){
 	var text = $("#send-dm-input").val();
-	const receiver = $("#detailMemberNo").val();
-	const sender = $("#sessionMemberNo").val();
+	const receiverId = $("#receiverId").val();
+	const receiverNo = $("#detailMemberNo").val();
+	const senderNo = $("#sessionMemberNo").val();
+	const senderId = $("#senderId").val();
+	const senderNickname = $("#sessionMemberNickname").val();
+	const receiverNickname = $("#receiverNickname").val();
 	if(text == ''){
 		alert('뭐라도입력해주세요');
 	}else{
 		$.ajax({
 			url:"/sendDm.do",
-			data:{receiver:receiver, dmContent:text, sender:sender},
+			data:{receiverNo:receiverNo,
+			senderNo:senderNo,
+			dmContent:text,
+			senderName:senderNickname,
+			receiverName:receiverNickname,
+			receiverId:receiverId,
+			senderId:senderId},
 			success:function(){
 				console.log("보내기성공");
 				$(".cancel").trigger("click");

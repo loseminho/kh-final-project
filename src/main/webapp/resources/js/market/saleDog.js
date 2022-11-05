@@ -275,7 +275,8 @@ $(".add-btn>button").on("click",function(){
     			data: {marketNo:data},
     			success : function(data){
     			console.log(data);
-    			
+    			$("#receiverNickname").val(data.memberNickname);
+    			$("#receiverMemberId").val(data.memberId);
     			$("#detailMemberNo").val(data.memberNo);
     			var text = ""+data.memberNickname+"("+data.memberId+")";
     			$(".receiver").text(text);

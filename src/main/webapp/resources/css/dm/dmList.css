@@ -36,3 +36,10 @@
 .list-one-wrap{
 	
 }
+.list-one-wrap{
+}
+.list-one-wrap:hover{
+	background-color: #ccc;
+	border:1px solid #ccc;
+	box-shadow: 0 1px 3px 0 rgba( 31, 38, 135, 0.37 );
+}

@@ -2,10 +2,10 @@
  * 
  */
 const sessionMemberNo = $("#sessionMemberNo").val();
-const dmList = $(".dm-content span");
+const dmList = $(".list-one-wrap");
 
-dmList.on("click",function(){
-	$("#modal-wrap").fadeIn(300);
+$(document).on("click",dmList,function(){
+	$("#modal-wrap").css("display","flex");
 });
 
 $(".cancel").on("click",function(){
@@ -14,22 +14,21 @@ $(".cancel").on("click",function(){
 $(document).ready(function(){
 	$.ajax({
 		url:"/selectDmList.do",
-		data:{receiver:sessionMemberNo},
+		data:{receiverNo:sessionMemberNo},
 		success:function(data){
+		console.log(data);
 			var html = "";
 			$.each(data, function(idx,value){
-				html += "<div class='list-one-wrap'>";
 				html += "<input type='hidden' value="+value.dmNo+">";
-				html += "<span id='category' style='width:10%'>분양문의</span>";
-				html += "<span id='dmContent'  style='width:50%'>"+value.dmContent+"</span>";
-				html += "<span id='receiveDate' style='width:10%'>"+value.dmDate+"</span>";
-				html += "<span id='senderName' style='width:10%'>"+value.memberNickname+"</span>";
-				html += "<span style='width:10%'>";
-				html += "<button>답장</button>";
-				html += "</span>";
+				html += "<div class='list-one-wrap'>";
+				html += "<span id='category' style='width:90px;'>분양문의</span>";
+				html += "<span id='dmContent'  style='width:500px;'>"+value.dmContent+"</span>";
+				html += "<span id='receiveDate' style='width:120px;'>"+value.dmDate+"</span>";
+				html += "<span id='senderName' style='width:120px;'>"+value.senderName+"</span>";
 				html += "</div>";
 			});
-			$(".dm-content").html(html);
+			$(".dm-content").append(html);
 		}
 	});
 });
+
