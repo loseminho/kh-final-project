@@ -13,7 +13,8 @@ select
     mt.gender,
     dt.type_size as typeSize,
     dt.type_name as typeName,
-    to_char(mt.price,'FM999,999,999,999') as price
+    to_char(mt.price,'FM999,999,999,999') as price,
+    call_name as callName
 from market_tbl mt join dog_type dt on(mt.type_code=dt.type_code) left join member_tbl m on (mt.member_id = m.member_id)
 		where market_no = #{_parameter}
 	</select>
@@ -68,7 +69,8 @@ from market_tbl mt join dog_type dt on(mt.type_code=dt.type_code) left join memb
 		#{saleInfo},
 		#{gender},
 		#{price},
-		#{memberId}
+		#{memberId},
+		#{callName}
 		)
 	</insert>
 	<insert id="inputFile" parameterType="mdf">
@@ -100,7 +102,8 @@ from market_tbl mt join dog_type dt on(mt.type_code=dt.type_code) left join memb
 			mt.gender,
 			dt.type_size as typeSize,
 			dt.type_name as typeName,
-			to_char(mt.price,'FM999,999,999,999') as price
+			to_char(mt.price,'FM999,999,999,999') as price,
+			call_name as callName
 		from market_tbl mt join dog_type dt on(mt.type_code=dt.type_code)
 	</select>
 </mapper>

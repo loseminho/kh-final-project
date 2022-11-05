@@ -25,15 +25,26 @@
 			<h1>분양쪽지함</h1>
 			<br>
 			<hr>
-			<br>
+			<div class="search-wrap">
+			<div>
+			</div>
+			<select id="select-box">
+				<option value="dmContent">제목으로 검색</option>
+				<option value="senderName">이름으로 검색</option>
+			</select>
+			<input type="text" id="searchKeyword" value="">
+			<input type="submit" id="searchList" value="검색">
+			</div>
 				<div class="dm-list-wrap">
 					<li class="list-title">
-						<span id="category" style="width:90px;">카테고리</span>
-						<span id="dmContent" style="width:500px;">제목</span>
-						<span id="receiveDate" style="width:120px;">날짜</span>
-						<span id="senderName" style="width:120px;">이름</span>
+						<span style="width:90px;">카테고리</span>
+						<span style="width:500px;">제목</span>
+						<span style="width:120px;">날짜</span>
+						<span style="width:120px;">이름</span>
 					</li>
 					<div class="dm-content-wrap">
+					<input id="senderId" type="hidden" value="${sessionScope.m.memberId }">
+					<input id="senderName" type="hidden" value="${sessionScope.m.memberNickname }">
 					<input type="hidden" id="sessionMemberNo" value="${sessionScope.m.memberNo }">
 						<li class="dm-content">
 

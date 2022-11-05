@@ -107,7 +107,7 @@ public class MarketController {
 			}
 		}
 		int result = service.inputMarket(md);
-		return "redirect:/";
+		return "redirect:saleDogList.do";
 	}
 	@ResponseBody
 	@RequestMapping(value="/selectTypeList.do", produces="application/json;charset=utf-8")
@@ -118,7 +118,6 @@ public class MarketController {
 	@RequestMapping(value="/myMarketList.do")
 	public String myMarketList(Model model, @SessionAttribute Member m) {
 		ArrayList<MarketDog> list = service.myMarketList(m);
-		System.out.println(list);
 		model.addAttribute("list",list);
 		return "market/myMarketList";
 	}

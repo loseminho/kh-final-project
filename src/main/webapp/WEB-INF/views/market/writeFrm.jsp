@@ -46,6 +46,10 @@
 			</div>
 			</div>
 			<div class="row-part">
+			<div class="sub-title"><span>*</span>이름 :</div>
+				<input type="text" name="callName">
+			</div>
+			<div class="row-part">
 			<div class="sub-title"><span>*</span>품종선택 :</div>
 				<select id="select-box" name="typeCode">
 				<!-- 강아지 종류 option 넣는 자리 -->

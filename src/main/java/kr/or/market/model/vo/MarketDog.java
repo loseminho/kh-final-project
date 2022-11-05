@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MarketDog {
+	private String callName;
 	private int marketNo;
 	private int memberNo;
 	private String memberId;

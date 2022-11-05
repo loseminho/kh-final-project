@@ -65,6 +65,17 @@
 	border:1px solid #ccc;
 	border-radius: 10px;
 }
+.redirect-content{
+	resize:none;
+	font-family:gs-Medium;
+	font-size:16px;
+	box-sizing:border-box;
+	padding:5px;
+	height:100px;
+	width:100%;
+	border:1px solid #ccc;
+	border-radius: 10px;
+}
 
 .send-dm-btn{
 	width:100px;
