@@ -39,5 +39,6 @@ $(".my-preview").on("mouseleave",function(){
 });
 
 $(".my-preview-box").on("click",function(){
-	$(".updateForm").submit();
+	const index = $(".my-preview-box").index(this);
+		$(".updateForm").eq(index).submit();
 });

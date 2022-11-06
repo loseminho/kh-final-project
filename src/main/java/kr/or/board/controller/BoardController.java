@@ -218,5 +218,4 @@ public class BoardController {
 		System.out.println(result);
 		return result;
 	}
-	
 }

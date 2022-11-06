@@ -75,4 +75,24 @@ public class MarketService {
 		}
 		return list;
 	}
+
+	public int updateMarket(MarketDog md) {
+		// TODO Auto-generated method stub
+		dao.updateMarket(md);
+		
+		ArrayList<MarketDogFile> mdf = new ArrayList<MarketDogFile>();
+		mdf = md.getFileList();
+		System.out.println("mdf"+mdf);
+		System.out.println("md"+md);
+		
+		if(mdf.isEmpty()) {
+			return 0;
+		}else {
+			dao.deleteMarketFile(md);
+			for(int i=0;i<mdf.size();i++) {
+				dao.updateMarketFile(mdf.get(i));
+			}
+		}
+		return 0;
+	}
 }

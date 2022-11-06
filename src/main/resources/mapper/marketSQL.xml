@@ -106,4 +106,17 @@ from market_tbl mt join dog_type dt on(mt.type_code=dt.type_code) left join memb
 			call_name as callName
 		from market_tbl mt join dog_type dt on(mt.type_code=dt.type_code)
 	</select>
+	<update id="updateMarket" parameterType="md">	
+		update market_tbl set
+			gender=#{gender},
+			age=#{age},
+			price=#{price},
+			type_code = #{typeCode}
+		where market_no = #{marketNo}		 
+	</update>
+	
+	<delete id="deleteFile" parameterType="md">
+		delete from market_file_tbl
+		where market_no = #{marketNo}
+	</delete>
 </mapper>

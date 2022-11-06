@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,29 +25,30 @@
 			<br>
 			<hr>
 			<br>
-		<form action="/inputMarket.do" method="post" enctype="multipart/form-data">
+		<form id="update-frm" action="/updateMarket.do" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="marketNo" value="${md.marketNo }">
 			<input type="hidden" name="memberId" value="${sessionScope.m.memberId }">
 			<div class="sub-title"><span>*</span>사진</div>
 			<div class="row-part" style="height:150px;">
 				<input id="imageFile1"  type="file" class="photo" name="photo" style="display:none;">
 			<div class="preview-box">
 				<div class="input-btn">+</div>
-				<img src="" class="preview">
+				<img src="/resources/upload/market/${md.fileList[0].filePath }" class="preview">
 			</div>
 			<input id="imageFile2"  type="file" class="photo" name="photo" style="display:none;">
 			<div class="preview-box">
 				<div class="input-btn">+</div>
-				<img src="" class="preview">
+				<img src="/resources/upload/market/${md.fileList[1].filePath }" class="preview">
 			</div>
 			<input id="imageFile3" type="file" class="photo" name="photo" style="display:none;">
 			<div class="preview-box">
 				<div class="input-btn">+</div>
-				<img src="" class="preview">
+				<img src="/resources/upload/market/${md.fileList[2].filePath }" class="preview">
 			</div>
 			</div>
 			<div class="row-part">
 			<div class="sub-title"><span>*</span>이름 :</div>
-				<input type="text" name="callName">
+				<input type="text" name="callName" value="${md.callName }" disabled>
 			</div>
 			<div class="row-part">
 			<div class="sub-title"><span>*</span>품종선택 :</div>
@@ -56,15 +58,25 @@
 			</div>
 			<div class="row-part">
 			<div class="sub-title"><span>*</span>나이(개월) :</div>
-			<input type="number" name="age" min="0" max="24" placeholder="0~24개월">
+			<input type="number" name="age" min="0" max="24" placeholder="0~24개월" value="${md.age }">
 			<span style="color:red; font-size:12px;">*입력해주세요</span>
 			</div>
 			<div class="row-part">
-			<div class="sub-title"><span>*</span>성별선택 :</div>	
-			<input type="radio" name="gender" id="male" value="남자">
-			<label for="male">남자</label>
-			<input type="radio" name="gender" id="female" value="여자">
-			<label for="female">여자</label>
+			<div class="sub-title"><span>*</span>성별선택 :</div>
+				<c:choose>	
+				<c:when test="${md.gender == '남자' }">
+				<input type="radio" name="gender" id="male" value="남자" checked>
+				<label for="male">남자</label>
+				<input type="radio" name="gender" id="female" value="여자">
+				<label for="female">여자</label>
+				</c:when>
+				<c:when test="${md.gender == '여자' }">
+				<input type="radio" name="gender" id="male" value="남자">
+				<label for="male">남자</label>
+				<input type="radio" name="gender" id="female" value="여자" checked>
+				<label for="female">여자</label>
+				</c:when>
+				</c:choose>
 			</div>
 			<div class="row-part">
 			<div class="sub-title">
@@ -78,20 +90,36 @@
 		    <label for="price"><span>*</span>분양가격 :</label>
 		    </div>
 		    <div class="box">
-		        <input type="number" name="price" id="price" min="0" max="100000000" step="10000" placeholder="숫자만입력해주세요">\
+		        <input type="number" name="price" id="price" min="0" max="100000000" step="10000" placeholder="${md.price }">\
 		        <span style="color:red; font-size:12px;"> *만원단위로 입력 할 수 있어요</span>
 		    </div>
 		    </div>
 			<div class="sub-title">*소개</div>
 			<div class="row-part">
-			<textarea name="saleInfo"></textarea>
+			<textarea name="saleInfo">${md.saleInfo }</textarea>
 	        </div>
 	        <br>
-			<input type="submit" id="submit-btn" value="전송">
-			<button id="cancel-btn">취소</button>
 		</form>
+			<button id="submit-btn">전송</button>
+			<button id="cancel-btn">취소</button>
 		</div>
 	</div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+	<script src="/resources/js/market/writeFrmContent.js"></script>
+	<script>
+	
+	
+	$(document).ready(function(){
+		$.ajax({
+			url:"/selectTypeList.do",
+			success:function(data){
+				$.each(data,function(idx,value){
+					var option = "<option value='"+value.typeCode+"'>"+value.typeName+"</option>";
+					$("#select-box").append(option);
+				});
+			}
+		});
+	});
+</script>
 </body>
 </html>
