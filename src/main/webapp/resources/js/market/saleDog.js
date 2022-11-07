@@ -33,7 +33,7 @@ question.on("click", function(){
     $(this).next().slideToggle();
 });
 
-$(".dogMarket-tab>li").eq(0).click();
+$(".dogMarket-tab>li").eq(1).click();
 
 /*
 for(let i = 6; i<11; i++){
