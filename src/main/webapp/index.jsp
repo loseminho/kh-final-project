@@ -36,8 +36,10 @@
 						</div>
 					</ul>
 					<ul>
-						<div>
-							<li><a href= "/faqQnaBoardFrm.do ">고객서비스</a></li>
+						<div class="managerMenu">
+							<li><a href= "/faqQnaBoardFrm.do">고객서비스</a></li>
+							<li><a href="#">공지사항</a></li>
+							<li><a href="/faqQnaBoardFrm.do">FAQ/문의하기</a></li>
 						</div>
 					</ul>
 					<c:if test="${not empty sessionScope.m }">
