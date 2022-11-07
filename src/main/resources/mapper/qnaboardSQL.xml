@@ -12,7 +12,6 @@
 		qna_cate_no as qnaCateNo,
 		qna_status as qnaStatus
 	from qna_tbl
-	order by qnaNo desc
 </select>
 <insert id="insertQnaBoard" parameterType="q">
 	insert into qna_tbl values
@@ -70,7 +69,6 @@
 	qcomment_ref as qcommentRef
 	from qna_comment
 	where qna_no = #{_parameter}
-	order by qcommentNo asc
 </select>
 <update id="updateQnaBoard" parameterType="q">
 	update qna_tbl set 
@@ -99,13 +97,11 @@
 <delete id="deleteFile" parameterType="_int">
 	delete from qna_file_tbl where file_no =#{_parameter}
 </delete>
-<!--  조회수  -->
-<update id="updateHit" parameterType="_int">
- 	update qna_tbl set
- 	qna_views = qna_views + 1
- 	where qna_no = #{_parameter}
+<update id="qnaBoardViewCount" parameterType="_int">
+	update qna_tbl set
+	qna_views = qna_views +1
+	where qna_no = #{_parameter}
 </update>
-<!-- 검색창  -->
 <select id="searchQnaBoard" parameterType="q" resultType="q">
 	select
 	qna_no as qnaNo,
