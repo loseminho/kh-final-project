@@ -29,7 +29,7 @@
 					<div class="managerMenu">
 						<li><a href= "/faqQnaBoardFrm.do">고객서비스</a></li>
 						<li><a href="#">공지사항</a></li>
-						<li><a href="#">FAQ/문의하기</a></li>
+						<li><a href="/faqQnaBoardFrm.do">FAQ/문의하기</a></li>
 					</div>
 				</ul>
 				<c:if test="${not empty sessionScope.m }">
@@ -63,6 +63,12 @@
 				</ul>
 			</div>
 		</div>
+	</div>
+	<div class="chat-icon">
+		<img src="/resources/img/favicon.ico">
+	</div>
+	<div class>
+	
 	</div>
 </header>
 

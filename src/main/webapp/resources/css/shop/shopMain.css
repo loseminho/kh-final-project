@@ -1,0 +1,11 @@
+@charset "UTF-8";''
+
+.shop-wrap{
+	width:100%;
+}
+
+.shop-list{
+	width:200px;
+	height:250px;
+	background-color: red;
+}
