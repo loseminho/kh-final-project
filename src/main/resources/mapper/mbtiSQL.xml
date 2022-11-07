@@ -3,6 +3,6 @@
 <mapper namespace="mbti">
 	<insert id="insertMbtiType" parameterType="mbti">
 		insert into mbti_type_tbl
-		values(MBTI_TYPE_SEQ.nextval, #{mbtiAnswer}, #{mbtiType})
+		values(MBTI_TYPE_SEQ.nextval, #{a}, #{b}, #{c}, #{d}, #{e}, #{f}, #{g}, #{h}, #{i}, #{j}, #{k}, #{l}, #{mbtiType}, #{friendType}, #{partnerType})
 	</insert>
 </mapper>

@@ -42,8 +42,8 @@ public class BoardService {
 
 	/* 문의게시판 view */ 
 	public QnaBoard selectOneQna(int qnaNo) {
-		QnaBoard qb = dao.selectOneQna(qnaNo);
-		return qb;
+		dao.updateHit(qnaNo);
+		return dao.selectOneQna(qnaNo);
 	}
 
 	//문의게시판 삭제  
@@ -99,19 +99,9 @@ public class BoardService {
 		return result;
 	}
 
-
+	//문의내역 검색 
 	public ArrayList<QnaBoard> searchQnaBoard(QnaBoard q) {
 		return dao.searchQnaBoard(q);
 	}
 
-	/*
-	//게시물 조회수 조회
-	@Transactional(isolation = Isolation.READ_COMMITTED)
-	@Override
-	public QnaBoard read(int qnaNo) throws Exception{
-		dao.qnaViews(qnaNo);
-		return dao.read(qnaNo);
-	}
-
-*/
 }

@@ -22,10 +22,11 @@
             <div class="qnaView-box">
                 <div class="qnaView-header">
                     <h1>문의내역</h1>
-                    <c:if test="${sessionScope.m.memberId eq qb.qnaWriter }">
                     <ul>
-                        <li><a href="/qnaBoardDelete.do?qnaNo=${qb.qnaNo }">삭제하기</a></li>
+                    	<li><a href="/faqQnaBoardFrm.do">뒤로가기 </a></li>
+                    <c:if test="${sessionScope.m.memberId eq qb.qnaWriter }">
                         <li><a href="/qnaBoardUpdateFrm.do?qnaNo=${qb.qnaNo }">수정하기</a></li>
+                        <li><a href="/qnaBoardDelete.do?qnaNo=${qb.qnaNo }">삭제하기</a></li>
                     </ul>
                     </c:if>
                 </div>
