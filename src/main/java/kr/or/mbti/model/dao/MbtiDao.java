@@ -15,4 +15,5 @@ public class MbtiDao {
 	public int insertMbtiType(MbtiData md) {
 		return sqlSession.insert("mbti.insertMbtiType", md);
 	}
+	
 }
