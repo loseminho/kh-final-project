@@ -75,12 +75,17 @@ public class BoardDao {
 	public int deleteFile(int fileNo) {
 		return sqlsession.delete("qnaboard.deleteFile",fileNo);
 	}
-	//게시판 검색창  
+	/*
+	//게시판 조회수  
+	public void qnaboardViewCount(int qnaNo) throws Exception;
+	
+	@Override
+	public void qnaboardViewCount(int qnaNo) throws Exception {
+		sqlsession.update("qnaboard.qnaBoardViewCount",qnaNo);
+	}
+	*/
 	public ArrayList<QnaBoard> searchQnaBoard(QnaBoard q) {
 		List list = sqlsession.selectList("qnaboard.searchQnaBoard",q);
 		return (ArrayList<QnaBoard>)list;
-	}
-	public int updateHit(int qnaNo) {
-		return sqlsession.update("qnaboard.updateHit",qnaNo);
 	}
 }

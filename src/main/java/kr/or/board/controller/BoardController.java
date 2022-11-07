@@ -95,6 +95,7 @@ public class BoardController {
 		//해당 게시물 댓글 리스트 조회  
 		ArrayList<QnaComment>list = service.commentListView(qnaNo);
 		model.addAttribute("list",list);
+		System.out.println(list);
 		return "board/qnaView";
 	}
 	
