@@ -36,9 +36,11 @@
 						</div>
 					</ul>
 					<ul>
-						<div>
-							<li><a href= "/faqQnaBoardFrm.do ">고객서비스</a></li>
-						</div>
+					<div class="managerMenu">
+						<li><a href= "/faqQnaBoardFrm.do" style="width:120px;">고객서비스</a></li>
+						<li><a href="#" style="width:150px !important">공지사항</a></li>
+						<li><a href="#" style="width:150px">FAQ/문의하기</a></li>
+					</div>
 					</ul>
 					<c:if test="${not empty sessionScope.m }">
 					<ul>
@@ -106,6 +108,14 @@
 		</div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	</div>
-
+<script>
+$(".managerMenu").on("mouseover",function(){
+	$(".managerMenu").children().css("display","block");
+});
+$(".managerMenu").on("mouseout",function(){
+	const subMenu = $(".managerMenu").children();
+	subMenu.not(subMenu.eq(0)).css("display","none");
+});
+</script>
 </body>
 </html>

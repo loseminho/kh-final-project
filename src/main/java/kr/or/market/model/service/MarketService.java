@@ -85,7 +85,7 @@ public class MarketService {
 		System.out.println("mdf"+mdf);
 		System.out.println("md"+md);
 		
-		if(mdf.isEmpty()) {
+		if(mdf == null) {
 			return 0;
 		}else {
 			dao.deleteMarketFile(md);
