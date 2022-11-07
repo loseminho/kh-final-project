@@ -1,11 +1,3 @@
-//	$.ajax({
-//        url  : '/crawling.do',
-//        type : 'post',
-//        success : function(data){
-//       		console.log(data);
-//        }
-//    });
-
 let answers = ""; // 사용자가 선택한 답변을 저장하기 위한 변수
 
 function mbtiStart(dogNo, dogName) {

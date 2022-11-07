@@ -84,6 +84,7 @@ public class MbtiController {
             LinkedList<Integer> list = new LinkedList<>();
             System.out.println("****중복순열****");
             rePermutation(driver, list, 2, 12);
+            System.out.println("****중복순열 끝****");
     		list.clear();
         	
             // 창 닫기
@@ -130,7 +131,7 @@ public class MbtiController {
 				
 				// 선택한 답 다 더해줌
 				answer += num;
-				System.out.println(answer);
+				// System.out.println(answer);
 				
 				if(i != 11) {
 					try {
