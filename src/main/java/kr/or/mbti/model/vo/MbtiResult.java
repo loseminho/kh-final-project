@@ -12,4 +12,5 @@ public class MbtiResult {
 	private String mbtiResult;
 	private String friendType;
 	private String partnerType;
+	
 }
