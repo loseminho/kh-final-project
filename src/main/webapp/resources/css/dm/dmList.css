@@ -33,6 +33,39 @@
 	text-align: center;
 	cursor:pointer;
 }
-.list-one-wrap{
-	
+.list-one-wrap:hover{
+	background-color: #ccc;
+	border:1px solid #ccc;
+	box-shadow: 0 1px 3px 0 rgba( 31, 38, 135, 0.37 );
+}
+.search-wrap{
+	display:flex;
+	align-items: center;
+	justify-content:space-between;
+	height:30px;
+	width:300px;
+}
+
+#searchKeyword{
+	font-family:gs-Light;
+	width:100px;
+	box-sizing: border-box;
+}
+#select-box{
+	cursor:pointer;
+	font-family:gs-Medium;
+}
+#select-box option{
+	cursor:pointer;
+	height:80px;
+}
+
+#searchList{
+	cursor:pointer;
+	width:30px;
+	height:20px;
+	font-family:gs-Light;
+	color:#fff;
+	background-color: #1abc9c;
+	border:none;
 }

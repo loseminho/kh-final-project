@@ -62,4 +62,18 @@ public class MarketDao {
 		List list = sqlSession.selectList("market.myMarketList",m);
 		return (ArrayList<MarketDog>)list;
 	}
+
+	public void updateMarket(MarketDog md) {
+		sqlSession.update("market.updateMarket",md);
+		
+	}
+
+	public void deleteMarketFile(MarketDog md) {
+		sqlSession.delete("market.deleteFile",md);
+	}
+	
+	public void updateMarketFile(MarketDogFile mdf) {
+		sqlSession.insert("market.inputFile",mdf);	
+	}
+
 }

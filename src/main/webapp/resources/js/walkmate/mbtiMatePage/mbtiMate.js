@@ -6,6 +6,7 @@ function mbtiStart(dogName) {
 	$("#mbtiMainPhoto").hide();
 	$("#chooseDog").hide();
 	dog = dogName;
+	$(".mbti-dogname").text(dog);
 	
 //	$.ajax({
 //        url  : '/crawling.do',

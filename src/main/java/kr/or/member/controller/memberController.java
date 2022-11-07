@@ -33,6 +33,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import common.FileRename;
+import kr.or.dog.model.service.DogService;
+import kr.or.dog.model.vo.Dog;
 import kr.or.member.model.service.MemberService;
 import kr.or.member.model.service.MessageService;
 import kr.or.member.model.vo.Member;
@@ -43,6 +45,8 @@ import kr.or.walk.model.vo.Walk;
 public class memberController {
 	@Autowired
 	private MemberService service;
+	@Autowired
+	private DogService dogService;
 	@Autowired
 	private MessageService msgService;
 	@Autowired
@@ -89,10 +93,13 @@ public class memberController {
         } else { // 만약 이미 회원가입 된 회원이라면
         	if(m.getJoinType().equals("카카오")) {
         		System.out.println("카카오로 가입한 회원");
+        		ArrayList<Dog> dogList = dogService.selectMyDogList(m.getMemberNo());
+        		m.setDogList(dogList);
+        		
         		HttpSession session = req.getSession(); // session 생성
         		session.setAttribute("m", m); // session 저장하기
         		session.setAttribute("access_Token", access_Token); // session 저장하기
-        		return "redirect:/selectMyDogList.do";        		
+        		return "redirect:/";        		
         	} else {
         		System.out.println("일반으로 가입한 회원");
         		model.addAttribute("nickname", m.getMemberNickname());
@@ -271,6 +278,9 @@ public class memberController {
 	public String login(Member member, HttpSession session) {
 		Member m = service.selectOneMemberEnc(member);
 		if(m!=null) {
+			ArrayList<Dog> dogList = dogService.selectMyDogList(m.getMemberNo());
+    		m.setDogList(dogList);
+    		System.out.println(dogList);
 			session.setAttribute("m", m);
 			return "success";				
 		} else {
@@ -410,7 +420,6 @@ public class memberController {
 	@RequestMapping(value="/myPage.do")
 	public String myPage() {
 		return "member/myPage";
-//		return "redirect:/selectMyDogList.do";
 	}
 	
 	@RequestMapping(value="/updateMember.do")
@@ -440,6 +449,9 @@ public class memberController {
 		int result = service.updateMember(m);
 		if(result > 0) {
 			Member member = service.selectOneMemberEnc(m);
+			ArrayList<Dog> dogList = dogService.selectMyDogList(member.getMemberNo());
+    		member.setDogList(dogList);
+    		
 			session.setAttribute("m", member);
 			model.addAttribute("title", "수정 완료");
 			model.addAttribute("msg", "수정이 완료되었습니다.");
@@ -452,7 +464,9 @@ public class memberController {
 	}
 	
 	@RequestMapping(value="/showProfile.do")
-	public String showProfile() {
+	public String showProfile(int memberNo, Model model) {
+		// 회원과 회원이 가지고 있는 반려견 프로필 가져와야 함
+		
 		return "member/profile";
 	}
 	

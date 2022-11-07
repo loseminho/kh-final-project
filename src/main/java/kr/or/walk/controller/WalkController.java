@@ -51,4 +51,9 @@ public class WalkController {
 		model.addAttribute("index", index);
 		return "walkmate/walkMetePage";
 	}
+	
+	@RequestMapping(value="/myWalkMate.do")
+	public String mateList() {
+		return "walkmate/myWalkMate";
+	}
 }

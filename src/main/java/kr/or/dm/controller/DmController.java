@@ -1,6 +1,7 @@
 package kr.or.dm.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,8 +32,18 @@ public class DmController {
 	@ResponseBody
 	@RequestMapping(value="/selectDmList.do", produces = "application/json;charset=utf-8")
 	public String selectAllList(DirectMessage dm) {
-		System.out.println(dm.getReceiver());
 		ArrayList<DirectMessage> list = service.selectAllList(dm);
+		return new Gson().toJson(list);
+	}
+	@ResponseBody
+	@RequestMapping(value="/searchDmList.do", produces = "application/json;charset=utf-8" )
+	public String searchDmList(String filter, String senderName, int receiverNo) {
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("filter", filter);
+		map.put("senderName", senderName);
+		map.put("receiverNo", receiverNo);
+		ArrayList<DirectMessage> list = service.searchDmList(map);
+		System.out.println(list);
 		return new Gson().toJson(list);
 	}
 }

@@ -19,5 +19,7 @@ public class MbtiData {
 	private int h;
 	private int i;
 	private int j;
-	private String mbtiType;
+	private int k;
+	private int l;
+	private int mbtiType;
 }

@@ -12,12 +12,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DirectMessage {
 	private int dmNo;
-	private int sender;
-	private int receiver;
+	private int senderNo;
+	private String senderName;
+	private String senderId;
+	private int receiverNo;
+	private String receiverName;
+	private String receiverId;
 	private String dmContent;
 	private String dmDate;
 	private int readCheck;
-	private String senderName;
-	private String receiverName;
 
 }

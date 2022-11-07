@@ -29,8 +29,11 @@
 				<img class="detail-image" src="">
 			</div>
 		</div>
-		<input type="hidden" value="${sessionScope.m.memberId }" id="sessionMemberId">
+		<input type="hidden" value="" id="receiverId">
+		<input type="hidden" value="${sessionScope.m.memberId }" id="senderId">
 		<input type="hidden" value="${sessionScope.m.memberNo }" id="sessionMemberNo">
+		<input type="hidden" value="${sessionScope.m.memberNickname}"id="sessionMemberNickname">
+		<input type="hidden" value=""id="receiverNickname">
 		<input type="hidden" value="" id="detailMemberNo">
 		<div class="require-btn">
 			

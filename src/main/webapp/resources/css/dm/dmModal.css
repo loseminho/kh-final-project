@@ -18,7 +18,6 @@
 	padding:10px;
 	box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
 	border-radius: 8px;
-	height:40%;
 	width:30%;
 	background-color: #fff;
 }
@@ -61,6 +60,17 @@
 	box-sizing:border-box;
 	padding:5px;
 	height:60px;
+	width:100%;
+	border:1px solid #ccc;
+	border-radius: 10px;
+}
+.redirect-content{
+	resize:none;
+	font-family:gs-Medium;
+	font-size:16px;
+	box-sizing:border-box;
+	padding:5px;
+	height:100px;
 	width:100%;
 	border:1px solid #ccc;
 	border-radius: 10px;

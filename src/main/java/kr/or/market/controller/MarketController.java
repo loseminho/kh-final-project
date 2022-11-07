@@ -107,7 +107,7 @@ public class MarketController {
 			}
 		}
 		int result = service.inputMarket(md);
-		return "redirect:/";
+		return "redirect:saleDogList.do";
 	}
 	@ResponseBody
 	@RequestMapping(value="/selectTypeList.do", produces="application/json;charset=utf-8")
@@ -118,8 +118,56 @@ public class MarketController {
 	@RequestMapping(value="/myMarketList.do")
 	public String myMarketList(Model model, @SessionAttribute Member m) {
 		ArrayList<MarketDog> list = service.myMarketList(m);
-		System.out.println(list);
 		model.addAttribute("list",list);
 		return "market/myMarketList";
+	}
+	
+	@RequestMapping(value="/updateMarketFrm.do")
+	public String updateMarketFrm(Model model, int marketNo) {
+		MarketDog md = service.selectOne(marketNo);
+		System.out.println("업데이트폼으로 가는 데이터"+md);
+		md.setMarketNo(marketNo);
+		model.addAttribute("md", md);
+		return "market/updateFrm";
+	}
+	
+	@RequestMapping(value="/updateMarket.do")
+	public String updateMarket(MarketDog md, MultipartFile[] photo,HttpServletRequest request) {
+		String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/market/");
+		ArrayList<MarketDogFile> list = new ArrayList<MarketDogFile>();
+		System.out.println("컨트롤러에서 어떨까.?"+md);
+		if(photo[0].isEmpty()) {
+		}else{
+			for(MultipartFile file : photo) {
+				if(file.isEmpty()) {
+					continue;
+				}
+				String fileName = file.getOriginalFilename();
+				String filePath = fileRename.fileRename(savePath, fileName);
+				
+				File upFile = new File(savePath+filePath);
+				try {
+					FileOutputStream fos = new FileOutputStream(upFile);
+					BufferedOutputStream bos = new BufferedOutputStream(fos);
+					byte[] bytes = file.getBytes();
+					bos.write(bytes);
+					bos.close();
+					MarketDogFile mdf = new MarketDogFile();
+					mdf.setMarketNo(md.getMarketNo());
+					mdf.setFilePath(filePath);
+					mdf.setFileName(fileName);
+					list.add(mdf);
+					md.setFileList(list);
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		int result = service.updateMarket(md);
+		return "redirect:saleDogList.do";
 	}
 }

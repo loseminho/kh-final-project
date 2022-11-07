@@ -8,10 +8,14 @@
 		</div>
 		<div class="dm-modal-content">
 			<div class="dm-modal-session1">
-				<span>보낸사람 : </span><span class="sender-name"></span><br>
+				<input id="receiverNo" type="hidden" val="">
+				<input id="receiverId" type="hidden" val="">
+				<span>보낸사람 : </span><span class="sender-name"> </span><br>
 				<span>보낸시간 : </span><span class="dm-date"></span><br>
 				<span>내용 : </span>
-				<div class="receive-content">내윤입니다.</div>
+				<div class="receive-content"></div>
+				<div style="margin:10px;margin-left:0;">답장할래!</div>
+				<textarea class="redirect-content"></textarea>
 			</div>
 			<div class="dm-modal-session2">
 				

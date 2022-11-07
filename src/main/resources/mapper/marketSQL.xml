@@ -13,7 +13,8 @@ select
     mt.gender,
     dt.type_size as typeSize,
     dt.type_name as typeName,
-    to_char(mt.price,'FM999,999,999,999') as price
+    to_char(mt.price,'FM999,999,999,999') as price,
+    call_name as callName
 from market_tbl mt join dog_type dt on(mt.type_code=dt.type_code) left join member_tbl m on (mt.member_id = m.member_id)
 		where market_no = #{_parameter}
 	</select>
@@ -68,11 +69,12 @@ from market_tbl mt join dog_type dt on(mt.type_code=dt.type_code) left join memb
 		#{saleInfo},
 		#{gender},
 		#{price},
-		#{memberId}
+		#{memberId},
+		#{callName}
 		)
 	</insert>
 	<insert id="inputFile" parameterType="mdf">
-		insert into market_file_tbl values(#{marketNo},#{fileName},#{filePath},file_seq.nextval)
+		insert into market_file_tbl values(#{marketNo},file_seq.nextval,#{fileName},#{filePath})
 	</insert>
 	
 	<select id="selectFile" resultType="mdf">
@@ -100,7 +102,21 @@ from market_tbl mt join dog_type dt on(mt.type_code=dt.type_code) left join memb
 			mt.gender,
 			dt.type_size as typeSize,
 			dt.type_name as typeName,
-			to_char(mt.price,'FM999,999,999,999') as price
+			to_char(mt.price,'FM999,999,999,999') as price,
+			call_name as callName
 		from market_tbl mt join dog_type dt on(mt.type_code=dt.type_code)
 	</select>
+	<update id="updateMarket" parameterType="md">	
+		update market_tbl set
+			gender=#{gender},
+			age=#{age},
+			price=#{price},
+			type_code = #{typeCode}
+		where market_no = #{marketNo}		 
+	</update>
+	
+	<delete id="deleteFile" parameterType="md">
+		delete from market_file_tbl
+		where market_no = #{marketNo}
+	</delete>
 </mapper>

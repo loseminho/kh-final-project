@@ -5,23 +5,47 @@
 		insert into dm
 		values(
 		dm_seq.nextval,
-		#{sender},
-		#{receiver},
+		#{senderNo},
+		#{receiverNo},
 		#{dmContent},
 		sysdate,
-		0
+		0,
+		#{senderId},
+		#{senderName}
 		)
 	</insert>
 	
 	<select id="selectAllList" parameterType="dm" resultType="dm">
 	select 
 	    dm_no as dmNo,
-	    sender,
-	    receiver,
+	    sender as senderNo,
+	    receiver as receiverNo,
+	    member_nickname as senderName,
 	    dm_content as dmContent,
-	    dm_date as dmDate,
+	    to_char(dm_date,'yy-mm-dd') as dmDate,
+	    member_id as receiverId,
 	    read_check as readCheck
 	from dm
-	where receiver = #{receiver}	
+	where receiver = #{receiverNo} order by 1 desc
+	</select>
+	<select id="searchDmList" parameterType="hashmap" resultType="dm">
+	select 
+	    dm_no as dmNo,
+	    sender as senderNo,
+	    receiver as receiverNo,
+	    member_nickname as senderName,
+	    dm_content as dmContent,
+	    to_char(dm_date,'yy-mm-dd') as dmDate,
+	    member_id as receiverId,
+	    read_check as readCheck
+	from dm
+	<choose>
+		<when test="filter.equals('dmContent')">
+			where receiver = #{receiverNo} and dm_content like '%'||#{senderName}||'%' order by 1 desc
+		</when>
+		<when test="filter.equals('senderName')">
+			where receiver = #{receiverNo} and member_nickname like '%'||#{senderName}||'%' order by 1 desc
+		</when>
+	</choose>
 	</select>
 </mapper>

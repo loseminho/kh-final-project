@@ -1,6 +1,7 @@
 package kr.or.dm.model.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,5 +20,10 @@ public class DmService {
 
 	public ArrayList<DirectMessage> selectAllList(DirectMessage dm) {
 		return dao.selectAllList(dm);
+	}
+
+	public ArrayList<DirectMessage> searchDmList(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		return dao.searchDmList(map);
 	}
 }
