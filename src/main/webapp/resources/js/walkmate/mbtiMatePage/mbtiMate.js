@@ -31,6 +31,7 @@ $(".mbti-btn").on("click", function(){
 	        data : {'answers':answers, 'memberNo':memberNo, 'dogNo':dogNo},
 	        success : function(data){
 	       		console.log(data);
+	       		$("#mbti-matching").show();
 	        }
 	    });
 	}
