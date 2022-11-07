@@ -7,8 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class MbtiData {
-	private int mbtiTypeNo;
-	private String mbtiAnswer;
-	private String mbtiType;
+public class MbtiResult {
+	private int mbtiResultNo;
+	private String mbtiResult;
+	private String friendType;
+	private String partnerType;
 }
