@@ -52,7 +52,7 @@
 		           						<h3>반려견을 선택해주세요.</h3><br><br>
 		           						<c:forEach items="${sessionScope.m.dogList }" var="myDog">
 		           							<div class="box">
-										        <a onclick="mbtiStart('${myDog.dogName}');">
+										        <a onclick="mbtiStart('${myDog.dogNo}', '${myDog.dogName}');">
 										            <div class="photo">
 											            <c:choose>
 											            	<c:when test="${myDog.dogPhoto eq null}">
@@ -74,7 +74,7 @@
 									</c:otherwise>
 								</c:choose>
            					</div>
-           					<div id="mbti-box" style="display:none;">
+           					<div class="mbti-box" style="display:none;">
            						<h3 id="mbti-title">Q1</h3>
            						<p id="mbti-count">1 / 12</p>
            						<div id="mbti-img">
@@ -90,7 +90,7 @@
            							어우 야;; 정신없어;;;
            						</button>
            					</div>
-           					<div id="mbti-box">
+           					<div class="mbti-box" style="display:none;">
            						<h3 id="mbti-title">Q2</h3>
            						<p id="mbti-count">2 / 12</p>
            						<div id="mbti-img">
@@ -109,7 +109,7 @@
            							마이웨이
            						</button>
            					</div>
-           					<div id="mbti-box">
+           					<div class="mbti-box" style="display:none;">
            						<h3 id="mbti-title">Q3</h3>
            						<p id="mbti-count">3 / 12</p>
            						<div id="mbti-img">
@@ -128,7 +128,7 @@
            							쭈뼛쭈뼛 주변을 살피는 아싸
            						</button>
            					</div>
-           					<div id="mbti-box">
+           					<div class="mbti-box" style="display:none;">
            						<h3 id="mbti-title">Q4</h3>
            						<p id="mbti-count">4 / 12</p>
            						<div id="mbti-img">
@@ -147,7 +147,7 @@
            							아무것도 모른다는 듯 순진한 얼굴로 뛰어온다.
            						</button>
            					</div>
-           					<div id="mbti-box">
+           					<div class="mbti-box" style="display:none;">
            						<h3 id="mbti-title">Q5</h3>
            						<p id="mbti-count">5 / 12</p>
            						<div id="mbti-img">
@@ -164,7 +164,7 @@
            							NO~
            						</button>
            					</div>
-           					<div id="mbti-box">
+           					<div class="mbti-box" style="display:none;">
            						<h3 id="mbti-title">Q6</h3>
            						<p id="mbti-count">6 / 12</p>
            						<div id="mbti-img">
@@ -184,7 +184,7 @@
            							달려 나가서 탐색하기 바쁘다. <span class="mbti-dogname"></span>, 목줄 좀 그만 잡아당겨!
            						</button>
            					</div>
-           					<div id="mbti-box">
+           					<div class="mbti-box" style="display:none;">
            						<h3 id="mbti-title">Q7</h3>
            						<p id="mbti-count">7 / 12</p>
            						<div id="mbti-img">
@@ -202,7 +202,7 @@
            							왈왈왈왈와로아로 왈와라랄ㄹ!!
            						</button>
            					</div>
-           					<div id="mbti-box">
+           					<div class="mbti-box" style="display:none;">
            						<h3 id="mbti-title">Q8</h3>
            						<p id="mbti-count">8 / 12</p>
            						<div id="mbti-img">
@@ -221,7 +221,7 @@
            							집사들이여 간식을 바쳐라!
            						</button>
            					</div>
-           					<div id="mbti-box">
+           					<div class="mbti-box" style="display:none;">
            						<h3 id="mbti-title">Q9</h3>
            						<p id="mbti-count">9 / 12</p>
            						<div id="mbti-img">
@@ -238,7 +238,7 @@
            							눈을 빛내며 벌떡 일어나 공을 쫓는다.
            						</button>
            					</div>
-           					<div id="mbti-box">
+           					<div class="mbti-box" style="display:none;">
            						<h3 id="mbti-title">Q10</h3>
            						<p id="mbti-count">10 / 12</p>
            						<div id="mbti-img">
@@ -255,7 +255,7 @@
            							인간아 일어나라. 간식을 내놔라.
            						</button>
            					</div>
-           					<div id="mbti-box">
+           					<div class="mbti-box" style="display:none;">
            						<h3 id="mbti-title">Q11</h3>
            						<p id="mbti-count">11 / 12</p>
            						<div id="mbti-img">
@@ -273,7 +273,7 @@
            							<span class="mbti-dogname"></span>가 무서워해요! 손 내밀지 말아주세요~
            						</button>
            					</div>
-           					<div id="mbti-box">
+           					<div class="mbti-box" style="display:none;">
            						<h3 id="mbti-title">Q12</h3>
            						<p id="mbti-count">12 / 12</p>
            						<div id="mbti-img">
@@ -290,6 +290,11 @@
            						<button type="button" class="mbti-btn">
            							훈련이고 뭐고, 간식만 보이는 <span class="mbti-dogname"></span>!
            						</button>
+           					</div>
+           					<div id="mbti-result" style="display:none;">
+           						<p>결과</p>
+           						<input type="hidden" name="memberNo" value="${sessionScope.m.memberNo }">
+           						<input type="hidden" name="dogNo" value="">
            					</div>
             			</c:otherwise>
             		</c:choose>

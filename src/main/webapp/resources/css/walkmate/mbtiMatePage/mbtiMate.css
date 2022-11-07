@@ -165,7 +165,7 @@ input, select, button{
 
 
 /* 테스트 문제 창 */
-#mbti-box {
+.mbti-box{
 	width:360px;
 	display:flex;
 	flex-direction:column;
@@ -173,30 +173,30 @@ input, select, button{
 	align-items:center;
 	margin-top:30px;
 }
-#mbti-box #mbti-title {
+.mbti-box #mbti-title {
 	margin-bottom:30px;
 }
 
-#mbti-box #mbti-count {
+.mbti-box #mbti-count {
 	font-size: 12px;
 	color:#ccc;
 }
 
-#mbti-box #mbti-count,
-#mbti-box #mbti-que {
+.mbti-box #mbti-count,
+.mbti-box #mbti-que {
 	margin-bottom:30px;
 }
 
-#mbti-box #mbti-img {
+.mbti-box #mbti-img {
 	width:200px;
 	margin-bottom:30px;
 }
 
-#mbti-box #mbti-img img {
+.mbti-box #mbti-img img {
 	max-width:100%;
 } 
 
-#mbti-box .mbti-btn {
+.mbti-box .mbti-btn {
 	width:320px;
 	padding :18px 6px;
 	margin-bottom:20px;
@@ -205,14 +205,25 @@ input, select, button{
 	border-radius:10px;
 }
 
-#mbti-box .mbti-btn:hover {
+.mbti-box .mbti-btn:hover {
 	background-color: #f5d665;
 }
 
-#mbti-box .mbti-nickname {
+.mbti-box .mbti-nickname {
 	color:#ee862c;
 }
 
-#mbti-box .mbti-dogname {
+.mbti-box .mbti-dogname {
 	color:#c77be6;
+}
+
+/* 테스트 결과창 */
+#mbti-result {
+	width:360px;
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:center;
+	margin-top:30px;
+	border:1px solid red;
 }

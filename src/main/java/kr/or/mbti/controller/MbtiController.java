@@ -27,6 +27,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
+
 import kr.or.mbti.model.service.MbtiService;
 import kr.or.mbti.model.vo.MbtiData;
 
@@ -169,5 +171,14 @@ public class MbtiController {
 			list.removeLast();// 해당 넘버를 다시 제거 (즉,뽑지 않고 다음 번호 뽑기위함)
 		}
 		
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/mbtiResult.do", produces="application/json;charset=utf-8")
+	public String selectMbtiResult(String answers, int memberNo, int dogNo) {
+		System.out.println(answers);
+		System.out.println(memberNo);
+		System.out.println(dogNo);
+		return new Gson().toJson("return");
 	}
 }
