@@ -16,6 +16,7 @@ content{
     margin: 0 auto;
     width: 1000px;
     border-bottom: 2px solid #1abc9c;
+    overflow:hidden;
 }
 .qnaView-header>h1{
     margin-bottom: 40px;
@@ -24,12 +25,17 @@ content{
     margin: 0 auto;
     padding: 0;
     list-style: none;
+    display:flex;
+    flex-direction: row;
     font-size: 20px;
-    overflow: hidden;
+    justify-content: space-between;
 }
 .qnaView-header>ul>li{
-    float: right;
     padding: 10px;
+}
+.qnaView-header>ul>li:nth-child(2){
+    position: relative;
+    left: 350px;
 }
 .qnaView-header>ul a{
     color: #5e5e5e;
@@ -91,7 +97,6 @@ content{
     border:1px solid #e1e1e1;
     border-radius: 5px;
     border-collapse: collapse;
-    border-bottom: none;
 }
 .comment-box li:nth-child(2){
     width: 60%;

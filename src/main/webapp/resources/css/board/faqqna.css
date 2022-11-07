@@ -166,6 +166,7 @@ content{
 /* 검색창 */
 .search-box{
     float: right;
+    margin-bottom : 8px;
 }
 .search-qna-form{
     border: 1px solid #1e1e1e;
@@ -185,7 +186,7 @@ content{
 	border-radius: 3px;
     border: 1px solid #1abc9c;
     background-color: #1abc9c;
-    height: 30px;
+    height: 40px;
     width: 80px;
     font-size: 18px;
     color: #fff;
@@ -232,7 +233,7 @@ content{
 .qna-board{
     margin: 0 auto;
     padding: 0;
-    padding-top: 30px;
+    padding-top: 50px;
     width: 100%;
 }
 .qna-table{
