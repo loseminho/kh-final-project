@@ -24,7 +24,7 @@
 	<content>
 	<div class="faqqna-wrap">
 		<div class="faqqna-content">
-			<div class=faq-box>
+			<div class=faq-bigBox>
 				<div class="tab-header">
 					<ul class="faqqna-tab">
 						<li><h1>FAQ</h1></li>
@@ -76,6 +76,46 @@
 								</div>
 								<div class="answer">
 									<a> <span>여덟번째 답변</span>
+									</a>
+								</div>
+								<div class="question" name="walk-question">
+									<a> <span class="category-walk">우리동네 산책찾기</span> <span
+										class="question-title">아홉번째 질문</span> <span
+										class="material-symbols-outlined">expand_more</span>
+									</a>
+								</div>
+								<div class="answer">
+									<a> <span>아홉번째 답변</span>
+									</a>
+								</div>
+								<div class="question" name="walk-question">
+									<a> <span class="category-walk">우리동네 산책찾기</span> <span
+										class="question-title">열번째 질문</span> <span
+										class="material-symbols-outlined">expand_more</span>
+									</a>
+								</div>
+								<div class="answer">
+									<a> <span>열번째 답변</span>
+									</a>
+								</div>
+									<div class="question" name="walk-question">
+									<a> <span class="category-walk">우리동네 산책찾기</span> <span
+										class="question-title">열한번째 질문</span> <span
+										class="material-symbols-outlined">expand_more</span>
+									</a>
+								</div>
+								<div class="answer">
+									<a> <span>열한번째 답변</span>
+									</a>
+								</div>
+									<div class="question" name="walk-question">
+									<a> <span class="category-walk">우리동네 산책찾기</span> <span
+										class="question-title">열두번째 질문</span> <span
+										class="material-symbols-outlined">expand_more</span>
+									</a>
+								</div>
+								<div class="answer">
+									<a> <span>열두번째 답변</span>
 									</a>
 								</div>
 							</div>
@@ -145,7 +185,7 @@
 				</div>
 				<!--faq-content 끝-->
 			</div>
-			<!--faq-box 끝-->
+			<!--faq-bigBox 끝-->
 			<div class="qna-box">
 				<!-- 상세보기 이동 form -->
 				<form action="/qnaView.do" method="post" id="qnaViewFrm">
@@ -165,12 +205,12 @@
 						<div class="search-box">
 							<form action="#">
 								<select name="searchType" id="searchType" class="search-qna-form">
-									<option value="0" selected="selected">선택해주세요</option>
+									<option value="0" selected="selected">선택하세요 </option>
 									<option value="title">제목</option>
 									<option value="content">내용 </option>
 									<option value="writer">작성자</option>
 								</select> <input type="text" class="search-input"
-									placeholder="검색어를 입력하세요." name="keyword" id="keyword">
+									 name="keyword" id="keyword">
 								<button type="button" class="search-btn" id="searchQnaAjax">검색</button>
 							</form>
 						</div>

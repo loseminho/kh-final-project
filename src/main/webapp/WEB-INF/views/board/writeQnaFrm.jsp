@@ -24,7 +24,7 @@
                 <div class="writeQna-header">
                     <h1>문의작성</h1>
                 </div>
-                <form action="/writeQna.do" method="post" enctype="multipart/form-data">
+                <form action="/writeQna.do" method="post" enctype="multipart/form-data" onsubmit ="return checkSelect();">
                     <div class="writeQna-content">
                         <div class="qna-input-box">
                         <label for="qnaCateNo">문의유형</label>
