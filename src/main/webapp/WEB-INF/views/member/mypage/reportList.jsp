@@ -17,7 +17,7 @@
 			<th>신고 날짜</th>
 		</tr>
 		<tr>
-			<td><a href="/showProfile.do?memberNo=10">일유저</a></td>
+			<td><a href="/showProfile.do?memberId=user01@kh.com">일유저</a></td>
 			<td>언어 폭력</td>
 			<td class="report-view-open">일유저 님이 모임에서 저에게 막말을 했어요.</td>
 			<td>2022-11-02</td>

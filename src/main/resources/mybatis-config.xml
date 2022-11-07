@@ -8,6 +8,7 @@
 	<typeAliases>
 		<typeAlias type="kr.or.member.model.vo.Member" alias="m"/>
 		<typeAlias type="kr.or.member.model.vo.MyCalendar" alias="mc"/>
+		<typeAlias type="kr.or.member.model.vo.Report" alias="report"/>
 		<typeAlias type="kr.or.walk.model.vo.Walk" alias="w"/>
 		<typeAlias type="kr.or.chat.model.vo.RequireList" alias="rl"/>
 		<typeAlias type="kr.or.market.model.vo.MarketDog" alias="md"/>

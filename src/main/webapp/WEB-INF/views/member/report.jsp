@@ -11,14 +11,21 @@
         <h1>신고하기</h1>
         
         <!-- 신고 내용 -->
-        <form class="report-form" action="" method="post">
+        <form class="report-form" action="/report.do" method="post">
+        	<!-- 신고한 사람 -->
+        	<input type="hidden" name="reportMember" value=${sessionScope.m.memberNo }>
+        	<!-- 신고된 사람 -->
+        	<input type="hidden" name="reportedMember" value=${m.memberNo }>
+        
             <!-- 신고 유형 -->
             <div class="report-type">
                 <p>신고 유형</p>
                 <select name="reportType">
-                    <option value=1>신고 유형1</option>
-                    <option value=2>신고 유형2</option>
-                    <option value=3>신고 유형3</option>
+                    <option value=1>언어 폭력</option>
+                    <option value=2>성희롱</option>
+                    <option value=3>목적 외 이용</option>
+                    <option value=4>신뢰 훼손</option>
+                    <option value=5>기타</option>
                 </select>
             </div>
             
@@ -28,7 +35,7 @@
                 
                 <!-- 신고 상세 이유 입력 -->
                 <div class="report-input">
-                    <textarea></textarea>
+                    <textarea name="reportContent"></textarea>
                 </div>
             </div>
             

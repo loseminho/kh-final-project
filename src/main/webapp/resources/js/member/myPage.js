@@ -35,6 +35,7 @@ $(document).ready(function(){
 	}
 });
 
+// 신고한 내용 보기
 $(".report-view-wrap").hide();
 
 $(".report-view-open").on("click", function(){
