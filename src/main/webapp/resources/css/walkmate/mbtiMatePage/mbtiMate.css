@@ -163,6 +163,8 @@ input, select, button{
     margin: 5px 0 0 0;
 }
 
+
+/* 테스트 문제 창 */
 #mbti-box {
 	width:360px;
 	display:flex;
@@ -172,7 +174,7 @@ input, select, button{
 	margin-top:30px;
 }
 #mbti-box #mbti-title {
-	margin-bottom:14px;
+	margin-bottom:30px;
 }
 
 #mbti-box #mbti-count {
@@ -182,12 +184,12 @@ input, select, button{
 
 #mbti-box #mbti-count,
 #mbti-box #mbti-que {
-	margin-bottom:20px;
+	margin-bottom:30px;
 }
 
 #mbti-box #mbti-img {
 	width:200px;
-	margin-bottom:20px;
+	margin-bottom:30px;
 }
 
 #mbti-box #mbti-img img {
@@ -197,7 +199,7 @@ input, select, button{
 #mbti-box .mbti-btn {
 	width:320px;
 	padding :18px 6px;
-	margin-bottom:14px;
+	margin-bottom:20px;
 	background-color: #f1f1f1;
 	border:none;
 	border-radius:10px;

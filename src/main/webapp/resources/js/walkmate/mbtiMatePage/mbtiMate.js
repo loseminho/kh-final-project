@@ -12,7 +12,7 @@ function mbtiStart(dogName) {
 //        url  : '/crawling.do',
 //        type : 'post',
 //        success : function(data){
-//        	console.log(data);
+//       		console.log(data);
 //        }
 //    });
 }

@@ -9,7 +9,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <link rel="stylesheet" href="/resources/css/main.css">
 <link rel="styleSheet" href="/resources/css/gmarket.css">
-<script src="/resources/js/main.js"></script>
 <script src="https://kit.fontawesome.com/7b7a761eb5.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <link rel="icon" href="/resources/img/favicon.ico" type="image/x-icon" sizes="16x16">
@@ -117,5 +116,7 @@ $(".managerMenu").on("mouseout",function(){
 	subMenu.not(subMenu.eq(0)).css("display","none");
 });
 </script>
+
+<script src="/resources/js/main.js"></script>
 </body>
 </html>

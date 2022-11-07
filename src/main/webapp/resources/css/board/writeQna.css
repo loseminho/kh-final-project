@@ -36,6 +36,9 @@ content{
     overflow: hidden;
 }
 .qna-input-box{
+	display:flex;
+	flex-direction: row;
+	justify-content: space-between;
     overflow: hidden;
     width: 100%;
     padding-bottom: 20px;
@@ -48,7 +51,7 @@ content{
     overflow: hidden;
 }
 .qna-input-box>select{
-    width: 502px;
+    width: 512px;
     float: right;
     border-style: none;
     border: 1px solid #5e5e5e;
@@ -58,12 +61,15 @@ content{
 .qna-input-box>input{
     width: 500px;
     float: right;
+    padding-left: 10px;
     border: 1px solid #5e5e5e;
     border-radius: 3px;
     font-size: 18px;
 }
 .qna-input-box>textarea{
     width: 500px;
+    padding-top: 10px;
+    padding-left: 10px;
     float: right;
     border: 1px solid #5e5e5e;
     border-radius: 3px;
@@ -73,19 +79,16 @@ content{
 #qnaContent{
     height: 200px;
 }
-#file-input-box>label{
-    position: relative;
-    bottom: 82px;
-}
+
 .write-qna-form{
     width: 500px;
     height: 50px;
 }
 .fileZone{
     width: 150px;
-    height: 150px;
-    display: inline-block;
-    margin-left: 215px;
+    min-height: 150px;
+    position: relative;
+    right: 360px;
     border: 1px solid #5e5e5e;
     border-radius: 3px;
 }
@@ -97,7 +100,8 @@ content{
     color: #5e5e5e;
 }
 .fileMsg{
-    padding-left: 295px;
+	display:inline-block;
+    padding-left: 285px;
     margin-bottom: 20px;
 }
 .fileMsg>input:last-child{
@@ -114,7 +118,7 @@ content{
 }
 .qna-check-box>input{
     zoom: 2;
-    margin-left: 100px;
+    margin-left: 90px;
 }
 .writeQna-footer{
     margin: 0 auto;

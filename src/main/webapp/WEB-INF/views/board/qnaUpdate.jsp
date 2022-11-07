@@ -23,7 +23,7 @@
                 <div class="writeQna-header">
                     <h1>문의내역 수정하기</h1>
                 </div>
-                <form action="/qnaUpdate.do" method="post" enctype="multipart/form-data">
+                <form action="/qnaUpdate.do" method="post" enctype="multipart/form-data" onsubmit ="return checkSelect();">
                     <div class="writeQna-content">
                         <div class="qna-input-box">
                         <label for="qnaCateNo">문의유형</label>
@@ -51,7 +51,7 @@
                                 <c:forEach items="${qf.filelist }" var="qf">
                                     <div class="fileName">
                                         <span>${qf.filename}</span>
-                                        <span class="closeBtn" onclick="deleteFile(this,${qf.fileNo},'${qf.filepath}');">X</span>
+                                        <span class="closeBtn" style="display:none;" onclick="deleteFile(this,${qf.fileNo},'${qf.filepath}');">X</span>
                                     </div>
                                 </c:forEach>
                             </div>
