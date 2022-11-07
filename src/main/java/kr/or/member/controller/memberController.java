@@ -39,7 +39,7 @@ import kr.or.member.model.service.MemberService;
 import kr.or.member.model.service.MessageService;
 import kr.or.member.model.vo.Member;
 import kr.or.member.model.vo.MyCalendar;
-import kr.or.walk.model.vo.Walk;
+import kr.or.member.model.vo.Report;
 
 @Controller
 public class memberController {
@@ -464,8 +464,9 @@ public class memberController {
 	}
 	
 	@RequestMapping(value="/showProfile.do")
-	public String showProfile(int memberNo, Model model) {
-		// 회원과 회원이 가지고 있는 반려견 프로필 가져와야 함
+	public String showProfile(String memberId, Model model) {
+		Member m = service.selectOneMember2(memberId);
+		model.addAttribute("m", m);
 		
 		return "member/profile";
 	}
@@ -510,10 +511,18 @@ public class memberController {
 		}
 	}
 	
+	// 신고하기
+	@RequestMapping(value="/report.do")
+	public String report() {
+		return "";
+	}
+	
+	// 내 신고 내역 불러오기
 	@ResponseBody
-	@RequestMapping(value="/selectAllMateList.do", produces="application/json;charset=utf-8")
-	public String selectAllMateList() {
-		ArrayList<Walk> list = service.selectAllMateList();
+	@RequestMapping(value="/selectMyReportList.do", produces="application/json;charset=utf-8")
+	public String selectMyReportList(int memberNo) {
+		ArrayList<Report> list = service.selectMyReportList(memberNo);
+		
 		return new Gson().toJson(list);
 	}
 }
