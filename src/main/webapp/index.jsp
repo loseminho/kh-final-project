@@ -9,7 +9,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <link rel="stylesheet" href="/resources/css/main.css">
 <link rel="styleSheet" href="/resources/css/gmarket.css">
-<script src="/resources/js/main.js"></script>
 <script src="https://kit.fontawesome.com/7b7a761eb5.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <link rel="icon" href="/resources/img/favicon.ico" type="image/x-icon" sizes="16x16">
@@ -36,9 +35,11 @@
 						</div>
 					</ul>
 					<ul>
-						<div>
-							<li><a href= "/faqQnaBoardFrm.do ">고객서비스</a></li>
-						</div>
+					<div class="managerMenu">
+						<li><a href= "/faqQnaBoardFrm.do" style="width:120px;">고객서비스</a></li>
+						<li><a href="#" style="width:150px !important">공지사항</a></li>
+						<li><a href="#" style="width:150px">FAQ/문의하기</a></li>
+					</div>
 					</ul>
 					<c:if test="${not empty sessionScope.m }">
 					<ul>
@@ -106,6 +107,16 @@
 		</div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	</div>
+<script>
+$(".managerMenu").on("mouseover",function(){
+	$(".managerMenu").children().css("display","block");
+});
+$(".managerMenu").on("mouseout",function(){
+	const subMenu = $(".managerMenu").children();
+	subMenu.not(subMenu.eq(0)).css("display","none");
+});
+</script>
 
+<script src="/resources/js/main.js"></script>
 </body>
 </html>
