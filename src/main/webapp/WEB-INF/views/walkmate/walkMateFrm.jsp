@@ -8,6 +8,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <link rel="stylesheet" href="/resources/css/walkmate/walk_mate_content.css">
     <link rel="styleSheet" href="/resources/css/gmarket.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
 	<!-- 헤더  -->
@@ -200,13 +201,13 @@
             <!-- 컨텐츠 박스 리스트-->
             <div class="content-box" onclick="modalView();"> 
                 <div class="content-box-list img">
-                    <img src="/resources/img/walkmate/liry1.jpg" alt="">
+                    <img src="/resources/img/walkmate/liry1.jpg">
                 </div>
                 <div class="content-box-list titles">
                     <a href="">공원&산책로</a>
                     <h2>골든 리트리버 상동 호수공원 같이가요~</h2>
                     <div class="titles-sub">하루 종일 룰루랄라 서핑할 서퍼들! 모여봐요~</div>
-                    <div class="titles-info">ㅇ 종로구 · 8.28(일) 오전 11:10 ㅇ 5/6</div>
+                    <div class="titles-info"><span class="material-symbols-outlined">map</span> 종로구 · 8.28(일) 오전 11:10 ㅇ 5/6</div>
                     <ul class="user-profil">
                         <li><img src="/resources/img/walkmate/profil.png"></li>
                         <li><img src="/resources/img/walkmate/liry1.jpg"></li>
@@ -217,138 +218,13 @@
                     </ul>
                 </div>
             </div>
-            <div class="content-box"> 
-                <div class="content-box-list img">
-                    <img src="/resources/img/walkmate/main2.jpg" alt="">
-                </div>
-                <div class="content-box-list titles">
-                    <a href="">산책로</a>
-                    <h2>가을 뮤직 페스티벌 같이 가실분</h2>
-                    <div class="titles-sub">ㅇ 종로구 · 8.28(일) 오전 11:10 ㅇ 5/6</div>
-                    <ul class="user-profil">
-                        <li><img src="/resources/img/walkmate/profil.png"></li>
-                        <li><img src="/resources/img/walkmate/profil.png"></li>
-                        <li><img src="/resources/img/walkmate/main2.jpg"></li>
-                        <li><img src="/resources/img/walkmate/review-icon.png"></li>
-                        <li><img src="/resources/img/walkmate/main2.jpg"></li>
-                        <li><img src="/resources/img/walkmate/review-icon.png"></li>
-                        <li><img src="/resources/img/walkmate/profil.png"></li>
-                        <li>+</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="content-box"> 
-                <div class="content-box-list img">
-                    <img src="/resources/img/walkmate/main3.jpg" alt="">
-                </div>
-                <div class="content-box-list titles">
-                    <a href="">페스티벌</a>
-                    <h2>용산 공원에서 인생샷 찍고 놀아요!</h2>
-                    <div class="titles-sub">ㅇ 종로구 · 8.28(일) 오전 11:10 ㅇ 5/6</div>
-                    <ul class="user-profil">
-                        <li><img src="/resources/img/walkmate/profil.png"></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li>+</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="content-box"> 
-                <div class="content-box-list img">
-                    <img src="/resources/img/walkmate/liry1.jpg" alt="">
-                </div>
-                <div class="content-box-list titles">
-                    <a href="">공원</a>
-                    <h2>골든 리트리버 상동 호수공원 같이가요~</h2>
-                    <div class="titles-sub">하루 종일 룰루랄라 서핑할 서퍼들! 모여봐요~</div>
-                    <div class="titles-info">ㅇ 종로구 · 8.28(일) 오전 11:10 ㅇ 5/6</div>
-                    <ul class="user-profil">
-                        <li><img src="/resources/img/walkmate/profil.png"></li>
-                        <li><img src="/resources/img/walkmate/liry1.jpg"></li>
-                        <li><img src="/resources/img/walkmate/main2.jpg"></li>
-                        <li><img src="/resources/img/walkmate/review-icon.png"></li>
-                        <li><img src="/resources/img/walkmate/walk-mate-icon.png"></li>
-                        <li>+</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="content-box"> 
-                <div class="content-box-list img">
-                    <img src="/resources/img/walkmate/liry1.jpg" alt="">
-                </div>
-                <div class="content-box-list titles">
-                    <a href="">공원&산책로</a>
-                    <h2>골든 리트리버 상동 호수공원 같이가요~</h2>
-                    <div class="titles-sub">하루 종일 룰루랄라 서핑할 서퍼들! 모여봐요~</div>
-                    <div class="titles-info">ㅇ 종로구 · 8.28(일) 오전 11:10 ㅇ 5/6</div>
-                    <ul class="user-profil">
-                        <li><img src="/resources/img/walkmate/profil.png"></li>
-                        <li><img src="/resources/img/walkmate/liry1.jpg"></li>
-                        <li><img src="/resources/img/walkmate/main2.jpg"></li>
-                        <li><img src="/resources/img/walkmate/review-icon.png"></li>
-                        <li><img src="/resources/img/walkmate/walk-mate-icon.png"></li>
-                        <li>+</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="content-box"> 
-                <div class="content-box-list img">
-                    <img src="/resources/img/walkmate/liry1.jpg" alt="">
-                </div>
-                <div class="content-box-list titles">
-                    <a href="">공원&산책로</a>
-                    <h2>골든 리트리버 상동 호수공원 같이가요~</h2>
-                    <div class="titles-sub">하루 종일 룰루랄라 서핑할 서퍼들! 모여봐요~</div>
-                    <div class="titles-info">ㅇ 종로구 · 8.28(일) 오전 11:10 ㅇ 5/6</div>
-                    <ul class="user-profil">
-                        <li><img src="/resources/img/walkmate/profil.png"></li>
-                        <li><img src="/resources/img/walkmate/liry1.jpg"></li>
-                        <li><img src="/resources/img/walkmate/main2.jpg"></li>
-                        <li><img src="/resources/img/walkmate/review-icon.png"></li>
-                        <li><img src="/resources/img/walkmate/walk-mate-icon.png"></li>
-                        <li>+</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="content-box"> 
-                <div class="content-box-list img">
-                    <img src="/resources/img/walkmate/liry1.jpg" alt="">
-                </div>
-                <div class="content-box-list titles">
-                    <a href="">공원&산책로</a>
-                    <h2>골든 리트리버 상동 호수공원 같이가요~</h2>
-                    <div class="titles-sub">하루 종일 룰루랄라 서핑할 서퍼들! 모여봐요~</div>
-                    <div class="titles-info">ㅇ 종로구 · 8.28(일) 오전 11:10 ㅇ 5/6</div>
-                    <ul class="user-profil">
-                        <li><img src="/resources/img/walkmate/profil.png"></li>
-                        <li><img src="/resources/img/walkmate/liry1.jpg"></li>
-                        <li><img src="/resources/img/walkmate/main2.jpg"></li>
-                        <li><img src="/resources/img/walkmate/review-icon.png"></li>
-                        <li><img src="/resources/img/walkmate/walk-mate-icon.png"></li>
-                        <li>+</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="content-box"> 
-                <div class="content-box-list img">
-                    <img src="/resources/img/walkmate/liry1.jpg" alt="">
-                </div>
-                <div class="content-box-list titles">
-                    <a href="">공원&산책로</a>
-                    <h2>골든 리트리버 상동 호수공원 같이가요~</h2>
-                    <div class="titles-sub">하루 종일 룰루랄라 서핑할 서퍼들! 모여봐요~</div>
-                    <div class="titles-info">ㅇ 종로구 · 8.28(일) 오전 11:10 ㅇ 5/6</div>
-                    <ul class="user-profil">
-                        <li><img src="/resources/img/walkmate/profil.png"></li>
-                        <li><img src="/resources/img/walkmate/liry1.jpg"></li>
-                        <li><img src="/resources/img/walkmate/main2.jpg"></li>
-                        <li><img src="/resources/img/walkmate/review-icon.png"></li>
-                        <li><img src="/resources/img/walkmate/walk-mate-icon.png"></li>
-                        <li>+</li>
-                    </ul>
-                </div>
-            </div>
+            
+
+
+
+
+
+
         </div>
     </div>
     <!-- End Content -->
@@ -413,7 +289,6 @@
     function modalOff() {
         modal.style.display = "none";
     }
-
     //글보기 클릭
     function modalView(){
         modalWriteOff();

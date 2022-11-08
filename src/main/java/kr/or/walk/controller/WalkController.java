@@ -31,7 +31,7 @@ public class WalkController {
 		return new Gson().toJson(list);
 	}
 	
-	// 게시물 선택화면 - 모달 첫번째 페이지(index 1 - file, content,)
+	// WalkMate 모든 게시물 참여하는 유저 프로필
 	@ResponseBody
 	@RequestMapping(value="/selectWalkListAjax.do", produces="application/json;charset=utf-8")
 	public String selectWalkListAjax(int wmNo) {
