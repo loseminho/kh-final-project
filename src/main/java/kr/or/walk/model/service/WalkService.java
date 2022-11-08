@@ -17,7 +17,7 @@ public class WalkService {
 
 	public ArrayList<Walk> allWalkList() {
 		ArrayList<Walk> list = dao.allWalkList();
-		ArrayList<WmApply> mList = dao.selectMemberProfil();
+//		ArrayList<WmApply> mList = dao.selectMemberProfil();
 		
 		return dao.allWalkList();
 	}
