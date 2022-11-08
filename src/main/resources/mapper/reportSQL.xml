@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="report">
+	<select id="selectMyReportList" parameterType="_int" resultType="report">
+		select
+			report_no as reportNo,
+			
+			report_member_no as reportMemberNo,
+			report_member_nicname as reportMemberNicname,
+			
+			reported_member_no as reportedMemberNo,
+			reported_member_nicname as reportedMemberNicname,
+			
+			report_type as reportType,
+			report_content as reportContent,
+			
+			report_date as reportDate
+		from
+			report_tbl
+		where
+			report_member_no = #{_parameter}
+	</select>
+</mapper>

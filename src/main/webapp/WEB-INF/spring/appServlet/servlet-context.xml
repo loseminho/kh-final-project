@@ -84,5 +84,6 @@
 	<context:component-scan base-package="kr.or.dm" />
 	<context:component-scan base-package="kr.or.mbti" />
 	<context:component-scan base-package="kr.or.dm" />
+	<context:component-scan base-package="kr.or.shop" />
 	<context:component-scan base-package="common" />	
 </beans:beans>

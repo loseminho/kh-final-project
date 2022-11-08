@@ -1,3 +1,10 @@
+$(".managerMenu").on("mouseover",function(){
+	$(".managerMenu").children().css("display","block");
+});
+$(".managerMenu").on("mouseout",function(){
+	const subMenu = $(".managerMenu").children();
+	subMenu.not(subMenu.eq(0)).css("display","none");
+});
 
 function logout() {
 	Swal.fire({

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +18,7 @@
 	        <!-- 사람 프로필 -->
 	        <div class="person-profile">
 	        	<div class="profile-header">
-	        		<h1>닉네임</h1>
+	        		<h1>${m.memberNickname }</h1>
 	        		<p id="report-modal-open">신고</p>
 	        	</div>
 	            
@@ -26,58 +27,62 @@
 		        </div>
 		        
 		        <div class="person-introduce">
-		           	자기 소개
+		           	${m.memberIntro }
 		        </div>  
 	        </div>
 	        
 	        <!-- 반려견 프로필 -->
-	        <div class="dog-profile">
-	            <h1>반려견 이름</h1>
-	
-	            <!-- 반려견 프로필 사진 -->
-	            <div class="profile-photo-box">
-	                <img class="profile-photo" src="/resources/img/member/반려견 임시 프로필.png">
-	            </div>
-	            
-	            <!-- 반려견 정보 -->
-	            <div class="dog-info">
-	            	<table>
-	            		<tr>
-	            			<th>크기</th>
-	            			<td>소형</td>
-	            		</tr>
-	            		<tr>
-	            			<th>품종</th>
-	            			<td>말티즈</td>
-	            		</tr>
-	            		<tr>
-	            			<th>성별</th>
-	            			<td>남아</td>
-	            		</tr>
-	            		<tr>
-	            			<th>중성화 여부</th>
-	            			<td>X</td>
-	            		</tr>
-	            		<tr>
-	            			<th>예방접종 여부</th>
-	            			<td>O</td>
-	            		</tr>
-	            		<tr>
-	            			<th>나이</th>
-	            			<td>1살</td>
-	            		</tr>
-	            		<tr>
-	            			<th>몸무게</th>
-	            			<td>약 1kg</td>
-	            		</tr>
-	            	</table>
-	            </div>	
-	            
-	            <!-- 반려견 소개 글 -->
-	            <div class="dog-introduce">
-	            	반려견 소개
-	            </div>
-	        </div>	
+	        <c:forEach items="${m.dogList }" var="dog">
+		        <div class="dog-profile">
+		            <h1>${dog.dogName }</h1>
+		
+		            <!-- 반려견 프로필 사진 -->
+		            <div class="profile-photo-box">
+		            	<c:choose>
+		            		<c:when test="${not empty dog.dogPhoto}">
+		            			<img class="profile-photo" src="/resources/upload/dog/${dog.dogPhoto }">
+		            		</c:when>
+		            		<c:otherwise>
+		            			<img class="profile-photo" src="/resources/img/member/반려견 임시 프로필.png">
+		            		</c:otherwise>
+		            	</c:choose>
+		            </div>
+		            
+		            <!-- 반려견 정보 -->
+		            <div class="dog-info">
+		            	<table>
+		            		<tr>
+		            			<th>크기</th>
+		            			<td>${dog.dogSize }</td>
+		            		</tr>
+		            		<tr>
+		            			<th>품종</th>
+		            			<td>${dog.dogType }</td>
+		            		</tr>
+		            		<tr>
+		            			<th>성별</th>
+		            			<td>${dog.dogGender }</td>
+		            		</tr>
+		            		<tr>
+		            			<th>중성화 여부</th>
+		            			<td>${dog.dogNeutral }</td>
+		            		</tr>
+		            		<tr>
+		            			<th>예방접종 여부</th>
+		            			<td>${dog.dogVacc }</td>
+		            		</tr>
+		            		<tr>
+		            			<th>나이</th>
+		            			<td>${dog.dogAge }살</td>
+		            		</tr>
+		            		<tr>
+		            			<th>몸무게</th>
+		            			<td>약 ${dog.dogWeight }kg</td>
+		            		</tr>
+		            	</table>
+		            </div>	
+		        </div>	
+	        </c:forEach>
 	        
 	        <div class="before-link-box">
 	        	<a class="before-link" href="#">이전으로</a>
@@ -91,21 +96,11 @@
 					<tr>
 						<th>반려견 선택</th>
 					</tr>
-					<tr>
-						<td><a href="#">반려견 이름</a></td>
-					</tr>
-					<tr>
-						<td><a href="#">반려견 이름</a></td>
-					</tr>
-			 		<tr>
-						<td><a href="#">반려견 이름</a></td>
-					</tr>
-					<tr>
-						<td><a href="#">반려견 이름</a></td>
-					</tr>
-					<tr>
-						<td><a href="#">반려견 이름</a></td>
-					</tr>
+					<c:forEach items="${m.dogList }" var="dog">
+						<tr>
+							<td class="dog-name"><a href="#">${dog.dogName }</a></td>
+						</tr>
+					</c:forEach>
 				</table>
 			</div>	
 		</div>

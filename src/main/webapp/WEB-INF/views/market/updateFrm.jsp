@@ -59,7 +59,7 @@
 			<div class="row-part">
 			<div class="sub-title"><span>*</span>나이(개월) :</div>
 			<input type="number" name="age" min="0" max="24" placeholder="0~24개월" value="${md.age }">
-			<span style="color:red; font-size:12px;">*입력해주세요</span>
+			<span style="color:blue; font-size:12px;">*개월 단위로 입력해요</span>
 			</div>
 			<div class="row-part">
 			<div class="sub-title"><span>*</span>성별선택 :</div>
@@ -91,7 +91,7 @@
 		    </div>
 		    <div class="box">
 		        <input type="number" name="price" id="price" min="0" max="100000000" step="10000" placeholder="${md.price }">\
-		        <span style="color:red; font-size:12px;"> *만원단위로 입력 할 수 있어요</span>
+		        <span style="color:blue; font-size:12px;"> *만원단위로 입력 할 수 있어요</span>
 		    </div>
 		    </div>
 			<div class="sub-title">*소개</div>
@@ -107,7 +107,14 @@
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	<script src="/resources/js/market/writeFrmContent.js"></script>
 	<script>
-	
+	$("#submit-btn").on("click",function(){
+		if($("#price").val() == ''){
+			$(".box").children("span").text("입력을 해야해요");
+			$(".box").children("span").css("color","red");
+		}else{
+			$("#update-frm").submit();
+		}
+	});
 	
 	$(document).ready(function(){
 		$.ajax({

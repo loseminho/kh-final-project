@@ -164,7 +164,7 @@ a, button {
 }
 
 .managerMenu li:not(:first-child){
-	display:none;
+	height:40px;
 }
 
 
@@ -209,3 +209,28 @@ footer > .footer-content {
     width: 1000px;
     height : 80px;
 }
+/*채팅 아이콘*/
+.chat-icon{
+	box-shadow: 1px 3px 0 0 rgba( 31, 38, 135, 0.37 );
+	border:1px solid #ccc;
+	width:40px;
+	height:40px;
+	border-radius:100%;
+	background-color: #fff;
+	position:fixed;
+	top: 100px;
+	left: 30px;
+	overflow:hidden;
+	cursor:pointer;
+}
+.chat-icon>img{
+	width:40%;
+	height:40%;
+	position:absolute;
+	top:30%;
+	left:30%;
+}
+.chat-icon:active{
+	box-shadow:none;
+}
+

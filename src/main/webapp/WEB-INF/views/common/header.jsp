@@ -64,6 +64,12 @@
 			</div>
 		</div>
 	</div>
+	<div class="chat-icon">
+		<img src="/resources/img/favicon.ico">
+	</div>
+	<div class>
+	
+	</div>
 </header>
 
 <script>

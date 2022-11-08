@@ -4,7 +4,6 @@
 <div id="modal-wrap" style="display: none;">
 	<div class="modal-content">
 		<div class="detail-box-title">
-		<!-- 품종데이터 -->
 		</div>
 		<pre class="sale-info">강아지한줄소개</pre>
 		<hr>
