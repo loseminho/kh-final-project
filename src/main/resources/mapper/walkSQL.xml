@@ -16,23 +16,9 @@
 	    WM_DATE AS wmDate
 	FROM walk_mate_tbl ORDER BY WM_NO DESC)W)
 	</select>
+	
+	
+	
 	<select id="selectWalkListOne" parameterType="_int" resultType="w">
-SELECT A.*, B.TAG1,B.TAG2,B.TAG3,B.TAG4,B.TAG5,B.TAG6 FROM (SELECT ROWNUM AS RNUM, W.* FROM ((SELECT
-    WM_NO AS wmNo,
-    WM_LEADER AS wmLeader,
-    WM_TITLE AS wmTitle,
-    WM_SUB_TITLE AS wmSubTitle,
-    WM_TYPE AS wmType,
-    WM_MEET_START AS wmMeetStart,
-    WM_MEET_END AS wmMeetEnd,
-    WM_ADDR AS wmAddr,
-    WM_RANGE_DOG AS wmRangeDog,
-    WM_RANGE_MEMBER AS wmRangeMember,
-    WM_CONTENT AS wmContent,
-    WM_VIEW AS wmView,
-    WM_DATE AS wmDate,
-    WM_STAT AS wmStat
-FROM walk_mate_tbl ORDER BY WM_NO DESC)W))A LEFT JOIN TAG_LIST_TBL B ON A.WMNO = B.TAG_TABLE_NO
-WHERE wmNo = #{_parameter}
 	</select>
 </mapper>

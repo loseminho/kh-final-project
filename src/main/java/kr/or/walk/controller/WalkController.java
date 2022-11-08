@@ -36,7 +36,8 @@ public class WalkController {
 	@RequestMapping(value="/selectWalkListAjax.do", produces="application/json;charset=utf-8")
 	public String selectWalkListAjax(int wmNo) {
 		Walk w = service.selectWalkListAjax(wmNo);
-		return new Gson().toJson(w);
+//		return new Gson().toJson(w);
+		return null;
 	}
 	// 게시물 선택화면 - 
 	
