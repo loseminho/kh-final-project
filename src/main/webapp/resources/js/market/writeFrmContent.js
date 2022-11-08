@@ -25,3 +25,20 @@ $(document).ready(function(){
  	
  	});
 });
+
+
+const tooltip = $(".tooltip");
+tooltip.hide();
+$(".my-preview").on("mouseover",function(){
+	var index = $(".my-preview").index(this);
+	tooltip.eq(index).show();
+});
+$(".my-preview").on("mouseleave",function(){
+	var index = $(".my-preview").index(this);
+	tooltip.eq(index).hide();
+});
+
+$(".my-preview-box").on("click",function(){
+	const index = $(".my-preview-box").index(this);
+		$(".updateForm").eq(index).submit();
+});

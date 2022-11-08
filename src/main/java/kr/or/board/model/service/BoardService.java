@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.board.model.dao.BoardDao;
 import kr.or.board.model.vo.QnaBoard;
@@ -40,11 +42,11 @@ public class BoardService {
 
 	/* 문의게시판 view */ 
 	public QnaBoard selectOneQna(int qnaNo) {
-		QnaBoard qb = dao.selectOneQna(qnaNo);
-		return qb;
+		dao.updateHit(qnaNo);
+		return dao.selectOneQna(qnaNo);
 	}
 
-	//문의게시판 삭
+	//문의게시판 삭제  
 	public ArrayList<QnaFile> qnaBoardDelete(int qnaNo) {
 		//file_tbl에서 해당되는 파일 삭제 
 		ArrayList<QnaFile> fileList = dao.selectFileList(qnaNo);
@@ -63,10 +65,43 @@ public class BoardService {
 	public int insertQnaComment(QnaComment qc) {
 		return dao.insertQnaComment(qc);
 	}
+	//댓글 delete 
+	public int deleteQnaComment(QnaComment qc) {
+		return dao.deleteQnaComment(qc);
+	}
+	//댓글 update 
+	public int updateQnaComment(QnaComment qc) {
+		return dao.updateQnaComment(qc);
+	}
 	
 	//댓글 list 조회 
 	public ArrayList<QnaComment> commentListView(int qnaNo) {
 		return dao.commentListView(qnaNo);
+	}
+
+	//문의내역 수정  
+	public int updateQnaBoard(QnaBoard q, int[] fileNoList) {
+		//board 수정 
+		int result = dao.updateQnaBoard(q);
+		if(result>0) {
+			//새로운 첨부파일이 있으면 insert
+			for(QnaFile qf : q.getFileList()) {
+				qf.setQnaNo(q.getQnaNo());
+				result += dao.insertFile(qf);
+			}
+			//삭제한 첨부파일이 있으면 delete
+			if(fileNoList != null) {
+				for(int fileNo : fileNoList) {
+					result += dao.deleteFile(fileNo);
+				}
+			}
+		}
+		return result;
+	}
+
+	//문의내역 검색 
+	public ArrayList<QnaBoard> searchQnaBoard(QnaBoard q) {
+		return dao.searchQnaBoard(q);
 	}
 
 }

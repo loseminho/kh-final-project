@@ -4,7 +4,6 @@
 <div id="modal-wrap" style="display: none;">
 	<div class="modal-content">
 		<div class="detail-box-title">
-		<!-- 품종데이터 -->
 		</div>
 		<pre class="sale-info">강아지한줄소개</pre>
 		<hr>
@@ -29,17 +28,25 @@
 				<img class="detail-image" src="">
 			</div>
 		</div>
+		<input type="hidden" value="" id="receiverId">
+		<input type="hidden" value="${sessionScope.m.memberId }" id="senderId">
+		<input type="hidden" value="${sessionScope.m.memberNo }" id="sessionMemberNo">
+		<input type="hidden" value="${sessionScope.m.memberNickname}"id="sessionMemberNickname">
+		<input type="hidden" value=""id="receiverNickname">
+		<input type="hidden" value="" id="detailMemberNo">
 		<div class="require-btn">
-			<c:choose>
-			<c:when test="${empty sessionScope.m }">
-			<button onclick="location.href='/loginFrm.do'">로그인</button>
-			</c:when>
-			<c:otherwise>
-			<button>분양신청하기</button>
-			<button onclick="dmModalOn();">쪽지보내기</button>
-			</c:otherwise>
-			</c:choose>
-			<button id="close-modal">닫기</button>
+			
+		</div>
+		<div class="send-dm-wrap">
+			<div class="send-dm-title">
+			<span>받는사람 : </span>
+			<span class="receiver"></span>
+			</div>
+			<div class="input-box-wrap">
+				<input id="send-dm-input" type="text"><span></span>
+				<button class="send-dm-btn">쪽지보내기</button>
+				<button class="cancel">취소</button>
+			</div>
 		</div>
 	</div>
 </div>

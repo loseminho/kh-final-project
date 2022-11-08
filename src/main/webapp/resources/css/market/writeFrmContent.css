@@ -85,6 +85,14 @@
 	border:none;
 	cursor:pointer;
 }
+#cancel-btn{
+	width:100px;
+	height:30px;
+	background-color: #1abc9c;
+	color:#fff;
+	border:none;
+	cursor:pointer;
+}
 
 .preview-box{
 	cursor:pointer;

@@ -7,6 +7,8 @@
 	</settings>
 	<typeAliases>
 		<typeAlias type="kr.or.member.model.vo.Member" alias="m"/>
+		<typeAlias type="kr.or.member.model.vo.MyCalendar" alias="mc"/>
+		<typeAlias type="kr.or.member.model.vo.Report" alias="report"/>
 		<typeAlias type="kr.or.walk.model.vo.Walk" alias="w"/>
 		<typeAlias type="kr.or.chat.model.vo.RequireList" alias="rl"/>
 		<typeAlias type="kr.or.market.model.vo.MarketDog" alias="md"/>
@@ -16,5 +18,8 @@
 		<typeAlias type="kr.or.board.model.vo.QnaFile" alias="qf"/>
 		<typeAlias type="kr.or.board.model.vo.QnaComment" alias="qc"/>
 		<typeAlias type="kr.or.dog.model.vo.Dog" alias="d"/>
+		<typeAlias type="kr.or.mbti.model.vo.MbtiData" alias="mbti"/>
+		<typeAlias type="kr.or.dm.model.vo.DirectMessage" alias="dm"/>
+		<typeAlias type="kr.or.shop.model.vo.Shop" alias="s"/>
 	</typeAliases>
 </configuration>

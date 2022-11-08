@@ -10,7 +10,10 @@ function login() {
         	if(data == "success") {
                 location.href= "/";                         	        	        		
         	} else if(data == "fail") {
-        		alert("아이디와 비밀번호를 확인해주세요.");
+        		Swal.fire({
+					text: '아이디와 비밀번호를 확인해주세요.',
+					confirmButtonColor: '#1abc9c'
+				})
         	}
         }
     });

@@ -10,14 +10,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MarketDog {
+	private String callName;
 	private int marketNo;
+	private int memberNo;
 	private String memberId;
+	private String memberNickname;
 	private int age;
 	private String typeName;
 	private int typeSize;
 	private String saleInfo;
 	private String gender;
-	private int price;
+	private String price;
 	private int typeCode;
 	private ArrayList<MarketDogFile> fileList;
 }

@@ -16,6 +16,7 @@ content{
     margin: 0 auto;
     width: 1000px;
     border-bottom: 2px solid #1abc9c;
+    overflow:hidden;
 }
 .qnaView-header>h1{
     margin-bottom: 40px;
@@ -24,12 +25,17 @@ content{
     margin: 0 auto;
     padding: 0;
     list-style: none;
+    display:flex;
+    flex-direction: row;
     font-size: 20px;
-    overflow: hidden;
+    justify-content: space-between;
 }
 .qnaView-header>ul>li{
-    float: right;
     padding: 10px;
+}
+.qnaView-header>ul>li:nth-child(2){
+    position: relative;
+    left: 350px;
 }
 .qnaView-header>ul a{
     color: #5e5e5e;
@@ -91,7 +97,6 @@ content{
     border:1px solid #e1e1e1;
     border-radius: 5px;
     border-collapse: collapse;
-    border-bottom: none;
 }
 .comment-box li:nth-child(2){
     width: 60%;
@@ -147,7 +152,7 @@ content{
     background-color: transparent;
 }
 .comment-box-view>li:first-child>span{
-    margin-top: 10px;
+    margin-top: 5px;
     zoom: 3;
 }
 .comment-box-view>li:nth-child(2){
@@ -158,6 +163,7 @@ content{
 }
 .comment-content{
     margin-left: 10px;
+    padding:10px;
     font-size: 20px;
     font-family: gs-Medium;
 }
@@ -169,7 +175,16 @@ content{
     text-decoration: none;
     color: #5e5e5e;
     font-family: gs-Medium;
+    font-size: 18px;
 }
 .comment-link>a:hover{
     color: #1abc9c;
+}
+/* 수정시 나오는 textarea */
+.comment-modify{
+	width: 596px;
+    min-height: 107px;
+    resize: none;
+    border: none;
+    font-size: 20px;
 }

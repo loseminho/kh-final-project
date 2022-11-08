@@ -26,11 +26,18 @@
 					</div>
 				</ul>
 				<ul>
-					<div>
+					<div class="managerMenu">
 						<li><a href= "/faqQnaBoardFrm.do">고객서비스</a></li>
+						<li><a href="#">공지사항</a></li>
+						<li><a href="/faqQnaBoardFrm.do">FAQ/문의하기</a></li>
 					</div>
 				</ul>
 				<c:if test="${not empty sessionScope.m }">
+				<ul>
+					<div>
+						<li><a href= "/myWalkMate.do">내 산책 메이트</a></li>
+					</div>
+				</ul>
 				<ul>
 					<div>
 						<li><a href= "/myPage.do">마이페이지</a></li>
@@ -57,9 +64,23 @@
 			</div>
 		</div>
 	</div>
+	<div class="chat-icon">
+		<img src="/resources/img/favicon.ico">
+	</div>
+	<div class>
+	
+	</div>
 </header>
 
 <script>
+$(".managerMenu").on("mouseover",function(){
+	$(".managerMenu").children().css("display","block");
+});
+$(".managerMenu").on("mouseout",function(){
+	const subMenu = $(".managerMenu").children();
+	subMenu.not(subMenu.eq(0)).css("display","none");
+});
+
 function logout() {
 	Swal.fire({
         title: '로그아웃',

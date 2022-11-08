@@ -12,6 +12,7 @@
 		qna_cate_no as qnaCateNo,
 		qna_status as qnaStatus
 	from qna_tbl
+	order by qnaNo desc
 </select>
 <insert id="insertQnaBoard" parameterType="q">
 	insert into qna_tbl values
@@ -56,11 +57,76 @@
 </delete>
 <insert id="insertQnaComment" parameterType="qc">
 	insert into qna_comment values(
-		qna_comment_seq.nextval,#{qCommentWriter},#{qnaNo},#{qCommentContent},to_char(sysdate,'yyyy-mm-dd hh24:mi'),null
+		qna_comment_seq.nextval,#{qcommentWriter},#{qnaNo},#{qcommentContent},to_char(sysdate,'yyyy-mm-dd hh24:mi'),null
 	)
 </insert>
 <select id="commentListView" parameterType="_int" resultType="qc">
-	select * from qna_comment
+	select 
+	qcomment_no as qcommentNo,
+	qcomment_writer as qcommentWriter,
+	qna_no as qnaNo,
+	qcomment_content as qcommentContent,
+	qcomment_time as qcommentTime,
+	qcomment_ref as qcommentRef
+	from qna_comment
 	where qna_no = #{_parameter}
+	order by qcommentNo asc
+</select>
+<update id="updateQnaBoard" parameterType="q">
+	update qna_tbl set 
+	qna_title = #{qnaTitle},
+	qna_content = #{qnaContent},
+	qna_cate_no = #{qnaCateNo},
+	qna_secret = #{qnaSecret},
+	qna_date = to_char(sysdate,'yyyy-mm-dd')
+	where qna_no = #{qnaNo}
+</update>
+<update id="updateQnaFile" parameterType="qf">
+	update qna_file_tbl set
+	filename = #{filename},
+	filepath = #{filepath}
+ 	where qna_no = #{qnaNo}
+</update>
+<delete id="deleteQnaComment" parameterType="qc">
+	delete from qna_comment where qcomment_no = #{qcommentNo}
+</delete>
+<update id="updateQnaComment" parameterType="qc">
+	update qna_comment set
+	qcomment_content = #{qcommentContent},
+	qcomment_time = to_char(sysdate,'yyyy-mm-dd hh24:mi')
+	where qcomment_no = #{qcommentNo}
+</update>
+<delete id="deleteFile" parameterType="_int">
+	delete from qna_file_tbl where file_no =#{_parameter}
+</delete>
+<!--  조회수  -->
+<update id="updateHit" parameterType="_int">
+ 	update qna_tbl set
+ 	qna_views = qna_views + 1
+ 	where qna_no = #{_parameter}
+</update>
+<!-- 검색창  -->
+<select id="searchQnaBoard" parameterType="q" resultType="q">
+	select
+	qna_no as qnaNo,
+		substr(replace(qna_writer,substr(qna_writer,2,2),'**'),1,instr(qna_writer,'@',1,1)-1)as qnaWriter,
+		qna_title as qnaTitle,
+		qna_content as qnaContent,
+		qna_views as qnaViews,
+		qna_date as qnaDate,
+		qna_cate_no as qnaCateNo,
+		qna_status as qnaStatus
+	from qna_tbl
+	<choose>
+		<when test="searchType.equals('writer')">
+			where qna_writer like '%'||#{keyword}||'%'
+		</when>
+		<when test="searchType.equals('title')">
+			where qna_title like '%'||#{keyword}||'%'
+		</when>
+		<when test="searchType.equals('content')">
+		where qna_content like '%'||#{keyword}||'%'
+		</when>
+	</choose>
 </select>
 </mapper>

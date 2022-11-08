@@ -163,7 +163,35 @@ content{
     font-family: gs-Medium;
     font-size: 16px;
 }
-
+/* 검색창 */
+.search-box{
+    float: right;
+    margin-bottom : 8px;
+}
+.search-qna-form{
+    border: 1px solid #1e1e1e;
+    border-radius: 3px;
+    height: 32px;
+   	width : 110px;
+   	font-size: 18px;
+}
+.search-input{
+    border: 1px solid #1e1e1e;
+    border-radius: 3px;
+    height: 30px;
+    width: 180px;
+    font-size: 18px;
+}
+.search-btn{
+	border-radius: 3px;
+    border: 1px solid #1abc9c;
+    background-color: #1abc9c;
+    height: 40px;
+    width: 80px;
+    font-size: 18px;
+    color: #fff;
+    font-family: gs-medium;
+}
 /* 문의게시판 start */
 
 .qna-content{
@@ -248,27 +276,3 @@ content{
 .qna-table th,td:first-child{
 	width: 7%;
 }
-/*
-.qna-table tr th:last-child{
-	width: 80px;
-}
-.qna-table tr th:nth-child(3){
-	width: 40%;
-}
-.qna-table tr th:nth-child(3){
-	width: 40%;
-}
-.qna-table tr:first-child{
-	display:flex;
-}
-.qna-table tr th:last-child{
-	width: 10%;
-}
-.qna-table tr th:nth-child(2){
-	width: 10%;
-}
-.qna-table tr th:nth-child(3){
-	width: 40%;
-}
-
-*/

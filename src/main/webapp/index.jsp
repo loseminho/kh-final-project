@@ -9,7 +9,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <link rel="stylesheet" href="/resources/css/main.css">
 <link rel="styleSheet" href="/resources/css/gmarket.css">
-<script src="/resources/js/main.js"></script>
 <script src="https://kit.fontawesome.com/7b7a761eb5.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <link rel="icon" href="/resources/img/favicon.ico" type="image/x-icon" sizes="16x16">
@@ -36,11 +35,19 @@
 						</div>
 					</ul>
 					<ul>
-						<div>
-							<li><a href= "/faqQnaBoardFrm.do ">고객서비스</a></li>
-						</div>
+					<div class="managerMenu">
+						<li><a href= "/faqQnaBoardFrm.do" style="width:120px;">고객서비스</a></li>
+						<li><a href="#" style="width:150px !important">공지사항</a></li>
+						<li><a href="#" style="width:150px">FAQ/문의하기</a></li>
+					</div>
 					</ul>
 					<c:if test="${not empty sessionScope.m }">
+					<ul>
+					<div>
+						<!-- 링크 연결하기 -->
+						<li><a href= "/myWalkMate.do">내 산책 메이트</a></li>
+					</div>
+					</ul>
 					<ul>
 						<div>
 							<li><a href= "/myPage.do">마이페이지</a></li>
@@ -69,7 +76,6 @@
 		</div>
 	</header>
 	
-	
 	<div class="section" id="section1">
 		<div class="mainTitle">
 			<a href="/joinChatting.do">산책 메이트를 만들고 싶어?</a>
@@ -78,14 +84,11 @@
 	<div class="section" id="section2">
 		<div class="section2Content">
 			<div>
-				<ul>
-					<li class="mbtiTitle">반려견 성격 유형 테스트</li>
-					<li>1 </li>
-					<li>1</li>
-					<li>2</li>
-					<li>3</li>
-					<li>4</li>
-				</ul>
+				<h1 class="mbtiTitle" style="font-size:40px; color: #DE4B3F; padding-top:20px;">반려견 메이트 찾기</h1>
+				<p class="mbtiTitle">내 강아지는 어떤 성격일까?</p>
+				<p class="mbtiTitle">어떤 유형의 강아지와<br>
+				좋은 친구가 될 수 있을까?</p>
+				<a href="/mbtiMateMain.do" id="mbtiBtn">테스트 하러가기</a>
 			</div>
 		</div>
 	</div>
@@ -104,6 +107,16 @@
 		</div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	</div>
+<script>
+$(".managerMenu").on("mouseover",function(){
+	$(".managerMenu").children().css("display","block");
+});
+$(".managerMenu").on("mouseout",function(){
+	const subMenu = $(".managerMenu").children();
+	subMenu.not(subMenu.eq(0)).css("display","none");
+});
+</script>
 
+<script src="/resources/js/main.js"></script>
 </body>
 </html>

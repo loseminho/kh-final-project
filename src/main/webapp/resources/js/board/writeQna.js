@@ -47,6 +47,7 @@ fileZone.on("drop",function(e){
             $(this).append(fileNameDiv);
         }
         fileSetting();
+        $(".material-symbols-outlined").hide();
     });
 function deleteFile(obj){
     const deleteFilename = $(obj).prev().text();
@@ -61,6 +62,7 @@ function deleteFile(obj){
     if(files.length == 0){
         $(".fileMsg").show();
         fileZone.css("border","1px solid #5e5e5e");
+    	$(".material-symbols-outlined").show();
     }
     $(obj).parent().remove();
     fileSetting();
@@ -76,6 +78,18 @@ function fileSetting(){
     $("input[name=boardFile]").prop("files",dataTransfer.files);
 }
 
+//글 등록전 함수호출, 문의유형 선택 
+function checkSelect(){
+	const check = $("#qnaCateNo").val();
+	if(check == 0){
+		alert("문의 유형을 선택하세요");
+		return false;
+	}
+}
+
+
+//취소 버튼 클릭시 
 $(".back-btn").on("click",function(){
     location.href="/faqQnaBoardFrm.do"
 });
+

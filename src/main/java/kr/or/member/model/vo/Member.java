@@ -1,5 +1,8 @@
 package kr.or.member.model.vo;
 
+import java.util.ArrayList;
+
+import kr.or.dog.model.vo.Dog;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,4 +22,5 @@ public class Member {
 	private String enrollDate;
 	private String memberLevel;
 	private String joinType;
+	private ArrayList<Dog> dogList;
 }
