@@ -30,7 +30,13 @@ public class AllMemberChat extends TextWebSocketHandler {
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		System.out.println("웹소켓연결완료");
-		sessionList.add(session);
+		for(WebSocketSession s : sessionList) {
+			if(s == session) {
+				sessionList.add(session);
+			}else {
+				
+			}
+		}
 	}
 	
 	@Override
@@ -40,7 +46,6 @@ public class AllMemberChat extends TextWebSocketHandler {
 		String type = element.getAsJsonObject().get("type").getAsString();
 		String memberId = element.getAsJsonObject().get("memberId").getAsString();
 		String boardNo = element.getAsJsonObject().get("boardNo").getAsString();
-
 		if (type.equals("enter")) {
 			ArrayList<WebSocketSession> list = new ArrayList<WebSocketSession>();
 			
@@ -50,6 +55,8 @@ public class AllMemberChat extends TextWebSocketHandler {
 			}else {
 				memberList.get(boardNo).add(session);
 			}
+			System.out.println(memberList.get(boardNo));
+			System.out.println(memberList);
 			
 			for (WebSocketSession s : memberList.get(boardNo)) {
 				String sendMsg = "<p>" + memberId + "님이 입장하셨습니다.</p>";
