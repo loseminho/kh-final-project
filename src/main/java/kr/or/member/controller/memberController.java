@@ -463,14 +463,6 @@ public class memberController {
 		}
 	}
 	
-	@RequestMapping(value="/showProfile.do")
-	public String showProfile(String memberId, Model model) {
-		Member m = service.selectOneMember2(memberId);
-		model.addAttribute("m", m);
-		
-		return "member/profile";
-	}
-	
 	@RequestMapping(value="/deleteMember.do")
 	public String deleteMember(String memberId, Model model) {
 		int result = service.deleteMember(memberId);
@@ -509,6 +501,17 @@ public class memberController {
 		} else {
 			return "null";
 		}
+	}
+	
+	/*****************************************************/
+	
+	// 프로필 보기
+	@RequestMapping(value="/selectOneProfile.do")
+	public String selectOneProfile(int memberNo, Model model) {
+		Member other = service.selectOneProfile(10);
+		
+		model.addAttribute("other", other);
+		return "member/profile";
 	}
 	
 	// 신고하기
