@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.or.member.model.vo.Member;
 import kr.or.member.model.vo.MyCalendar;
+import kr.or.member.model.vo.Report;
 import kr.or.walk.model.vo.Walk;
 
 @Repository
@@ -30,6 +31,10 @@ public class MemberDao {
 
 	public Member selectOneMember(Member member) {
 		return sqlSession.selectOne("member.selectOneMember", member);
+	}
+	
+	public Member selectOneMember2(String memberId) {
+		return sqlSession.selectOne("member.selectOneMember2", memberId);
 	}
 
 	public Member findId(Member member) {
@@ -61,8 +66,8 @@ public class MemberDao {
 		return (ArrayList<MyCalendar>) list;
 	}
 
-	public ArrayList<Walk> selectAllMateList() {
-		List list = sqlSession.selectList("walkmate.allWalkList");
-		return (ArrayList<Walk>)list;
+	public ArrayList<Report> selectMyReportList(int memberNo) {
+		List list = sqlSession.selectList("report.selectMyReportList", memberNo);
+		return (ArrayList<Report>) list;
 	}
 }

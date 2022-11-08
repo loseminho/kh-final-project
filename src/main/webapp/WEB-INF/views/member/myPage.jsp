@@ -20,7 +20,7 @@
 	                <li>
 	                    <a href="#">신고</a>
 	                    <ul class="sub-menu">
-	                        <li class="section"><a href="#">- 신고 내역</a></li>
+	                        <li class="section" id="report-list"><a href="#">- 신고 내역</a></li>
 	                        <li class="section"><a href="#">- 제재 내역</a></li>
 	                    </ul>
 	                </li>
@@ -83,5 +83,22 @@
 		
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	<script src="/resources/js/member/myPage.js"></script>
+	<script>
+		const memberNo = ${sessionScope.m.memberNo };
+		
+		// 신고 내역 불러오기
+		$("#report-list").on("click", function(){
+			$.ajax({
+				url: "/selectMyReportList.do",
+				data : { memberNo : memberNo }, 
+				dataType:"json",
+				success: function(list){
+					if(list.length == 0){
+						console.log("empty");
+					}
+				}
+			});
+		});
+	</script>
 </body>
 </html>

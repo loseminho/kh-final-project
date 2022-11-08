@@ -25,9 +25,7 @@ public class BoardService {
 
 	//문의게시판 insert(file,qna)
 	public int insertQnaBoard(QnaBoard q) {
-		System.out.println("dao 전 :" +q.getQnaNo());
 		int result = dao.insertQnaBoard(q);
-		System.out.println("dao 전 :" +q.getQnaNo());
 		if(result>0) {
 			//insert 된 qnaboard no 조회 
 			int qnaNo = dao.selectQnaBoardNo();

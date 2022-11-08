@@ -52,7 +52,7 @@
 		           						<h3>반려견을 선택해주세요.</h3><br><br>
 		           						<c:forEach items="${sessionScope.m.dogList }" var="myDog">
 		           							<div class="box">
-										        <a onclick="mbtiStart('${myDog.dogName}');">
+										        <a onclick="mbtiStart('${myDog.dogNo}', '${myDog.dogName}');">
 										            <div class="photo">
 											            <c:choose>
 											            	<c:when test="${myDog.dogPhoto eq null}">
@@ -74,7 +74,7 @@
 									</c:otherwise>
 								</c:choose>
            					</div>
-           					<div id="mbti-box" style="display:none;">
+           					<div class="mbti-box" style="display:none;">
            						<h3 id="mbti-title">Q1</h3>
            						<p id="mbti-count">1 / 12</p>
            						<div id="mbti-img">
@@ -90,7 +90,7 @@
            							어우 야;; 정신없어;;;
            						</button>
            					</div>
-           					<div id="mbti-box">
+           					<div class="mbti-box" style="display:none;">
            						<h3 id="mbti-title">Q2</h3>
            						<p id="mbti-count">2 / 12</p>
            						<div id="mbti-img">
@@ -109,7 +109,7 @@
            							마이웨이
            						</button>
            					</div>
-           					<div id="mbti-box">
+           					<div class="mbti-box" style="display:none;">
            						<h3 id="mbti-title">Q3</h3>
            						<p id="mbti-count">3 / 12</p>
            						<div id="mbti-img">
@@ -128,7 +128,7 @@
            							쭈뼛쭈뼛 주변을 살피는 아싸
            						</button>
            					</div>
-           					<div id="mbti-box">
+           					<div class="mbti-box" style="display:none;">
            						<h3 id="mbti-title">Q4</h3>
            						<p id="mbti-count">4 / 12</p>
            						<div id="mbti-img">
@@ -147,7 +147,7 @@
            							아무것도 모른다는 듯 순진한 얼굴로 뛰어온다.
            						</button>
            					</div>
-           					<div id="mbti-box">
+           					<div class="mbti-box" style="display:none;">
            						<h3 id="mbti-title">Q5</h3>
            						<p id="mbti-count">5 / 12</p>
            						<div id="mbti-img">
@@ -164,7 +164,7 @@
            							NO~
            						</button>
            					</div>
-           					<div id="mbti-box">
+           					<div class="mbti-box" style="display:none;">
            						<h3 id="mbti-title">Q6</h3>
            						<p id="mbti-count">6 / 12</p>
            						<div id="mbti-img">
@@ -184,7 +184,7 @@
            							달려 나가서 탐색하기 바쁘다. <span class="mbti-dogname"></span>, 목줄 좀 그만 잡아당겨!
            						</button>
            					</div>
-           					<div id="mbti-box">
+           					<div class="mbti-box" style="display:none;">
            						<h3 id="mbti-title">Q7</h3>
            						<p id="mbti-count">7 / 12</p>
            						<div id="mbti-img">
@@ -202,7 +202,7 @@
            							왈왈왈왈와로아로 왈와라랄ㄹ!!
            						</button>
            					</div>
-           					<div id="mbti-box">
+           					<div class="mbti-box" style="display:none;">
            						<h3 id="mbti-title">Q8</h3>
            						<p id="mbti-count">8 / 12</p>
            						<div id="mbti-img">
@@ -221,7 +221,7 @@
            							집사들이여 간식을 바쳐라!
            						</button>
            					</div>
-           					<div id="mbti-box">
+           					<div class="mbti-box" style="display:none;">
            						<h3 id="mbti-title">Q9</h3>
            						<p id="mbti-count">9 / 12</p>
            						<div id="mbti-img">
@@ -238,7 +238,7 @@
            							눈을 빛내며 벌떡 일어나 공을 쫓는다.
            						</button>
            					</div>
-           					<div id="mbti-box">
+           					<div class="mbti-box" style="display:none;">
            						<h3 id="mbti-title">Q10</h3>
            						<p id="mbti-count">10 / 12</p>
            						<div id="mbti-img">
@@ -255,7 +255,7 @@
            							인간아 일어나라. 간식을 내놔라.
            						</button>
            					</div>
-           					<div id="mbti-box">
+           					<div class="mbti-box" style="display:none;">
            						<h3 id="mbti-title">Q11</h3>
            						<p id="mbti-count">11 / 12</p>
            						<div id="mbti-img">
@@ -273,7 +273,7 @@
            							<span class="mbti-dogname"></span>가 무서워해요! 손 내밀지 말아주세요~
            						</button>
            					</div>
-           					<div id="mbti-box">
+           					<div class="mbti-box" style="display:none;">
            						<h3 id="mbti-title">Q12</h3>
            						<p id="mbti-count">12 / 12</p>
            						<div id="mbti-img">
@@ -291,6 +291,102 @@
            							훈련이고 뭐고, 간식만 보이는 <span class="mbti-dogname"></span>!
            						</button>
            					</div>
+           					
+           						
+          					<div id="mbti-result" style="display:none;">
+          						<input type="hidden" name="memberNo" value="${sessionScope.m.memberNo }">
+          						<input type="hidden" name="dogNo" value="">
+                                <div class="mbti-result-box">
+                                    <h3>우리 강아지는</h3>
+           						    <h2 class="mbti-result-ment">'나만의 예술을 할 거야...'</h2>
+           						    <h2 class="mbti-result-title">미대 지망생 타입</h2>
+                                </div>
+                                <div class="mbti-result-box">
+                                    <div class="mbti-result-img">
+                                        <img src="/resources/img/mbti/7.png">
+                                    </div>
+                                </div>
+                                <div class="mbti-result-box">
+                                    <p><i class="fa-solid fa-check"></i> 공상에 빠져있는 몽상가. 교실 한 구석에서 자신만의 작품 구상 중</p>
+                                    <p><i class="fa-solid fa-check"></i> 소리 없이 등장하고, 말 시키면 3초 늦게 속삭이듯이 대답함</p>
+                                    <p><i class="fa-solid fa-check"></i> 차분한 반항아. 얌전하고 조용한데 잘 보면 교복, 머리, 숙제 뭐 하나 규정에 맞는 게 없음</p>
+                                    <p><i class="fa-solid fa-check"></i> 학교에 다녔다면 남들과는 다른 길을 갔을 <span class="mbti-dogname"></span>, 평소에도 별난 강아지가 아닌가요? 차분한 성격이지만 가족들은 모르는 자신만의 세계에 빠져있습니다. 훈련을 시키다 현타가 온 경험이 있다고요? 뭐든지 한 발씩 늦고, 익숙한 곳이 아니면 움츠러드는 소극적인 강아지 <span class="mbti-dogname"></span>. 아직 <span class="mbti-dogname"></span>에게는 세상이 무섭고 이해할 수 없는 것이 많은 곳이에요. 참을성과 자비로움을 갖고 <span></span>의 세상 적응기를 도와줄 가이드, 바로 당신이 필요하답니다.</p>
+                                </div>
+                            </div>
+	                            
+                            <div id="mbti-matching" style="display:none;">
+                                <h3>영혼의 단짝🍀 : <span>어느 날 사라지는 자퇴생</span> 타입</h3>
+                                <div class="mbti-matching-box">
+                                    <div class="box">
+                                        <a onclick="">
+                                            <div class="photo">
+                                                <img src="/resources/img/default_dog.png">
+                                            </div>
+                                            <h3>봉구</h3>
+                                        </a>
+                                    </div>
+                                    <div class="box">
+                                        <a onclick="">
+                                            <div class="photo">
+                                                <img src="/resources/img/default_dog.png">
+                                            </div>
+                                            <h3>봉구</h3>
+                                        </a>
+                                    </div>
+                                    <div class="box">
+                                        <a onclick="">
+                                            <div class="photo">
+                                                <img src="/resources/img/default_dog.png">
+                                            </div>
+                                            <h3>봉구</h3>
+                                        </a>
+                                    </div>
+                                    <div class="box">
+                                        <a onclick="">
+                                            <div class="photo">
+                                                <img src="/resources/img/default_dog.png">
+                                            </div>
+                                            <h3>봉구</h3>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <h3>영혼의 파트너💖 : <span>선생님들의 원픽, 사기캐 반장</span> 타입</h3>
+                                <div class="mbti-matching-box">
+                                    <div class="box">
+                                        <a onclick="">
+                                            <div class="photo">
+                                                <img src="/resources/img/default_dog.png">
+                                            </div>
+                                            <h3>봉구</h3>
+                                        </a>
+                                    </div>
+                                    <div class="box">
+                                        <a onclick="">
+                                            <div class="photo">
+                                                <img src="/resources/img/default_dog.png">
+                                            </div>
+                                            <h3>봉구</h3>
+                                        </a>
+                                    </div>
+                                    <div class="box">
+                                        <a onclick="">
+                                            <div class="photo">
+                                                <img src="/resources/img/default_dog.png">
+                                            </div>
+                                            <h3>봉구</h3>
+                                        </a>
+                                    </div>
+                                    <div class="box">
+                                        <a onclick="">
+                                            <div class="photo">
+                                                <img src="/resources/img/default_dog.png">
+                                            </div>
+                                            <h3>봉구</h3>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
             			</c:otherwise>
             		</c:choose>
             	</div>
