@@ -28,7 +28,7 @@
 				<ul>
 					<div class="managerMenu">
 						<li><a href= "/faqQnaBoardFrm.do">고객서비스</a></li>
-						<li><a href="#">공지사항</a></li>
+						<li><a href="/notice.do?reqPage=1">공지사항</a></li>
 						<li><a href="/faqQnaBoardFrm.do">FAQ/문의하기</a></li>
 					</div>
 				</ul>
