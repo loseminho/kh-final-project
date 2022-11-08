@@ -113,7 +113,8 @@
 	function initChat(param){
 		boardNo = $("[name=boardNo]").val();
 		boardTitle = $("[name=boardTitle]").val();
-		console.log(boardTitle);
+		console.log("boardTitle"+boardTitle);
+		console.log("boardNo"+boardNo);
 		memberId = param;
 		ws = new WebSocket("ws://192.168.0.14/chat.do");
 		ws.onopen = startChat;

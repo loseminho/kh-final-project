@@ -234,3 +234,175 @@ footer > .footer-content {
 	box-shadow:none;
 }
 
+.chat-on-off{
+	display:block;
+}
+
+
+#chat-board{
+	box-shadow: 1px 3px 0 0 rgba( 31, 38, 135, 0.37 );
+	border:1px solid #ccc;
+	border-radius:10px;
+	width:300px;
+	height:400px;
+	background-color: #fff;
+	position: fixed;
+	top:140px;
+	left:70px;
+	z-index:99999999999999999999999;
+}
+
+.back-btn{
+	font-family:gs-Medium;
+	text-align: right;
+	padding-right:10px;
+	font-size: 13px;
+	cursor:pointer;
+}
+.chat-content{
+	display:flex;
+	flex-direction: column;
+	padding-top:20px;
+	margin:0 auto;
+	width:95%;
+	height:250px;
+	background-color: #DDD7CB;
+	overflow:scroll;
+    overflow-style: none;
+	overflow-x: hidden;
+}
+
+.chat-content::-webkit-scrollbar{
+	width:5px;
+}
+.chat-content::-webkit-scrollbar-thumb{
+	background: #5e5e5e;
+	height:10%;
+}
+
+.chat-title{
+	font-family:gs-Medium;
+	height:30px;
+	padding-top:10px;
+	text-align:center;
+	cursor: move;
+}
+.chat-title span{
+	font-family:gs-Medium;
+	color:blue;
+
+}
+.chat-name{
+	height:30px;
+	text-align:center;	
+}
+.chat-input{
+	margin:0 auto;
+	padding-top:10px;
+	display:flex;
+	align-content:center;
+	width:95%;
+}
+
+.chat-input input{
+	box-sizing:border-box;
+	height:30px;
+	width:80%;
+	border:1px solid #ccc;
+	border-bottom-left-radius: 5px;
+	border-top-left-radius: 5px;
+}
+#chat-send-btn{
+	font-family:gs-Medium;
+	display:inline-block;
+	background-color:#DDD7CB;
+	width:60px;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+	cursor: pointer;
+	font-size:13px;
+}
+
+.chat-list{
+	width:95%;
+	height:80%;
+	display:flex;
+	flex-direction:column;
+	justify-content: flex-start;
+	align-items: center;
+}
+.chat-list li{
+	text-align:center;
+	line-height:30px;
+	height:30px;
+	width:100%;
+	cursor:pointer;
+}
+.chat-list li:hover{
+	background-color: #DDD7CB;
+	border:1px solid #ccc;
+	box-shadow: 0 1px 3px 0 rgba( 31, 38, 135, 0.1 );	
+}
+
+
+/*채팅 화면*/
+.chat {
+	margin-bottom: 10px;
+	padding: 8px;
+	border-radius: 3px;
+}
+
+.left {
+	font-family:gs-Light;
+	font-size:13px;
+	position: relative;
+	max-width: 300px;
+	align-self: flex-start;
+	background-color: #fff;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	margin-left: 16px;
+	padding: 8px;
+}
+
+.left:after {
+	content: '';
+	position: absolute;
+	border-style: solid;
+	border-width: 3px 10px 8px 0;
+	border-color: transparent #fff; display : block;
+	width: 0;
+	z-index: 1;
+	left: -10px;
+	top: 12px;
+	display: block;
+}
+.right:after {
+	content: '';
+	position: absolute;
+	border-style: solid;
+	border-width: 8px 0 4px 10px;
+	border-color: transparent #ffeb33; 
+	display : block;
+	width: 0;
+	z-index: 1;
+	right: -10px;
+	top: 12px;
+	display: block;
+}
+
+.right {
+	font-family:gs-Light;
+	font-size:13px;
+	position: relative;
+	max-width: 300px;
+	align-self: flex-end;
+	background-color: #ffeb33;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	margin-right: 16px;
+	padding: 8px;
+}

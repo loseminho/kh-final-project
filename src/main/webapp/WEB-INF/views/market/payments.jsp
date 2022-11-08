@@ -14,6 +14,7 @@
       <button id="payment-button">15,000원 결제하기</button>
     </section>
     <script>
+    /*
       var clientKey = 'test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq'
       var tossPayments = TossPayments(clientKey)
       var button = document.getElementById('payment-button') // 결제하기 버튼
@@ -27,6 +28,7 @@
           failUrl: 'http://localhost:8080/fail',
         })
       })
+      */
     </script>
 </body>
 </html>

@@ -29,6 +29,7 @@ public class AllMemberChat extends TextWebSocketHandler {
 
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
+		System.out.println("웹소켓연결완료");
 		sessionList.add(session);
 	}
 	

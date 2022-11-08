@@ -111,7 +111,8 @@ from market_tbl mt join dog_type dt on(mt.type_code=dt.type_code) left join memb
 			gender=#{gender},
 			age=#{age},
 			price=#{price},
-			type_code = #{typeCode}
+			type_code = #{typeCode},
+			sale_info = #{saleInfo}
 		where market_no = #{marketNo}		 
 	</update>
 	

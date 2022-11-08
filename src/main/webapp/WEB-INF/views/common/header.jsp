@@ -6,6 +6,9 @@
 	<link rel="stylesheet" href="/resources/css/gmarket.css">
 	<script src="https://kit.fontawesome.com/7b7a761eb5.js" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+	
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+ 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <header>
 	<div class="header-wrap">
 		<div class="header">
@@ -67,34 +70,28 @@
 	<div class="chat-icon">
 		<img src="/resources/img/favicon.ico">
 	</div>
-	<div class>
-	
+	<div id="chat-board">
+		<div class="chat-title">안녕하세요<span>"${sessionScope.m.memberNickname }"</span>님!</div>
+		<div class="chat-name">00방입니다</div>
+		<div class="chat-list">
+			<li onclick="initChat('${sessionScope.m.memberId}');">
+				<input type="hidden" name="boardNo" value=1>
+				<input type="hidden" name="boardTitle" value="">
+				<span>뭐뭐뭐</span>
+			</li>
+			<li>뭐뭐뭐</li>
+			<li>뭐뭐뭐</li>
+			<li>뭐뭐뭐</li>
+			<li>뭐뭐뭐</li>
+		</div>
+		<div class="chat-form" style="display:none;">
+			<div class="back-btn">뒤로가기</div>
+			<div class="chat-content">
+			<div class="chat left">안녕하세요</div>
+			<div class="chat right"><span>네 안녕하세요</span></div>
+			</div>
+			<div class="chat-input"><input type="text" id="send-msg"><span id="chat-send-btn">보내기</span></div>
+		</div>
 	</div>
 </header>
-
-<script>
-$(".managerMenu").on("mouseover",function(){
-	$(".managerMenu").children().css("display","block");
-});
-$(".managerMenu").on("mouseout",function(){
-	const subMenu = $(".managerMenu").children();
-	subMenu.not(subMenu.eq(0)).css("display","none");
-});
-
-function logout() {
-	Swal.fire({
-        title: '로그아웃',
-        text: "로그아웃하시겠습니까?",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#ccc',
-        confirmButtonText: '로그아웃',
-        cancelButtonText: '취소'
-    }).then((result) => {
-        if (result.isConfirmed) {
-			location.href="/logout.do";
-        }
-    })
-}
-</script>
+<script src="/resources/js/header.js"></script>
