@@ -12,5 +12,7 @@ public class MbtiResult {
 	private String mbtiResult;
 	private String friendType;
 	private String partnerType;
-	
+	private String answers;
+	private int memberNo;
+	private int dogNo;
 }

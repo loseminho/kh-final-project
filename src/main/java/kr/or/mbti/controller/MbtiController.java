@@ -31,6 +31,7 @@ import com.google.gson.Gson;
 
 import kr.or.mbti.model.service.MbtiService;
 import kr.or.mbti.model.vo.MbtiData;
+import kr.or.mbti.model.vo.MbtiResult;
 
 @Controller
 public class MbtiController {
@@ -176,10 +177,8 @@ public class MbtiController {
 	
 	@ResponseBody
 	@RequestMapping(value="/mbtiResult.do", produces="application/json;charset=utf-8")
-	public String selectMbtiResult(String answers, int memberNo, int dogNo) {
-		System.out.println(answers);
-		System.out.println(memberNo);
-		System.out.println(dogNo);
-		return new Gson().toJson("return");
+	public String selectMbtiResult(MbtiResult mr) {
+		MbtiResult result = service.selectMbtiResult(mr);
+		return new Gson().toJson(result);
 	}
 }
