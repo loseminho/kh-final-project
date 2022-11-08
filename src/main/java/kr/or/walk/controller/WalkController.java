@@ -39,21 +39,4 @@ public class WalkController {
 		return new Gson().toJson(w);
 	}
 	// 게시물 선택화면 - 
-	
-	@RequestMapping(value="/walkMetePage.do")
-	public String walkMetePage(int wmNo, int index, Model model) {	
-		model.addAttribute("index", index);
-		return "walkmate/walkMetePage";
-	}
-	public String walkMetePage(int wmNo, int reviewNo, int index, Model model) {	
-		// 해당 후기 가져오기
-		
-		model.addAttribute("index", index);
-		return "walkmate/walkMetePage";
-	}
-	
-	@RequestMapping(value="/myWalkMate.do")
-	public String mateList() {
-		return "walkmate/myWalkMate";
-	}
 }

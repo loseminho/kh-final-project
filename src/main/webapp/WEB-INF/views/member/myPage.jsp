@@ -6,8 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>마이페이지</title>
-<link rel="stylesheet" href="/resources/css/member/myPage.css">
-<link rel="icon" href="/resources/img/favicon.ico" type="image/x-icon" sizes="16x16">
+	<link rel="stylesheet" href="/resources/css/member/myPage.css">
+	<link rel="stylesheet" href="/resources/css/member/myReport.css">
+	
+	<link rel="icon" href="/resources/img/favicon.ico" type="image/x-icon" sizes="16x16">
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
@@ -82,23 +84,11 @@
 		</div>
 		
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
-	<script src="/resources/js/member/myPage.js"></script>
+	
 	<script>
 		const memberNo = ${sessionScope.m.memberNo };
-		
-		// 신고 내역 불러오기
-		$("#report-list").on("click", function(){
-			$.ajax({
-				url: "/selectMyReportList.do",
-				data : { memberNo : memberNo }, 
-				dataType:"json",
-				success: function(list){
-					if(list.length == 0){
-						console.log("empty");
-					}
-				}
-			});
-		});
 	</script>
+	<script src="/resources/js/member/myPage.js"></script>
+	<script src="/resources/js/member/myReport.js"></script>
 </body>
 </html>

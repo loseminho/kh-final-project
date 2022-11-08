@@ -44,7 +44,6 @@
 					<c:if test="${not empty sessionScope.m }">
 					<ul>
 					<div>
-						<!-- 링크 연결하기 -->
 						<li><a href= "/myWalkMate.do">내 산책 메이트</a></li>
 					</div>
 					</ul>

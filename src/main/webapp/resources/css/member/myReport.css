@@ -1,0 +1,24 @@
+.report-view-open{
+	cursor: pointer;
+}
+
+.report-view-modal{
+	width: 0;
+	height: 0;	
+	position: fixed;
+	
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+	
+	display: flex;
+	justify-content: center;
+    padding-top: 100px;
+    
+    z-index: 9999;
+    
+    overflow: hidden;
+    
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(1.5px);
+}
