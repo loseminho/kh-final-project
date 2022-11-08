@@ -20,4 +20,8 @@ public class MbtiDao {
 	public MbtiResult selectMbtiResult(String answers) {
 		return sqlSession.selectOne("mbti.selectMbtiResult", answers);
 	}
+
+	public int updateDogMbti(MbtiResult result) {
+		return sqlSession.update("mbti.updateDogMbti", result);
+	}
 }

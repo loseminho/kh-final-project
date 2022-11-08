@@ -13,6 +13,6 @@ public class MbtiResult {
 	private String friendType;
 	private String partnerType;
 	private String answers;
-	private int memberNo;
+	private String dogName;
 	private int dogNo;
 }

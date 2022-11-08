@@ -48,7 +48,6 @@ public class DogController {
 	@RequestMapping(value="/selectMyOneDog.do", produces="application/json;charset=utf-8")
 	public String selectMyOneDog(int dogNo) {
 		Dog dog = service.SelectMyOneDog(dogNo);
-		System.out.println(dog);
 		if(dog != null) {
 			return new Gson().toJson(dog);
 		} else {

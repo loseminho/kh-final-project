@@ -15,4 +15,8 @@
 		from mbti_result_tbl r join mbti_type_tbl t on(r.mbti_result = t.mbti_type)
 		where t.mbti_answer = #{_parameter}
 	</select>
+	
+	<update id="updateDogMbti" parameterType="mr">
+		UPDATE DOG_TBL SET DOG_MBTI = #{mbtiResult} WHERE DOG_NO = #{dogNo}
+	</update>
 </mapper>

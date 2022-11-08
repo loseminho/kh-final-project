@@ -19,7 +19,12 @@ public class MbtiService {
 		return dao.insertMbtiType(md);
 	}
 
+	@Transactional
 	public MbtiResult selectMbtiResult(MbtiResult mr) {
-		return dao.selectMbtiResult(mr.getAnswers());
+		MbtiResult result = dao.selectMbtiResult(mr.getAnswers());
+		result.setDogNo(mr.getDogNo());
+		result.setDogName(mr.getDogName());
+		int updateResult = dao.updateDogMbti(result);
+		return result;
 	}
 }
