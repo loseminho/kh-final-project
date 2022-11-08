@@ -44,7 +44,7 @@
             			</c:when>
             			<c:otherwise>
            					<div id="mbtiMainPhoto">
-            					<img src="/resources/img/walktogether.png">
+            					<img src="/resources/img/mbti/background.png">
            					</div>
            					<div id="chooseDog">
            						<c:choose>
@@ -63,7 +63,19 @@
 											            	</c:otherwise>
 											            </c:choose>	
 										            </div>
-										            <h3>${myDog.dogName }</h3>
+										            <h3>
+										            	${myDog.dogName }
+										            </h3>
+									            	<span>
+									            		<c:choose>
+											            	<c:when test="${myDog.dogMbti eq null}">
+												                	(검사결과없음)
+											            	</c:when>
+											            	<c:otherwise>
+												                (${myDog.dogMbti })
+											            	</c:otherwise>
+											            </c:choose>	
+									            	</span>
 										        </a>
 										    </div>
 		           						</c:forEach>

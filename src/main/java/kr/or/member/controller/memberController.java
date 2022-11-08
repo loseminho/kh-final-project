@@ -280,7 +280,6 @@ public class memberController {
 		if(m!=null) {
 			ArrayList<Dog> dogList = dogService.selectMyDogList(m.getMemberNo());
     		m.setDogList(dogList);
-    		System.out.println(dogList);
 			session.setAttribute("m", m);
 			return "success";				
 		} else {

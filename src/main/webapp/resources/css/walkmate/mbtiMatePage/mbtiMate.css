@@ -115,7 +115,6 @@ input, select, button{
 
 #mbtiMainPhoto {
 	width:400px;
-	height:330px;
 }
 
 #mbtiMainPhoto img {
@@ -123,9 +122,13 @@ input, select, button{
 }
 
 /* 강아지 선택 */
+#chooseDog {
+	margin-top:30px;
+}
+
 #chooseDog .box {
     width: 180px;
-    height: 180px;
+    height: 190px;
     margin: 0 20px 20px 0;
     padding: 10px;
     border: 1px solid #ccc;
@@ -161,6 +164,11 @@ input, select, button{
 
 #chooseDog .box h3 {
     margin: 5px 0 0 0;
+}
+
+#chooseDog .box span {
+	font-size:14px;
+	color:red;
 }
 
 

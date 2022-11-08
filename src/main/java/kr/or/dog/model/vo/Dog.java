@@ -20,4 +20,5 @@ public class Dog {
 	private int dogAge;
 	private int dogWeight;
 	private String dogPhoto;
+	private String dogMbti;
 }
