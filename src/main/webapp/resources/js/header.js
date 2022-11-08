@@ -41,6 +41,7 @@ $(".chat-list").on("click",function(){
 $(".back-btn").on("click",function(){
 	$(".chat-list").css("display","block");
 	$(".chat-form").css("display","none");
+	ws.onclose
 });
 
 
@@ -54,14 +55,13 @@ function initChat(param){
 	console.log("boardTitle ::: "+boardTitle);
 	console.log("boardNo ::: "+boardNo);
 	memberId = param;
-	ws = new WebSocket("ws://192.168.10.33/chat.do");
+	ws = new WebSocket("ws://192.168.0.14/chat.do");
 	ws.onopen = startChat;
 	ws.onmessage = receiveMsg;
-	ws.onclose = endChat;
 	
 	let index = $(".chat-list").index(this);
-
-
+	$(".chat-name").text(boardTitle+"방입니다.");
+	
 	
 	function startChat(){
 		console.log("웹소켓 연결  완료");
