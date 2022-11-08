@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!--css-->
-<link rel="stylesheet" href="/resources/css/writeNotice.css">
+<link rel="stylesheet" href="/resources/css/board/writeNotice.css">
 <!--fonts-->
 <link rel="stylesheet" href="/resources/css/gmarket.css">
 <!--jQuery-->
@@ -18,11 +18,11 @@
 	<content>
         <div class="writeNotice-wrap">
             <div class="writeNotice-box">
-                <form action="#" method="post" enctype="multipart/form-data">
+                <form action="/writeNotice.do" method="post" enctype="multipart/form-data">
                     <div class="writeNotice-header">
                         <h1>공지사항 작성</h1>
-                        <a>공지사항</a>
-                        <a>관리자페이지</a>
+                        <a href="#">공지사항</a>
+                        <a href="#">관리자페이지</a>
                     </div>
                     <div class="writeForm-wrap">
                         <div class="writeNotice-content">
@@ -36,10 +36,11 @@
                             </div>
                             <div class="notice-input-box">
                                 <label for="noticeFile">첨부파일</label>
-                                <input type="file" name="noticeFile" multiple style="display:none;">
-                                <button type="button" name="noticeFile-btn">첨부하기</button>
+                                <input type="file" name="noticeFile" id="noticeFile" multiple style="display:none;">
+                                <input type="hidden" name="noticeWriter" id="noticeWriter" value="${sessionScope.m.memberId }">
+                                <button type="button" name="noticeFile-btn" id="noticeFile-btn">첨부하기</button>
                                 <div class="fileZone">
-                                    <span class="filename">첨부된 파일이름</span>
+                                    <span class="filename">* 파일은 1개 업로드 가능합니다 </span>
                                 </div>
                             </div>
                         </div><!--writeNotice-content 끝-->
@@ -56,5 +57,6 @@
     </content>
     <!-- footer -->
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+    <script src="/resources/js/board/writeNotice.js"></script>
 </body>
 </html>

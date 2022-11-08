@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="notice">
+<!-- 공지사항 작성  -->
+<insert id="insertNotice" parameterType="n">
+	insert into notice_tbl values(
+	seq_notice_no.nextval,#{noticeTitle},#{noticeWriter},#{noticeContent},#{noticeViews},to_char(sysdate,'yyyy-mm-dd')
+	)
+</insert>
+<!-- 공지사항 목록 조회  -->
+<select id="allnoticeList" resultType="n" parameterType="map">
+	select * from
+	(select rownum as rnum, n.*from
+	(select
+		notice_no as noticeNo,
+		notice_title as noticeTitle,
+		notice_writer as noticeWriter,
+		notice_content as noticeContent,
+		notice_views as noticeViews,
+		notice_date as noticeDate
+	from notice_tbl
+	order by 1 desc)n)
+	where rnum between #{start} and #{end}
+</select>
+<!-- 공지사항 게시판 번호  -->
+<select id="selectNoticeNo" resultType="_int">
+	select max(notice_no) from notice_tbl
+</select>
+<!-- 공지사항 파일 첨부  -->
+<select id="insertFile" parameterType="nf">
+	insert into notice_file_tbl values(
+		notice_file_seq.nextval,#{noticeNo},#{filename},#{filepath}
+	)
+</select>
+<!-- 공지사항 게시물 수  -->
+<select id="totalCount" resultType="_int">
+	select count(*) from notice_tbl
+</select>
+<!-- 공지사항 상세보기  -->
+<select id="selectOneNotice" parameterType="_int" resultType="n">
+	select
+		notice_no as noticeNo,
+		notice_title as noticeTitle,
+		notice_writer as noticeWriter,
+		notice_content as noticeContent,
+		notice_views as noticeViews,
+		notice_date as noticeDate
+	from notice_tbl
+	where notice_no = #{_parameter}
+</select>
+<!-- 공지사항 조회수  -->
+<update id="updateHit">
+	update notice_tbl set
+	notice_views = notice_views + 1
+	where notice_no = #{_parameter}
+</update>
+<!-- 공지사항 삭제  -->
+<delete id="noticeDelete" parameterType="_int">
+	delete from notice_tbl where notice_no = #{_parameter}
+</delete>
+<!-- 파일목록 불러오기  -->
+<select id="selectFileList" parameterType="_int" resultType="nf">
+	select
+		file_no as fileNo,
+		notice_no as noticeNo,
+		filename,
+		filepath
+	from notice_file_tbl where notice_no = #{_parameter}
+</select>
+</mapper>

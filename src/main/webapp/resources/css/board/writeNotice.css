@@ -3,15 +3,18 @@
 }
 content{
     width: 1200px;
+    margin: 0 auto;
+    flex-grow:1;
 }
 .writeNotice-wrap{
     margin: 0 auto;
-    margin-top: 100px;
+    margin-top: 200px;
     margin-bottom: 100px;
     padding: 0;
 }
 .writeNotice-box{
     margin: 0 auto;
+    padding: 0;
     width: 1000px;
 }
 .writeNotice-header{
