@@ -36,11 +36,10 @@
                             </div>
                             <div class="notice-input-box">
                                 <label for="noticeFile">첨부파일</label>
-                                <input type="file" name="noticeFile" id="noticeFile" multiple style="display:none;">
+                                <input type="file" name="noticeFile" id="noticeFile" multiple style="display:none;" onchange="loadfile(this);">
                                 <input type="hidden" name="noticeWriter" id="noticeWriter" value="${sessionScope.m.memberId }">
                                 <button type="button" name="noticeFile-btn" id="noticeFile-btn">첨부하기</button>
                                 <div class="fileZone">
-                                    <span class="filename">* 파일은 1개 업로드 가능합니다 </span>
                                 </div>
                             </div>
                         </div><!--writeNotice-content 끝-->

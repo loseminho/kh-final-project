@@ -12,5 +12,14 @@ public class MbtiResult {
 	private String mbtiResult;
 	private String friendType;
 	private String partnerType;
-	
+	private String answers;
+	private String dogName;
+	private int dogNo;
+	private String mbtiResultName;
+	private String mbtiTitle;
+	private String mbtiMent1;
+	private String mbtiMent2;
+	private String mbtiMent3;
+	private String mbtiMent4;
+	private String mbtiStory;
 }

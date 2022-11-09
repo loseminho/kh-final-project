@@ -20,6 +20,7 @@
 		<typeAlias type="kr.or.board.model.vo.QnaComment" alias="qc"/>
 		<typeAlias type="kr.or.dog.model.vo.Dog" alias="d"/>
 		<typeAlias type="kr.or.mbti.model.vo.MbtiData" alias="mbti"/>
+		<typeAlias type="kr.or.mbti.model.vo.MbtiResult" alias="mr"/>
 		<typeAlias type="kr.or.dm.model.vo.DirectMessage" alias="dm"/>
 		<typeAlias type="kr.or.notice.model.vo.Notice" alias="n"/>
 		<typeAlias type="kr.or.notice.model.vo.NoticeFile" alias="nf"/>

@@ -27,7 +27,7 @@
                     <div class="writeQna-content">
                         <div class="qna-input-box">
                         <label for="qnaCateNo">문의유형</label>
-                        <select name="qnaCateNo" id="qnaCateNo" class="write-qna-form" value="${qnaCateNo }">
+                        <select name="qnaCateNo" id="qnaCateNo" class="write-qna-form" value="${qb.qnaCateNo }">
                             <option value="0" selected="selected">선택해주세요</option>
                             <option value="1">산책메이트 찾기</option>
                             <option value="2">애견용품 나눔</option>

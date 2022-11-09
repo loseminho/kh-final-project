@@ -46,7 +46,7 @@ content{
 }
 .notice-table{
     margin: 0 auto;
-    width: 1000px;
+    width: 100%;
     table-layout: fixed;
     word-break: break-all;
     height:auto;
@@ -77,14 +77,31 @@ content{
 	text-align:center;
 	font-size: 18px;
 }
+.notice-table td>a{
+	text-decoration: none;
+	color : black;
+	font-family : gs-medium;
+}
 .notice-table tr th{
 	background-color: #1abc9c;
 	font-family: gs-medium;
 	color: #fff;
 }
-.qna-table th,td:first-child{
-	width: 5%;
+.notice-table th:first-child{
+	width: 25%;
 }
-.qna-table th,td:last-child{
-	width: 7%;
+.notice-table td:first-child{
+	width: 25%;
+}
+.notice-table th:last-child{
+	width: 25%;
+}
+.notice-table td:last-child{
+	width: 25%;
+}
+.notice-table th:nth-child(3){
+	width: 30%;
+}
+.notice-table td:nth-child(3){
+	width: 30%;
 }

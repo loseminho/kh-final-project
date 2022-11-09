@@ -31,12 +31,4 @@ public class WalkController {
 		ArrayList<Walk> list = service.allWalkList();
 		return new Gson().toJson(list);
 	}
-	
-	// WalkMate 모든 게시물 참여하는 유저 프로필
-	@ResponseBody
-	@RequestMapping(value="/selectContentBox.do", produces="application/json;charset=utf-8")
-	public String selectContentBox(int wmNo) {
-		Walk w = service.selectContentBox(wmNo);
-		return new Gson().toJson(w);
-	}
 }

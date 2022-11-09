@@ -17,22 +17,51 @@
 		<div class="profile-content">
 	        <!-- 사람 프로필 -->
 	        <div class="person-profile">
-	        	<div class="profile-header">
-	        		<h1>${m.memberNickname }</h1>
-	        		<p id="report-modal-open">신고</p>
-	        	</div>
-	            
-		        <div class="profile-photo-box">
-		        	<img class="profile-photo" src="/resources/img/member/사람 임시 프로필.png">
-		        </div>
-		        
-		        <div class="person-introduce">
-		           	${m.memberIntro }
-		        </div>  
+	        	<c:choose>
+	        		<c:when test="${not empty other }">
+	        			<div class="profile-header">
+			        		<h1>${other.memberNickname }</h1>
+			        		<p id="report-modal-open">신고</p>
+			        	</div>
+			            
+				        <div class="profile-photo-box">
+				        	<c:choose>
+				        		<c:when test="${not empty other.memberPhoto }">
+				        			<img class="profile-photo" src="/resources/upload/member/${other.memberPhoto }">
+				        		</c:when>
+				        		
+				        		<c:otherwise>
+				        			<img class="profile-photo" src="/resources/img/member/사람 임시 프로필.png">
+				        		</c:otherwise>
+				        	</c:choose>
+				        </div>
+
+				        <div class="person-id">
+				        	<p><b>아이디</b></p>
+				        	<p>${other.memberId }</p>
+				        </div>
+
+				        <div class="person-city">
+				        	<p><b>활동지역</b></p>
+				        	<p>${other.memberCity }</p>
+				        </div>
+				        
+				        <div class="person-intro">
+				        	<p><b>자기소개</b></p>
+				        	<div>${other.memberIntro }</div>
+				        </div> 
+	        		</c:when>
+
+	        		<c:otherwise>
+	        			<div class="profile-header">
+	        				<h1>회원 프로필을 불러 올 수 없습니다.</h1>
+	        			</div>
+	        		</c:otherwise>
+	        	</c:choose>
 	        </div>
 	        
 	        <!-- 반려견 프로필 -->
-	        <c:forEach items="${m.dogList }" var="dog">
+	        <c:forEach items="${other.dogList }" var="dog">
 		        <div class="dog-profile">
 		            <h1>${dog.dogName }</h1>
 		
@@ -42,6 +71,7 @@
 		            		<c:when test="${not empty dog.dogPhoto}">
 		            			<img class="profile-photo" src="/resources/upload/dog/${dog.dogPhoto }">
 		            		</c:when>
+		            		
 		            		<c:otherwise>
 		            			<img class="profile-photo" src="/resources/img/member/반려견 임시 프로필.png">
 		            		</c:otherwise>
@@ -85,23 +115,25 @@
 	        </c:forEach>
 	        
 	        <div class="before-link-box">
-	        	<a class="before-link" href="#">이전으로</a>
+	        	<a class="before-link" href="javascript:history.back();">이전으로</a>
 	        </div>
 		</div>
 		
 		<div class="profile-right">
 			<!-- 반려견 리스트 -->
 			<div class="dog-list">
-				<table>
-					<tr>
-						<th>반려견 선택</th>
-					</tr>
-					<c:forEach items="${m.dogList }" var="dog">
+				<c:if test="${not empty other.dogList }">
+					<table>
 						<tr>
-							<td class="dog-name"><a href="#">${dog.dogName }</a></td>
+							<th>반려견 선택</th>
 						</tr>
-					</c:forEach>
-				</table>
+						<c:forEach items="${other.dogList }" var="dog">
+							<tr>
+								<td class="dog-name"><a href="#">${dog.dogName }</a></td>
+							</tr>
+						</c:forEach>
+					</table>
+				</c:if>
 			</div>	
 		</div>
 	</div>	

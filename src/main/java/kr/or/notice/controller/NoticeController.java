@@ -32,13 +32,10 @@ public class NoticeController {
 	@RequestMapping (value="/notice.do")
 	public String notice(int reqPage ,Model model) {
 		NoticePageData npd = service.noticeList(reqPage);
-		model.addAttribute("n",npd);
-		/*
-		model.addAttribute("list",npd.getPageNavi());
-		model.addAttribute("list",npd.getReqPage());
-		model.addAttribute("list",npd.getNumPerPage());
-		*/
-		System.out.println(npd);
+		model.addAttribute("list",npd.getList());
+		model.addAttribute("pageNavi",npd.getPageNavi());
+		model.addAttribute("reqPage",npd.getReqPage());
+		model.addAttribute("numPerPage",npd.getNumPerPage());
 		return "board/notice";
 	}
 	
@@ -78,7 +75,7 @@ public class NoticeController {
 		}
 		n.setFileList(fileList);
 		int result = service.insertNotice(n);
-		return "redirect:/notice.do";
+		return "redirect:/notice.do?reqPage=1";
 	}
 	
 	//공지사항 상세보기 
@@ -102,6 +99,60 @@ public class NoticeController {
 				delFile.delete();
 			}
 		}
-		return "redirect:/notice.do";
+		return "redirect:/notice.do?reqPage=1";
+	}
+	
+	//공지사항 수정페이지 이동 
+	@RequestMapping(value="/noticeUpdateFrm.do")
+	public String noticeUpdateFrm(int noticeNo,Model model ) {
+		Notice n = service.selectOneNotice(noticeNo);
+		model.addAttribute("n",n);
+		return "board/noticeUpdate";
+	}
+	//공지사항 수정
+	@RequestMapping(value="/noticeUpdate.do")
+	public String noticeUpdate(Notice n, int[]fileNoList, String[]filepathList,MultipartFile[]noticeFile, HttpServletRequest request) {
+		System.out.println(n);
+		ArrayList<NoticeFile>fileList = new ArrayList<NoticeFile>();
+		String savepath = request.getSession().getServletContext().getRealPath("/resources/upload/notice/");
+		
+		//게시물 수정시 추가로 첨부한 파일 업로드
+		if(!noticeFile[0].isEmpty()) {
+			for(MultipartFile file: noticeFile) {
+				String filename = file.getOriginalFilename();
+				String filepath = FileRename.fileRename(savepath, filename);
+				File upFile = new File(savepath+filepath);
+				try {
+					FileOutputStream fos = new FileOutputStream(upFile);
+					BufferedOutputStream bos = new BufferedOutputStream(fos);
+					byte[] bytes = file.getBytes();
+					bos.write(bytes);
+					bos.close();
+					NoticeFile nf = new NoticeFile();
+					nf.setFilename(filename);
+					nf.setFilepath(filepath);
+					fileList.add(nf);
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}//forEach end
+		}
+		
+		n.setFileList(fileList);
+		int result = service.updateNotice(n,fileNoList);
+		if(fileNoList != null &&(result == (fileList.size()+fileNoList.length+1))) {
+			if(filepathList != null) {
+				for(String filepath : filepathList) {
+					File delFile = new File(savepath+filepath);
+					delFile.delete();
+				}
+			}
+		}
+		System.out.println(n);
+		return "redirect:/noticeView.do?noticeNo="+n.getNoticeNo();
 	}
 }

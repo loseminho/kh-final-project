@@ -34,20 +34,3 @@ $(document).ready(function(){
 		$.removeCookie("tab"); 
 	}
 });
-
-// 신고한 내용 보기
-$(".report-view-wrap").hide();
-
-$(".report-view-open").on("click", function(){
-	$(".report-view-modal").css("width", "100vw");
-	$(".report-view-modal").css("height", "100vh");
-
-	$(".report-view-wrap").show();
-});
-
-$("#report-view-close").on("click", function(){
-	$(".report-view-modal").css("width", "0");
-	$(".report-view-modal").css("height", "0");
-
-	$(".report-view-wrap").hide();
-});
