@@ -30,4 +30,10 @@ public class ChatDao {
 	public void insertRoomList(HashMap<String, Object> roomList) {
 		sqlSession.insert("chat.insertRoomList",roomList);
 	}
+
+	public ArrayList<RequireList> selectApplyList(String memberId) {
+		List list = sqlSession.selectList("chat.selectApplyList",memberId);
+		System.out.println("list:::"+list);
+		return (ArrayList<RequireList>)list;
+	}
 }

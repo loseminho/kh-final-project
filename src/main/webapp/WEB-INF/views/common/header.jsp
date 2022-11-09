@@ -31,8 +31,6 @@
 				<ul>
 					<div class="managerMenu">
 						<li><a href= "/faqQnaBoardFrm.do">고객서비스</a></li>
-						<li><a href="/notice.do?reqPage=1">공지사항</a></li>
-						<li><a href="/faqQnaBoardFrm.do">FAQ/문의하기</a></li>
 					</div>
 				</ul>
 				<c:if test="${not empty sessionScope.m }">
@@ -65,6 +63,10 @@
 					</div>
 				</ul>
 			</div>
+		<div class="manager-subtitle" style="display:none;">
+			<div><a href="/notice.do?reqPage=1">공지사항</a></div>
+			<div><a href="/faqQnaBoardFrm.do">FAQ/문의하기</a></div>
+		</div>		
 		</div>
 	</div>
 	<div class="chat-icon">
@@ -84,19 +86,13 @@
 				<div class="chat-title">안녕하세요<span>"${sessionScope.m.memberNickname }"</span>님!</div>
 				<div class="chat-name"></div>
 				<div class="chat-list">
+				<!-- 
 					<li class="init-chat">
 						<input type="hidden" class="boardNo" value=1>
 						<input type="hidden" class="boardTitle" value="망원동에서 산책하실분?">
 						<span>망원동에서 산책하실분?</span>
 					</li>
-					<li class="init-chat">
-						<input type="hidden" class="boardNo" value=2>
-						<input type="hidden" class="boardTitle" value="상암동에서 산책하실분?">
-						<span>상암동에서 산책하실분?</span>
-					</li>
-					<li>뭐뭐뭐</li>
-					<li>뭐뭐뭐</li>
-					<li>뭐뭐뭐</li>
+					 -->
 				</div>
 				<div class="chat-form" style="display:none;">
 					<div class="back-btn">뒤로가기</div>

@@ -30,4 +30,8 @@ public class ChatService {
 	public void insertRoomList(HashMap<String, Object> roomList) {
 		dao.insertRoomList(roomList);
 	}
+
+	public ArrayList<RequireList> selectApplyList(String memberId) {
+		return dao.selectApplyList(memberId);
+	}
 }

@@ -2,12 +2,11 @@ $(function(){
 	$("#chat-board").draggable();
 });
 
-$(".managerMenu").on("mouseover",function(){
-	$(".managerMenu").children().css("display","block");
+$(".managerMenu").on("mouseenter",function(){
+	$(".manager-subtitle").stop().slideDown();
 });    
-$(".managerMenu").on("mouseout",function(){
-	const subMenu = $(".managerMenu").children();
-	subMenu.not(subMenu.eq(0)).css("display","none");
+$(".header-wrap").on("mouseleave",function(){
+	$(".manager-subtitle").stop().slideUp();
 });
 
 function logout() {
@@ -32,7 +31,8 @@ let boardTitle;
 let memberId;
 let memberNickname;
 /*채팅시작*/
-$(".init-chat").on("click",function(){
+$(document).on("click",".init-chat",function(){
+
 	const chatIdx = $(".init-chat").index(this);
 	console.log("asdf:"+chatIdx);
 	boardNo = $(".boardNo").eq(chatIdx).val();
@@ -46,8 +46,28 @@ $(".init-chat").on("click",function(){
 	initChat(boardNo,boardTitle,memberId,memberNickname);
 });
 
+$(document).ready(function(){
+	let memberId = $("#chatMemberId").val();
+	$.ajax({
+		url:"/selectApplyList.do",
+		data:{memberId:memberId},
+		success:function(data){
+			console.log(data);
+			var html = "";
+			$.each(data,function(idx,value){
+				html += "<li class='init-chat'>";
+				html += "<input type='hidden' class='boardNo' value="+value.boardNo+">";
+				html += "<input type='hidden' class='boardTitle' value="+value.boardTitle+">";
+				html += "<span>"+value.boardTitle+"</span>";
+				html += "</li>";
+			});
+			$(".chat-list").html(html);
+		}
+	});
+});
 
 $(".chat-icon").on("click",function(){
+
 	$("#chat-board").toggle(400);
 });
 $(".chat-list").on("click",function(){
@@ -59,7 +79,7 @@ let ws;
 let chatIndex;
 function initChat(boardNo, boardTitle, memberId,memberNickname){
 	console.log("initChat : " + boardNo);
-	ws = new WebSocket("ws://192.168.10.33/chat.do");
+	ws = new WebSocket("ws://192.168.0.14/chat.do");
 	ws.onopen = startChat;
 	ws.onmessage = receiveMsg;
 	
@@ -99,13 +119,9 @@ $("#send-msg").on("keyup",function(key){
 	}
 });
 
-$(".back-btn").on("click",function(e){
+$(document).on("click",".back-btn",function(e){
+	console.log(123);
 	e.stopPropagation(); 
-	/*
-	console.log("back-btn-click:::"+boardNo);
-	const data = {type:"end",boardNo:boardNo,memberId:memberNickname};
-	ws.send(JSON.stringify(data));
-	*/
 	ws.close();
 	$(".chat-list").css("display","block");
 	$(".chat-form").css("display","none");

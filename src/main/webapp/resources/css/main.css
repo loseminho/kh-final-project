@@ -187,6 +187,30 @@ html, body {
     margin: 0 30px;
 }
 
+/*헤더css*/
+.manager-subtitle{
+	position:fixed;
+	top:80px;
+	width:100%;
+	height:50px;
+	display:flex;
+	justify-content:center;
+    background-color: #DDD9CB;
+}
+.manager-subtitle a{
+	font-family:gs-Medium;
+	font-size:16px;
+	list-style: none;
+	text-decoration: none;
+	color:#fff;
+}
+.manager-subtitle div{
+	width:200px;
+	display:flex;
+	justify-content:center;
+	align-items: center;
+}
+
 #logo-wrap{
     width:200px;
     display : flex;

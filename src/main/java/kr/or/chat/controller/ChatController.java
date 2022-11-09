@@ -50,4 +50,10 @@ public class ChatController {
 		model.addAttribute("rl",rl);
 		return "chat/chatFrm";
 	}
+	@ResponseBody
+	@RequestMapping(value="/selectApplyList.do", produces = "application/json;charset=utf-8")
+	public String selectApplyList(String memberId) {
+		ArrayList<RequireList> list = service.selectApplyList(memberId);
+		return new Gson().toJson(list);
+	}
 }

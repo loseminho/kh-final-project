@@ -37,8 +37,19 @@
 			</when>
 			<when test="status == 1">
 				set status = 0
-			</when>
+			</when>  
 		</choose>
 		where member_id = #{memberId}
 	</update>
+	
+	<select id="selectApplyList" parameterType="string" resultType="rl">
+		select 
+		    wm_no as boardNo,
+		    member_id as memberId,
+		    apply_stat as status,
+		    wm_title as boardTitle
+	    from wm_apply_tbl 
+	   		join walk_mate_tbl using(wm_no)
+		where member_id =	#{_parameter}
+	</select>
 </mapper>
