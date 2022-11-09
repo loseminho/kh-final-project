@@ -74,6 +74,14 @@ public class MemberDao {
 		return (ArrayList<Dog>)list;
 	}
 	
+	public int checkReportAble(Report report) {
+		return sqlSession.selectOne("report.checkReportAble", report);
+	}
+	
+	public int insertReport(Report report) {
+		return sqlSession.insert("report.insertReport", report);
+	}
+	
 	public ArrayList<Report> selectMyReportList(int memberNo) {
 		List list = sqlSession.selectList("report.selectMyReportList", memberNo);
 		return (ArrayList<Report>) list;

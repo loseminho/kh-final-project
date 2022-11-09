@@ -11,10 +11,10 @@ public class Report {
 	private int reportNo;
 	
 	private int reportMemberNo;
-	private String reportMemberNicname;
+	private String reportMemberNickname;
 	
 	private int reportedMemberNo;
-	private String reportedMemberNicname;
+	private String reportedMemberNickname;
 	
 	private int reportType;
 	private String reportContent;
