@@ -31,4 +31,10 @@ public class WalkController {
 		Walk w = service.selectContentBox(wmNo);
 		return new Gson().toJson(w);
 	}
+	@ResponseBody
+	@RequestMapping(value="/allWalkListAjax.do", produces="application/json;charset=utf-8")
+	public String allWalkListAjax() {
+		ArrayList<Walk> list = service.allWalkList();
+		return new Gson().toJson(list);
+	}
 }
