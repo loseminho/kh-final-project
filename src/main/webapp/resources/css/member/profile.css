@@ -11,6 +11,7 @@
 /* 가운데  */
 .profile-content{
 	width: 620px;
+	min-height: calc(100vh - 410px);
 	margin-top: 180px;
 	margin-bottom: 100px;
 }
@@ -43,14 +44,46 @@
 .profile-photo{
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
 }
 
-.person-introduce{
+.person-id, .person-city{
+	width: 400px;
+	margin-left: 20px;
+	margin-bottom: 30px;
+	float: right;
+}
+
+.person-id>p, .person-city>p{
+	float: left;
+	line-height: 20px;
+}
+
+.person-id>p>b, .person-city>p>b{
+	display:block;
+	line-height: 20px;
+}
+
+.person-id>p:nth-child(1), .person-city>p:nth-child(1){
+	width: 100px;
+}
+
+.person-intro>p{
+	width: 400px;
+	float: right;
+}
+
+.person-intro>p>b{
+	display:block;
+	line-height: 20px;	
+}
+
+.person-intro>div{
 	width: 398px;
-    height: 198px;
+    height: 78px;
     float: right;
     border: 1px solid black;
+    overflow: auto; 
 }
 
 .dog-profile{

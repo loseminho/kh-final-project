@@ -225,6 +225,19 @@
 	text-align : center;
 }
 
+.dogprofile #mbtiBtn {
+	display: block;
+    margin: 0 auto;
+    margin-top: 5px;
+	background-color:#1abc9c;
+	color:white;
+	border:none;
+	height:22px;
+	width:80px;
+	border-radius:5px;
+	line-height:25px;
+}
+
 .dogprofile #closeModalBtn {
 	background-color:white;
 	color:black;

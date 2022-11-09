@@ -31,29 +31,13 @@ public class WalkController {
 		return new Gson().toJson(list);
 	}
 	
-	// 게시물 선택화면 - 모달 첫번째 페이지(index 1 - file, content,)
+	// WalkMate 모든 게시물 참여하는 유저 프로필
 	@ResponseBody
 	@RequestMapping(value="/selectWalkListAjax.do", produces="application/json;charset=utf-8")
 	public String selectWalkListAjax(int wmNo) {
 		Walk w = service.selectWalkListAjax(wmNo);
-		return new Gson().toJson(w);
+//		return new Gson().toJson(w);
+		return null;
 	}
 	// 게시물 선택화면 - 
-	
-	@RequestMapping(value="/walkMetePage.do")
-	public String walkMetePage(int wmNo, int index, Model model) {	
-		model.addAttribute("index", index);
-		return "walkmate/walkMetePage";
-	}
-	public String walkMetePage(int wmNo, int reviewNo, int index, Model model) {	
-		// 해당 후기 가져오기
-		
-		model.addAttribute("index", index);
-		return "walkmate/walkMetePage";
-	}
-	
-	@RequestMapping(value="/myWalkMate.do")
-	public String mateList() {
-		return "walkmate/myWalkMate";
-	}
 }

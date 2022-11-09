@@ -17,7 +17,8 @@
 			dog_vacc as dogVacc,
 			dog_age as dogAge,
 			dog_weight as dogWeight,
-			dog_photo as dogPhoto
+			dog_photo as dogPhoto,
+			dog_mbti as dogMbti
 		from dog_tbl d left join dog_type t on (d.dog_type_no = t.type_code) 
 		where member_no = #{_parameter}
 		order by dog_no
@@ -39,7 +40,8 @@
 			dog_vacc as dogVacc,
 			dog_age as dogAge,
 			dog_weight as dogWeight,
-			dog_photo as dogPhoto
+			dog_photo as dogPhoto,
+			dog_mbti as dogMbti
 		from dog_tbl d left join dog_type t on (d.dog_type_no = t.type_code) 
 		where dog_no = #{_parameter}
 	</select>

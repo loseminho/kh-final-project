@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.or.member.model.vo.Member;
 import kr.or.walk.model.dao.WalkDao;
 import kr.or.walk.model.vo.Walk;
+import kr.or.walk.model.vo.WmApply;
 
 @Service
 public class WalkService {
@@ -14,6 +16,9 @@ public class WalkService {
 	private WalkDao dao;
 
 	public ArrayList<Walk> allWalkList() {
+		ArrayList<Walk> list = dao.allWalkList();
+//		ArrayList<WmApply> mList = dao.selectMemberProfil();
+		
 		return dao.allWalkList();
 	}
 

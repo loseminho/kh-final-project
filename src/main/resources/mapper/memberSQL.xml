@@ -23,52 +23,6 @@
 		</if>
 	</select>
 	
-	<select id="selectOneMember2" parameterType="string" resultMap="getMember">
-		select
-			member_nickname as memberNickname,
-			member_photo as memberPhoto,
-			member_intro as memberIntro
-		from 
-			member_tbl
-		where 
-			member_id = #{_parameter} 
-	</select>
-	
-	<select id="selectMyDogList" parameterType="string" resultType="d">
-		select
-			dog_no as dogNo,
-			member_no as memberNo,
-			dog_name as dogName,
-			type_name as dogType,
-            (case type_size 
-                when 0 then '소형견'
-                when 1 then '중형견'
-                when 2 then '대형견'
-            END) as dogSize,
-			dog_gender as dogGender,
-			dog_neutral as dogNeutral,
-			dog_vacc as dogVacc,
-			dog_age as dogAge,
-			dog_weight as dogWeight,
-			dog_photo as dogPhoto
-		from dog_tbl d left join dog_type t on (d.dog_type_no = t.type_code) 
-		where member_id = #{_parameter}
-		order by dog_no
-	</select>
-	
-	<resultMap type="m" id = "getMember">
-		<result column="member_nickname" property="memberNickname" />
-		<result column="member_photo" property="memberPhoto" />
-		<result column="member_intro" property="memberIntro" />
-		
-		<collection property="dogList" 
-									select="selectMyDogList"
-									column="member_id"
-									ofType="d"
-									javaType="java.util.ArrayList"
-		/>
-	</resultMap>
-	
 	<insert id="insertKakao" parameterType="m">
 		insert into member_tbl
 		values(MEMBER_SEQ.NEXTVAL, #{memberId}, #{memberNickname}, #{memberPhone}, NULL, NULL, NULL, NULL, TO_CHAR(SYSDATE, 'YYYY-MM-DD'), 1, '카카오')
@@ -130,5 +84,44 @@
 		where 
 		    member_id = #{_parameter}
 		    and apply_stat = 2	
+	</select>
+	
+	<!-- ***************************************************** -->
+	
+	<select id="selectPersonProfile" parameterType="_int" resultType="m">
+		select
+			member_id as memberId,
+			member_nickname as memberNickname,
+			member_city as memberCity,
+			member_photo as memberPhoto,
+			member_intro as memberIntro
+		from 
+			member_tbl
+		where 
+			member_no = #{_parameter} 
+	</select>
+	
+	<select id="selectDogList" parameterType="_int" resultType="d">
+		select
+			dog_no as dogNo,
+			member_no as memberNo,
+			dog_name as dogName,
+			type_name as dogType,
+            (case type_size 
+                when 0 then '소형견'
+                when 1 then '중형견'
+                when 2 then '대형견'
+            END) as dogSize,
+			dog_gender as dogGender,
+			dog_neutral as dogNeutral,
+			dog_vacc as dogVacc,
+			dog_age as dogAge,
+			dog_weight as dogWeight,
+			dog_photo as dogPhoto
+		from 
+			dog_tbl d left join dog_type t on (d.dog_type_no = t.type_code) 
+		where 
+			member_no = #{_parameter}
+		order by dog_no
 	</select>
 </mapper>
