@@ -90,15 +90,15 @@
 				        <label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogNeutral" value="O"> 했어요</label>
 	      				<label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogNeutral" value="X"> 안 했어요</label>
 				    </div>
-				    <div class="info-box">
-				        <label for="dogVacc"><span>*</span>예방접종 여부</label><br>
-				        <label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogVacc" value="O"> 했어요</label>
-	      				<label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogVacc" value="X"> 안 했어요</label>
-				    </div>
 				    <div class="info-box" id="mbti-box">
 				        <label for="dogMbti">멍BTI</label>
 				        <input type="text" name="dogMbti" id="dogMbti" class="input" readonly>
 				        <button type="button" id="mbtiBtn" onclick="goToMbti();">검사하러가기</button>
+				    </div>
+				    <div class="info-box">
+				        <label for="dogVacc"><span>*</span>예방접종 여부</label><br>
+				        <label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogVacc" value="O"> 했어요</label>
+	      				<label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogVacc" value="X"> 안 했어요</label>
 				    </div>
 				    <div class="btn-box">
 				        <button type="button" class="btn" id="dogBtn"></button>

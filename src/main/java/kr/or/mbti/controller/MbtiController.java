@@ -187,14 +187,20 @@ public class MbtiController {
 	
 	@RequestMapping(value="/updateMbti.do")
 	public String selectMbtiResult(MbtiResult mr, Model model, @SessionAttribute Member m, HttpSession session) {
-		MbtiResult result = service.selectMbtiResult(mr);
-		
 		int memberNo = m.getMemberNo();
+		mr.setMemberNo(memberNo);
+		
+		// 검사 결과, 친구 타입 리스트, 파트너 타입 리스트를 넣은 map 받기
+		HashMap<String, Object> map = service.selectMbtiResult(mr);
+		
+		// 검사 결과 반영한 반려견 리스트를 session에 저장
 		ArrayList<Dog> list = dogService.selectMyDogList(memberNo);
 		m.setDogList(list);
 		session.setAttribute("m", m);
 		
-		model.addAttribute("result", result);
+		model.addAttribute("result", map.get("result"));
+		model.addAttribute("friend", map.get("friend"));
+		model.addAttribute("partner", map.get("partner"));
 		return "walkmate/mbtiMatePage/mbtiMateResult";
 	}
 }

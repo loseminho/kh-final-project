@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class MbtiResult {
 	private int mbtiResultNo;
 	private String mbtiResult;
+	private String mbtiResultName;
 	private String friendType;
 	private String friendTypeName;
 	private String partnerType;
@@ -17,11 +18,12 @@ public class MbtiResult {
 	private String answers;
 	private String dogName;
 	private int dogNo;
-	private String mbtiResultName;
+	private int memberNo;
 	private String mbtiTitle;
 	private String mbtiMent1;
 	private String mbtiMent2;
 	private String mbtiMent3;
 	private String mbtiMent4;
 	private String mbtiStory;
+	private String dogPhoto;
 }
