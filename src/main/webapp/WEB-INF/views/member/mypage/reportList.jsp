@@ -9,10 +9,5 @@
 
 <!-- 내역 테이블 -->
 <div class="report-list-table">
-	
-</div>
-
-<!-- 페이징 -->
-<div class="report-list-paging">
-	
+		
 </div>

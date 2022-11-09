@@ -89,6 +89,6 @@
 		const memberNo = ${sessionScope.m.memberNo };
 	</script>
 	<script src="/resources/js/member/myPage.js"></script>
-	<script src="/resources/js/member/myReport.js"></script>
+	<script src="/resources/js/member/mypage/myReport.js"></script>
 </body>
 </html>

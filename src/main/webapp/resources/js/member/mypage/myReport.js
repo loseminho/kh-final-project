@@ -19,12 +19,12 @@ $("#report-list").on("click", function(){
 				table.append(titleTr);
 				
 				for(let i=0; i<list.length; i++){
-					const tr = $("<tr>");
+					const tr = $("<tr class='report-one'>");
 					
 					tr.append(
 						"<td>" + 
 							"<a href='/selectOneProfile.do?memberNo=" + list[i].reportedMemberNo + "'>" + 
-								list[i].reportedMemberNicname + 
+								list[i].reportedMemberNickname + 
 							"</a>" + 
 						"</td>"
 					);
@@ -70,15 +70,23 @@ $("#report-list").on("click", function(){
 	});
 });
 
-// 신고한 내용 보기
+// 신고한 내용 보기 모달
 $(".report-view-wrap").hide();
 
-$(".report-view-open").on("click", function(){
-	console.log(1);
+$(document).on("click", ".report-view-open", function(){
 	$(".report-view-modal").css("width", "100vw");
 	$(".report-view-modal").css("height", "100vh");
 
 	$(".report-view-wrap").show();
+	
+	const index = $(".report-view-open").index(this) + 1;
+	const tableTr = $(".report-list-table Tr").eq(index);
+	const modalTd = $(".report-view-content td");
+	
+	modalTd.eq(0).text(tableTr.children().eq(0).children().text());
+	modalTd.eq(1).text(tableTr.children().eq(1).text());
+	modalTd.eq(2).text(tableTr.children().eq(3).text());
+	$("#report-reason").text(tableTr.children().eq(2).children().text());
 });
 
 $("#report-view-close").on("click", function(){

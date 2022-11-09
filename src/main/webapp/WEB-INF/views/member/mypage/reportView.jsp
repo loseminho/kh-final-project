@@ -10,19 +10,19 @@
 				<!-- 신고 대상 -->
 				<tr>
 					<th>신고 대상</th>
-					<td>일유저</td>
+					<td></td>
 				</tr>
 				
 				<!-- 신고 유형 -->
 				<tr>
 					<th>신고 유형</th>
-					<td>언어 폭력</td>
+					<td></td>
 				</tr>
 				
 				<!-- 신고 날짜 -->
 				<tr>
 					<th>신고 날짜</th>
-					<td>2022-11-02</td>
+					<td></td>
 				</tr>
 			</table>
 		</div>
@@ -31,9 +31,7 @@
 		<div class="report-reason-box">
 			<p>신고 상세 이유</p>
 
-			<div class="report-reason">
-				일유저 님이 모임에서 저에게 막말을 했어요.
-			</div>
+			<div id="report-reason"></div>
 		</div>
 		
 		<!-- 확인 버튼 -->

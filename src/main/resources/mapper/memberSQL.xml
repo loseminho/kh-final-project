@@ -90,6 +90,7 @@
 	
 	<select id="selectPersonProfile" parameterType="_int" resultType="m">
 		select
+			member_no as memberNo,
 			member_id as memberId,
 			member_nickname as memberNickname,
 			member_city as memberCity,
