@@ -141,5 +141,9 @@
     <!-- Start footer -->
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
     <!-- End footer -->
+    
+    <script type="text/javascript">
+    	$(".mbti-dogname").text("${result.dogName}");
+    </script>
 </body>
 </html>

@@ -189,7 +189,6 @@ public class MbtiController {
 	public String selectMbtiResult(MbtiResult mr, Model model, @SessionAttribute Member m, HttpSession session) {
 		MbtiResult result = service.selectMbtiResult(mr);
 		
-		System.out.println(result);
 		int memberNo = m.getMemberNo();
 		ArrayList<Dog> list = dogService.selectMyDogList(memberNo);
 		m.setDogList(list);

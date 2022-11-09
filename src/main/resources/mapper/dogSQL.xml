@@ -93,7 +93,7 @@
 	
 	<insert id="insertMyDog" parameterType="d">
 		insert into dog_tbl
-		values(DOG_NO_SEQ.NEXTVAL, #{memberNo}, #{dogName}, #{dogTypeNo}, #{dogGender}, #{dogNeutral}, #{dogVacc}, #{dogAge}, #{dogWeight}, #{dogPhoto})
+		values(DOG_NO_SEQ.NEXTVAL, #{memberNo}, #{dogName}, #{dogTypeNo}, #{dogGender}, #{dogNeutral}, #{dogVacc}, #{dogAge}, #{dogWeight}, #{dogPhoto}, null)
 	</insert>
 	
 	<delete id="deleteMyDog" parameterType="int">
