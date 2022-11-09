@@ -81,8 +81,8 @@ html, body {
 	align-items: center;
 }
 .section2Content>div{
-	width:35%;
-	height:35%;
+	width:570px;
+	height:330px;
 	border-radius: 30px;
 	background-color: rgba(255,255,255,0.9);
 	display:flex;

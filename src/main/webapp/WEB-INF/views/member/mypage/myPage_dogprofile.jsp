@@ -82,7 +82,7 @@
 	      				<label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogGender" value="여아"> 여아</label>
 				    </div>
 				    <div class="info-box">
-				        <label for="dogWeight"><span>*</span>몸무게</label>
+				        <label for="dogWeight"><span>*</span>몸무게 (소수점X)</label>
 				        <input type="text" name="dogWeight" id="dogWeight" class="input shortInput">KG
 				    </div>
 				    <div class="info-box">

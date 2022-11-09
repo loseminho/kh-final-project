@@ -31,7 +31,7 @@
 
             <!-- content-midle section -->
             <section id="content-middle">
-                <div class="content-middle-title">반려견 성격 유형 테스트</div>
+                <div class="content-middle-title">멍BTI 테스트</div>
             </section>
             
             <!-- content-bottom section -->
