@@ -70,7 +70,7 @@
 	<div class="chat-icon">
 		<img src="/resources/img/favicon.ico">
 	</div>
-	<div id="chat-board">
+	<div id="chat-board" style="display:none;">
 		<input type="hidden" id="chatMemberId" value="${sessionScope.m.memberId }">
 		<input type="hidden" id="chatMemberNickname" value="${sessionScope.m.memberNickname }">
 		<div class="chat-title">안녕하세요<span>"${sessionScope.m.memberNickname }"</span>님!</div>
