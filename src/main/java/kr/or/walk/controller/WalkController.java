@@ -26,9 +26,9 @@ public class WalkController {
 	// WalkMate 모든 게시물 띄우기..
 	// WalkMate 모든 게시물 참여하는 유저 프로필
 	@ResponseBody
-	@RequestMapping(value="/allWalkListAjax.do", produces="application/json;charset=utf-8")
-	public String allWalkListAjax() {
-		ArrayList<Walk> list = service.allWalkList();
+	@RequestMapping(value="/selectContentBox.do", produces="application/json;charset=utf-8")
+	public String selectContentBox() {
+		ArrayList<Walk> list = service.selectContentBox();
 		return new Gson().toJson(list);
 	}
 }
