@@ -119,6 +119,10 @@ header{
 	box-shadow: rgb(0 0 0 / 18%) 2px 2px 20px 0px;
 	cursor : pointer;
 }
+.content-box:hover .user-profil li span{
+	-webkit-transform: rotateX(180deg);
+    transform: rotateY(180deg);	
+}
 .content-box-list{
     float: left;
 }
@@ -172,7 +176,7 @@ header{
 }
 .content-box .titles .titles-sub{
     text-align: left;
-    color: #9c9c9c;
+    color: gray;
     font-size: 15px;
     margin-top: 10px;
     width: 330px;
@@ -182,14 +186,14 @@ header{
 }
 .content-box .titles .titles-info{
     text-align: left;
-    color: #9c9c9c;
+    color: gray;
     font-size: 12px;
     margin-top: 10px;
     vertical-align: middle;
 }
 .content-box .titles .titles-info span{
     text-align: left;
-    color: #9c9c9c;
+    color: gray;
     font-size: 20px;
     vertical-align: middle;
 }
@@ -200,11 +204,14 @@ header{
     text-align: left;
     padding: 0;
     margin-top: 25px;
+    font-size: 14px;
+    color: #9c9c9c;
+    line-height: 46px;
 }
 .user-profil li{
     margin: 0 auto;
     background-color: rgb(255, 255, 255);
-    color: red;
+    color: gray;
     width: 39px;
     height: 39px;
     display: inline-block;
@@ -213,13 +220,19 @@ header{
     overflow: hidden;
     line-height: 46px;
     text-align: center;
-    font-size: 35px;
+    font-size: 13px;
 }
 .user-profil li img{
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
+.user-profil li span{
+	font-size: 38px;
+	color: #9c9c9c;
+	transition: .5s;
+}
+
 #modal{
     z-index: 100;
 }
@@ -328,7 +341,7 @@ header{
 .modal-window-middle .modal-writer-content-box h2{
     text-align: center;
     padding: 10px;
-    padding-top: 0px;
+    margin-top: 10px;
     font-size: 25px;
     overflow: hidden;
 }
@@ -361,6 +374,11 @@ header{
 .modal-window-bottom .bottom-info{
     font-size: 14px;
     margin-bottom: 40px;
+}
+.modal-window-bottom .bottom-info span{
+	color: #FF4C4C;
+	margin-left : 10px;
+	vertical-align: middle;
 }
 .modal-window-bottom .place-info-btn{
     background-color: #1abc9c;
@@ -395,7 +413,8 @@ header{
     border-radius: 8px;
     padding:25px;
     font-size: 15px;
-    resize : vertical;
+    /*resize : vertical;*/
+    resize: none;
     border: 1px solid #9c9c9c !important;
     font-family: gs-Medium;
 }
@@ -498,7 +517,7 @@ header{
     font-weight: 500;
     margin-bottom: 15px;
 }
-.memeber-info-ul{
+.member-info-ul{
     margin:0 auto;
     list-style: none;
     padding:0;
@@ -547,6 +566,16 @@ header{
 }
 .mate-info-list{
     margin-bottom: 40px;
+}
+.mate-info-list li{
+	margin-bottom: 7px;
+}
+.mate-info-list li span{
+    text-align: left;
+    color: #ff4c4c;
+    font-size: 20px;
+    vertical-align: middle;
+    margin-left : 13px;
 }
 
 
