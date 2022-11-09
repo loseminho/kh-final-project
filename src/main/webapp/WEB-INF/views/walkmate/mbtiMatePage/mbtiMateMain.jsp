@@ -73,7 +73,7 @@
 												                	(검사결과없음)
 											            	</c:when>
 											            	<c:otherwise>
-												                (${myDog.dogMbti })
+												                (${myDog.dogMbtiName })
 											            	</c:otherwise>
 											            </c:choose>	
 									            	</span>
