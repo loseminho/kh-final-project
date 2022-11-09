@@ -56,27 +56,32 @@ public class NoticeService {
 			pageNo = reqPage -2;
 		}
 		//pageNavi 생성 
-		String pageNavi = "<div class = 'pagination'>";
-		if(pageNo != 1) {
-			pageNavi += "<a href='/notice.do?reqPage="+(pageNo-1)+"'>[이전]</a>";
-			
+		String pageNavi = "<nav aria-label='Page navigation example'>";
+		pageNavi += "<ul class='pagination'>";
+		if (pageNo != 1) {
+			pageNavi += "<li class='page-item'><a class='page-link' href='/noticeList.do?reqPage=" + (pageNo - 1)
+					+ "'>Previous</a></li>";
 		}
-		//페이지 숫자 생성
-		for(int i=0; i<pageNaviSize; i++) {
-			if(pageNo == reqPage) {
-				pageNavi += "<span>"+pageNo+"</span>";
+		for (int i = 0; i < pageNaviSize; i++) {
+			if (pageNo == reqPage) {
+				pageNavi += "<li class='page-item active' aria-current='page'><a class='page-link' href='/noticeList.do?reqPage="
+						+ pageNo + "'>" + pageNo + "</a></li>";
 			} else {
-				pageNavi += "<a href='/notice.do?reqPage="+pageNo+"'>"+pageNo+"</a>";
+				pageNavi += "<li class='page-item'><a class='page-link' href='/noticeList.do?reqPage=" + pageNo + "'>"
+						+ pageNo + "</a></li>";
 			}
-				pageNo++;
-				if(pageNo >totalPage) {
-					break;
-				}
+			pageNo++;
+			if (pageNo > totalPage) {
+				break;
+			}
 		}
-		//다음버튼 생성 
-		if(pageNo <= totalPage) {
-			pageNavi += "<a href='/notice.do?reqPage="+pageNo+"'>다음</a>";
+
+		if (pageNo <= totalPage) {
+			pageNavi += "<li class='page-item'><a class='page-link' href='/noticeList.do?reqPage=" + pageNo
+					+ "'>Next</a></li>";
 		}
+		pageNavi += "</ul>";
+		pageNavi += "</nav>";
 		NoticePageData npd = new NoticePageData(list, pageNavi, reqPage, numPerPage);
 		return npd;
 	}
@@ -98,6 +103,26 @@ public class NoticeService {
 		} else {
 			return null;			
 		}
+	}
+	
+	//공지사항 수정 
+	public int updateNotice(Notice n, int[] fileNoList) {
+		//공지사항 수정 
+		int result = dao.updateNotice(n);
+		if(result>0) {
+			//새로운 첨부파일이 있으면 insert
+			for(NoticeFile nf : n.getFileList()) {
+				nf.setNoticeNo(n.getNoticeNo());
+				result += dao.insertFile(nf);
+			}
+			//삭제한 첨부파일이 있으면 delete 
+			if(fileNoList != null) {
+				for(int fileNo : fileNoList) {
+					result += dao.deleteFile(fileNo);
+				}
+			}
+		}
+		return result;
 	}
 
 }

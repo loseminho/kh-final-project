@@ -56,6 +56,14 @@ public class NoticeDao {
 		int totalCount = sqlSession.selectOne("notice.totalCount");
 		return totalCount;
 	}
+	//공지사항 수정 
+	public int updateNotice(Notice n) {
+		return sqlSession.update("notice.updateNotice",n);
+	}
+	//파일 삭제 
+	public int deleteFile(int fileNo) {
+		return sqlSession.delete("notice.deleteFile",fileNo);
+	}
 	
 
 }

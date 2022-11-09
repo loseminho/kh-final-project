@@ -50,6 +50,9 @@ content{
     border-radius: 5px;
     overflow: hidden;
 }
+.notice-table{
+    width: 100%;
+}
 .noticeView-content tr{
     border-bottom: 1px solid #e1e1e1;
 }
@@ -65,11 +68,14 @@ content{
 }
 .noticeView-content tr th{
     background-color: #fff;
-    border-bottom: 2px solid #1abc9c;
+    border-bottom: 1px solid #e2e2e2;
     border-collapse: collapse;
     font-family: gs-medium;
     color: black;
     
+}
+.noticeView-content th:nth-child(3){
+    width: 50%;
 }
 .noticeView-footer{
     margin: 0 auto;

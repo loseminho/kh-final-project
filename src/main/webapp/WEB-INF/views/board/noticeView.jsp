@@ -24,7 +24,7 @@
                     <ul>
                         <!--관리자에게만 보임-->
                         <c:if test="${sessionScope.m.memberLevel == 2 }">
-                        <li><a href="#">수정하기</a></li>
+                        <li><a href="/noticeUpdateFrm.do?noticeNo=${n.noticeNo }">수정하기</a></li>
                         <li><a href="/noticeDelete.do?noticeNo=${n.noticeNo }">삭제하기</a></li>
                         </c:if>
                     </ul>
@@ -34,21 +34,33 @@
                         <tr>
                             <th>작성일</th>
                             <th>${n.noticeDate}</th>
+                            <th></th>
                             <th>조회수</th>
                             <th>${n.noticeViews}</th>
                         </tr>
                         <tr>
-                            <td>${n.noticeContent}</td>
+                        	<th>첨부파일 </th>
+                        	<c:forEach items="${n.fileList }" var="nf">
+                        	<th>${nf.filename} </th>
+                        	</c:forEach>
+                        </tr>
+                        <tr>
+                            <td colspan="5">${n.noticeContent}</td>
                         </tr>
                     </table>
                 </div>
                 <div class="noticeView-footer">
-                    <button type="button">목록</button>
+                    <button type="button" class="back-noticeList">목록</button>
                 </div><!--noticeView-footer끝-->
             </div><!--noticeView-box 끝-->
         </div>
     </content>
     <!-- footer -->
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+    <script type="text/javascript">
+    	$(".back-noticeList").on("click",function(){
+    		location.href="/notice.do?reqPage=1";
+    	});
+    </script>
 </body>
 </html>
