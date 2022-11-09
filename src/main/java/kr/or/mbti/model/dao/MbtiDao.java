@@ -1,5 +1,8 @@
 package kr.or.mbti.model.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,5 +26,15 @@ public class MbtiDao {
 
 	public int updateDogMbti(MbtiResult result) {
 		return sqlSession.update("mbti.updateDogMbti", result);
+	}
+
+	public ArrayList<MbtiResult> selectFriendList(MbtiResult result) {
+		List list = sqlSession.selectList("mbti.selectFriendList", result);
+		return (ArrayList<MbtiResult>) list;
+	}
+
+	public ArrayList<MbtiResult> selectPartnerList(MbtiResult result) {
+		List list = sqlSession.selectList("mbti.selectPartnerList", result);
+		return (ArrayList<MbtiResult>) list;
 	}
 }

@@ -168,7 +168,7 @@ input, select, button{
 
 #chooseDog .box span {
 	font-size:14px;
-	color:red;
+	color: #ee862c;
 }
 
 
@@ -238,28 +238,33 @@ input, select, button{
 
 .mbti-result-box {
     width: 100%;
-    margin-bottom:40px;
+    margin-bottom:20px;
 }
 
 .mbti-result-box p {
-    text-align: left;
-    margin-bottom:10px;
+    text-align: center;
+    margin-bottom:20px;
 }
 
 .mbti-result-box h2, 
 .mbti-result-box h3 {
     text-align: center;
-    margin: 0;
+    margin: 5px 0;
 }
 
 .mbti-result-img {
     width: 200px;
     height: 200px;
-    margin: 0 auto;
+    margin:0 auto;
+    margin-bottom: 20px;
 }
 
 .mbti-result-img > img {
     max-width: 100%;
+}
+
+#mbti-result .mbti-dogname{
+	color:#c77be6;
 }
 
 
@@ -272,9 +277,10 @@ input, select, button{
 #mbti-matching .mbti-matching-box {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    margin:20px 0;
+    margin:30px 0;
+    flex-wrap:wrap;
 }
 
 .mbti-matching-box .box {
@@ -315,4 +321,19 @@ input, select, button{
 
 .mbti-matching-box .box h3 {
     margin: 5px 0 0 0;
+}
+
+.btn {
+	display: inline-block;
+    width: 160px;
+    height: 45px;
+    line-height : 48px;
+    border: none;
+    background-color: #1abc9c;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+    text-decoration : none;
 }

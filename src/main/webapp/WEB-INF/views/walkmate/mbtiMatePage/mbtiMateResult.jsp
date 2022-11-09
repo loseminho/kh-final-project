@@ -31,7 +31,7 @@
 
             <!-- content-midle section -->
             <section id="content-middle">
-                <div class="content-middle-title">반려견 성격 유형 테스트</div>
+                <div class="content-middle-title">멍BTI 테스트</div>
             </section>
             
             <!-- content-bottom section -->
@@ -41,7 +41,7 @@
 	                    <div class="mbti-result-box">
 	                        <h3>우리 강아지는</h3>
 						    <h2 class="mbti-result-title">${result.mbtiTitle }</h2>
-						    <h2 class="mbti-result-title">${result.mbtiResultName }</h2>
+						    <h2 class="mbti-result-title" style="color:#c77be6;">${result.mbtiResultName }</h2>
 	                    </div>
 	                    <div class="mbti-result-box">
 	                        <div class="mbti-result-img">
@@ -52,88 +52,77 @@
 	                        <p><i class="fa-solid fa-check"></i> ${result.mbtiMent1 }</p>
 	                        <p><i class="fa-solid fa-check"></i> ${result.mbtiMent2 }</p>
 	                        <p><i class="fa-solid fa-check"></i> ${result.mbtiMent3 }</p>
-	                        <p><i class="fa-solid fa-check"></i> ${result.mbtiMent4 }</p>
+	                        <c:if test="${result.mbtiMent4 ne null}">
+		                        <p><i class="fa-solid fa-check"></i> ${result.mbtiMent4 }</p>
+	                        </c:if>
 	                        <p><i class="fa-solid fa-check"></i> ${result.mbtiStory }</p>
 	                    </div>
                      </div>
 	                            
                      <div id="mbti-matching">
-                         <h3>영혼의 단짝🍀 : <span>${result.friendTypeName }</span> 타입</h3>
+                         <h3>영혼의 단짝🍀 : <span style="color:#ee862c;">${result.friendTypeName }</span> 타입</h3>
                          <div class="mbti-matching-box">
-                             <div class="box">
-                                 <a onclick="">
-                                     <div class="photo">
-                                         <img src="/resources/img/default_dog.png">
-                                     </div>
-                                     <h3>봉구</h3>
-                                 </a>
-                             </div>
-                             <div class="box">
-                                 <a onclick="">
-                                     <div class="photo">
-                                         <img src="/resources/img/default_dog.png">
-                                     </div>
-                                     <h3>봉구</h3>
-                                 </a>
-                             </div>
-                             <div class="box">
-                                 <a onclick="">
-                                     <div class="photo">
-                                         <img src="/resources/img/default_dog.png">
-                                     </div>
-                                     <h3>봉구</h3>
-                                 </a>
-                             </div>
-                             <div class="box">
-                                 <a onclick="">
-                                     <div class="photo">
-                                         <img src="/resources/img/default_dog.png">
-                                     </div>
-                                     <h3>봉구</h3>
-                                 </a>
-                             </div>
+	                         <c:choose>
+	                         	<c:when test="${friend[0] ne null}">
+		                         	<c:forEach items="${friend}" var="ft">
+			                            <div class="box">
+			                                 <a onclick="">
+			                                     <div class="photo">
+				                                     <c:choose>
+										            	<c:when test="${ft.dogPhoto eq null}">
+											                <img src="/resources/img/default_dog.png">
+										            	</c:when>
+										            	<c:otherwise>
+											                <img src="/resources/upload/dog/${ft.dogPhoto }">
+										            	</c:otherwise>
+										            </c:choose>	
+			                                     </div>
+			                                     <h3>${ft.dogName }</h3>
+			                                     <input type="hidden" name="memberNo" value="${ft.memberNo }">
+			                                 </a>
+			                            </div>
+		                            </c:forEach>
+	                            </c:when>
+	                            <c:otherwise>
+	                            	<h2 style="margin:30px 0">해당하는 타입의 반려견이 없습니다.</h2>
+	                            </c:otherwise>
+	                         </c:choose>
                          </div>
 
-                         <h3>영혼의 파트너💖 : <span>${result.partnerTypeName }</span> 타입</h3>
+                         <h3>영혼의 파트너💖 : <span style="color:#ee862c;">${result.partnerTypeName }</span> 타입</h3>
                          <div class="mbti-matching-box">
-                             <div class="box">
-                                 <a onclick="">
-                                     <div class="photo">
-                                         <img src="/resources/img/default_dog.png">
-                                     </div>
-                                     <h3>봉구</h3>
-                                 </a>
-                             </div>
-                             <div class="box">
-                                 <a onclick="">
-                                     <div class="photo">
-                                         <img src="/resources/img/default_dog.png">
-                                     </div>
-                                     <h3>봉구</h3>
-                                 </a>
-                             </div>
-                             <div class="box">
-                                 <a onclick="">
-                                     <div class="photo">
-                                         <img src="/resources/img/default_dog.png">
-                                     </div>
-                                     <h3>봉구</h3>
-                                 </a>
-                             </div>
-                             <div class="box">
-                                 <a onclick="">
-                                     <div class="photo">
-                                         <img src="/resources/img/default_dog.png">
-                                     </div>
-                                     <h3>봉구</h3>
-                                 </a>
-                             </div>
+                             <c:choose>
+	                         	<c:when test="${partner[0] ne null}">
+		                         	<c:forEach items="${partner}" var="pt">
+			                            <div class="box">
+			                                 <a onclick="">
+			                                     <div class="photo">
+			                                         <c:choose>
+										            	<c:when test="${pt.dogPhoto eq null}">
+											                <img src="/resources/img/default_dog.png">
+										            	</c:when>
+										            	<c:otherwise>
+											                <img src="/resources/upload/dog/${pt.dogPhoto }">
+										            	</c:otherwise>
+										            </c:choose>	
+			                                     </div>
+			                                     <h3>${pt.dogName }</h3>
+			                                     <input type="hidden" name="memberNo" value="${pt.memberNo }">
+			                                 </a>
+			                            </div>
+		                            </c:forEach>
+	                            </c:when>
+	                            <c:otherwise>
+	                            	<h2 style="margin:30px 0">해당하는 타입의 반려견이 없습니다.</h2>
+	                            </c:otherwise>
+	                         </c:choose>
                          </div>
                      </div>
             	</div>
             </section>
             <!-- End content-bottom section -->
-            
+            <a href="/mbtiMateMain.do" class="btn">검사 다시 하기</a>
+            <a href="/" class="btn">메인으로 가기</a>
         </div>
         <!-- End content -->
     </div>
