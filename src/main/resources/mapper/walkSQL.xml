@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="walkmate">
-	<select id="allWalkList" resultType="w">
+	<select id="allWalkList" resultMap="getMembers">
 	SELECT ROWNUM AS RNUM, W.* FROM ((SELECT
 	    WM_NO AS wmNo,
 	    WM_LEADER AS wmLeader,
@@ -16,9 +16,85 @@
 	    WM_DATE AS wmDate
 	FROM walk_mate_tbl ORDER BY WM_NO DESC)W)
 	</select>
-	
-	
-	
-	<select id="selectWalkListOne" parameterType="_int" resultType="w">
+	<select id="selectMemberProfil" resultType="wa" parameterType="_int">
+	SELECT A.WM_APPLY_NO AS wmApplyNo,
+        A.WM_NO AS wmNo, 
+        A.MEMBER_ID AS memberId,
+        A.APPLY_CONTENT AS applyContent,
+        A.APPLY_STAT AS applyStat,
+        B.MEMBER_NICKNAME AS memberNickname, 
+        B.MEMBER_PHOTO AS memberPhoto,
+        B.MEMBER_INTRO AS memberIntro
+	FROM (SELECT * FROM WM_APPLY_TBL WHERE APPLY_STAT=0)A LEFT JOIN MEMBER_TBL B ON A.MEMBER_ID = B.MEMBER_ID where wm_No=#{_parameter}
 	</select>
+	<resultMap type="w" id="getMembers">
+			<result column="wmNo" property="wmNo"/>
+			<result column="wmLeader" property="wmLeader"/>
+			<result column="wmTitle" property="wmTitle"/>
+			<result column="wmSubTitle" property="wmSubTitle"/>
+			<result column="wmTag" property="wmTag"/>
+			<result column="wmMeetTime" property="wmMeetTime"/>
+			<result column="wmAddr" property="wmAddr"/>
+			<result column="wmRangeMember" property="wmRangeMember"/>
+			<result column="wmContent" property="wmContent"/>
+			<result column="wmView" property="wmView"/>
+			<result column="wmDate" property="wmDate"/>
+			<result column="rnum" property="rnum"/>
+		<collection property="wList"
+					select="selectMemberProfil"
+					column="wmNo"
+					ofType="wa"
+					javaType="java.util.ArrayList"
+		/>
+	</resultMap>
+	
+	
+	<select id="selectContentBox" parameterType="_int" resultMap="getContentBox">
+SELECT A.*, B.MEMBER_NICKNAME AS leaderNickname FROM
+    (SELECT ROWNUM AS RNUM, W.* FROM ((SELECT
+            WM_NO AS wmNo,
+            WM_LEADER AS wmLeader,
+            WM_TITLE AS wmTitle,
+            WM_SUB_TITLE AS wmSubTitle,
+            WM_TAG AS wmTag,
+            WM_MEET_TIME AS wmMeetTime,
+            WM_ADDR AS wmAddr,
+            WM_RANGE_MEMBER AS wmRangeMember,
+            WM_CONTENT AS wmContent,
+            WM_VIEW AS wmView,
+            WM_DATE AS wmDate
+        FROM walk_mate_tbl ORDER BY WM_NO DESC)W))A
+LEFT JOIN MEMBER_TBL B ON A.wmLeader = B.MEMBER_NO WHERE A.wmNo =#{_parameter}
+	</select>
+	<select id="selectMembers" resultType="wa" parameterType="_int">
+	SELECT A.WM_APPLY_NO AS wmApplyNo,
+        A.WM_NO AS wmNo, 
+        A.MEMBER_ID AS memberId,
+        A.APPLY_CONTENT AS applyContent,
+        A.APPLY_STAT AS applyStat,
+        B.MEMBER_NICKNAME AS memberNickname, 
+        B.MEMBER_PHOTO AS memberPhoto,
+        B.MEMBER_INTRO AS memberIntro
+	FROM (SELECT * FROM WM_APPLY_TBL WHERE APPLY_STAT=0)A LEFT JOIN MEMBER_TBL B ON A.MEMBER_ID = B.MEMBER_ID where wm_No=#{_parameter}
+	</select>
+	<resultMap type="w" id="getContentBox">
+			<result column="wmNo" property="wmNo"/>
+			<result column="wmLeader" property="wmLeader"/>
+			<result column="wmTitle" property="wmTitle"/>
+			<result column="wmSubTitle" property="wmSubTitle"/>
+			<result column="wmTag" property="wmTag"/>
+			<result column="wmMeetTime" property="wmMeetTime"/>
+			<result column="wmAddr" property="wmAddr"/>
+			<result column="wmRangeMember" property="wmRangeMember"/>
+			<result column="wmContent" property="wmContent"/>
+			<result column="wmView" property="wmView"/>
+			<result column="wmDate" property="wmDate"/>
+			<result column="rnum" property="rnum"/>
+		<collection property="wList"
+					select="selectMembers"
+					column="wmNo"
+					ofType="wa"
+					javaType="java.util.ArrayList"
+		/>
+	</resultMap>
 </mapper>

@@ -70,19 +70,21 @@
 	<div class="chat-icon">
 		<img src="/resources/img/favicon.ico">
 	</div>
-	<div id="chat-board">
+	<div id="chat-board" style="display:none;">
+		<input type="hidden" id="chatMemberId" value="${sessionScope.m.memberId }">
+		<input type="hidden" id="chatMemberNickname" value="${sessionScope.m.memberNickname }">
 		<div class="chat-title">안녕하세요<span>"${sessionScope.m.memberNickname }"</span>님!</div>
 		<div class="chat-name"></div>
 		<div class="chat-list">
-			<li onclick="initChat('${sessionScope.m.memberNickname}');">
-				<input type="hidden" name="boardNo" value=1>
-				<input type="hidden" name="boardTitle" value="망원동에서 산책하실분?">
+			<li class="init-chat">
+				<input type="hidden" class="boardNo" value=1>
+				<input type="hidden" class="boardTitle" value="망원동에서 산책하실분?">
 				<span>망원동에서 산책하실분?</span>
 			</li>
-			<li onclick="initChat('${sessionScope.m.memberNickname}');">
-				<input type="hidden" name="boardNo" value=2>
-				<input type="hidden" name="boardTitle" value="망원동에서 산책하실분?">
-				<span>망원동에서 산책하실분?</span>
+			<li class="init-chat">
+				<input type="hidden" class="boardNo" value=2>
+				<input type="hidden" class="boardTitle" value="상암동에서 산책하실분?">
+				<span>상암동에서 산책하실분?</span>
 			</li>
 			<li>뭐뭐뭐</li>
 			<li>뭐뭐뭐</li>
@@ -91,8 +93,6 @@
 		<div class="chat-form" style="display:none;">
 			<div class="back-btn">뒤로가기</div>
 			<div class="chat-content">
-			<div class="chat left">안녕하세요</div>
-			<div class="chat right"><span>네 안녕하세요</span></div>
 			</div>
 			<div class="chat-input"><input type="text" id="send-msg"><span id="chat-send-btn">보내기</span></div>
 		</div>
