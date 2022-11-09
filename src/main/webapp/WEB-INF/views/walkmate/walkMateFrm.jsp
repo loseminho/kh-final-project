@@ -30,7 +30,7 @@
                     <div class="modal-writer-content-box">
                         <div class="writer-id">user03</div>
                         <h2 id="view-section2">골든 리트리버 상동 호수공원 같이 가요~</h2>
-                        <input type="text" class="" id="write-section1" placeholder="제목을 입력해주세요.">
+                        <input type="text" id="write-section1" placeholder="제목을 입력해주세요.">
                     </div>
                 </div>
                 <div class="modal-window-bottom">
@@ -59,15 +59,15 @@
 
                     <!-- modal-contents (글쓴이 작성 글)-->
                     <div class="bottom-content" id="modal-contents">
-                        <p id="view-section4" >
-                            안녕하세요. 리트리버맘 입니다. :)<br>
-                            골든 리프리버 파티를 구하고 있어요! 주로 호수공원이나 시냇물공원으로 해서 <br>
-                            20:00 ~ 21:00 (2시간) 정도 돌고 있습니다!.<br>
+                        <textarea id="view-section4" disabled>
+                            	안녕하세요. 리트리버맘 입니다. :)<br>
+                            	골든 리프리버 파티를 구하고 있어요! 주로 호수공원이나 시냇물공원으로 해서 <br>
+                            	20:00 ~ 21:00 (2시간) 정도 돌고 있습니다!.<br>
                             <br>
-                            저희 산책파티는 각자 목줄, 배변봉투, 입마개 등 지참해오는 것이니<br>
-                            이점 명시해서 지원해주세요~<br>
+                            	저희 산책파티는 각자 목줄, 배변봉투, 입마개 등 지참해오는 것이니<br>
+                           	 이점 명시해서 지원해주세요~<br>
                             
-                        </p>
+                        </textarea>
                         
                         <div id="write-section3">
                             <div class="input-img-contents-title">
@@ -111,40 +111,12 @@
                     <div class="bottom-content member-info" id="view-section5" >
                         <div class="info-titles">멤버 소개</div>
                         <div class="info-titles sub">우리 반갑게 만나요!</div>
-                        <ul class="memeber-info-ul">
+                        <ul class="member-info-ul">
                             <li class="member-info-list">
                                 <div class="member-info-profil"><img src="/resources/img/walkmate/liry1.jpg"></div>
                                 <div class="member-info-id">
                                     <span>릴리</span>
-                                    즐거운 삶은 스스로 만들어 나가는 것이라고 생각해요.
-                                </div>
-                            </li>
-                            <li class="member-info-list">
-                                <div class="member-info-profil"><img src="/resources/img/walkmate/main2.jpg"></div>
-                                <div class="member-info-id">
-                                    <span>토니</span>
-                                    휴일엔 여행가기와 빵 만들고 다른 사람들과 나눠 먹는것. 사...
-                                </div>
-                            </li>
-                            <li class="member-info-list">
-                                <div class="member-info-profil"><img src="/resources/img/walkmate/main3.jpg"></div>
-                                <div class="member-info-id">
-                                    <span>송웅기</span>
-                                    공간을 빚는 공간 디자이너.
-                                </div>
-                            </li>
-                            <li class="member-info-list">
-                                <div class="member-info-profil"><img src="/resources/img/walkmate/profil.png"></div>
-                                <div class="member-info-id">
-                                    <span>한아름</span>
-                                    특별함 보다 소소한 행복을 추구해요
-                                </div>
-                            </li>
-                            <li class="member-info-list">
-                                <div class="member-info-profil"><img src="/resources/img/walkmate/liry1.jpg"></div>
-                                <div class="member-info-id">
-                                    <span>릴리</span>
-                                    즐거운 삶은 스스로 만들어 나가는 것이라고 생각해요.
+                                    	즐거운 삶은 스스로 만들어 나가는 것이라고 생각해요.
                                 </div>
                             </li>
                         </ul>
@@ -232,7 +204,7 @@
    	<!-- Start footer -->
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
     <!-- End footer -->
-    
+    <script src="/resources/js/walk/walk.js"></script>
     <script>
     const modal = document.getElementById("modal");
     //게시물 보기
@@ -310,6 +282,6 @@
     }
     modalOff();
     </script>
-    <script src="/resources/js/walk/walk.js"></script>
+    
 </body>
 </html>

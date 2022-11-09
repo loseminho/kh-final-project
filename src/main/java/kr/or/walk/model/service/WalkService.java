@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.or.member.model.vo.Member;
 import kr.or.walk.model.dao.WalkDao;
 import kr.or.walk.model.vo.Walk;
 import kr.or.walk.model.vo.WmApply;
@@ -14,16 +13,15 @@ import kr.or.walk.model.vo.WmApply;
 public class WalkService {
 	@Autowired
 	private WalkDao dao;
-
+	
+	//전체 산책 메이트 조회 및 각 연결된 회원 정보 조회
 	public ArrayList<Walk> allWalkList() {
 		ArrayList<Walk> list = dao.allWalkList();
-//		ArrayList<WmApply> mList = dao.selectMemberProfil();
-		
-		return dao.allWalkList();
+		return list;
 	}
 
-	public Walk selectWalkListAjax(int wmNo) {
-		return dao.selectWalkListAjax(wmNo);
+	public Walk selectContentBox(int wmNo) {
+		return dao.selectContentBox(wmNo);
 	}
 	
 	
