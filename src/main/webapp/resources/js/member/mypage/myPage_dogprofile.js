@@ -16,6 +16,7 @@ $("#addDog").on("click", function(){
 	$("#dogType2").append("<option value='user'>직접 입력</option>")
 	$("#dogPhoto").prop("name", "");
 	$("#dogPhoto").val("");
+	$("#mbti-box").hide();
 	
 	$("#dogName").prop("readonly", false);
 	$("#dogName").val("");
@@ -113,8 +114,22 @@ function dogModal(dogNo) {
         	} else {
         		$("[name=dogVacc]").eq(1).prop("checked", true);
         	}
+        	
+    		$("#mbti-box").show();
+        	if(data.dogMbti != null) {
+        		$("#mbtiBtn").hide();
+        		$("#dogMbti").show();
+        		$("#dogMbti").val(data.dogMbtiName);
+        	} else {
+        		$("#mbtiBtn").show();
+        		$("#dogMbti").hide();
+        	}
         }
     });
+}
+
+function goToMbti() {
+	location.href="/mbtiMateMain.do";
 }
 
 function closeDogModal() {

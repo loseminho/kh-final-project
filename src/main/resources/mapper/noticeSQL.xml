@@ -67,4 +67,16 @@
 		filepath
 	from notice_file_tbl where notice_no = #{_parameter}
 </select>
+<!-- 공지사항 수정  -->
+<update id="updateNotice" parameterType="n">
+	update notice_tbl set
+	notice_title = #{noticeTitle},
+	notice_content = #{noticeContent},
+	notice_date = to_char(sysdate,'yyyy-mm-dd')
+	where notice_no = #{noticeNo}
+</update>
+<!-- 파일 삭제  -->
+<delete id="deleteFile" parameterType="_int">
+	delete from notice_file_tbl where notice_no = #{_parameter}
+</delete>
 </mapper>

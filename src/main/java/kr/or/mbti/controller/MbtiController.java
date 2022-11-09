@@ -11,6 +11,8 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -24,14 +26,20 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.google.gson.Gson;
 
+import kr.or.dog.controller.DogController;
+import kr.or.dog.model.service.DogService;
+import kr.or.dog.model.vo.Dog;
 import kr.or.mbti.model.service.MbtiService;
 import kr.or.mbti.model.vo.MbtiData;
 import kr.or.mbti.model.vo.MbtiResult;
+import kr.or.member.model.vo.Member;
 
 @Controller
 public class MbtiController {
@@ -43,6 +51,8 @@ public class MbtiController {
 
 	@Autowired
 	private MbtiService service;
+	@Autowired
+	private DogService dogService;
 	
 	@RequestMapping(value="/mbtiMateMain.do")
 	public String mbtiMateMain() {
@@ -175,10 +185,16 @@ public class MbtiController {
 		
 	}
 	
-	@ResponseBody
-	@RequestMapping(value="/mbtiResult.do", produces="application/json;charset=utf-8")
-	public String selectMbtiResult(MbtiResult mr) {
+	@RequestMapping(value="/updateMbti.do")
+	public String selectMbtiResult(MbtiResult mr, Model model, @SessionAttribute Member m, HttpSession session) {
 		MbtiResult result = service.selectMbtiResult(mr);
-		return new Gson().toJson(result);
+		
+		int memberNo = m.getMemberNo();
+		ArrayList<Dog> list = dogService.selectMyDogList(memberNo);
+		m.setDogList(list);
+		session.setAttribute("m", m);
+		
+		model.addAttribute("result", result);
+		return "walkmate/mbtiMatePage/mbtiMateResult";
 	}
 }

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>공지사항 수정하기 </title>
 <!--css-->
 <link rel="stylesheet" href="/resources/css/board/writeNotice.css">
 <!--fonts-->
@@ -15,12 +15,12 @@
 <body>
 <!-- 헤더  -->
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
-	<content>
+	  <content>
         <div class="writeNotice-wrap">
             <div class="writeNotice-box">
-                <form action="/writeNotice.do" method="post" enctype="multipart/form-data">
+                <form action="/noticeUpdate.do" method="post" enctype="multipart/form-data">
                     <div class="writeNotice-header">
-                        <h1>공지사항 작성</h1>
+                        <h1>공지사항 수정</h1>
                         <a href="#">공지사항</a>
                         <a href="#">관리자페이지</a>
                     </div>
@@ -28,20 +28,24 @@
                         <div class="writeNotice-content">
                             <div class="notice-input-box">
                                 <label for="noticeTitle">제목</label>
-                                <input type="text" name="noticeTitle" class="write-notice-form" required>
+                                <input type="text" name="noticeTitle" class="write-notice-form" value="${n.noticeTitle }" required>
                             </div>
                             <div class="notice-input-box">
                                 <label for="noticeContent">내용</label>
-                                <textarea type="text" name="noticeContent" class="write-notice-form" required></textarea>
+                                <textarea type="text" name="noticeContent" class="write-notice-form" value="${n.noticeContent}"required>${n.noticeContent}</textarea>
                             </div>
                             <div class="notice-input-box">
                                 <label for="noticeFile">첨부파일</label>
-                                <input type="file" name="noticeFile" id="noticeFile" multiple style="display:none;" onchange="loadfile(this);">
-                                <input type="hidden" name="noticeWriter" id="noticeWriter" value="${sessionScope.m.memberId }">
-                                <button type="button" name="noticeFile-btn" id="noticeFile-btn">첨부하기</button>
+                                <input type="file" name="noticeFile" multiple style="display:none;" onchange="loadfile(this);">
+                                <input type="hidden" name="noticeWriter" id="noticeWriter" value="${n.noticeWriter }">
+                                <button type="button" name="noticeFile-btn">첨부하기</button>
+                                <c:forEach items="${nf.fileList }" var="nf">
                                 <div class="fileZone">
                                 </div>
+                                </c:forEach>
                             </div>
+                            <!-- hidden -->
+                            <input type="hidden" name="noticeNo" value=${n.noticeNo }>
                         </div><!--writeNotice-content 끝-->
                         <div class="writeNotice-footer">
                             <div class="notice-submit-btn">
@@ -54,8 +58,7 @@
             </div>
         </div>
     </content>
-    <!-- footer -->
-    <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+        <jsp:include page="/WEB-INF/views/common/footer.jsp" />
     <script src="/resources/js/board/writeNotice.js"></script>
 </body>
 </html>

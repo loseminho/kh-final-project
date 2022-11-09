@@ -20,13 +20,9 @@ public class WalkDao {
 		List list = sqlSession.selectList("walkmate.allWalkList");
 		return (ArrayList<Walk>)list;
 	}
-	public ArrayList<WmApply> selectMemberProfil() {
-		List mList = sqlSession.selectList("walkmate.selectMemberProfil");
-		return (ArrayList<WmApply>)mList;
-	}
 	
-	public Walk selectWalkListAjax(int wmNo) {
-		return sqlSession.selectOne("walkmate.selectWalkListOne",wmNo);
+	public Walk selectContentBox(int wmNo) {
+		return sqlSession.selectOne("walkmate.selectContentBox",wmNo);
 	}
 
 }

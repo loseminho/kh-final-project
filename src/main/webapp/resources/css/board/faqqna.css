@@ -273,6 +273,26 @@ content{
 	font-family: gs-medium;
 	color: #fff;
 }
-.qna-table th,td:first-child{
-	width: 7%;
+.qna-table th:first-child{
+	width: 45%;
+}
+.qna-table td:first-child{
+	width: 25%;
+}
+.qna-table th:last-child{
+	width: 45%;
+}
+.qna-table td:last-child{
+	width: 25%;
+}
+/*
+.qna-table th:nth-child(5){
+	width: 50%;
+}
+.qna-table td:nth-child(5){
+	width: 50%;
+}
+*/
+.qna-table th:nth-child(6){
+	width: 50%;
 }
