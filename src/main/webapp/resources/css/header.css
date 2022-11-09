@@ -406,3 +406,16 @@ footer > .footer-content {
 	margin-right: 16px;
 	padding: 8px;
 }
+
+.require-login{
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:center;
+	width:100%;
+	height:100%;
+}
+.require-login>a{
+	background-color:#ccc;
+	width:50px;
+}

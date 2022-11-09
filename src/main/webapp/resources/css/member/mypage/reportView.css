@@ -34,9 +34,10 @@
 	font-weight: bold;
 }
 
-.report-reason{
+#report-reason{
 	width: 298px;
 	height: 198px;
+	overflow: auto; 
 	border: 1px solid black;
 }
 

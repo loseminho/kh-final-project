@@ -31,7 +31,7 @@
 				        		</c:when>
 				        		
 				        		<c:otherwise>
-				        			<img class="profile-photo" src="/resources/img/member/사람 임시 프로필.png">
+				        			<img class="profile-photo" src="/resources/img/default_profile.png">
 				        		</c:otherwise>
 				        	</c:choose>
 				        </div>
@@ -73,7 +73,7 @@
 		            		</c:when>
 		            		
 		            		<c:otherwise>
-		            			<img class="profile-photo" src="/resources/img/member/반려견 임시 프로필.png">
+		            			<img class="profile-photo" src="/resources/img/default_dog.png">
 		            		</c:otherwise>
 		            	</c:choose>
 		            </div>

@@ -51,7 +51,6 @@ public class AllMemberChat extends TextWebSocketHandler {
 			}else {
 				memberList.get(boardNo).add(session);
 			}
-			System.out.println("들어왔을때 세션 ::: "+session);
 			
 			
 			String sendMsg = "<p>" + memberId + "님이 입장하셨습니다.</p>";
@@ -72,27 +71,16 @@ public class AllMemberChat extends TextWebSocketHandler {
 				}
 			}
 		}
-		/*
-		else if(type.equals("end")) {
-			System.out.println("close**boardNo:::"+boardNo);
-			System.out.println("지우는 세션 :::"+session);
-			memberList.get(boardNo).remove(session);
-			System.out.println(memberList);
-			System.out.println(memberList.get(boardNo));
-		}
-		*/
 	}
 
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-		System.out.println("memberList.get():::"+memberList.get(1));
-		System.out.println("memberList.get().size():::"+memberList.size());
-		System.out.println("새로고침시 닫히는 웹소켓 서버:::"+session);
 		for(Object i : memberList.keySet()) {
-			System.out.println("for문안에 memberList:::"+memberList.get(i));
+			System.out.println(i);
 			for(WebSocketSession s : memberList.get(i)) {
 				if(s.equals(session)){
 					memberList.get(i).remove(session);
+					break;
 				}
 			}
 		}

@@ -7,16 +7,20 @@
 }
 
 .report-list-table{
-	width: 800px;
+	width: 815px;
+	height: 501px;
+	overflow: auto;
 }
 
 .report-list-table table{
+	width: 800px;
     table-layout: fixed;
+    
+    border: 1px solid black;
     border-collapse: collapse;
 }
 
 .report-list-table table tr{
-	width: 800px;
 	border: 1px solid black;
 }
 
@@ -25,19 +29,19 @@
 }
 
 .report-list-table table th:nth-child(1){
-	width: 150px;
+	width: 18%;
 }
 
 .report-list-table table th:nth-child(2){
-	width: 150px;
+	width: 18%;
 }
 
 .report-list-table table th:nth-child(3){
-	width: 300px;
+	width: 40%;
 }
 
 .report-list-table table th:nth-child(4){
-	width: 200px;
+	width: 24%;
 }
 
 .report-list-table table td{
@@ -46,6 +50,23 @@
 	text-overflow: ellipsis;
 	text-align: center;
 	
-	padding-left: 25px;
-	padding-right: 25px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.report-one a{
+	color: black;
+	text-decoration: none;
+}
+
+.report-one a:hover{
+	color: #1abc9c;
+}
+
+.report-one a:visited{
+	color: black;
+}
+
+.report-one a:visited:hover{
+	color: #1abc9c;
 }

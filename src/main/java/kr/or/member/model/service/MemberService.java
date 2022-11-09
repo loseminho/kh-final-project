@@ -136,6 +136,16 @@ public class MemberService {
 		return other;
 	}	
 	
+	public int insertReport(Report report) {
+		int repoarAble = dao.checkReportAble(report);
+		
+		if(repoarAble == 0) {
+			return dao.insertReport(report);
+		}else {
+			return -1;
+		}
+	}
+	
 	public ArrayList<Report> selectMyReportList(int memberNo) {
 		return dao.selectMyReportList(memberNo);
 	}
