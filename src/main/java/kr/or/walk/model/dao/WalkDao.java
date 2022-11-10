@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.or.member.model.vo.Member;
 import kr.or.walk.model.vo.Walk;
+import kr.or.walk.model.vo.WalkFile;
 import kr.or.walk.model.vo.WmApply;
 
 @Repository
@@ -24,5 +25,17 @@ public class WalkDao {
 	public Walk selectContentBox(int wmNo) {
 		return sqlSession.selectOne("walkmate.selectContentBox",wmNo);
 	}
+
+	public int inputWalk(Walk w) {
+		return sqlSession.insert("walkmate.inputWalk",w);
+	}
+
+	public int selectWmNo() {
+		return sqlSession.selectOne("walkmate.selectMaxSeq");
+	}
+	public void inputWalkFile(WalkFile wf) {
+		sqlSession.insert("walkmate.inputWalkFile",wf);
+	}
+
 
 }
