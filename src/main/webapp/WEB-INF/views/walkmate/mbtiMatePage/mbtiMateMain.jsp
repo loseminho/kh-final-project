@@ -24,11 +24,11 @@
         
             <section id="content-top">
                 <div class="content-top-button">
-                    <div class="content-top-button-left">산책 찾기</div>
-                    <div class="content-top-button-right">💖메이트 찾기</div>
+                    <div class="content-top-button-left">산책 메이트</div>
+                    <div class="content-top-button-right">💖메이트</div>
                 </div>
             </section>
-
+            
             <!-- content-midle section -->
             <section id="content-middle">
                 <div class="content-middle-title">멍BTI 테스트</div>
@@ -50,7 +50,7 @@
            					<div id="chooseDog">
            						<c:choose>
 		           					<c:when test="${sessionScope.m.dogList[0] ne null}">
-		           						<h3>반려견을 선택해주세요.</h3><br><br>
+		           						<h3>반려견을 선택해주세요.</h3><br><br><br>
 		           						<c:forEach items="${sessionScope.m.dogList }" var="myDog">
 		           							<div class="box">
 										        <a onclick="mbtiStart('${myDog.dogNo}', '${myDog.dogName}');">

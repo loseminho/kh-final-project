@@ -13,7 +13,7 @@ input, select, button{
     height: auto;
     display: flex;
     position: relative;
-    margin-bottom: 50px;
+    margin-bottom: 80px;
     flex-grow:1;
 }
 ::-webkit-scrollbar {
@@ -29,40 +29,45 @@ input, select, button{
 .walk-mate-content{
     text-align: center;
     margin: 0 auto;
+    margin-top:100px;
 }
 #content-top{
     width: 1200px;
     height: 110px;
-    border-bottom: 2px solid rgb(225, 225, 225);
     margin: 0 auto;
     text-align: center;
-    margin-top: 150px;
+    margin-top: 80px;
     position: relative;
 }
 
 #content-middle{
     width: 1200px;
-    height: 85px;
-    border-bottom: 2px solid #1abc9c;
-    margin: 0 auto;
+    margin: 20px auto;
     position: relative;
 }
 
+.content-top-button {
+	width:600px;
+	margin: 0 auto;
+	display:flex;
+	flex-direction:row;
+	justify-content:center;
+}
+
 .content-top-button-left{
-    width: 449px;
-    height: 60px;
-    float: left;
+	display:inline-block;
+    width: 250px;
+    height: 80px;
     line-height: 60px;
     border-bottom: 2px solid #e1e1e1;
     margin-top: 20px;
-    margin-left: 150px;
     font-weight: 900;
     font-size:32px;
 }
 .content-top-button-right{
-    width: 449px;
-    height: 60px;
-    float: left;
+	display:inline-block;
+    width: 250px;
+    height: 80px;
     line-height: 60px;
 	border-bottom: 2px solid #1abc9c;
 	font-weight: 900;
@@ -115,6 +120,7 @@ input, select, button{
 
 #mbtiMainPhoto {
 	width:400px;
+	margin-bottom:20px;
 }
 
 #mbtiMainPhoto img {
