@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>카카오 추가 정보 입력</title>
+<title>산책갈개</title>
 <link rel="stylesheet" href="/resources/css/member/login.css">
 <link rel="stylesheet" href="/resources/css/gmarket.css">
 <script src="https://kit.fontawesome.com/7b7a761eb5.js" crossorigin="anonymous"></script>

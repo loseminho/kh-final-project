@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>메이트 찾기</title>
+	<title>산책갈개</title>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <link rel="stylesheet" href="/resources/css/walkmate/mbtiMatePage/mbtiMate.css">
     <link rel="styleSheet" href="/resources/css/gmarket.css">
@@ -24,15 +24,12 @@
         
             <section id="content-top">
                 <div class="content-top-button">
-                    <div class="content-top-button-left">산책 찾기</div>
-                    <div class="content-top-button-right">💖메이트 찾기</div>
+                    <div class="content-top-button-left">산책 메이트</div>
+                    <div class="content-top-button-right">💖메이트</div>
                 </div>
             </section>
 
             <!-- content-midle section -->
-            <section id="content-middle">
-                <div class="content-middle-title">멍BTI 테스트</div>
-            </section>
             
             <!-- content-bottom section -->
             <section id="content-bottom">
@@ -60,7 +57,7 @@
                      </div>
 	                            
                      <div id="mbti-matching">
-                         <h3>영혼의 단짝🍀 : <span style="color:#ee862c;">${result.friendTypeName }</span> 타입</h3>
+                         <h2>영혼의 단짝🍀 : <span style="color:#ee862c;">${result.friendTypeName }</span> 타입</h2>
                          <div class="mbti-matching-box">
 	                         <c:choose>
 	                         	<c:when test="${friend[0] ne null}">
@@ -89,7 +86,7 @@
 	                         </c:choose>
                          </div>
 
-                         <h3>영혼의 파트너💖 : <span style="color:#ee862c;">${result.partnerTypeName }</span> 타입</h3>
+                         <h2>영혼의 파트너💖 : <span style="color:#ee862c;">${result.partnerTypeName }</span> 타입</h2>
                          <div class="mbti-matching-box">
                              <c:choose>
 	                         	<c:when test="${partner[0] ne null}">

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>마이페이지</title>
+<title>산책갈개</title>
 	<link rel="stylesheet" href="/resources/css/member/myPage.css">
 	<link rel="stylesheet" href="/resources/css/member/myReport.css">
 	

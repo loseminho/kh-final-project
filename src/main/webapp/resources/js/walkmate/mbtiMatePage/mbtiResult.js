@@ -1,3 +1,9 @@
+$(window).scrollTop(100);
+
+$(".content-top-button-left").on("click", function(){
+	location.href="/walkMateFrm.do";
+});
+
 function dogModal(dogNo) {
 	$("#dog-modal").css("display", "flex");
 	$("#dogType1").css("display", "block");
