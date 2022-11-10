@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>메이트 찾기</title>
+	<title>산책갈개</title>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <link rel="stylesheet" href="/resources/css/walkmate/mbtiMatePage/mbtiMate.css">
     <link rel="styleSheet" href="/resources/css/gmarket.css">
