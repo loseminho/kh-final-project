@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.or.chat.model.vo.ChatHistory;
 import kr.or.chat.model.vo.RequireList;
 
 @Repository
@@ -33,7 +34,21 @@ public class ChatDao {
 
 	public ArrayList<RequireList> selectApplyList(String memberId) {
 		List list = sqlSession.selectList("chat.selectApplyList",memberId);
-		System.out.println("list:::"+list);
 		return (ArrayList<RequireList>)list;
+	}
+
+	public void saveData(int boardNo, String sendMsg, String memberId, int memberNo) {
+		HashMap<String,Object> map = new HashMap<>();
+		map.put("boardNo", boardNo);
+		map.put("sendMsg", sendMsg);
+		map.put("memberId", memberId);
+		map.put("memberNo", memberNo);
+		sqlSession.insert("chat.saveData",map);
+		
+	}
+
+	public ArrayList<ChatHistory> getLastChat(int boardNo) {
+		List list = sqlSession.selectList("chat.getLastChat",boardNo);
+		return (ArrayList<ChatHistory>)list;
 	}
 }

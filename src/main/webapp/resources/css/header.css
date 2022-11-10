@@ -172,7 +172,7 @@ a, button {
 	height:50px;
 	display:flex;
 	justify-content:center;
-    background-color: #DDD9CB;
+    background-color: #ccc	;
 }
 .manager-subtitle a{
 	font-family:gs-Medium;
@@ -244,6 +244,13 @@ footer > .footer-content {
 .chat-on-off{
 	display:block;
 }
+.chat-tooltip{
+	color:black;
+	position:absolute;
+	top:115px;
+	left:80px;
+	font-family:gs-Medium;
+}
 
 
 #chat-board{
@@ -260,11 +267,16 @@ footer > .footer-content {
 }
 
 .back-btn{
-	font-family:gs-Medium;
 	text-align: right;
 	padding-right:10px;
+}
+.back-btn>span{
+	font-family:gs-Medium;
+	text-align: right;
+	padding-right:8px;
 	font-size: 13px;
 	cursor:pointer;
+	color:red;
 }
 .chat-content{
 	display:flex;
@@ -300,7 +312,10 @@ footer > .footer-content {
 
 }
 .chat-name{
+	font-family:gs-Medium;
+	font-size:15px;
 	height:30px;
+	line-height:30px;
 	text-align:center;	
 }
 .chat-input{
@@ -336,12 +351,14 @@ footer > .footer-content {
 }
 
 .chat-list{
-	width:95%;
+	width:100%;
 	height:80%;
 	display:flex;
 	flex-direction:column;
 	justify-content: flex-start;
 	align-items: center;
+	padding:10px;
+	box-sizing: border-box;
 }
 .chat-list li{
 	text-align:center;
@@ -429,4 +446,15 @@ footer > .footer-content {
 .require-login>a{
 	background-color:#ccc;
 	width:50px;
+}
+
+.init-chat{
+	overflow:hidden;
+}
+
+.chat-content>p{
+	font-family:gs-Medium;
+	font-size:13px;
+	text-align: center;
+	
 }

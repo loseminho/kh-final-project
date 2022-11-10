@@ -52,4 +52,21 @@
 	   		join walk_mate_tbl using(wm_no)
 		where member_id =	#{_parameter}
 	</select>
+	
+	<insert id="saveData" parameterType="hashmap">
+		insert into chat_history values(
+			#{boardNo},#{memberNo},#{memberId},#{sendMsg},sysdate
+		)
+	</insert>
+	
+	<select id="getLastChat" parameterType="int" resultType="ch">
+		select
+			board_no as boardNo,
+			member_no as memberNo,
+			member_id as memberId,
+			chat,
+			send_date as sendDate
+		from chat_history
+		where board_no = #{_parameter} order by sendDate
+	</select>
 </mapper>

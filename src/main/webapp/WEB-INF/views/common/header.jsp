@@ -4,11 +4,13 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<link rel="stylesheet" href="/resources/css/header.css">
 	<link rel="stylesheet" href="/resources/css/gmarket.css">
+	<!-- 드래그 -->
 	<script src="https://kit.fontawesome.com/7b7a761eb5.js" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-	
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
  	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+	<!-- 이모티콘 --> 	
+ 	
 <header>
 	<div class="header-wrap">
 		<div class="header">
@@ -72,7 +74,8 @@
 	<div class="chat-icon">
 		<img src="/resources/img/favicon.ico">
 	</div>
-	<div id="chat-board">
+	<span class="chat-tooltip">채팅</span>
+	<div id="chat-board" style="display:none;">
 		<c:choose>
 			<c:when test="${empty sessionScope.m }">
 				<div class="require-login">
@@ -82,6 +85,7 @@
 			</c:when>
 			<c:otherwise>
 				<input type="hidden" id="chatMemberId" value="${sessionScope.m.memberId }">
+				<input type="hidden" id="chatMemberNo" value="${sessionScope.m.memberNo }">
 				<input type="hidden" id="chatMemberNickname" value="${sessionScope.m.memberNickname }">
 				<div class="chat-title">안녕하세요<span>"${sessionScope.m.memberNickname }"</span>님!</div>
 				<div class="chat-name"></div>
@@ -92,10 +96,10 @@
 						<input type="hidden" class="boardTitle" value="망원동에서 산책하실분?">
 						<span>망원동에서 산책하실분?</span>
 					</li>
-					 -->
+				 -->
 				</div>
 				<div class="chat-form" style="display:none;">
-					<div class="back-btn">뒤로가기</div>
+					<div class="back-btn"><span>뒤로가기</span></div>
 					<div class="chat-content">
 					</div>
 					<div class="chat-input"><input type="text" id="send-msg"><span id="chat-send-btn">보내기</span></div>

@@ -12,11 +12,12 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 
+import kr.or.chat.model.service.ChatService;
 import kr.or.member.model.service.MemberService;
 
 public class AllMemberChat extends TextWebSocketHandler {
 	@Autowired
-	private MemberService service;
+	private ChatService service;
 	private ArrayList<WebSocketSession> sessionList;
 	private HashMap<Object, ArrayList<WebSocketSession>> memberList;
 	private ArrayList<String> memberIdList;
@@ -40,10 +41,8 @@ public class AllMemberChat extends TextWebSocketHandler {
 		String type = element.getAsJsonObject().get("type").getAsString();
 		String memberId = element.getAsJsonObject().get("memberId").getAsString();
 		int boardNo = Integer.parseInt(element.getAsJsonObject().get("boardNo").getAsString());
-		System.out.println("type:::"+type);
 		
 		if (type.equals("enter")) {
-			System.out.println("enter**boardNo:::"+boardNo);
 			ArrayList<WebSocketSession> list = new ArrayList<WebSocketSession>();
 			if(memberList.get(boardNo)==null) {
 				list.add(session);
@@ -61,9 +60,11 @@ public class AllMemberChat extends TextWebSocketHandler {
 				}
 			}
 		} else if (type.equals("chat")) {
+			int memberNo = Integer.parseInt(element.getAsJsonObject().get("memberNo").getAsString());
 			String msg = element.getAsJsonObject().get("msg").getAsString();
 			String sendMsg = "<div class='chat left'><span class='chatId'>" + memberId + " : </span>"
 					+ msg + "</div>";
+			service.saveData(boardNo, msg, memberId, memberNo);
 			for (WebSocketSession s : memberList.get(boardNo)) {
 				TextMessage tm = new TextMessage(sendMsg);
 				if (!s.equals(session)) {
@@ -76,7 +77,6 @@ public class AllMemberChat extends TextWebSocketHandler {
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
 		for(Object i : memberList.keySet()) {
-			System.out.println(i);
 			for(WebSocketSession s : memberList.get(i)) {
 				if(s.equals(session)){
 					memberList.get(i).remove(session);

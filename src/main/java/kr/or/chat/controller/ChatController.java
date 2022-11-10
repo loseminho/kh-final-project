@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 
 import kr.or.chat.model.service.ChatService;
+import kr.or.chat.model.vo.ChatHistory;
 import kr.or.chat.model.vo.RequireList;
 
 @Controller
@@ -54,6 +55,13 @@ public class ChatController {
 	@RequestMapping(value="/selectApplyList.do", produces = "application/json;charset=utf-8")
 	public String selectApplyList(String memberId) {
 		ArrayList<RequireList> list = service.selectApplyList(memberId);
+		return new Gson().toJson(list);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/getLastChat.do", produces = "application/json;charset=utf-8" )
+	public String geetLastChat(int boardNo) {
+		ArrayList<ChatHistory>list=service.getLastChat(boardNo);
 		return new Gson().toJson(list);
 	}
 }

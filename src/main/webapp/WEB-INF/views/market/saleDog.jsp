@@ -31,7 +31,6 @@
                     <div class="tab-header">
                         <ul class="dogMarket-tab">
                             <li><h1>입양받기</h1></li>
-                            <li><h1><a>물품거래</a></h1></li>
                         </ul>
                     </div>
                     <div class="getDog-content">
@@ -52,7 +51,6 @@
                                 <li>소형견</li>
                                 <li>중형견</li>
                                 <li>대형견</li>
-                                <li>기타</li>
                             </ul>
                         <div class="saleList">
                             <div class="sale-box">
@@ -75,29 +73,7 @@
                 </div><!--faq-box 끝-->
                 <div class="saleDog-box">
                     <div class="saleDog-content">
-                    	<div class="test">
-                        	<div class="getDog-header slide_box">
-	                            <p>뭐 사러 왔어?</p>
-	                            <p>아, 뭐가 필요한지 모르겠다구?</p>
-	                            <p>나랑 손 잡고 골라볼까?</p>
-	                            <p>뭐가 필요할지 같이 고민해보자^^</p>
-	                            <p>그리구 우리 뭉치랑 같이 산책도 하구</p>
-	                            <p>아참, 혹시 간식사려구 하는데..</p>
-	                            <p>우리 뭉치 간식 주러 갈래?</p>
-                            </div>
-                        </div>    
-                            <ul class="getDog-category">
-                                <li>전체</li>
-                                <li>소형견</li>
-                                <li>중형견</li>
-                                <li>대형견</li>
-                                <li>기타</li>
-                            </ul>                
-                            <div class="saleList">
-                            </div>
-                            <div class="sale-box">
-                            </div>
-					<jsp:include page="/WEB-INF/views/shop/shopList.jsp"/>
+
                     </div>
                 </div><!--qna-box 끝-->
             </div><!--faqqna-content 끝-->
