@@ -321,7 +321,7 @@ footer > .footer-content {
 }
 .chat-input{
 	margin:0 auto;
-	padding-top:10px;
+	padding-top:5px;
 	display:flex;
 	align-content:center;
 	width:95%;
@@ -382,8 +382,13 @@ footer > .footer-content {
 	border-radius: 3px;
 }
 
+.chatId{
+	font-family:gs-Medium;
+	font-size:13px;
+}
+
 .left {
-	font-family:gs-Light;
+	font-family:gs-Medium;
 	font-size:13px;
 	position: relative;
 	max-width: 300px;
@@ -423,7 +428,7 @@ footer > .footer-content {
 }
 
 .right {
-	font-family:gs-Light;
+	font-family:gs-Medium;
 	font-size:13px;
 	position: relative;
 	max-width: 300px;
@@ -458,4 +463,10 @@ footer > .footer-content {
 	font-size:13px;
 	text-align: center;
 	
+}
+
+.wm-king{
+	position:absolute;
+	top:-10px;
+	left:5px;
 }

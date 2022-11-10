@@ -40,7 +40,9 @@ public class AllMemberChat extends TextWebSocketHandler {
 		JsonElement element = parser.parse(message.getPayload());
 		String type = element.getAsJsonObject().get("type").getAsString();
 		String memberId = element.getAsJsonObject().get("memberId").getAsString();
+		int wmLeader = Integer.parseInt(element.getAsJsonObject().get("wmLeader").getAsString());
 		int boardNo = Integer.parseInt(element.getAsJsonObject().get("boardNo").getAsString());
+		
 		
 		if (type.equals("enter")) {
 			ArrayList<WebSocketSession> list = new ArrayList<WebSocketSession>();
@@ -62,13 +64,25 @@ public class AllMemberChat extends TextWebSocketHandler {
 		} else if (type.equals("chat")) {
 			int memberNo = Integer.parseInt(element.getAsJsonObject().get("memberNo").getAsString());
 			String msg = element.getAsJsonObject().get("msg").getAsString();
-			String sendMsg = "<div class='chat left'><span class='chatId'>" + memberId + " : </span>"
-					+ msg + "</div>";
-			service.saveData(boardNo, msg, memberId, memberNo);
-			for (WebSocketSession s : memberList.get(boardNo)) {
-				TextMessage tm = new TextMessage(sendMsg);
-				if (!s.equals(session)) {
-					s.sendMessage(tm);
+			if(memberNo==wmLeader) {
+				String sendMsg = "<div class='chat left'><span class='chatId'><span class='wm-king'>👑</span>" + memberId + " : </span>"
+						+ msg + "</div>";
+				service.saveData(boardNo, msg, memberId, memberNo);
+				for (WebSocketSession s : memberList.get(boardNo)) {
+					TextMessage tm = new TextMessage(sendMsg);
+					if (!s.equals(session)) {
+						s.sendMessage(tm);
+					}
+				}
+			}else {
+				String sendMsg = "<div class='chat left'><span class='chatId'>" + memberId + " : </span>"
+						+ msg + "</div>";
+				service.saveData(boardNo, msg, memberId, memberNo);
+				for (WebSocketSession s : memberList.get(boardNo)) {
+					TextMessage tm = new TextMessage(sendMsg);
+					if (!s.equals(session)) {
+						s.sendMessage(tm);
+					}
 				}
 			}
 		}

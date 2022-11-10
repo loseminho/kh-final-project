@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>산책갈개</title>
 <link rel="stylesheet" href="/resources/css/market/writeFrm.css">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <link rel="stylesheet" href="/resources/css/market/myMarketList.css">
