@@ -303,8 +303,6 @@ html, body {
 .managerMenu li:not(:first-child){
 	display:none;
 }
-
-
 .managerMenu>li{
 	font-family:gs-Medium;
     font-weight: 800;

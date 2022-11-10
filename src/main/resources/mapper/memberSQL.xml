@@ -125,4 +125,15 @@
 			member_no = #{_parameter}
 		order by dog_no
 	</select>
+	
+	<select id="selectMadeList" parameterType="_int" resultType="w">
+		select
+			wm_title as wmTitle,
+			wm_meet_time as wmMeetTime,
+			wm_addr as wmAddr
+		from 
+			walk_mate_tbl
+		where 
+			wm_leader = #{_parameter}
+	</select>
 </mapper>

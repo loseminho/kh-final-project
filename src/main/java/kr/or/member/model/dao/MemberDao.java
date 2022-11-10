@@ -84,6 +84,11 @@ public class MemberDao {
 	
 	public ArrayList<Report> selectMyReportList(int memberNo) {
 		List list = sqlSession.selectList("report.selectMyReportList", memberNo);
-		return (ArrayList<Report>) list;
+		return (ArrayList<Report>)list;
+	}
+
+	public ArrayList<Walk> selectMadeList(int memberNo) {
+		List list = sqlSession.selectList("member.selectMadeList", memberNo);
+		return (ArrayList<Walk>)list;
 	}
 }
