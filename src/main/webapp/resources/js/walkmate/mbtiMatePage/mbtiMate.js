@@ -11,6 +11,10 @@ function mbtiStart(dogNo, dogName) {
 	$("[name=dogNo]").val(dogNo);
 }
 
+$(".content-top-button-left").on("click", function(){
+	location.href="/walkMateFrm.do";
+});
+
 $(".mbti-btn").on("click", function(){
 	let btnIdx = $(this).parent().find(".mbti-btn").index(this);
 	// console.log(btnIdx);
