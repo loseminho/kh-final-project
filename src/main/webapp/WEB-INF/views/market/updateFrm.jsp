@@ -102,6 +102,7 @@
 		</form>
 			<button id="submit-btn">전송</button>
 			<button id="cancel-btn">취소</button>
+			<button id="delete-btn">삭제</button>
 		</div>
 	</div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
@@ -126,6 +127,10 @@
 				});
 			}
 		});
+	});
+	
+	$("#delte-box").on("click",function(){
+		
 	});
 </script>
 </body>

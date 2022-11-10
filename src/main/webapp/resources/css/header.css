@@ -229,6 +229,7 @@ footer > .footer-content {
 	left: 30px;
 	overflow:hidden;
 	cursor:pointer;
+	z-index:999999999999;
 }
 .chat-icon>img{
 	width:40%;
@@ -246,7 +247,7 @@ footer > .footer-content {
 }
 .chat-tooltip{
 	color:black;
-	position:absolute;
+	position:fixed;
 	top:115px;
 	left:80px;
 	font-family:gs-Medium;

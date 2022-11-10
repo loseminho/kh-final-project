@@ -125,7 +125,6 @@ public class MarketController {
 	@RequestMapping(value="/updateMarketFrm.do")
 	public String updateMarketFrm(Model model, int marketNo) {
 		MarketDog md = service.selectOne(marketNo);
-		System.out.println("업데이트폼으로 가는 데이터"+md);
 		md.setMarketNo(marketNo);
 		model.addAttribute("md", md);
 		return "market/updateFrm";
@@ -135,7 +134,6 @@ public class MarketController {
 	public String updateMarket(MarketDog md, MultipartFile[] photo,HttpServletRequest request) {
 		String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/market/");
 		ArrayList<MarketDogFile> list = new ArrayList<MarketDogFile>();
-		System.out.println("컨트롤러에서 어떨까.?"+md);
 		if(photo[0].isEmpty()) {
 		}else{
 			for(MultipartFile file : photo) {
