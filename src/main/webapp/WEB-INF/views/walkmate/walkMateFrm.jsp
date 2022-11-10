@@ -15,11 +15,12 @@
 	<!-- 헤더  -->
 	<jsp:include page="/WEB-INF/views/common/header.jsp" />
     
+    <input type="hidden" id="login-memberId" value="${sessionScope.m.memberId}">
     <input type="hidden" id="login-memberNickname" value="${sessionScope.m.memberNickname}">
     <input type="hidden" id="login-memberPhoto" value="
     <c:choose>
    		<c:when test="${sessionScope.m.memberPhoto eq null}">
-		    /resources/img/default_profile.png						
+		    /resources/img/default_profile.png
 		</c:when>
 		<c:otherwise>
 		    /resources/upload/member/${sessionScope.m.memberPhoto }						
