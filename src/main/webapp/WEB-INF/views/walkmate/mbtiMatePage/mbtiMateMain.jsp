@@ -32,6 +32,8 @@
             <!-- content-midle section -->
             <section id="content-middle">
                 <div class="content-middle-title">멍BTI 테스트</div>
+                <p>멍BTI 16가지 유형 중에서 내 반려견은 어떤 유형인지 알아보고,</p>
+                <p>내 반려견과 찰떡궁합인 친구를 찾아주자!</p>
             </section>
             
             <!-- content-bottom section -->

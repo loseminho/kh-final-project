@@ -1,3 +1,5 @@
+$(window).scrollTop(100);
+
 function dogModal(dogNo) {
 	$("#dog-modal").css("display", "flex");
 	$("#dogType1").css("display", "block");

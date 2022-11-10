@@ -72,9 +72,8 @@ html, body {
 	text-decoration: none;
 }
 .section2Content{
-	padding-top:45px;
-	width:100%;
-	height:100%;
+	width:100vw;
+	height:100vh;
 	background-color: rgba(0,0,0,0.2);
 	display:flex;
 	justify-content: center;
@@ -96,7 +95,7 @@ html, body {
 	font-family: gs-Bold;
 	/*padding-top:20px;*/
 	/*color: #DE4B3F;*/
-	font-size:30px;
+	font-size:24px;
 	font-weight:900;
 }
 #mbtiBtn {
