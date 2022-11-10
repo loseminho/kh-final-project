@@ -49,24 +49,21 @@ fileZone.on("drop",function(e){
         fileSetting();
         $(".material-symbols-outlined").hide();
     });
-function deleteFile(obj){
-    const deleteFilename = $(obj).prev().text();
-    for(let i=0; i<files.length; i++){
-        if(files[i].name == deleteFilename){
-            files.splice(i,1);
-            break;
-        }
-    }
-
-    //파일이 다 지워진 경우 처음으로 돌려줌 
-    if(files.length == 0){
-        $(".fileMsg").show();
-        fileZone.css("border","1px solid #5e5e5e");
-    	$(".material-symbols-outlined").show();
-    }
-    $(obj).parent().remove();
-    fileSetting();
-}
+function deleteFile(obj,fileNo,filepath){
+	const fileNoInput = $("<input>");
+	fileNoInput.attr("name","fileNoList");
+	fileNoInput.val(fileNo);
+	fileNoInput.hide();
+	
+	const filepathInput = $("<input>");
+	filepathInput.attr("name","filepathList");
+	filepathInput.val(filepath);
+	filepathInput.hide();
+    
+    $("#updateFrm").append(fileNoInput).append(filepathInput);
+			$(obj).parent().remove();
+			fileSetting();
+		}
 
 function fileSetting(){
     //input[type=file] value는 보안상 변경이 불가능

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import kr.or.board.model.vo.QnaBoard;
 import kr.or.board.model.vo.QnaComment;
 import kr.or.board.model.vo.QnaFile;
+import kr.or.notice.model.vo.Notice;
 
 @Repository
 public class BoardDao {
@@ -80,7 +81,15 @@ public class BoardDao {
 		List list = sqlsession.selectList("qnaboard.searchQnaBoard",q);
 		return (ArrayList<QnaBoard>)list;
 	}
+	//게시판 조회수 
 	public int updateHit(int qnaNo) {
 		return sqlsession.update("qnaboard.updateHit",qnaNo);
 	}
+	/*
+	//문의내역 더보기 
+	public ArrayList<QnaBoard> moreQna(int start, int amount) {
+		List list = sqlsession.selectList("qnaboard.moreQna",start,amount);
+		return (ArrayList<QnaBoard>)list;
+	}
+*/
 }

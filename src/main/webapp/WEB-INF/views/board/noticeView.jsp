@@ -40,7 +40,7 @@
                         </tr>
                         <tr>
                         	<th>첨부파일 </th>
-                        	<c:forEach items="${n.fileList }" var="nf">
+                        	<c:forEach items="${n.fileList}" var="nf">
                         	<th>${nf.filename} </th>
                         	</c:forEach>
                         </tr>

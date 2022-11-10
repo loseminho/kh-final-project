@@ -13,7 +13,7 @@ input, select, button{
     height: auto;
     display: flex;
     position: relative;
-    margin-bottom: 50px;
+    margin-bottom: 80px;
     flex-grow:1;
 }
 ::-webkit-scrollbar {
@@ -29,40 +29,45 @@ input, select, button{
 .walk-mate-content{
     text-align: center;
     margin: 0 auto;
+    margin-top:100px;
 }
 #content-top{
     width: 1200px;
     height: 110px;
-    border-bottom: 2px solid rgb(225, 225, 225);
     margin: 0 auto;
     text-align: center;
-    margin-top: 150px;
+    margin-top: 80px;
     position: relative;
 }
 
 #content-middle{
     width: 1200px;
-    height: 85px;
-    border-bottom: 2px solid #1abc9c;
-    margin: 0 auto;
+    margin: 20px auto;
     position: relative;
 }
 
+.content-top-button {
+	width:600px;
+	margin: 0 auto;
+	display:flex;
+	flex-direction:row;
+	justify-content:center;
+}
+
 .content-top-button-left{
-    width: 449px;
-    height: 60px;
-    float: left;
+	display:inline-block;
+    width: 250px;
+    height: 80px;
     line-height: 60px;
     border-bottom: 2px solid #e1e1e1;
     margin-top: 20px;
-    margin-left: 150px;
     font-weight: 900;
     font-size:32px;
 }
 .content-top-button-right{
-    width: 449px;
-    height: 60px;
-    float: left;
+	display:inline-block;
+    width: 250px;
+    height: 80px;
     line-height: 60px;
 	border-bottom: 2px solid #1abc9c;
 	font-weight: 900;
@@ -115,6 +120,7 @@ input, select, button{
 
 #mbtiMainPhoto {
 	width:400px;
+	margin-bottom:20px;
 }
 
 #mbtiMainPhoto img {
@@ -336,4 +342,184 @@ input, select, button{
     font-size: 14px;
     text-align: center;
     text-decoration : none;
+}
+
+/* 모달창 */
+.modal-wrapper{
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	position : fixed;
+	top:0;
+	left:0;
+	height:100vh;
+	width:100vw;
+	display:none;
+    z-index:9999;
+	background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(1.5px);
+    -webkit-backdrop-filter: blur(1.5px);
+}
+
+.modal{
+	width:700px;
+	/* height:150px; */
+	background-color:#fff;
+	z-index: 100;
+	backdrop-filter: blur( 13.5px );
+    -webkit-backdrop-filter: blur( 13.5px );
+    border-radius: 15px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    background: white;
+	max-height: 95%;
+	overflow-y: auto;
+}
+
+.modal::-webkit-scrollbar{
+  display:none;
+}
+
+.modal-header{
+	padding:10px;
+	text-align : right;
+}
+
+.modal-header > h3 {
+	text-align : center;
+}
+
+.modal-content{
+	padding: 20px 20px 40px 20px;
+	text-align : center;
+}
+
+#mbtiBtn {
+	display: block;
+    margin: 0 auto;
+    margin-top: 5px;
+	background-color:#1abc9c;
+	color:white;
+	border:none;
+	height:22px;
+	width:80px;
+	border-radius:5px;
+	line-height:25px;
+}
+
+#closeModalBtn {
+	background-color:white;
+	color:black;
+	border:none;
+	height:22px;
+	width:40px;
+	border-radius:5px;
+	line-height:25px;
+	font-size:25px;
+}
+
+.swal2-container {
+  z-index:100000;
+}
+
+/* 강아지 사진 영역 */
+.modal-wrapper #photo-section{
+	width : 300px;
+	height: 300px;
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.modal-wrapper .photo-box {
+    width: 250px;
+    height: 250px;
+    border: 1px solid #ccc;
+    border-radius: 100%;
+    overflow: hidden;
+    position:relative;
+}
+
+.modal-wrapper .photo-box > img {
+    max-width: 100%;
+   	position:absolute;
+   	top:50%;
+   	left:50%;
+   	transform: translate(-50%, -50%);
+}
+
+
+/* 프로필 정보 영역 */
+.modal-wrapper #info-section{
+	width: 650px;
+	margin : 0 auto;
+}
+
+.modal-wrapper #info-section .info-box {
+	width: 300px;
+	display:inline-block;
+	margin: 25px auto;
+}
+
+.modal-wrapper .info-box > label {
+    display: inline-block;
+    width: 130px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.modal-wrapper .info-box > label > span {
+	color: red;
+}
+
+.modal-wrapper .info-box > .input {
+    width: 230px;
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    background-color: transparent;
+    padding-left: 10px;
+    font-size: 16px;
+    outline: none;
+    text-align:center;
+}
+
+.modal-wrapper .info-box > .shortInput {
+	width: 200px;
+}
+
+.modal-wrapper #dogType1 {
+	margin: 0 auto;
+}
+
+.modal-wrapper #typeSize {
+	height:30px;
+	font-size: 16px;
+	font-family:gs-Medium;
+}
+
+.modal-wrapper #dogType2 {
+	width:180px;
+	height:30px;
+	margin: 0 auto;
+	font-size: 16px;
+	font-family:gs-Medium;
+}
+
+.modal-wrapper .btn-box {
+    text-align: center;
+}
+
+.modal-wrapper .btn {
+    width: 300px;
+    height: 45px;
+    margin-top: 30px;
+    border: none;
+    background-color: #1abc9c;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
 }

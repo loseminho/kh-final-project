@@ -27,7 +27,7 @@
 	select max(notice_no) from notice_tbl
 </select>
 <!-- 공지사항 파일 첨부  -->
-<select id="insertFile" parameterType="nf">
+<select id="insertNoticeFile" parameterType="nf">
 	insert into notice_file_tbl values(
 		notice_file_seq.nextval,#{noticeNo},#{filename},#{filepath}
 	)
@@ -37,19 +37,27 @@
 	select count(*) from notice_tbl
 </select>
 <!-- 공지사항 상세보기  -->
-<select id="selectOneNotice" parameterType="_int" resultType="n">
-	select
-		notice_no as noticeNo,
-		notice_title as noticeTitle,
-		notice_writer as noticeWriter,
-		notice_content as noticeContent,
-		notice_views as noticeViews,
-		notice_date as noticeDate
+<select id="selectOneNotice" parameterType="_int" resultMap="getNotice">
+	select *
 	from notice_tbl
 	where notice_no = #{_parameter}
 </select>
+<resultMap type="n" id="getNotice">
+<result column = "notice_no" property="noticeNo"/>
+<result column = "notice_title" property="noticeTitle"/>
+<result column = "notice_writer" property="noticeWriter"/>
+<result column = "notice_content" property="noticeContent"/>
+<result column = "notice_views" property="noticeViews"/>
+<result column = "notice_date" property="noticeDate"/>
+<collection property="fileList"
+	select="selectNoticeFileList"
+	column = "notice_no"
+	ofType="nf"
+	javaType="java.util.ArrayList"
+	/>
+</resultMap>
 <!-- 공지사항 조회수  -->
-<update id="updateHit">
+<update id="updateNoticeHit">
 	update notice_tbl set
 	notice_views = notice_views + 1
 	where notice_no = #{_parameter}
@@ -59,7 +67,7 @@
 	delete from notice_tbl where notice_no = #{_parameter}
 </delete>
 <!-- 파일목록 불러오기  -->
-<select id="selectFileList" parameterType="_int" resultType="nf">
+<select id="selectNoticeFileList" parameterType="_int" resultType="nf">
 	select
 		file_no as fileNo,
 		notice_no as noticeNo,
@@ -76,7 +84,7 @@
 	where notice_no = #{noticeNo}
 </update>
 <!-- 파일 삭제  -->
-<delete id="deleteFile" parameterType="_int">
+<delete id="deleteNoticeFile" parameterType="_int">
 	delete from notice_file_tbl where notice_no = #{_parameter}
 </delete>
 </mapper>

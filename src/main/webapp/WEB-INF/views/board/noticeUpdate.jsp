@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +19,7 @@
 	  <content>
         <div class="writeNotice-wrap">
             <div class="writeNotice-box">
-                <form action="/noticeUpdate.do" method="post" enctype="multipart/form-data">
+                <form action="/noticeUpdate.do" id="updateFrm" method="post" enctype="multipart/form-data">
                     <div class="writeNotice-header">
                         <h1>공지사항 수정</h1>
                         <a href="#">공지사항</a>
@@ -36,11 +37,15 @@
                             </div>
                             <div class="notice-input-box">
                                 <label for="noticeFile">첨부파일</label>
-                                <input type="file" name="noticeFile" multiple style="display:none;" onchange="loadfile(this);">
+                                <input type="file" name="noticeFile" id="noticeFile" multiple style="display:none;" onchange="loadfile(this);">
                                 <input type="hidden" name="noticeWriter" id="noticeWriter" value="${n.noticeWriter }">
-                                <button type="button" name="noticeFile-btn">첨부하기</button>
-                                <c:forEach items="${nf.fileList }" var="nf">
+                                <button type="button" name="noticeFile-btn" id="noticeFile-btn">첨부하기</button>
+                                <c:forEach items="${n.fileList }" var="nf">
                                 <div class="fileZone">
+                                	<div class="fileName">
+                                		<span>${nf.filename}</span>
+                                		<span class="closeBtn" onclick="deleteFile(this,${nf.fileNo},'${nf.filepath }');">X</span>
+                                	</div>
                                 </div>
                                 </c:forEach>
                             </div>
@@ -49,7 +54,7 @@
                         </div><!--writeNotice-content 끝-->
                         <div class="writeNotice-footer">
                             <div class="notice-submit-btn">
-                                <button type="button" class="back-btn">취소 </button>
+                                <button type="button" class="notice-back-btn">취소 </button>
                                 <button type="submit" class="finich-btn">등록</button>
                             </div>
                         </div><!--writeNotice-footer 끝-->
@@ -59,6 +64,6 @@
         </div>
     </content>
         <jsp:include page="/WEB-INF/views/common/footer.jsp" />
-    <script src="/resources/js/board/writeNotice.js"></script>
+    <script src="/resources/js/board/noticeUpdate.js"></script>
 </body>
 </html>
