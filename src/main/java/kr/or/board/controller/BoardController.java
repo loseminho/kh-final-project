@@ -24,6 +24,7 @@ import kr.or.board.model.service.BoardService;
 import kr.or.board.model.vo.QnaBoard;
 import kr.or.board.model.vo.QnaComment;
 import kr.or.board.model.vo.QnaFile;
+import kr.or.notice.model.vo.Notice;
 
 @Controller
 public class BoardController {
@@ -47,7 +48,6 @@ public class BoardController {
 		return result;
 	}
 	
-
 	//문의게시판 작성페이지 이동 
 	@RequestMapping(value="/writeQnaFrm.do")
 	public String writeQnaFrm() {
@@ -91,6 +91,7 @@ public class BoardController {
 	@RequestMapping(value="/qnaView.do")
 	public String qnaView(int qnaNo, Model model) {
 		QnaBoard qb = service.selectOneQna(qnaNo);
+		System.out.println(qb);
 		model.addAttribute("qb",qb);
 		//해당 게시물 댓글 리스트 조회  
 		ArrayList<QnaComment>list = service.commentListView(qnaNo);
@@ -217,4 +218,16 @@ public class BoardController {
 		System.out.println(result);
 		return result;
 	}
+	/*
+	@ResponseBody
+	@RequestMapping(value="/moreQna.do", produces = "application/json;charset=utf-8")
+	public String moreQnaAjax(int start) {
+		ArrayList<QnaBoard> list = service.moreQna(start,amount);
+	}
+	/*문의게시판 파일다운 
+	@RequestMapping(value="/qnaFileDown.do")
+	public String qnaFileDown(int qnaNo) {
+		Notice n = service.qnaFileDown(qnaNo);
+	}
+	*/
 }

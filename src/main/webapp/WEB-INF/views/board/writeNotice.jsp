@@ -45,7 +45,7 @@
                         </div><!--writeNotice-content 끝-->
                         <div class="writeNotice-footer">
                             <div class="notice-submit-btn">
-                                <button type="button" class="back-btn">취소 </button>
+                                <button type="button" class="notice-back-btn">취소 </button>
                                 <button type="submit" class="finich-btn">등록</button>
                             </div>
                         </div><!--writeNotice-footer 끝-->

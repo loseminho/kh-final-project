@@ -46,7 +46,10 @@
                     <tr>
                         <th>첨부파일</th>
                         <c:forEach items="${qb.fileList}" var="qf">
-                        <td>${qf.filename}</td>
+                        <td>
+                        <img src="/img/file.png" width="16px">
+                        <a href="/qnaFileDown.do?qnaNo=${qb.qnaNo }">${qf.filename}</a>
+                        </td>
                         </c:forEach>
                     </tr>
                     <tr>

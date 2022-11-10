@@ -27,7 +27,7 @@ public class NoticeDao {
 	}
 	//공지사항 file insert 
 	public int insertFile(NoticeFile nf) {
-		return sqlSession.insert("notice.insertFile",nf);
+		return sqlSession.insert("notice.insertNoticeFile",nf);
 	}
 	//공지사항 목록 조회 
 	public ArrayList<Notice> noticeList(HashMap<String, Object> map) {
@@ -40,7 +40,7 @@ public class NoticeDao {
 	}
 	//공지사항 조회수 
 	public int updateHit(int noticeNo) {
-		return sqlSession.update("notice.updateHit",noticeNo);
+		return sqlSession.update("notice.updateNoticeHit",noticeNo);
 	}
 	//공지사항 삭제 
 	public int noticeDelete(int noticeNo) {
@@ -48,7 +48,7 @@ public class NoticeDao {
 	}
 	//공지사항 파일 목록 불러오기 
 	public ArrayList<NoticeFile> selectFileList(int noticeNo) {
-		List list = sqlSession.selectList("notice.selectFileList");
+		List list = sqlSession.selectList("notice.selectNoticeFileList");
 		return (ArrayList<NoticeFile>)list;
 	}
 	//전체게시물수 
@@ -62,7 +62,7 @@ public class NoticeDao {
 	}
 	//파일 삭제 
 	public int deleteFile(int fileNo) {
-		return sqlSession.delete("notice.deleteFile",fileNo);
+		return sqlSession.delete("notice.deleteNoticeFile",fileNo);
 	}
 	
 

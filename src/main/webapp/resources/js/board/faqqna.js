@@ -246,3 +246,23 @@ $("#searchQnaAjax").on("click",function(){
 		alert(" 문의유형을 선택하고 검색어를 입력하세요  ");
 	}
 });
+
+
+//문의사항 더보기 
+function moreQna(){
+	let start = $(".qna-table tr").length;
+	let addListHtml = "";	
+	console.log(start);
+	$.ajax({
+		url : "/moreQna.do",
+		type : "post",
+		data : {start: start},
+		success : function(data){
+			console.log(data);
+			for(let i=0; i<data.length; i++){
+				const p = data[i]
+			}
+		}
+	})
+	
+}

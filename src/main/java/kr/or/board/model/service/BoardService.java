@@ -1,6 +1,7 @@
 package kr.or.board.model.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,7 @@ import kr.or.board.model.dao.BoardDao;
 import kr.or.board.model.vo.QnaBoard;
 import kr.or.board.model.vo.QnaComment;
 import kr.or.board.model.vo.QnaFile;
+import kr.or.notice.model.vo.Notice;
 
 @Service
 public class BoardService {
@@ -101,5 +103,17 @@ public class BoardService {
 	public ArrayList<QnaBoard> searchQnaBoard(QnaBoard q) {
 		return dao.searchQnaBoard(q);
 	}
+	/*
+	//qna 더보기 버튼 
+	public ArrayList<QnaBoard> moreQna(int start, int amount) {
+		int end = start+amount+1;
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("start", start);
+		map.put("amount", amount);
+		
+		ArrayList<QnaBoard> list = dao.moreQna(start,amount);
+		return null;
+	}
+	*/
 
 }

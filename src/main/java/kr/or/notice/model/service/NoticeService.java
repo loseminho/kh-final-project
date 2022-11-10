@@ -51,23 +51,26 @@ public class NoticeService {
 		}
 		
 		int pageNaviSize = 5;
+		int pageNo = ((reqPage - 1)/pageNaviSize) * pageNaviSize +1 ;
+		/*
 		int pageNo = 1;
 		if(reqPage>3) {
 			pageNo = reqPage -2;
 		}
+		*/
 		//pageNavi 생성 
 		String pageNavi = "<nav aria-label='Page navigation example'>";
 		pageNavi += "<ul class='pagination'>";
 		if (pageNo != 1) {
-			pageNavi += "<li class='page-item'><a class='page-link' href='/noticeList.do?reqPage=" + (pageNo - 1)
+			pageNavi += "<li class='page-item'><a class='page-link' href='/notice.do?reqPage=" + (pageNo - 1)
 					+ "'>Previous</a></li>";
 		}
 		for (int i = 0; i < pageNaviSize; i++) {
 			if (pageNo == reqPage) {
-				pageNavi += "<li class='page-item active' aria-current='page'><a class='page-link' href='/noticeList.do?reqPage="
+				pageNavi += "<li class='page-item active' aria-current='page'><a class='page-link' href='/notice.do?reqPage="
 						+ pageNo + "'>" + pageNo + "</a></li>";
 			} else {
-				pageNavi += "<li class='page-item'><a class='page-link' href='/noticeList.do?reqPage=" + pageNo + "'>"
+				pageNavi += "<li class='page-item'><a class='page-link' href='/notice.do?reqPage=" + pageNo + "'>"
 						+ pageNo + "</a></li>";
 			}
 			pageNo++;
@@ -77,7 +80,7 @@ public class NoticeService {
 		}
 
 		if (pageNo <= totalPage) {
-			pageNavi += "<li class='page-item'><a class='page-link' href='/noticeList.do?reqPage=" + pageNo
+			pageNavi += "<li class='page-item'><a class='page-link' href='/notice.do?reqPage=" + pageNo
 					+ "'>Next</a></li>";
 		}
 		pageNavi += "</ul>";

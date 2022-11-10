@@ -27,25 +27,24 @@ function loadfile(nf){
 }
 
 //첨부한 파일 취소  
-function deleteFile(obj){
+function deleteFile(obj,fileNo,filepath){
 
 	const deleteFilename = $(obj).parent().parent().parent().find("#noticeFile")[0].files;
 	const files = deleteFilename;
-	console.log(files);
-	console.log(files.length);
-	for(let i=0; i<files.length; i++){
-		if(files[i].name == deleteFilename){
-			files.splice(i,1);
-			break;
-		}
-	}
+	const fileNoInput = $("<input>");
+	fileNoInput.attr("name","fileNoList");
+	fileNoInput.val(fileNo);
+	fileNoInput.hide();
 	
-	//파일이 지워진 경우 처음으로 돌려놓기 
-	if(files.length == 0){
-    $(".fileMsg").show();
-    }
-    $(obj).parent().remove();
-    fileSetting(files);
+	const filepathInput = $("<input>");
+	filepathInput.attr("name","filepathList");
+	filepathInput.val(filepath);
+	filepathInput.hide();
+    
+    $("#updateFrm").append(fileNoInput).append(filepathInput);
+			$(obj).parent().remove();
+			fileSetting(files);
+
 }
 
 function fileSetting(files){
@@ -63,3 +62,4 @@ function fileSetting(files){
 $(".notice-back-btn").on("click",function(){
 	location.href="/notice.do?reqPage=1"
 });
+

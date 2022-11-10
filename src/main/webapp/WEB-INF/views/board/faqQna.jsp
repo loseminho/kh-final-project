@@ -215,6 +215,7 @@
 							</form>
 						</div>
 						<div id="qnaAjaxResult"></div>
+						<button id="qnaAjaxAdd-btn" onclick="moreQna();">더보기</button>
 					</div>
 				</div>
 			</div>
