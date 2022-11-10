@@ -6,7 +6,13 @@ $(document).ready(function(){
             console.log(data)
             var html = "";
 			html += "<div class='write-new-content-btn'>";
-			html += "<button type='button' onclick='modalWrites();'>모임 만들기</button>";
+			const loginId = document.getElementById('login-memberId').value;
+			
+			if(loginId.length >= 1 ){
+				html += "<button type='button' onclick='modalWrites();'>모임 만들기</button>";						
+			}else{
+				html += "<button style='visibility:hidden;' type='button' onclick='modalWrites();'>모임 만들기</button>";
+			}
 			html += "</div>";            
             for(let i=0; i<data.length; i++){
 				html += "<div class='content-box' onclick='modalViews("+data[i].wmNo+");'>";
