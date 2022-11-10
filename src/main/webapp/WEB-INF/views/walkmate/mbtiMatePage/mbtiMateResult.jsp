@@ -66,7 +66,7 @@
 	                         	<c:when test="${friend[0] ne null}">
 		                         	<c:forEach items="${friend}" var="ft">
 			                            <div class="box">
-			                                 <a onclick="">
+			                                 <a onclick="dogModal(${ft.dogNo})">
 			                                     <div class="photo">
 				                                     <c:choose>
 										            	<c:when test="${ft.dogPhoto eq null}">
@@ -95,7 +95,7 @@
 	                         	<c:when test="${partner[0] ne null}">
 		                         	<c:forEach items="${partner}" var="pt">
 			                            <div class="box">
-			                                 <a onclick="">
+			                                 <a onclick="dogModal(${pt.dogNo})">
 			                                     <div class="photo">
 			                                         <c:choose>
 										            	<c:when test="${pt.dogPhoto eq null}">
@@ -127,12 +127,77 @@
         <!-- End content -->
     </div>
     
+    
+    <!-- 강아지 모달 -->
+	<div id="dog-modal" class="modal-wrapper">
+	    <div class="modal">
+	        <div class="modal-header">				
+	            <button id="closeModalBtn" onclick="closeDogModal();">
+	            	<i class="fa-solid fa-xmark"></i>
+	            </button>
+	            <h3>반려견 상세 정보</h3>
+	        </div>
+	        <div class="modal-content">
+        		<input type="hidden" id="dogNo">
+	            <div class="dog-info">
+	        		<input type="hidden" name="memberNo" value="${sessionScope.m.memberNo }">
+	            	<div id="photo-section">
+				        <div class="photo-box">
+				        	<img id="dogPreview" src="/resources/img/default_dog.png">					
+				        </div>
+					</div>
+	            </div>
+	            <div id="info-section">
+				    <div class="info-box">
+				        <label for="dogName"><span>*</span>이름</label>
+				        <input type="text" name="dogName" id="dogName" class="input">
+				    </div>
+				    <div class="info-box">
+				        <label for="dogType"><span>*</span>품종</label>
+				        <input type="text" name="" id="dogType1" class="input">
+				    </div>
+				    <div class="info-box">
+				        <label for="dogAge"><span>*</span>나이</label>
+				        <input type="text" name="dogAge" id="dogAge" class="input shortInput">살
+				    </div>
+				    <div class="info-box">
+				        <label for="dogGender"><span>*</span>성별</label><br>
+				        <label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogGender" value="남아"> 남아</label>
+	      				<label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogGender" value="여아"> 여아</label>
+				    </div>
+				    <div class="info-box">
+				        <label for="dogWeight"><span>*</span>몸무게 (소수점X)</label>
+				        <input type="text" name="dogWeight" id="dogWeight" class="input shortInput">KG
+				    </div>
+				    <div class="info-box">
+				        <label for="dogNeutral"><span>*</span>중성화 여부</label><br>
+				        <label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogNeutral" value="O"> 했어요</label>
+	      				<label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogNeutral" value="X"> 안 했어요</label>
+				    </div>
+				    <div class="info-box" id="mbti-box">
+				        <label for="dogMbti">멍BTI</label>
+				        <input type="text" name="dogMbti" id="dogMbti" class="input" readonly>
+				    </div>
+				    <div class="info-box">
+				        <label for="dogVacc"><span>*</span>예방접종 여부</label><br>
+				        <label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogVacc" value="O"> 했어요</label>
+	      				<label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogVacc" value="X"> 안 했어요</label>
+				    </div>
+				    <div class="btn-box">
+				        <button type="button" class="btn" id="dogBtn">쪽지보내기</button>
+				    </div>
+				</div>
+	        </div>
+	    </div>
+	</div>
+    
+    
     <!-- Start footer -->
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
     <!-- End footer -->
-    
     <script type="text/javascript">
     	$(".mbti-dogname").text("${result.dogName}");
     </script>
+    <script src="/resources/js/walkmate/mbtiMatePage/mbtiResult.js"></script>
 </body>
 </html>
