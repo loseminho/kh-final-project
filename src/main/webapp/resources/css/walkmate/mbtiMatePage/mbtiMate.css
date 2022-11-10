@@ -422,10 +422,10 @@ input, select, button{
   z-index:100000;
 }
 
-/* 강아지 사진 영역 */
+/* 모달 속 강아지 사진 영역 */
 .modal-wrapper #photo-section{
-	width : 300px;
-	height: 300px;
+	width : 250px;
+	height: 250px;
 	display: flex;
     flex-direction: column;
     justify-content: center;
@@ -451,7 +451,7 @@ input, select, button{
 }
 
 
-/* 프로필 정보 영역 */
+/* 모달 속 프로필 정보 영역 */
 .modal-wrapper #info-section{
 	width: 650px;
 	margin : 0 auto;
@@ -522,4 +522,56 @@ input, select, button{
     color: #fff;
     cursor: pointer;
     font-size: 14px;
+}
+
+/* 모달 쪽지 부분 */
+.send-dm-wrap{
+	width: 650px;
+	margin:0 auto;
+	margin-top:25px;
+}
+.send-dm-title{
+	width:530px;
+	margin:0 auto;
+	text-align:left;
+}
+
+.input-box-wrap{
+	width: 650px;
+	display:flex;
+	justify-content: center;
+}
+#send-dm-input{
+	box-sizing:border-box;
+	border: 2px solid #ccc;
+	border-radius: 10px;
+	height:50px;
+	width:430px;
+	outline:none;
+}
+.sendBtn{
+	margin-left:5px;
+	width:50px;
+	color:#fff;
+	background-color: #1abc9c;
+	border:none;
+	font-family:gs-Medium;
+	border-radius: 10px;
+}
+.cancelBtn{
+	margin-left:5px;
+	width:50px;
+	color:#fff;
+	background-color: #1abc9c;
+	border:none;
+	font-family:gs-Medium;
+	border-radius: 10px;
+	
+}
+.send-dm-wrap span{
+	font-family: gs-Medium;
+}
+
+.receiver{
+	color:blue;
 }

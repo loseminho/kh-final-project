@@ -10,6 +10,9 @@ function dogModal(dogNo) {
 	$("#dogPhoto").prop("name", "");
 	$("#dogPhoto").val("");
 	$("#dogPreview").attr("src", "");
+	$("#dmBtn").show();
+	$("#send-dm-input").val("");
+	$(".send-dm-wrap").hide();
 	
 	$.ajax({
         url  : '/selectMyOneDog.do',
@@ -62,3 +65,32 @@ function dogModal(dogNo) {
 function closeDogModal() {
 	$("#dog-modal").hide();
 }
+
+$("#dmBtn").on("click", function(){
+	const dogNo = $("#dogNo").val();
+	$(this).hide();
+	
+	$.ajax({
+        url  : '/selectDogOwner.do',
+        data : {dogNo : dogNo},
+        type : 'post',
+        success : function(data){
+			$(".send-dm-wrap").show();
+			const memberId = data.memberId;
+			const memberNickname = data.memberNickname;
+			const memberNo = data.memberNo;
+			$(".send-dm-title>.receiver").text(memberNickname + "(" + data.memberId + ")");
+			$("#receiver").val(memberNo);
+        }
+	});
+});
+
+$(".cancelBtn").on("click", function(){
+	$("#send-dm-input").val("");
+	$("#dmBtn").show();
+	$(".send-dm-wrap").hide();
+});
+
+$("#sendBtn").on("click", function(){
+	
+});
