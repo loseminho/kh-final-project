@@ -16,6 +16,8 @@ import kr.or.member.model.dao.MemberDao;
 import kr.or.member.model.vo.Member;
 import kr.or.member.model.vo.MyCalendar;
 import kr.or.member.model.vo.Report;
+import kr.or.walk.model.vo.Walk;
+import kr.or.walk.model.vo.WalkPageData;
 
 @Service
 public class MemberService {
@@ -148,5 +150,15 @@ public class MemberService {
 	
 	public ArrayList<Report> selectMyReportList(int memberNo) {
 		return dao.selectMyReportList(memberNo);
+	}
+
+	public WalkPageData selectMadeList(int memberNo) {
+		int numPerPage = 10;
+		
+		
+		
+		ArrayList<Walk> madeList = dao.selectMadeList(memberNo);
+		
+		return null;
 	}
 }
