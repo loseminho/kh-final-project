@@ -208,7 +208,6 @@ public class MbtiController {
 	@RequestMapping(value="/selectDogOwner.do", produces="application/json;charset=utf-8")
 	public String selectDogOwner(int dogNo) {
 		Member m = service.selectDogOwner(dogNo);
-		System.out.println(m);
 		return new Gson().toJson(m);
 	}
 }
