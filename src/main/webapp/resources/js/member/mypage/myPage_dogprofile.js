@@ -119,7 +119,7 @@ function dogModal(dogNo) {
         	if(data.dogMbti != null) {
         		$("#mbtiBtn").hide();
         		$("#dogMbti").show();
-        		$("#dogMbti").val(data.dogMbti);
+        		$("#dogMbti").val(data.dogMbtiName);
         	} else {
         		$("#mbtiBtn").show();
         		$("#dogMbti").hide();

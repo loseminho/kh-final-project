@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.or.chat.model.dao.ChatDao;
+import kr.or.chat.model.vo.ChatHistory;
 import kr.or.chat.model.vo.RequireList;
 
 @Service
@@ -29,5 +30,17 @@ public class ChatService {
 	
 	public void insertRoomList(HashMap<String, Object> roomList) {
 		dao.insertRoomList(roomList);
+	}
+
+	public ArrayList<RequireList> selectApplyList(String memberId) {
+		return dao.selectApplyList(memberId);
+	}
+
+	public void saveData(int boardNo, String sendMsg, String memberId, int memberNo) {
+		dao.saveData(boardNo, sendMsg,memberId, memberNo);
+	}
+
+	public ArrayList<ChatHistory> getLastChat(int boardNo) {
+		return dao.getLastChat(boardNo);
 	}
 }

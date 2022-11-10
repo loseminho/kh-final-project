@@ -15,65 +15,101 @@
 </head>
 <body id="body">
 	<!-- header -->
-	<header>
-		<div class="header-wrap">
-			<div class="header">
-				<div id="logo-wrap">
-					<a href="/">
-						<i class="fa-solid fa-paw"></i>산책갈개
-					</a>
-				</div>
-				<div id="menu-wrap">
-					<ul>
-						<div>
-							<li><a href="/walkMateFrm.do">메이트 찾기</a></li>
-						</div>
-					</ul>
-					<ul>
-						<div>
-							<li><a href="/saleDogList.do">입양받기</a></li>
-						</div>
-					</ul>
-					<ul>
-					<div class="managerMenu">
-						<li><a href= "/faqQnaBoardFrm.do" style="width:120px;">고객서비스</a></li>
-						<li><a href="#" style="width:150px !important">공지사항</a></li>
-						<li><a href="#" style="width:150px">FAQ/문의하기</a></li>
+<header>
+	<div class="header-wrap">
+		<div class="header">
+			<div id="logo-wrap">
+				<a href="/">
+					<i class="fa-solid fa-paw"></i>산책갈개
+				</a>
+			</div>
+			<div id="menu-wrap">
+				<ul>
+					<div>
+						<li><a href="/walkMateFrm.do">메이트 찾기</a></li>
 					</div>
-					</ul>
-					<c:if test="${not empty sessionScope.m }">
-					<ul>
+				</ul>
+				<ul>
+					<div>
+						<li><a href="/saleDogList.do">입양받기</a></li>
+					</div>
+				</ul>
+				<ul>
+					<div class="managerMenu">
+						<li><a href= "/faqQnaBoardFrm.do">고객서비스</a></li>
+					</div>
+				</ul>
+				<c:if test="${not empty sessionScope.m }">
+				<ul>
 					<div>
 						<li><a href= "/myWalkMate.do">내 산책 메이트</a></li>
 					</div>
-					</ul>
-					<ul>
-						<div>
-							<li><a href= "/myPage.do">마이페이지</a></li>
-						</div>
-					</ul>
-					</c:if>
-					<ul>
-						<div class="signwrap">
-							<c:choose>
-								<c:when test="${empty sessionScope.m}">
-									<a href="/loginFrm.do">로그인</a>
-								</c:when>
-								<c:otherwise>
-									<c:if test="${sessionScope.m.joinType eq '카카오'}">
-										<a href="https://kauth.kakao.com/oauth/logout?client_id=e400fe38f12604a2937ea759fe0166f7&logout_redirect_uri=http://localhost/logout.do">로그아웃</a>
-									</c:if>
-									<c:if test="${sessionScope.m.joinType eq '일반가입'}">
-										<a onclick="logout();">로그아웃</a>
-									</c:if>
-								</c:otherwise>
-							</c:choose>
-						</div>
-					</ul>
-				</div>
+				</ul>
+				<ul>
+					<div>
+						<li><a href= "/myPage.do">마이페이지</a></li>
+					</div>
+				</ul>
+				</c:if>
+				<ul>
+					<div class="signwrap">
+						<c:choose>
+							<c:when test="${empty sessionScope.m}">
+								<a href="/loginFrm.do">로그인</a>
+							</c:when>
+							<c:otherwise>
+								<c:if test="${sessionScope.m.joinType eq '카카오'}">
+									<a href="https://kauth.kakao.com/oauth/logout?client_id=e400fe38f12604a2937ea759fe0166f7&logout_redirect_uri=http://localhost/logout.do">로그아웃</a>
+								</c:if>
+								<c:if test="${sessionScope.m.joinType eq '일반가입'}">
+									<a onclick="logout();">로그아웃</a>
+								</c:if>
+							</c:otherwise>
+						</c:choose>
+					</div>
+				</ul>
 			</div>
+		<div class="manager-subtitle" style="display:none;">
+			<div><a href="/notice.do?reqPage=1">공지사항</a></div>
+			<div><a href="/faqQnaBoardFrm.do">FAQ/문의하기</a></div>
+		</div>		
 		</div>
-	</header>
+	</div>
+	<div class="chat-icon">
+		<img src="/resources/img/favicon.ico">
+	</div>
+	<div id="chat-board">
+		<c:choose>
+			<c:when test="${empty sessionScope.m }">
+				<div class="require-login">
+					<div>로그인이필요한 서비스 입니다.</div>
+					<a href="/loginFrm.do">로그인</a>
+				</div>
+			</c:when>
+			<c:otherwise>
+				<input type="hidden" id="chatMemberId" value="${sessionScope.m.memberId }">
+				<input type="hidden" id="chatMemberNickname" value="${sessionScope.m.memberNickname }">
+				<div class="chat-title">안녕하세요<span>"${sessionScope.m.memberNickname }"</span>님!</div>
+				<div class="chat-name"></div>
+				<div class="chat-list">
+				<!-- 
+					<li class="init-chat">
+						<input type="hidden" class="boardNo" value=1>
+						<input type="hidden" class="boardTitle" value="망원동에서 산책하실분?">
+						<span>망원동에서 산책하실분?</span>
+					</li>
+					 -->
+				</div>
+				<div class="chat-form" style="display:none;">
+					<div class="back-btn">뒤로가기</div>
+					<div class="chat-content">
+					</div>
+					<div class="chat-input"><input type="text" id="send-msg"><span id="chat-send-btn">보내기</span></div>
+				</div>
+		</c:otherwise>
+		</c:choose>
+	</div>
+</header>
 	
 	<div class="section" id="section1">
 		<div class="mainTitle">
@@ -107,12 +143,11 @@
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	</div>
 <script>
-$(".managerMenu").on("mouseover",function(){
-	$(".managerMenu").children().css("display","block");
-});
-$(".managerMenu").on("mouseout",function(){
-	const subMenu = $(".managerMenu").children();
-	subMenu.not(subMenu.eq(0)).css("display","none");
+$(".managerMenu").on("mouseenter",function(){
+	$(".manager-subtitle").stop().slideDown();
+});    
+$(".header-wrap").on("mouseleave",function(){
+	$(".manager-subtitle").stop().slideUp();
 });
 </script>
 

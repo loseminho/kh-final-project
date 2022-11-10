@@ -12,31 +12,26 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 
+import kr.or.chat.model.service.ChatService;
 import kr.or.member.model.service.MemberService;
 
 public class AllMemberChat extends TextWebSocketHandler {
 	@Autowired
-	private MemberService service;
+	private ChatService service;
 	private ArrayList<WebSocketSession> sessionList;
-	private HashMap<String, ArrayList<WebSocketSession>> memberList;
+	private HashMap<Object, ArrayList<WebSocketSession>> memberList;
+	private ArrayList<String> memberIdList;
 
 	// 				방번호			 세션			 ID
 	public AllMemberChat() {
 		super();
 		sessionList = new ArrayList<WebSocketSession>();
-		memberList = new HashMap<String,ArrayList<WebSocketSession>>();
+		memberList = new HashMap<Object,ArrayList<WebSocketSession>>();
 	}
 
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-		System.out.println("웹소켓연결완료");
-		for(WebSocketSession s : sessionList) {
-			if(s == session) {
-				sessionList.add(session);
-			}else {
-				
-			}
-		}
+			sessionList.add(session);
 	}
 	
 	@Override
@@ -45,31 +40,32 @@ public class AllMemberChat extends TextWebSocketHandler {
 		JsonElement element = parser.parse(message.getPayload());
 		String type = element.getAsJsonObject().get("type").getAsString();
 		String memberId = element.getAsJsonObject().get("memberId").getAsString();
-		String boardNo = element.getAsJsonObject().get("boardNo").getAsString();
+		int boardNo = Integer.parseInt(element.getAsJsonObject().get("boardNo").getAsString());
+		
 		if (type.equals("enter")) {
 			ArrayList<WebSocketSession> list = new ArrayList<WebSocketSession>();
-			
 			if(memberList.get(boardNo)==null) {
 				list.add(session);
 				memberList.put(boardNo, list);
 			}else {
 				memberList.get(boardNo).add(session);
 			}
-			System.out.println(memberList.get(boardNo));
-			System.out.println(memberList);
 			
+			
+			String sendMsg = "<p>" + memberId + "님이 입장하셨습니다.</p>";
 			for (WebSocketSession s : memberList.get(boardNo)) {
-				String sendMsg = "<p>" + memberId + "님이 입장하셨습니다.</p>";
 				if (!s.equals(session)) {
 					TextMessage tm = new TextMessage(sendMsg);
 					s.sendMessage(tm);
 				}
 			}
 		} else if (type.equals("chat")) {
+			int memberNo = Integer.parseInt(element.getAsJsonObject().get("memberNo").getAsString());
 			String msg = element.getAsJsonObject().get("msg").getAsString();
+			String sendMsg = "<div class='chat left'><span class='chatId'>" + memberId + " : </span>"
+					+ msg + "</div>";
+			service.saveData(boardNo, msg, memberId, memberNo);
 			for (WebSocketSession s : memberList.get(boardNo)) {
-				String sendMsg = "<div class='chat left'><span class='chatId'>" + memberId + " : </span>"
-						+ msg + "</div>";
 				TextMessage tm = new TextMessage(sendMsg);
 				if (!s.equals(session)) {
 					s.sendMessage(tm);
@@ -80,7 +76,14 @@ public class AllMemberChat extends TextWebSocketHandler {
 
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
+		for(Object i : memberList.keySet()) {
+			for(WebSocketSession s : memberList.get(i)) {
+				if(s.equals(session)){
+					memberList.get(i).remove(session);
+					break;
+				}
+			}
+		}
 		sessionList.remove(session);
-		memberList.remove(session);
 	}
 }

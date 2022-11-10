@@ -18,7 +18,25 @@
 			dog_age as dogAge,
 			dog_weight as dogWeight,
 			dog_photo as dogPhoto,
-			dog_mbti as dogMbti
+			dog_mbti as dogMbti,
+			case dog_mbti 
+		        when '0' then '3학년 그 선배'
+		        when '1' then '지각생'
+		        when '2' then '신비주의 전학생'
+		        when '3' then '밉지 않은 덜렁이'
+		        when '4' then '수학경시 우승자'
+		        when '5' then '자퇴생'
+		        when '6' then '문학소녀'
+		        when '7' then '미대 지망생'
+		        when '8' then '사기캐 반장'
+		        when '9' then '수다봇'
+		        when '10' then '댄스동아리 부회장'
+		        when '11' then '교내 아이돌'
+		        when '12' then '전교회장'
+		        when '13' then '급식실 도착 1등'
+		        when '14' then '헤르미온독'
+		        when '15' then '고등래퍼'
+		    END as dogMbtiName
 		from dog_tbl d left join dog_type t on (d.dog_type_no = t.type_code) 
 		where member_no = #{_parameter}
 		order by dog_no
@@ -41,7 +59,25 @@
 			dog_age as dogAge,
 			dog_weight as dogWeight,
 			dog_photo as dogPhoto,
-			dog_mbti as dogMbti
+			dog_mbti as dogMbti,
+			case dog_mbti 
+		        when '0' then '3학년 그 선배'
+		        when '1' then '지각생'
+		        when '2' then '신비주의 전학생'
+		        when '3' then '밉지 않은 덜렁이'
+		        when '4' then '수학경시 우승자'
+		        when '5' then '자퇴생'
+		        when '6' then '문학소녀'
+		        when '7' then '미대 지망생'
+		        when '8' then '사기캐 반장'
+		        when '9' then '수다봇'
+		        when '10' then '댄스동아리 부회장'
+		        when '11' then '교내 아이돌'
+		        when '12' then '전교회장'
+		        when '13' then '급식실 도착 1등'
+		        when '14' then '헤르미온독'
+		        when '15' then '고등래퍼'
+		    END as dogMbtiName
 		from dog_tbl d left join dog_type t on (d.dog_type_no = t.type_code) 
 		where dog_no = #{_parameter}
 	</select>
@@ -57,7 +93,7 @@
 	
 	<insert id="insertMyDog" parameterType="d">
 		insert into dog_tbl
-		values(DOG_NO_SEQ.NEXTVAL, #{memberNo}, #{dogName}, #{dogTypeNo}, #{dogGender}, #{dogNeutral}, #{dogVacc}, #{dogAge}, #{dogWeight}, #{dogPhoto})
+		values(DOG_NO_SEQ.NEXTVAL, #{memberNo}, #{dogName}, #{dogTypeNo}, #{dogGender}, #{dogNeutral}, #{dogVacc}, #{dogAge}, #{dogWeight}, #{dogPhoto}, null)
 	</insert>
 	
 	<delete id="deleteMyDog" parameterType="int">

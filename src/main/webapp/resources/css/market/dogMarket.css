@@ -32,6 +32,8 @@ content{
     padding: 0;
     list-style: none;
     overflow: hidden;
+    display:flex;
+    justify-content: center;
 }
 .dogMarket-tab>li{
     float: left;

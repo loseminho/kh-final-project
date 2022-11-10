@@ -2,12 +2,11 @@ $(function(){
 	$("#chat-board").draggable();
 });
 
-$(".managerMenu").on("mouseover",function(){
-	$(".managerMenu").children().css("display","block");
+$(".managerMenu").on("mouseenter",function(){
+	$(".manager-subtitle").stop().slideDown();
 });    
-$(".managerMenu").on("mouseout",function(){
-	const subMenu = $(".managerMenu").children();
-	subMenu.not(subMenu.eq(0)).css("display","none");
+$(".header-wrap").on("mouseleave",function(){
+	$(".manager-subtitle").stop().slideUp();
 });
 
 function logout() {
@@ -27,35 +26,79 @@ function logout() {
     })
 }
 
-
+let boardNo;
+let boardTitle;
+let memberId;
+let memberNo;
+let memberNickname;
 /*채팅시작*/
-
-$(".chat-icon").on("click",function(){
-	$("#chat-board").toggle(400);
-});
-$(".chat-list").on("click",function(){
+$(document).on("click",".init-chat",function(){
+	const chatIdx = $(".init-chat").index(this);
+	boardNo = $(".boardNo").eq(chatIdx).val();
+	boardTitle = $(".boardTitle").eq(chatIdx).val();
+	memberId = $("#chatMemberId").val();
+	memberNickname = $("#chatMemberNickname").val();
+	memberNo = $("#chatMemberNo").val();
+	
+	
 	$(".chat-list").css("display","none");
 	$(".chat-form").css("display","block");
+	
+	$.ajax({
+		url:"/getLastChat.do",
+		data:{boardNo:boardNo},
+		success:function(data){
+			console.log(data);
+			var html = "";
+			$.each(data,function(idx,value){
+				if(value.memberNo != memberNo){
+					html += "<div class='chat left'><span class='chatId'>"+value.memberId+" : </span>"+value.chat+"</div>";
+				}else{
+					html += "<div class='chat right'><span class='chatId'>"+value.memberId+" : </span>"+value.chat+"</div>";
+				}
+			});
+			$(".chat-content").html(html);
+			$(".chat-content").scrollTop($(".chat-content")[0].scrollHeight);
+		}
+	});
+	initChat(boardNo,boardTitle,memberId,memberNickname);
+	
 });
 
-$(".back-btn").on("click",function(){
-	$(".chat-list").css("display","block");
-	$(".chat-form").css("display","none");
-	ws.onclose
+$(document).ready(function(){
+	$(".chat-name").text("채팅목록을 클릭해보세요!!");
+	let memberId = $("#chatMemberId").val();
+	$.ajax({
+		url:"/selectApplyList.do",
+		data:{memberId:memberId},
+		success:function(data){
+			if(data.length==0){
+				var html = "";
+					html += "<li>채팅가능한산책메이트가없어요ㅠㅠ</li>";
+					$(".chat-list").html(html);
+			}else{
+				var html = "";
+				$.each(data,function(idx,value){
+					html += "<li class='init-chat'>";
+					html += "<input type='hidden' class='boardNo' value="+value.boardNo+">";
+					html += "<input type='hidden' class='boardTitle' value="+value.boardTitle+">";
+					html += "<span>"+value.boardTitle+"</span>";
+					html += "</li>";
+				});
+				$(".chat-list").html(html);
+			}
+		}
+	});
 });
 
+$(".chat-icon").on("click",function(){
 
+	$("#chat-board").toggle(400);
+});
 let ws;
-let memberId;
-let boardNo;
-let boardTitle
-function initChat(param){
-	boardNo = $("[name=boardNo]").val();
-	boardTitle = $("[name=boardTitle]").val();
-	console.log("boardTitle ::: "+boardTitle);
-	console.log("boardNo ::: "+boardNo);
-	memberId = param;
-	ws = new WebSocket("ws://192.168.0.14/chat.do");
+let chatIndex;
+function initChat(boardNo, boardTitle, memberId,memberNickname){
+	ws = new WebSocket("ws://192.168.10.33/chat.do");
 	ws.onopen = startChat;
 	ws.onmessage = receiveMsg;
 	
@@ -63,33 +106,42 @@ function initChat(param){
 	$(".chat-name").text(boardTitle+"방입니다.");
 	
 	
-	function startChat(){
-		console.log("웹소켓 연결  완료");
-		const data={type:"enter",memberId:memberId,boardNo:boardNo,boardTitle:boardTitle};
-		ws.send(JSON.stringify(data));
-	}
-	function receiveMsg(param){
-		appendChat(param.data);
-	}
-	function sendMsg(){
-		console.log("채팅이되나요");
-		const msg = $("#send-msg").val();
-		if(msg != ''){
-			const data = {type:"chat",msg:msg,boardNo:boardNo,memberId:memberId};
-			ws.send(JSON.stringify(data));
-			appendChat("<div class='chat right'>"+msg+"</div>");
-		}
-	}
-	function endChat(){
-		
-	}
-	function appendChat(msg){
-		$(".chat-content").append(msg);
-		$(".chat-content").scrollTop($(".chat-content")[0].scrollHeight);
-	}
-	$("#send-msg").on("keyup",function(key){
-		if(key.keyCode == 13){
-			sendMsg();
-		}
-	});
+	
 }
+function startChat(){
+	const data={type:"enter",memberId:memberNickname,boardNo:boardNo,boardTitle:boardTitle,memberNo:memberNo};
+	ws.send(JSON.stringify(data));
+}
+function receiveMsg(param){
+	appendChat(param.data);
+}
+function sendMsg(){
+	const msg = $("#send-msg").val();
+	if(msg != ''){
+		const data = {type:"chat",msg:msg,boardNo:boardNo,memberId:memberNickname,memberNo:memberNo};
+		ws.send(JSON.stringify(data));
+		appendChat("<div class='chat right'>"+msg+"</div>");
+	}
+}
+function endChat(){
+
+}
+function appendChat(msg){
+	$(".chat-content").append(msg);
+	$(".chat-content").scrollTop($(".chat-content")[0].scrollHeight);
+}
+$("#send-msg").on("keyup",function(key){
+	if(key.keyCode == 13){
+		sendMsg();
+		$("#send-msg").val('');
+	}
+});
+
+$(document).on("click",".back-btn>span",function(){
+	console.log(123);
+	ws.close();
+	$(".chat-list").css("display","block");
+	$(".chat-form").css("display","none");
+	$(".chat-content").empty();
+	$(".chat-name").text("채팅목록을 클릭해보세요!!");	
+});

@@ -507,16 +507,25 @@ public class memberController {
 	// 프로필 보기
 	@RequestMapping(value="/selectOneProfile.do")
 	public String selectOneProfile(int memberNo, Model model) {
-		Member other = service.selectOneProfile(10);
+		Member other = service.selectOneProfile(memberNo);
 		
 		model.addAttribute("other", other);
 		return "member/profile";
 	}
 	
 	// 신고하기
-	@RequestMapping(value="/report.do")
-	public String report() {
-		return "";
+	@ResponseBody
+	@RequestMapping(value="/insertReport.do", produces="application/text;charset=utf-8")
+	public String insertReport(Report report, Model model) {
+		int result = service.insertReport(report);
+		
+		if(result > 0) {
+			return "신고가 접수되었습니다. 불편을 끼쳐 죄송합니다.";
+		}else if(result == -1) {
+			return "이미 신고한 회원입니다.";
+		}else {
+			return "문제가 발생하였습니다. 관리자에게 문의해주세요.";
+		}
 	}
 	
 	// 내 신고 내역 불러오기

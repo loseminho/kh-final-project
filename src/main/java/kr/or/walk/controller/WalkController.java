@@ -24,20 +24,17 @@ public class WalkController {
 	}
 	// WalkMate ajax 시작
 	// WalkMate 모든 게시물 띄우기..
+	// WalkMate 모든 게시물 참여하는 유저 프로필
+	@ResponseBody
+	@RequestMapping(value="/selectContentBox.do", produces="application/json;charset=utf-8")
+	public String selectContentBox(int wmNo) {
+		Walk w = service.selectContentBox(wmNo);
+		return new Gson().toJson(w);
+	}
 	@ResponseBody
 	@RequestMapping(value="/allWalkListAjax.do", produces="application/json;charset=utf-8")
 	public String allWalkListAjax() {
 		ArrayList<Walk> list = service.allWalkList();
 		return new Gson().toJson(list);
 	}
-	
-	// WalkMate 모든 게시물 참여하는 유저 프로필
-	@ResponseBody
-	@RequestMapping(value="/selectWalkListAjax.do", produces="application/json;charset=utf-8")
-	public String selectWalkListAjax(int wmNo) {
-		Walk w = service.selectWalkListAjax(wmNo);
-//		return new Gson().toJson(w);
-		return null;
-	}
-	// 게시물 선택화면 - 
 }
