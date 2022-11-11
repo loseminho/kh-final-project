@@ -31,7 +31,6 @@
 	                    <ul class="sub-menu">
 	                        <li class="section"><a href="#">- 받은 쪽지함</a></li>
 	                        <li class="section"><a href="#">- 보낸 쪽지함</a></li>
-	                        <li class="section"><a href="#">- 쪽지 쓰기</a></li>
 	                    </ul>
 	                </li>
 	            </ul>		

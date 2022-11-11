@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.or.dm.model.vo.DirectMessage;
 import kr.or.dog.model.vo.Dog;
 import kr.or.member.model.vo.Member;
 import kr.or.member.model.vo.MyCalendar;
@@ -61,6 +62,11 @@ public class MemberDao {
 	public ArrayList<MyCalendar> selectMyCalendar(String memberId) {
 		List list = sqlSession.selectList("member.selectMyCalendar", memberId);
 		return (ArrayList<MyCalendar>) list;
+	}
+	
+	public ArrayList<DirectMessage> selectAllSendDm(int memberNo) {
+		List list = sqlSession.selectList("member.selectAllSendDm", memberNo);
+		return (ArrayList<DirectMessage>) list;
 	}
 
 	/*****************************************************/

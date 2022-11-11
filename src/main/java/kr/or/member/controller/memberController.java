@@ -33,6 +33,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import common.FileRename;
+import kr.or.dm.model.vo.DirectMessage;
 import kr.or.dog.model.service.DogService;
 import kr.or.dog.model.vo.Dog;
 import kr.or.member.model.service.MemberService;
@@ -496,6 +497,18 @@ public class memberController {
 	@RequestMapping(value="/selectMyCalendar.do", produces="application/json;charset=utf-8")
 	public String selectMyCalendar(@SessionAttribute Member m) {
 		ArrayList<MyCalendar> list = service.selectMyCalendar(m.getMemberId());
+		if(list != null) {
+			return new Gson().toJson(list);
+		} else {
+			return "null";
+		}
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/selectAllSendDm.do", produces="application/json;charset=utf-8")
+	public String selectAllSendDm(@SessionAttribute Member m) {
+		int memberNo = m.getMemberNo();
+		ArrayList<DirectMessage> list = service.selectAllSendDm(memberNo);
 		if(list != null) {
 			return new Gson().toJson(list);
 		} else {

@@ -23,6 +23,10 @@ $(".section").on("click", function(){
     $("#rowSession2").children().eq(idx).show();
     if(idx == 2) {
     	mycalendar();
+    } else if(idx == 5) {
+    	receiverDm();
+    } else if(idx == 6) {
+    	sendDm();
     }
 });
 
