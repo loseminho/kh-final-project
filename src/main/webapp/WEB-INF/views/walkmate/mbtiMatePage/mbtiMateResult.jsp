@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>메이트 찾기</title>
+	<title>산책갈개</title>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <link rel="stylesheet" href="/resources/css/walkmate/mbtiMatePage/mbtiMate.css">
     <link rel="styleSheet" href="/resources/css/gmarket.css">
@@ -24,15 +24,12 @@
         
             <section id="content-top">
                 <div class="content-top-button">
-                    <div class="content-top-button-left">산책 찾기</div>
-                    <div class="content-top-button-right">💖메이트 찾기</div>
+                    <div class="content-top-button-left">산책 메이트</div>
+                    <div class="content-top-button-right">💖메이트</div>
                 </div>
             </section>
 
             <!-- content-midle section -->
-            <section id="content-middle">
-                <div class="content-middle-title">멍BTI 테스트</div>
-            </section>
             
             <!-- content-bottom section -->
             <section id="content-bottom">
@@ -60,13 +57,13 @@
                      </div>
 	                            
                      <div id="mbti-matching">
-                         <h3>영혼의 단짝🍀 : <span style="color:#ee862c;">${result.friendTypeName }</span> 타입</h3>
+                         <h2>영혼의 단짝🍀 : <span style="color:#ee862c;">${result.friendTypeName }</span> 타입</h2>
                          <div class="mbti-matching-box">
 	                         <c:choose>
 	                         	<c:when test="${friend[0] ne null}">
 		                         	<c:forEach items="${friend}" var="ft">
 			                            <div class="box">
-			                                 <a onclick="">
+			                                 <a onclick="dogModal(${ft.dogNo})">
 			                                     <div class="photo">
 				                                     <c:choose>
 										            	<c:when test="${ft.dogPhoto eq null}">
@@ -89,13 +86,13 @@
 	                         </c:choose>
                          </div>
 
-                         <h3>영혼의 파트너💖 : <span style="color:#ee862c;">${result.partnerTypeName }</span> 타입</h3>
+                         <h2>영혼의 파트너💖 : <span style="color:#ee862c;">${result.partnerTypeName }</span> 타입</h2>
                          <div class="mbti-matching-box">
                              <c:choose>
 	                         	<c:when test="${partner[0] ne null}">
 		                         	<c:forEach items="${partner}" var="pt">
 			                            <div class="box">
-			                                 <a onclick="">
+			                                 <a onclick="dogModal(${pt.dogNo})">
 			                                     <div class="photo">
 			                                         <c:choose>
 										            	<c:when test="${pt.dogPhoto eq null}">
@@ -127,12 +124,88 @@
         <!-- End content -->
     </div>
     
+    
+    <!-- 강아지 모달 -->
+	<div id="dog-modal" class="modal-wrapper">
+	    <div class="modal">
+	        <div class="modal-header">				
+	            <button id="closeModalBtn" onclick="closeDogModal();">
+	            	<i class="fa-solid fa-xmark"></i>
+	            </button>
+	            <h3>반려견 상세 정보</h3>
+	        </div>
+	        <div class="modal-content">
+        		<input type="hidden" id="dogNo">
+	            <div class="dog-info">
+	            	<div id="photo-section">
+				        <div class="photo-box">
+				        	<img id="dogPreview" src="/resources/img/default_dog.png">					
+				        </div>
+					</div>
+	            </div>
+	            <div id="info-section">
+				    <div class="info-box">
+				        <label for="dogName"><span>*</span>이름</label>
+				        <input type="text" name="dogName" id="dogName" class="input" readonly>
+				    </div>
+				    <div class="info-box">
+				        <label for="dogType"><span>*</span>품종</label>
+				        <input type="text" name="" id="dogType1" class="input" readonly>
+				    </div>
+				    <div class="info-box">
+				        <label for="dogAge"><span>*</span>나이</label>
+				        <input type="text" name="dogAge" id="dogAge" class="input shortInput" readonly>살
+				    </div>
+				    <div class="info-box">
+				        <label for="dogGender"><span>*</span>성별</label><br>
+				        <label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogGender" value="남아" onclick="return(false);"> 남아</label>
+	      				<label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogGender" value="여아" onclick="return(false);"> 여아</label>
+				    </div>
+				    <div class="info-box">
+				        <label for="dogWeight"><span>*</span>몸무게 (소수점X)</label>
+				        <input type="text" name="dogWeight" id="dogWeight" class="input shortInput" readonly>KG
+				    </div>
+				    <div class="info-box">
+				        <label for="dogNeutral"><span>*</span>중성화 여부</label><br>
+				        <label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogNeutral" value="O" onclick="return(false);"> 했어요</label>
+	      				<label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogNeutral" value="X" onclick="return(false);"> 안 했어요</label>
+				    </div>
+				    <div class="info-box" id="mbti-box">
+				        <label for="dogMbti">멍BTI</label>
+				        <input type="text" name="dogMbti" id="dogMbti" class="input" readonly>
+				    </div>
+				    <div class="info-box">
+				        <label for="dogVacc"><span>*</span>예방접종 여부</label><br>
+				        <label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogVacc" value="O" onclick="return(false);"> 했어요</label>
+	      				<label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogVacc" value="X" onclick="return(false);"> 안 했어요</label>
+				    </div>
+				    <div class="btn-box">
+				        <button type="button" class="btn" id="dmBtn">쪽지보내기</button>
+				    </div>
+				    <div class="send-dm-wrap" style="display:none;">
+						<div class="send-dm-title">
+							<span>받는사람 : </span>
+							<span class="receiver"></span>
+        					<input type="hidden" name="receiver" id="receiver">
+						</div>
+						<div class="input-box-wrap">
+							<input id="send-dm-input" type="text" name="dmContent" placeholder="150자 제한" maxlength="150">
+							<button class="sendBtn">발송</button>
+							<button class="cancelBtn">취소</button>
+						</div>
+					</div>
+				</div>
+	        </div>
+	    </div>
+	</div>
+    
+    
     <!-- Start footer -->
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
     <!-- End footer -->
-    
     <script type="text/javascript">
     	$(".mbti-dogname").text("${result.dogName}");
     </script>
+    <script src="/resources/js/walkmate/mbtiMatePage/mbtiResult.js"></script>
 </body>
 </html>

@@ -8,9 +8,8 @@
 	<script src="https://kit.fontawesome.com/7b7a761eb5.js" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
- 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+ 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>	<link rel="stylesheet" href="/resources/css/header.css">
 	<!-- 이모티콘 --> 	
- 	
 <header>
 	<div class="header-wrap">
 		<div class="header">
@@ -38,7 +37,7 @@
 				<c:if test="${not empty sessionScope.m }">
 				<ul>
 					<div>
-						<li><a href= "/myWalkMate.do">내 산책 메이트</a></li>
+						<li><a href= "/myWalkMateList.do">내 산책 메이트</a></li>
 					</div>
 				</ul>
 				<ul>
@@ -78,10 +77,13 @@
 		</div>		
 		</div>
 	</div>
+	<div class="up-btn">위로!</div>
 	<div class="chat-icon">
 		<img src="/resources/img/favicon.ico">
+		<div class="chat-tooltip-wrap">
+			<span class="chat-tooltip">채팅할래</span>
+		</div>
 	</div>
-	<span class="chat-tooltip">채팅</span>
 	<div id="chat-board" style="display:none;">
 		<c:choose>
 			<c:when test="${empty sessionScope.m }">

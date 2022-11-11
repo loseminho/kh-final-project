@@ -4,9 +4,7 @@ body, button{
     font-family: gs-Medium;
     position: relative;
 }
-span{
-    color: rgb(218, 72, 65);
-}
+
 header{
     display: flex;
     justify-content: space-between;
@@ -310,6 +308,7 @@ header{
     overflow: hidden;
     position: absolute;
     text-align: center;
+    background-color : white;
     top: -90px;
     left: 355px;
     z-index: 103;
@@ -547,6 +546,13 @@ header{
     height: 100%;
     object-fit: cover;
 }
+.member-info-list .member-info-profil span{
+	text-align: left;
+    color: #ff4c4c;
+    font-size: 85px;
+    font-family : gs-Light
+    vertical-align: middle;
+}
 .member-info-list .member-info-id{
     width: 500px;
     height: 50px;
@@ -587,6 +593,21 @@ header{
     margin-bottom: 5px;
     display: inline-block;
     margin-right: 15px;
+}
+.write-content-input-box .back-time-btn{
+	background-color: #1abc9c;
+    border: 1px solid #dddddd !important;
+    color: white;
+    width: 50px;
+    height: 40px;
+    font-size: 14px;
+    line-height: 10px;
+    text-align: center;
+    border-radius: 8px;
+    padding-top: 13px;
+    padding-bottom: 7px;
+    margin-top: -5px;
+    vertical-align: middle;
 }
 .write-content-input-box label{
     display: inline-block;
@@ -657,7 +678,7 @@ header{
 	width:200px;
 }
 .write-content-input-box:nth-child(3) input{
-	width:150px;
+	width:130px;
 }
 .write-content-input-box:focus-within label{
 	font-size: 15px;
@@ -710,3 +731,17 @@ header{
 /* .write-new-content-btn button:hover{
     text-decoration: underline;
 } */
+
+#writeDate, #writeTime, #writeDate-label, #writeTime-label{
+	transition-duration : 0.5s;	
+}
+#write-section6{
+	font-size: 15px;
+	color: #808080;
+	text-indent: 60px;
+	width: 600px;
+	margin-top: 20px;
+}
+#write-section3 span{
+    color: rgb(218, 72, 65);
+}

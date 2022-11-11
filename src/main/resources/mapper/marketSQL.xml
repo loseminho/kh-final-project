@@ -33,6 +33,7 @@ from market_tbl mt join dog_type dt on(mt.type_code=dt.type_code) left join memb
 	<select id="filterSelect" parameterType="md" resultType="md">
 		select
 			mt.market_no as marketNo,
+			mt.call_name as callName,
 			mt.age,
 			mt.type_code as typeCode,
 			mt.sale_info as saleInfo,
@@ -48,6 +49,7 @@ from market_tbl mt join dog_type dt on(mt.type_code=dt.type_code) left join memb
 		where type_size = #{typeSize}
 		</otherwise>
 		</choose>		
+		 order by 1 desc
 	</select>	
 	<select id="selectTypeList" resultType="dt">
 		select

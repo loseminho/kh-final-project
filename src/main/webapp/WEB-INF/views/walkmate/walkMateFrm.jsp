@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>우리 동네 산책 찾기</title>
+	<title>산책갈개</title>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <link rel="stylesheet" href="/resources/css/walkmate/walk_mate_content.css">
     <link rel="styleSheet" href="/resources/css/gmarket.css">
@@ -14,8 +15,24 @@
 	<!-- 헤더  -->
 	<jsp:include page="/WEB-INF/views/common/header.jsp" />
     
+    <input type="hidden" id="login-memberId" value="${sessionScope.m.memberId}">
+    <input type="hidden" id="login-memberNickname" value="${sessionScope.m.memberNickname}">
+    <input type="hidden" id="login-memberPhoto" value="
+    <c:choose>
+   		<c:when test="${sessionScope.m.memberPhoto eq null}">
+		    /resources/img/default_profile.png
+		</c:when>
+		<c:otherwise>
+		    /resources/upload/member/${sessionScope.m.memberPhoto }						
+		</c:otherwise>
+	</c:choose>
+	">
+    
 	<!-- Start Content -->
     <!--Content Modal-->
+    <form action="/inputWalkmate.do" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="wmLeader", value="${sessionScope.m.memberNo }">
+    
     <div id="modal" class="modal-overlay" >
         <div class="modal-window">
                 <div class="modal-window-top">
@@ -31,6 +48,7 @@
                         <div class="writer-id">user03</div>
                         <h2 id="view-section2">골든 리트리버 상동 호수공원 같이 가요~</h2>
                         <input type="text" id="write-section1" placeholder="제목을 입력해주세요.">
+                        <input type="text" id="write-section6" placeholder="모임을 위한 한줄평을 작성하세요!">
                     </div>
                 </div>
                 <div class="modal-window-bottom">
@@ -40,18 +58,20 @@
                         <div class="bottom-info-inputs" >
                             <div class="write-content-input-box titles">
                                 <label for="writeTitle2"><span>*</span>모임 장소</label>
-                                <input type="text" name="writeTitle2" id="writeTitle2" placeholder="서울시 - 은평구">
-                                <button class="adressBtn" value="주소찾기">주소 찾기</button>
+                                <input type="text" name="wmAddr" id="writeTitle2" placeholder="서울시 - 은평구" readonly>
+                                <button type="button" class="adressBtn" onclick="searchAddr();">주소 찾기</button>
                             </div>
                             <div class="write-content-input-box titles">
-                                <label for="writeTitle2"><span>*</span>모임 인원</label>
-                                <input type="text" name="writeTitle2" id="writeTitle2" placeholder="ex) 5"> 
+                                <label for="writeTitle3"><span>*</span>모임 인원</label>
+                                <input type="text" name="wmRangeMember" id="writeTitle3" placeholder="ex) 5"> 
                             </div>
                             <div class="write-content-input-box titles">
-                                <label for="writeDate"><span>*</span>모임 요일</label>
-                                <label for="writeDate2" style="display: none;"><span>*</span>모임 시간</label>
-                                <input type="date" name="writeDate" id="writeDate" value="none">
-                                <input type="time" value="xxx" min="yyy" max="zzz" style="display: none;"> 
+                                <label for="writeDate" id="writeDate-lable"><span>*</span>모임 요일</label>
+                                <label for="writeTime" style="display: none;" id="writeTime-lable"><span>*</span>모임 시간</label>
+                                <input type="date" name="writeDate" id="writeDate" value="">
+                                <input type="time" name="writeTime" id="writeTime" style="display: none;">
+                                <input type="hidden" name="wmMeetTime" id="meetTime">
+                                <button type="button" class="back-time-btn" onclick="backTime();">뒤로</button> 
                             </div>
                         </div>
                     </div>
@@ -71,7 +91,7 @@
                         
                         <div id="write-section3">
                             <div class="input-img-contents-title">
-                                <span>*</span>사진 첨부
+                                <span>*</span>사진 첨부 (하나씩 넣어주세요)
                             </div>
                             <div class="input-img-contents">
                                 <input id="imageFile1"  type="file" class="photo" name="photo" style="display:none;">
@@ -89,6 +109,7 @@
                                     <div class="input-btn">+</div>
                                     <img src="" class="preview">
                                 </div>
+                                <input id="imageFile4" type="file" class="photo" name="photo" style="display:none;">
                                 <div class="preview-box">
                                     <div class="input-btn">+</div>
                                     <img src="" class="preview">
@@ -96,13 +117,13 @@
                             </div>
                             <div class="input-tag-contents">
                                 <span>*</span>태그 : 
-                                <input type="radio" id="공원" name="tags"><label for="공원">공원&산책로</label>
-                                <input type="radio" id="둘레길" name="tags"><label for="둘레길">둘레길&등산</label>
-                                <input type="radio" id="여행" name="tags"><label for="여행">여행</label>
-                                <input type="radio" id="운동" name="tags"><label for="운동">운동</label>
-                                <input type="radio" id="페스티벌" name="tags"><label for="페스티벌">페스티벌</label>
+                                <input type="radio" id="공원&산책로" name="wmTag" value="공원&산책로"><label for="공원&산책로">공원&산책로</label>
+                                <input type="radio" id="둘레길&등산" name="wmTag" value="둘레길&등산"><label for="둘레길&등산">둘레길&등산</label>
+                                <input type="radio" id="여행" name="wmTag" value="여행"><label for="여행">여행</label>
+                                <input type="radio" id="운동" name="wmTag" value="운동"><label for="운동">운동</label>
+                                <input type="radio" id="페스티벌" name="wmTag" value="페스티벌"><label for="페스티벌">페스티벌</label>
                             </div>
-                            <textarea name="" id="" placeholder="산책 모임에 대한 내용을 입력해주세요."></textarea>
+                            <textarea name="wmContent" id="" placeholder="산책 모임에 대해 자세히 설명해주세요."></textarea>
                         </div>
                         
                     </div>
@@ -133,15 +154,29 @@
                         <div class="info-titles sub">산책이 궁금하다면 댓글을 남겨보세요.</div>
                     </div>
                     <div class="bottom-content-btn">
-                        <button class="input-main-btn" id="view-section6" onclick="">신청 하기</button>
-                        <button class="input-main-btn" id="write-section5" onclick="" >작성 완료</button>
-                        <button class="next-btn-member" id="" onclick="modalNextContents('');">돌아가기 >> </button>
+                        <button type="submit" class="input-main-btn" id="write-section5" onclick="" >작성 완료</button>
+                        <button type="button" class="input-main-btn" id="view-section6" onclick="">신청 하기</button>
+                        <button type="button" class="next-btn-member" id="" onclick="modalNextContents('');">돌아가기 >> </button>
                     </div>
                 </div>
-                
+                <!-- 신청자의 신청 메세지 -->
+                <div class="modal-window-bottom" style="display:none;">
+	                <div class="bottom-content member-info">
+	                	<div class="info-titles">신청 하기</div>
+	                    <div class="info-titles sub">우리 반갑게 만나요!</div>                
+	                </div>
+                	<div class="bottom-content">                	
+	                	<textarea name="wmContent" id="" placeholder="산책 모임에 대해 자세히 설명해주세요."></textarea>
+                	</div>
+	                <div class="bottom-content-btn">
+		                <button type="submit" class="input-main-btn" id="write-section5" onclick="" >작성 완료</button>
+		                <button type="button" class="next-btn-member" id="" onclick="modalNextContents('');">돌아가기 >> </button>                                
+	                </div>
+                </div>
             </div>
             
     </div>
+    </form>
     <!-- End Content Modal-->
 
     
@@ -167,7 +202,7 @@
 
         <div class="content-bottom">
             <div class="write-new-content-btn">
-                <button onclick="modalWrite();">모임 만들기</button>
+                <button type="button" onclick="modalWrite();">모임 만들기</button>
             </div>
 
             <!-- 컨텐츠 박스 리스트-->
@@ -204,6 +239,9 @@
    	<!-- Start footer -->
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
     <!-- End footer -->
+    
+    <!-- 지도 찾기 스크립트 -->
+    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
     <script src="/resources/js/walk/walk.js"></script>
     <script>
     const modal = document.getElementById("modal");
@@ -221,7 +259,8 @@
     const modalWriteSection3 = document.getElementById("write-section3");
     const modalWriteSection4 = document.getElementById("write-section4");
     const modalWriteSection5 = document.getElementById("write-section5");
-
+    const modalWriteSection6 = document.getElementById("write-section6");
+    
     function modalOn(){
         modal.style.display = "flex"
     }
@@ -250,6 +289,7 @@
         modalWriteSection3.style.display = "block";
         modalWriteSection4.style.display = "block";
         modalWriteSection5.style.display = "block";
+        modalWriteSection6.style.display = "block";
     }
     function modalWriteOff(){
         modalWriteSection1.style.display = "none";
@@ -257,6 +297,7 @@
         modalWriteSection3.style.display = "none";
         modalWriteSection4.style.display = "none";
         modalWriteSection5.style.display = "none";
+        modalWriteSection6.style.display = "none";
     }
     function modalOff() {
         modal.style.display = "none";

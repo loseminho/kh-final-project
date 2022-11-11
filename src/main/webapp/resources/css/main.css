@@ -4,7 +4,11 @@ html {
 }
 
 #body{
-	height: 100% !important;
+    display: block;
+    width: 100%;
+    height: 100% !important;
+    margin: 0;
+    
 }
 
 html, body {
@@ -72,9 +76,8 @@ html, body {
 	text-decoration: none;
 }
 .section2Content{
-	padding-top:45px;
-	width:100%;
-	height:100%;
+	width:100vw;
+	height:100vh;
 	background-color: rgba(0,0,0,0.2);
 	display:flex;
 	justify-content: center;
@@ -96,7 +99,7 @@ html, body {
 	font-family: gs-Bold;
 	/*padding-top:20px;*/
 	/*color: #DE4B3F;*/
-	font-size:30px;
+	font-size:24px;
 	font-weight:900;
 }
 #mbtiBtn {
@@ -129,6 +132,8 @@ html, body {
 }
 
 
+<<<<<<< HEAD
+=======
 
 
 
@@ -304,8 +309,6 @@ html, body {
 .managerMenu li:not(:first-child){
 	display:none;
 }
-
-
 .managerMenu>li{
 	font-family:gs-Medium;
     font-weight: 800;
@@ -318,6 +321,7 @@ html, body {
 	box-shadow: 1px 3px 0 0 rgba( 31, 38, 135, 0.37 );
 }
 
+>>>>>>> branch 'master' of https://github.com/fgjkqm20/final-project.git
 /* 푸터 부분 */
 footer {
     width: 100%;
@@ -370,11 +374,4 @@ footer > .footer-content {
 	background-color: #1abc9c;
 	height:80px;
 	width:100px;
-}
-.managerMenu>li>a{
-	background-color: #1abc9c;
-	height:80px;
-}
-.managerMenu a:not(:first-child):hover{
-	box-shadow: 1px 3px 0 0 rgba( 31, 38, 135, 0.37 );
 }

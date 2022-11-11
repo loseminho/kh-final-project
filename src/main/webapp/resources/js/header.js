@@ -31,6 +31,7 @@ let boardTitle;
 let memberId;
 let memberNo;
 let memberNickname;
+let wmLeader;
 /*채팅시작*/
 $(document).on("click",".init-chat",function(){
 	const chatIdx = $(".init-chat").index(this);
@@ -39,6 +40,7 @@ $(document).on("click",".init-chat",function(){
 	memberId = $("#chatMemberId").val();
 	memberNickname = $("#chatMemberNickname").val();
 	memberNo = $("#chatMemberNo").val();
+	wmLeader = $(".wmLeader").eq(chatIdx).val();
 	
 	
 	$(".chat-list").css("display","none");
@@ -61,7 +63,7 @@ $(document).on("click",".init-chat",function(){
 			$(".chat-content").scrollTop($(".chat-content")[0].scrollHeight);
 		}
 	});
-	initChat(boardNo,boardTitle,memberId,memberNickname);
+	initChat(boardNo,boardTitle,memberId,memberNickname,wmLeader);
 	
 });
 
@@ -80,9 +82,10 @@ $(document).ready(function(){
 				var html = "";
 				$.each(data,function(idx,value){
 					html += "<li class='init-chat'>";
+					html += "<input type='hidden' class='wmLeader' value="+value.wmLeader+">";
 					html += "<input type='hidden' class='boardNo' value="+value.boardNo+">";
 					html += "<input type='hidden' class='boardTitle' value="+value.boardTitle+">";
-					html += "<span>"+value.boardTitle+"</span>";
+					html += "<span class='chat-board-title'>"+value.boardTitle+"</span>";
 					html += "</li>";
 				});
 				$(".chat-list").html(html);
@@ -92,12 +95,12 @@ $(document).ready(function(){
 });
 
 $(".chat-icon").on("click",function(){
-
 	$("#chat-board").toggle(400);
 });
 let ws;
 let chatIndex;
-function initChat(boardNo, boardTitle, memberId,memberNickname){
+function initChat(boardNo, boardTitle, memberId,memberNickname, wmLeader){
+	console.log(wmLeader);
 	ws = new WebSocket("ws://192.168.10.33/chat.do");
 	ws.onopen = startChat;
 	ws.onmessage = receiveMsg;
@@ -109,7 +112,7 @@ function initChat(boardNo, boardTitle, memberId,memberNickname){
 	
 }
 function startChat(){
-	const data={type:"enter",memberId:memberNickname,boardNo:boardNo,boardTitle:boardTitle,memberNo:memberNo};
+	const data={type:"enter",memberId:memberNickname,boardNo:boardNo,boardTitle:boardTitle,memberNo:memberNo,wmLeader:wmLeader};
 	ws.send(JSON.stringify(data));
 }
 function receiveMsg(param){
@@ -118,7 +121,7 @@ function receiveMsg(param){
 function sendMsg(){
 	const msg = $("#send-msg").val();
 	if(msg != ''){
-		const data = {type:"chat",msg:msg,boardNo:boardNo,memberId:memberNickname,memberNo:memberNo};
+		const data = {type:"chat",msg:msg,boardNo:boardNo,memberId:memberNickname,memberNo:memberNo,wmLeader:wmLeader};
 		ws.send(JSON.stringify(data));
 		appendChat("<div class='chat right'>"+msg+"</div>");
 	}
@@ -145,3 +148,8 @@ $(document).on("click",".back-btn>span",function(){
 	$(".chat-content").empty();
 	$(".chat-name").text("채팅목록을 클릭해보세요!!");	
 });
+$(".up-btn").on("click",function(){
+	$(document).scrollTop($(".chat-content")[0].scrollHeight);
+
+});
+

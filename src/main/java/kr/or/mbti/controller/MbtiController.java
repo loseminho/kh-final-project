@@ -33,6 +33,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.google.gson.Gson;
 
+import kr.or.dm.model.vo.DirectMessage;
 import kr.or.dog.controller.DogController;
 import kr.or.dog.model.service.DogService;
 import kr.or.dog.model.vo.Dog;
@@ -202,5 +203,25 @@ public class MbtiController {
 		model.addAttribute("friend", map.get("friend"));
 		model.addAttribute("partner", map.get("partner"));
 		return "walkmate/mbtiMatePage/mbtiMateResult";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/selectDogOwner.do", produces="application/json;charset=utf-8")
+	public String selectDogOwner(int dogNo) {
+		Member m = service.selectDogOwner(dogNo);
+		return new Gson().toJson(m);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/insertMatchingDm.do")
+	public String insertMatchingDm(DirectMessage dm, @SessionAttribute Member m) {
+		// session에서 로그인한 회원 정보를 받아와서 dm 보내는 사람으로 세팅
+		int memberNo = m.getMemberNo();
+		dm.setSenderNo(memberNo);
+		dm.setSenderId(m.getMemberId());
+		dm.setSenderName(m.getMemberNickname());
+
+		int result = service.insertMatchingDm(dm);
+		return "result";
 	}
 }

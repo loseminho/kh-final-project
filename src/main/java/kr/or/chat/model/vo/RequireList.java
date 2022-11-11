@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RequireList {
+	private int wmLeader;
 	private int boardNo;
 	private String memberId;
 	private String writer;

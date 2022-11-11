@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>비밀번호 변경 완료</title>
+<title>산책갈개</title>
 <link rel="stylesheet" href="/resources/css/gmarket.css">
 <link rel="icon" href="/resources/img/favicon.ico" type="image/x-icon" sizes="16x16">
 <style>

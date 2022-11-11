@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>산책갈개</title>
 <link rel="stylesheet" href="/resources/css/market/writeFrm.css">
 <link rel="stylesheet" href="/resources/css/market/writeFrmContent.css">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -102,6 +102,7 @@
 		</form>
 			<button id="submit-btn">전송</button>
 			<button id="cancel-btn">취소</button>
+			<button id="delete-btn">삭제</button>
 		</div>
 	</div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
@@ -126,6 +127,10 @@
 				});
 			}
 		});
+	});
+	
+	$("#delte-box").on("click",function(){
+		
 	});
 </script>
 </body>

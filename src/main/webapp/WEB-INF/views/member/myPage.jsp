@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>마이페이지</title>
+<title>산책갈개</title>
 	<link rel="stylesheet" href="/resources/css/member/myPage.css">
 	<link rel="stylesheet" href="/resources/css/member/myReport.css">
 	
@@ -31,7 +31,6 @@
 	                    <ul class="sub-menu">
 	                        <li class="section"><a href="#">- 받은 쪽지함</a></li>
 	                        <li class="section"><a href="#">- 보낸 쪽지함</a></li>
-	                        <li class="section"><a href="#">- 쪽지 쓰기</a></li>
 	                    </ul>
 	                </li>
 	            </ul>		
@@ -62,18 +61,13 @@
 			    </div>
 			    
 			    <!-- 받은 쪽지함 -->
-			    <div style="display: none;">
-			        <h1>받은 쪽지함</h1>
+			    <div class="receiveDm" style="display: none;">
+			        <jsp:include page="/WEB-INF/views/member/mypage/myPage_receiveDm.jsp"/>
 			    </div>
 			    
 			    <!-- 보낸 쪽지함 -->
-			    <div style="display: none;">
-			        <h1>보낸 쪽지함</h1>
-			    </div>
-			    
-			    <!-- 쪽지 쓰기 -->
-			    <div style="display: none;">
-			        <h1>쪽지 쓰기</h1>
+			    <div class="sendDm" style="display: none;">
+			        <jsp:include page="/WEB-INF/views/member/mypage/myPage_sendDm.jsp"/>
 			    </div>
 			</div>
 		</div>
@@ -86,7 +80,7 @@
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	
 	<script>
-		const memberNo = ${sessionScope.m.memberNo };
+		const reportMemberNo = ${sessionScope.m.memberNo };
 	</script>
 	<script src="/resources/js/member/myPage.js"></script>
 	<script src="/resources/js/member/mypage/myReport.js"></script>

@@ -1,28 +1,3 @@
-$(".managerMenu").on("mouseover",function(){
-	$(".managerMenu").children().css("display","block");
-});
-$(".managerMenu").on("mouseout",function(){
-	const subMenu = $(".managerMenu").children();
-	subMenu.not(subMenu.eq(0)).css("display","none");
-});
-
-function logout() {
-	Swal.fire({
-        title: '로그아웃',
-        text: "로그아웃하시겠습니까?",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#ccc',
-        confirmButtonText: '로그아웃',
-        cancelButtonText: '취소'
-    }).then((result) => {
-        if (result.isConfirmed) {
-			location.href="/logout.do";
-        }
-    })
-}
-
 $(function(){
 	var mHtml = $("html");
 		var page = 1;
@@ -53,12 +28,9 @@ $(function(){
 			});
 
 			if (page == 1) {
+				page==1;
 			}
-			if (page != 1) {
+			if (page == 3) {
 			}
 		});
 });
-
- 		
-		
-

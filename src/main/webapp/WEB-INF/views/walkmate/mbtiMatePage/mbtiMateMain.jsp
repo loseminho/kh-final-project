@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>메이트 찾기</title>
+	<title>산책갈개</title>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <link rel="stylesheet" href="/resources/css/walkmate/mbtiMatePage/mbtiMate.css">
     <link rel="styleSheet" href="/resources/css/gmarket.css">
@@ -24,14 +24,16 @@
         
             <section id="content-top">
                 <div class="content-top-button">
-                    <div class="content-top-button-left">산책 찾기</div>
-                    <div class="content-top-button-right">💖메이트 찾기</div>
+                    <div class="content-top-button-left">산책 메이트</div>
+                    <div class="content-top-button-right">💖메이트</div>
                 </div>
             </section>
-
+            
             <!-- content-midle section -->
             <section id="content-middle">
                 <div class="content-middle-title">멍BTI 테스트</div>
+                <p>멍BTI 16가지 유형 중에서 내 반려견은 어떤 유형인지 알아보고,</p>
+                <p>내 반려견과 찰떡궁합인 친구를 찾아주자!</p>
             </section>
             
             <!-- content-bottom section -->
@@ -50,7 +52,7 @@
            					<div id="chooseDog">
            						<c:choose>
 		           					<c:when test="${sessionScope.m.dogList[0] ne null}">
-		           						<h3>반려견을 선택해주세요.</h3><br><br>
+		           						<h3>반려견을 선택해주세요.</h3><br><br><br>
 		           						<c:forEach items="${sessionScope.m.dogList }" var="myDog">
 		           							<div class="box">
 										        <a onclick="mbtiStart('${myDog.dogNo}', '${myDog.dogName}');">
@@ -95,7 +97,7 @@
 	           						<img src="/resources/img/mbti/img1.png">
            						</div>
            						<h3 id="mbti-que">
-           							<span class="mbti-dogname"></span>를 처음 본<br><span class="mbti-nickname">${sessionScope.m.memberNickname }</span>의 친구는 이렇게 말한다.
+           							<span class="mbti-dogname"></span>(을)를 처음 본<br><span class="mbti-nickname">${sessionScope.m.memberNickname }</span>의 친구는 이렇게 말한다.
            						</h3>
            						<button type="button" class="mbti-btn">
            							얘는 왜 이렇게 사람 같아?
@@ -169,7 +171,7 @@
            						</div>
            						<h3 id="mbti-que">
            							'집순이/집돌이'는<br>
-           							<span class="mbti-dogname"></span>를 수식하는 말이다.
+           							<span class="mbti-dogname"></span>(을)를 수식하는 말이다.
            						</h3>
            						<button type="button" class="mbti-btn">
            							YES!
@@ -185,7 +187,7 @@
 	           						<img src="/resources/img/mbti/img6.png">
            						</div>
            						<h3 id="mbti-que">
-           							<span class="mbti-dogname"></span>와 산책하는 중.<br>
+           							<span class="mbti-dogname"></span>(와)과 산책하는 중.<br>
            							오늘은 새로운 길로 가볼까?<br>
            							처음 보는 루트에 <span class="mbti-dogname"></span>(은)는?
            						</h3>
@@ -259,7 +261,7 @@
 	           						<img src="/resources/img/mbti/img10.png">
            						</div>
            						<h3 id="mbti-que">
-           							<span class="mbti-dogname"></span>가 모닝톡을 보낸다면,<br>
+           							<span class="mbti-dogname"></span>(이)가 모닝톡을 보낸다면,<br>
            							뭐라고 보냈을까?
            						</h3>
            						<button type="button" class="mbti-btn">
@@ -278,13 +280,13 @@
            						<h3 id="mbti-que">
            							산책하다 이웃과 마주친 <span class="mbti-dogname"></span>,<br>
            							귀엽다며 손을 뻗는 이웃에게<br>
-           							<span class="mbti-nickname">${sessionScope.m.memberNickname }</span>가 할 말은?
+           							<span class="mbti-nickname">${sessionScope.m.memberNickname }</span>(이)가 할 말은?
            						</h3>
            						<button type="button" class="mbti-btn">
            							우리 <span class="mbti-dogname"></span> 너무 귀엽죠?ㅎㅎ
            						</button>
            						<button type="button" class="mbti-btn">
-           							<span class="mbti-dogname"></span>가 무서워해요! 손 내밀지 말아주세요~
+           							<span class="mbti-dogname"></span>(이)가 무서워해요! 손 내밀지 말아주세요~
            						</button>
            					</div>
            					<div class="mbti-box" style="display:none;">
