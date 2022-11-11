@@ -81,6 +81,14 @@ public class MemberDao {
 	public DirectMessage selectOneReceiveDm(int dmNo) {
 		return sqlSession.selectOne("member.selectOneReceiveDm", dmNo);
 	}
+
+	public int insertReplyDm(DirectMessage dm) {
+		return sqlSession.insert("member.insertReplyDm", dm);
+	}
+
+	public int updateDmReadCheck(int dmNo) {
+		return sqlSession.update("member.updateDmReadCheck", dmNo);
+	}
 	
 	/*****************************************************/
 	

@@ -100,7 +100,7 @@
 }
 
 .receiveDm .modal::-webkit-scrollbar{
-  display:none;
+  	display:none;
 }
 
 .receiveDm .modal-header{
@@ -146,7 +146,20 @@
 	text-align:right;
 }
 
-.receiveDm #dmReplyBtn {
+.receiveDm .reply-box textarea{
+	width:340px;
+    min-height:100px;
+    border:1px solid #ccc;
+    resize: none;
+    outline:none;
+    font-size:16px;
+    font-family:gs-Medium;
+    padding:10px;
+    margin-top:10px;
+}
+
+.receiveDm .reply-box #dmReplyBtn,
+.receiveDm .reply-box #dmReplyCancelBtn {
 	background-color:#1abc9c;
 	color:white;
 	border:none;
@@ -155,6 +168,14 @@
 	border-radius:5px;
 	line-height:33px;
 	right:0;
+	border:1px solid #1abc9c;
+}
+
+.receiveDm .reply-box #dmReplyCancelBtn {
+	width:40px;
+	color:#1abc9c;
+	background-color:white;
+	border:1px solid #1abc9c;
 }
 
 .swal2-container {

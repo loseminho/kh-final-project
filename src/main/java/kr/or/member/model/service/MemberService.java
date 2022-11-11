@@ -139,10 +139,20 @@ public class MemberService {
 		return dao.selectOneSendDm(dmNo);
 	}
 
+	@Transactional
 	public DirectMessage selectOneReceiveDm(int dmNo) {
-		return dao.selectOneReceiveDm(dmNo);
+		int result = dao.updateDmReadCheck(dmNo);
+		if(result > 0) {
+			return dao.selectOneReceiveDm(dmNo);
+		} else {
+			return null;
+		}
 	}
-	
+
+	@Transactional
+	public int insertReplyDm(DirectMessage dm) {
+		return dao.insertReplyDm(dm);
+	}
 	/*****************************************************/
 	
 	public Member selectOneProfile(int memberNo) {

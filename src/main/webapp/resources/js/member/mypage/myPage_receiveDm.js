@@ -56,13 +56,17 @@ function receiveDm() {
 }
 
 function receiveDmModal(dmNo) {
+	cancelReply();
+
 	$.ajax({
         url  : '/selectOneReceiveDm.do',
         type : 'post',
         data : {dmNo : dmNo},
         success : function(data){
+        	receiveDm();
 			$("#receiveDm-modal").css("display", "flex");
 			
+			$("#dmCate").val(data.dmCate);
 			if(data.dmCate == "0") {
         		$(".dmCate").text("[입양문의]");
     		} else {
@@ -72,7 +76,7 @@ function receiveDmModal(dmNo) {
 			$(".sender").text(data.senderName + "(" + data.senderId + ")");
 			$(".dmContent").text(data.dmContent);
 			$(".dmDate").text(data.dmDate);
-			$("[name=receiver]").val(data.senderNo);
+			$("#receiverNo").val(data.senderNo);
 			
 			if(data.readCheck == "0") {
         		$(".dmReadCheck").text("읽지않음");
@@ -85,4 +89,38 @@ function receiveDmModal(dmNo) {
 
 function closeReceiveDmModal() {
 	$("#receiveDm-modal").hide();
+}
+
+function dmReply() {
+	$("[name=dmContent]").show();
+	$("#dmReplyBtn").text("발송하기");
+	$("#dmReplyBtn").attr("onclick", "sendReply();");
+	$("#dmReplyCancelBtn").show();
+}
+
+function cancelReply() {
+	$("[name=dmContent]").val("");
+	$("[name=dmContent]").hide();
+	$("#dmReplyBtn").text("답장하기");
+	$("#dmReplyBtn").attr("onclick", "dmReply();");
+	$("#dmReplyCancelBtn").hide();
+}
+
+function sendReply() {
+	const receiverNo = $("#receiverNo").val();
+	const dmContent = $("[name=dmContent]").val();
+	const dmCate = $("#dmCate").val();
+
+	$.ajax({
+        url  : '/insertReplyDm.do',
+        data : {"receiverNo" : receiverNo, "dmContent" : dmContent, "dmCate" : dmCate},
+        type : 'post',
+        success : function(data){
+			cancelReply();
+        	Swal.fire({
+				text: '쪽지가 발송되었습니다.',
+				confirmButtonColor: '#1abc9c'
+			})
+        }
+	});
 }

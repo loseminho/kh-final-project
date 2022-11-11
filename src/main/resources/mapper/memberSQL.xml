@@ -141,6 +141,17 @@
 		where dm_no = #{_parameter}
 	</select>
 	
+	<insert id="insertReplyDm" parameterType="dm">
+		insert into dm
+		values (dm_seq.nextval, #{senderNo}, #{receiverNo}, #{dmContent}, sysdate, 0, #{senderId}, #{senderName}, #{dmCate})
+	</insert>
+	
+	<update id="updateDmReadCheck" parameterType="int">
+		update dm
+		set read_check = 1
+		where dm_no = #{_parameter}
+	</update>
+	
 	<!-- ***************************************************** -->
 	
 	<select id="selectPersonProfile" parameterType="_int" resultType="m">

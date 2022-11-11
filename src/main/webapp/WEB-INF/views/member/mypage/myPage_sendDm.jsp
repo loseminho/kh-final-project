@@ -33,13 +33,13 @@
 		</div>
 		<div class="modal-content">
 			쪽지 분류 : <span class="dmCate"></span><br>
+			보낸 날짜 : <span class="dmDate"></span><br>
 			받은 사람 : <span class="receiver"></span><br>
 			<br>
 			<div class="dmContentDiv">
 				<span class="dmContent"></span>
 			</div> 
 			<br>
-			보낸 날짜 : <span class="dmDate"></span><br>
 			조회 여부 : <span class="dmReadCheck"></span>
 		</div>
 	</div>

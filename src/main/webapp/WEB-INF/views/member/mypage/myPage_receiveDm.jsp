@@ -33,16 +33,19 @@
 		</div>
 		<div class="modal-content">
 			쪽지 분류 : <span class="dmCate"></span><br>
+			보낸 날짜 : <span class="dmDate"></span><br>
 			보낸 사람 : <span class="sender"></span><br>
 			<br>
 			<div class="dmContentDiv">
 				<span class="dmContent"></span>
 			</div> 
-			<br>
-			보낸 날짜 : <span class="dmDate"></span><br>
-			<input type="hidden" name="receiver">
+			<input type="hidden" id="dmCate">
+			<input type="hidden" id="receiverNo">
 			<div class="reply-box">
-				<button type="button" id="dmReplyBtn">답장하기</button>
+				<textarea name="dmContent" style="display:none;" maxlength="150"></textarea>
+				<br>
+				<button type="button" id="dmReplyBtn" onclick="dmReply();">답장하기</button>
+				<button type="button" id="dmReplyCancelBtn" onclick="cancelReply();" style="display:none;">취소</button>
 			</div>
 		</div>
 	</div>

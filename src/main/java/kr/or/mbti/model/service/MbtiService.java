@@ -53,6 +53,7 @@ public class MbtiService {
 		return dao.selectDogOwner(dogNo);
 	}
 
+	@Transactional
 	public int insertMatchingDm(DirectMessage dm) {
 		return dao.insertMatchingDm(dm);
 	}

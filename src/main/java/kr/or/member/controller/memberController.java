@@ -544,6 +544,17 @@ public class memberController {
 		return new Gson().toJson(dm);
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="/insertReplyDm.do")
+	public String insertReplyDm(@SessionAttribute Member m, DirectMessage dm) {
+		dm.setSenderNo(m.getMemberNo());
+		dm.setSenderId(m.getMemberId());
+		dm.setSenderName(m.getMemberNickname());
+		
+		int result = service.insertReplyDm(dm);
+		return "result";
+	}
+	
 	/*****************************************************/
 	
 	// 프로필 보기
