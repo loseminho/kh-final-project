@@ -7,7 +7,7 @@
 		</div>
 		<pre class="sale-info">강아지한줄소개</pre>
 		<hr>
-		<div class="detail-table-subtitle">품종정보</div>
+		<div class="detail-table-subtitle">알아가요~</div>
 		<div class="detail-info">
 			<table class="detail-info-table">
 			<!-- 강아지 정보 입력 테이블칸 -->
@@ -28,7 +28,24 @@
 				<img class="detail-image" src="">
 			</div>
 		</div>
+		<div class="review-title"><span>♥분양후기♥</span></div>
+		<div class="add-info-wrap">
+			<div class="add-info info-left1">
+			</div> 
+			<div class="add-info info-right1">
+			</div>
+		</div>
+		<div class="add-info-wrap">
+			<div class="add-info info-left2">
+			</div> 
+			<div class="add-info info-right2">
+			</div>
+		</div>
+
+		
+		<!-- 데이터 저장용 input tags -->
 		<input type="hidden" value="" id="receiverId">
+		<input type="hidden" value="${sessionScope.m }" id="sessionMember">
 		<input type="hidden" value="${sessionScope.m.memberId }" id="senderId">
 		<input type="hidden" value="${sessionScope.m.memberNo }" id="sessionMemberNo">
 		<input type="hidden" value="${sessionScope.m.memberNickname}"id="sessionMemberNickname">

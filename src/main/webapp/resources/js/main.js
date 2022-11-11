@@ -28,6 +28,7 @@ $(function(){
 			});
 
 			if (page == 1) {
+				page==1;
 			}
 			if (page == 3) {
 			}
