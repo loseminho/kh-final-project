@@ -170,14 +170,29 @@
 			member_id = #{_parameter}
 	</select>
 	
-	<select id="selectMyApplyCount" parameterType="string" resultType="_int">
+	<select id="selectMyMadeList" parameterType="_int" resultType="w">
 		select
-			count(wm_no)
+			wm_title as wmTitle,
+			wm_meet_time as wmMeetTime,
+			wm_addr as wmAddr	
 		from
-			walk_mate_tbl
+			walk_mate_tbl	
+		where
+			wm_leader = #{_parameter}
+	</select>
+	
+	<select id="selectMyAppliedList" parameterType="string" resultType="w">
+		select
+			wm_title as wmTitle,
+			wm_meet_time as wmMeetTime,
+			wm_addr as wmAddr	
+		from
+			walk_mate_tbl	
 		join
 			wm_apply_tbl using(wm_no)
 		where
-			member_id = #{_parameter}
+			member_id = #{_parameter} 
+			and
+			apply_stat = 0
 	</select>
 </mapper>

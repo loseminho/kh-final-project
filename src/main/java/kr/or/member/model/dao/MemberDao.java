@@ -13,6 +13,7 @@ import kr.or.member.model.vo.Member;
 import kr.or.member.model.vo.MyCalendar;
 import kr.or.member.model.vo.Report;
 import kr.or.walk.model.vo.AppliedWalkInfo;
+import kr.or.walk.model.vo.Walk;
 
 @Repository
 public class MemberDao {
@@ -104,21 +105,16 @@ public class MemberDao {
 	
 	public ArrayList<AppliedWalkInfo> selectMyApplyList(String memberId, int start, int end) {
 		List list = sqlSession.selectList("member.selectMyApplyList", memberId);
-		ArrayList<AppliedWalkInfo> walkList = (ArrayList<AppliedWalkInfo>)list;
-		
-		ArrayList<AppliedWalkInfo> appliedList = new ArrayList<AppliedWalkInfo>();
-		for(int i=start; i<=end; i++) {
-			if(i == walkList.size()) {
-				break;
-			}
-			
-			appliedList.add(walkList.get(i));
-		}
-		
-		return walkList;
+		return (ArrayList<AppliedWalkInfo>)list;
 	}
 
-	public int selectMyApplyCount(String memberId) {
-		return sqlSession.selectOne("member.selectMyApplyCount", memberId);
+	public ArrayList<Walk> selectMyMadeList(int memberNo) {
+		List list = sqlSession.selectList("member.selectMyMadeList", memberNo);
+		return (ArrayList<Walk>)list;
+	}
+
+	public ArrayList<Walk> selectMyAppliedList(String memberId) {
+		List list = sqlSession.selectList("member.selectMyAppliedList", memberId);
+		return (ArrayList<Walk>)list;
 	}
 }

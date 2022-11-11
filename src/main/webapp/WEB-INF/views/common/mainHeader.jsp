@@ -37,7 +37,7 @@
 				<c:if test="${not empty sessionScope.m }">
 				<ul>
 					<div>
-						<li><a href= "/myWalkMate.do">내 산책 메이트</a></li>
+						<li><a href= "/myWalkMateList.do">내 산책 메이트</a></li>
 					</div>
 				</ul>
 				<ul>
