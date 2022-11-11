@@ -136,7 +136,6 @@
 	        </div>
 	        <div class="modal-content">
         		<input type="hidden" id="dogNo">
-        		<input type="hidden" name="receiver" id="receiver">
 	            <div class="dog-info">
 	            	<div id="photo-section">
 				        <div class="photo-box">
@@ -187,9 +186,10 @@
 						<div class="send-dm-title">
 							<span>받는사람 : </span>
 							<span class="receiver"></span>
+        					<input type="hidden" name="receiver" id="receiver">
 						</div>
 						<div class="input-box-wrap">
-							<input id="send-dm-input" type="text" placeholder="150자 제한"><span></span>
+							<input id="send-dm-input" type="text" name="dmContent" placeholder="150자 제한">
 							<button class="sendBtn">발송</button>
 							<button class="cancelBtn">취소</button>
 						</div>

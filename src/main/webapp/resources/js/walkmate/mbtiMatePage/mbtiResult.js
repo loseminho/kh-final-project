@@ -91,6 +91,29 @@ $(".cancelBtn").on("click", function(){
 	$(".send-dm-wrap").hide();
 });
 
-$("#sendBtn").on("click", function(){
+$(".sendBtn").on("click", function(){
+	const receiver = $("#receiver").val();
+	const dmContent = $("#send-dm-input").val();
 	
+	const member = $(".receiver").text().split("(");
+	const memberNickname = member[0];
+	const memberId = member[1].replace(")", "");
+	
+	$.ajax({
+        url  : '/insertMatchingDm.do',
+        data : {"receiverNo" : receiver, "dmContent" : dmContent, "receiverId" : memberId, "receiverName" : memberNickname},
+        type : 'post',
+        success : function(data){
+        	console.log(data);
+        	
+			$("#send-dm-input").val("");
+			$("#dmBtn").show();
+			$(".send-dm-wrap").hide();
+			
+        	Swal.fire({
+				text: '쪽지가 발송되었습니다.',
+				confirmButtonColor: '#1abc9c'
+			})
+        }
+	});
 });

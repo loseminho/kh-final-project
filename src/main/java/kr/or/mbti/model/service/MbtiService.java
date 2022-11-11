@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kr.or.dm.model.vo.DirectMessage;
 import kr.or.mbti.model.dao.MbtiDao;
 import kr.or.mbti.model.vo.MbtiData;
 import kr.or.mbti.model.vo.MbtiResult;
@@ -50,5 +51,9 @@ public class MbtiService {
 
 	public Member selectDogOwner(int dogNo) {
 		return dao.selectDogOwner(dogNo);
+	}
+
+	public int insertMatchingDm(DirectMessage dm) {
+		return dao.insertMatchingDm(dm);
 	}
 }
