@@ -11,6 +11,7 @@
 		<typeAlias type="kr.or.member.model.vo.Report" alias="report"/>
 		<typeAlias type="kr.or.walk.model.vo.Walk" alias="w"/>
 		<typeAlias type="kr.or.walk.model.vo.WmApply" alias="wa"/>
+		<typeAlias type="kr.or.walk.model.vo.AppliedWalkInfo" alias="awi"/>
 		<typeAlias type="kr.or.walk.model.vo.WalkFile" alias="wf"/>
 		<typeAlias type="kr.or.chat.model.vo.RequireList" alias="rl"/>
 		<typeAlias type="kr.or.market.model.vo.MarketDog" alias="md"/>

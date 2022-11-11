@@ -40,6 +40,8 @@ import kr.or.member.model.service.MessageService;
 import kr.or.member.model.vo.Member;
 import kr.or.member.model.vo.MyCalendar;
 import kr.or.member.model.vo.Report;
+import kr.or.walk.model.vo.AppliedWalkInfo;
+import kr.or.walk.model.vo.Walk;
 import kr.or.walk.model.vo.WalkPageData;
 
 @Controller
@@ -514,6 +516,8 @@ public class memberController {
 		return "member/profile";
 	}
 	
+	/*****************************************************/
+	
 	// 신고하기
 	@ResponseBody
 	@RequestMapping(value="/insertReport.do", produces="application/text;charset=utf-8")
@@ -532,15 +536,33 @@ public class memberController {
 	// 내 신고 내역 불러오기
 	@ResponseBody
 	@RequestMapping(value="/selectMyReportList.do", produces="application/json;charset=utf-8")
-	public String selectMyReportList(int memberNo) {
-		ArrayList<Report> list = service.selectMyReportList(memberNo);
+	public String selectMyReportList(int reportMemberNo) {
+		ArrayList<Report> list = service.selectMyReportList(reportMemberNo);
 		
 		return new Gson().toJson(list);
 	}
 	
-	// 만들었거나 참여한 산책 메이트 모임 리스트 가져오기
+	/*****************************************************/
+	
+	// 내 산책메이트 페이지로 이동
 	@RequestMapping(value="/myWalkMateList.do")
 	public String myWalkMateList() {
 		return "myWalkMate/myWalkMateList";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/selectMyApplyList.do", produces="application/json;charset=utf-8")
+	public String selectMyApplyList(String memberId, int reqPage) {
+		WalkPageData<AppliedWalkInfo> wpd = service.selectMyApplyList(memberId, reqPage);
+		
+		return new Gson().toJson(wpd);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/selectMyAttendList.do", produces="application/json;charset=utf-8")
+	public String selectMyAttendList(int memberNo, String memberId, int reqPage) {
+		WalkPageData<Walk> wpd = service.selectMyAttendList(memberNo, memberId, reqPage);
+		
+		return new Gson().toJson(wpd);
 	}
 }
