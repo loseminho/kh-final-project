@@ -136,7 +136,6 @@
 	        </div>
 	        <div class="modal-content">
         		<input type="hidden" id="dogNo">
-        		<input type="hidden" name="receiver" id="receiver">
 	            <div class="dog-info">
 	            	<div id="photo-section">
 				        <div class="photo-box">
@@ -147,29 +146,29 @@
 	            <div id="info-section">
 				    <div class="info-box">
 				        <label for="dogName"><span>*</span>이름</label>
-				        <input type="text" name="dogName" id="dogName" class="input">
+				        <input type="text" name="dogName" id="dogName" class="input" readonly>
 				    </div>
 				    <div class="info-box">
 				        <label for="dogType"><span>*</span>품종</label>
-				        <input type="text" name="" id="dogType1" class="input">
+				        <input type="text" name="" id="dogType1" class="input" readonly>
 				    </div>
 				    <div class="info-box">
 				        <label for="dogAge"><span>*</span>나이</label>
-				        <input type="text" name="dogAge" id="dogAge" class="input shortInput">살
+				        <input type="text" name="dogAge" id="dogAge" class="input shortInput" readonly>살
 				    </div>
 				    <div class="info-box">
 				        <label for="dogGender"><span>*</span>성별</label><br>
-				        <label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogGender" value="남아"> 남아</label>
-	      				<label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogGender" value="여아"> 여아</label>
+				        <label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogGender" value="남아" onclick="return(false);"> 남아</label>
+	      				<label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogGender" value="여아" onclick="return(false);"> 여아</label>
 				    </div>
 				    <div class="info-box">
 				        <label for="dogWeight"><span>*</span>몸무게 (소수점X)</label>
-				        <input type="text" name="dogWeight" id="dogWeight" class="input shortInput">KG
+				        <input type="text" name="dogWeight" id="dogWeight" class="input shortInput" readonly>KG
 				    </div>
 				    <div class="info-box">
 				        <label for="dogNeutral"><span>*</span>중성화 여부</label><br>
-				        <label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogNeutral" value="O"> 했어요</label>
-	      				<label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogNeutral" value="X"> 안 했어요</label>
+				        <label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogNeutral" value="O" onclick="return(false);"> 했어요</label>
+	      				<label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogNeutral" value="X" onclick="return(false);"> 안 했어요</label>
 				    </div>
 				    <div class="info-box" id="mbti-box">
 				        <label for="dogMbti">멍BTI</label>
@@ -177,8 +176,8 @@
 				    </div>
 				    <div class="info-box">
 				        <label for="dogVacc"><span>*</span>예방접종 여부</label><br>
-				        <label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogVacc" value="O"> 했어요</label>
-	      				<label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogVacc" value="X"> 안 했어요</label>
+				        <label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogVacc" value="O" onclick="return(false);"> 했어요</label>
+	      				<label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogVacc" value="X" onclick="return(false);"> 안 했어요</label>
 				    </div>
 				    <div class="btn-box">
 				        <button type="button" class="btn" id="dmBtn">쪽지보내기</button>
@@ -187,9 +186,10 @@
 						<div class="send-dm-title">
 							<span>받는사람 : </span>
 							<span class="receiver"></span>
+        					<input type="hidden" name="receiver" id="receiver">
 						</div>
 						<div class="input-box-wrap">
-							<input id="send-dm-input" type="text" placeholder="150자 제한"><span></span>
+							<input id="send-dm-input" type="text" name="dmContent" placeholder="150자 제한" maxlength="150">
 							<button class="sendBtn">발송</button>
 							<button class="cancelBtn">취소</button>
 						</div>

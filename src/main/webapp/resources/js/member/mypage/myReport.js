@@ -1,8 +1,8 @@
 // 신고 내역 불러오기
-$("#report-list").on("click", function(){
+$("#report-list").one("click", function(){
 	$.ajax({
 		url: "/selectMyReportList.do",
-		data : { memberNo : memberNo }, 
+		data : { reportMemberNo : reportMemberNo }, 
 		dataType:"json",
 		success: function(list){
 			if(list.length != 0){

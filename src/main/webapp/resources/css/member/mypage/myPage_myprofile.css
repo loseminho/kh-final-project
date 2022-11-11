@@ -14,15 +14,17 @@ input, button, #photoBtn {
 
 /* 내 정보 */
 .myprofile {
-    position: relative;
     width: 100%;
-    /* background-color: rebeccapurple; */
 }
 
 .myprofile > h1 {
-   position: absolute;
-   top: 20px;
-   left: 0;
+	margin-top:20px;
+}
+
+#myprofile-wrap {
+	display:flex;
+	flex-direction:row;
+	margin-top:30px;
 }
 
 /* 프로필 사진 영역 */
@@ -33,10 +35,6 @@ input, button, #photoBtn {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    top: 90px;
-    left: 0;
-    /* background-color: rebeccapurple; */
 }
 
 .myprofile #photo-section #photoBtn {
@@ -80,10 +78,7 @@ input, button, #photoBtn {
 /* 프로필 정보 영역 */
 .myprofile #info-section {
     width: 650px;
-    position: absolute;
-    top: 90px;
-    right: 0;
-    /* background-color: green; */
+    margin-left:50px;
 }
 
 .myprofile .box {
@@ -128,10 +123,8 @@ input, button, #photoBtn {
 
 .myprofile #last-section {
     width: 650px;
-    position: absolute;
-    top: 330px;
-    left: 0;
-    /* background-color: rebeccapurple; */
+    margin-top:20px;
+    margin-bottom: 20px;
 }
 
 .myprofile .intro-box{

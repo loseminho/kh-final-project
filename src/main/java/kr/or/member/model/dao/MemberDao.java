@@ -7,11 +7,12 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.or.dm.model.vo.DirectMessage;
 import kr.or.dog.model.vo.Dog;
 import kr.or.member.model.vo.Member;
 import kr.or.member.model.vo.MyCalendar;
 import kr.or.member.model.vo.Report;
-import kr.or.walk.model.vo.Walk;
+import kr.or.walk.model.vo.AppliedWalkInfo;
 
 @Repository
 public class MemberDao {
@@ -62,7 +63,17 @@ public class MemberDao {
 		List list = sqlSession.selectList("member.selectMyCalendar", memberId);
 		return (ArrayList<MyCalendar>) list;
 	}
+	
+	public ArrayList<DirectMessage> selectAllSendDm(int memberNo) {
+		List list = sqlSession.selectList("member.selectAllSendDm", memberNo);
+		return (ArrayList<DirectMessage>) list;
+	}
 
+	public ArrayList<DirectMessage> selectAllReceiveDm(int memberNo) {
+		List list = sqlSession.selectList("member.selectAllReceiveDm", memberNo);
+		return (ArrayList<DirectMessage>) list;
+	}
+	
 	/*****************************************************/
 	
 	public Member selectPersonProfile(int memberNo) {
@@ -74,6 +85,8 @@ public class MemberDao {
 		return (ArrayList<Dog>)list;
 	}
 	
+	/*****************************************************/
+	
 	public int checkReportAble(Report report) {
 		return sqlSession.selectOne("report.checkReportAble", report);
 	}
@@ -82,13 +95,30 @@ public class MemberDao {
 		return sqlSession.insert("report.insertReport", report);
 	}
 	
-	public ArrayList<Report> selectMyReportList(int memberNo) {
-		List list = sqlSession.selectList("report.selectMyReportList", memberNo);
+	public ArrayList<Report> selectMyReportList(int reportMemberNo) {
+		List list = sqlSession.selectList("report.selectMyReportList", reportMemberNo);
 		return (ArrayList<Report>)list;
 	}
 
-	public ArrayList<Walk> selectMadeList(int memberNo) {
-		List list = sqlSession.selectList("member.selectMadeList", memberNo);
-		return (ArrayList<Walk>)list;
+	/*****************************************************/
+	
+	public ArrayList<AppliedWalkInfo> selectMyApplyList(String memberId, int start, int end) {
+		List list = sqlSession.selectList("member.selectMyApplyList", memberId);
+		ArrayList<AppliedWalkInfo> walkList = (ArrayList<AppliedWalkInfo>)list;
+		
+		ArrayList<AppliedWalkInfo> appliedList = new ArrayList<AppliedWalkInfo>();
+		for(int i=start; i<=end; i++) {
+			if(i == walkList.size()) {
+				break;
+			}
+			
+			appliedList.add(walkList.get(i));
+		}
+		
+		return walkList;
+	}
+
+	public int selectMyApplyCount(String memberId) {
+		return sqlSession.selectOne("member.selectMyApplyCount", memberId);
 	}
 }

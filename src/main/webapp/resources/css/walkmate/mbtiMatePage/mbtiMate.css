@@ -365,7 +365,6 @@ input, select, button{
 	width:700px;
 	/* height:150px; */
 	background-color:#fff;
-	z-index: 100;
 	backdrop-filter: blur( 13.5px );
     -webkit-backdrop-filter: blur( 13.5px );
     border-radius: 15px;
@@ -416,10 +415,6 @@ input, select, button{
 	border-radius:5px;
 	line-height:25px;
 	font-size:25px;
-}
-
-.swal2-container {
-  z-index:100000;
 }
 
 /* 모달 속 강아지 사진 영역 */
@@ -548,6 +543,7 @@ input, select, button{
 	height:50px;
 	width:430px;
 	outline:none;
+	padding-left:5px;
 }
 .sendBtn{
 	margin-left:5px;
@@ -574,4 +570,8 @@ input, select, button{
 
 .receiver{
 	color:blue;
+}
+
+.swal2-container {
+  z-index:100000 !important;
 }

@@ -13,8 +13,8 @@
 	<div class="page-content">
 		<div id="rowSession1">
 			<ul class="main-menu">
-                <li class="section"><a href="#">산책 메이트 신청 내역</a></li>
-                <li class="section"><a href="#">산책 메이트 참가 내역</a></li>
+                <li class="section" id="appliedWalkMateList"><a href="#">산책 메이트 신청 내역</a></li>
+                <li class="section" id="attendWalkMateList"><a href="#">산책 메이트 참가 내역</a></li>
             </ul>		
 		</div>
 		
@@ -26,13 +26,17 @@
 		    
 		    <!-- 참가 내역 -->
 		    <div class="scheduledWalkMateList" style="display: none;">
-		        <jsp:include page="/WEB-INF/views/myWalkMate/scheduledWalkMateList.jsp"/>
+		        <jsp:include page="/WEB-INF/views/myWalkMate/attendWalkMateList.jsp"/>
 		    </div>
 		</div>
 	</div>
 	
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	
+	<script>
+		const applyId = "${sessionScope.m.memberId }";
+		//const wmLeader = ${sessionScope.m.memberNo };
+	</script>
 	<script src="/resources/js/myWalkMate/myWalkMateList.js"></script>
 </body>
 </html>

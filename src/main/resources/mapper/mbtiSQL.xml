@@ -112,4 +112,9 @@
 		from dog_tbl join member_tbl using (member_no)
 		where dog_no = #{_parameter}
 	</select>
+	
+	<insert id="insertMatchingDm" parameterType="dm">
+		insert into dm
+		values (dm_seq.nextval, #{senderNo}, #{receiverNo}, #{dmContent}, sysdate, 0, #{senderId}, #{senderName}, 1)
+	</insert>
 </mapper>

@@ -7,6 +7,7 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <h1>내 정보</h1>
 <form action="/updateMember.do" id="updateMemberForm" method="post" autocomplete="off" enctype="multipart/form-data">
+<div id="myprofile-wrap">
 	<div id="photo-section">
 	        <div class="photo-box">
 	        	<c:choose>
@@ -43,6 +44,7 @@
 	        <button type="button" id="addr-btn" onclick="searchAddr();">주소찾기</button>
 	    </div>
 	</div>
+</div>
 	<div id="last-section">
 	    <div class="intro-box">
 	        <label for="memberIntro">자기소개</label>

@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.or.dm.model.vo.DirectMessage;
 import kr.or.mbti.model.vo.MbtiData;
 import kr.or.mbti.model.vo.MbtiResult;
 import kr.or.member.model.vo.Member;
@@ -41,5 +42,9 @@ public class MbtiDao {
 
 	public Member selectDogOwner(int dogNo) {
 		return sqlSession.selectOne("mbti.selectDogOwner", dogNo);
+	}
+
+	public int insertMatchingDm(DirectMessage dm) {
+		return sqlSession.insert("mbti.insertMatchingDm", dm);
 	}
 }

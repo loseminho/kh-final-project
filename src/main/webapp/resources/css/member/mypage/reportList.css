@@ -8,7 +8,8 @@
 
 .report-list-table{
 	width: 815px;
-	height: 501px;
+	height: 466px;
+	margin-top: 50px;
 	overflow: auto;
 }
 
@@ -16,15 +17,21 @@
 	width: 800px;
     table-layout: fixed;
     
-    border: 1px solid black;
     border-collapse: collapse;
 }
 
+.report-list-table table tr:nth-child(1){
+	border-top: 1px solid #e1e1e1;;
+}
+
 .report-list-table table tr{
-	border: 1px solid black;
+	border-bottom: 1px solid #e1e1e1;;
 }
 
 .report-list-table table th{
+	height: 50px;
+    font-size: 16px;
+    color: #fff;
 	background-color: #1abc9c;
 }
 
@@ -45,6 +52,9 @@
 }
 
 .report-list-table table td{
+	height: 40px;
+	font-family: gs-Light;
+	
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
