@@ -73,6 +73,10 @@ public class MemberDao {
 		List list = sqlSession.selectList("member.selectAllReceiveDm", memberNo);
 		return (ArrayList<DirectMessage>) list;
 	}
+
+	public DirectMessage selectOneSendDm(int dmNo) {
+		return sqlSession.selectOne("member.selectOneSendDm", dmNo);
+	}
 	
 	/*****************************************************/
 	
@@ -121,4 +125,5 @@ public class MemberDao {
 	public int selectMyApplyCount(String memberId) {
 		return sqlSession.selectOne("member.selectMyApplyCount", memberId);
 	}
+
 }

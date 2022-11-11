@@ -23,4 +23,26 @@
 	</table>
 </div>
 
+<!-- 쪽지 모달 -->
+<div id="sendDm-modal" class="modal-wrapper" style="display:none;">
+	<div class="modal">
+		<div class="modal-header">				
+			<button id="closeModalBtn" onclick="closeSendDmModal();">
+				<i class="fa-solid fa-xmark"></i>
+			</button>
+		</div>
+		<div class="modal-content">
+			쪽지 분류 : <span class="dmCate"></span><br>
+			받은 사람 : <span class="receiver"></span><br>
+			<br>
+			<div class="dmContentDiv">
+				<span class="dmContent"></span>
+			</div> 
+			<br>
+			보낸 날짜 : <span class="dmDate"></span><br>
+			조회 여부 : <span class="dmReadCheck"></span>
+		</div>
+	</div>
+</div>
+
 <script src="/resources/js/member/mypage/myPage_sendDm.js"></script>

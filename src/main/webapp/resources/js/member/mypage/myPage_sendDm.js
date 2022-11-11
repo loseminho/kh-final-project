@@ -25,7 +25,7 @@ function sendDm() {
 		        		cateTd.text("친구해요");
 	        		}
 	        		
-	        		const aTag = $("<a onclick='dmModal();'></a>");
+	        		const aTag = $("<a onclick='sendDmModal("+data[i].dmNo+");'></a>");
 	        		aTag.text(data[i].dmContent);
 	        		contentDiv.append(aTag);
 	        		contentTd.append(contentDiv);
@@ -53,4 +53,35 @@ function sendDm() {
         	}
         }
     });
+}
+
+function sendDmModal(dmNo) {
+	$.ajax({
+        url  : '/selectOneSendDm.do',
+        type : 'post',
+        data : {dmNo : dmNo},
+        success : function(data){
+			$("#sendDm-modal").css("display", "flex");
+			
+			if(data.dmCate == "0") {
+        		$(".dmCate").text("[입양문의]");
+    		} else {
+        		$(".dmCate").text("[친구해요]");
+    		}
+
+			$(".receiver").text(data.receiverName + "(" + data.receiverId + ")");
+			$(".dmContent").text(data.dmContent);
+			$(".dmDate").text(data.dmDate);
+			
+			if(data.readCheck == "0") {
+        		$(".dmReadCheck").text("읽지않음");
+    		} else {
+        		$(".dmReadCheck").text("읽음");
+    		}
+        }
+	});
+}
+
+function closeSendDmModal() {
+	$("#sendDm-modal").hide();
 }

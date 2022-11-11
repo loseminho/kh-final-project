@@ -134,6 +134,10 @@ public class MemberService {
 	public ArrayList<DirectMessage> selectAllReceiveDm(int memberNo) {
 		return dao.selectAllReceiveDm(memberNo);
 	}
+	
+	public DirectMessage selectOneSendDm(int dmNo) {
+		return dao.selectOneSendDm(dmNo);
+	}
 
 	/*****************************************************/
 	
@@ -233,4 +237,5 @@ public class MemberService {
 		
 		return null;
 	}
+
 }
