@@ -5,8 +5,8 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <h1>보낸 쪽지함</h1>
-<div class="dm">
-	<table id="sendDmTable" class="dmTable" border="1">
+<div class="dmWrap">
+	<table id="sendDmTable" class="dmTable">
 		<thead>
 			<tr>
 				<th>번호</th>

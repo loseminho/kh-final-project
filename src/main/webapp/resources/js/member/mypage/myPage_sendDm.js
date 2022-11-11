@@ -5,14 +5,15 @@ function sendDm() {
         url  : '/selectAllSendDm.do',
         type : 'post',
         success : function(data){
-        	console.log(data);
         	if(data != "") {
 	        	for(let i=0; i<data.length; i++) {
 	        		const tr = $("<tr>");
 	        		const noTd = $("<td>");
 	        		const cateTd = $("<td>");
 	        		const contentTd = $("<td>");
+	        		const contentDiv = $("<div class='contentDiv'>");
 	        		const receiverTd = $("<td>");
+	        		const receiverDiv = $("<div class='receiverDiv'>");
 	        		const sendDateTd = $("<td>");
 	        		const readCheckTd = $("<td>");
 	        		
@@ -24,8 +25,14 @@ function sendDm() {
 		        		cateTd.text("친구해요");
 	        		}
 	        		
-	        		contentTd.text(data[i].dmContent);
-	        		receiverTd.text(data[i].receiverName + "(" + data[i].receiverId + ")");
+	        		const aTag = $("<a onclick='dmModal();'></a>");
+	        		aTag.text(data[i].dmContent);
+	        		contentDiv.append(aTag);
+	        		contentTd.append(contentDiv);
+	        		
+	        		receiverDiv.text(data[i].receiverName + "(" + data[i].receiverId + ")");
+	        		receiverTd.append(receiverDiv);
+	        		
 	        		sendDateTd.text(data[i].dmDate);
 	        		
 	        		if(data[i].readCheck == "0") {
