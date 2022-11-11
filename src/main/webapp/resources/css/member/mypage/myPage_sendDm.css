@@ -41,13 +41,13 @@
 }
 
 .sendDm > .dmWrap table tr td:nth-child(3){
-	width : 50%;
+	width : 40%;
 	text-align : left;
 	padding-left:10px;
 }
 
 .sendDm > .dmWrap table tr td .contentDiv {
-	width:450px;
+	width:400px;
 	padding:0 5px;
 	overflow:hidden;
 	text-overflow:ellipsis;
@@ -55,7 +55,7 @@
 }
 
 .sendDm > .dmWrap table tr td .receiverDiv {
-	width:100px;
+	width:150px;
 	padding:0 5px;
 	overflow:hidden;
 	text-overflow:ellipsis;

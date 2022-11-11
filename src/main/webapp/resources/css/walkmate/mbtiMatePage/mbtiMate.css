@@ -543,6 +543,7 @@ input, select, button{
 	height:50px;
 	width:430px;
 	outline:none;
+	padding-left:5px;
 }
 .sendBtn{
 	margin-left:5px;

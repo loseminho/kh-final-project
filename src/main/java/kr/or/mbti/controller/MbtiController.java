@@ -215,9 +215,11 @@ public class MbtiController {
 	@ResponseBody
 	@RequestMapping(value="/insertMatchingDm.do")
 	public String insertMatchingDm(DirectMessage dm, @SessionAttribute Member m) {
-		// session에서 로그인한 회원 번호를 받아와서 dm 보내는 사람으로 세팅
+		// session에서 로그인한 회원 정보를 받아와서 dm 보내는 사람으로 세팅
 		int memberNo = m.getMemberNo();
 		dm.setSenderNo(memberNo);
+		dm.setSenderId(m.getMemberId());
+		dm.setSenderName(m.getMemberNickname());
 
 		int result = service.insertMatchingDm(dm);
 		return "result";

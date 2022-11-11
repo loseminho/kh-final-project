@@ -189,7 +189,7 @@
         					<input type="hidden" name="receiver" id="receiver">
 						</div>
 						<div class="input-box-wrap">
-							<input id="send-dm-input" type="text" name="dmContent" placeholder="150자 제한">
+							<input id="send-dm-input" type="text" name="dmContent" placeholder="150자 제한" maxlength="150">
 							<button class="sendBtn">발송</button>
 							<button class="cancelBtn">취소</button>
 						</div>

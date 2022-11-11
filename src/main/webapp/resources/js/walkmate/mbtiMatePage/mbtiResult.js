@@ -101,7 +101,7 @@ $(".sendBtn").on("click", function(){
 	
 	$.ajax({
         url  : '/insertMatchingDm.do',
-        data : {"receiverNo" : receiver, "dmContent" : dmContent, "receiverId" : memberId, "receiverName" : memberNickname},
+        data : {"receiverNo" : receiver, "dmContent" : dmContent},
         type : 'post',
         success : function(data){
         	console.log(data);
