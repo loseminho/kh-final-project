@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import kr.or.mbti.model.dao.MbtiDao;
 import kr.or.mbti.model.vo.MbtiData;
 import kr.or.mbti.model.vo.MbtiResult;
+import kr.or.member.model.vo.Member;
 
 @Service
 public class MbtiService {
@@ -45,5 +46,9 @@ public class MbtiService {
 		// 검사한 강아지 정보에 mbti 결과를 업데이트
 		int updateResult = dao.updateDogMbti(result);
 		return map;
+	}
+
+	public Member selectDogOwner(int dogNo) {
+		return dao.selectDogOwner(dogNo);
 	}
 }

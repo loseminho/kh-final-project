@@ -40,6 +40,7 @@ import kr.or.member.model.service.MessageService;
 import kr.or.member.model.vo.Member;
 import kr.or.member.model.vo.MyCalendar;
 import kr.or.member.model.vo.Report;
+import kr.or.walk.model.vo.WalkPageData;
 
 @Controller
 public class memberController {
@@ -535,5 +536,11 @@ public class memberController {
 		ArrayList<Report> list = service.selectMyReportList(memberNo);
 		
 		return new Gson().toJson(list);
+	}
+	
+	// 만들었거나 참여한 산책 메이트 모임 리스트 가져오기
+	@RequestMapping(value="/myWalkMateList.do")
+	public String myWalkMateList() {
+		return "myWalkMate/myWalkMateList";
 	}
 }

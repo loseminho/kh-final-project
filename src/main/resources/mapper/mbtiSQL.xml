@@ -103,4 +103,13 @@
 		and dog_no != #{dogNo}
 		and member_no != #{memberNo}
 	</select>
+	
+	<select id="selectDogOwner" parameterType="int" resultType="m">
+		select
+			member_no as memberNo,
+			member_id as memberId,
+			member_nickname as memberNickname
+		from dog_tbl join member_tbl using (member_no)
+		where dog_no = #{_parameter}
+	</select>
 </mapper>

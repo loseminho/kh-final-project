@@ -97,4 +97,28 @@ LEFT JOIN MEMBER_TBL B ON A.wmLeader = B.MEMBER_NO WHERE A.wmNo =#{_parameter}
 					javaType="java.util.ArrayList"
 		/>
 	</resultMap>
+	<select id="selectMaxSeq" resultType="int">
+		SELECT 
+			MAX(WM_NO)
+		FROM WALK_MATE_TBL 
+	</select>
+	<insert id="inputWalk" parameterType="w">
+		INSERT INTO WALK_MATE_TBL VALUES(
+			WALK_MATE_SEQ.NEXTVAL,
+			#{wmLeader},
+			#{wmTitle},
+			#{wmSubTitle},
+			#{wmTag},
+			#{wmMeetTime},
+			#{wmAddr},
+			#{wmRangeMember},
+			#{wmContent},
+			0,
+			to_char(sysdate,'yyyy-mm-dd HH24:MI')
+		)
+	</insert>
+	<insert id="inputWalkFile" parameterType="wf">
+		INSERT INTO WM_FILE_TBL 
+			VALUES(WM_FILE_SEQ.NEXTVAL,#{wmNo},#{filename},#{filepath})
+	</insert>
 </mapper>

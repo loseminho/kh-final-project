@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class WalkFile {
-	private int fileNo;
 	private int wmNo;
+	private int fileNo;
 	private String filename;
 	private String filepath;
 }

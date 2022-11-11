@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.or.mbti.model.vo.MbtiData;
 import kr.or.mbti.model.vo.MbtiResult;
+import kr.or.member.model.vo.Member;
 
 @Repository
 public class MbtiDao {
@@ -36,5 +37,9 @@ public class MbtiDao {
 	public ArrayList<MbtiResult> selectPartnerList(MbtiResult result) {
 		List list = sqlSession.selectList("mbti.selectPartnerList", result);
 		return (ArrayList<MbtiResult>) list;
+	}
+
+	public Member selectDogOwner(int dogNo) {
+		return sqlSession.selectOne("mbti.selectDogOwner", dogNo);
 	}
 }

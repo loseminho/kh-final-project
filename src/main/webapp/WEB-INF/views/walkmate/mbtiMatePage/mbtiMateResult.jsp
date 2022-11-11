@@ -136,8 +136,8 @@
 	        </div>
 	        <div class="modal-content">
         		<input type="hidden" id="dogNo">
+        		<input type="hidden" name="receiver" id="receiver">
 	            <div class="dog-info">
-	        		<input type="hidden" name="memberNo" value="${sessionScope.m.memberNo }">
 	            	<div id="photo-section">
 				        <div class="photo-box">
 				        	<img id="dogPreview" src="/resources/img/default_dog.png">					
@@ -181,8 +181,19 @@
 	      				<label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogVacc" value="X"> 안 했어요</label>
 				    </div>
 				    <div class="btn-box">
-				        <button type="button" class="btn" id="dogBtn">쪽지보내기</button>
+				        <button type="button" class="btn" id="dmBtn">쪽지보내기</button>
 				    </div>
+				    <div class="send-dm-wrap" style="display:none;">
+						<div class="send-dm-title">
+							<span>받는사람 : </span>
+							<span class="receiver"></span>
+						</div>
+						<div class="input-box-wrap">
+							<input id="send-dm-input" type="text" placeholder="150자 제한"><span></span>
+							<button class="sendBtn">발송</button>
+							<button class="cancelBtn">취소</button>
+						</div>
+					</div>
 				</div>
 	        </div>
 	    </div>

@@ -203,4 +203,11 @@ public class MbtiController {
 		model.addAttribute("partner", map.get("partner"));
 		return "walkmate/mbtiMatePage/mbtiMateResult";
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/selectDogOwner.do", produces="application/json;charset=utf-8")
+	public String selectDogOwner(int dogNo) {
+		Member m = service.selectDogOwner(dogNo);
+		return new Gson().toJson(m);
+	}
 }
