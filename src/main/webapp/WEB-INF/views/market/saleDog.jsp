@@ -80,7 +80,6 @@
         </div><!--faqqna-wrap 끝-->
     </content><!--컨텐츠 끝-->
     <!-- 모달시작 -->
-    <jsp:include page="/WEB-INF/views/shop/productModal.jsp"/>
 	<jsp:include page="/WEB-INF/views/market/modal.jsp"/>
 	<script src="/resources/js/market/saleDog.js"></script>
 	<script src="/resources/js/dm/sendDm.js"></script>

@@ -85,7 +85,7 @@ $(document).ready(function(){
 					html += "<input type='hidden' class='wmLeader' value="+value.wmLeader+">";
 					html += "<input type='hidden' class='boardNo' value="+value.boardNo+">";
 					html += "<input type='hidden' class='boardTitle' value="+value.boardTitle+">";
-					html += "<span>"+value.boardTitle+"</span>";
+					html += "<span class='chat-board-title'>"+value.boardTitle+"</span>";
 					html += "</li>";
 				});
 				$(".chat-list").html(html);
@@ -102,7 +102,7 @@ let ws;
 let chatIndex;
 function initChat(boardNo, boardTitle, memberId,memberNickname, wmLeader){
 	console.log(wmLeader);
-	ws = new WebSocket("ws://192.168.10.33/chat.do");
+	ws = new WebSocket("ws://192.168.35.51/chat.do");
 	ws.onopen = startChat;
 	ws.onmessage = receiveMsg;
 	

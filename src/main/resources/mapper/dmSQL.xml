@@ -11,7 +11,8 @@
 		sysdate,
 		0,
 		#{senderId},
-		#{senderName}
+		#{senderName},
+		0
 		)
 	</insert>
 	
