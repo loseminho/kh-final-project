@@ -3,7 +3,6 @@ $(document).ready(function(){
         url : "/allWalkListAjax.do",
         type : "post",
         success : function(data){
-            console.log(data)
             var html = "";
 			html += "<div class='write-new-content-btn'>";
 			const loginId = document.getElementById('login-memberId').value;
@@ -51,7 +50,6 @@ $(document).ready(function(){
 });
 
 function modalViews(e){
-	console.log(e);
 	$.ajax({
 	url : "/selectContentBox.do",
 	data: {wmNo : e},
@@ -122,15 +120,25 @@ function modalWrites(){
     var html = "";
 		html += "<div class='writer-id'>"+loginNickname+"</div>";
 		html += "<h2 id='view-section2' style='display:none;'></h2>";
-		html += "<input type='text' name='wmTitle' id='write-section1' placeholder='제목을 입력해주세요'style='display:block;' >";
-		html += "<input type='text' name='wmSubTitle' id='write-section6' placeholder='모임을 위한 한줄평을 작성하세요!'style='display:block;' >";
+		html += "<input type='text' name='wmTitle' id='write-section1' placeholder='제목을 입력해주세요'style='display:block;' maxlength='25' >";
+		html += "<input type='text' name='wmSubTitle' id='write-section6' placeholder='모임을 위한 한줄평을 작성하세요!'style='display:block;' maxlength='20' >";
 		$(".modal-writer-content-box").html(html);
 		modalView();
 		modalViewOff();
 		modalWriteOn();
 }
 
-
+//모임 인원 숫자 수 제한
+$("#writeTitle3").on('keyup', function() {
+    if (/\D/.test(this.value)) {
+        this.value = this.value.replace(/\D/g, '')
+        alert('숫자만 입력가능합니다.');
+    }
+  if (this.value > 10) {
+      this.value = 10;
+      alert('모임은 10명 이하만 가능합니다~');
+  }
+});
 
 $("#writeDate").on("change",function(){
 	$("#writeDate").css("display","none");
@@ -146,7 +154,6 @@ $("#writeDate").on("change",function(){
 $("#writeTime").on("change",function(){
 	const DateVal = document.querySelector("#writeDate").value;
 	const TimeVal = document.querySelector("#writeTime").value;
-	console.log(TimeVal)
 	const DateTime = DateVal+" "+TimeVal;
 	document.querySelector("#meetTime").value = DateTime;
 })
@@ -181,9 +188,7 @@ const previewBox= $(".preview-box");
 }
 $(document).ready(function(){
 	$(".photo").change(function(){
-		fidx = $(".photo").index(this);
-		console.log(fidx);	
-		console.log(this.files);
+		fidx = $(".photo").index(this);	
 		
 		 if (this.files && this.files[0]) {
 	 		reader.readAsDataURL(this.files[0]);
@@ -191,7 +196,6 @@ $(document).ready(function(){
 	});
 	previewBox.on("click",function(){
 	 	const idx = previewBox.index(this);
-		console.log(idx);
 		
 	 	$(".photo").eq(idx).trigger("click");
  	

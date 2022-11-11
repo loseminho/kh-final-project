@@ -4,9 +4,7 @@ body, button{
     font-family: gs-Medium;
     position: relative;
 }
-span{
-    color: rgb(218, 72, 65);
-}
+
 header{
     display: flex;
     justify-content: space-between;
@@ -744,4 +742,6 @@ header{
 	width: 600px;
 	margin-top: 20px;
 }
-
+#write-section3 span{
+    color: rgb(218, 72, 65);
+}
