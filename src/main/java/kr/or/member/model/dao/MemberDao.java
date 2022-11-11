@@ -12,7 +12,7 @@ import kr.or.dog.model.vo.Dog;
 import kr.or.member.model.vo.Member;
 import kr.or.member.model.vo.MyCalendar;
 import kr.or.member.model.vo.Report;
-import kr.or.walk.model.vo.Walk;
+import kr.or.walk.model.vo.AppliedWalkInfo;
 
 @Repository
 public class MemberDao {
@@ -85,6 +85,8 @@ public class MemberDao {
 		return (ArrayList<Dog>)list;
 	}
 	
+	/*****************************************************/
+	
 	public int checkReportAble(Report report) {
 		return sqlSession.selectOne("report.checkReportAble", report);
 	}
@@ -93,13 +95,30 @@ public class MemberDao {
 		return sqlSession.insert("report.insertReport", report);
 	}
 	
-	public ArrayList<Report> selectMyReportList(int memberNo) {
-		List list = sqlSession.selectList("report.selectMyReportList", memberNo);
+	public ArrayList<Report> selectMyReportList(int reportMemberNo) {
+		List list = sqlSession.selectList("report.selectMyReportList", reportMemberNo);
 		return (ArrayList<Report>)list;
 	}
 
-	public ArrayList<Walk> selectMadeList(int memberNo) {
-		List list = sqlSession.selectList("member.selectMadeList", memberNo);
-		return (ArrayList<Walk>)list;
+	/*****************************************************/
+	
+	public ArrayList<AppliedWalkInfo> selectMyApplyList(String memberId, int start, int end) {
+		List list = sqlSession.selectList("member.selectMyApplyList", memberId);
+		ArrayList<AppliedWalkInfo> walkList = (ArrayList<AppliedWalkInfo>)list;
+		
+		ArrayList<AppliedWalkInfo> appliedList = new ArrayList<AppliedWalkInfo>();
+		for(int i=start; i<=end; i++) {
+			if(i == walkList.size()) {
+				break;
+			}
+			
+			appliedList.add(walkList.get(i));
+		}
+		
+		return walkList;
+	}
+
+	public int selectMyApplyCount(String memberId) {
+		return sqlSession.selectOne("member.selectMyApplyCount", memberId);
 	}
 }

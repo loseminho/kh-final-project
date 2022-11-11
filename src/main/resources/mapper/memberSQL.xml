@@ -154,14 +154,30 @@
 		order by dog_no
 	</select>
 	
-	<select id="selectMadeList" parameterType="_int" resultType="w">
+	<!-- ***************************************************** -->
+	
+	<select id="selectMyApplyList" parameterType="string" resultType="awi">
 		select
 			wm_title as wmTitle,
 			wm_meet_time as wmMeetTime,
-			wm_addr as wmAddr
-		from 
+			wm_addr as wmAddr,
+			apply_stat as applyStat
+		from
 			walk_mate_tbl
-		where 
-			wm_leader = #{_parameter}
+		join
+			wm_apply_tbl using(wm_no)
+		where
+			member_id = #{_parameter}
+	</select>
+	
+	<select id="selectMyApplyCount" parameterType="string" resultType="_int">
+		select
+			count(wm_no)
+		from
+			walk_mate_tbl
+		join
+			wm_apply_tbl using(wm_no)
+		where
+			member_id = #{_parameter}
 	</select>
 </mapper>

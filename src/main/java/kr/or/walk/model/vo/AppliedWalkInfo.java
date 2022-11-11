@@ -1,7 +1,5 @@
 package kr.or.walk.model.vo;
 
-import java.util.ArrayList;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,7 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class WalkPageData<T> {
-	private ArrayList<T> list;
-	private String pageNavi;
+public class AppliedWalkInfo {
+	private String wmTitle;
+	private String wmMeetTime;
+	private String wmAddr;
+	private int applyStat;
 }
