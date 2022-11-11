@@ -100,6 +100,20 @@
 		order by dm_no desc
 	</select>
 	
+	<select id="selectAllReceiveDm" parameterType="int" resultType="dm">
+		select
+		    dm_no as dmNo,
+		    dm_content as dmContent,
+		    member_nickname as senderName,
+		    member_id as senderId,
+		    to_char(dm_date, 'yy/mm/dd') as dmDate,
+		    read_check as readCheck,
+		    dm_cate as dmCate
+		from dm
+		where receiver = #{_parameter}
+		order by dm_no desc
+	</select>
+	
 	<!-- ***************************************************** -->
 	
 	<select id="selectPersonProfile" parameterType="_int" resultType="m">

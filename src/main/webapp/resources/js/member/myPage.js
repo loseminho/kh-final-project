@@ -24,7 +24,7 @@ $(".section").on("click", function(){
     if(idx == 2) {
     	mycalendar();
     } else if(idx == 5) {
-    	receiverDm();
+    	receiveDm();
     } else if(idx == 6) {
     	sendDm();
     }

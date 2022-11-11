@@ -69,6 +69,11 @@ public class MemberDao {
 		return (ArrayList<DirectMessage>) list;
 	}
 
+	public ArrayList<DirectMessage> selectAllReceiveDm(int memberNo) {
+		List list = sqlSession.selectList("member.selectAllReceiveDm", memberNo);
+		return (ArrayList<DirectMessage>) list;
+	}
+	
 	/*****************************************************/
 	
 	public Member selectPersonProfile(int memberNo) {

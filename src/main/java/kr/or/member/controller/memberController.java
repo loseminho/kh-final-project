@@ -516,6 +516,18 @@ public class memberController {
 		}
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="/selectAllReceiveDm.do", produces="application/json;charset=utf-8")
+	public String selectAllReceiveDm(@SessionAttribute Member m) {
+		int memberNo = m.getMemberNo();
+		ArrayList<DirectMessage> list = service.selectAllReceiveDm(memberNo);
+		if(list != null) {
+			return new Gson().toJson(list);
+		} else {
+			return "null";
+		}
+	}
+	
 	/*****************************************************/
 	
 	// 프로필 보기
