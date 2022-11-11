@@ -191,9 +191,18 @@ public class MemberService {
 		int end = numPerPage * reqPage - 1;
 		int start = end - numPerPage + 1;
 		
-		ArrayList<AppliedWalkInfo> appliedList = dao.selectMyApplyList(memberId, start, end);
+		ArrayList<AppliedWalkInfo> appliedAllList = dao.selectMyApplyList(memberId, start, end);
 		
-		int totalCount = dao.selectMyApplyCount(memberId);
+		ArrayList<AppliedWalkInfo> appliedShowList = new ArrayList<AppliedWalkInfo>();
+		for(int i=start; i<=end; i++) {
+			if(i == appliedAllList.size()) {
+				break;
+			}
+			
+			appliedShowList.add(appliedAllList.get(i));
+		}
+		
+		int totalCount = appliedAllList.size();
 		int totalPage = 0;
 		if(totalCount % numPerPage == 0) {
 			totalPage = totalCount / numPerPage;
@@ -238,18 +247,21 @@ public class MemberService {
 		}
 		pageNavi += "</ul>";
 		
-		WalkPageData<AppliedWalkInfo> wpd = new WalkPageData<>(appliedList, pageNavi);
+		WalkPageData<AppliedWalkInfo> wpd = new WalkPageData<>(appliedShowList, pageNavi);
 		
 		return wpd;
 	}
 
-	public WalkPageData<Walk> selectMyAttendList(int memberNo, String memberId, int reqPage) {
-		//ArrayList<Walk> myMadeList = dao.selectMyMadeList(memberNo);
+	public ArrayList<Walk> selectMyAttendList(int memberNo, String memberId) {
+		ArrayList<Walk> myMadeList = dao.selectMyMadeList(memberNo);
 		
-		//ArrayList<Walk> myAppliedList = dao.selectMyAppliedList(memberId);
+		ArrayList<Walk> myAppliedList = dao.selectMyAppliedList(memberId);
 		
+		ArrayList<Walk> myAttendList = new ArrayList<Walk>();
+		myAttendList.addAll(myMadeList);
+		myAttendList.addAll(myAppliedList);
 		
-		return null;
+		return myAttendList;
 	}
 
 }

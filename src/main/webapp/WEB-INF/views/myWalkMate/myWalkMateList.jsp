@@ -35,7 +35,7 @@
 	
 	<script>
 		const applyId = "${sessionScope.m.memberId }";
-		//const wmLeader = ${sessionScope.m.memberNo };
+		const wmMakerNo = ${sessionScope.m.memberNo };
 	</script>
 	<script src="/resources/js/myWalkMate/myWalkMateList.js"></script>
 </body>
