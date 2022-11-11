@@ -62,8 +62,8 @@
                                 <button type="button" class="adressBtn" onclick="searchAddr();">주소 찾기</button>
                             </div>
                             <div class="write-content-input-box titles">
-                                <label for="writeTitle2"><span>*</span>모임 인원</label>
-                                <input type="text" name="wmRangeMember" id="writeTitle2" placeholder="ex) 5"> 
+                                <label for="writeTitle3"><span>*</span>모임 인원</label>
+                                <input type="text" name="wmRangeMember" id="writeTitle3" placeholder="ex) 5"> 
                             </div>
                             <div class="write-content-input-box titles">
                                 <label for="writeDate" id="writeDate-lable"><span>*</span>모임 요일</label>
@@ -154,12 +154,25 @@
                         <div class="info-titles sub">산책이 궁금하다면 댓글을 남겨보세요.</div>
                     </div>
                     <div class="bottom-content-btn">
-                        <button type="button" class="input-main-btn" id="view-section6" onclick="">신청 하기</button>
                         <button type="submit" class="input-main-btn" id="write-section5" onclick="" >작성 완료</button>
+                        <button type="button" class="input-main-btn" id="view-section6" onclick="">신청 하기</button>
                         <button type="button" class="next-btn-member" id="" onclick="modalNextContents('');">돌아가기 >> </button>
                     </div>
                 </div>
-                
+                <!-- 신청자의 신청 메세지 -->
+                <div class="modal-window-bottom" style="display:none;">
+	                <div class="bottom-content member-info">
+	                	<div class="info-titles">신청 하기</div>
+	                    <div class="info-titles sub">우리 반갑게 만나요!</div>                
+	                </div>
+                	<div class="bottom-content">                	
+	                	<textarea name="wmContent" id="" placeholder="산책 모임에 대해 자세히 설명해주세요."></textarea>
+                	</div>
+	                <div class="bottom-content-btn">
+		                <button type="submit" class="input-main-btn" id="write-section5" onclick="" >작성 완료</button>
+		                <button type="button" class="next-btn-member" id="" onclick="modalNextContents('');">돌아가기 >> </button>                                
+	                </div>
+                </div>
             </div>
             
     </div>
