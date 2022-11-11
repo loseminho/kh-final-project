@@ -8,11 +8,11 @@
 </div>
 
 <div class="attendList-content">
-	<div class="scheduledList">
+	<div class="attendList" id="scheduledList">
 		<h2>예정된 모임</h2>
 	</div>
 	
-	<div class="proceededList">
+	<div class="attendList" id="proceededList">
 		<h2>진행된 모임</h2>
 	</div>
 </div>

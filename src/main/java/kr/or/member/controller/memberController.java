@@ -599,9 +599,9 @@ public class memberController {
 	
 	@ResponseBody
 	@RequestMapping(value="/selectMyAttendList.do", produces="application/json;charset=utf-8")
-	public String selectMyAttendList(int memberNo, String memberId, int reqPage) {
-		WalkPageData<Walk> wpd = service.selectMyAttendList(memberNo, memberId, reqPage);
+	public String selectMyAttendList(int memberNo, String memberId) {
+		ArrayList<Walk> list = service.selectMyAttendList(memberNo, memberId);
 		
-		return new Gson().toJson(wpd);
+		return new Gson().toJson(list);
 	}
 }
