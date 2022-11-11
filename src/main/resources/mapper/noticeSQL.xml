@@ -85,6 +85,6 @@
 </update>
 <!-- 파일 삭제  -->
 <delete id="deleteNoticeFile" parameterType="_int">
-	delete from notice_file_tbl where notice_no = #{_parameter}
+	delete from notice_file_tbl where file_no = #{_parameter}
 </delete>
 </mapper>

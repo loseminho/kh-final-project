@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FAQ</title>
+<title>산책갈개</title>
 <!--fonts-->
 <link rel="stylesheet" href="/resources/css/gmarket.css">
 <!--css-->
@@ -214,8 +214,22 @@
 								<button type="button" class="search-btn" id="searchQnaAjax">검색</button>
 							</form>
 						</div>
-						<div id="qnaAjaxResult"></div>
-						<button id="qnaAjaxAdd-btn" onclick="moreQna();">더보기</button>
+						<div id="qnaAjaxResult">
+							<table class="qna-table">
+								<tr class="qna-tr">
+									<th>글번호</th>
+									<th>문의유형 </th>
+									<th>제목 </th>
+									<th>작성자 </th>
+									<th>처리상태 </th>
+									<th>문의날짜 </th>
+									<th>조회수</th>
+								</tr>
+							</table>
+						</div>
+						<div class="qna-add-btn">
+						<button id="qnaAjaxAdd-btn" totalCount="${totalCount }"currentCount="0" value="1">더보기</button>
+						</div>
 					</div>
 				</div>
 			</div>

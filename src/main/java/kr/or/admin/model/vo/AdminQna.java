@@ -1,15 +1,13 @@
-package kr.or.board.model.vo;
-
-import java.util.ArrayList;
+package kr.or.admin.model.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class QnaBoard {
+@NoArgsConstructor
+public class AdminQna {
 	private int qnaNo;
 	private String qnaWriter;
 	private String qnaTitle;
@@ -18,8 +16,6 @@ public class QnaBoard {
 	private String qnaDate;
 	private int qnaCateNo;
 	private int qnaStatus;
-	private int qnaSecret;
-	ArrayList<QnaFile> fileList;
 	
 	//검색필터
 	private String searchType;

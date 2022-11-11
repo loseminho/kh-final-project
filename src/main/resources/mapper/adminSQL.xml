@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="admin">
+<!-- 전체 게시물 수  -->
+<select id="adminQnaCount" resultType="_int">
+	select count(*) from qna_tbl
+</select>
+<!-- 문의내역 더보기 -->
+<select id="moreAdminQna" parameterType="map" resultType="aq">
+select
+	qna_no as qnaNo,
+	substr(replace(qna_writer,substr(qna_writer,2,2),'**'),1,instr(qna_writer,'@',1,1)-1)as qnaWriter,
+	qna_title as qnaTitle,
+	qna_content as qnaContent,
+	qna_views as qnaViews,
+	qna_date as qnaDate,
+	qna_cate_no as qnaCateNo,
+	qna_status as qnaStatus
+from(select rownum as rnum, q.* from(select * from qna_tbl order by 1 desc)q) where rnum between #{start} and #{end}
+</select>
+</mapper>

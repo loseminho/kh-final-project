@@ -40,14 +40,14 @@
                                 <input type="file" name="noticeFile" id="noticeFile" multiple style="display:none;" onchange="loadfile(this);">
                                 <input type="hidden" name="noticeWriter" id="noticeWriter" value="${n.noticeWriter }">
                                 <button type="button" name="noticeFile-btn" id="noticeFile-btn">첨부하기</button>
-                                <c:forEach items="${n.fileList }" var="nf">
                                 <div class="fileZone">
+                                <c:forEach items="${n.fileList }" var="nf">
                                 	<div class="fileName">
                                 		<span>${nf.filename}</span>
                                 		<span class="closeBtn" onclick="deleteFile(this,${nf.fileNo},'${nf.filepath }');">X</span>
                                 	</div>
-                                </div>
                                 </c:forEach>
+                                </div>
                             </div>
                             <!-- hidden -->
                             <input type="hidden" name="noticeNo" value=${n.noticeNo }>
