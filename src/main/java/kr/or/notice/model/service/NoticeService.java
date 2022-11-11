@@ -121,6 +121,7 @@ public class NoticeService {
 			//삭제한 첨부파일이 있으면 delete 
 			if(fileNoList != null) {
 				for(int fileNo : fileNoList) {
+				System.out.println(fileNo);
 					result += dao.deleteFile(fileNo);
 				}
 			}

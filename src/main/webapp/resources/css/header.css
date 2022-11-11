@@ -4,12 +4,6 @@
 	margin:0;
 	padding:0;
 	}
-body {
-	display: flex;
-	flex-direction: column;
-	min-height:100vh;
-	height: 100% !important;
-}
 
 a, button {
 	cursor:pointer;
@@ -216,6 +210,25 @@ footer > .footer-content {
     height : 80px;
 }
 /*채팅 아이콘*/
+.up-btn{
+	box-shadow: 1px 3px 0 0 rgba( 31, 38, 135, 0.37 );
+	border:1px solid #ccc;
+	width:40px;
+	height:40px;
+	border-radius:25%;
+	background-color: #fff;
+	position:fixed;
+	bottom: 30px;
+	right: 140px;
+	overflow:hidden;
+	cursor:pointer;
+	z-index:999999999999;
+	display:flex;
+	justify-content: space-around;
+	align-items:center;
+	font-family:gs-Medium;
+	
+}
 .chat-icon{
 	box-shadow: 1px 3px 0 0 rgba( 31, 38, 135, 0.37 );
 	border:1px solid #ccc;
@@ -224,8 +237,8 @@ footer > .footer-content {
 	border-radius:10px;
 	background-color: #fff;
 	position:fixed;
-	top: 100px;
-	left: 30px;
+	bottom: 30px;
+	right: 30px;
 	overflow:hidden;
 	cursor:pointer;
 	z-index:999999999999;
@@ -237,6 +250,9 @@ footer > .footer-content {
 .chat-icon>img{
 	height:40%;
 	margin-left:10px;
+}
+.up-btn:active{
+	box-shadow:none;
 }
 .chat-icon:active{
 	box-shadow:none;
@@ -263,8 +279,8 @@ footer > .footer-content {
 	height:400px;
 	background-color: #fff;
 	position: fixed;
-	top:150px;
-	left:30px;
+	bottom:80px;
+	right:30px;
 	z-index:99999999999999999999999;
 }
 

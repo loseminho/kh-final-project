@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지사항</title>
+<title>산책갈개</title>
 <!-- 부트스트랩  -->
 <link rel="stylesheet" href="/resources/css/board/bootstrap.css"/>
 <!--css-->

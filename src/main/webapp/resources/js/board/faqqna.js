@@ -38,6 +38,8 @@ tabs.on("click",function(){
         });
         $(".qna-content").hide();
         $(".faq-content").show();
+         $(".qna-row").remove();
+
         
     }else{
         tabs.eq(1).css({
@@ -48,6 +50,12 @@ tabs.on("click",function(){
         });
         $(".faq-content").hide();
         $(".qna-content").show();
+        $("#qnaAjaxAdd-btn").attr("value","1");
+        $("#qnaAjaxAdd-btn").attr("currentCount","0");
+        $("#qnaAjaxAdd-btn").attr("disabled",false);
+		$("#qnaAjaxAdd-btn").css ("cursor","pointer");
+        $("#qnaAjaxAdd-btn").trigger("click");
+
     }
 });
 
@@ -102,62 +110,6 @@ question.on("click", function(){
     console.log(questionIndex);
     $(this).toggleClass("active");
     $(this).next().slideToggle();
-});
-
-
-/* qna ajax */
-
-$("#allQnaAjax").on("click",function(){
-    $.ajax({
-        url : "/allQnaAjax.do?reqPage=1",
-        type : "post",
-        success : function(data){
-            const table = $("<table>");
-            table.attr('class','qna-table');
-            const titleTr = $("<tr>");
-            titleTr.html("<th>글번호</th><th>문의유형</th><th>제목</th><th>작성자</th><th>처리상태</th><th>문의날짜</th><th>조회수</th>");
-            titleTr.attr('class','qna-tr');
-            titleTr.attr("scope","col");
-            table.append(titleTr);
-            for(let i=0; i<data.length; i++){
-                const tr = $("<tr>");
-                tr.attr('class','qna-row');
-                tr.append("<td>"+data[i].qnaNo+"</td>");
-              if(data[i].qnaCateNo == 1) {
-              	tr.append("<td>"+"산책메이트 찾기"+"</td>"); 
-              }
-              if(data[i].qnaCateNo == 2) {
-              	tr.append("<td>"+"애견용품 나눔"+"</td>"); 
-              }
-              if(data[i].qnaCateNo == 3) {
-              	tr.append("<td>"+"입양"+"</td>"); 
-              }
-              if(data[i].qnaCateNo == 4) {
-              	tr.append("<td>"+"회원관련"+"</td>"); 
-              }
-              if(data[i].qnaCateNo == 5) {
-              	tr.append("<td>"+"기타"+"</td>"); 
-              } 
-                tr.append("<td>"+data[i].qnaTitle+"</td>");
-                tr.append("<td>"+data[i].qnaWriter+"</td>");
-              
-              if(data[i].qnaStatus == 1) {
-              	tr.append("<td>"+"답변대기중"+"</td>"); 
-              }
-              if(data[i].qnaStatus == 2) {
-              	tr.append("<td>"+"답변완료"+"</td>"); 
-              }
-                tr.append("<td>"+data[i].qnaDate+"</td>");
-                tr.append("<td>"+data[i].qnaViews+"</td>");
-                table.append(tr);
-                
-                
-            }
-            $("#qnaAjaxResult").html(table);
-            
-           
-        }
-    });
 });
 
 
@@ -248,21 +200,71 @@ $("#searchQnaAjax").on("click",function(){
 });
 
 
-//문의사항 더보기 
-function moreQna(){
-	let start = $(".qna-table tr").length;
-	let addListHtml = "";	
+
+//문의사항 더보기
+$("#qnaAjaxAdd-btn").on("click",function(){
+	let amount = 7;
+	let start = $(this).val();
 	console.log(start);
 	$.ajax({
-		url : "/moreQna.do",
-		type : "post",
-		data : {start: start},
+		url: "/moreQna.do",
+		type: "post",
+		data: {start : start, amount : amount},
 		success : function(data){
 			console.log(data);
+			const table = $(".qna-table");
+            const titleTr = $(".qna-tr");
+            
 			for(let i=0; i<data.length; i++){
-				const p = data[i]
+				 const tr = $("<tr>");
+                tr.attr('class','qna-row');
+                tr.append("<td>"+data[i].qnaNo+"</td>");
+              if(data[i].qnaCateNo == 1) {
+              	tr.append("<td>"+"산책메이트 찾기"+"</td>"); 
+              }
+              if(data[i].qnaCateNo == 2) {
+              	tr.append("<td>"+"애견용품 나눔"+"</td>"); 
+              }
+              if(data[i].qnaCateNo == 3) {
+              	tr.append("<td>"+"입양"+"</td>"); 
+              }
+              if(data[i].qnaCateNo == 4) {
+              	tr.append("<td>"+"회원관련"+"</td>"); 
+              }
+              if(data[i].qnaCateNo == 5) {
+              	tr.append("<td>"+"기타"+"</td>"); 
+              } 
+                tr.append("<td>"+data[i].qnaTitle+"</td>");
+                tr.append("<td>"+data[i].qnaWriter+"</td>");
+              
+              if(data[i].qnaStatus == 1) {
+              	tr.append("<td>"+"답변대기중"+"</td>"); 
+              }
+              if(data[i].qnaStatus == 2) {
+              	tr.append("<td>"+"답변완료"+"</td>"); 
+              }
+                tr.append("<td>"+data[i].qnaDate+"</td>");
+                tr.append("<td>"+data[i].qnaViews+"</td>");
+                table.append(tr);
+                
 			}
+			$("#qnaAjaxResult").html(table);
+			
+			//value 증가 
+			$("#qnaAjaxAdd-btn").val(Number(start)+Number(amount));
+			//currentCount 값도 읽어온 만큼 수정
+			const currentCount = Number($("#qnaAjaxAdd-btn").attr("currentCount"))+data.length;
+			$("#qnaAjaxAdd-btn").attr("currentCount",currentCount);
+			const totalCount = $("#qnaAjaxAdd-btn").attr("totalCount");
+			console.log(totalCount, currentCount);
+			if(totalCount == currentCount){
+				$("#qnaAjaxAdd-btn").attr("disabled",true);
+				$("#qnaAjaxAdd-btn").css ("cursor","not-allowed");
+			}
+		},
+		error : function(){
+			console.log("에러발생");
 		}
-	})
-	
-}
+	}); //ajax 끝 
+});
+

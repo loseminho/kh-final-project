@@ -89,7 +89,8 @@ $(".add-btn>button").on("click",function(){
 	        				html += "<img class='previewImg' src='/resources/upload/market/"+data[i].fileList[0].filePath+"'>";
 	        				html += "<input type='hidden' name='marketNo' value="+data[i].marketNo+">";
 	        				html += "</div>";
-	        				html += "<span class='list-sub-title'>"+data[i].typeName+"</span>";
+	        				html += "<span class='list-sub-title'>견종 : "+data[i].typeName+"</span>";
+	        				html += "<span class='list-sub-title'>이름 : "+data[i].callName+"</span>";
 	        				html += "<li>책임비 : "+data[i].price+"원</li>";
 	        				html += "</div>";
 	        				$(".add-btn").text("더 이상 목록이 없습니다.");
@@ -265,7 +266,7 @@ $(".add-btn>button").on("click",function(){
     		const marketNo = $("[name=marketNo]");
    	 		const sale = $(".sale");
    	 		const sessionMemberNo = $("#sessionMemberNo").val();
-    		console.log($(".sale-info").text());
+   	 		const sessionMember = $("#sessionMember").val();
     		$("#modal-wrap").fadeIn(300) ;
     		$("body").css("overflow","hidden");
     		let idx = sale.index(this);
@@ -281,9 +282,14 @@ $(".add-btn>button").on("click",function(){
     			var text = ""+data.memberNickname+"("+data.memberId+")";
     			$(".receiver").text(text);
     			
-    			if(sessionMemberNo == data.memberNo){
+    			if(sessionMember==''){
     				var html = "";
-    				html += "<button onclick='location.href='/myMarketList.do''>관리</button>";
+    				html += "<button id='loginFrm'>로그인</button>";	
+    				html += "<button id='close-modal'>닫기</button>";
+    				$(".require-btn").html(html);			
+    			}else if(sessionMemberNo == data.memberNo){
+    				var html = "";
+    				html += "<button id='myMarketList'>관리</button>";
     				html += "<button id='close-modal'>닫기</button>";
     				$(".require-btn").html(html);
     			}else if(sessionMemberNo != data.memberNo){
@@ -307,8 +313,8 @@ $(".add-btn>button").on("click",function(){
     				$(".detail-box-title").text(data.typeName);
     				var html = "";
     				html += "<tr>";
-    				html += "<th>견종</th>";
-    				html += "<td>"+data.typeName+"</td>";
+    				html += "<th>이름</th>";
+    				html += "<td>"+data.callName+"</td>";
     				html += "<th>성별</th>";
     				html += "<td>"+data.gender+"</td>";
     				html += "</tr>";
@@ -337,3 +343,10 @@ $(".add-btn>button").on("click",function(){
  function dmModalOn(){
  	console.log(1);
  };
+ 
+ $(document).on("click","#loginFrm",function(){
+ 	window.location.href="/loginFrm.do";
+ });
+ $(document).on("click","#myMarketList",function(){
+ 	window.location.href="/myMarketList.do";
+ });

@@ -33,19 +33,11 @@ public class BoardController {
 	
 	//문의게시판 이동 
 	@RequestMapping(value="/faqQnaBoardFrm.do")
-	public String faqQnaBoardFrm() {
+	public String faqQnaBoardFrm(Model model) {
+		int totalCount = service.selectQnaCount();
+		model.addAttribute("totalCount",totalCount);
+		System.out.println(totalCount);
 		return "board/faqQna";
-	}
-		
-	
-	//문의게시판 list ajax
-	@ResponseBody
-	@RequestMapping(value="/allQnaAjax.do", produces = "application/json;charset=utf-8")
-	public String allQnaAjax() {
-		ArrayList<QnaBoard> list = service.allQnaBoard();
-		Gson gson = new Gson();
-		String result = gson.toJson(list);
-		return result;
 	}
 	
 	//문의게시판 작성페이지 이동 
@@ -215,15 +207,21 @@ public class BoardController {
 		ArrayList<QnaBoard> list = service.searchQnaBoard(q);
 		Gson gson = new Gson();
 		String result = gson.toJson(list);
+		return result;
+	}
+	//더보기 버튼 
+	@ResponseBody
+	@RequestMapping(value="/moreQna.do", produces = "application/json;charset=utf-8")
+	public String moreQnaAjax(int start, int amount) {
+		int totalCount = service.selectQnaCount();
+		ArrayList<QnaBoard> list = service.moreQna(start,amount);
+		Gson gson = new Gson();
+		String result = gson.toJson(list);
 		System.out.println(result);
 		return result;
 	}
-	/*
-	@ResponseBody
-	@RequestMapping(value="/moreQna.do", produces = "application/json;charset=utf-8")
-	public String moreQnaAjax(int start) {
-		ArrayList<QnaBoard> list = service.moreQna(start,amount);
-	}
+	
+	
 	/*문의게시판 파일다운 
 	@RequestMapping(value="/qnaFileDown.do")
 	public String qnaFileDown(int qnaNo) {

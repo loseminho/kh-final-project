@@ -2,6 +2,7 @@ package kr.or.board.model.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,11 +19,6 @@ import kr.or.notice.model.vo.Notice;
 public class BoardService {
 	@Autowired
 	private BoardDao dao;
-	
-	//문의게시판 list
-	public ArrayList<QnaBoard> allQnaBoard() {
-		return dao.allQnaBoard();
-	}
 	
 
 	//문의게시판 insert(file,qna)
@@ -103,17 +99,27 @@ public class BoardService {
 	public ArrayList<QnaBoard> searchQnaBoard(QnaBoard q) {
 		return dao.searchQnaBoard(q);
 	}
-	/*
+
 	//qna 더보기 버튼 
 	public ArrayList<QnaBoard> moreQna(int start, int amount) {
-		int end = start+amount+1;
+		int end = start+amount-1;
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("start", start);
 		map.put("amount", amount);
+		map.put("end", end);
+		System.out.println("start"+start);
+		System.out.println("amount"+amount);
+		System.out.println("end"+end);
 		
-		ArrayList<QnaBoard> list = dao.moreQna(start,amount);
-		return null;
+		ArrayList<QnaBoard>list = dao.moreQna(map);
+		System.out.println(list);
+		return list;
 	}
-	*/
+
+	//qna 전체 게시물 개수 조회 
+	public int selectQnaCount() {
+		int totalCount = dao.selectQnaCount();
+		return totalCount;
+	}
 
 }

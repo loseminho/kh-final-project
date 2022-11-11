@@ -1,6 +1,7 @@
 package kr.or.board.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -18,11 +19,6 @@ public class BoardDao {
 	@Autowired
 	private SqlSessionTemplate sqlsession;
 	
-	//문의내역 list
-	public ArrayList<QnaBoard> allQnaBoard() {
-		List list = sqlsession.selectList("qnaboard.allQnaBoard");
-		return (ArrayList<QnaBoard>)list;
-		}
 	//문의내역 insert
 	public int insertQnaBoard(QnaBoard q) {
 		return sqlsession.insert("qnaboard.insertQnaBoard",q);
@@ -85,11 +81,15 @@ public class BoardDao {
 	public int updateHit(int qnaNo) {
 		return sqlsession.update("qnaboard.updateHit",qnaNo);
 	}
-	/*
 	//문의내역 더보기 
-	public ArrayList<QnaBoard> moreQna(int start, int amount) {
-		List list = sqlsession.selectList("qnaboard.moreQna",start,amount);
+	public ArrayList<QnaBoard> moreQna(HashMap<String, Object> map) {
+		List list = sqlsession.selectList("qnaboard.moreQna",map);
 		return (ArrayList<QnaBoard>)list;
 	}
-*/
+	//문의내역 전체 게시물 수 
+	public int selectQnaCount() {
+		int totalCount = sqlsession.selectOne("qnaboard.qnaTotalCount");
+		return totalCount;
+	}
+
 }
