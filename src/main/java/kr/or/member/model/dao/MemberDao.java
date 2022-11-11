@@ -77,6 +77,10 @@ public class MemberDao {
 	public DirectMessage selectOneSendDm(int dmNo) {
 		return sqlSession.selectOne("member.selectOneSendDm", dmNo);
 	}
+
+	public DirectMessage selectOneReceiveDm(int dmNo) {
+		return sqlSession.selectOne("member.selectOneReceiveDm", dmNo);
+	}
 	
 	/*****************************************************/
 	

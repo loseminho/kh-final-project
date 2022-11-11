@@ -537,6 +537,13 @@ public class memberController {
 		return new Gson().toJson(dm);
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="/selectOneReceiveDm.do", produces="application/json;charset=utf-8")
+	public String selectOneReceiveDm(int dmNo) {
+		DirectMessage dm = service.selectOneReceiveDm(dmNo);
+		return new Gson().toJson(dm);
+	}
+	
 	/*****************************************************/
 	
 	// 프로필 보기

@@ -141,6 +141,22 @@
 	font-size:25px;
 }
 
+.receiveDm .reply-box {
+	width:100%;
+	text-align:right;
+}
+
+.receiveDm #dmReplyBtn {
+	background-color:#1abc9c;
+	color:white;
+	border:none;
+	height:30px;
+	width:70px;
+	border-radius:5px;
+	line-height:33px;
+	right:0;
+}
+
 .swal2-container {
   z-index:100000;
 }

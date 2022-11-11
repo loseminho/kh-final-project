@@ -40,7 +40,10 @@
 			</div> 
 			<br>
 			보낸 날짜 : <span class="dmDate"></span><br>
-			<button type="button" id="dmReplyBtn">답장하기</button>
+			<input type="hidden" name="receiver">
+			<div class="reply-box">
+				<button type="button" id="dmReplyBtn">답장하기</button>
+			</div>
 		</div>
 	</div>
 </div>

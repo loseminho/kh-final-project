@@ -127,6 +127,20 @@
 		where dm_no = #{_parameter}
 	</select>
 	
+	<select id="selectOneReceiveDm" parameterType="int" resultType="dm">
+		select
+		    dm_no as dmNo,
+		    dm_content as dmContent,
+		    sender as senderNo,
+		    member_nickname as senderName,
+		    member_id as senderId,
+		    to_char(dm_date, 'yy/mm/dd') as dmDate,
+		    read_check as readCheck,
+		    dm_cate as dmCate
+		from dm d
+		where dm_no = #{_parameter}
+	</select>
+	
 	<!-- ***************************************************** -->
 	
 	<select id="selectPersonProfile" parameterType="_int" resultType="m">

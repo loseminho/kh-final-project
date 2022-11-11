@@ -139,6 +139,10 @@ public class MemberService {
 		return dao.selectOneSendDm(dmNo);
 	}
 
+	public DirectMessage selectOneReceiveDm(int dmNo) {
+		return dao.selectOneReceiveDm(dmNo);
+	}
+	
 	/*****************************************************/
 	
 	public Member selectOneProfile(int memberNo) {
