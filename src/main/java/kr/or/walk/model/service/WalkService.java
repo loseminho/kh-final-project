@@ -27,12 +27,9 @@ public class WalkService {
 	
 	public int inputWalk(Walk w) {
 		dao.inputWalk(w);
-		
 		int wmNo = dao.selectWmNo();
-		
 		ArrayList<WalkFile> wf = new ArrayList<WalkFile>();
 		wf = w.getFileList();
-		
 		for(int i=0; i<wf.size(); i++) {
 			wf.get(i).setWmNo(wmNo);
 			dao.inputWalkFile(wf.get(i));
