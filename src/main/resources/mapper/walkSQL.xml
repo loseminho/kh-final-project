@@ -25,7 +25,14 @@
         B.MEMBER_NICKNAME AS memberNickname, 
         B.MEMBER_PHOTO AS memberPhoto,
         B.MEMBER_INTRO AS memberIntro
-	FROM (SELECT * FROM WM_APPLY_TBL WHERE APPLY_STAT=0)A LEFT JOIN MEMBER_TBL B ON A.MEMBER_ID = B.MEMBER_ID where wm_No=#{_parameter}
+	FROM (SELECT * FROM WM_APPLY_TBL)A LEFT JOIN MEMBER_TBL B ON A.MEMBER_ID = B.MEMBER_ID where wm_No=#{_parameter}
+	</select>
+	<select id="selectFileList" resultType="wf" parameterType="_int">
+		SELECT FILE_NO AS fileNo,
+	        WM_NO AS wmNo,
+	        FILENAME AS filename,    
+	        FILEPATH AS filepath
+		FROM WM_FILE_TBL WHERE WM_NO=#{_parameter}
 	</select>
 	<resultMap type="w" id="getMembers">
 			<result column="wmNo" property="wmNo"/>
@@ -44,6 +51,12 @@
 					select="selectMemberProfil"
 					column="wmNo"
 					ofType="wa"
+					javaType="java.util.ArrayList"
+		/>
+		<collection property="fileList"
+					select="selectFileList"
+					column="wmNo"
+					ofType="wf"
 					javaType="java.util.ArrayList"
 		/>
 	</resultMap>
@@ -75,7 +88,14 @@ LEFT JOIN MEMBER_TBL B ON A.wmLeader = B.MEMBER_NO WHERE A.wmNo =#{_parameter}
         B.MEMBER_NICKNAME AS memberNickname, 
         B.MEMBER_PHOTO AS memberPhoto,
         B.MEMBER_INTRO AS memberIntro
-	FROM (SELECT * FROM WM_APPLY_TBL WHERE APPLY_STAT=0)A LEFT JOIN MEMBER_TBL B ON A.MEMBER_ID = B.MEMBER_ID where wm_No=#{_parameter}
+	FROM (SELECT * FROM WM_APPLY_TBL)A LEFT JOIN MEMBER_TBL B ON A.MEMBER_ID = B.MEMBER_ID where wm_No=#{_parameter}
+	</select>
+	<select id="selectFileList2" resultType="wf" parameterType="_int">
+		SELECT FILE_NO AS fileNo,
+	        WM_NO AS wmNo,
+	        FILENAME AS filename,    
+	        FILEPATH AS filepath
+		FROM WM_FILE_TBL WHERE WM_NO=#{_parameter}
 	</select>
 	<resultMap type="w" id="getContentBox">
 			<result column="wmNo" property="wmNo"/>
@@ -94,6 +114,12 @@ LEFT JOIN MEMBER_TBL B ON A.wmLeader = B.MEMBER_NO WHERE A.wmNo =#{_parameter}
 					select="selectMembers"
 					column="wmNo"
 					ofType="wa"
+					javaType="java.util.ArrayList"
+		/>
+		<collection property="fileList"
+					select="selectFileList2"
+					column="wmNo"
+					ofType="wf"
 					javaType="java.util.ArrayList"
 		/>
 	</resultMap>

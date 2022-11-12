@@ -28,13 +28,13 @@
 	</c:choose>
 	">
     
+	<!-- 게시물 글쓰기 form -->
+	<form action="/inputWalkmate.do" method="post" enctype="multipart/form-data">
 	<!-- Start Content -->
     <!--Content Modal-->
-    <form action="/inputWalkmate.do" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="wmLeader", value="${sessionScope.m.memberNo }">
-    
     <div id="modal" class="modal-overlay" >
         <div class="modal-window">
+			    <input type="hidden" name="wmLeader" value="${sessionScope.m.memberNo }">
                 <div class="modal-window-top">
                     <div class="close-area">창 닫기</div>
                     <img src="/resources/img/walkmate/liry1.jpg" id="view-section1">
@@ -51,7 +51,7 @@
                         <input type="text" id="write-section6" placeholder="모임을 위한 한줄평을 작성하세요!">
                     </div>
                 </div>
-                <div class="modal-window-bottom">
+                <div class="modal-window-bottom" id="info-of-main">
                     <div class="bottom-info" id="view-section3" >ㅇ 종로구 · 8.28(일) 오전 11:10 ㅇ 5/6</div>
 
                     <div id="write-section2">
@@ -141,6 +141,14 @@
                                 </div>
                             </li>
                         </ul>
+                        <div class="info-titles" id="apply-ready1">승인 대기 멤버</div>
+                        <div class="info-titles sub"  id="apply-ready2">모임장의 승인을 기다리고 있어요.</div>
+                        <ul class="member-info-ready-ul" id="apply-ready3">
+                            <li class="member-info-ready-list">
+                            <!-- 최대 7명 가능 -->
+                            </li>
+                            
+                        </ul>
 
                         <div class="info-titles">안내 사항</div>
                         <div class="info-titles sub">자세한 정보를 알려드릴게요.</div>
@@ -152,31 +160,120 @@
                         </ul>
                         <div class="info-titles">커뮤니티</div>
                         <div class="info-titles sub">산책이 궁금하다면 댓글을 남겨보세요.</div>
+                        
+                        <div class="comment-box-wrapper">
+                        	<!-- 댓글 작성 -->
+                        	<div class="input-comment-box writers-box">
+	                        	<div class="input-comment-writer-profil"><img src="/resources/img/walkmate/liry1.jpg"></div>
+	                        	<div class="input-comment-writer-comment">
+	                        		<input type="text" name="" class="" id="" placeholder="댓글 달기...">
+	                        		<button type="" name="" class="" id="">등록</button>
+	                        	</div>
+                        	</div>
+                        	<!-- 작성된 댓글  -->
+                        	<div class="input-comment-box-view views-list">
+	                        	<div class="input-comment-writer-profil"><img src="/resources/img/walkmate/liry1.jpg"></div>
+	                        	<div class="comment-member-view">
+                                    <span>로즈</span>
+                                    	산책하며 힐링도 하고 운동도 해요.
+                                    	<div class="view-sub"><span class="material-symbols-outlined">map</span>2022-11-12 23:30 · <div>댓글달기</div></div>
+                                </div>
+                        	</div>
+                        	<!-- 작성된 댓글에 코멘트 -->
+                        	<div class="input-comment-box-view reviews">
+	                        	<div class="input-comment-writer-profil"><img src="/resources/img/walkmate/liry1.jpg"></div>
+	                        	<div class="comment-member-view reviews-sub">
+                                    <span>대댓글</span>
+                                    	산책하며 힐링도 하고 운동도 해요.
+                                    	<div class="view-sub"><span class="material-symbols-outlined">map</span>2022-11-12 23:30 · <div>댓글달기</div></div>
+                                </div>
+                        	</div>
+                        	<div class="input-comment-box-view reviews">
+	                        	<div class="input-comment-writer-profil"><img src="/resources/img/walkmate/liry1.jpg"></div>
+	                        	<div class="comment-member-view reviews-sub">
+                                    <span>대댓글</span>
+                                    	산책하며 힐링도 하고 운동도 해요.
+                                    	<div class="view-sub"><span class="material-symbols-outlined">map</span>2022-11-12 23:30 · <div>댓글달기</div></div>
+                                </div>
+                        	</div>
+                        	<div class="input-comment-box-view reviews">
+	                        	<div class="input-comment-writer-profil"><img src="/resources/img/walkmate/liry1.jpg"></div>
+	                        	<div class="comment-member-view reviews-sub">
+                                    <span>대댓글</span>
+                                    	산책하며 힐링도 하고 운동도 해요.
+                                    	<div class="view-sub"><span class="material-symbols-outlined">map</span>2022-11-12 23:30 · <div>댓글달기</div></div>
+                                </div>
+                        	</div>
+                        	
+                        	
+                        	
+                        	<div class="input-comment-box-view views-list">
+	                        	<div class="input-comment-writer-profil"><img src="/resources/img/walkmate/liry1.jpg"></div>
+	                        	<div class="comment-member-view">
+                                    <span>로즈</span>
+                                    	산책하며 힐링도 하고 운동도 해요.
+                                    	<div class="view-sub"><span class="material-symbols-outlined">map</span>2022-11-12 23:30 · <div>댓글달기</div></div>
+                                </div>
+                        	</div>
+                        	<div class="input-comment-box-review views-list">
+	                        	<div class="input-comment-writer-profil"><img src="/resources/img/walkmate/liry1.jpg"></div>
+	                        	<div class="comment-member-view">
+                                    <span>로즈</span>
+                                    	산책하며 힐링도 하고 운동도 해요.
+                                    	<div class="view-sub"><span class="material-symbols-outlined">map</span>2022-11-12 23:30 · <div>댓글달기</div></div>
+                                </div>
+                        	</div>
+                        	<div class="input-comment-box-view views-list">
+	                        	<div class="input-comment-writer-profil"><img src="/resources/img/walkmate/liry1.jpg"></div>
+	                        	<div class="comment-member-view">
+                                    <span>로즈</span>
+                                    	산책하며 힐링도 하고 운동도 해요.
+                                    	<div class="view-sub"><span class="material-symbols-outlined">map</span>2022-11-12 23:30 · <div>댓글달기</div></div>
+                                </div>
+                        	</div>
+                        	<div class="input-comment-box-view views-list">
+	                        	<div class="input-comment-writer-profil"><img src="/resources/img/walkmate/liry1.jpg"></div>
+	                        	<div class="comment-member-view">
+                                    <span>로즈</span>
+                                    	산책하며 힐링도 하고 운동도 해요.
+                                    	<div class="view-sub"><span class="material-symbols-outlined">map</span>2022-11-12 23:30 · <div>댓글달기</div></div>
+                                </div>
+                        	</div>
+                        </div>
+                        
+                        
                     </div>
                     <div class="bottom-content-btn">
                         <button type="submit" class="input-main-btn" id="write-section5" onclick="" >작성 완료</button>
-                        <button type="button" class="input-main-btn" id="view-section6" onclick="">신청 하기</button>
+                        <button type="button" class="input-main-btn" id="view-section6" onclick="modalApplyView();">신청 하기</button>
                         <button type="button" class="next-btn-member" id="" onclick="modalNextContents('');">돌아가기 >> </button>
                     </div>
                 </div>
+    			</form>
+    			
                 <!-- 신청자의 신청 메세지 -->
-                <div class="modal-window-bottom" style="display:none;">
+                <!-- 게시물 글쓰기 form -->
+			    <form action="/inputWmapply.do" method="post">
+			    <input type="hidden" name="wmNo" class="input-apply-wmNo">
+			    <input type="hidden" name="memberId" value="${sessionScope.m.memberId}">
+			    <input type="hidden" name="applyStat" value="1">
+                <div class="modal-window-bottom" id="applySection">
 	                <div class="bottom-content member-info">
 	                	<div class="info-titles">신청 하기</div>
-	                    <div class="info-titles sub">우리 반갑게 만나요!</div>                
+	                    <div class="info-titles sub">모임장에게 보낼 신청 메세지를 보내보세요!</div>                
 	                </div>
-                	<div class="bottom-content">                	
-	                	<textarea name="wmContent" id="" placeholder="산책 모임에 대해 자세히 설명해주세요."></textarea>
+                	<div class="bottom-content apply-content-box">                	
+	                	<textarea name="applyContent" class="apply-text" placeholder="모임장에게 보낼 신청 메세지를 작성해주세요."></textarea>
                 	</div>
 	                <div class="bottom-content-btn">
-		                <button type="submit" class="input-main-btn" id="write-section5" onclick="" >작성 완료</button>
-		                <button type="button" class="next-btn-member" id="" onclick="modalNextContents('');">돌아가기 >> </button>                                
+		                <button type="submit" class="input-main-btn" id="write-section5" onclick="" >신청 작성 완료</button>
+		                <button type="button" class="next-btn-member" id="" onclick="modalApplyViewOff();">돌아가기 >> </button>                                
 	                </div>
                 </div>
+                </form>
             </div>
             
     </div>
-    </form>
     <!-- End Content Modal-->
 
     
