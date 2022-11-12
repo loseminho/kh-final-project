@@ -57,12 +57,13 @@
 					</div>
 	            </div>
 	            <div id="info-section">
+	            	<p id="updateMent" style="font-size:14px; color:#ccc;"><span style="color:#1abc9c;">*</span> : 수정 가능한 정보</p>
 				    <div class="info-box">
-				        <label for="dogName"><span>*</span>이름</label>
+				        <label for="dogName">이름</label>
 				        <input type="text" name="dogName" id="dogName" class="input">
 				    </div>
 				    <div class="info-box">
-				        <label for="dogType"><span>*</span>품종</label>
+				        <label for="dogType">품종</label>
 				        <input type="text" name="" id="dogType1" class="input">
 				        <select id="dogType2" name="" style="display:none;">
 				        </select>
