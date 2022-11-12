@@ -228,7 +228,8 @@ input, select, button{
 	color:#ee862c;
 }
 
-.mbti-box .mbti-dogname {
+.mbti-box .mbti-dogname,
+#mbti-matching .mbti-dogname {
 	color:#c77be6;
 }
 
@@ -250,6 +251,11 @@ input, select, button{
 .mbti-result-box p {
     text-align: center;
     margin-bottom:20px;
+}
+
+.mbti-result-box #mbti-story {
+	margin-top:40px;
+	line-height:30px;
 }
 
 .mbti-result-box h2, 

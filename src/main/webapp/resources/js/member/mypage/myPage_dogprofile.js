@@ -17,6 +17,8 @@ $("#addDog").on("click", function(){
 	$("#dogPhoto").prop("name", "");
 	$("#dogPhoto").val("");
 	$("#mbti-box").hide();
+	$(".dogprofile #updateMent").hide();
+	$(".dogprofile span").text("");
 	
 	$("#dogName").prop("readonly", false);
 	$("#dogName").val("");
@@ -76,6 +78,8 @@ function dogModal(dogNo) {
 	$("#dogPhoto").prop("name", "");
 	$("#dogPhoto").val("");
 	$("#dogPreview").attr("src", "");
+	$(".dogprofile #updateMent").show();
+	$(".dogprofile span").text("*");
 	
 	$.ajax({
         url  : '/selectMyOneDog.do',
