@@ -7,10 +7,10 @@
 <meta charset="UTF-8">
 <title>산책갈개</title>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>    
 <link rel="stylesheet" href="/resources/css/main.css">
 <link rel="styleSheet" href="/resources/css/gmarket.css">
-<script src="https://kit.fontawesome.com/7b7a761eb5.js" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <link rel="icon" href="/resources/img/favicon.ico" type="image/x-icon" sizes="16x16">
 </head>
 <body id="body">
@@ -18,7 +18,7 @@
 	<jsp:include page="/WEB-INF/views/common/mainHeader.jsp" />
 	<div class="section" id="section1">
 		<div class="mainTitle">
-			<a href="/joinChatting.do">산책 메이트를 만들고 싶어?</a>
+			<a>산책 메이트를 만들고 싶어?</a>
 		</div>
 	</div>
 	<div class="section" id="section2">
@@ -48,8 +48,21 @@
 		</div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	</div>
-<script>
-</script>
+	<div class="popup-modal" style="display:none;">
+			<div class="popup-content">
+				<img src="/resources/img/popup/popup.png">
+			</div>
+			<div class="popup-content">
+				<img src="/resources/img/popup/popup2.png">
+			</div>
+			<div class="popup-content">
+				<img src="/resources/img/popup/popup3.png">
+			</div>
+		<button class="popup-close">닫기</button>
+		<button class="popup-close-day">오늘하루보지않기</button>
+		<button class="popup-back">이전</button>
+		<button class="popup-next">다음</button>
+	</div>
 <script src="/resources/js/main.js"></script>
 </body>
 </html>
