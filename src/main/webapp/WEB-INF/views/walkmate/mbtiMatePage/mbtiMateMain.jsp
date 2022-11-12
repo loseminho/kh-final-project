@@ -197,7 +197,8 @@
            						</button>
            						<button type="button" class="mbti-btn">
            							궁금한 게 너무 많아!<br>
-           							달려 나가서 탐색하기 바쁘다. <span class="mbti-dogname"></span>, 목줄 좀 그만 잡아당겨!
+           							달려 나가서 탐색하기 바쁘다.<br>
+           							<span class="mbti-dogname"></span>, 목줄 좀 그만 잡아당겨!
            						</button>
            					</div>
            					<div class="mbti-box" style="display:none;">
