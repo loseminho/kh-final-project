@@ -22,6 +22,7 @@
 		</tbody>
 	</table>
 </div>
+<div class="dmPageNavi"></div>
 
 <!-- 쪽지 모달 -->
 <div id="receiveDm-modal" class="modal-wrapper" style="display:none;">

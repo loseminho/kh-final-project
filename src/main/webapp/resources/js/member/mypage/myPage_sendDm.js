@@ -8,8 +8,9 @@ function sendDm(reqPage) {
         success : function(data){
         	const dmList = data.list;
         	const pageNavi = data.pageNavi;
+        	const totalCount = data.totalCount;
         	
-        	if(data.list != "") {
+        	if(dmList != "") {
 	        	for(let i=0; i<dmList.length; i++) {
 	        		const tr = $("<tr>");
 	        		const noTd = $("<td>");
@@ -21,7 +22,7 @@ function sendDm(reqPage) {
 	        		const sendDateTd = $("<td>");
 	        		const readCheckTd = $("<td>");
 	        		
-	        		noTd.text(dmList[i].dmNo);
+	        		noTd.text(totalCount-(dmList[i].rnum)+1);
 	        		
 	        		if(dmList[i].dmCate == "0") {
 		        		cateTd.text("입양문의");

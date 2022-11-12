@@ -103,8 +103,10 @@
 		WHERE RNUM BETWEEN #{start} AND #{end}
 	</select>
 	
-	<select id="selectAllReceiveDm" parameterType="int" resultType="dm">
-		select
+	<select id="selectAllReceiveDm" parameterType="map" resultType="dm">
+		SELECT * 
+		FROM (SELECT ROWNUM AS RNUM, r.* 
+		from (select
 		    dm_no as dmNo,
 		    dm_content as dmContent,
 		    member_nickname as senderName,
@@ -113,8 +115,9 @@
 		    read_check as readCheck,
 		    dm_cate as dmCate
 		from dm
-		where receiver = #{_parameter}
-		order by dm_no desc
+		where receiver = #{memberNo}
+		order by dm_no desc)r)
+		WHERE RNUM BETWEEN #{start} AND #{end}
 	</select>
 	
 	<select id="selectOneSendDm" parameterType="int" resultType="dm">
@@ -157,6 +160,10 @@
 	
 	<select id="selectSendDmCount" parameterType="int" resultType="int">
 		select count(*) from dm where sender = #{_parameter}
+	</select>
+	
+	<select id="selectReceiveDmCount" parameterType="int" resultType="int">
+		select count(*) from dm where receiver = #{_parameter}
 	</select>
 	
 	<!-- ***************************************************** -->

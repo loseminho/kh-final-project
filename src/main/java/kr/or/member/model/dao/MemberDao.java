@@ -71,8 +71,8 @@ public class MemberDao {
 		return (ArrayList<DirectMessage>) list;
 	}
 
-	public ArrayList<DirectMessage> selectAllReceiveDm(int memberNo) {
-		List list = sqlSession.selectList("member.selectAllReceiveDm", memberNo);
+	public ArrayList<DirectMessage> selectAllReceiveDm(HashMap<String, Object> map) {
+		List list = sqlSession.selectList("member.selectAllReceiveDm", map);
 		return (ArrayList<DirectMessage>) list;
 	}
 
@@ -95,6 +95,11 @@ public class MemberDao {
 	public int selectSendDmCount(int memberNo) {
 		return sqlSession.selectOne("member.selectSendDmCount", memberNo);
 	}
+	
+	public int selectReceiveDmCount(int memberNo) {
+		return sqlSession.selectOne("member.selectReceiveDmCount", memberNo);
+	}
+	
 	/*****************************************************/
 	
 	public Member selectPersonProfile(int memberNo) {
