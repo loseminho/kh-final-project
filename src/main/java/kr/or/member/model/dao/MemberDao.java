@@ -1,6 +1,7 @@
 package kr.or.member.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -65,8 +66,8 @@ public class MemberDao {
 		return (ArrayList<MyCalendar>) list;
 	}
 	
-	public ArrayList<DirectMessage> selectAllSendDm(int memberNo) {
-		List list = sqlSession.selectList("member.selectAllSendDm", memberNo);
+	public ArrayList<DirectMessage> selectAllSendDm(HashMap<String, Object> map) {
+		List list = sqlSession.selectList("member.selectAllSendDm", map);
 		return (ArrayList<DirectMessage>) list;
 	}
 
@@ -90,7 +91,10 @@ public class MemberDao {
 	public int updateDmReadCheck(int dmNo) {
 		return sqlSession.update("member.updateDmReadCheck", dmNo);
 	}
-	
+
+	public int selectSendDmCount(int memberNo) {
+		return sqlSession.selectOne("member.selectSendDmCount", memberNo);
+	}
 	/*****************************************************/
 	
 	public Member selectPersonProfile(int memberNo) {

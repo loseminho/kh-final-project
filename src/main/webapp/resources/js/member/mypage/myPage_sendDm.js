@@ -1,12 +1,16 @@
-function sendDm() {
+function sendDm(reqPage) {
 	$("#sendDmTable>tbody>tr").remove();
 	
 	$.ajax({
         url  : '/selectAllSendDm.do',
         type : 'post',
+        data : {"reqPage" : reqPage},
         success : function(data){
-        	if(data != "") {
-	        	for(let i=0; i<data.length; i++) {
+        	const dmList = data.list;
+        	const pageNavi = data.pageNavi;
+        	
+        	if(data.list != "") {
+	        	for(let i=0; i<dmList.length; i++) {
 	        		const tr = $("<tr>");
 	        		const noTd = $("<td>");
 	        		const cateTd = $("<td>");
@@ -17,25 +21,25 @@ function sendDm() {
 	        		const sendDateTd = $("<td>");
 	        		const readCheckTd = $("<td>");
 	        		
-	        		noTd.text(data[i].dmNo);
+	        		noTd.text(dmList[i].dmNo);
 	        		
-	        		if(data[i].dmCate == "0") {
+	        		if(dmList[i].dmCate == "0") {
 		        		cateTd.text("입양문의");
 	        		} else {
 		        		cateTd.text("친구해요");
 	        		}
 	        		
-	        		const aTag = $("<a onclick='sendDmModal("+data[i].dmNo+");'></a>");
-	        		aTag.text(data[i].dmContent);
+	        		const aTag = $("<a onclick='sendDmModal("+dmList[i].dmNo+");'></a>");
+	        		aTag.text(dmList[i].dmContent);
 	        		contentDiv.append(aTag);
 	        		contentTd.append(contentDiv);
 	        		
-	        		receiverDiv.text(data[i].receiverName + "(" + data[i].receiverId + ")");
+	        		receiverDiv.text(dmList[i].receiverName + "(" + dmList[i].receiverId + ")");
 	        		receiverTd.append(receiverDiv);
 	        		
-	        		sendDateTd.text(data[i].dmDate);
+	        		sendDateTd.text(dmList[i].dmDate);
 	        		
-	        		if(data[i].readCheck == "0") {
+	        		if(dmList[i].readCheck == "0") {
 		        		readCheckTd.text("읽지않음");
 	        		} else {
 		        		readCheckTd.text("읽음");
@@ -51,6 +55,8 @@ function sendDm() {
 	        	tr.append(td);
 	        	$("#sendDmTable>tbody").append(tr);
         	}
+        	
+        	$(".dmPageNavi").html(pageNavi);
         }
     });
 }

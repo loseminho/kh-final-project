@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -127,8 +128,75 @@ public class MemberService {
 		return dao.selectMyCalendar(memberId);
 	}
 	
-	public ArrayList<DirectMessage> selectAllSendDm(int memberNo) {
-		return dao.selectAllSendDm(memberNo);
+	public HashMap<String, Object> selectAllSendDm(int memberNo, int reqPage) {
+		// 한 페이지에 보여줄 게시물 수
+		int numPerPage = 10;
+		// 1페이지면 1~10번 글
+		// 2페이지면 11~20번 글
+		int end = reqPage * numPerPage;
+		int start = end - numPerPage + 1;
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("end", end);
+		map.put("start", start);
+		map.put("memberNo", memberNo);
+		// reqPage에 해당하는 게시물들 받아옴
+		ArrayList<DirectMessage> list = dao.selectAllSendDm(map);
+
+		// 전체 게시물 수 계산
+		int totalCount = dao.selectSendDmCount(memberNo);
+		
+		// 전체 페이지 수 계산
+		int totalPage = 0;
+		if(totalCount%numPerPage == 0) {
+			totalPage = totalCount/numPerPage;
+		} else {
+			totalPage = totalCount/numPerPage + 1;
+		}
+		
+		// pageNavi의 사이즈
+		int pageNaviSize = 5;
+		
+		// reqPage가 1~5면 1이 페이지 시작번호
+		// reqPage가 6~10이면 6이 페이지 시작번호
+		int pageNo = ((reqPage-1)/pageNaviSize)*pageNaviSize+1;
+		
+		String pageNavi = "<ul class='dm-pagination'>";
+		if(pageNo != 1) { // 페이지 시작번호가 1이 아니면 이전 버튼 넣기
+			pageNavi += "<li class='dm-page-prev'>";
+			pageNavi += "<a class='dm-page-item' onclick='sendDm("+(pageNo-1)+")'>이전</a>";
+			pageNavi += "</li>";
+		}
+		
+		for(int i=0; i<pageNaviSize; i++) {
+			if(pageNo == reqPage) {
+				pageNavi += "<li>";
+				pageNavi += "<a class='dm-page-item active-page' onclick='sendDm("+pageNo+")'>";
+				pageNavi += pageNo;
+				pageNavi += "</a></li>";
+			}else {
+				pageNavi += "<li>";
+				pageNavi += "<a class='dm-page-item' onclick='sendDm("+pageNo+")'>";
+				pageNavi += pageNo;
+				pageNavi += "</a></li>";
+			}
+			
+			pageNo++;
+			if(pageNo > totalPage) {
+				break;
+			}
+		}
+		
+		if(pageNo <= totalPage) {
+			pageNavi += "<li class='dm-page-next'>";
+			pageNavi += "<a class='dm-page-item' onclick='sendDm("+pageNo+")'>다음</a>";
+			pageNavi += "</li>";
+		}
+		
+		pageNavi += "</div>";
+		map.put("pageNavi", pageNavi);
+		map.put("list", list);
+		return map;
 	}
 	
 	public ArrayList<DirectMessage> selectAllReceiveDm(int memberNo) {
