@@ -5,11 +5,13 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <h1>받은 쪽지함</h1>
 <div class="dmWrap">
-	<select id="receiveDmCate" name="dmCate">
-    	<option value="2" selected>전체쪽지</option>
-    	<option value="0">입양문의</option>
-    	<option value="1">친구해요</option>
-    </select>
+	<div class="dmCateWrap">
+		<select id="receiveDmCate" name="dmCate">
+	    	<option value="2" selected>전체쪽지</option>
+	    	<option value="0">입양문의</option>
+	    	<option value="1">친구해요</option>
+	    </select>
+	</div>
 	<table id="receiveDmTable" class="dmTable">
 		<thead>
 			<tr>

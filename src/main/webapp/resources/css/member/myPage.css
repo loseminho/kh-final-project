@@ -7,9 +7,14 @@
 	align-items: flex-start;
 	width: 1200px;
 	margin: 0 auto;
-	margin-top:80px;
+	padding-top:80px;
 	font-family : gs-Medium;
-	flex-grow: 1;
+	flex-grow:1;
+}
+
+
+.page-wrap{
+	height:calc(100% - 130px);
 }
 
 /* 좌측 메뉴 영역 */
