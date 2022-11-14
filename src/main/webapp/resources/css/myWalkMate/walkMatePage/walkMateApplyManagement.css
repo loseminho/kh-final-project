@@ -1,0 +1,65 @@
+.wm-apply-meangement-content{
+	margin-top: 20px;
+	min-height: calc(100vh - 230px);
+}
+
+.wm-apply-meangement-content>table{
+	width: 800px;
+	margin-top: 50px;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.wm-apply-meangement-content>table tr:nth-child(1){
+	border-top: 1px solid #e1e1e1;;
+}
+
+.wm-apply-meangement-content>table tr{
+	border-bottom: 1px solid #e1e1e1;;
+}
+
+.wm-apply-meangement-content>table th{
+	height: 50px;
+    font-size: 16px;
+    color: #fff;
+	background-color: #1abc9c;
+}
+
+.wm-apply-meangement-content>table th:nth-child(1){
+	width: 20%;
+}
+
+.wm-apply-meangement-content>table th:nth-child(2){
+	width: 60%;
+}
+
+.wm-apply-meangement-content>table th:nth-child(3){
+	width: 20%%;
+}
+
+.wm-apply-meangement-content>table td{
+	height: 40px;
+	font-family: gs-Light;
+	
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	text-align: center;
+	
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.wm-apply-meangement-content>table td:nth-child(3){
+	padding: 0px;
+	display: flex;
+}
+
+.wm-apply-meangement-content>table td:nth-child(3)>span{
+	display: block;
+	width: 50%;
+}
+
+.wm-apply-meangement-content>table td:nth-child(3)>span>a{
+	line-height: 40px;
+}

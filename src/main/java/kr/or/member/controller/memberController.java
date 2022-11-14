@@ -628,4 +628,13 @@ public class memberController {
 		
 		return new Gson().toJson(list);
 	}
+	
+	
+	@RequestMapping(value="/walkMatePage.do")
+	public String walkMatePage(int wmNo, Model model) {
+		Walk w = service.selectOneWalkMate(wmNo);
+		
+		model.addAttribute("w", w);
+		return "myWalkMate/walkMatePage/walkMatePage";
+	}
 }

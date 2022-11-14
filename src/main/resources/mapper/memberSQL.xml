@@ -228,46 +228,4 @@
 			member_no = #{_parameter}
 		order by dog_no
 	</select>
-	
-	<!-- ***************************************************** -->
-	
-	<select id="selectMyApplyList" parameterType="string" resultType="awi">
-		select
-			wm_title as wmTitle,
-			wm_meet_time as wmMeetTime,
-			wm_addr as wmAddr,
-			apply_stat as applyStat
-		from
-			walk_mate_tbl
-		join
-			wm_apply_tbl using(wm_no)
-		where
-			member_id = #{_parameter}
-	</select>
-	
-	<select id="selectMyMadeList" parameterType="_int" resultType="w">
-		select
-			wm_title as wmTitle,
-			wm_meet_time as wmMeetTime,
-			wm_addr as wmAddr	
-		from
-			walk_mate_tbl	
-		where
-			wm_leader = #{_parameter}
-	</select>
-	
-	<select id="selectMyAppliedList" parameterType="string" resultType="w">
-		select
-			wm_title as wmTitle,
-			wm_meet_time as wmMeetTime,
-			wm_addr as wmAddr	
-		from
-			walk_mate_tbl	
-		join
-			wm_apply_tbl using(wm_no)
-		where
-			member_id = #{_parameter} 
-			and
-			apply_stat = 0
-	</select>
 </mapper>
