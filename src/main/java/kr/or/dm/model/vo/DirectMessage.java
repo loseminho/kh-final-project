@@ -22,4 +22,5 @@ public class DirectMessage {
 	private String dmDate;
 	private int readCheck;
 	private String dmCate;
+	private int rnum;
 }

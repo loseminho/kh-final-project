@@ -508,11 +508,11 @@ public class memberController {
 	
 	@ResponseBody
 	@RequestMapping(value="/selectAllSendDm.do", produces="application/json;charset=utf-8")
-	public String selectAllSendDm(@SessionAttribute Member m) {
+	public String selectAllSendDm(@SessionAttribute Member m, int reqPage, DirectMessage dm) {
 		int memberNo = m.getMemberNo();
-		ArrayList<DirectMessage> list = service.selectAllSendDm(memberNo);
-		if(list != null) {
-			return new Gson().toJson(list);
+		HashMap<String, Object> map = service.selectAllSendDm(memberNo, reqPage, dm);
+		if(map != null) {
+			return new Gson().toJson(map);
 		} else {
 			return "null";
 		}
@@ -520,11 +520,11 @@ public class memberController {
 	
 	@ResponseBody
 	@RequestMapping(value="/selectAllReceiveDm.do", produces="application/json;charset=utf-8")
-	public String selectAllReceiveDm(@SessionAttribute Member m) {
+	public String selectAllReceiveDm(@SessionAttribute Member m, int reqPage, DirectMessage dm) {
 		int memberNo = m.getMemberNo();
-		ArrayList<DirectMessage> list = service.selectAllReceiveDm(memberNo);
-		if(list != null) {
-			return new Gson().toJson(list);
+		HashMap<String, Object> map = service.selectAllReceiveDm(memberNo, reqPage, dm);
+		if(map != null) {
+			return new Gson().toJson(map);
 		} else {
 			return "null";
 		}

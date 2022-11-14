@@ -71,7 +71,7 @@
 			    </div>
 			</div>
 		</div>
-		
+
 		<!-- 신고 보기 모달 -->
 		<div class="report-view-modal">
 			<jsp:include page="/WEB-INF/views/member/mypage/reportView.jsp" />

@@ -165,8 +165,11 @@ content{
 }
 /* 검색창 */
 .search-box{
-    float: right;
+	width:1200px;
+	margin: 0 auto;
     margin-bottom : 8px;
+	display:flex;
+	justify-content: right;
 }
 .search-qna-form{
     border: 1px solid #1e1e1e;
@@ -236,6 +239,7 @@ content{
     padding-top: 50px;
     padding-bottom: 100px;
     width: 100%;
+    overflow: hidden;
 }
 .qna-table{
 	margin: 0 auto;
@@ -253,6 +257,9 @@ content{
 }
 .qna-table tr{
 	border-bottom: 1px solid #e1e1e1;
+}
+.qna-table tr:hover{
+	cursor: pointer;
 }
 .qna-table tr:last-child{
 	border: none;

@@ -59,11 +59,34 @@ public class BoardService {
 
 	//댓글 insert
 	public int insertQnaComment(QnaComment qc) {
-		return dao.insertQnaComment(qc);
+		int result = dao.insertQnaComment(qc);
+		if(result>0) {
+			//댓글 성공시 상태 업데이트 
+			int qnaStatus = dao.checkComment(qc);
+			HashMap<String, Object>map = new HashMap<String, Object>();
+			map.put("qc",qc.getQnaNo());
+			map.put("qnaStatus",qnaStatus);
+			
+			int updateStatus = dao.changeQnaStatus(map);
+			System.out.println("제발"+updateStatus);
+			
+		} 
+		return result;
 	}
 	//댓글 delete 
 	public int deleteQnaComment(QnaComment qc) {
-		return dao.deleteQnaComment(qc);
+		int result = dao.deleteQnaComment(qc);
+		if(result>0) {
+			//댓글 삭제 성공시 상태 업데이트
+			int qnaStatus = dao.checkComment(qc);
+			HashMap<String, Object>map = new HashMap<String, Object>();
+			map.put("qc",qc.getQnaNo());
+			map.put("qnaStatus",qnaStatus);
+			int updateStatus = dao.changeQnaStatus(map);
+			System.out.println("delete"+updateStatus);
+			
+		}
+		return result;
 	}
 	//댓글 update 
 	public int updateQnaComment(QnaComment qc) {
@@ -121,5 +144,10 @@ public class BoardService {
 		int totalCount = dao.selectQnaCount();
 		return totalCount;
 	}
+	//qna 파일 다운
+	public QnaFile qnaFileDown(int fileNo) {
+		return dao.qnaFileDown(fileNo);
+	}
+
 
 }

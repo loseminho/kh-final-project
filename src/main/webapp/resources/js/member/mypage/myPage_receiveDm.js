@@ -1,12 +1,18 @@
-function receiveDm() {
+function receiveDm(reqPage) {
 	$("#receiveDmTable>tbody>tr").remove();
+	const dmCate = $("#receiveDmCate").val();
 	
 	$.ajax({
         url  : '/selectAllReceiveDm.do',
         type : 'post',
+        data : {"reqPage" : reqPage, "dmCate" : dmCate},
         success : function(data){
-        	if(data != "") {
-	        	for(let i=0; i<data.length; i++) {
+        	const dmList = data.list;
+        	const pageNavi = data.pageNavi;
+        	const totalCount = data.totalCount;
+        	
+        	if(dmList != "") {
+	        	for(let i=0; i<dmList.length; i++) {
 	        		const tr = $("<tr>");
 	        		const noTd = $("<td>");
 	        		const cateTd = $("<td>");
@@ -17,25 +23,25 @@ function receiveDm() {
 	        		const sendDateTd = $("<td>");
 	        		const readCheckTd = $("<td>");
 	        		
-	        		noTd.text(data[i].dmNo);
+	        		noTd.text(totalCount-(dmList[i].rnum)+1);
 	        		
-	        		if(data[i].dmCate == "0") {
+	        		if(dmList[i].dmCate == "0") {
 		        		cateTd.text("입양문의");
 	        		} else {
 		        		cateTd.text("친구해요");
 	        		}
 	        		
-	        		const aTag = $("<a onclick='receiveDmModal("+data[i].dmNo+");'></a>");
-	        		aTag.text(data[i].dmContent);
+	        		const aTag = $("<a onclick='receiveDmModal("+reqPage+","+dmList[i].dmNo+");'></a>");
+	        		aTag.text(dmList[i].dmContent);
 	        		contentDiv.append(aTag);
 	        		contentTd.append(contentDiv);
 	        		
-	        		senderDiv.text(data[i].senderName + "(" + data[i].senderId + ")");
+	        		senderDiv.text(dmList[i].senderName + "(" + dmList[i].senderId + ")");
 	        		senderTd.append(senderDiv);
 	        		
-	        		sendDateTd.text(data[i].dmDate);
+	        		sendDateTd.text(dmList[i].dmDate);
 	        		
-	        		if(data[i].readCheck == "0") {
+	        		if(dmList[i].readCheck == "0") {
 		        		readCheckTd.text("읽지않음");
 	        		} else {
 		        		readCheckTd.text("읽음");
@@ -47,15 +53,17 @@ function receiveDm() {
         	} else {
         		const tr = $("<tr>");
 	        	const td = $("<td colspan='6'>");
-	        	td.text("보낸 쪽지가 없습니다.");
+	        	td.text("받은 쪽지가 없습니다.");
 	        	tr.append(td);
 	        	$("#receiveDmTable>tbody").append(tr);
         	}
+        	
+        	$(".dmPageNavi").html(pageNavi);
         }
     });
 }
 
-function receiveDmModal(dmNo) {
+function receiveDmModal(reqPage,dmNo) {
 	cancelReply();
 
 	$.ajax({
@@ -63,7 +71,7 @@ function receiveDmModal(dmNo) {
         type : 'post',
         data : {dmNo : dmNo},
         success : function(data){
-        	receiveDm();
+        	receiveDm(reqPage);
 			$("#receiveDm-modal").css("display", "flex");
 			
 			$("#dmCate").val(data.dmCate);
@@ -86,6 +94,11 @@ function receiveDmModal(dmNo) {
         }
 	});
 }
+
+$("#receiveDmCate").on("change", function(){
+	const result = $("#receiveDmCate").val();
+	receiveDm(1);
+});
 
 function closeReceiveDmModal() {
 	$("#receiveDm-modal").hide();

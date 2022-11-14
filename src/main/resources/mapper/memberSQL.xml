@@ -86,8 +86,10 @@
 		    and apply_stat = 2	
 	</select>
 	
-	<select id="selectAllSendDm" parameterType="int" resultType="dm">
-		select
+	<select id="selectAllSendDm" parameterType="map" resultType="dm">
+		SELECT * 
+		FROM (SELECT ROWNUM AS RNUM, s.* 
+		from (select
 		    dm_no as dmNo,
 		    dm_content as dmContent,
 		    m.member_nickname as receiverName,
@@ -96,12 +98,21 @@
 		    read_check as readCheck,
 		    dm_cate as dmCate
 		from dm d left join member_tbl m on (d.receiver = m.member_no)
-		where sender = #{_parameter}
-		order by dm_no desc
+		where sender = #{memberNo}
+		<if test="dmCate == 0">
+		and dm_cate = 0
+		</if>
+		<if test="dmCate== 1">
+		and dm_cate = 1
+		</if>
+		order by dm_no desc)s)
+		WHERE RNUM BETWEEN #{start} AND #{end}
 	</select>
 	
-	<select id="selectAllReceiveDm" parameterType="int" resultType="dm">
-		select
+	<select id="selectAllReceiveDm" parameterType="map" resultType="dm">
+		SELECT * 
+		FROM (SELECT ROWNUM AS RNUM, r.* 
+		from (select
 		    dm_no as dmNo,
 		    dm_content as dmContent,
 		    member_nickname as senderName,
@@ -110,8 +121,15 @@
 		    read_check as readCheck,
 		    dm_cate as dmCate
 		from dm
-		where receiver = #{_parameter}
-		order by dm_no desc
+		where receiver = #{memberNo}
+		<if test="dmCate == 0">
+		and dm_cate = 0
+		</if>
+		<if test="dmCate== 1">
+		and dm_cate = 1
+		</if>
+		order by dm_no desc)r)
+		WHERE RNUM BETWEEN #{start} AND #{end}
 	</select>
 	
 	<select id="selectOneSendDm" parameterType="int" resultType="dm">
@@ -151,6 +169,26 @@
 		set read_check = 1
 		where dm_no = #{_parameter}
 	</update>
+	
+	<select id="selectSendDmCount" parameterType="map" resultType="int">
+		select count(*) from dm where sender = #{memberNo}
+		<if test="dmCate == 0">
+		and dm_cate = 0
+		</if>
+		<if test="dmCate== 1">
+		and dm_cate = 1
+		</if>
+	</select>
+	
+	<select id="selectReceiveDmCount" parameterType="map" resultType="int">
+		select count(*) from dm where receiver = #{memberNo}
+		<if test="dmCate == 0">
+		and dm_cate = 0
+		</if>
+		<if test="dmCate== 1">
+		and dm_cate = 1
+		</if>
+	</select>
 	
 	<!-- ***************************************************** -->
 	

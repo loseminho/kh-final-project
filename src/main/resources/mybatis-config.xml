@@ -29,5 +29,6 @@
 		<typeAlias type="kr.or.shop.model.vo.Shop" alias="s"/>
 		<typeAlias type="kr.or.chat.model.vo.ChatHistory" alias="ch"/>
 		<typeAlias type="kr.or.admin.model.vo.AdminQna" alias="aq"/>
+		<typeAlias type="kr.or.admin.model.vo.AdminReport" alias="ar"/>
 	</typeAliases>
 </configuration>

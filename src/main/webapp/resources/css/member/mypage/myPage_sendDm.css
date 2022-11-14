@@ -8,7 +8,23 @@
 
 .sendDm > .dmWrap {
 	width: 100%;
-	margin:30px auto;
+	margin:0px auto;
+	margin-bottom:30px;
+}
+
+.sendDm > .dmWrap > .dmCateWrap {
+	width: 100%;
+	display:flex;
+	flex-direction:row;
+	justify-content:flex-end;
+}
+
+.sendDm > .dmWrap #sendDmCate {
+	height:30px;
+	font-size: 16px;
+	font-family:gs-Medium;
+	outline: none;
+	margin-bottom:5px;
 }
 
 .sendDm > .dmWrap table{
@@ -64,6 +80,38 @@
 }
 .sendDm > .dmWrap table tr td .contentDiv > a:hover {
 	text-decoration:underline;
+}
+
+/* 페이징 */
+.sendDm .dmPageNavi{
+    margin:30px;
+}
+.sendDm .dm-pagination {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sendDm .dm-pagination > li {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  overflow: hidden;
+}
+.sendDm .dm-pagination > li.dm-page-next,
+.sendDm .dm-pagination > li.dm-page-prev {
+	width: 60px;
+	margin: 0 5px;
+}
+.sendDm .dm-pagination > li > a.dm-page-item {
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-size: 18px;
+}
+.sendDm .dm-pagination .dm-page-item.active-page {
+  color:#1abc9c;
 }
 
 /* 모달창 */
