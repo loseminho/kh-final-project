@@ -13,13 +13,17 @@ $(document).ready(function(){
 	 	}
 	 	
 	 	const idx = $(".photo").index(this);
-	 	console.log("input tag fileNo::"+$(".photo").eq(idx).nextAll('input').attr('disabled') );
-	 	$(".photo").eq(idx).nextAll('input').attr("disabled",true);
-	 	console.log("input tag fileNo::"+$(".photo").eq(idx).nextAll('input').disabled);
+	 	console.log("input tag fileNo::"+$("[name=pastFileNo]").eq(idx).is(":disabled"));
+	 	console.log("input tag filePath::"+$("[name=pastFilePath]").eq(idx).is(":disabled"));
+	 	$("[name=pastFileNo]").eq(idx).attr("disabled",false);
+	 	$("[name=pastFilePath]").eq(idx).attr("disabled",false);
+	 	$("[name=procedure]").eq(idx).attr("disabled",false);
+	 	console.log("input tag fileNo::"+$("[name=pastFileNo]").eq(idx).is(":disabled"));
+	 	console.log("input tag filePath::"+$("[name=pastFilePath]").eq(idx).is(":disabled"));
 	});
 	previewBox.on("click",function(){
-
-	 	const idx = previewBox.index(this); 
+		const idx = previewBox.index(this);
+	 	$(".photo").eq(idx).attr("disabled",false);
 	 	
 		console.log(idx);
 		

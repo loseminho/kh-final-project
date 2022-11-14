@@ -43,13 +43,15 @@ public class MarketService {
 		return list;
 	}
 
-	public int inputMarket(MarketDog md) {
+	public int inputMarket(MarketDog md, Integer[] procedure) {
 		// TODO Auto-generated method stub
 		dao.inputMarket(md);
 		int marketNo = dao.selectMarketNo();
 		
 		ArrayList<MarketDogFile> mdf = new ArrayList<MarketDogFile>();
+		
 		mdf = md.getFileList();
+		System.out.println("procedure를 포함한 service에서 mdf"+mdf);
 		
 		for(int i=0;i<mdf.size();i++) {
 			mdf.get(i).setMarketNo(marketNo);
@@ -77,11 +79,10 @@ public class MarketService {
 		return list;
 	}
 
-	public int updateMarket(MarketDog md, String[] pastFileName, Integer[] pastFileNo, MultipartFile[] photo) {
+	public int updateMarket(MarketDog md, Integer[] pastFileNo, MultipartFile[] photo) {
 		System.out.println(md.getFileList());
-		for(int i=0;i<3;i++) {
+		for(int i=0;i<pastFileNo.length;i++) {
 			System.out.println("pastFileNo::::::"+pastFileNo[i]);
-			System.out.println("pastList::::::"+pastFileName[i]);
 			System.out.println("photo:::::::"+photo[i].getOriginalFilename());
 			//System.out.println("newList::::::"+md.getFileList());
 		}
@@ -95,7 +96,9 @@ public class MarketService {
 			System.out.println("업데이트 서비스:::");
 			return 0;
 		}else {
-			dao.deleteMarketFile(md);
+			for(Integer i:pastFileNo) {
+				dao.deleteMarketFile(i);
+			}
 			for(int i=0;i<mdf.size();i++) {
 				dao.updateMarketFile(mdf.get(i));
 			}

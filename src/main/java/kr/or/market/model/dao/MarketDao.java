@@ -68,8 +68,8 @@ public class MarketDao {
 		
 	}
 
-	public void deleteMarketFile(MarketDog md) {
-		sqlSession.delete("market.deleteFile",md);
+	public void deleteMarketFile(int pastFileNo) {
+		sqlSession.delete("market.deleteFile",pastFileNo);
 	}
 	
 	public void updateMarketFile(MarketDogFile mdf) {
