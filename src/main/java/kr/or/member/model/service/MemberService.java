@@ -128,7 +128,7 @@ public class MemberService {
 		return dao.selectMyCalendar(memberId);
 	}
 	
-	public HashMap<String, Object> selectAllSendDm(int memberNo, int reqPage) {
+	public HashMap<String, Object> selectAllSendDm(int memberNo, int reqPage, DirectMessage dm) {
 		// 한 페이지에 보여줄 게시물 수
 		int numPerPage = 10;
 		// 1페이지면 1~10번 글
@@ -140,11 +140,12 @@ public class MemberService {
 		map.put("end", end);
 		map.put("start", start);
 		map.put("memberNo", memberNo);
+		map.put("dmCate", dm.getDmCate());
 		// reqPage에 해당하는 게시물들 받아옴
 		ArrayList<DirectMessage> list = dao.selectAllSendDm(map);
 
 		// 전체 게시물 수 계산
-		int totalCount = dao.selectSendDmCount(memberNo);
+		int totalCount = dao.selectSendDmCount(map);
 		
 		// 전체 페이지 수 계산
 		int totalPage = 0;
@@ -200,7 +201,7 @@ public class MemberService {
 		return map;
 	}
 	
-	public HashMap<String, Object> selectAllReceiveDm(int memberNo, int reqPage) {
+	public HashMap<String, Object> selectAllReceiveDm(int memberNo, int reqPage, DirectMessage dm) {
 		// 한 페이지에 보여줄 게시물 수
 		int numPerPage = 10;
 		// 1페이지면 1~10번 글
@@ -212,11 +213,12 @@ public class MemberService {
 		map.put("end", end);
 		map.put("start", start);
 		map.put("memberNo", memberNo);
+		map.put("dmCate", dm.getDmCate());
 		// reqPage에 해당하는 게시물들 받아옴
 		ArrayList<DirectMessage> list = dao.selectAllReceiveDm(map);
 
 		// 전체 게시물 수 계산
-		int totalCount = dao.selectReceiveDmCount(memberNo);
+		int totalCount = dao.selectReceiveDmCount(map);
 		
 		// 전체 페이지 수 계산
 		int totalPage = 0;

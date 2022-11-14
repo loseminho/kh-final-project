@@ -99,6 +99,12 @@
 		    dm_cate as dmCate
 		from dm d left join member_tbl m on (d.receiver = m.member_no)
 		where sender = #{memberNo}
+		<if test="dmCate == 0">
+		and dm_cate = 0
+		</if>
+		<if test="dmCate== 1">
+		and dm_cate = 1
+		</if>
 		order by dm_no desc)s)
 		WHERE RNUM BETWEEN #{start} AND #{end}
 	</select>
@@ -116,6 +122,12 @@
 		    dm_cate as dmCate
 		from dm
 		where receiver = #{memberNo}
+		<if test="dmCate == 0">
+		and dm_cate = 0
+		</if>
+		<if test="dmCate== 1">
+		and dm_cate = 1
+		</if>
 		order by dm_no desc)r)
 		WHERE RNUM BETWEEN #{start} AND #{end}
 	</select>
@@ -158,12 +170,24 @@
 		where dm_no = #{_parameter}
 	</update>
 	
-	<select id="selectSendDmCount" parameterType="int" resultType="int">
-		select count(*) from dm where sender = #{_parameter}
+	<select id="selectSendDmCount" parameterType="map" resultType="int">
+		select count(*) from dm where sender = #{memberNo}
+		<if test="dmCate == 0">
+		and dm_cate = 0
+		</if>
+		<if test="dmCate== 1">
+		and dm_cate = 1
+		</if>
 	</select>
 	
-	<select id="selectReceiveDmCount" parameterType="int" resultType="int">
-		select count(*) from dm where receiver = #{_parameter}
+	<select id="selectReceiveDmCount" parameterType="map" resultType="int">
+		select count(*) from dm where receiver = #{memberNo}
+		<if test="dmCate == 0">
+		and dm_cate = 0
+		</if>
+		<if test="dmCate== 1">
+		and dm_cate = 1
+		</if>
 	</select>
 	
 	<!-- ***************************************************** -->
