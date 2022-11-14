@@ -21,8 +21,8 @@
                 <form action="/writeNotice.do" method="post" enctype="multipart/form-data">
                     <div class="writeNotice-header">
                         <h1>공지사항 작성</h1>
-                        <a href="#">공지사항</a>
-                        <a href="#">관리자페이지</a>
+                        <a href="/notice.do?reqPage=1">공지사항</a>
+                        <a href="/adminPageFrm.do">관리자페이지</a>
                     </div>
                     <div class="writeForm-wrap">
                         <div class="writeNotice-content">

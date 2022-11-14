@@ -23,7 +23,14 @@
                 <div class="qnaView-header">
                     <h1>문의내역</h1>
                     <ul>
+                    <c:choose>
+                    	<c:when test="${sessionScope.m.memberLevel == 2 }">
+                    	<li><a href="/adminPageFrm.do">뒤로가기 </a></li>
+                    	</c:when>
+                    	<c:otherwise>
                     	<li><a href="/faqQnaBoardFrm.do">뒤로가기 </a></li>
+                    	</c:otherwise>
+					</c:choose>
                     <c:if test="${sessionScope.m.memberId eq qb.qnaWriter }">
                         <li><a href="/qnaBoardUpdateFrm.do?qnaNo=${qb.qnaNo }">수정하기</a></li>
                         <li><a href="/qnaBoardDelete.do?qnaNo=${qb.qnaNo }">삭제하기</a></li>
@@ -48,7 +55,7 @@
                         <c:forEach items="${qb.fileList}" var="qf">
                         <td>
                         <img src="/img/file.png" width="16px">
-                        <a href="/qnaFileDown.do?qnaNo=${qb.qnaNo }">${qf.filename}</a>
+                        <a href="/qnaFileDown.do?fileNo=${qf.fileNo }">${qf.filename}</a>
                         </td>
                         </c:forEach>
                     </tr>
@@ -58,6 +65,7 @@
                     </tr>
                 </table>
                 <!--댓글 등록-->
+                 <c:if test="${sessionScope.m.memberLevel == 2 }">
                 <div class="inputComment-box">
                     <form action="/insertQnaComment.do" method="post">
                         <ul class="comment-box">
@@ -73,6 +81,7 @@
                         </ul>
                     </form> 
                 </div><!--inputComment-box 끝-->
+                </c:if>
                 <!--댓글 보기-->
                 <c:forEach items="${list }" var="qc">
                 <input type="hidden" id="test1" value="${qc.qcommentNo }">

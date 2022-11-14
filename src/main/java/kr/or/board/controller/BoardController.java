@@ -1,23 +1,29 @@
 package kr.or.board.controller;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.ProcessBuilder.Redirect;
 import java.util.ArrayList;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
+import com.sun.xml.internal.org.jvnet.fastinfoset.FastInfosetSerializer;
 
 import common.FileRename;
 import kr.or.board.model.service.BoardService;
@@ -111,6 +117,7 @@ public class BoardController {
 	//문의게시판 댓글 insert 
 	@RequestMapping(value="/insertQnaComment.do")
 	public String insertQnaComment(QnaComment qc,Model model) {
+		System.out.println(qc);
 		int result = service.insertQnaComment(qc);
 		if(result >0) {
 			model.addAttribute("qc",qc);
@@ -220,12 +227,38 @@ public class BoardController {
 		System.out.println(result);
 		return result;
 	}
+
 	
-	
-	/*문의게시판 파일다운 
+	//문의게시판 파일다운 
 	@RequestMapping(value="/qnaFileDown.do")
-	public String qnaFileDown(int qnaNo) {
-		Notice n = service.qnaFileDown(qnaNo);
+	public void qnaFileDown(int fileNo, HttpServletRequest request, HttpServletResponse response) throws IOException {
+		//fileNo : filename,filepath db 조회
+		//request : 파일 위치하는 경로
+		//response : 사용자에게 파일 보내주기 위해 필요 
+		QnaFile file = service.qnaFileDown(fileNo);
+		String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/board/");
+		String downFile = savePath+file.getFilepath();
+		
+		FileInputStream fis = new FileInputStream(downFile);
+		BufferedInputStream bis = new BufferedInputStream(fis);
+		ServletOutputStream sos = response.getOutputStream();
+		BufferedOutputStream bos = new BufferedOutputStream(sos);
+		
+		String resFilename = new String (file.getFilename().getBytes("UTF-8"),"ISO-8859-1");
+		response.setContentType("application/octet-stream");
+		response.setHeader("Content-Disposition", "attachment;filename="+resFilename );
+		while(true) {
+			int read = bis.read();
+			if(read != -1) {
+				bos.write(read);
+			}else {
+				break;
+			}
+		}
+		
+		bos.close();
+		bis.close();
+		
 	}
-	*/
+	
 }

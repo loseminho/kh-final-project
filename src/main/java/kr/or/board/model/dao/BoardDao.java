@@ -91,5 +91,25 @@ public class BoardDao {
 		int totalCount = sqlsession.selectOne("qnaboard.qnaTotalCount");
 		return totalCount;
 	}
+	//문의내역 답변상태 조회
+	public int checkComment(QnaComment qc) {
+		int qnaStatus = sqlsession.selectOne("qnaboard.checkComment",qc);
+		System.out.println(qnaStatus);
+		return qnaStatus;
+	}
+	//문의내역 상태 변경 
+	public int changeQnaStatus(HashMap<String, Object> map) {
+		int result = sqlsession.update("qnaboard.changeQnaStatus",map);
+		return result;
+	}
+	//문의내역 파일 다운 
+	public QnaFile qnaFileDown(int fileNo) {
+		List list = sqlsession.selectList("qnaboard.qnaFileDown",fileNo);
+		if(list.isEmpty()) {
+			return null;
+		} else {
+			return (QnaFile)list;
+		}
+	}
 
 }

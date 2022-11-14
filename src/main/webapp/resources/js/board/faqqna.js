@@ -54,6 +54,7 @@ tabs.on("click",function(){
         $("#qnaAjaxAdd-btn").attr("currentCount","0");
         $("#qnaAjaxAdd-btn").attr("disabled",false);
 		$("#qnaAjaxAdd-btn").css ("cursor","pointer");
+		$("#qnaAjaxAdd-btn").text("더보기");
         $("#qnaAjaxAdd-btn").trigger("click");
 
     }
@@ -177,10 +178,10 @@ $("#searchQnaAjax").on("click",function(){
                 tr.append("<td>"+data[i].qnaTitle+"</td>");
                 tr.append("<td>"+data[i].qnaWriter+"</td>");
               
-              if(data[i].qnaStatus == 1) {
+              if(data[i].qnaStatus == 0) {
               	tr.append("<td>"+"답변대기중"+"</td>"); 
               }
-              if(data[i].qnaStatus == 2) {
+              if(data[i].qnaStatus == 1) {
               	tr.append("<td>"+"답변완료"+"</td>"); 
               }
                 tr.append("<td>"+data[i].qnaDate+"</td>");
@@ -237,10 +238,10 @@ $("#qnaAjaxAdd-btn").on("click",function(){
                 tr.append("<td>"+data[i].qnaTitle+"</td>");
                 tr.append("<td>"+data[i].qnaWriter+"</td>");
               
-              if(data[i].qnaStatus == 1) {
+              if(data[i].qnaStatus == 0) {
               	tr.append("<td>"+"답변대기중"+"</td>"); 
               }
-              if(data[i].qnaStatus == 2) {
+              if(data[i].qnaStatus == 1) {
               	tr.append("<td>"+"답변완료"+"</td>"); 
               }
                 tr.append("<td>"+data[i].qnaDate+"</td>");
@@ -260,6 +261,7 @@ $("#qnaAjaxAdd-btn").on("click",function(){
 			if(totalCount == currentCount){
 				$("#qnaAjaxAdd-btn").attr("disabled",true);
 				$("#qnaAjaxAdd-btn").css ("cursor","not-allowed");
+				$("#qnaAjaxAdd-btn").text("마지막 게시물 입니다 ");
 			}
 		},
 		error : function(){
