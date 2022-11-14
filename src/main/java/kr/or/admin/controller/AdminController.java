@@ -13,6 +13,7 @@ import com.google.gson.Gson;
 
 import kr.or.admin.model.service.AdminService;
 import kr.or.admin.model.vo.AdminQna;
+import kr.or.admin.model.vo.AdminReport;
 
 @Controller
 public class AdminController {
@@ -39,5 +40,32 @@ public class AdminController {
 		System.out.println(result);
 		return result;
 	}
-
+	
+	//문의내역 검색
+	@ResponseBody
+	@RequestMapping(value="/searchAdminQna.do",produces = "application/json;charset=utf-8")
+	public String searchAdminQna (AdminQna aq) {
+		ArrayList<AdminQna> list = service.searchAdminQna(aq);
+		Gson gson = new Gson();
+		String result = gson.toJson(list);
+		return result;
+	}
+	
+	//신고목록 리스트 더보기 
+	@ResponseBody
+	@RequestMapping(value="/adminReportAjax.do",produces = "application/json;charset=utf-8")
+	public String adminReport(int start, int amount) {
+		ArrayList<AdminReport> list = service.moreAdminReport(start, amount);
+		Gson gson = new Gson();
+		String result = gson.toJson(list);
+		System.out.println(result);
+		return result;
+	}
+	/*
+	//신고목록 
+	@RequestMapping(value="/reportMember.do")
+	public String reportMember(AdminReport ar, Model model) {
+		System.out.println(ar);
+	}
+	*/
 }

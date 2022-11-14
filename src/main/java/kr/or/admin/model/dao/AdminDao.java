@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.or.admin.model.vo.AdminQna;
+import kr.or.admin.model.vo.AdminReport;
 
 @Repository
 public class AdminDao {
@@ -25,6 +26,16 @@ public class AdminDao {
 	public ArrayList<AdminQna> moreAdminQna(HashMap<String, Object> map) {
 		List list = sqlSession.selectList("admin.moreAdminQna",map);
 		return (ArrayList<AdminQna>)list;
+	}
+	//관리자 문의내역 
+	public ArrayList<AdminQna> searchAdminQna(AdminQna aq) {
+		List list = sqlSession.selectList("admin.searchAdminQna",aq);
+		return (ArrayList<AdminQna>)list;
+	}
+	//관리자 신고내역 더보기 버튼
+	public ArrayList<AdminReport> moreAdminReport(HashMap<String, Object> map) {
+		List list = sqlSession.selectList("admin.moreAdminReport",map);
+		return (ArrayList<AdminReport>)list;
 	}
 	
 }

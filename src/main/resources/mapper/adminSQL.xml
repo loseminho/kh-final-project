@@ -18,4 +18,51 @@ select
 	qna_status as qnaStatus
 from(select rownum as rnum, q.* from(select * from qna_tbl order by 1 desc)q) where rnum between #{start} and #{end}
 </select>
+<!-- 문의내역 검색 -->
+<select id="searchAdminQna" parameterType="aq" resultType="aq">
+select
+	qna_no as qnaNo,
+		substr(replace(qna_writer,substr(qna_writer,2,2),'**'),1,instr(qna_writer,'@',1,1)-1)as qnaWriter,
+		qna_title as qnaTitle,
+		qna_content as qnaContent,
+		qna_views as qnaViews,
+		qna_date as qnaDate,
+		qna_cate_no as qnaCateNo,
+		qna_status as qnaStatus
+	from qna_tbl
+	<choose>
+		<when test="searchType.equals('nonAnswer')">
+			where qna_status = 0
+		</when>
+		<when test="searchType.equals('answer')">
+			where qna_status = 1
+		</when>
+		<when test="searchType.equals('qnaType')">
+			where qna_cate_no like '%'||#{keyword}||'%'
+		</when>
+		<when test="searchType.equals('qnaWriter')">
+			where qna_writer like '%'||#{keyword}||'%'
+		</when>
+	</choose>
+</select>
+<select id="moreAdminReport" parameterType="map" resultType="ar">
+	select 
+		report_no as reportNo,
+		report_member_no as reportMemberNo,
+		report_member_nickname as reportMemberNickname,
+		reported_member_no as reportedMemberNo,
+		reported_member_nickname as reportedMemberNickname,
+		report_type as reportType,
+		report_content as reportContent,
+		report_date as reportDate,
+		reportCount
+	from (select rownum as rnum, r.* from(select * from report_tbl order by 1 desc)r)
+	join (select count(reported_member_no)as reportCount,
+		reported_member_no
+		from report_tbl
+		group by reported_member_no, report_member_nickname
+	)
+	using (reported_member_no)
+    where rnum between #{start} and #{end}
+</select>
 </mapper>
