@@ -78,12 +78,11 @@
 		select 
 		    wm_no as wmNo,
 		    wm_title as wmTitle,
-		    substr(wm_meet_start, 0, 10) as startdate,
-		    substr(wm_meet_end, 0, 10) as enddate
+		    substr(wm_meet_time, 0, 10) as wmMeetTime
 		from walk_mate_tbl inner join wm_apply_tbl using(wm_no)
 		where 
 		    member_id = #{_parameter}
-		    and apply_stat = 2	
+		    and apply_stat = 0	
 	</select>
 	
 	<select id="selectAllSendDm" parameterType="map" resultType="dm">

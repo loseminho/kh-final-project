@@ -12,9 +12,9 @@ function mycalendar(){
 		},
 		// initialDate: '2021-07-15', // 초기 날짜 설정 (설정하지 않으면 오늘 날짜가 보인다.)
 		// eventLimit: true,
-		selectable : true, // 달력 일자 드래그 설정가능
-		droppable : true,
-		editable : true,
+		// selectable : true, // 달력 일자 드래그 설정가능
+		// droppable : true,
+		// editable : true,
 		nowIndicator: true, // 현재 시간 마크
 		locale: 'ko', // 한국어 설정
 		
@@ -36,16 +36,11 @@ function mycalendar(){
                    var events = [];
                    if(result != "null"){
 	                   for(let i=0; i<result.length; i++) {
-	                       var enddate = result[i].enddate;
-	                       
-	                        if(enddate == null){
-	                            enddate = result[i].startdate;
-	                        }
-	                        
+		
 	                        events.push({
 	                           title: result[i].wmTitle,
-	                           start: result[i].startdate,
-	                           end: enddate,
+	                           start: result[i].wmMeetTime,
+	                           end: result[i].wmMeetTime,
 	                           color : '#' + Math.round(Math.random() * 0xffffff).toString(16)                                           
 	                        }); // push() 끝
 	                        
