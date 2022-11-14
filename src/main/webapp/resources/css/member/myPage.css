@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+
 .page-content {
 	display: flex;
 	flex-direction: row;
@@ -10,11 +11,6 @@
 	padding-top:80px;
 	font-family : gs-Medium;
 	flex-grow:1;
-}
-
-
-.page-wrap{
-	height:calc(100% - 130px);
 }
 
 /* 좌측 메뉴 영역 */

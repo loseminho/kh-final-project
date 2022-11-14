@@ -13,7 +13,6 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<div class="page-wrap">
 		<div class="page-content">
 			<div id="rowSession1">
 				<ul class="main-menu">
@@ -72,7 +71,7 @@
 			    </div>
 			</div>
 		</div>
-	</div>
+
 		<!-- 신고 보기 모달 -->
 		<div class="report-view-modal">
 			<jsp:include page="/WEB-INF/views/member/mypage/reportView.jsp" />
