@@ -14,6 +14,13 @@ function login() {
 					text: '아이디와 비밀번호를 확인해주세요.',
 					confirmButtonColor: '#1abc9c'
 				})
+        	} else {
+        		Swal.fire({
+					text: '관리자에 의해 사이트 접속이 불가능합니다.',
+					confirmButtonColor: '#1abc9c'
+				}).then((result) => {
+					location.href= "/logout.do";
+			    })
         	}
         }
     });

@@ -103,6 +103,15 @@ public class memberController {
         		HttpSession session = req.getSession(); // session 생성
         		session.setAttribute("m", m); // session 저장하기
         		session.setAttribute("access_Token", access_Token); // session 저장하기
+        		
+        		if(m.getMemberLevel() == 4) { // 멤버 레벨이 4면 로그아웃 시킴
+        			model.addAttribute("title", "접속 불가");
+        			model.addAttribute("msg", "관리자에 의해 사이트 접속이 불가능합니다.");
+        			model.addAttribute("icon", "error");
+        			model.addAttribute("loc", "/logout.do");
+    				return "common/msg";
+    			}
+        		
         		return "redirect:/";        		
         	} else {
         		System.out.println("일반으로 가입한 회원");
@@ -283,8 +292,12 @@ public class memberController {
 		Member m = service.selectOneMemberEnc(member);
 		if(m!=null) {
 			ArrayList<Dog> dogList = dogService.selectMyDogList(m.getMemberNo());
-    		m.setDogList(dogList);
+			m.setDogList(dogList);
 			session.setAttribute("m", m);
+			
+			if(m.getMemberLevel() == 4) { // 멤버 레벨이 4면 로그아웃 시킴
+				return "loginLimit";
+			}
 			return "success";				
 		} else {
 			return "fail";

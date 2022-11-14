@@ -20,7 +20,7 @@ public class Member {
 	private String memberPhoto;
 	private String memberIntro;
 	private String enrollDate;
-	private String memberLevel;
+	private int memberLevel;
 	private String joinType;
 	private ArrayList<Dog> dogList;
 }
