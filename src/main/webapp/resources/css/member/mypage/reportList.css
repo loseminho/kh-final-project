@@ -21,11 +21,11 @@
 }
 
 .report-list-table table tr:nth-child(1){
-	border-top: 1px solid #e1e1e1;;
+	border-top: 1px solid #e1e1e1;
 }
 
 .report-list-table table tr{
-	border-bottom: 1px solid #e1e1e1;;
+	border-bottom: 1px solid #e1e1e1;
 }
 
 .report-list-table table th{
