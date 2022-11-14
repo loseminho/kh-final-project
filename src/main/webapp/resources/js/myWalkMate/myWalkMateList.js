@@ -30,7 +30,7 @@ $("#appliedWalkMateList").one("click", function(){
 				for(let i=0; i<wpd.list.length; i++){
 					const tr = $("<tr>");
 					
-					tr.append("<td>" + wpd.list[i].wmTitle + "</td>");
+					tr.append("<td>" + "<a href='/walkMatePage.do?wmNo=" + wpd.list[i].wmNo + "'>" + wpd.list[i].wmTitle + "</a>" + "</td>");
 					tr.append("<td>" + wpd.list[i].wmMeetTime + "</td>");
 					tr.append("<td>" + wpd.list[i].wmAddr + "</td>");
 					

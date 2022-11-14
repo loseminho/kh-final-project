@@ -401,4 +401,11 @@ public class MemberService {
 		return myAttendList;
 	}
 
+	public Walk selectOneWalkMate(int wmNo) {
+		Walk w = dao.selectOneWalkMate(wmNo);
+		
+		ArrayList<Member> memberList = dao.selectAttendMemberList(wmNo);
+		
+		return w;
+	}
 }
