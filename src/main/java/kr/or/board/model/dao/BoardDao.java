@@ -104,12 +104,8 @@ public class BoardDao {
 	}
 	//문의내역 파일 다운 
 	public QnaFile qnaFileDown(int fileNo) {
-		List list = sqlsession.selectList("qnaboard.qnaFileDown",fileNo);
-		if(list.isEmpty()) {
-			return null;
-		} else {
-			return (QnaFile)list;
-		}
+		return sqlsession.selectOne("qnaboard.qnaFileDown",fileNo);
+		
 	}
 
 }
