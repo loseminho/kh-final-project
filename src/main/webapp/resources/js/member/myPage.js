@@ -24,9 +24,9 @@ $(".section").on("click", function(){
     if(idx == 2) {
     	mycalendar();
     } else if(idx == 5) {
-    	receiveDm();
+    	receiveDm(1);
     } else if(idx == 6) {
-    	sendDm();
+    	sendDm(1);
     }
 });
 

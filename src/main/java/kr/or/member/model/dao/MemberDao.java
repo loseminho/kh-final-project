@@ -1,6 +1,7 @@
 package kr.or.member.model.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -13,6 +14,7 @@ import kr.or.member.model.vo.Member;
 import kr.or.member.model.vo.MyCalendar;
 import kr.or.member.model.vo.Report;
 import kr.or.walk.model.vo.AppliedWalkInfo;
+import kr.or.walk.model.vo.Walk;
 
 @Repository
 public class MemberDao {
@@ -64,14 +66,38 @@ public class MemberDao {
 		return (ArrayList<MyCalendar>) list;
 	}
 	
-	public ArrayList<DirectMessage> selectAllSendDm(int memberNo) {
-		List list = sqlSession.selectList("member.selectAllSendDm", memberNo);
+	public ArrayList<DirectMessage> selectAllSendDm(HashMap<String, Object> map) {
+		List list = sqlSession.selectList("member.selectAllSendDm", map);
 		return (ArrayList<DirectMessage>) list;
 	}
 
-	public ArrayList<DirectMessage> selectAllReceiveDm(int memberNo) {
-		List list = sqlSession.selectList("member.selectAllReceiveDm", memberNo);
+	public ArrayList<DirectMessage> selectAllReceiveDm(HashMap<String, Object> map) {
+		List list = sqlSession.selectList("member.selectAllReceiveDm", map);
 		return (ArrayList<DirectMessage>) list;
+	}
+
+	public DirectMessage selectOneSendDm(int dmNo) {
+		return sqlSession.selectOne("member.selectOneSendDm", dmNo);
+	}
+
+	public DirectMessage selectOneReceiveDm(int dmNo) {
+		return sqlSession.selectOne("member.selectOneReceiveDm", dmNo);
+	}
+
+	public int insertReplyDm(DirectMessage dm) {
+		return sqlSession.insert("member.insertReplyDm", dm);
+	}
+
+	public int updateDmReadCheck(int dmNo) {
+		return sqlSession.update("member.updateDmReadCheck", dmNo);
+	}
+
+	public int selectSendDmCount(int memberNo) {
+		return sqlSession.selectOne("member.selectSendDmCount", memberNo);
+	}
+	
+	public int selectReceiveDmCount(int memberNo) {
+		return sqlSession.selectOne("member.selectReceiveDmCount", memberNo);
 	}
 	
 	/*****************************************************/
@@ -104,21 +130,17 @@ public class MemberDao {
 	
 	public ArrayList<AppliedWalkInfo> selectMyApplyList(String memberId, int start, int end) {
 		List list = sqlSession.selectList("member.selectMyApplyList", memberId);
-		ArrayList<AppliedWalkInfo> walkList = (ArrayList<AppliedWalkInfo>)list;
-		
-		ArrayList<AppliedWalkInfo> appliedList = new ArrayList<AppliedWalkInfo>();
-		for(int i=start; i<=end; i++) {
-			if(i == walkList.size()) {
-				break;
-			}
-			
-			appliedList.add(walkList.get(i));
-		}
-		
-		return walkList;
+		return (ArrayList<AppliedWalkInfo>)list;
 	}
 
-	public int selectMyApplyCount(String memberId) {
-		return sqlSession.selectOne("member.selectMyApplyCount", memberId);
+	public ArrayList<Walk> selectMyMadeList(int memberNo) {
+		List list = sqlSession.selectList("member.selectMyMadeList", memberNo);
+		return (ArrayList<Walk>)list;
 	}
+
+	public ArrayList<Walk> selectMyAppliedList(String memberId) {
+		List list = sqlSession.selectList("member.selectMyAppliedList", memberId);
+		return (ArrayList<Walk>)list;
+	}
+
 }

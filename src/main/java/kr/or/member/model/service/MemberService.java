@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -127,14 +128,168 @@ public class MemberService {
 		return dao.selectMyCalendar(memberId);
 	}
 	
-	public ArrayList<DirectMessage> selectAllSendDm(int memberNo) {
-		return dao.selectAllSendDm(memberNo);
+	public HashMap<String, Object> selectAllSendDm(int memberNo, int reqPage) {
+		// 한 페이지에 보여줄 게시물 수
+		int numPerPage = 10;
+		// 1페이지면 1~10번 글
+		// 2페이지면 11~20번 글
+		int end = reqPage * numPerPage;
+		int start = end - numPerPage + 1;
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("end", end);
+		map.put("start", start);
+		map.put("memberNo", memberNo);
+		// reqPage에 해당하는 게시물들 받아옴
+		ArrayList<DirectMessage> list = dao.selectAllSendDm(map);
+
+		// 전체 게시물 수 계산
+		int totalCount = dao.selectSendDmCount(memberNo);
+		
+		// 전체 페이지 수 계산
+		int totalPage = 0;
+		if(totalCount%numPerPage == 0) {
+			totalPage = totalCount/numPerPage;
+		} else {
+			totalPage = totalCount/numPerPage + 1;
+		}
+		
+		// pageNavi의 사이즈
+		int pageNaviSize = 5;
+		
+		// reqPage가 1~5면 1이 페이지 시작번호
+		// reqPage가 6~10이면 6이 페이지 시작번호
+		int pageNo = ((reqPage-1)/pageNaviSize)*pageNaviSize+1;
+		
+		String pageNavi = "<ul class='dm-pagination'>";
+		if(pageNo != 1) { // 페이지 시작번호가 1이 아니면 이전 버튼 넣기
+			pageNavi += "<li class='dm-page-prev'>";
+			pageNavi += "<a class='dm-page-item' onclick='sendDm("+(pageNo-1)+")'>이전</a>";
+			pageNavi += "</li>";
+		}
+		
+		for(int i=0; i<pageNaviSize; i++) {
+			if(pageNo == reqPage) {
+				pageNavi += "<li>";
+				pageNavi += "<a class='dm-page-item active-page' onclick='sendDm("+pageNo+")'>";
+				pageNavi += pageNo;
+				pageNavi += "</a></li>";
+			}else {
+				pageNavi += "<li>";
+				pageNavi += "<a class='dm-page-item' onclick='sendDm("+pageNo+")'>";
+				pageNavi += pageNo;
+				pageNavi += "</a></li>";
+			}
+			
+			pageNo++;
+			if(pageNo > totalPage) {
+				break;
+			}
+		}
+		
+		if(pageNo <= totalPage) {
+			pageNavi += "<li class='dm-page-next'>";
+			pageNavi += "<a class='dm-page-item' onclick='sendDm("+pageNo+")'>다음</a>";
+			pageNavi += "</li>";
+		}
+		
+		pageNavi += "</div>";
+		map.put("pageNavi", pageNavi);
+		map.put("totalCount", totalCount);
+		map.put("list", list);
+		return map;
 	}
 	
-	public ArrayList<DirectMessage> selectAllReceiveDm(int memberNo) {
-		return dao.selectAllReceiveDm(memberNo);
+	public HashMap<String, Object> selectAllReceiveDm(int memberNo, int reqPage) {
+		// 한 페이지에 보여줄 게시물 수
+		int numPerPage = 10;
+		// 1페이지면 1~10번 글
+		// 2페이지면 11~20번 글
+		int end = reqPage * numPerPage;
+		int start = end - numPerPage + 1;
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("end", end);
+		map.put("start", start);
+		map.put("memberNo", memberNo);
+		// reqPage에 해당하는 게시물들 받아옴
+		ArrayList<DirectMessage> list = dao.selectAllReceiveDm(map);
+
+		// 전체 게시물 수 계산
+		int totalCount = dao.selectReceiveDmCount(memberNo);
+		
+		// 전체 페이지 수 계산
+		int totalPage = 0;
+		if(totalCount%numPerPage == 0) {
+			totalPage = totalCount/numPerPage;
+		} else {
+			totalPage = totalCount/numPerPage + 1;
+		}
+		
+		// pageNavi의 사이즈
+		int pageNaviSize = 5;
+		
+		// reqPage가 1~5면 1이 페이지 시작번호
+		// reqPage가 6~10이면 6이 페이지 시작번호
+		int pageNo = ((reqPage-1)/pageNaviSize)*pageNaviSize+1;
+		
+		String pageNavi = "<ul class='dm-pagination'>";
+		if(pageNo != 1) { // 페이지 시작번호가 1이 아니면 이전 버튼 넣기
+			pageNavi += "<li class='dm-page-prev'>";
+			pageNavi += "<a class='dm-page-item' onclick='receiveDm("+(pageNo-1)+")'>이전</a>";
+			pageNavi += "</li>";
+		}
+		
+		for(int i=0; i<pageNaviSize; i++) {
+			if(pageNo == reqPage) {
+				pageNavi += "<li>";
+				pageNavi += "<a class='dm-page-item active-page' onclick='receiveDm("+pageNo+")'>";
+				pageNavi += pageNo;
+				pageNavi += "</a></li>";
+			}else {
+				pageNavi += "<li>";
+				pageNavi += "<a class='dm-page-item' onclick='receiveDm("+pageNo+")'>";
+				pageNavi += pageNo;
+				pageNavi += "</a></li>";
+			}
+			
+			pageNo++;
+			if(pageNo > totalPage) {
+				break;
+			}
+		}
+		
+		if(pageNo <= totalPage) {
+			pageNavi += "<li class='dm-page-next'>";
+			pageNavi += "<a class='dm-page-item' onclick='receiveDm("+pageNo+")'>다음</a>";
+			pageNavi += "</li>";
+		}
+		
+		pageNavi += "</div>";
+		map.put("pageNavi", pageNavi);
+		map.put("totalCount", totalCount);
+		map.put("list", list);
+		return map;
+	}
+	
+	public DirectMessage selectOneSendDm(int dmNo) {
+		return dao.selectOneSendDm(dmNo);
 	}
 
+	@Transactional
+	public DirectMessage selectOneReceiveDm(int dmNo) {
+		int result = dao.updateDmReadCheck(dmNo);
+		if(result > 0) {
+			return dao.selectOneReceiveDm(dmNo);
+		} else {
+			return null;
+		}
+	}
+
+	@Transactional
+	public int insertReplyDm(DirectMessage dm) {
+		return dao.insertReplyDm(dm);
+	}
 	/*****************************************************/
 	
 	public Member selectOneProfile(int memberNo) {
@@ -173,9 +328,18 @@ public class MemberService {
 		int end = numPerPage * reqPage - 1;
 		int start = end - numPerPage + 1;
 		
-		ArrayList<AppliedWalkInfo> appliedList = dao.selectMyApplyList(memberId, start, end);
+		ArrayList<AppliedWalkInfo> appliedAllList = dao.selectMyApplyList(memberId, start, end);
 		
-		int totalCount = dao.selectMyApplyCount(memberId);
+		ArrayList<AppliedWalkInfo> appliedShowList = new ArrayList<AppliedWalkInfo>();
+		for(int i=start; i<=end; i++) {
+			if(i == appliedAllList.size()) {
+				break;
+			}
+			
+			appliedShowList.add(appliedAllList.get(i));
+		}
+		
+		int totalCount = appliedAllList.size();
 		int totalPage = 0;
 		if(totalCount % numPerPage == 0) {
 			totalPage = totalCount / numPerPage;
@@ -220,17 +384,21 @@ public class MemberService {
 		}
 		pageNavi += "</ul>";
 		
-		WalkPageData<AppliedWalkInfo> wpd = new WalkPageData<>(appliedList, pageNavi);
+		WalkPageData<AppliedWalkInfo> wpd = new WalkPageData<>(appliedShowList, pageNavi);
 		
 		return wpd;
 	}
 
-	public WalkPageData<Walk> selectMyAttendList(int memberNo, String memberId, int reqPage) {
-		//ArrayList<Walk> myMadeList = dao.selectMyMadeList(memberNo);
+	public ArrayList<Walk> selectMyAttendList(int memberNo, String memberId) {
+		ArrayList<Walk> myMadeList = dao.selectMyMadeList(memberNo);
 		
-		//ArrayList<Walk> myAppliedList = dao.selectMyAppliedList(memberId);
+		ArrayList<Walk> myAppliedList = dao.selectMyAppliedList(memberId);
 		
+		ArrayList<Walk> myAttendList = new ArrayList<Walk>();
+		myAttendList.addAll(myMadeList);
+		myAttendList.addAll(myAppliedList);
 		
-		return null;
+		return myAttendList;
 	}
+
 }

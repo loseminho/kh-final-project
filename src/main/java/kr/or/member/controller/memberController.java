@@ -508,11 +508,11 @@ public class memberController {
 	
 	@ResponseBody
 	@RequestMapping(value="/selectAllSendDm.do", produces="application/json;charset=utf-8")
-	public String selectAllSendDm(@SessionAttribute Member m) {
+	public String selectAllSendDm(@SessionAttribute Member m, int reqPage) {
 		int memberNo = m.getMemberNo();
-		ArrayList<DirectMessage> list = service.selectAllSendDm(memberNo);
-		if(list != null) {
-			return new Gson().toJson(list);
+		HashMap<String, Object> map = service.selectAllSendDm(memberNo, reqPage);
+		if(map != null) {
+			return new Gson().toJson(map);
 		} else {
 			return "null";
 		}
@@ -520,14 +520,39 @@ public class memberController {
 	
 	@ResponseBody
 	@RequestMapping(value="/selectAllReceiveDm.do", produces="application/json;charset=utf-8")
-	public String selectAllReceiveDm(@SessionAttribute Member m) {
+	public String selectAllReceiveDm(@SessionAttribute Member m, int reqPage) {
 		int memberNo = m.getMemberNo();
-		ArrayList<DirectMessage> list = service.selectAllReceiveDm(memberNo);
-		if(list != null) {
-			return new Gson().toJson(list);
+		HashMap<String, Object> map = service.selectAllReceiveDm(memberNo, reqPage);
+		if(map != null) {
+			return new Gson().toJson(map);
 		} else {
 			return "null";
 		}
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/selectOneSendDm.do", produces="application/json;charset=utf-8")
+	public String selectOneSendDm(int dmNo) {
+		DirectMessage dm = service.selectOneSendDm(dmNo);
+		return new Gson().toJson(dm);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/selectOneReceiveDm.do", produces="application/json;charset=utf-8")
+	public String selectOneReceiveDm(int dmNo) {
+		DirectMessage dm = service.selectOneReceiveDm(dmNo);
+		return new Gson().toJson(dm);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/insertReplyDm.do")
+	public String insertReplyDm(@SessionAttribute Member m, DirectMessage dm) {
+		dm.setSenderNo(m.getMemberNo());
+		dm.setSenderId(m.getMemberId());
+		dm.setSenderName(m.getMemberNickname());
+		
+		int result = service.insertReplyDm(dm);
+		return "result";
 	}
 	
 	/*****************************************************/
@@ -585,9 +610,9 @@ public class memberController {
 	
 	@ResponseBody
 	@RequestMapping(value="/selectMyAttendList.do", produces="application/json;charset=utf-8")
-	public String selectMyAttendList(int memberNo, String memberId, int reqPage) {
-		WalkPageData<Walk> wpd = service.selectMyAttendList(memberNo, memberId, reqPage);
+	public String selectMyAttendList(int memberNo, String memberId) {
+		ArrayList<Walk> list = service.selectMyAttendList(memberNo, memberId);
 		
-		return new Gson().toJson(wpd);
+		return new Gson().toJson(list);
 	}
 }

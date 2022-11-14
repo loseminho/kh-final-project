@@ -121,7 +121,7 @@
 }
 
 .dogprofile .info-box > label > span {
-	color: red;
+	color: #1abc9c;
 }
 
 .dogprofile .info-box > .input {
@@ -130,7 +130,6 @@
     border: none;
     border-bottom: 1px solid #ccc;
     background-color: transparent;
-    padding-left: 10px;
     font-size: 16px;
     outline: none;
     text-align:center;
@@ -221,7 +220,7 @@
 }
 
 .dogprofile .modal-content{
-	padding: 20px 20px 40px 20px;
+	padding: 0px 20px 20px 20px;
 	text-align : center;
 }
 

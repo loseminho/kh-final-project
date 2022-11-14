@@ -22,5 +22,34 @@
 		</tbody>
 	</table>
 </div>
+<div class="dmPageNavi"></div>
+
+<!-- 쪽지 모달 -->
+<div id="receiveDm-modal" class="modal-wrapper" style="display:none;">
+	<div class="modal">
+		<div class="modal-header">				
+			<button id="closeModalBtn" onclick="closeReceiveDmModal();">
+				<i class="fa-solid fa-xmark"></i>
+			</button>
+		</div>
+		<div class="modal-content">
+			쪽지 분류 : <span class="dmCate"></span><br>
+			보낸 날짜 : <span class="dmDate"></span><br>
+			보낸 사람 : <span class="sender"></span><br>
+			<br>
+			<div class="dmContentDiv">
+				<span class="dmContent"></span>
+			</div> 
+			<input type="hidden" id="dmCate">
+			<input type="hidden" id="receiverNo">
+			<div class="reply-box">
+				<textarea name="dmContent" style="display:none;" maxlength="150"></textarea>
+				<br>
+				<button type="button" id="dmReplyBtn" onclick="dmReply();">답장하기</button>
+				<button type="button" id="dmReplyCancelBtn" onclick="cancelReply();" style="display:none;">취소</button>
+			</div>
+		</div>
+	</div>
+</div>
 
 <script src="/resources/js/member/mypage/myPage_receiveDm.js"></script>

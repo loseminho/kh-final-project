@@ -86,7 +86,41 @@
 		    and apply_stat = 2	
 	</select>
 	
-	<select id="selectAllSendDm" parameterType="int" resultType="dm">
+	<select id="selectAllSendDm" parameterType="map" resultType="dm">
+		SELECT * 
+		FROM (SELECT ROWNUM AS RNUM, s.* 
+		from (select
+		    dm_no as dmNo,
+		    dm_content as dmContent,
+		    m.member_nickname as receiverName,
+		    m.member_id as receiverId,
+		    to_char(dm_date, 'yy/mm/dd') as dmDate,
+		    read_check as readCheck,
+		    dm_cate as dmCate
+		from dm d left join member_tbl m on (d.receiver = m.member_no)
+		where sender = #{memberNo}
+		order by dm_no desc)s)
+		WHERE RNUM BETWEEN #{start} AND #{end}
+	</select>
+	
+	<select id="selectAllReceiveDm" parameterType="map" resultType="dm">
+		SELECT * 
+		FROM (SELECT ROWNUM AS RNUM, r.* 
+		from (select
+		    dm_no as dmNo,
+		    dm_content as dmContent,
+		    member_nickname as senderName,
+		    member_id as senderId,
+		    to_char(dm_date, 'yy/mm/dd') as dmDate,
+		    read_check as readCheck,
+		    dm_cate as dmCate
+		from dm
+		where receiver = #{memberNo}
+		order by dm_no desc)r)
+		WHERE RNUM BETWEEN #{start} AND #{end}
+	</select>
+	
+	<select id="selectOneSendDm" parameterType="int" resultType="dm">
 		select
 		    dm_no as dmNo,
 		    dm_content as dmContent,
@@ -96,22 +130,40 @@
 		    read_check as readCheck,
 		    dm_cate as dmCate
 		from dm d left join member_tbl m on (d.receiver = m.member_no)
-		where sender = #{_parameter}
-		order by dm_no desc
+		where dm_no = #{_parameter}
 	</select>
 	
-	<select id="selectAllReceiveDm" parameterType="int" resultType="dm">
+	<select id="selectOneReceiveDm" parameterType="int" resultType="dm">
 		select
 		    dm_no as dmNo,
 		    dm_content as dmContent,
+		    sender as senderNo,
 		    member_nickname as senderName,
 		    member_id as senderId,
 		    to_char(dm_date, 'yy/mm/dd') as dmDate,
 		    read_check as readCheck,
 		    dm_cate as dmCate
-		from dm
-		where receiver = #{_parameter}
-		order by dm_no desc
+		from dm d
+		where dm_no = #{_parameter}
+	</select>
+	
+	<insert id="insertReplyDm" parameterType="dm">
+		insert into dm
+		values (dm_seq.nextval, #{senderNo}, #{receiverNo}, #{dmContent}, sysdate, 0, #{senderId}, #{senderName}, #{dmCate})
+	</insert>
+	
+	<update id="updateDmReadCheck" parameterType="int">
+		update dm
+		set read_check = 1
+		where dm_no = #{_parameter}
+	</update>
+	
+	<select id="selectSendDmCount" parameterType="int" resultType="int">
+		select count(*) from dm where sender = #{_parameter}
+	</select>
+	
+	<select id="selectReceiveDmCount" parameterType="int" resultType="int">
+		select count(*) from dm where receiver = #{_parameter}
 	</select>
 	
 	<!-- ***************************************************** -->
@@ -170,14 +222,29 @@
 			member_id = #{_parameter}
 	</select>
 	
-	<select id="selectMyApplyCount" parameterType="string" resultType="_int">
+	<select id="selectMyMadeList" parameterType="_int" resultType="w">
 		select
-			count(wm_no)
+			wm_title as wmTitle,
+			wm_meet_time as wmMeetTime,
+			wm_addr as wmAddr	
 		from
-			walk_mate_tbl
+			walk_mate_tbl	
+		where
+			wm_leader = #{_parameter}
+	</select>
+	
+	<select id="selectMyAppliedList" parameterType="string" resultType="w">
+		select
+			wm_title as wmTitle,
+			wm_meet_time as wmMeetTime,
+			wm_addr as wmAddr	
+		from
+			walk_mate_tbl	
 		join
 			wm_apply_tbl using(wm_no)
 		where
-			member_id = #{_parameter}
+			member_id = #{_parameter} 
+			and
+			apply_stat = 0
 	</select>
 </mapper>
