@@ -35,24 +35,46 @@
 			<div class="row-part" style="height:150px;">	
 				<input id="imageFile1"  type="file" class="photo" name="photo" style="display:none;">
 				<input type="hidden" name="pastFileNo" value="${md.fileList[0].fileNo }" disabled>
+				<c:choose>
+					<c:when test="${not empty md.fileList[0].fileNo }">
+						<input type="hidden" name="procedure" value="1">
+					</c:when>
+					<c:otherwise>
+						<input type="hidden" name="procedure" value="1" disabled>
+					</c:otherwise>
+				</c:choose>
 				<input type="hidden" name="pastFilePath" value="${md.fileList[0].filePath }" disabled>
-				<input type="hidden" name="pastFileName" value="${md.fileList[0].fileName }" disabled>
 			<div class="preview-box">  
 				<div class="input-btn">+</div>
+				<span class="thumb-nail">대표♥</span>
 				<img src="/resources/upload/market/${md.fileList[0].filePath }" class="preview">
 			</div>
 				<input id="imageFile2"  type="file" class="photo" name="photo" style="display:none;">
 				<input type="hidden" name="pastFileNo" value="${md.fileList[1].fileNo }" disabled>
 				<input type="hidden" name="pastFilePath" value="${md.fileList[1].filePath }" disabled>
-				<input type="hidden" name="pastFileName" value="${md.fileList[1].fileName }" disabled>
+				<c:choose>
+					<c:when test="${not empty md.fileList[1].fileNo }">
+						<input type="hidden" name="procedure" value="2">
+					</c:when>
+					<c:otherwise>
+						<input type="hidden" name="procedure" value="2" disabled>
+					</c:otherwise>
+				</c:choose>
 			<div class="preview-box">
-				<div class="input-bt n">+</div>
-					<img src="/resources/upload/market/${md.fileList[1].filePath }" class="preview">
+				<div class="input-btn">+</div>
+				<img src="/resources/upload/market/${md.fileList[1].filePath }" class="preview">
 			</div>
 			<input id="imageFile3" type="file" class="photo" name="photo" style="display:none;">
 			<input type="hidden" name="pastFileNo" value="${md.fileList[2].fileNo }" disabled>
-			<input type="hidden" name="pastFilePath" value="${md.fileList[2].filePath }" disabled>						
-			<input type="hidden" name="pastFileName" value="${md.fileList[2].fileName }" disabled>						
+			<input type="hidden" name="pastFilePath" value="${md.fileList[2].filePath }" disabled>	
+				<c:choose>
+					<c:when test="${not empty md.fileList[2].fileNo }">
+						<input type="hidden" name="procedure" value="3">
+					</c:when>
+					<c:otherwise>
+						<input type="hidden" name="procedure" value="3" disabled>
+					</c:otherwise>
+				</c:choose>						
 			<div class="preview-box">
 				<div class="input-btn">+</div>
 				<img src="/resources/upload/market/${md.fileList[2].filePath }" class="preview">

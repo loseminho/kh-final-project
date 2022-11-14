@@ -12,4 +12,5 @@ public class MarketDogFile {
 	private int fileNo;
 	private String filePath;
 	private String fileName; 
+	private int fileProcedure;
 }
