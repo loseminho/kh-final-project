@@ -105,10 +105,19 @@ function closeReceiveDmModal() {
 }
 
 function dmReply() {
-	$("[name=dmContent]").show();
-	$("#dmReplyBtn").text("발송하기");
-	$("#dmReplyBtn").attr("onclick", "sendReply();");
-	$("#dmReplyCancelBtn").show();
+	const loginLevel = $("#loginLevel").val();
+	if(loginLevel != 3) {
+		$("[name=dmContent]").show();
+		$("#dmReplyBtn").text("발송하기");
+		$("#dmReplyBtn").attr("onclick", "sendReply();");
+		$("#dmReplyCancelBtn").show();
+	} else { // 멤버 레벨이 3이면
+		Swal.fire({
+			html: '관리자에 의해 이용이 제한되어<br>쪽지 발송이 불가능합니다.',
+			confirmButtonColor: '#1abc9c'
+		})
+		return;
+	}
 }
 
 function cancelReply() {

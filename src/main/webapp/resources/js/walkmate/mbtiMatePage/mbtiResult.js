@@ -67,6 +67,15 @@ function closeDogModal() {
 }
 
 $("#dmBtn").on("click", function(){
+	const loginLevel = $("#loginLevel").val();
+	if(loginLevel == 3) {
+		Swal.fire({
+			html: '관리자에 의해 이용이 제한되어<br>쪽지 발송이 불가능합니다.',
+			confirmButtonColor: '#1abc9c'
+		})
+		return;
+	}
+
 	const dogNo = $("#dogNo").val();
 	$(this).hide();
 	

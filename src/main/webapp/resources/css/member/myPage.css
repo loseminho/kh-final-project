@@ -7,8 +7,8 @@
 	justify-content: center;
 	align-items: flex-start;
 	width: 1200px;
-	margin: 0 auto;
-	padding-top:80px;
+	margin: 0px auto;
+	margin-top:80px;
 	font-family : gs-Medium;
 	flex-grow:1;
 }
