@@ -117,7 +117,6 @@ public class BoardController {
 	//문의게시판 댓글 insert 
 	@RequestMapping(value="/insertQnaComment.do")
 	public String insertQnaComment(QnaComment qc,Model model) {
-		System.out.println(qc);
 		int result = service.insertQnaComment(qc);
 		if(result >0) {
 			model.addAttribute("qc",qc);
