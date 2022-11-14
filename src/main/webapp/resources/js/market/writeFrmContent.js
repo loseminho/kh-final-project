@@ -8,16 +8,18 @@ const previewBox= $(".preview-box");
 $(document).ready(function(){
 	$(".photo").change(function(){
 		fidx = $(".photo").index(this);
-		console.log(fidx);	
-		console.log(this.files);
-		
 		 if (this.files && this.files[0]) {
 	 		reader.readAsDataURL(this.files[0]);
 	 	}
+	 	
+	 	const idx = $(".photo").index(this);
+	 	console.log("input tag fileNo::"+$(".photo").eq(idx).nextAll('input').attr('disabled') );
+	 	$(".photo").eq(idx).nextAll('input').attr("disabled",true);
+	 	console.log("input tag fileNo::"+$(".photo").eq(idx).nextAll('input').disabled);
 	});
 	previewBox.on("click",function(){
 
-	 	const idx = previewBox.index(this);
+	 	const idx = previewBox.index(this); 
 	 	
 		console.log(idx);
 		
@@ -25,6 +27,8 @@ $(document).ready(function(){
  	
  	});
 });
+
+
 
 
 const tooltip = $(".tooltip");

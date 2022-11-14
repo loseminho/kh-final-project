@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.or.market.model.dao.MarketDao;
 import kr.or.market.model.vo.DogType;
@@ -76,16 +77,22 @@ public class MarketService {
 		return list;
 	}
 
-	public int updateMarket(MarketDog md) {
-		// TODO Auto-generated method stub
+	public int updateMarket(MarketDog md, String[] pastFileName, Integer[] pastFileNo, MultipartFile[] photo) {
+		System.out.println(md.getFileList());
+		for(int i=0;i<3;i++) {
+			System.out.println("pastFileNo::::::"+pastFileNo[i]);
+			System.out.println("pastList::::::"+pastFileName[i]);
+			System.out.println("photo:::::::"+photo[i].getOriginalFilename());
+			//System.out.println("newList::::::"+md.getFileList());
+		}
+		
 		dao.updateMarket(md);
 		
 		ArrayList<MarketDogFile> mdf = new ArrayList<MarketDogFile>();
 		mdf = md.getFileList();
-		System.out.println("mdf"+mdf);
-		System.out.println("md"+md);
 		
 		if(mdf == null) {
+			System.out.println("업데이트 서비스:::");
 			return 0;
 		}else {
 			dao.deleteMarketFile(md);
@@ -94,5 +101,9 @@ public class MarketService {
 			}
 		}
 		return 0;
+	}
+
+	public int deleteMarket(int marketNo) {
+		return dao.deleteMarket(marketNo);
 	}
 }

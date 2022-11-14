@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletRequest;
@@ -131,18 +132,29 @@ public class MarketController {
 	}
 	
 	@RequestMapping(value="/updateMarket.do")
-	public String updateMarket(MarketDog md, MultipartFile[] photo,HttpServletRequest request) {
+	public String updateMarket(MarketDog md, MultipartFile[] photo,HttpServletRequest request, String[] pastFilePath, String[] pastFileName, Integer[] pastFileNo) {
+		ArrayList<MarketDogFile> pastList = new ArrayList<MarketDogFile>();
+		System.out.println("길이길이"+pastFileName.length);
+		System.out.println("길이길이"+photo.length);
+		for(int i=0;i<pastFilePath.length;i++) {
+			MarketDogFile mdf1 = new MarketDogFile();
+			mdf1.setMarketNo(md.getMarketNo());
+			mdf1.setFileName(pastFileName[i]);
+			mdf1.setFilePath(pastFilePath[i]);
+			pastList.add(mdf1);
+		}
+		
+		for(int i=0;i<pastFileName.length;i++) {
+			System.out.println(pastFileName[i]);
+		}
 		String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/market/");
 		ArrayList<MarketDogFile> list = new ArrayList<MarketDogFile>();
-		if(photo[0].isEmpty()) {
-		}else{
 			for(MultipartFile file : photo) {
 				if(file.isEmpty()) {
 					continue;
 				}
 				String fileName = file.getOriginalFilename();
 				String filePath = fileRename.fileRename(savePath, fileName);
-				
 				File upFile = new File(savePath+filePath);
 				try {
 					FileOutputStream fos = new FileOutputStream(upFile);
@@ -164,8 +176,13 @@ public class MarketController {
 					e.printStackTrace();
 				}
 			}
-		}
-		int result = service.updateMarket(md);
+		int result = service.updateMarket(md, pastFileName,pastFileNo,photo);
+		return "redirect:saleDogList.do";
+	}
+	
+	@RequestMapping(value="/deleteMarket.do")
+	public String deleteMarket(int marketNo) {
+		int result = service.deleteMarket(marketNo);
 		return "redirect:saleDogList.do";
 	}
 }

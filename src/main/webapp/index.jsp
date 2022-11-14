@@ -58,6 +58,9 @@
 			<div class="popup-content">
 				<img src="/resources/img/popup/popup3.png">
 			</div>
+			<div class="popup-content">
+				<img src="/resources/img/popup/popup4.png">
+			</div>
 		<button class="popup-close">닫기</button>
 		<button class="popup-close-day">오늘하루보지않기</button>
 		<button class="popup-back">이전</button>

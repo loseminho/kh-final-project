@@ -1,6 +1,9 @@
 $(function(){
 	$("#chat-board").draggable();
 });
+$(function(){
+	$(".popup-modal").draggable();
+});
 
 $(".managerMenu").on("mouseenter",function(){
 	$(".manager-subtitle").stop().slideDown();

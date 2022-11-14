@@ -122,4 +122,15 @@ from market_tbl mt join dog_type dt on(mt.type_code=dt.type_code) left join memb
 		delete from market_file_tbl
 		where market_no = #{marketNo}
 	</delete>
+	<select id="deleteMarket">
+		delete from market_tbl where market_no = #{_parameter}
+	</select>
+	<select id="selectFileName" resultType="mdf">
+		select 
+		    file_no as fileNo,
+		    file_name as fileName,
+		    file_path as filePath
+		from market_file_tbl
+		where market_no = #{_parameter}
+	</select>
 </mapper>
