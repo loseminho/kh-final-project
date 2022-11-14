@@ -3,7 +3,7 @@
 <mapper namespace="qnaboard">
 <insert id="insertQnaBoard" parameterType="q">
 	insert into qna_tbl values
-	(seq_qna_no.nextval,#{qnaWriter},#{qnaTitle},#{qnaContent},#{qnaViews},to_char(sysdate,'yyyy-mm-dd'),#{qnaCateNo},1,#{qnaSecret})
+	(seq_qna_no.nextval,#{qnaWriter},#{qnaTitle},#{qnaContent},#{qnaViews},to_char(sysdate,'yyyy-mm-dd'),#{qnaCateNo},0,#{qnaSecret})
 </insert>
 <select id="selectQnaBoardNo" resultType="_int">
 	select max(qna_no) from qna_tbl
@@ -132,5 +132,27 @@ from(select rownum as rnum, q.* from(select * from qna_tbl order by 1 desc)q) wh
 <!-- 전체 게시물 수  -->
 <select id="qnaTotalCount" resultType="_int">
 	select count(*) from qna_tbl
+</select>
+<!-- 답변 있는 조회-->
+<select id="checkComment" resultType="_int">
+	select count(*) as qnaStauts from qna_comment where qna_no = #{qnaNo}
+</select>
+<!-- 답변 있는 경우 상태 업데이트 -->
+<update id="changeQnaStatus" parameterType="map" >
+	update qna_tbl set 
+	<choose>
+		<when test="qnaStatus == 0">
+			qna_status = 0
+		</when>
+		<otherwise>
+			qna_status = 1
+		</otherwise>
+	</choose>
+	where qna_no = #{qc}
+</update>
+<!-- 파일다운 구현  -->
+<select id="qnaFileDown" resultType="qf">
+	select * from qna_file_tbl
+	where file_no = #{_parameter}
 </select>
 </mapper>
