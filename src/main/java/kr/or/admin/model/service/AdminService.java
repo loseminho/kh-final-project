@@ -53,5 +53,14 @@ public class AdminService {
 		
 		return list;
 	}
-
+	/*
+	//관리자 신고처리
+	public int reportMember(AdminReport ar) {
+		int result = dao.reportMember(ar);
+		if(result>0) {
+			if(ar.getOptionVal()==3) {
+		}
+		return result;
+	}
+*/
 }

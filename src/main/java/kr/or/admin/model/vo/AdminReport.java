@@ -19,4 +19,6 @@ public class AdminReport {
 	
 	//신고 횟수 
 	private int reportCount;
+	//select 값 
+	private int optionVal;
 }

@@ -45,6 +45,7 @@ select
 		</when>
 	</choose>
 </select>
+<!-- 신고하기 리스트 더보기  -->
 <select id="moreAdminReport" parameterType="map" resultType="ar">
 	select 
 		report_no as reportNo,
@@ -65,4 +66,9 @@ select
 	using (reported_member_no)
     where rnum between #{start} and #{end}
 </select>
+<!-- 신고처리 회원 등급 업데이트
+<select id="updateReportMemberLevel" parameterType="ar" resultType="_int">
+	
+</select>
+-->
 </mapper>

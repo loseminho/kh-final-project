@@ -234,7 +234,8 @@ public class BoardController {
 	public void qnaFileDown(int fileNo, HttpServletRequest request, HttpServletResponse response) throws IOException {
 		//fileNo : filename,filepath db 조회
 		//request : 파일 위치하는 경로
-		//response : 사용자에게 파일 보내주기 위해 필요 
+		//response : 사용자에게 파일 보내주기 위해 필요
+		//클릭한 파일은 하나이므로 QnaFile 로 가져옴 
 		QnaFile file = service.qnaFileDown(fileNo);
 		String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/board/");
 		String downFile = savePath+file.getFilepath();

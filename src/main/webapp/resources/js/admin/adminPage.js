@@ -251,9 +251,8 @@ $("#adminReportAjax-btn").on("click",function(){
                 tr.append("<td>"+data[i].reportDate+"</td>");
                 
               	tr.append("<td>"+"<select class='report-select'>"+
-				"<option value='1'>"+"선택하세요"+"</option>"+
-				"<option value='2'>"+"접근제한"+"</option>"+
-				"<option value='3'>"+"탈퇴"+"</option>"+
+				"<option value='1'>"+"접근제한"+"</option>"+
+				"<option value='2'>"+"탈퇴"+"</option>"+
               	+"</select>"+"</td>");
                 tr.append("<input type='hidden' class='reportedMemberNo' value="+data[i].reportedMemberNo+">");				
 				tr.append("<td>"+"<button class='adminAnswer'>"+"변경"+"</button>"+"</td>");
@@ -282,10 +281,13 @@ $("#adminReportAjax-btn").on("click",function(){
 	}); //ajax 신고내역 더보기 끝 
 });
 
+
 //신고 
 $(document).on("click",".adminAnswer",function(){
 	const index = $(".adminAnswer").index(this);
 	const reportedMemberNo = $(".reportedMemberNo").eq(index).val();
+	const optionVal = $(".report-select").eq(index).val();
 	console.log(reportedMemberNo);
-	location.href="/reportMember.do?reportMemberNo=reportMemberNo";
+	console.log(optionVal);
+	location.href="/reportMember.do?reportedMemberNo="+reportedMemberNo+"&optionVal="+optionVal;
 });

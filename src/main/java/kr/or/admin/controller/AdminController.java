@@ -25,7 +25,6 @@ public class AdminController {
 	public String adminPageFrm (Model model) {
 		int totalCount = service.adminQnaCount();
 		model.addAttribute("totalCount",totalCount);
-		System.out.println(totalCount);
 		return "admin/adminPage";
 	}
 	
@@ -37,7 +36,6 @@ public class AdminController {
 		ArrayList<AdminQna> list = service.moreAdminQna(start, amount);
 		Gson gson = new Gson();
 		String result = gson.toJson(list);
-		System.out.println(result);
 		return result;
 	}
 	
@@ -58,14 +56,15 @@ public class AdminController {
 		ArrayList<AdminReport> list = service.moreAdminReport(start, amount);
 		Gson gson = new Gson();
 		String result = gson.toJson(list);
-		System.out.println(result);
 		return result;
 	}
 	/*
-	//신고목록 
+	//신고처리하기 
 	@RequestMapping(value="/reportMember.do")
 	public String reportMember(AdminReport ar, Model model) {
 		System.out.println(ar);
+		int result = service.reportMember(ar);
+		
 	}
 	*/
 }

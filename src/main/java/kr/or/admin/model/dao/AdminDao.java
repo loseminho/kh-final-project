@@ -37,5 +37,10 @@ public class AdminDao {
 		List list = sqlSession.selectList("admin.moreAdminReport",map);
 		return (ArrayList<AdminReport>)list;
 	}
+	//관리자 신고하기
+	public int reportMember(AdminReport ar) {
+		int result = sqlSession.update("admin.updateReportMemberLevel",ar);
+		return 0;
+	}
 	
 }
