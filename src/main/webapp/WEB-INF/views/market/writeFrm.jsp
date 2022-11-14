@@ -29,17 +29,20 @@
 			<input type="hidden" name="memberId" value="${sessionScope.m.memberId }">
 			<div class="sub-title"><span>*</span>사진</div>
 			<div class="row-part" style="height:150px;">
-				<input id="imageFile1"  type="file" class="photo" name="photo" style="display:none;">
+				<input id="imageFile1"  type="file" class="photo" name="photo" style="display:none;" disabled>
+				<input type="hidden" name="procedure" value="1" disabled>
 			<div class="preview-box">
 				<div class="input-btn">+</div>
 				<img src="" class="preview">
 			</div>
-			<input id="imageFile2"  type="file" class="photo" name="photo" style="display:none;">
+			<input id="imageFile2"  type="file" class="photo" name="photo" style="display:none;" disabled>
+			<input type="hidden" name="procedure" value="2" disabled>
 			<div class="preview-box">
 				<div class="input-btn">+</div>
 				<img src="" class="preview">
 			</div>
-			<input id="imageFile3" type="file" class="photo" name="photo" style="display:none;">
+			<input id="imageFile3" type="file" class="photo" name="photo" style="display:none;" disabled>
+			<input type="hidden" name="procedure" value="3" disabled>
 			<div class="preview-box">
 				<div class="input-btn">+</div>
 				<img src="" class="preview">
