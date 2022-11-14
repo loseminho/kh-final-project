@@ -1,10 +1,11 @@
 function receiveDm(reqPage) {
 	$("#receiveDmTable>tbody>tr").remove();
+	const dmCate = $("#receiveDmCate").val();
 	
 	$.ajax({
         url  : '/selectAllReceiveDm.do',
         type : 'post',
-        data : {"reqPage" : reqPage},
+        data : {"reqPage" : reqPage, "dmCate" : dmCate},
         success : function(data){
         	const dmList = data.list;
         	const pageNavi = data.pageNavi;
@@ -93,6 +94,11 @@ function receiveDmModal(reqPage,dmNo) {
         }
 	});
 }
+
+$("#receiveDmCate").on("change", function(){
+	const result = $("#receiveDmCate").val();
+	receiveDm(1);
+});
 
 function closeReceiveDmModal() {
 	$("#receiveDm-modal").hide();

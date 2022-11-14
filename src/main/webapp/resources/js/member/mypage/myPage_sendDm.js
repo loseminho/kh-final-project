@@ -1,10 +1,11 @@
 function sendDm(reqPage) {
 	$("#sendDmTable>tbody>tr").remove();
+	const dmCate = $("#sendDmCate").val();
 	
 	$.ajax({
         url  : '/selectAllSendDm.do',
         type : 'post',
-        data : {"reqPage" : reqPage},
+        data : {"reqPage" : reqPage, "dmCate" : dmCate},
         success : function(data){
         	const dmList = data.list;
         	const pageNavi = data.pageNavi;
@@ -88,6 +89,11 @@ function sendDmModal(dmNo) {
         }
 	});
 }
+
+$("#sendDmCate").on("change", function(){
+	const result = $("#sendDmCate").val();
+	sendDm(1);
+});
 
 function closeSendDmModal() {
 	$("#sendDm-modal").hide();

@@ -92,12 +92,12 @@ public class MemberDao {
 		return sqlSession.update("member.updateDmReadCheck", dmNo);
 	}
 
-	public int selectSendDmCount(int memberNo) {
-		return sqlSession.selectOne("member.selectSendDmCount", memberNo);
+	public int selectSendDmCount(HashMap<String, Object> map) {
+		return sqlSession.selectOne("member.selectSendDmCount", map);
 	}
 	
-	public int selectReceiveDmCount(int memberNo) {
-		return sqlSession.selectOne("member.selectReceiveDmCount", memberNo);
+	public int selectReceiveDmCount(HashMap<String, Object> map) {
+		return sqlSession.selectOne("member.selectReceiveDmCount", map);
 	}
 	
 	/*****************************************************/
