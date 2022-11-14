@@ -147,6 +147,7 @@
 	height:30px;
 	font-size: 16px;
 	font-family:gs-Medium;
+	outline: none;
 }
 
 .dogprofile #dogType2 {
@@ -155,6 +156,7 @@
 	margin: 0 auto;
 	font-size: 16px;
 	font-family:gs-Medium;
+	outline: none;
 }
 
 .dogprofile .btn-box {
