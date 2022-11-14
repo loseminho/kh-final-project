@@ -51,6 +51,7 @@
 			<div class="reply-box">
 				<textarea name="dmContent" style="display:none;" maxlength="150"></textarea>
 				<br>
+				<input type="hidden" id="loginLevel" value="${sessionScope.m.memberLevel }">
 				<button type="button" id="dmReplyBtn" onclick="dmReply();">답장하기</button>
 				<button type="button" id="dmReplyCancelBtn" onclick="cancelReply();" style="display:none;">취소</button>
 			</div>

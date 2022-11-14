@@ -186,7 +186,8 @@
 	      				<label style="font-size: 16px; margin:7px 0;"><input type="radio" name="dogVacc" value="X" onclick="return(false);"> 안 했어요</label>
 				    </div>
 				    <div class="btn-box">
-				        <button type="button" class="btn" id="dmBtn">견주에게 쪽지보내기</button>
+				    	<input type="hidden" id="loginLevel" value="${sessionScope.m.memberLevel }">
+						<button type="button" class="btn" id="dmBtn">견주에게 쪽지보내기</button>
 				    </div>
 				    <div class="send-dm-wrap" style="display:none;">
 						<div class="send-dm-title">

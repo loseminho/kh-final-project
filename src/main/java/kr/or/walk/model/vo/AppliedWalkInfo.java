@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AppliedWalkInfo {
+	private int wmNo;
 	private String wmTitle;
 	private String wmMeetTime;
 	private String wmAddr;

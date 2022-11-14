@@ -1,0 +1,84 @@
+.wm-attend-profile-wrap{
+	margin-top: 20px;
+	min-height: calc(100vh - 230px);
+}
+
+.attend-person-one{
+	margin-top: 30px;
+}
+
+.attend-profile-top{
+	width: 475px;
+	overflow: auto;
+}
+
+.attend-nicname{
+	width: 150px;
+	margin-right: 25px;
+	overflow: auto;
+	float: left;
+}
+
+.attend-nicname>p:nth-child(1){
+	float: left;
+}
+
+.attend-nicname>p:nth-child(2){
+	float: right;
+}
+
+.page-link-box{
+	width: 300px;
+	overflow: auto;
+	float: right;
+}
+
+.page-link-box>p:nth-child(1){
+	float: left;
+}
+
+.page-link-box>p:nth-child(2){
+	float: right;
+}
+
+.attend-dog-one{
+	width: 475px;
+	overflow: auto;
+}
+
+.attend-dog-one>div{
+	float: left;
+}
+
+.attend-dog-one>table{
+	float: right;
+}
+
+.attend-dog-img-box{
+	width: 148px;
+	height: 148px;
+	overflow: hidden;
+	border: 1px solid #e1e1e1;
+}
+
+.attend-dog-img-box>img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.attend-dog-one>table{
+	width: 300px;
+	height: 150px;
+	border-collapse: collapse;
+}
+
+.attend-dog-one>table th{
+	width: 50px;
+	background-color: #1abc9c;
+	border: 1px solid #e1e1e1;
+}
+
+.attend-dog-one>table td{
+	border: 1px solid #e1e1e1;
+}
