@@ -11,4 +11,5 @@ public class MyCalendar {
 	private int wmNo;
 	private String wmTitle;
 	private String wmMeetTime;
+	private String wmAddr;
 }

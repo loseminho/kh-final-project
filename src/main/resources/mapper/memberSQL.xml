@@ -78,7 +78,8 @@
 		select 
 		    wm_no as wmNo,
 		    wm_title as wmTitle,
-		    substr(wm_meet_time, 0, 10) as wmMeetTime
+		    substr(wm_meet_time, 0, 10) as wmMeetTime,
+		    wm_addr as wmAddr
 		from walk_mate_tbl inner join wm_apply_tbl using(wm_no)
 		where 
 		    member_id = #{_parameter}

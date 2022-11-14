@@ -17,17 +17,6 @@ function mycalendar(){
 		// editable : true,
 		nowIndicator: true, // 현재 시간 마크
 		locale: 'ko', // 한국어 설정
-		
-		//eventContent: {
-		//  html: "<div><img src='/resources/img/dogfoot.png' class='event-icon' /> 모임 일정</div>",
-		//},
-		
-		//eventDidMount: function(info) {
-        //    tippy(info.el, {
-        //        content:  info.event.extendedProps.title,//이벤트 디스크립션을 툴팁으로 가져옵니다. 
-        //   });
-        //},
-		
 		events:function(info, successCallback, failureCallback){
             $.ajax({
                url: '/selectMyCalendar.do',
@@ -41,6 +30,7 @@ function mycalendar(){
 	                           title: result[i].wmTitle,
 	                           start: result[i].wmMeetTime,
 	                           end: result[i].wmMeetTime,
+	                           description: result[i].wmAddr,
 	                           color : '#' + Math.round(Math.random() * 0xffffff).toString(16)                                           
 	                        }); // push() 끝
 	                        
@@ -50,7 +40,13 @@ function mycalendar(){
                    successCallback(events);                               
                }//success 끝                         
         	}); //ajax 끝
-        } //events 끝
+        }, //events 끝
+        
+		eventDidMount: function(info) {
+            tippy(info.el, {
+                content: info.event.title +'\r\n'+ info.event.extendedProps.description //이벤트 타이틀을 툴팁으로 가져오기 
+           });
+        }
 	});
 	
 	calendar.render(); // 달력 불러옴
