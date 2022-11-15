@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import kr.or.walk.model.dao.WalkDao;
 import kr.or.walk.model.vo.Walk;
 import kr.or.walk.model.vo.WalkFile;
+import kr.or.walk.model.vo.WalkMateComment;
 import kr.or.walk.model.vo.WmApply;
 
 @Service
@@ -36,5 +37,33 @@ public class WalkService {
 		}
 		return 0;
 	}
+	
+//	//댓글 작성
+//	public Walk writeReply(WalkMateComment wmc) {
+//		return dao.writeReply(wmc);
+//	}
+//	// 대댓글 작성
+//	public WalkMateComment writeReReply(WalkMateComment wmc) {
+//		return dao.writeReReply(wmc);
+//	}
+//	//댓글 리스트
+//	public ArrayList<WalkMateComment> replyList(WalkMateComment wmc) {
+//		ArrayList<WalkMateComment> list = dao.replyList(wmc);
+//		return list;
+//	}
+//	//댓글 삭제
+//	public WalkMateComment deleteReply(WalkMateComment wmc) {
+//		return dao.deleteReply(wmc);
+//	}
+//	//대댓글 작성
+//	public WalkMateComment deleteReReply(WalkMateComment wmc) {
+//		return dao.deleteReReply(wmc);
+//	}
+//
+//	public Walk pictureWriteReReply(WalkMateComment result) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+
 	
 }

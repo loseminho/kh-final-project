@@ -24,6 +24,7 @@ import kr.or.market.model.vo.MarketDogFile;
 import kr.or.walk.model.service.WalkService;
 import kr.or.walk.model.vo.Walk;
 import kr.or.walk.model.vo.WalkFile;
+import kr.or.walk.model.vo.WalkMateComment;
 
 @Controller
 public class WalkController {
@@ -88,4 +89,50 @@ public class WalkController {
 		int result = service.inputWalk(w);
 		return "redirect:walkMateFrm.do";
 	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value="commentLoad.do", produces="application/json;charset=utf-8")
+	public String commentLoad() {
+		return null;
+	}
+	
+//	//댓글 작성
+//	@ResponseBody
+//	@RequestMapping(value="/picture_replyList.do", produces="application/json;charset=utf-8")
+//	public String writeReply(WalkMateComment wmc) {
+//		Walk result = service.writeReply(wmc);
+//		return new Gson().toJson(result);
+//	}
+//	//대댓글 작성
+//	@ResponseBody
+//	@RequestMapping(value="/picture_write_rereply.do", produces="application/json;charset=utf-8")
+//	public String writeReReply(WalkMateComment wmc) {
+//		WalkMateComment result = service.writeReReply(wmc);
+//		result.setWmcClass(1);
+//		Walk w = service.pictureWriteReReply(result);
+//		return new Gson().toJson(w);
+//	}
+//	//댓글 리스트
+//	@ResponseBody
+//	@RequestMapping(value="/picture_replyList.do", produces="application/json;charset=utf-8")
+//	public String replyList(WalkMateComment wmc) {
+//		ArrayList<WalkMateComment> list = service.replyList(wmc);
+//		return new Gson().toJson(list);
+//	}
+//	//댓글 삭제
+//	@ResponseBody
+//	@RequestMapping(value="/picture_delete_reply.do", produces="application/json;charset=utf-8")
+//	public String deleteReply(WalkMateComment wmc) {
+//		WalkMateComment result = service.deleteReply(wmc);
+//		return new Gson().toJson(result);
+//	}
+//	//대댓글 삭제
+//	@ResponseBody
+//	@RequestMapping(value="/picture_delete_rereply.do", produces="application/json;charset=utf-8")
+//	public String deleteReReply(WalkMateComment wmc) {
+//		WalkMateComment result = service.deleteReReply(wmc);
+//		return new Gson().toJson(result);
+//	}
+	
 }
