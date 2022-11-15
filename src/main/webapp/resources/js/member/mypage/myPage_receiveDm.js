@@ -1,5 +1,4 @@
 function receiveDm(reqPage) {
-	$("#receiveDmTable>tbody>tr").remove();
 	$("#receiveDmKeyword").val("");
 	
 	const dmCate = $("#receiveDmCate").val();
@@ -9,6 +8,8 @@ function receiveDm(reqPage) {
         type : 'post',
         data : {"reqPage" : reqPage, "dmCate" : dmCate},
         success : function(data){
+			$("#receiveDmTable>tbody>tr").remove();
+			
         	const dmList = data.list;
         	const pageNavi = data.pageNavi;
         	const totalCount = data.totalCount;
