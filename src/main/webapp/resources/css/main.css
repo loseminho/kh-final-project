@@ -41,13 +41,6 @@ html, body {
     width:100%;
 }
 
-<<<<<<< HEAD
-=======
-#section3 {
-    background-image: url(/resources/img/main2.jpg);
-    background-size:100%;
-}
->>>>>>> branch 'master' of https://github.com/fgjkqm20/final-project.git
 .section2-box{
 	position:relative;
     display:inline-block;
@@ -121,18 +114,6 @@ html, body {
 	margin:0 auto;
 	margin-bottom:20px;
 	font-family: gs-Medium;
-}
-
-<!-- 세션3 -->
-.section3Content{
-	width:100vw;
-	height:100vh;
-	display:flex;
-	justify-content: center;
-	align-items: center;
-}
-.section3Content>div{
-	
 }
 
 /*header 부분*/
@@ -454,8 +435,58 @@ footer > .footer-content {
 }
 
 .customer-center{
-	height:300px;
+	cursor:pointer;
+	text-align:center;
+	line-height:110px;
+	font-size:30px;
+	height:100px;
 	width:600px;
-	background-color: #fff;
 	border-radius: 10px;
+	background-color: #DDD7CB;
 }
+
+@keyframes sectionTitleAni{
+    0%{
+        transform: rotate(1deg);
+    }
+    10%{
+        transform: rotate(0deg);
+    }
+        20%{
+        transform: rotate(1deg);
+    }
+        30%{
+        transform: rotate(0deg);
+    }
+        40%{
+        transform: rotate(1deg);
+    }
+        50%{
+        transform: rotate(1deg);
+    }
+               60%{
+        transform: rotate(1deg);
+    }
+        70%{
+        transform: rotate(1deg);
+    }    
+        80%{
+        transform: rotate(1deg);
+    } 
+                   90%{
+        transform: rotate(1deg);
+    }    
+    100%{
+        transform: rotate(0deg);
+    }
+}
+
+
+.customer-center:focus{
+	color:red;
+	/*
+	animation-name:sectionTitleAni;
+	animation-duration:2s;
+	*/
+}
+

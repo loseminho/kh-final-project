@@ -35,9 +35,12 @@
 	</div>
 	<div class="section" id="section3">
 		<div class="section3Content">
+			<div class="customer-center">
+				<span>산책갈개 소개</span>
+				<span>click!</span>
+			</div>
 		</div>
 	</div>
-	<!-- <jsp:include page="/WEB-INF/views/common/footer.jsp" /> -->
 	<div class="popup-modal" style="display:none;">
 			<div class="popup-content">
 				<img src="/resources/img/popup/popup.png">

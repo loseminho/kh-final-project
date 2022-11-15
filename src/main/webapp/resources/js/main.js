@@ -27,7 +27,7 @@ $(function(){
 				scrollTop : posTop
 			});
 
-			if (page == 1) {
+			if (page == 1 && !$.cookie("wmCookie")) {
 				$(".popup-modal").fadeIn(400);
 			}else{
 				$(".popup-modal").fadeOut(400);
