@@ -1,5 +1,7 @@
 function sendDm(reqPage) {
 	$("#sendDmTable>tbody>tr").remove();
+	$("#sendDmKeyword").val("");
+	
 	const dmCate = $("#sendDmCate").val();
 	
 	$.ajax({
@@ -97,4 +99,80 @@ $("#sendDmCate").on("change", function(){
 
 function closeSendDmModal() {
 	$("#sendDm-modal").hide();
+}
+
+function sendDmSearch(reqPage){
+	const dmKeyword = $("#sendDmKeyword").val();
+	if(dmKeyword == "") {
+		Swal.fire({
+			text: '검색어를 입력해주세요.',
+			confirmButtonColor: '#1abc9c'
+		})
+		return;
+	}
+	
+	const dmSearch = $("#sendDmSearch").val();
+	const dmCate = $("#sendDmCate").val();
+	
+	$.ajax({
+        url  : '/searchSendDm.do',
+        type : 'post',
+        data : {"reqPage" : reqPage, "dmCate" : dmCate, "dmSearch" : dmSearch, "dmKeyword" : dmKeyword},
+        success : function(data){
+			$("#sendDmTable>tbody>tr").remove();
+	
+        	const dmList = data.list;
+        	const pageNavi = data.pageNavi;
+        	const totalCount = data.totalCount;
+        	
+        	if(dmList != "") {
+	        	for(let i=0; i<dmList.length; i++) {
+	        		const tr = $("<tr>");
+	        		const noTd = $("<td>");
+	        		const cateTd = $("<td>");
+	        		const contentTd = $("<td>");
+	        		const contentDiv = $("<div class='contentDiv'>");
+	        		const receiverTd = $("<td>");
+	        		const receiverDiv = $("<div class='receiverDiv'>");
+	        		const sendDateTd = $("<td>");
+	        		const readCheckTd = $("<td>");
+	        		
+	        		noTd.text(totalCount-(dmList[i].rnum)+1);
+	        		
+	        		if(dmList[i].dmCate == "0") {
+		        		cateTd.text("입양문의");
+	        		} else {
+		        		cateTd.text("친구해요");
+	        		}
+	        		
+	        		const aTag = $("<a onclick='sendDmModal("+dmList[i].dmNo+");'></a>");
+	        		aTag.text(dmList[i].dmContent);
+	        		contentDiv.append(aTag);
+	        		contentTd.append(contentDiv);
+	        		
+	        		receiverDiv.text(dmList[i].receiverName + "(" + dmList[i].receiverId + ")");
+	        		receiverTd.append(receiverDiv);
+	        		
+	        		sendDateTd.text(dmList[i].dmDate);
+	        		
+	        		if(dmList[i].readCheck == "0") {
+		        		readCheckTd.text("읽지않음");
+	        		} else {
+		        		readCheckTd.text("읽음");
+	        		}
+	        		
+	        		tr.append(noTd).append(cateTd).append(contentTd).append(receiverTd).append(sendDateTd).append(readCheckTd);
+	        		$("#sendDmTable>tbody").append(tr);
+	        	}
+        	} else {
+        		const tr = $("<tr>");
+	        	const td = $("<td colspan='6'>");
+	        	td.text("보낸 쪽지가 없습니다.");
+	        	tr.append(td);
+	        	$("#sendDmTable>tbody").append(tr);
+        	}
+        	
+        	$(".dmPageNavi").html(pageNavi);
+        }
+    });
 }

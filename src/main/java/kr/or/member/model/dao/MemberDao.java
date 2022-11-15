@@ -151,4 +151,5 @@ public class MemberDao {
 		List list = sqlSession.selectList("myWalkMate.selectAttendMemberList", wmNo);
 		return null;
 	}
+
 }
