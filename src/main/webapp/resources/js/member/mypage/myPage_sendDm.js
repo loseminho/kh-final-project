@@ -177,3 +177,9 @@ function sendDmSearch(reqPage){
         }
     });
 }
+
+$(document).keyup(function(e) {
+   if ( e.keyCode == 27) {
+       closeSendDmModal();
+   };
+});

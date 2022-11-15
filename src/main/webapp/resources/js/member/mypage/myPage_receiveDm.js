@@ -225,3 +225,9 @@ function receiveDmSearch(reqPage){
         }
     });
 }
+
+$(document).keyup(function(e) {
+   if ( e.keyCode == 27) {
+       closeReceiveDmModal();
+   };
+});
