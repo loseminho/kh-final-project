@@ -1,6 +1,7 @@
 package kr.or.admin.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import com.google.gson.Gson;
 import kr.or.admin.model.service.AdminService;
 import kr.or.admin.model.vo.AdminQna;
 import kr.or.admin.model.vo.AdminReport;
+import kr.or.member.model.vo.Member;
 
 @Controller
 public class AdminController {
@@ -33,7 +35,7 @@ public class AdminController {
 	@RequestMapping(value="/adminQnaAjax.do", produces = "application/json;charset=utf-8")
 	public String adminQnaAjax (int start, int amount) {
 		int totalCount = service.adminQnaCount();
-		ArrayList<AdminQna> list = service.moreAdminQna(start, amount);
+		ArrayList<AdminQna> list = service.moreAdminQna(start, amount);	
 		Gson gson = new Gson();
 		String result = gson.toJson(list);
 		return result;
@@ -53,18 +55,63 @@ public class AdminController {
 	@ResponseBody
 	@RequestMapping(value="/adminReportAjax.do",produces = "application/json;charset=utf-8")
 	public String adminReport(int start, int amount) {
+		int totalCount = service.adminReportCount();
+		System.out.println("total : "+totalCount);
 		ArrayList<AdminReport> list = service.moreAdminReport(start, amount);
+		//totalCount 값 전달
+		HashMap<String, Object>map = new HashMap<String, Object>();
+		map.put("totalCount", totalCount);
+		map.put("list", list);
 		Gson gson = new Gson();
-		String result = gson.toJson(list);
+		String result = gson.toJson(map);
 		return result;
 	}
-	/*
+
 	//신고처리하기 
 	@RequestMapping(value="/reportMember.do")
 	public String reportMember(AdminReport ar, Model model) {
-		System.out.println(ar);
+		System.out.println("컨트롤러"+ar);
 		int result = service.reportMember(ar);
+		if(result>0) {
+			model.addAttribute("title", "정보 수정 완료");
+			model.addAttribute("msg", "신고처리가 완료되었습니다.");
+			model.addAttribute("icon", "success");
+			model.addAttribute("loc", "/adminPageFrm.do");
+			return "common/msg";
+		} else {
+			return null;
+		}
+	}
+	//회원 등급 조회 더보기 
+	@ResponseBody
+	@RequestMapping(value="/adminMemberList.do", produces = "application/json;charset=utf-8")
+	public String adminMemberList(int start, int amount) {
+		int totalCount = service.adminMemberList();
+		System.out.println("total : "+totalCount);
+		ArrayList<Member>list = service.moreAdminMemberList(start,amount);
+		//totalCount 값 전달
+		HashMap<String, Object>map = new HashMap<String, Object>();
+		map.put("totalCount", totalCount);
+		map.put("list", list);
+		Gson gson = new Gson();
+		String result = gson.toJson(map);
+		return result;
+	}
+	
+	//회원 등급 변경 버튼 
+	@RequestMapping(value="/changeMemberLevel.do", produces = "application/json;charset=utf-8")
+	public String changeMemberLevel(Member m, Model model) {
+		System.out.println("컨트롤러2"+m);
+		int result = service.changeMemberLevel(m);
+		if(result>0) {
+			model.addAttribute("title", "정보 수정 완료");
+			model.addAttribute("msg", "등급변경이 완료되었습니다.");
+			model.addAttribute("icon", "success");
+			model.addAttribute("loc", "/adminPageFrm.do");
+			return "common/msg";
+		} else {
+			return null;
+		}
 		
 	}
-	*/
 }

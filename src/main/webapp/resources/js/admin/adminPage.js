@@ -23,6 +23,12 @@ tabs.on("click",function(){
         $(".reportPage-content").hide();
         $(".admin-qna-row").remove();
         $(".admin-report-row").remove();
+        $("#adminMemberAjax-btn").attr("value","1");
+        $("#adminMemberAjax-btn").attr("currentCount","0");
+        $("#adminMemberAjax-btn").attr("disabled",false);
+		$("#adminMemberAjax-btn").css ("cursor","pointer");
+        $("#adminMemberAjax-btn").text("더보기");
+        $("#adminMemberAjax-btn").trigger("click");
         
         
     } else if(index == 1){
@@ -40,6 +46,7 @@ tabs.on("click",function(){
         $(".adminPage-content").show();
         $(".reportPage-content").hide();
         $(".admin-report-row").remove();
+        $(".admin-memberList-row").remove();
         $("#adminQnaAjax-btn").attr("value","1");
         $("#adminQnaAjax-btn").attr("currentCount","0");
         $("#adminQnaAjax-btn").attr("disabled",false);
@@ -62,6 +69,7 @@ tabs.on("click",function(){
         $(".adminPage-content").hide();
         $(".reportPage-content").show();
         $(".admin-qna-row").remove();
+        $(".admin-memberList-row").remove();
         $("#adminReportAjax-btn").attr("value","1");
         $("#adminReportAjax-btn").attr("currentCount","0");
         $("#adminReportAjax-btn").attr("disabled",false);
@@ -222,39 +230,48 @@ $("#adminReportAjax-btn").on("click",function(){
 		type: "post",
 		data: {start : start, amount :amount},
 		success : function(data){
-			console.log(data);
+		
+			const list = data.list;
+			const totalCount = data.totalCount;
+
 			const table = $(".admin-report-table");
 			const titleTr = $(".admin-report-tr");
-			for(let i=0; i<data.length; i++){
+			for(let i=0; i<list.length; i++){
 				const tr = $("<tr>");
 				tr.attr('class','admin-report-row');
-				tr.append("<td>"+data[i].reportNo+"</td>");
-				if(data[i].reportType == 1) {
+				tr.append("<td>"+list[i].reportNo+"</td>");
+				if(list[i].reportType == 1) {
               	tr.append("<td>"+"언어폭력"+"</td>"); 
               	}
-              	if(data[i].reportType == 2) {
+              	if(list[i].reportType == 2) {
               	tr.append("<td>"+"성희롱"+"</td>"); 
               	}
-              	if(data[i].reportType == 3) {
+              	if(list[i].reportType == 3) {
               	tr.append("<td>"+"목적 외 이용"+"</td>"); 
               	}
-              	if(data[i].reportType == 4) {
+              	if(list[i].reportType == 4) {
               	tr.append("<td>"+"신뢰훼손"+"</td>"); 
               	}
-              	if(data[i].reportType == 5) {
+              	if(list[i].reportType == 5) {
               	tr.append("<td>"+"기타"+"</td>"); 
               	}
-                tr.append("<td>"+data[i].reportMemberNickname+"</td>");
-                tr.append("<td>"+data[i].reportContent+"</td>");
-                tr.append("<td>"+data[i].reportedMemberNickname+"</td>");
-                tr.append("<td>"+data[i].reportCount+"</td>");
-                tr.append("<td>"+data[i].reportDate+"</td>");
+                tr.append("<td>"+list[i].reportMemberNickname+"</td>");
+                tr.append("<td>"+list[i].reportContent+"</td>");
+                tr.append("<td>"+list[i].reportedMemberNickname+"</td>");
+                tr.append("<td>"+list[i].reportCount+"</td>");
+                tr.append("<td>"+list[i].reportDate+"</td>");
                 
               	tr.append("<td>"+"<select class='report-select'>"+
 				"<option value='1'>"+"접근제한"+"</option>"+
-				"<option value='2'>"+"탈퇴"+"</option>"+
+				"<option value='2'>"+"이용정지"+"</option>"+
               	+"</select>"+"</td>");
-                tr.append("<input type='hidden' class='reportedMemberNo' value="+data[i].reportedMemberNo+">");				
+              	
+                tr.append("<input type='hidden' class='reportedMemberNo' value="+list[i].reportedMemberNo+">");				
+                tr.append("<input type='hidden' class='reportMemberNo' value="+list[i].reportMemberNo+">");				
+				
+				if(list[i].reportStatus == 1){
+				tr.append("<td>"+"완료"+"</td>");
+				}
 				tr.append("<td>"+"<button class='adminAnswer'>"+"변경"+"</button>"+"</td>");
               	table.append(tr);
               	
@@ -265,9 +282,10 @@ $("#adminReportAjax-btn").on("click",function(){
 			//value 증가 
 			$("#adminReportAjax-btn").val(Number(start)+Number(amount));
 			//currentCount 값도 읽어온 만큼 수정
-			const currentCount = Number($("#adminReportAjax-btn").attr("currentCount"))+data.length;
+			const currentCount = Number($("#adminReportAjax-btn").attr("currentCount"))+list.length;
 			$("#adminReportAjax-btn").attr("currentCount",currentCount);
-			const totalCount = $("#adminReportAjax-btn").attr("totalCount");
+			$("#adminReportAjax-btn").attr("totalCount",totalCount);
+			console.log(totalCount);
 			if(totalCount == currentCount){
 				$("#adminReportAjax-btn").attr("disabled",true);
 				$("#adminReportAjax-btn").css ("cursor","not-allowed");
@@ -282,12 +300,84 @@ $("#adminReportAjax-btn").on("click",function(){
 });
 
 
-//신고 
+//신고 버튼 
 $(document).on("click",".adminAnswer",function(){
 	const index = $(".adminAnswer").index(this);
 	const reportedMemberNo = $(".reportedMemberNo").eq(index).val();
+	const reportMemberNo = $(".reportMemberNo").eq(index).val();
 	const optionVal = $(".report-select").eq(index).val();
 	console.log(reportedMemberNo);
 	console.log(optionVal);
-	location.href="/reportMember.do?reportedMemberNo="+reportedMemberNo+"&optionVal="+optionVal;
+	location.href="/reportMember.do?reportedMemberNo="+reportedMemberNo+"&optionVal="+optionVal+"&reportMemberNo="+reportMemberNo;
+});
+
+//회원등급 리스트 등급 + 더보기 
+$("#adminMemberAjax-btn").on("click",function(){
+	let amount = 7;
+	let start = $(this).val();
+	console.log(start);
+	$.ajax({
+		url: "/adminMemberList.do",
+		type: "post",
+		data: {start:start, amount:amount},
+		success : function(data){
+		
+			const list = data.list;
+			const totalCount = data.totalCount;
+			
+			const table = $(".adminPage-userLevel-table");
+			const titleTr = $(".admin-memberList-tr");
+			
+			for(let i=0; i<list.length; i++){
+				const tr = $("<tr>");
+				tr.attr('class','admin-memberList-row');
+				tr.append("<td>"+list[i].memberNo+"</td>");
+				tr.append("<td>"+list[i].memberId+"</td>");
+				tr.append("<td>"+list[i].memberNickname+"</td>");
+                tr.append("<td>"+list[i].enrollDate+"</td>");
+                tr.append("<td>"+list[i].memberLevel+"</td>");
+              	tr.append("<td>"+"<select class='changeLevel-select'>"+
+				"<option value='1'>"+"회원"+"</option>"+
+				"<option value='3'>"+"접근제한 회원"+"</option>"+
+				"<option value='4'>"+"이용제한 회원"+"</option>"+
+              	+"</select>"+"</td>");
+              	
+                tr.append("<input type='hidden' class='memberNo' value="+list[i].memberNo+">");				
+				tr.append("<td>"+"<button class='adminChangeLevel'>"+"변경"+"</button>"+"</td>");
+              	table.append(tr);
+              	
+			}
+			$(".userLevelAjax-result").html(table);
+			
+			//value 증가 
+			$("#adminMemberAjax-btn").val(Number(start)+Number(amount));
+			//currentCount 값도 읽어온 만큼 수정
+			const currentCount = Number($("#adminMemberAjax-btn").attr("currentCount"))+list.length;
+			$("#adminMemberAjax-btn").attr("currentCount",currentCount);
+			$("#adminMemberAjax-btn").attr("totalCount",totalCount);
+			console.log(totalCount);
+			if(totalCount == currentCount){
+				$("#adminMemberAjax-btn").attr("disabled",true);
+				$("#adminMemberAjax-btn").css ("cursor","not-allowed");
+				$("#adminMemberAjax-btn").text("마지막 게시물입니다 ");
+				
+			}
+			
+		},
+				error : function() {
+			console.log("에러발생");
+			}
+	}); //ajax 회원등급 페이지 끝 
+	
+});
+
+
+//회원리스트 등급 변경 버튼 
+$(document).on("click",".adminChangeLevel",function(){
+	const index = $(".adminChangeLevel").index(this);
+	const memberNo = $(".memberNo").eq(index).val();
+	const optionVal = $(".changeLevel-select").eq(index).val();
+	console.log(memberNo);
+	console.log(optionVal);
+	location.href="/changeMemberLevel.do?memberNo="+memberNo+"&optionVal="+optionVal;
 });
