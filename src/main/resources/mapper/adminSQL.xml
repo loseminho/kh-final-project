@@ -45,6 +45,10 @@ select
 		</when>
 	</choose>
 </select>
+<!-- 신고하기 총 게시물 수  -->
+<select id="adminReportCount" resultType="_int">
+	select count(*) from report_tbl
+</select>
 <!-- 신고하기 리스트 더보기  -->
 <select id="moreAdminReport" parameterType="map" resultType="ar">
 	select 
@@ -56,6 +60,7 @@ select
 		report_type as reportType,
 		report_content as reportContent,
 		report_date as reportDate,
+		report_status as reportStatus,
 		reportCount
 	from (select rownum as rnum, r.* from(select * from report_tbl order by 1 desc)r)
 	join (select count(reported_member_no)as reportCount,
@@ -66,9 +71,53 @@ select
 	using (reported_member_no)
     where rnum between #{start} and #{end}
 </select>
-<!-- 신고처리 회원 등급 업데이트
-<select id="updateReportMemberLevel" parameterType="ar" resultType="_int">
-	
+<!-- 신고처리 회원 등급 업데이트 -->
+<update id="updateReportMemberLevel" parameterType="ar">
+	update member_tbl set
+	<choose>
+	<when test="optionVal == 1">
+		member_level = 3
+	</when>
+	<when test="optionVal == 2">
+		member_level = 4
+	</when>
+	</choose>
+	where member_no = #{reportedMemberNo}
+</update>
+<!-- 신고처리 상태 업데이트  -->
+<update id="updateReportStatus" parameterType="ar">
+	update report_tbl set
+	report_status = 1
+	where report_member_no = #{reportMemberNo} and reported_member_no = #{reportedMemberNo}
+</update>
+<!-- 회원리스트 전체 갯수 조회-->
+<select id="adminMemberListCount" resultType="_int">
+	select count(*) from member_tbl
 </select>
--->
+<!-- 회원리스트 더보기 -->
+<select id="moreAdminMemberList" resultType="m" parameterType="map">
+select
+	member_no as memberNo,
+	member_id as memberId,
+	member_nickname as memberNickname,
+	enroll_date as enrollDate,
+	member_level as memberLevel
+from(select rownum as rnum, m.* from(select * from member_tbl order by 1 desc)m) where rnum between #{start} and #{end}
+</select>
+<!-- 회원 등급 변경 버튼 -->
+<update id="updateMemberLevel" parameterType="m">
+	update member_tbl set
+	<choose>
+	<when test="optionVal == 1">
+	member_level = 1
+	</when>
+	<when test="optionVal == 3">
+	member_level = 3
+	</when>
+	<when test="optionVal == 4">
+	member_level = 4
+	</when>
+	</choose>
+	where member_no = #{memberNo}
+</update>
 </mapper>

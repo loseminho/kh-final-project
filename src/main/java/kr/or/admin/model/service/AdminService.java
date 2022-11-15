@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import kr.or.admin.model.dao.AdminDao;
 import kr.or.admin.model.vo.AdminQna;
 import kr.or.admin.model.vo.AdminReport;
+import kr.or.admin.model.vo.BlackList;
+import kr.or.member.model.vo.Member;
 
 @Service
 public class AdminService {
@@ -53,14 +55,47 @@ public class AdminService {
 		
 		return list;
 	}
-	/*
+
 	//관리자 신고처리
 	public int reportMember(AdminReport ar) {
 		int result = dao.reportMember(ar);
+		int result2 = 0;
 		if(result>0) {
-			if(ar.getOptionVal()==3) {
+			//업데이트한 것이 있으면
+		result2 = dao.changeReportStatus(ar);
+		
 		}
+		return result2;
+		
+	}
+	//관리자 신고물 전체게시물 수 
+	public int adminReportCount() {
+		int totalCount = dao.adminReportCount();
+		return totalCount;
+	}
+	//관리자 멤버 등급 변경 게시물 수 
+	public int adminMemberList() {
+		int totalCount = dao.adminMemberList();
+		return totalCount;
+	}
+	//관리자 멤버 등급 변경 더보기 
+	public ArrayList<Member> moreAdminMemberList(int start, int amount) {
+		int end = start+amount -1;
+		HashMap<String, Object>map = new HashMap<String, Object>();
+		map.put("start", start);
+		map.put("amount", amount);
+		map.put("end",end);
+		
+		System.out.println("start"+start);
+		System.out.println("amount"+amount);
+		System.out.println("end"+end);
+		
+		ArrayList<Member>list = dao.moreAdminMemberList(map);
+		System.out.println(list);
+		return list;
+	}
+	public int changeMemberLevel(Member m) {
+		int result = dao.changeMemberLevel(m);
 		return result;
 	}
-*/
 }

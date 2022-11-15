@@ -37,6 +37,11 @@ public class WalkService {
 		}
 		return 0;
 	}
+
+	public int inputWmApply(WmApply wa) {
+		int result = dao.inputWmApply(wa);
+		return result;
+	}
 	
 //	//댓글 작성
 //	public Walk writeReply(WalkMateComment wmc) {

@@ -94,7 +94,7 @@
 			</div>
 			<!-- 신고내역 content 끝 -->
 			<div class="userLevel-content">
-				<div class="search-box">
+				<div class="member-search-box">
 					<form action="#">
 						<select name="searchType" id="searchType" class="search-qna-form">
 							<option value="0" selected="selected"></option>
@@ -108,25 +108,22 @@
 				</div>
 				<div class="userLevelAjax-result">
 					<table class="adminPage-userLevel-table">
-						<tr>
-							<th scope="col">회원번호</th>
-							<th scope="col">아이디</th>
-							<th scope="col">닉네임</th>
-							<th scope="col">가입날짜</th>
-							<th scope="col">신고 누적횟수</th>
-							<th scope="col"></th>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>아이디 값</td>
-							<td>닉네임 값</td>
-							<td>가입날짜</td>
-							<td>신고 누적횟수</td>
-							<td><button type="button" class="adminAnswer">등급변경</button></td>
+						<tr class="admin-memberList-tr">
+							<th>회원번호</th>
+							<th>아이디</th>
+							<th>닉네임</th>
+							<th>가입날짜</th>
+							<th>등급</th>
+							<th></th>
+							<th></th>
 						</tr>
 					</table>
 				</div>
 				<!--회원등급 ajax 불러오기 끝-->
+				<div class="admin-memberList-add">
+					<button id="adminMemberAjax-btn" totalCount="${totalCount }"
+						currentCount="0" value="1">더보기</button>
+				</div>
 			</div>
 			<!--회원 등급 불러오기-->
 		</div>

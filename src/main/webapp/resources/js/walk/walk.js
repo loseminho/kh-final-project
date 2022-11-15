@@ -112,6 +112,7 @@ function modalViews(e){
 	success : function(data){
 		
 		console.log(data);
+		$(".up-btn").trigger("click");
 		
 		//로그인한 유저의 세션값
 		const loginId = document.getElementById('login-memberId').value;
@@ -255,11 +256,25 @@ function modalViews(e){
 		applySection.style.display = "none";
 		
 		if(ApplyMemberNum ==data.wmRangeMember){
-			//신청 못하게
-			$("#view-section6").attr("disabled",true).text('모임 마감').css("backgroundColor","#9d9d9d").css("border","2px solid #9c9c9c");
+			// 마감 되어서 신청 못하게
+			if(loginNo == data.wmLeader){
+				//만약 로그인한 회원이 모임장 일 때,
+				$("#view-section6").attr("disabled",false).attr("onclick", "location.href='/walkMatePage.do?wmNo="+data.wmNo+"'").text('모임관리').css("backgroundColor","#1abc9c").css("border","2px solid #1abc9c");
+			}else{
+				$("#view-section6").attr("disabled",true).text('모임 마감').css("backgroundColor","#9d9d9d").css("border","2px solid #9c9c9c");
+			}
 		}else{
-			//신청 가능하게
-			$("#view-section6").attr("disabled",false).attr("onclick", "modalApplyView();").text('신청하기').css("backgroundColor","#1abc9c").css("border","2px solid #1abc9c");
+			if(loginId.length >= 1 ){
+					//현재 로그인 상태라면 신청 가능,
+					if(loginNo == data.wmLeader){
+						//만약 로그인한 회원이 모임장 일 때,
+						$("#view-section6").attr("disabled",false).attr("onclick", "location.href='/walkMatePage.do?wmNo="+data.wmNo+"'").text('모임관리').css("backgroundColor","#1abc9c").css("border","2px solid #1abc9c");
+					}else{
+						$("#view-section6").attr("disabled",false).attr("onclick", "modalApplyView();").text('신청하기').css("backgroundColor","#1abc9c").css("border","2px solid #1abc9c");
+					}
+			}else{
+					$("#view-section6").attr("disabled",true).text('로그인 요망').css("backgroundColor","#1abc9c").css("border","2px solid #1abc9c");
+			}
 		}
 		
 		
@@ -289,13 +304,13 @@ function modalViews(e){
 							//현재 로그인 상태이고,
 							if(data.wmcList[q].memberNo == loginNo){
 								//현재 사용자가 이 댓글의 작정자 일때 삭제 버튼 생성
-								listHtml += "<div class='view-sub clear-comments'><span class='material-symbols-outlined'>map</span>"+data.wmcList[q].wmcDate+" · <div class='recomment-input'>댓글달기</div><div class='delete-inputs-comment'>삭제하기</div><div class='show-recomments'>대댓글on/off</div></div>";
+								listHtml += "<div class='view-sub clear-comments'><span class='material-symbols-outlined'>map</span>"+data.wmcList[q].wmcDate+" · <div class='recomment-input'>댓글달기</div><div class='delete-inputs-comment'>삭제하기</div><div class='show-recomments'>덮기</div></div>";
 							}else{
 								// 댓글 작성 div를 작동 시키기 위해서는  게시글 번호(wmNo), 댓글번호(wmcNo), 댓글 작성자(memberNo)를 인자로 담아서 넘겨주어야함.							
-								listHtml += "<div class='view-sub clear-comments'><span class='material-symbols-outlined'>map</span>"+data.wmcList[q].wmcDate+" · <div class='recomment-input'>댓글달기</div><div class='show-recomments'>대댓글on/off</div></div>";
+								listHtml += "<div class='view-sub clear-comments'><span class='material-symbols-outlined'>map</span>"+data.wmcList[q].wmcDate+" · <div class='recomment-input'>댓글달기</div><div class='show-recomments'>덮기</div></div>";
 							}
 						}else{
-							listHtml += "<div class='view-sub clear-comments'><span class='material-symbols-outlined'>map</span>"+data.wmcList[q].wmcDate+" <div class='show-recomments'>대댓글on/off</div></div>";
+							listHtml += "<div class='view-sub clear-comments'><span class='material-symbols-outlined'>map</span>"+data.wmcList[q].wmcDate+" <div class='show-recomments'>덮기</div></div>";
 						}
 						listHtml += "</div>";
 						listHtml += "</div>" ;
@@ -348,8 +363,10 @@ function modalViews(e){
 		$(".show-recomments").on("click",function(){
 			if($(this).parents(".views-list").nextUntil(".views-list").css('display') ==='none'){
 				$(this).parents(".views-list").nextUntil(".views-list").slideDown();
+				$(this).text('덮기');
 			}else{
 				$(this).parents(".views-list").nextUntil(".views-list").slideUp();
+				$(this).text('펼치기');
 			}
 		});
 		
@@ -685,5 +702,12 @@ $(".write_reply").click(function(){
         $('.writer-comment-input').focus();
         return false;
 	}
+});
+
+
+$(document).keyup(function(e) {
+   if ( e.keyCode == 27) {
+       modalOff();
+   };
 });
 

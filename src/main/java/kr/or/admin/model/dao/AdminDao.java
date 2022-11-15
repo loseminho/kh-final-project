@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.or.admin.model.vo.AdminQna;
 import kr.or.admin.model.vo.AdminReport;
+import kr.or.member.model.vo.Member;
 
 @Repository
 public class AdminDao {
@@ -37,11 +38,34 @@ public class AdminDao {
 		List list = sqlSession.selectList("admin.moreAdminReport",map);
 		return (ArrayList<AdminReport>)list;
 	}
-	/*
-	//관리자 신고하기
+
+	//관리자 신고하기 (레벨 변경) 
 	public int reportMember(AdminReport ar) {
-		int result = sqlSession.update("admin.updateReportMemberLevel",ar);
-		return 0;
+		return sqlSession.update("admin.updateReportMemberLevel",ar);	
+
 	}
-	*/
+	//관리자 신고하기 (신고여부 상태 변경) 
+	public int changeReportStatus(AdminReport ar) {
+		return sqlSession.update("admin.updateReportStatus", ar);
+	}
+	//관리자 신고하기 총 게시물 수 
+	public int adminReportCount() {
+		int totalCount = sqlSession.selectOne("admin.adminReportCount");
+		return totalCount;
+	}
+	//관리자 회원등급 변경 총 게시물 수 
+	public int adminMemberList() {
+		int totalCount = sqlSession.selectOne("admin.adminMemberListCount");
+		return totalCount;
+	}
+	//관리자 회원등급 더보기 버튼 
+	public ArrayList<Member> moreAdminMemberList(HashMap<String, Object> map) {
+		List list = sqlSession.selectList("admin.moreAdminMemberList",map);
+		return (ArrayList<Member>)list;
+	}
+	//관리자 회원등급 변경 버튼 
+	public int changeMemberLevel(Member m) {
+		return sqlSession.update("admin.updateMemberLevel",m);
+	}
+
 }

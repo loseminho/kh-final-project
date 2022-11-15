@@ -206,13 +206,13 @@ $("#searchQnaAjax").on("click",function(){
 $("#qnaAjaxAdd-btn").on("click",function(){
 	let amount = 7;
 	let start = $(this).val();
-	console.log(start);
+	
 	$.ajax({
 		url: "/moreQna.do",
 		type: "post",
 		data: {start : start, amount : amount},
 		success : function(data){
-			console.log(data);
+
 			const table = $(".qna-table");
             const titleTr = $(".qna-tr");
             

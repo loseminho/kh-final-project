@@ -143,7 +143,15 @@ LEFT JOIN MEMBER_TBL B ON A.wmLeader = B.MEMBER_NO WHERE A.wmNo =#{_parameter}
 		/>
 	</resultMap>
 	
-	
+	<insert id="inputWmApply" parameterType="wa">
+		INSERT INTO WM_APPLY_TBL VALUES(
+			WM_APPLY_SEQ.NEXTVAL,
+			#{wmNo},
+			#{memberId},
+			#{applyContent},
+			#{applyStat}
+		)
+	</insert>	
 	<!-- 
 	<select id="selectMaxSeq" resultType="int">
 		SELECT 
@@ -165,6 +173,7 @@ LEFT JOIN MEMBER_TBL B ON A.wmLeader = B.MEMBER_NO WHERE A.wmNo =#{_parameter}
 			to_char(sysdate,'yyyy-mm-dd HH24:MI')
 		)
 	</insert>
+
 	<insert id="inputWalkFile" parameterType="wf">
 		INSERT INTO WM_FILE_TBL 
 			VALUES(WM_FILE_SEQ.NEXTVAL,#{wmNo},#{filename},#{filepath})

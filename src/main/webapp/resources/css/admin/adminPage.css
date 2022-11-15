@@ -170,10 +170,12 @@ content{
 }
 
 /* 신고목록 css*/
+
 .reportPage-content{
     margin: 0 auto;
     padding: 0;
-    margin-top: 40px;
+    margin-top: 80px;
+    margin-bottom: 80px;
 }
 .admin-report-table{
     margin: 0 auto;
@@ -218,6 +220,31 @@ content{
     height: 35px;
     font-size: 15px;
 }
+.admin-report-table th,td:first-child{
+	width: 5%;
+}
+.admin-report-table th,td:nth-child(4){
+    width: 50%;
+}
+.admin-report-table th,td:nth-child(6){
+    width: 10%;
+}
+.adminAnswer{
+    width: 100%;
+    height: 35px;
+    font-size: 20px;
+    font-family: gs-medium;
+    border: 1px solid #1abc9c;
+    border-radius: 3px;
+    background-color: #1abc9c;
+    color: #fff;
+}
+.adminAnswer:hover{
+    cursor: pointer;
+    background-color: #fff;
+    color: #1abc9c;
+}
+
 /* 더보기 버튼 */
 .adminQna-add-btn{
     margin: 0 auto;
@@ -235,5 +262,98 @@ content{
     font-size: 20px;
 }
 #adminQnaAjax-btn:hover{
+	color: #1abc9c;
+}
+/* 회원 등급 조회 */
+.userLevel-content{
+    margin: 0 auto;
+    padding: 0;
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+.adminPage-userLevel-table{
+    margin: 0 auto;
+    width: 1200px;
+    table-layout: fixed;
+    word-break: break-all;
+    height:auto;
+    background-color: #fff;
+    border-collapse: collapse;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    border-radius: 3px;
+    border-top: 2px solid #1abc9c;
+    border-bottom: 2px solid #1abc9c;
+    overflow: hidden;
+    text-align: center;
+}
+.adminPage-userLevel-table tr{
+    border-bottom: 1px solid #e1e1e1;
+}
+.adminPage-userLevel-table tr:last-child{
+	border: none;
+}
+.adminPage-userLevel-table th{
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+    font-size: 20px;
+}
+.adminPage-userLevel-table td{
+    padding: 15px;
+    height: auto;
+    text-align: center;
+    font-size: 18px;
+}
+.adminPage-userLevel-table tr th{
+    background-color: #1abc9c;
+	font-family: gs-medium;
+	color: #fff;
+}
+.changeLevel-select{
+    width: 100%;
+    height: 35px;
+    font-size: 15px;
+}
+.adminPage-userLevel-table th,td:first-child{
+	width: 5%;
+}
+.adminPage-userLevel-table th,td:nth-child(4){
+    width: 50%;
+}
+.adminPage-userLevel-table th,td:nth-child(6){
+    width: 10%;
+}
+.adminChangeLevel{
+    width: 100%;
+    height: 35px;
+    font-size: 20px;
+    font-family: gs-medium;
+    border: 1px solid #1abc9c;
+    border-radius: 3px;
+    background-color: #1abc9c;
+    color: #fff;
+}
+.adminChangeLevel:hover{
+    cursor: pointer;
+    background-color: #fff;
+    color: #1abc9c;
+}
+/* 더보기 버튼 */
+.admin-memberList-add{
+    margin: 0 auto;
+    padding: 0;
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#adminMemberAjax-btn{
+	background-color: transparent;
+    border: none;
+    font-family: gs-medium;
+    font-size: 20px;
+}
+#adminMemberAjax-btn:hover{
 	color: #1abc9c;
 }
