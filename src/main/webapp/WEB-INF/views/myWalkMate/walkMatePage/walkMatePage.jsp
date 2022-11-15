@@ -18,7 +18,7 @@
                 <li>
                     <a href="#">모임 관리</a>
                     <ul class="sub-menu">
-                        <li class="section"><a href="#">- 모임 신청자 관리</a></li>
+                        <li class="section" id="wmApplyManagement"><a href="#">- 모임 신청자 관리</a></li>
                         <li class="section"><a href="#">- 모임 정보 수정</a></li>
                     </ul>
                 </li>
@@ -34,7 +34,7 @@
 				<jsp:include page="/WEB-INF/views/myWalkMate/walkMatePage/walkMateAttendProfile.jsp"/>
 			</div>
 			
-			<div class="wm-apply-meangement" style="display: none;">
+			<div class="wm-apply-management" style="display: none;">
 				<jsp:include page="/WEB-INF/views/myWalkMate/walkMatePage/walkMateApplyManagement.jsp"/>
 			</div>
 			
@@ -46,6 +46,9 @@
 	
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	
+	<script>
+		const wmNo = ${w.wmNo };
+	</script>
 	<script src="/resources/js/myWalkMate/walkMatePage/walkMatePage.js"></script>
 </body>
 </html>

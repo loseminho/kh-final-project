@@ -23,7 +23,8 @@
 			#{reportedMemberNickname},
 			#{reportType},
 			#{reportContent},
-			to_char(sysdate, 'yyyy-mm-dd')
+			to_char(sysdate, 'yyyy-mm-dd'),
+			0
 		)
 	</insert>
 

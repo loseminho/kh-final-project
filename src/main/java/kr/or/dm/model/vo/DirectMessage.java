@@ -23,4 +23,6 @@ public class DirectMessage {
 	private int readCheck;
 	private String dmCate;
 	private int rnum;
+	private String dmSearch; // dm 검색용
+	private String dmKeyword; // dm 검색 키워드
 }

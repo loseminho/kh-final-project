@@ -238,3 +238,9 @@ function deleteKakao() {
         }
     })
 }
+
+$(document).keyup(function(e) {
+   if ( e.keyCode == 27) {
+       closePhoneModal();
+   };
+});

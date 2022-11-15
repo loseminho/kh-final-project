@@ -330,3 +330,9 @@ function deleteMyDog(dogNo) {
         }
     })
 }
+
+$(document).keyup(function(e) {
+   if ( e.keyCode == 27) {
+       closeDogModal();
+   };
+});

@@ -114,3 +114,9 @@ function closeModal() {
 $(".joinBtn").on("click", function(){
 	location.href="/joinFrm.do";
 });
+
+$(document).keyup(function(e) {
+   if ( e.keyCode == 27) {
+       closeModal();
+   };
+});
