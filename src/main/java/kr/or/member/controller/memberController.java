@@ -44,6 +44,7 @@ import kr.or.member.model.vo.Report;
 import kr.or.walk.model.vo.AppliedWalkInfo;
 import kr.or.walk.model.vo.Walk;
 import kr.or.walk.model.vo.WalkPageData;
+import kr.or.walk.model.vo.WmApply;
 
 @Controller
 public class memberController {
@@ -652,12 +653,27 @@ public class memberController {
 		return new Gson().toJson(list);
 	}
 	
-	
 	@RequestMapping(value="/walkMatePage.do")
 	public String walkMatePage(int wmNo, Model model) {
 		Walk w = service.selectOneWalkMate(wmNo);
 		
 		model.addAttribute("w", w);
 		return "myWalkMate/walkMatePage/walkMatePage";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/selectWalkMateApplyList.do", produces="application/json;charset=utf-8")
+	public String selectWalkMateApplyList(int wmNo) {
+		ArrayList<WmApply> list = service.selectWalkMateApplyList(wmNo);
+				
+		return new Gson().toJson(list);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/updateApplyStat.do")
+	public int updateApplyStat(WmApply wmApply) {
+		int result = service.updateApplyStat(wmApply);
+		
+		return result;
 	}
 }

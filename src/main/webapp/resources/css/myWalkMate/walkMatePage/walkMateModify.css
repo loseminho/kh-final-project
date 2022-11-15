@@ -1,0 +1,113 @@
+.wm-modify-wrap{
+	margin-top: 20px;
+	min-height: calc(100vh - 230px);
+}
+
+.wm-modify-wrap button{
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    background-color: #1abc9c;
+    color: white;
+    border: 2px solid #1abc9c;
+    border-radius: 5px;
+}
+
+/****************************************/
+
+.wm-modify-body{
+	margin-top: 50px;
+}
+
+.wm-modify-body input{
+	border: 1px solid #e1e1e1;
+}
+
+.wm-modify-box1 label{
+	color: #1abc9c;
+	display: block;
+}
+
+.wm-modify-box1 input{
+	width: 496px;
+	height: 36px;
+	font-size: 20px;
+}
+
+.wm-sub-title-modify{
+	margin-top: 15px;
+}
+
+.wm-modify-box2{
+	margin-top: 50px;
+}
+
+.wm-modify-box2>div:not(.wm-tag-modify){
+	color: #1abc9c;
+	display: flex;
+}
+
+.wm-modify-box2>div:not(:nth-child(1)){
+	margin-top: 15px;
+}
+
+.wm-modify-box2 label{
+	display: block;
+	width: 100px;
+	line-height: 30px;
+}
+
+.wm-modify-box2 input{
+	width: 148px;
+}
+
+.wm-modify-box2 input + label{
+    display: inline-block;
+    cursor: pointer;
+    width: 100px;
+    height: 30px;
+    color: #1abc9c;
+    border: 1px solid #1abc9c;
+    background-color: #fff;
+    border-radius: 10px;
+    line-height: 30px;
+    text-align: center;
+}
+
+.wm-modify-box2 input:checked + label{
+    background-color: #1abc9c;
+    color: #fff;	
+}
+
+#wm-addr-modify-btn{
+	margin-left: 15px;
+}
+
+.wm-tag-modify{
+	
+}
+
+.wm-tag-modify>input{
+	display: none;
+}
+
+.wm-tag-modify>lable{
+	border: 1px solid #1abc9c;
+}
+
+.wm-content-modify{
+	width: 458px;
+	height: 158px;
+	padding: 20px;
+	margin-top: 50px;
+	border: 1px solid #e1e1e1;
+}
+
+/****************************************/
+
+.wm-modify-footer{
+	margin-top: 50px;
+	margin-bottom: 100px;
+	width: 500px;
+	text-align: right;
+}
