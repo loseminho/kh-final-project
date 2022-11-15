@@ -25,6 +25,7 @@ import kr.or.walk.model.service.WalkService;
 import kr.or.walk.model.vo.Walk;
 import kr.or.walk.model.vo.WalkFile;
 import kr.or.walk.model.vo.WalkMateComment;
+import kr.or.walk.model.vo.WmApply;
 
 @Controller
 public class WalkController {
@@ -45,6 +46,16 @@ public class WalkController {
 	public String selectContentBox(int wmNo) {
 		Walk w = service.selectContentBox(wmNo);
 		return new Gson().toJson(w);
+	}
+	@ResponseBody
+	@RequestMapping(value="/inputWmapply.do", produces="application/json;charset=utf-8")
+	public String inputWmApply(WmApply wa) {
+		int result = service.inputWmApply(wa);
+		if(result > 0) {
+			return "walkmate/wmSuccess";
+		} else {
+			return "redirect:walkMateFrm.do";
+		}
 	}
 	@ResponseBody
 	@RequestMapping(value="/allWalkListAjax.do", produces="application/json;charset=utf-8")
@@ -91,11 +102,7 @@ public class WalkController {
 	}
 	
 	
-	@ResponseBody
-	@RequestMapping(value="commentLoad.do", produces="application/json;charset=utf-8")
-	public String commentLoad() {
-		return null;
-	}
+	
 	
 //	//댓글 작성
 //	@ResponseBody

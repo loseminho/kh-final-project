@@ -16,7 +16,7 @@ public class AdminReport {
 	private int reportType;
 	private String reportContent;
 	private String reportDate;
-	
+	private int reportStatus;
 	//신고 횟수 
 	private int reportCount;
 	//select 값 

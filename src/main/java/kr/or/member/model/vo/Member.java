@@ -23,4 +23,7 @@ public class Member {
 	private int memberLevel;
 	private String joinType;
 	private ArrayList<Dog> dogList;
+	
+	//select 값 
+	private int optionVal;
 }
