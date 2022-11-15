@@ -35,7 +35,7 @@
 	</div>
 	<div class="section" id="section3">
 		<div class="section3Content"> 
-			<div>
+			<div class="customer-center">
 				<ul>
 					<li>
 					고객센터

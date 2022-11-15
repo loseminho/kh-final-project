@@ -13,20 +13,19 @@ $(document).ready(function(){
 	 	}
 	 	
 	 	const idx = $(".photo").index(this);
-	 	console.log("input tag fileNo::"+$("[name=pastFileNo]").eq(idx).is(":disabled"));
-	 	console.log("input tag filePath::"+$("[name=pastFilePath]").eq(idx).is(":disabled"));
+	 	//console.log("input tag fileNo::"+$("[name=pastFileNo]").eq(idx).is(":disabled"));
+	 	//console.log("input tag filePath::"+$("[name=pastFilePath]").eq(idx).is(":disabled"));
 	 	$("[name=pastFileNo]").eq(idx).attr("disabled",false);
 	 	$("[name=pastFilePath]").eq(idx).attr("disabled",false);
 	 	$("[name=procedure]").eq(idx).attr("disabled",false);
-	 	console.log("input tag fileNo::"+$("[name=pastFileNo]").eq(idx).is(":disabled"));
-	 	console.log("input tag filePath::"+$("[name=pastFilePath]").eq(idx).is(":disabled"));
+	 	//console.log("input tag fileNo::"+$("[name=pastFileNo]").eq(idx).is(":disabled"));
+	 	//console.log("input tag filePath::"+$("[name=pastFilePath]").eq(idx).is(":disabled"));
 	});
 	previewBox.on("click",function(){
 		const idx = previewBox.index(this);
+		console.log($(".photo").eq(idx).is(":disabled"));
 	 	$(".photo").eq(idx).attr("disabled",false);
-	 	
-		console.log(idx);
-		
+		console.log($(".photo").eq(idx).is(":disabled"));
 	 	$(".photo").eq(idx).trigger("click");
  	
  	});

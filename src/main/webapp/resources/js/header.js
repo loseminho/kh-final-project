@@ -152,7 +152,7 @@ $(document).on("click",".back-btn>span",function(){
 	$(".chat-name").text("채팅목록을 클릭해보세요!!");	
 });
 $(".up-btn").on("click",function(){
-	$(document).scrollTop($(".chat-content")[0].scrollHeight);
+	$("html,body").animate({scrollTop:0},400);
 
 });
 

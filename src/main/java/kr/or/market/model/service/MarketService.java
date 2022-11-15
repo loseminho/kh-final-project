@@ -80,20 +80,12 @@ public class MarketService {
 	}
 
 	public int updateMarket(MarketDog md, Integer[] pastFileNo, MultipartFile[] photo) {
-		System.out.println(md.getFileList());
-		for(int i=0;i<pastFileNo.length;i++) {
-			System.out.println("pastFileNo::::::"+pastFileNo[i]);
-			System.out.println("photo:::::::"+photo[i].getOriginalFilename());
-			//System.out.println("newList::::::"+md.getFileList());
-		}
-		
 		dao.updateMarket(md);
 		
 		ArrayList<MarketDogFile> mdf = new ArrayList<MarketDogFile>();
 		mdf = md.getFileList();
 		
 		if(mdf == null) {
-			System.out.println("업데이트 서비스:::");
 			return 0;
 		}else {
 			for(Integer i:pastFileNo) {

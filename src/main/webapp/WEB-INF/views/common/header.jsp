@@ -85,6 +85,7 @@
 		</div>
 	</div>
 	<div id="chat-board" style="display:none;">
+		<div class="chat-drag">드래그해보셈!</div>
 		<c:choose>
 			<c:when test="${empty sessionScope.m }">
 				<div class="require-login">

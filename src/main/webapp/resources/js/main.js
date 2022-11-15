@@ -28,9 +28,12 @@ $(function(){
 			});
 
 			if (page == 1) {
-				page==1;
+				$(".popup-modal").fadeIn(400);
+			}else{
+				$(".popup-modal").fadeOut(400);
 			}
 			if (page == 3) {
+				
 			}
 		});
 });

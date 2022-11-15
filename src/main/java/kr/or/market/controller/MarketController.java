@@ -140,8 +140,12 @@ public class MarketController {
 	
 	@RequestMapping(value="/updateMarket.do")
 	public String updateMarket(MarketDog md,Integer[] procedure, MultipartFile[] photo,HttpServletRequest request, String[] pastFilePath, String[] pastFileName, Integer[] pastFileNo) {
-		System.out.println("updateMarket::procedure::"+procedure.length);
-		ArrayList<MarketDogFile> pastList = new ArrayList<MarketDogFile>();
+		if(pastFilePath != null) {
+			System.out.println("과거파일(지우는거)"+pastFilePath.length);
+			for(String str:pastFilePath) {
+				System.out.println("과거파일(지우는거)"+str);
+			}
+		}
 		/*
 		if(pastFileNo==null && pastFilePath==null) {
 			
@@ -157,7 +161,7 @@ public class MarketController {
 		String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/market/");
 		ArrayList<MarketDogFile> list = new ArrayList<MarketDogFile>();
 			for(int i=0;i<photo.length;i++) {
-				if(photo[i].isEmpty()) {
+				if(photo[0].isEmpty()) {
 					continue;
 				}
 				String fileName = photo[i].getOriginalFilename();
@@ -185,6 +189,14 @@ public class MarketController {
 				}
 			}
 		int result = service.updateMarket(md,pastFileNo,photo);
+		/*
+		if(pastFilePath != null) {
+			for(String filePath : pastFilePath) {
+				File delFile = new File(savePath+filePath);
+				delFile.delete();
+			}
+		}
+		*/
 		return "redirect:saleDogList.do";
 	}
 	

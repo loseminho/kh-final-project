@@ -29,9 +29,11 @@ html, body {
     display:flex;
     justify-items: center;
     align-items: center;
+    background-repeat: no-repeat;
 }
 #section2 {
-    background-image: url(/resources/img/main3.jpg);
+    background-image: url(/resources/img/main2.jpg);
+    background-repeat: no-repeat;
     background-size:100%;
 }
 
@@ -39,9 +41,6 @@ html, body {
     width:100%;
 }
 
-#section3 {
-    background-color: aliceblue;
-}
 .section2-box{
 	position:relative;
     display:inline-block;
@@ -115,20 +114,6 @@ html, body {
 	margin:0 auto;
 	margin-bottom:20px;
 	font-family: gs-Medium;
-}
-
-<!-- 세션3 -->
-.section3Content{
-	width:100%;
-	height:100%;
-	display:flex;
-	justify-content: center;
-	align-items: center;
-}
-.section3Content>div{
-	display:flex;
-	width:50%;
-	height:50%;
 }
 
 /*header 부분*/
@@ -430,4 +415,28 @@ footer > .footer-content {
 	right:0;
 	border: none;
 	background-color: #fff;	
+}
+
+/*마지막페이지*/
+#section3 {
+	background-image: url(/resources/img/main3.jpg);
+    background-size:100%;
+    background-color: aliceblue;
+    background-repeat: no-repeat;
+}
+
+.section3Content{
+	font-family:gs-Medium;
+	width:100%;
+	height:100%;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.customer-center{
+	height:300px;
+	width:600px;
+	background-color: #fff;
+	border-radius: 10px;
 }

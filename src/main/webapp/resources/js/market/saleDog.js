@@ -102,7 +102,8 @@ $(".add-btn>button").on("click",function(){
 	        				html += "<img class='previewImg' src='/resources/upload/market/"+data[i].fileList[0].filePath+"'>";
 	        				html += "<input type='hidden' name='marketNo' value="+data[i].marketNo+">";
 	        				html += "</div>";
-	        				html += "<span class='list-sub-title'>"+data[i].typeName+"</span>";
+	        				html += "<span class='list-sub-title'>견종 : "+data[i].typeName+"</span>";
+	        				html += "<span class='list-sub-title'>이름 : "+data[i].callName+"</span>";
 	        				html += "<li>책임비 : "+data[i].price+"원</li>";
 	        				html += "</div>";
 	        			};
@@ -126,7 +127,8 @@ $(".add-btn>button").on("click",function(){
 	        				html += "<img class='previewImg' src='/resources/upload/market/"+data[i].fileList[0].filePath+"'>";
 	        				html += "<input type='hidden' name='marketNo' value="+data[i].marketNo+">";
 	        				html += "</div>";
-	        				html += "<span class='list-sub-title'>"+data[i].typeName+"</span>";
+	        				html += "<span class='list-sub-title'>견종 : "+data[i].typeName+"</span>";
+	        				html += "<span class='list-sub-title'>이름 : "+data[i].callName+"</span>";
 	        				html += "<li>책임비 : "+data[i].price+"원</li>";
 	        				html += "</div>";
 	        				$(".add-btn").text("더 이상 목록이 없습니다.");
@@ -138,7 +140,8 @@ $(".add-btn>button").on("click",function(){
 	        				html += "<img class='previewImg' src='/resources/upload/market/"+data[i].fileList[0].filePath+"'>";
 	        				html += "<input type='hidden' name='marketNo' value="+data[i].marketNo+">";
 	        				html += "</div>";
-	        				html += "<span class='list-sub-title'>"+data[i].typeName+"</span>";
+	        				html += "<span class='list-sub-title'>견종 : "+data[i].typeName+"</span>";
+	        				html += "<span class='list-sub-title'>이름 : "+data[i].callName+"</span>";
 	        				html += "<li>책임비 : "+data[i].price+"원</li>";
 	        				html += "</div>";
 	        			};
@@ -162,7 +165,8 @@ $(".add-btn>button").on("click",function(){
 	        				html += "<img class='previewImg' src='/resources/upload/market/"+data[i].fileList[0].filePath+"'>";
 	        				html += "<input type='hidden' name='marketNo' value="+data[i].marketNo+">";
 	        				html += "</div>";
-	        				html += "<span class='list-sub-title'>"+data[i].typeName+"</span>";
+	        				html += "<span class='list-sub-title'>견종 : "+data[i].typeName+"</span>";
+	        				html += "<span class='list-sub-title'>이름 : "+data[i].callName+"</span>";
 	        				html += "<li>책임비 : "+data[i].price+"원</li>";
 	        				html += "</div>";
 	        				$(".add-btn").text("더 이상 목록이 없습니다.");
@@ -174,7 +178,8 @@ $(".add-btn>button").on("click",function(){
 	        				html += "<img class='previewImg' src='/resources/upload/market/"+data[i].fileList[0].filePath+"'>";
 	        				html += "<input type='hidden' name='marketNo' value="+data[i].marketNo+">";
 	        				html += "</div>";
-	        				html += "<span class='list-sub-title'>"+data[i].typeName+"</span>";
+	        				html += "<span class='list-sub-title'>견종 : "+data[i].typeName+"</span>";
+	        				html += "<span class='list-sub-title'>이름 : "+data[i].callName+"</span>";
 	        				html += "<li>책임비 : "+data[i].price+"원</li>";
 	        				html += "</div>";
 	        			};
@@ -198,7 +203,8 @@ $(".add-btn>button").on("click",function(){
 	        				html += "<img class='previewImg' src='/resources/upload/market/"+data[i].fileList[0].filePath+"'>";
 	        				html += "<input type='hidden' name='marketNo' value="+data[i].marketNo+">";
 	        				html += "</div>";
-	        				html += "<span class='list-sub-title'>"+data[i].typeName+"</span>";
+	        				html += "<span class='list-sub-title'>견종 : "+data[i].typeName+"</span>";
+	        				html += "<span class='list-sub-title'>이름 : "+data[i].callName+"</span>";
 	        				html += "<li>책임비 : "+data[i].price+"원</li>";
 	        				html += "</div>";
 	        				$(".add-btn").text("더 이상 목록이 없습니다.");
@@ -211,7 +217,8 @@ $(".add-btn>button").on("click",function(){
 	        				html += "<img class='previewImg' src='/resources/upload/market/"+data[i].fileList[0].filePath+"'>";
 	        				html += "<input type='hidden' name='marketNo' value="+data[i].marketNo+">";
 	        				html += "</div>";
-	        				html += "<span class='list-sub-title'>"+data[i].typeName+"</span>";
+	        				html += "<span class='list-sub-title'>견종 : "+data[i].typeName+"</span>";
+	        				html += "<span class='list-sub-title'>이름 : "+data[i].callName+"</span>";
 	        				html += "<li>책임비 : "+data[i].price+"원</li>";
 	        				html += "</div>";
 	        			};
@@ -244,7 +251,8 @@ $(".add-btn>button").on("click",function(){
     				html += "<img class='previewImg' src='/resources/upload/market/"+data[i].fileList[0].filePath+"'>";
     				html += "<input type='hidden' name='marketNo' value="+data[i].marketNo+">";
     				html += "</div>";
-    				html += "<span class='list-sub-title'>"+data[i].typeName+"</span>";
+    				html += "<span class='list-sub-title'>견종 : "+data[i].typeName+"</span>";
+					html += "<span class='list-sub-title'>이름 : "+data[i].callName+"</span>";
     				html += "<li>책임비 : "+data[i].price+"원</li>";
     				html += "</div>";
     			};
