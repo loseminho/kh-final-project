@@ -12,7 +12,7 @@
 	    WM_ADDR AS wmAddr,
 	    WM_RANGE_MEMBER AS wmRangeMember,
 	    WM_CONTENT AS wmContent,
-	    WM_VIEW AS wmView,
+	    REPLY AS reply,
 	    WM_DATE AS wmDate
 	FROM walk_mate_tbl ORDER BY WM_NO DESC)W)
 	</select>
@@ -44,7 +44,7 @@
 			<result column="wmAddr" property="wmAddr"/>
 			<result column="wmRangeMember" property="wmRangeMember"/>
 			<result column="wmContent" property="wmContent"/>
-			<result column="wmView" property="wmView"/>
+			<result column="reply" property="reply"/>
 			<result column="wmDate" property="wmDate"/>
 			<result column="rnum" property="rnum"/>
 		<collection property="wList"
@@ -74,7 +74,7 @@ SELECT A.*, B.MEMBER_NICKNAME AS leaderNickname FROM
             WM_ADDR AS wmAddr,
             WM_RANGE_MEMBER AS wmRangeMember,
             WM_CONTENT AS wmContent,
-            WM_VIEW AS wmView,
+            REPLY AS reply,
             WM_DATE AS wmDate
         FROM walk_mate_tbl ORDER BY WM_NO DESC)W))A
 LEFT JOIN MEMBER_TBL B ON A.wmLeader = B.MEMBER_NO WHERE A.wmNo =#{_parameter}
@@ -97,6 +97,19 @@ LEFT JOIN MEMBER_TBL B ON A.wmLeader = B.MEMBER_NO WHERE A.wmNo =#{_parameter}
 	        FILEPATH AS filepath
 		FROM WM_FILE_TBL WHERE WM_NO=#{_parameter}
 	</select>
+	<select id="selectFileList3" resultType="wmc" parameterType="_int">
+	SELECT A.WMC_NO AS wmcNo,
+        A.WM_NO AS wmNo,
+        A.WMC_GROUP AS wmcGroup,
+        A.WMC_GROUP_ORDER AS wmcGroupOrder,
+        A.WMC_CLASS AS wmcClass,
+        A.MEMBER_NO AS memberNo,
+        A.WMC_CONTENT AS wmcContent,
+        A.WMC_DATE AS wmcDate,
+        B.MEMBER_NICKNAME AS memberNickname,
+        B.MEMBER_PHOTO AS memberPhoto
+    FROM (SELECT * FROM WMC_TBL WHERE WM_NO =#{_parameter}) A LEFT JOIN MEMBER_TBL B ON A.MEMBER_NO = B.MEMBER_NO ORDER BY A.WMC_GROUP ASC, A.WMC_GROUP_ORDER ASC
+	</select>
 	<resultMap type="w" id="getContentBox">
 			<result column="wmNo" property="wmNo"/>
 			<result column="wmLeader" property="wmLeader"/>
@@ -107,7 +120,7 @@ LEFT JOIN MEMBER_TBL B ON A.wmLeader = B.MEMBER_NO WHERE A.wmNo =#{_parameter}
 			<result column="wmAddr" property="wmAddr"/>
 			<result column="wmRangeMember" property="wmRangeMember"/>
 			<result column="wmContent" property="wmContent"/>
-			<result column="wmView" property="wmView"/>
+			<result column="reply" property="reply"/>
 			<result column="wmDate" property="wmDate"/>
 			<result column="rnum" property="rnum"/>
 		<collection property="wList"
@@ -122,7 +135,16 @@ LEFT JOIN MEMBER_TBL B ON A.wmLeader = B.MEMBER_NO WHERE A.wmNo =#{_parameter}
 					ofType="wf"
 					javaType="java.util.ArrayList"
 		/>
+		<collection property="wmcList"
+					select="selectFileList3"
+					column="wmNo"
+					ofType="wmc"
+					javaType="java.util.ArrayList"
+		/>
 	</resultMap>
+	
+	
+	<!-- 
 	<select id="selectMaxSeq" resultType="int">
 		SELECT 
 			MAX(WM_NO)
@@ -147,4 +169,99 @@ LEFT JOIN MEMBER_TBL B ON A.wmLeader = B.MEMBER_NO WHERE A.wmNo =#{_parameter}
 		INSERT INTO WM_FILE_TBL 
 			VALUES(WM_FILE_SEQ.NEXTVAL,#{wmNo},#{filename},#{filepath})
 	</insert>
+	 -->
+	<!-- 댓글 쓰기 -->
+	<!-- 
+	<insert id="picture_reply_write" parameterType="wmc">
+		INSERT INTO WMC_TBL VALUES(
+			0,
+			#{wmNo},
+			#{wmcGroup},
+			0,
+			0,
+			#{memberNickname},
+			#{wmcContent},
+			now()
+		)
+	</insert>
+	 -->
+	<!-- 댓글일 경우  wmcNo, wmcGroup를 같게 만듬 -->
+	<!-- 
+	<update id="picture_reply_check" parameterType="wmc">
+		UPDATE WMC_TBL SET WMC_GROUP=#{wmcGroup}
+				WHERE WMC_NO != WMC_GROUP
+	</update>
+	 -->
+	<!-- 댓글이 삭제된 댓글일때, 그에 딸린 답글이 삭제되면 테이블에서 완전히 삭제된다 -->
+	 <!-- 
+	<delete id="picture_reply_delete_after_rereply_delete" parameterType="wmc">
+		DELETE FROM WMC_TBL
+		WHERE WMC_CONTENT="" AND WMC_GROUP={wmcGroup}
+	</delete>
+	 -->	
+	<!-- 대댓글 쓰기 -->
+	<!-- 
+	<insert id="picture_rereply_write" parameterType="wmc">
+		INSERT INTO WMC_TBL
+		VALUES(0,
+			#{wmcNo},
+			#{wmcGroup},
+			0,
+			#{wmcClass},
+			#{memberNickname},
+			#{wmcContent},
+			now()
+		)
+	</insert>
+	 -->
+	<!-- 보드의 댓글 수 증가 -->
+	<!-- 
+	<update id="picture_reply_up" parameterType="w">
+		UPDATE WALK_MATE_TBL SET REPLY=REPLY+1
+		WHERE WM_NO=#{wmNo}
+	</update>
+	 -->
+	 <!-- 댓글 리스트 가져오기 -->
+	 <!-- 
+	<select id="picutre_replyList" parameterType="wmc" resultType="wmc">
+	SELECT 
+		r.WMC_NO AS wmcNo, 
+		r.WM_NO AS wmNO,
+		 r.WMC_GROUP AS wmcGroup,
+		  r.WMC_CLASS AS wmcClass,
+		   r.MEMBER_NICKNAME AS memberNickname,
+		    r.WMC_CONTENT AS wmcContent,
+		     DATE_FORMAT(WMC_DATE,'%Y-%m-%d') AS wmcDate,
+		      DATEDIFF(NOW(), WMC_DATE) wgap,
+		       u.MEMBER_PHOTO AS memberPhoto
+	 FROM WMC_TBL r LEFT OUTER JOIN MEMBER_TBL u ON r.MEMBER_NICKNAME = u.MEMBER_NICKNAME
+	 WHERE r.WM_NO = #{wmNo};
+		 order by WMC_GROUP ASC, WMC_GROUP ORDER DESC
+	</select>
+	<select id="picture_reply_count" parameterType="w" resultType="w">
+		SELECT reply
+		FROM WALK_MATE_TBL
+		WHERE WM_NO = #{wmNo};
+	</select>
+	<select id="picture_count_rereply" parameterType="wmc" resultType="int">
+		SELECT COUNT(WMC_NO) FROM WMC_TBL
+		WHERE WMC_NO != #{wmcNo} AND WMC_GROUP = #{wmcNo};
+	</select>
+	<select id="picture_count_rereply_fromrereply" parameterType="wmc" resultType="int">
+		SELECT COUNT()
+	</select>
+	<delete id="picture_reply_delete" parameterType="wmc">
+		DELETE FROM WMC_TBL
+		WHERE WMC_NO = ${wmcNo}
+	</delete>
+	<update id="picture_reply_not_delete" parameterType="wmc">
+		UPDATE WMC_TBL SET WMC_CONTENT=""
+		WHERE WMC_NO=#{wmcNo}
+	</update>
+	<update id="picture_reply_down" parameterType="w">
+		UPDATE WALK_MATE_TBL 
+		SET REPLY=REPLY-1 
+		WHERE WM_NO=#{wmNo}
+	</update>
+	 -->
 </mapper>
