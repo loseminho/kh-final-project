@@ -21,6 +21,7 @@ import kr.or.member.model.vo.Report;
 import kr.or.walk.model.vo.AppliedWalkInfo;
 import kr.or.walk.model.vo.Walk;
 import kr.or.walk.model.vo.WalkPageData;
+import kr.or.walk.model.vo.WmApply;
 
 @Service
 public class MemberService {
@@ -409,5 +410,13 @@ public class MemberService {
 		ArrayList<Member> memberList = dao.selectAttendMemberList(wmNo);
 		
 		return w;
+	}
+
+	public ArrayList<WmApply> selectWalkMateApplyList(int wmNo) {
+		return dao.selectWalkMateApplyList(wmNo);
+	}
+	
+	public int updateApplyStat(WmApply wmApply) {
+		return dao.updateApplyStat(wmApply);
 	}
 }
