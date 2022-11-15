@@ -44,7 +44,8 @@ function mycalendar(){
         
 		eventDidMount: function(info) {
             tippy(info.el, {
-                content: info.event.title +'\r\n'+ info.event.extendedProps.description //이벤트 타이틀을 툴팁으로 가져오기 
+                content: info.event.title +"<br>장소 : "+ info.event.extendedProps.description, //이벤트 타이틀을 툴팁으로 가져오기 
+                allowHTML: true
            });
         }
 	});

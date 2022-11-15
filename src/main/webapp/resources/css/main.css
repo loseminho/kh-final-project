@@ -41,6 +41,13 @@ html, body {
     width:100%;
 }
 
+<<<<<<< HEAD
+=======
+#section3 {
+    background-image: url(/resources/img/main2.jpg);
+    background-size:100%;
+}
+>>>>>>> branch 'master' of https://github.com/fgjkqm20/final-project.git
 .section2-box{
 	position:relative;
     display:inline-block;
@@ -116,6 +123,21 @@ html, body {
 	font-family: gs-Medium;
 }
 
+<<<<<<< HEAD
+=======
+<!-- 세션3 -->
+.section3Content{
+	width:100vw;
+	height:100vh;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+}
+.section3Content>div{
+	
+}
+
+>>>>>>> branch 'master' of https://github.com/fgjkqm20/final-project.git
 /*header 부분*/
 @charset "UTF-8";
 *{
