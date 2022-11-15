@@ -206,7 +206,6 @@
                                 </div>
                         	</div>
                         	<!-- 대댓글 input -->
-                        	
                         	<div class="input-comment-box-view reviews">
 	                        	<div class="input-comment-writer-profil"><img src="/resources/img/walkmate/liry1.jpg"></div>
 	                        	<div class="comment-member-view reviews-sub rereviews">
@@ -242,40 +241,7 @@
                                 </div>
                         	</div>
                         	
-                        	
-                        	
-                        	<div class="input-comment-box-view views-list">
-	                        	<div class="input-comment-writer-profil"><img src="/resources/img/walkmate/liry1.jpg"></div>
-	                        	<div class="comment-member-view">
-                                    <span>로즈</span>
-                                    	산책하며 힐링도 하고 운동도 해요.
-                                    	<div class="view-sub"><span class="material-symbols-outlined">map</span>2022-11-12 23:30 · <div>댓글달기</div></div>
-                                </div>
-                        	</div>
-                        	<div class="input-comment-box-review views-list">
-	                        	<div class="input-comment-writer-profil"><img src="/resources/img/walkmate/liry1.jpg"></div>
-	                        	<div class="comment-member-view">
-                                    <span>로즈</span>
-                                    	산책하며 힐링도 하고 운동도 해요.
-                                    	<div class="view-sub"><span class="material-symbols-outlined">map</span>2022-11-12 23:30 · <div>댓글달기</div></div>
-                                </div>
-                        	</div>
-                        	<div class="input-comment-box-view views-list">
-	                        	<div class="input-comment-writer-profil"><img src="/resources/img/walkmate/liry1.jpg"></div>
-	                        	<div class="comment-member-view">
-                                    <span>로즈</span>
-                                    	산책하며 힐링도 하고 운동도 해요.
-                                    	<div class="view-sub"><span class="material-symbols-outlined">map</span>2022-11-12 23:30 · <div>댓글달기</div></div>
-                                </div>
-                        	</div>
-                        	<div class="input-comment-box-view views-list">
-	                        	<div class="input-comment-writer-profil"><img src="/resources/img/walkmate/liry1.jpg"></div>
-	                        	<div class="comment-member-view">
-                                    <span>로즈</span>
-                                    	산책하며 힐링도 하고 운동도 해요.
-                                    	<div class="view-sub"><span class="material-symbols-outlined">map</span>2022-11-12 23:30 · <div>댓글달기</div></div>
-                                </div>
-                        	</div>
+
                         </div>
                         
                         
@@ -317,8 +283,8 @@
     <div id="walk-mate-content">
         <div class="content-top">
             <ul class="walkmate-tab">
-                <li><h1><a id="">산책 메이트</a></h1></li>
-                <li><h1><a id="">💖 메이트</a></h1></li>
+                <li><h1><a id="" href="/walkMateFrm.do">산책 메이트</a></h1></li>
+                <li><h1><a id="" href="/mbtiMateMain.do" >💖 메이트</a></h1></li>
             </ul>
             <p>우리 동네 산책 메이트는 누가 있을까요?</p>
         </div>
