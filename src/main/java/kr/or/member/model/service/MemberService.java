@@ -141,6 +141,7 @@ public class MemberService {
 		map.put("start", start);
 		map.put("memberNo", memberNo);
 		map.put("dmCate", dm.getDmCate());
+		
 		// reqPage에 해당하는 게시물들 받아옴
 		ArrayList<DirectMessage> list = dao.selectAllSendDm(map);
 
@@ -292,6 +293,166 @@ public class MemberService {
 	public int insertReplyDm(DirectMessage dm) {
 		return dao.insertReplyDm(dm);
 	}
+
+	public HashMap<String, Object> searchSendDm(int memberNo, int reqPage, DirectMessage dm) {
+		// 한 페이지에 보여줄 게시물 수
+		int numPerPage = 10;
+		// 1페이지면 1~10번 글
+		// 2페이지면 11~20번 글
+		int end = reqPage * numPerPage;
+		int start = end - numPerPage + 1;
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("end", end);
+		map.put("start", start);
+		map.put("memberNo", memberNo);
+		map.put("dmCate", dm.getDmCate());
+		
+		if(dm.getDmKeyword() != null && !dm.getDmKeyword().equals("") && dm.getDmSearch() != null && !dm.getDmSearch().equals("")) {
+			map.put("dmKeyword", dm.getDmKeyword());
+			map.put("dmSearch", dm.getDmSearch());
+		}
+		
+		// reqPage에 해당하는 게시물들 받아옴
+		ArrayList<DirectMessage> list = dao.selectAllSendDm(map);
+
+		// 전체 게시물 수 계산
+		int totalCount = dao.selectSendDmCount(map);
+		
+		// 전체 페이지 수 계산
+		int totalPage = 0;
+		if(totalCount%numPerPage == 0) {
+			totalPage = totalCount/numPerPage;
+		} else {
+			totalPage = totalCount/numPerPage + 1;
+		}
+		
+		// pageNavi의 사이즈
+		int pageNaviSize = 5;
+		
+		// reqPage가 1~5면 1이 페이지 시작번호
+		// reqPage가 6~10이면 6이 페이지 시작번호
+		int pageNo = ((reqPage-1)/pageNaviSize)*pageNaviSize+1;
+		
+		String pageNavi = "<ul class='dm-pagination'>";
+		if(pageNo != 1) { // 페이지 시작번호가 1이 아니면 이전 버튼 넣기
+			pageNavi += "<li class='dm-page-prev'>";
+			pageNavi += "<a class='dm-page-item' onclick='sendDmSearch("+(pageNo-1)+")'>이전</a>";
+			pageNavi += "</li>";
+		}
+		
+		for(int i=0; i<pageNaviSize; i++) {
+			if(pageNo == reqPage) {
+				pageNavi += "<li>";
+				pageNavi += "<a class='dm-page-item active-page' onclick='sendDmSearch("+pageNo+")'>";
+				pageNavi += pageNo;
+				pageNavi += "</a></li>";
+			}else {
+				pageNavi += "<li>";
+				pageNavi += "<a class='dm-page-item' onclick='sendDmSearch("+pageNo+")'>";
+				pageNavi += pageNo;
+				pageNavi += "</a></li>";
+			}
+			
+			pageNo++;
+			if(pageNo > totalPage) {
+				break;
+			}
+		}
+		
+		if(pageNo <= totalPage) {
+			pageNavi += "<li class='dm-page-next'>";
+			pageNavi += "<a class='dm-page-item' onclick='sendDmSearch("+pageNo+")'>다음</a>";
+			pageNavi += "</li>";
+		}
+		
+		pageNavi += "</div>";
+		map.put("pageNavi", pageNavi);
+		map.put("totalCount", totalCount);
+		map.put("list", list);
+		return map;
+	}
+	
+
+	public HashMap<String, Object> searchReceiveDm(int memberNo, int reqPage, DirectMessage dm) {
+		// 한 페이지에 보여줄 게시물 수
+		int numPerPage = 10;
+		// 1페이지면 1~10번 글
+		// 2페이지면 11~20번 글
+		int end = reqPage * numPerPage;
+		int start = end - numPerPage + 1;
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("end", end);
+		map.put("start", start);
+		map.put("memberNo", memberNo);
+		map.put("dmCate", dm.getDmCate());
+		
+		if(dm.getDmKeyword() != null && !dm.getDmKeyword().equals("") && dm.getDmSearch() != null && !dm.getDmSearch().equals("")) {
+			map.put("dmKeyword", dm.getDmKeyword());
+			map.put("dmSearch", dm.getDmSearch());
+		}
+		
+		// reqPage에 해당하는 게시물들 받아옴
+		ArrayList<DirectMessage> list = dao.selectAllReceiveDm(map);
+
+		// 전체 게시물 수 계산
+		int totalCount = dao.selectReceiveDmCount(map);
+		
+		// 전체 페이지 수 계산
+		int totalPage = 0;
+		if(totalCount%numPerPage == 0) {
+			totalPage = totalCount/numPerPage;
+		} else {
+			totalPage = totalCount/numPerPage + 1;
+		}
+		
+		// pageNavi의 사이즈
+		int pageNaviSize = 5;
+		
+		// reqPage가 1~5면 1이 페이지 시작번호
+		// reqPage가 6~10이면 6이 페이지 시작번호
+		int pageNo = ((reqPage-1)/pageNaviSize)*pageNaviSize+1;
+		
+		String pageNavi = "<ul class='dm-pagination'>";
+		if(pageNo != 1) { // 페이지 시작번호가 1이 아니면 이전 버튼 넣기
+			pageNavi += "<li class='dm-page-prev'>";
+			pageNavi += "<a class='dm-page-item' onclick='receiveDmSearch("+(pageNo-1)+")'>이전</a>";
+			pageNavi += "</li>";
+		}
+		
+		for(int i=0; i<pageNaviSize; i++) {
+			if(pageNo == reqPage) {
+				pageNavi += "<li>";
+				pageNavi += "<a class='dm-page-item active-page' onclick='receiveDmSearch("+pageNo+")'>";
+				pageNavi += pageNo;
+				pageNavi += "</a></li>";
+			}else {
+				pageNavi += "<li>";
+				pageNavi += "<a class='dm-page-item' onclick='receiveDmSearch("+pageNo+")'>";
+				pageNavi += pageNo;
+				pageNavi += "</a></li>";
+			}
+			
+			pageNo++;
+			if(pageNo > totalPage) {
+				break;
+			}
+		}
+		
+		if(pageNo <= totalPage) {
+			pageNavi += "<li class='dm-page-next'>";
+			pageNavi += "<a class='dm-page-item' onclick='receiveDmSearch("+pageNo+")'>다음</a>";
+			pageNavi += "</li>";
+		}
+		
+		pageNavi += "</div>";
+		map.put("pageNavi", pageNavi);
+		map.put("totalCount", totalCount);
+		map.put("list", list);
+		return map;
+	}
+	
 	/*****************************************************/
 	
 	public Member selectOneProfile(int memberNo) {
@@ -410,4 +571,5 @@ public class MemberService {
 		
 		return w;
 	}
+
 }

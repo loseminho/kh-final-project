@@ -25,9 +25,11 @@ $(".section").on("click", function(){
     	mycalendar();
     } else if(idx == 5) {
     	$("#receiveDmCate").children().eq(0).prop("selected", true);
+    	$("#receiveDmSearch").children().eq(0).prop("selected", true);
     	receiveDm(1);
     } else if(idx == 6) {
     	$("#sendDmCate").children().eq(0).prop("selected", true);
+    	$("#sendDmSearch").children().eq(0).prop("selected", true);
     	sendDm(1);
     }
 });

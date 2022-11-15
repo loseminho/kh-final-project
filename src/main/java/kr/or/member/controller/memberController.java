@@ -568,6 +568,29 @@ public class memberController {
 		return "result";
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="/searchSendDm.do", produces="application/json;charset=utf-8")
+	public String searchSendDm(@SessionAttribute Member m, int reqPage, DirectMessage dm) {
+		int memberNo = m.getMemberNo();
+		HashMap<String, Object> map = service.searchSendDm(memberNo, reqPage, dm);
+		if(map != null) {
+			return new Gson().toJson(map);
+		} else {
+			return "null";
+		}
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/searchReceiveDm.do", produces="application/json;charset=utf-8")
+	public String searchReceiveDm(@SessionAttribute Member m, int reqPage, DirectMessage dm) {
+		int memberNo = m.getMemberNo();
+		HashMap<String, Object> map = service.searchReceiveDm(memberNo, reqPage, dm);
+		if(map != null) {
+			return new Gson().toJson(map);
+		} else {
+			return "null";
+		}
+	}
 	/*****************************************************/
 	
 	// 프로필 보기
