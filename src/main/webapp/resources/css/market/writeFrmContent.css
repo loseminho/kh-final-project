@@ -131,3 +131,18 @@
 	line-height:140px;
 	color:gray;
 }
+
+.thumb-nail{
+	color:#DE4B3F;
+	z-index:192919291291939123;
+	position:absolute;
+	height:20px;
+	width:45px;
+	text-align:center;
+	line-height:20px;
+	top:3px;
+	left:3px;
+	background-color:#fff;
+	border-radius:4px;
+	font-family:gs-Medium;
+}

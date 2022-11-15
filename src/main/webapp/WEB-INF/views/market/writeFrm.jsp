@@ -29,17 +29,20 @@
 			<input type="hidden" name="memberId" value="${sessionScope.m.memberId }">
 			<div class="sub-title"><span>*</span>사진</div>
 			<div class="row-part" style="height:150px;">
-				<input id="imageFile1"  type="file" class="photo" name="photo" style="display:none;">
+				<input id="imageFile1"  type="file" class="photo" name="photo" style="display:none;" disabled>
+				<input type="hidden" name="procedure" value="1" disabled>
 			<div class="preview-box">
 				<div class="input-btn">+</div>
 				<img src="" class="preview">
 			</div>
-			<input id="imageFile2"  type="file" class="photo" name="photo" style="display:none;">
+			<input id="imageFile2"  type="file" class="photo" name="photo" style="display:none;" disabled>
+			<input type="hidden" name="procedure" value="2" disabled>
 			<div class="preview-box">
 				<div class="input-btn">+</div>
 				<img src="" class="preview">
 			</div>
-			<input id="imageFile3" type="file" class="photo" name="photo" style="display:none;">
+			<input id="imageFile3" type="file" class="photo" name="photo" style="display:none;" disabled>
+			<input type="hidden" name="procedure" value="3" disabled>
 			<div class="preview-box">
 				<div class="input-btn">+</div>
 				<img src="" class="preview">
@@ -47,7 +50,7 @@
 			</div>
 			<div class="row-part">
 			<div class="sub-title"><span>*</span>이름 :</div>
-				<input type="text" name="callName">
+				<input type="text" name="callName" autocomplete="off">
 			</div>
 			<div class="row-part">
 			<div class="sub-title"><span>*</span>품종선택 :</div>
@@ -57,7 +60,7 @@
 			</div>
 			<div class="row-part">
 			<div class="sub-title"><span>*</span>나이(개월) :</div>
-			<input type="number" name="age" min="0" max="24" placeholder="0~24개월">
+			<input type="number" name="age" min="0" max="24" placeholder="0~24개월" autocomplete="off">
 			<span style="color:red; font-size:12px;">*입력해주세요</span>
 			</div>
 			<div class="row-part">
@@ -79,7 +82,7 @@
 		    <label for="price"><span>*</span>분양가격 :</label>
 		    </div>
 		    <div class="box">
-		        <input type="number" name="price" id="price" min="0" max="100000000" step="10000" placeholder="숫자만입력해주세요">\
+		        <input type="number" name="price" id="price" min="0" max="100000000" step="10000" placeholder="숫자만입력해주세요" autocomplete="off">\
 		        <span style="color:red; font-size:12px;"> *만원단위로 입력 할 수 있어요</span>
 		    </div>
 		    </div>

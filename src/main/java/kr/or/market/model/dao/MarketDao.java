@@ -68,12 +68,22 @@ public class MarketDao {
 		
 	}
 
-	public void deleteMarketFile(MarketDog md) {
-		sqlSession.delete("market.deleteFile",md);
+	public void deleteMarketFile(int pastFileNo) {
+		sqlSession.delete("market.deleteFile",pastFileNo);
 	}
 	
 	public void updateMarketFile(MarketDogFile mdf) {
 		sqlSession.insert("market.inputFile",mdf);	
+	}
+
+	public int deleteMarket(int marketNo) {
+		int result = sqlSession.delete("market.deleteMarket",marketNo);
+		return result;
+	}
+
+	public ArrayList<MarketDogFile> selectFileName(int marketNo) {
+		List list= sqlSession.selectList("market.selectFileName",marketNo);
+		return (ArrayList<MarketDogFile>)list;
 	}
 
 }

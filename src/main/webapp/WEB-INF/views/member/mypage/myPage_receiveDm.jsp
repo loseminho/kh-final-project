@@ -5,11 +5,13 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <h1>받은 쪽지함</h1>
 <div class="dmWrap">
-	<select id="receiveDmCate" name="dmCate">
-    	<option value="2" selected>전체쪽지</option>
-    	<option value="0">입양문의</option>
-    	<option value="1">친구해요</option>
-    </select>
+	<div class="dmCateWrap">
+		<select id="receiveDmCate" name="dmCate">
+	    	<option value="2" selected>전체쪽지</option>
+	    	<option value="0">입양문의</option>
+	    	<option value="1">친구해요</option>
+	    </select>
+	</div>
 	<table id="receiveDmTable" class="dmTable">
 		<thead>
 			<tr>
@@ -49,6 +51,7 @@
 			<div class="reply-box">
 				<textarea name="dmContent" style="display:none;" maxlength="150"></textarea>
 				<br>
+				<input type="hidden" id="loginLevel" value="${sessionScope.m.memberLevel }">
 				<button type="button" id="dmReplyBtn" onclick="dmReply();">답장하기</button>
 				<button type="button" id="dmReplyCancelBtn" onclick="cancelReply();" style="display:none;">취소</button>
 			</div>

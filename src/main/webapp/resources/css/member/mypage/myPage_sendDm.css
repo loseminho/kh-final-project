@@ -8,8 +8,15 @@
 
 .sendDm > .dmWrap {
 	width: 100%;
-	margin:20px auto;
+	margin:0px auto;
 	margin-bottom:30px;
+}
+
+.sendDm > .dmWrap > .dmCateWrap {
+	width: 100%;
+	display:flex;
+	flex-direction:row;
+	justify-content:flex-end;
 }
 
 .sendDm > .dmWrap #sendDmCate {

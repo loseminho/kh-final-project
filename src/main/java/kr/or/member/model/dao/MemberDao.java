@@ -129,18 +129,26 @@ public class MemberDao {
 	/*****************************************************/
 	
 	public ArrayList<AppliedWalkInfo> selectMyApplyList(String memberId, int start, int end) {
-		List list = sqlSession.selectList("member.selectMyApplyList", memberId);
+		List list = sqlSession.selectList("myWalkMate.selectMyApplyList", memberId);
 		return (ArrayList<AppliedWalkInfo>)list;
 	}
 
 	public ArrayList<Walk> selectMyMadeList(int memberNo) {
-		List list = sqlSession.selectList("member.selectMyMadeList", memberNo);
+		List list = sqlSession.selectList("myWalkMate.selectMyMadeList", memberNo);
 		return (ArrayList<Walk>)list;
 	}
 
 	public ArrayList<Walk> selectMyAppliedList(String memberId) {
-		List list = sqlSession.selectList("member.selectMyAppliedList", memberId);
+		List list = sqlSession.selectList("myWalkMate.selectMyAppliedList", memberId);
 		return (ArrayList<Walk>)list;
 	}
 
+	public Walk selectOneWalkMate(int wmNo) {
+		return sqlSession.selectOne("myWalkMate.selectOneWalkMate", wmNo);
+	}
+
+	public ArrayList<Member> selectAttendMemberList(int wmNo) {
+		List list = sqlSession.selectList("myWalkMate.selectAttendMemberList", wmNo);
+		return null;
+	}
 }

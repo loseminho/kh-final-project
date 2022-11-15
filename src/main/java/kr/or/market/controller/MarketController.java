@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletRequest;
@@ -73,28 +74,35 @@ public class MarketController {
 		return "market/writeFrm";
 	}
 	@RequestMapping(value="/inputMarket.do")
-	public String inputMarket(MarketDog md, MultipartFile[] photo,HttpServletRequest request) {
+	public String inputMarket(MarketDog md, MultipartFile[] photo,HttpServletRequest request, Integer[] procedure) {
+		System.out.println("사진길이"+photo.length);
+		System.out.println("procedure길이"+procedure.length);
+		for(Integer i : procedure) {
+			System.out.println("사진순서"+i);
+		}
 		String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/market/");
 		ArrayList<MarketDogFile> list = new ArrayList<MarketDogFile>();
 		if(photo[0].isEmpty()) {
 		}else{
-			for(MultipartFile file : photo) {
-				if(file.isEmpty()) {
+			for(int i=0;i<photo.length;i++) {
+				if(photo[i].isEmpty()) {
 					continue;
 				}
-				String fileName = file.getOriginalFilename();
+				String fileName = photo[i].getOriginalFilename();
 				String filePath = fileRename.fileRename(savePath, fileName);
 				
 				File upFile = new File(savePath+filePath);
 				try {
 					FileOutputStream fos = new FileOutputStream(upFile);
 					BufferedOutputStream bos = new BufferedOutputStream(fos);
-					byte[] bytes = file.getBytes();
+					byte[] bytes = photo[i].getBytes();
 					bos.write(bytes);
 					bos.close();
 					MarketDogFile mdf = new MarketDogFile();
 					mdf.setFilePath(filePath);
 					mdf.setFileName(fileName);
+					mdf.setFileProcedure(procedure[i]);
+					System.out.println("mdf컨트롤러"+mdf);
 					list.add(mdf);
 					md.setFileList(list);
 				} catch (FileNotFoundException e) {
@@ -106,7 +114,7 @@ public class MarketController {
 				}
 			}
 		}
-		int result = service.inputMarket(md);
+		int result = service.inputMarket(md,procedure);
 		return "redirect:saleDogList.do";
 	}
 	@ResponseBody
@@ -131,29 +139,45 @@ public class MarketController {
 	}
 	
 	@RequestMapping(value="/updateMarket.do")
-	public String updateMarket(MarketDog md, MultipartFile[] photo,HttpServletRequest request) {
+	public String updateMarket(MarketDog md,Integer[] procedure, MultipartFile[] photo,HttpServletRequest request, String[] pastFilePath, String[] pastFileName, Integer[] pastFileNo) {
+		if(pastFilePath != null) {
+			System.out.println("과거파일(지우는거)"+pastFilePath.length);
+			for(String str:pastFilePath) {
+				System.out.println("과거파일(지우는거)"+str);
+			}
+		}
+		/*
+		if(pastFileNo==null && pastFilePath==null) {
+			
+		}else {
+			for(int i=0;i<pastFilePath.length;i++) {
+				MarketDogFile mdf1 = new MarketDogFile();
+				mdf1.setMarketNo(md.getMarketNo());
+				mdf1.setFilePath(pastFilePath[i]);
+				pastList.add(mdf1);
+			}
+		}
+		*/
 		String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/market/");
 		ArrayList<MarketDogFile> list = new ArrayList<MarketDogFile>();
-		if(photo[0].isEmpty()) {
-		}else{
-			for(MultipartFile file : photo) {
-				if(file.isEmpty()) {
+			for(int i=0;i<photo.length;i++) {
+				if(photo[0].isEmpty()) {
 					continue;
 				}
-				String fileName = file.getOriginalFilename();
+				String fileName = photo[i].getOriginalFilename();
 				String filePath = fileRename.fileRename(savePath, fileName);
-				
 				File upFile = new File(savePath+filePath);
 				try {
 					FileOutputStream fos = new FileOutputStream(upFile);
 					BufferedOutputStream bos = new BufferedOutputStream(fos);
-					byte[] bytes = file.getBytes();
+					byte[] bytes = photo[i].getBytes();
 					bos.write(bytes);
 					bos.close();
 					MarketDogFile mdf = new MarketDogFile();
 					mdf.setMarketNo(md.getMarketNo());
 					mdf.setFilePath(filePath);
 					mdf.setFileName(fileName);
+					mdf.setFileProcedure(procedure[i]);
 					list.add(mdf);
 					md.setFileList(list);
 				} catch (FileNotFoundException e) {
@@ -164,8 +188,21 @@ public class MarketController {
 					e.printStackTrace();
 				}
 			}
+		int result = service.updateMarket(md,pastFileNo,photo);
+		/*
+		if(pastFilePath != null) {
+			for(String filePath : pastFilePath) {
+				File delFile = new File(savePath+filePath);
+				delFile.delete();
+			}
 		}
-		int result = service.updateMarket(md);
+		*/
+		return "redirect:saleDogList.do";
+	}
+	
+	@RequestMapping(value="/deleteMarket.do")
+	public String deleteMarket(int marketNo) {
+		int result = service.deleteMarket(marketNo);
 		return "redirect:saleDogList.do";
 	}
 }

@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 public class MyCalendar {
 	private int wmNo;
 	private String wmTitle;
-	private String startdate;
-	private String enddate;
+	private String wmMeetTime;
+	private String wmAddr;
 }

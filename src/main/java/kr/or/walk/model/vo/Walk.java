@@ -20,11 +20,11 @@ public class Walk {
 	private String wmAddr; 					// 산책 만남 장소
 	private String wmRangeMember;			// 산책갈개 모임 최대 인원
 	private String wmContent;				// 산책갈개 내용
-	private int wmView;						// 산책갈개 조회수
+	private int reply;						// 산책갈개 댓글수
 	private String wmDate;					// 산책갈개 작성일
 	private String rnum;					
 	private String leaderNickname;
 	private ArrayList<WmApply>	wList;		// 참여 멤버 프로필들
 	private ArrayList<WalkFile> fileList;	//
-	
+	private ArrayList<WalkMateComment> wmcList;
 }

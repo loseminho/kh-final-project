@@ -12,6 +12,9 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+	<form action="/deleteMarket.do" id="deleteMarketForm">
+		<input type="hidden" name="marketNo" id="marketNo" value="${md.marketNo }">	
+	</form>
 		<div class="page-content">
 			<div id="rowSession1">
 				<ul class="main-menu">
@@ -30,25 +33,60 @@
 			<input type="hidden" name="memberId" value="${sessionScope.m.memberId }">
 			<div class="sub-title"><span>*</span>사진</div>
 			<div class="row-part" style="height:150px;">
-				<input id="imageFile1"  type="file" class="photo" name="photo" style="display:none;">
-			<div class="preview-box">
-				<div class="input-btn">+</div>
-				<img src="/resources/upload/market/${md.fileList[0].filePath }" class="preview">
-			</div>
-			<input id="imageFile2"  type="file" class="photo" name="photo" style="display:none;">
-			<div class="preview-box">
-				<div class="input-btn">+</div>
-				<img src="/resources/upload/market/${md.fileList[1].filePath }" class="preview">
-			</div>
-			<input id="imageFile3" type="file" class="photo" name="photo" style="display:none;">
-			<div class="preview-box">
-				<div class="input-btn">+</div>
-				<img src="/resources/upload/market/${md.fileList[2].filePath }" class="preview">
-			</div>
+				<!-- 1번파일 -->
+				<input id="imageFile1" type="file" class="photo" name="photo" style="display:none;" disabled>
+				<input type="hidden" name="pastFileNo" value="${md.fileList[0].fileNo }" disabled>
+				<input type="hidden" name="pastFilePath" value="${md.fileList[0].filePath }" disabled>
+				<c:choose>
+					<c:when test="${not empty md.fileList[0].fileNo }">
+						<input type="hidden" name="procedure" value="1" disabled>
+					</c:when>
+					<c:otherwise>
+						<input type="hidden" name="procedure" value="1" disabled>
+					</c:otherwise>
+				</c:choose>
+				<input type="hidden" name="pastFilePath" value="${md.fileList[0].filePath }" disabled>
+				<div class="preview-box">  
+					<div class="input-btn">+</div>
+					<span class="thumb-nail">대표♥</span>
+					<img src="/resources/upload/market/${md.fileList[0].filePath }" class="preview">
+				</div>
+				<!-- 2번파일 -->
+				<input id="imageFile2" type="file" class="photo" name="photo" style="display:none;" disabled>
+				<input type="hidden" name="pastFileNo" value="${md.fileList[1].fileNo }" disabled>
+				<input type="hidden" name="pastFilePath" value="${md.fileList[1].filePath }" disabled>
+				<c:choose>
+					<c:when test="${not empty md.fileList[1].fileNo }">
+						<input type="hidden" name="procedure" value="2" disabled>
+					</c:when>
+					<c:otherwise>
+						<input type="hidden" name="procedure" value="2" disabled>
+					</c:otherwise>
+				</c:choose>
+				<div class="preview-box">
+					<div class="input-btn">+</div>
+					<img src="/resources/upload/market/${md.fileList[1].filePath }" class="preview">
+				</div>
+				<!-- 3번파일 -->
+				<input id="imageFile3" type="file" class="photo" name="photo" style="display:none;" disabled>
+				<input type="hidden" name="pastFileNo" value="${md.fileList[2].fileNo }" disabled>
+				<input type="hidden" name="pastFilePath" value="${md.fileList[2].filePath }" disabled>	
+					<c:choose>
+						<c:when test="${not empty md.fileList[2].fileNo }">
+							<input type="hidden" name="procedure" value="3" disabled>
+						</c:when>
+						<c:otherwise>
+							<input type="hidden" name="procedure" value="3" disabled>
+						</c:otherwise>
+					</c:choose>						
+					<div class="preview-box">
+						<div class="input-btn">+</div>
+						<img src="/resources/upload/market/${md.fileList[2].filePath }" class="preview">
+					</div>
 			</div>
 			<div class="row-part">
 			<div class="sub-title"><span>*</span>이름 :</div>
-				<input type="text" name="callName" value="${md.callName }" disabled>
+				<input type="text" name="callName" value="${md.callName }" autocomplete="off" disabled>
 			</div>
 			<div class="row-part">
 			<div class="sub-title"><span>*</span>품종선택 :</div>
@@ -58,7 +96,7 @@
 			</div>
 			<div class="row-part">
 			<div class="sub-title"><span>*</span>나이(개월) :</div>
-			<input type="number" name="age" min="0" max="24" placeholder="0~24개월" value="${md.age }">
+			<input type="number" name="age" min="1" max="24" placeholder="0~24개월" value="${md.age }" autocomplete="off">
 			<span style="color:blue; font-size:12px;">*개월 단위로 입력해요</span>
 			</div>
 			<div class="row-part">
@@ -90,7 +128,7 @@
 		    <label for="price"><span>*</span>분양가격 :</label>
 		    </div>
 		    <div class="box">
-		        <input type="number" name="price" id="price" min="0" max="100000000" step="10000" placeholder="${md.price }">\
+		        <input type="number" name="price" id="price" min="10000" max="100000000" step="10000" placeholder="${md.price }" autocomplete="off">\
 		        <span style="color:blue; font-size:12px;"> *만원단위로 입력 할 수 있어요</span>
 		    </div>
 		    </div>
@@ -108,6 +146,14 @@
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	<script src="/resources/js/market/writeFrmContent.js"></script>
 	<script>
+	$("#delete-btn").on("click",function(){
+		if(confirm("정말 삭제 하실거에요?")){
+		$("#deleteMarketForm").submit();
+		}else{
+			
+		}
+	});
+	
 	$("#submit-btn").on("click",function(){
 		if($("#price").val() == ''){
 			$(".box").children("span").text("입력을 해야해요");
@@ -127,10 +173,6 @@
 				});
 			}
 		});
-	});
-	
-	$("#delte-box").on("click",function(){
-		
 	});
 </script>
 </body>

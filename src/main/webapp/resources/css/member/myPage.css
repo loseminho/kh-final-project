@@ -1,15 +1,16 @@
 @charset "UTF-8";
 
+
 .page-content {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	align-items: flex-start;
 	width: 1200px;
-	margin: 0 auto;
+	margin: 0px auto;
 	margin-top:80px;
 	font-family : gs-Medium;
-	flex-grow: 1;
+	flex-grow:1;
 }
 
 /* 좌측 메뉴 영역 */

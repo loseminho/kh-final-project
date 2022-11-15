@@ -2,7 +2,7 @@
 
 .dm-list-wrap{
 	width:100%;
-	height:500px;
+	height:550px;
 	background-color: #DDD7CB;
 	opacity: 50%;
 	padding: 10px;
@@ -21,7 +21,7 @@
 }
 .dm-content-wrap{
 	width:100%;
-	height:450px;
+	height:400px;
 }
 .dm-content{
 	width:100%;

@@ -34,20 +34,10 @@
 		</div>
 	</div>
 	<div class="section" id="section3">
-		<div class="section3Content"> 
-			<div>
-				<ul>
-					<li>
-					고객센터
-					</li>
-					<li>
-					010-1111-1111
-					</li>
-				</ul>
-			</div>
+		<div class="section3Content">
 		</div>
-	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	</div>
+	<!-- <jsp:include page="/WEB-INF/views/common/footer.jsp" /> -->
 	<div class="popup-modal" style="display:none;">
 			<div class="popup-content">
 				<img src="/resources/img/popup/popup.png">
@@ -57,6 +47,9 @@
 			</div>
 			<div class="popup-content">
 				<img src="/resources/img/popup/popup3.png">
+			</div>
+			<div class="popup-content">
+				<img src="/resources/img/popup/popup4.png">
 			</div>
 		<button class="popup-close">닫기</button>
 		<button class="popup-close-day">오늘하루보지않기</button>

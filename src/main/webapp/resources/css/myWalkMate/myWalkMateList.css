@@ -34,19 +34,7 @@
 	font-size:18px;
 }
 
-.main-menu > li {
-    /*border-bottom: 1px solid #ccc;*/
-}
-
 .main-menu > li:hover > a {
-    text-decoration: underline;
-}
-
-.sub-menu > li > a {
-    /*background-color: #ccc;*/
-}
-
-.sub-menu > li:hover > a {
     text-decoration: underline;
 }
 

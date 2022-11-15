@@ -76,24 +76,26 @@ from market_tbl mt join dog_type dt on(mt.type_code=dt.type_code) left join memb
 		)
 	</insert>
 	<insert id="inputFile" parameterType="mdf">
-		insert into market_file_tbl values(#{marketNo},file_seq.nextval,#{fileName},#{filePath})
+		insert into market_file_tbl values(#{marketNo},file_seq.nextval,#{fileName},#{filePath},#{fileProcedure})
 	</insert>
 	
 	<select id="selectFile" resultType="mdf">
 		select
-		market_no as marketNo,
-		file_name as fileName,
-		file_path as filePath
-		from market_file_tbl
+			market_no as marketNo,
+			file_name as fileName,
+			file_path as filePath,
+			file_procedure as fileProcedure
+		from market_file_tbl order by file_procedure
 	</select>
 	<select id="selectNoFile" resultType="mdf">
 		select
-		file_no as fileNo,
-		market_no as marketNo,
-		file_name as fileName,
-		file_path as filePath
+			file_no as fileNo,
+			market_no as marketNo,
+			file_name as fileName,
+			file_path as filePath,
+			file_procedure as fileProcedure
 		from market_file_tbl
-		where market_no = #{_parameter}
+		where market_no = #{_parameter} order by file_procedure
 	</select>
 	<select id="myMarketList" parameterType="m" resultType="md">
 		select
@@ -107,6 +109,7 @@ from market_tbl mt join dog_type dt on(mt.type_code=dt.type_code) left join memb
 			to_char(mt.price,'FM999,999,999,999') as price,
 			call_name as callName
 		from market_tbl mt join dog_type dt on(mt.type_code=dt.type_code)
+		order by 1 desc
 	</select>
 	<update id="updateMarket" parameterType="md">	
 		update market_tbl set
@@ -118,8 +121,20 @@ from market_tbl mt join dog_type dt on(mt.type_code=dt.type_code) left join memb
 		where market_no = #{marketNo}		 
 	</update>
 	
-	<delete id="deleteFile" parameterType="md">
+	<delete id="deleteFile" parameterType="Integer">
 		delete from market_file_tbl
-		where market_no = #{marketNo}
+		where file_no = #{_parameter}
 	</delete>
+	<select id="deleteMarket">
+		delete from market_tbl where market_no = #{_parameter}
+	</select>
+	<select id="selectFileName" resultType="mdf">
+		select 
+		    file_no as fileNo,
+		    file_name as fileName,
+		    file_path as filePath,
+		    file_procedure as fileProcedure
+		from market_file_tbl
+		where market_no = #{_parameter}
+	</select>
 </mapper>

@@ -8,23 +8,30 @@ const previewBox= $(".preview-box");
 $(document).ready(function(){
 	$(".photo").change(function(){
 		fidx = $(".photo").index(this);
-		console.log(fidx);	
-		console.log(this.files);
-		
 		 if (this.files && this.files[0]) {
 	 		reader.readAsDataURL(this.files[0]);
 	 	}
+	 	
+	 	const idx = $(".photo").index(this);
+	 	//console.log("input tag fileNo::"+$("[name=pastFileNo]").eq(idx).is(":disabled"));
+	 	//console.log("input tag filePath::"+$("[name=pastFilePath]").eq(idx).is(":disabled"));
+	 	$("[name=pastFileNo]").eq(idx).attr("disabled",false);
+	 	$("[name=pastFilePath]").eq(idx).attr("disabled",false);
+	 	$("[name=procedure]").eq(idx).attr("disabled",false);
+	 	//console.log("input tag fileNo::"+$("[name=pastFileNo]").eq(idx).is(":disabled"));
+	 	//console.log("input tag filePath::"+$("[name=pastFilePath]").eq(idx).is(":disabled"));
 	});
 	previewBox.on("click",function(){
-
-	 	const idx = previewBox.index(this);
-	 	
-		console.log(idx);
-		
+		const idx = previewBox.index(this);
+		console.log($(".photo").eq(idx).is(":disabled"));
+	 	$(".photo").eq(idx).attr("disabled",false);
+		console.log($(".photo").eq(idx).is(":disabled"));
 	 	$(".photo").eq(idx).trigger("click");
  	
  	});
 });
+
+
 
 
 const tooltip = $(".tooltip");

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.or.market.model.dao.MarketDao;
 import kr.or.market.model.vo.DogType;
@@ -42,13 +43,15 @@ public class MarketService {
 		return list;
 	}
 
-	public int inputMarket(MarketDog md) {
+	public int inputMarket(MarketDog md, Integer[] procedure) {
 		// TODO Auto-generated method stub
 		dao.inputMarket(md);
 		int marketNo = dao.selectMarketNo();
 		
 		ArrayList<MarketDogFile> mdf = new ArrayList<MarketDogFile>();
+		
 		mdf = md.getFileList();
+		System.out.println("procedure를 포함한 service에서 mdf"+mdf);
 		
 		for(int i=0;i<mdf.size();i++) {
 			mdf.get(i).setMarketNo(marketNo);
@@ -76,23 +79,26 @@ public class MarketService {
 		return list;
 	}
 
-	public int updateMarket(MarketDog md) {
-		// TODO Auto-generated method stub
+	public int updateMarket(MarketDog md, Integer[] pastFileNo, MultipartFile[] photo) {
 		dao.updateMarket(md);
 		
 		ArrayList<MarketDogFile> mdf = new ArrayList<MarketDogFile>();
 		mdf = md.getFileList();
-		System.out.println("mdf"+mdf);
-		System.out.println("md"+md);
 		
 		if(mdf == null) {
 			return 0;
 		}else {
-			dao.deleteMarketFile(md);
+			for(Integer i:pastFileNo) {
+				dao.deleteMarketFile(i);
+			}
 			for(int i=0;i<mdf.size();i++) {
 				dao.updateMarketFile(mdf.get(i));
 			}
 		}
 		return 0;
+	}
+
+	public int deleteMarket(int marketNo) {
+		return dao.deleteMarket(marketNo);
 	}
 }
