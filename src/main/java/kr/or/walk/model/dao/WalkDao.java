@@ -37,6 +37,10 @@ public class WalkDao {
 	public void inputWalkFile(WalkFile wf) {
 		sqlSession.insert("walkmate.inputWalkFile",wf);
 	}
+
+	public int inputWmApply(WmApply wa) {
+		return sqlSession.insert("walkmate.inputWmApply",wa);
+	}
 	
 //	// 댓글 작성
 //	public Walk writeReply(WalkMateComment wmc) {
