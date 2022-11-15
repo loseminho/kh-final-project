@@ -868,7 +868,6 @@ header{
 	background-color: rgb(244, 244, 244);
 	border: none;
 	float: left;
-	
 }
 .comment-box-wrapper .input-comment-box .input-comment-writer-comment input:focus{
 	outline: none;
@@ -883,6 +882,7 @@ header{
 	height: 60px;
 	float: left;
 	opacity: 0;
+	cursor: none;
 }
 .comment-box-wrapper .input-comment-box .input-comment-writer-comment input:focus + button{
 	opacity: 1;
@@ -920,6 +920,7 @@ header{
 	font-size: 11px;
 	line-height: 19px;
 	color: #9c9c9c;
+	vertical-align: middle;
 }
 .comment-member-view .view-sub div{
 	margin-top: 5px;
@@ -967,15 +968,53 @@ header{
     margin-bottom: 2px;
     color: black;
     font-weight: 800;
+    
 }
 .reviews-sub .view-sub span{
-	margin-top: 5px;
 	height: 19px;
-	font-size: 14px;
+	font-size: 11px;
 	line-height: 19px;
 	color: #9c9c9c;
+	margin: 0;
+	vertical-align: middle;
 }
 .views-list{
 	height: 80px;
 	margin-top: 30px;
+}
+.reviews-sub .reviews-input{
+	font-size: 15px;
+	padding: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	width: 370px;
+	overflow: hidden;
+	font-family: gs-Medium;
+	background-color: rgb(244, 244, 244);
+	border: none;
+	float: left;
+}
+
+.reviews-sub .reviews-input:focus{
+	outline: none;
+}
+.reviews button{
+	margin-top: 8px;
+	font-family: gs-Medium;
+	border: none;
+	background-color: rgb(244, 244, 244);
+	font-size: 16px;
+	width: 50px;
+	height: 60px;
+	float: left;
+	display: inline-block;
+}
+.view-sub{
+	margin-top: 0px;
+}
+.reviews-sub .view-sub span{
+	margin-top: 0px;
+	font-size: 11px;
+	vertical-align: middle;
 }

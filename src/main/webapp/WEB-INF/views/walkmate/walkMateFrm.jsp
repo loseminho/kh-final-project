@@ -16,6 +16,7 @@
 	<jsp:include page="/WEB-INF/views/common/header.jsp" />
     
     <input type="hidden" id="login-memberId" value="${sessionScope.m.memberId}">
+    <input type="hidden" id="login-memberNo" value="${sessionScope.m.memberNo}">
     <input type="hidden" id="login-memberNickname" value="${sessionScope.m.memberNickname}">
     <input type="hidden" id="login-memberPhoto" value="
     <c:choose>
@@ -157,50 +158,86 @@
                             <li>ㅇ 승인제 산책</li>
                             <li>2021. 11. 06 오후 6:50</li>
                             <li>강남구 (서울 강남구 신사동)</li>
+                            
                         </ul>
                         <div class="info-titles">커뮤니티</div>
                         <div class="info-titles sub">산책이 궁금하다면 댓글을 남겨보세요.</div>
                         
                         <div class="comment-box-wrapper">
-                        	<!-- 댓글 작성 -->
-                        	<div class="input-comment-box writers-box">
-	                        	<div class="input-comment-writer-profil"><img src="/resources/img/walkmate/liry1.jpg"></div>
-	                        	<div class="input-comment-writer-comment">
-	                        		<input type="text" name="" class="" id="" placeholder="댓글 달기...">
-	                        		<button type="" name="" class="" id="">등록</button>
+                        	<!-- 댓글 input -->
+                        	<!-- 로그인을 해야만 댓글 작성 칸이 나옴 -->
+                        	<c:if test="${not empty sessionScope.m }">
+	                        	<div class="input-comment-box writers-box">
+		                        	<div class="input-comment-writer-profil"><img src="<c:choose>
+								   		<c:when test="${sessionScope.m.memberPhoto eq null}">
+										    /resources/img/default_profile.png
+										</c:when>
+										<c:otherwise>
+										    /resources/upload/member/${sessionScope.m.memberPhoto }						
+										</c:otherwise>
+									</c:choose>"></div>
+		                        		<input type="hidden" name="memberNo" value="${sessionScope.m.memberNo }">
+		                        	<div class="input-comment-writer-comment">
+		                        		<input type="text" name="" class="writer-comment-input" id="" placeholder="댓글 달기...">
+		                        		<button type="button" name="" class="write_reply">등록</button>
+		                        	</div>
 	                        	</div>
+                        	</c:if>
+                        	
+                        	<!-- 댓글 목록이 들어가는 곳 -->
+                        	<div class="comment-list-box">
+                        	
                         	</div>
-                        	<!-- 작성된 댓글  -->
+                        	<!-- 댓글 view  -->
                         	<div class="input-comment-box-view views-list">
-	                        	<div class="input-comment-writer-profil"><img src="/resources/img/walkmate/liry1.jpg"></div>
+	                        	<div class="input-comment-writer-profil"><img src="/resources/img/default_profile.png"></div>
+	                        	<div class="comment-member-view">
+                                    <span>X</span>
+                                    	아직 작성된 댓글이 없습니다! 어서 작성해주세요!
+                                    	<div class="view-sub"><span class="material-symbols-outlined">map</span>2022-11-12 23:30 · <div class="recomment-input">댓글달기</div><div class="delete-inputs-comment">삭제하기</div></div>
+                                </div>
+                        	</div>
+                        	<div class="input-comment-box-view views-list">
+	                        	<div class="input-comment-writer-profil"><img src="/resources/img/default_profile.png"></div>
 	                        	<div class="comment-member-view">
                                     <span>로즈</span>
                                     	산책하며 힐링도 하고 운동도 해요.
-                                    	<div class="view-sub"><span class="material-symbols-outlined">map</span>2022-11-12 23:30 · <div>댓글달기</div></div>
+                                    	<div class="view-sub"><span class="material-symbols-outlined">map</span>2022-11-12 23:30 · <div class="recomment-input">댓글달기</div><div class="delete-inputs-comment">삭제하기</div></div>
                                 </div>
                         	</div>
-                        	<!-- 작성된 댓글에 코멘트 -->
+                        	<!-- 대댓글 input -->
+                        	
+                        	<div class="input-comment-box-view reviews">
+	                        	<div class="input-comment-writer-profil"><img src="/resources/img/walkmate/liry1.jpg"></div>
+	                        	<div class="comment-member-view reviews-sub rereviews">
+                                    <span>피오스</span>
+                                    <input type="text" name="" class="reviews-input" id="" placeholder="대댓글 달기...">
+                                </div>
+                                <button type="submit" name="" class="rereviews-btn" id="">등록</button>
+                        	</div>
+                        	
+                        	<!-- 대댓글 view -->
                         	<div class="input-comment-box-view reviews">
 	                        	<div class="input-comment-writer-profil"><img src="/resources/img/walkmate/liry1.jpg"></div>
 	                        	<div class="comment-member-view reviews-sub">
-                                    <span>대댓글</span>
-                                    	산책하며 힐링도 하고 운동도 해요.
+                                    <span>피오</span>
+                                    	대댓글 대댓글 대댓글 대댓글 대댓글 대댓글 대댓글 대댓글 
+                                    	<div class="view-sub"><span class="material-symbols-outlined">map</span>2022-11-12 23:30 · <div class="recomment-input">댓글달기</div></div>
+                                </div>
+                        	</div>
+                        	<div class="input-comment-box-view reviews">
+	                        	<div class="input-comment-writer-profil"><img src="/resources/img/walkmate/liry1.jpg"></div>
+	                        	<div class="comment-member-view reviews-sub">
+                                    <span>수근</span>
+                                    	대댓글 대댓글 대댓글 대댓글 대댓글 대댓글 대댓글 대댓글 대댓글 대댓글 
                                     	<div class="view-sub"><span class="material-symbols-outlined">map</span>2022-11-12 23:30 · <div>댓글달기</div></div>
                                 </div>
                         	</div>
                         	<div class="input-comment-box-view reviews">
 	                        	<div class="input-comment-writer-profil"><img src="/resources/img/walkmate/liry1.jpg"></div>
 	                        	<div class="comment-member-view reviews-sub">
-                                    <span>대댓글</span>
-                                    	산책하며 힐링도 하고 운동도 해요.
-                                    	<div class="view-sub"><span class="material-symbols-outlined">map</span>2022-11-12 23:30 · <div>댓글달기</div></div>
-                                </div>
-                        	</div>
-                        	<div class="input-comment-box-view reviews">
-	                        	<div class="input-comment-writer-profil"><img src="/resources/img/walkmate/liry1.jpg"></div>
-	                        	<div class="comment-member-view reviews-sub">
-                                    <span>대댓글</span>
-                                    	산책하며 힐링도 하고 운동도 해요.
+                                    <span>민호</span>
+                                    	대댓글 대댓글 대댓글 대댓글 대댓글 대댓글 대댓글 대댓글 대댓글 대댓글 
                                     	<div class="view-sub"><span class="material-symbols-outlined">map</span>2022-11-12 23:30 · <div>댓글달기</div></div>
                                 </div>
                         	</div>
@@ -357,6 +394,10 @@
     const modalWriteSection4 = document.getElementById("write-section4");
     const modalWriteSection5 = document.getElementById("write-section5");
     const modalWriteSection6 = document.getElementById("write-section6");
+    
+
+    
+    
     
     function modalOn(){
         modal.style.display = "flex"
