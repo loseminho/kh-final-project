@@ -40,7 +40,8 @@ html, body {
 }
 
 #section3 {
-    background-color: aliceblue;
+    background-image: url(/resources/img/main2.jpg);
+    background-size:100%;
 }
 .section2-box{
 	position:relative;
@@ -119,16 +120,14 @@ html, body {
 
 <!-- 세션3 -->
 .section3Content{
-	width:100%;
-	height:100%;
+	width:100vw;
+	height:100vh;
 	display:flex;
 	justify-content: center;
 	align-items: center;
 }
 .section3Content>div{
-	display:flex;
-	width:50%;
-	height:50%;
+	
 }
 
 /*header 부분*/

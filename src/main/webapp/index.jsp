@@ -36,18 +36,12 @@
 	<div class="section" id="section3">
 		<div class="section3Content"> 
 			<div>
-				<ul>
-					<li>
-					고객센터
-					</li>
-					<li>
-					010-1111-1111
-					</li>
-				</ul>
+				<p>산책갈개는 반려견도 보호자도 즐거운 산책 시간을 보낼 수 있도록<br>
+				가까운 곳에서 강아지 산책 친구를 찾아드리고자 설립되었습니다.</p>
 			</div>
 		</div>
-	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	</div>
+	<!-- <jsp:include page="/WEB-INF/views/common/footer.jsp" /> -->
 	<div class="popup-modal" style="display:none;">
 			<div class="popup-content">
 				<img src="/resources/img/popup/popup.png">
