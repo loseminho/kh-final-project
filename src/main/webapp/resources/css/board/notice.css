@@ -43,6 +43,7 @@ content{
 .notice-list{
     margin: 0 auto;
     width: 100%;
+    overflow: hidden;
 }
 .notice-table{
     margin: 0 auto;
@@ -106,16 +107,16 @@ content{
 	width: 30%;
 }
 
+
+
+
 <!-- 부트스트랩 css -->
 
-#pageNavi{
-	margin-top: 40px;
-	margin-bottom: 50px;
-}
 .pagination{
+	display: flex;
+	justify-content: center;
 	margin-top: 40px;
 	margin-bottom: 50px;
-	justify-content: center;
 }
 .page-link {
   color: #000; 

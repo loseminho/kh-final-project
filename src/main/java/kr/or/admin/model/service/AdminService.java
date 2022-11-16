@@ -22,6 +22,19 @@ public class AdminService {
 		int totalCount = dao.adminQnaCount();
 		return totalCount;
 	}
+	
+	public ArrayList<AdminQna> moreAdminQna(int start, int amount, AdminQna q) {
+		int end = start+amount -1;
+		HashMap<String , Object> map = new HashMap<String, Object>();
+		map.put("start", start);
+		map.put("amount", amount);
+		map.put("end", end);
+		map.put("optionVal",q.getOptionVal());
+		System.out.println("optionVal:::::"+map.get("optionVal"));
+		ArrayList<AdminQna>list = dao.moreAdminQna(map);
+		return list;
+	}
+	/*
 	//관리자 문의내역 더보기  
 	public ArrayList<AdminQna> moreAdminQna(int start, int amount) {
 		int end = start+amount -1;
@@ -34,6 +47,7 @@ public class AdminService {
 		ArrayList<AdminQna>list = dao.moreAdminQna(map);
 		return list;
 	}
+	*/
 	//관리자 문의내역 검색 
 	public ArrayList<AdminQna> searchAdminQna(AdminQna aq) {
 		return dao.searchAdminQna(aq);

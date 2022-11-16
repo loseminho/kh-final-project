@@ -99,7 +99,7 @@ public class BoardController {
 	
 	/* 문의게시판 삭제  */
 	@RequestMapping(value="/qnaBoardDelete.do")
-	public String qnaBoardDelete(int qnaNo, HttpServletRequest request) {
+	public String qnaBoardDelete(int qnaNo, HttpServletRequest request, Model model) {
 		System.out.println(qnaNo);
 		//qnaBoard 삭제
 		ArrayList<QnaFile> list = service.qnaBoardDelete(qnaNo);
@@ -110,8 +110,15 @@ public class BoardController {
 				File delFile = new File(path+file.getFilepath());
 				delFile.delete();
 			}
+			model.addAttribute("title", "게시글 삭제 완료");
+			model.addAttribute("msg", "삭제가 완료되었습니다.");
+			model.addAttribute("icon", "success");
+			model.addAttribute("loc", "/faqQnaBoardFrm.do");
+			return "common/msg";
+		} else {
+			return null;
+			
 		}
-		return "redirect:/faqQnaBoardFrm.do";
 	}
 	
 	//문의게시판 댓글 insert 
@@ -143,6 +150,7 @@ public class BoardController {
 		int result = service.deleteQnaComment(qc);
 		if(result>0) {
 			model.addAttribute("qc",qc);
+			
 			return "redirect:/qnaView.do?qnaNo="+qc.getQnaNo();
 		} else {
 			return "null";

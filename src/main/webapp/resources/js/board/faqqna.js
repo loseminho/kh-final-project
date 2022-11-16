@@ -175,7 +175,10 @@ $("#searchQnaAjax").on("click",function(){
               if(data[i].qnaCateNo == 5) {
               	tr.append("<td>"+"기타"+"</td>"); 
               } 
+              if(data[i].qnaSecret == 2){
                 tr.append("<td>"+data[i].qnaTitle+"</td>");
+              }
+             	tr.append("<td>"+비밀글입니다+"</td>");
                 tr.append("<td>"+data[i].qnaWriter+"</td>");
               
               if(data[i].qnaStatus == 0) {

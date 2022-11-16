@@ -59,7 +59,7 @@ public class NoticeService {
 		}
 		*/
 		//pageNavi 생성 
-		String pageNavi = "<nav aria-label='Page navigation example'>";
+		String pageNavi = "<nav id='navBar'>";
 		pageNavi += "<ul class='pagination'>";
 		if (pageNo != 1) {
 			pageNavi += "<li class='page-item'><a class='page-link' href='/notice.do?reqPage=" + (pageNo - 1)
