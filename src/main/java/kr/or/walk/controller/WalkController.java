@@ -47,12 +47,12 @@ public class WalkController {
 		Walk w = service.selectContentBox(wmNo);
 		return new Gson().toJson(w);
 	}
-	@ResponseBody
+	
 	@RequestMapping(value="/inputWmapply.do", produces="application/json;charset=utf-8")
 	public String inputWmApply(WmApply wa) {
 		int result = service.inputWmApply(wa);
 		if(result > 0) {
-			return "walkmate/wmSuccess";
+			return "redirect:walkMateFrm.do";
 		} else {
 			return "redirect:walkMateFrm.do";
 		}
@@ -100,9 +100,27 @@ public class WalkController {
 		int result = service.inputWalk(w);
 		return "redirect:walkMateFrm.do";
 	}
-	
-	
-	
+
+	//댓글작성
+	@RequestMapping(value="/insertMainComment.do", produces="application/json;charset=utf-8")
+	public String insertMainComment(WalkMateComment wmc) {
+		int result = service.insertMainComment(wmc);
+		if(result > 0) {
+			return "redirect:walkMateFrm.do";
+		} else {
+			return "redirect:walkMateFrm.do";
+		}
+	}
+	//대댓글작성
+	@RequestMapping(value="/insertSubComment.do", produces="application/json;charset=utf-8")
+	public String insertSubComment(WalkMateComment wmc) {
+		int result = service.insertSubComment(wmc);
+		if(result > 0) {
+			return "redirect:walkMateFrm.do";
+		} else {
+			return "redirect:walkMateFrm.do";
+		}
+	}
 	
 //	//댓글 작성
 //	@ResponseBody
