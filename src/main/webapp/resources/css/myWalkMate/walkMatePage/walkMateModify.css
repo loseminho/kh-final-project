@@ -96,11 +96,16 @@
 }
 
 .wm-content-modify>textarea{
-	width: 498px;
-	height: 198px;
+	width: 458px;
+	height: 158px;
 	resize: none;
 	margin-top: 50px;
+	padding: 20px;
 	border: 1px solid #e1e1e1;
+}
+
+.wm-content-modify>textarea:focus{
+	outline: none;
 }
 
 /****************************************/

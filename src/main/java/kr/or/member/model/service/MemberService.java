@@ -566,13 +566,21 @@ public class MemberService {
 	}
 
 	public Walk selectOneWalkMate(int wmNo) {
-		Walk w = dao.selectOneWalkMate(wmNo);
-		
-		ArrayList<Member> memberList = dao.selectAttendMemberList(wmNo);
-		
-		return w;
+		return dao.selectOneWalkMate(wmNo);
 	}
 
+	public ArrayList<Member> selectAttendProfileList(int wmNo) {
+		Member leader = dao.selectLeaderProfile(wmNo);
+		ArrayList<Member> attendList = dao.selectAttendProfileList(wmNo);
+		attendList.add(0, leader);
+		
+		return attendList;
+	}
+	
+	public int leaveWalkMate(int memberNo) {
+		return dao.leaveWalkMate(memberNo);
+	}
+	
 	public ArrayList<WmApply> selectWalkMateApplyList(int wmNo) {
 		return dao.selectWalkMateApplyList(wmNo);
 	}
@@ -583,5 +591,9 @@ public class MemberService {
 
 	public int updateWalkMate(Walk w) {
 		return dao.updateWalkMate(w);
+	}
+
+	public int deleteWalkMate(int wmNo) {
+		return dao.deleteWalkMate(wmNo);
 	}
 }

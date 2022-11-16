@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     
 <link rel="stylesheet" href="/resources/css/myWalkMate/walkMatePage/walkMateAttendProfile.css">
 
@@ -9,49 +10,66 @@
 	</div>
 
 	<div class="wm-attend-profile-content">
-		<!-- 모임장 + 참가자 수만큼 -->
-		<div class="attend-person-one">
-			<div class="attend-profile-top">
-				<div class="attend-nicname">
-					<p>닉네임</p>
-					<p>나</p>
+		<c:if test="${empty attendList}">
+			<p>모임 참가자가 존재하지 않습니다.</p>
+		</c:if>
+	
+		<c:forEach items="${attendList}" var="attend" >
+			<div class="attend-person-one">
+				<div class="attend-profile-top">
+					<div class="attend-nicname">
+						<p>${attend.memberNickname }</p>
+						
+						<c:choose>
+			        		<c:when test="${attend.memberNo eq w.wmLeader }">
+			        			<p>모임장</p>
+			        		</c:when>
+			        		
+			        		<c:when test="${attend.memberNo eq sessionScope.m.memberNo }">
+			        			<p>나</p>
+			        		</c:when>
+						</c:choose>
+					</div>
+					
+					<div class="page-link-box">
+			        	<c:if test="${attend.memberNo ne w.wmLeader }">
+				        	<c:if test="${attend.memberNo eq sessionScope.m.memberNo }">
+				        		<p id="wm-leave"><a href="javascript:void(0);" onclick="leaveWalkMate(${sessionScope.m.memberNo })">모임나가기</a></p>
+				        	</c:if>
+			        	</c:if>
+			        	
+						<p id="view-profile"><a href="/selectOneProfile.do?memberNo=${attend.memberNo }">전체 프로필 보기</a></p>
+					</div>
 				</div>
 				
-				<div class="page-link-box">
-					<p><a href="#">모임나가기</a></p>
-					<p><a href="#">전체 프로필 보기</a></p>
+				<div class="attend-profile-main">
+					<div class="attend-img-box">
+						<c:choose>
+			        		<c:when test="${not empty attend.memberPhoto }">
+			        			<img src="/resources/upload/member/${attend.memberPhoto }">
+			        		</c:when>
+			        		
+			        		<c:otherwise>
+			        			<img src="/resources/img/default_profile.png">
+			        		</c:otherwise>
+						</c:choose>
+					</div>					
+				
+					<div class="attend-intro">
+			        	<c:choose>
+			        		<c:when test="${not empty attend.memberIntro }">
+			        			${attend.memberIntro }
+			        		</c:when>
+			        		
+			        		<c:otherwise>
+			        			입력된 자기소개가 없습니다.
+			        		</c:otherwise>
+			        	</c:choose>
+					</div>
 				</div>
 			</div>
-			
-			<!-- 반려견 수 만큼 -->
-			<div class="attend-dog-one">
-				<div class="attend-dog-img-box">
-					<img src="/resources/img/default_dog.png">
-				</div>
-			
-				<table>
-					<tr>
-						<th>이름</th>
-						<td>xxx</td>
-					</tr>
-					<tr>
-						<th>품종</th>
-						<td>xxx</td>
-					</tr>
-					<tr>
-						<th>성별</th>
-						<td>xxx</td>
-					</tr>
-					<tr>
-						<th>나이</th>
-						<td>xxx</td>
-					</tr>
-					<tr>
-						<th>몸무게</th>
-						<td>xxx</td>
-					</tr>
-				</table>
-			</div>
-		</div>
+		</c:forEach>
 	</div>
 </div>
+
+<script src="/resources/js/myWalkMate/walkMatePage/walkMateAttendProfile.js"></script>

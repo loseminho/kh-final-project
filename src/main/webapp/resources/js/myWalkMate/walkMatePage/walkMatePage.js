@@ -23,10 +23,6 @@ $(".section").on("click", function(){
     $("#rowSession2").children().eq(idx).show();
 });
 
-
-
-
-
 $("#wmApplyManagement").one("click", function(){
 	$.ajax({
 		url: "/selectWalkMateApplyList.do",

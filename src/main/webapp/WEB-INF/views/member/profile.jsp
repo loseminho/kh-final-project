@@ -21,7 +21,10 @@
 	        		<c:when test="${not empty other }">
 	        			<div class="profile-header">
 			        		<h1>${other.memberNickname }</h1>
-			        		<p id="report-modal-open">신고</p>
+			        		
+			        		<c:if test="${sessionScope.m.memberLevel == 1 }">
+			        			<p id="report-modal-open">신고</p>
+			        		</c:if>
 			        	</div>
 			            
 				        <div class="profile-photo-box">
@@ -38,17 +41,36 @@
 
 				        <div class="person-id">
 				        	<p><b>아이디</b></p>
+				        	
 				        	<p>${other.memberId }</p>
 				        </div>
 
 				        <div class="person-city">
 				        	<p><b>활동지역</b></p>
-				        	<p>${other.memberCity }</p>
+				        	
+				        	<c:choose>
+				        		<c:when test="${not empty other.memberCity }">
+				        			<p>${other.memberCity }</p>
+				        		</c:when>
+				        		
+				        		<c:otherwise>
+				        			<p>활동지역을  지정하지 않았습니다.</p>
+				        		</c:otherwise>
+				        	</c:choose>
 				        </div>
 				        
 				        <div class="person-intro">
 				        	<p><b>자기소개</b></p>
-				        	<div>${other.memberIntro }</div>
+				        	
+				        	<c:choose>
+				        		<c:when test="${not empty other.memberIntro }">
+				        			<div>${other.memberIntro }</div>
+				        		</c:when>
+				        		
+				        		<c:otherwise>
+				        			<div>입력된 자기소개가 없습니다.</div>
+				        		</c:otherwise>
+				        	</c:choose>
 				        </div> 
 	        		</c:when>
 
