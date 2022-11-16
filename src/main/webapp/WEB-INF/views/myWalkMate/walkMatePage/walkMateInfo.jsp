@@ -14,7 +14,7 @@
 		<table>
 			<tr>
 				<th>모임장</th>
-				<td>xxx</td>
+				<td>${w.leaderNickname }</td>
 			</tr>
 			<tr>
 				<th>모임 일시</th>
