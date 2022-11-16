@@ -1,4 +1,20 @@
-
+//게시글 삭제 
+function check(){
+ 	Swal.fire({
+        title: '게시글 삭제',
+        text: "삭제하시겠습니까?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#ccc',
+        confirmButtonText: '삭제',
+        cancelButtonText: '취소'
+    }).then((result) => {
+        if (result.isConfirmed) {
+			location.href="/qnaBoardDelete.do?";
+        }
+    })
+}
 
 //수정버튼 누를때 
 function modifyQnaComment(obj,qcommentNo,qnaNo){
@@ -48,6 +64,11 @@ function modifyQnaComment(obj,qcommentNo,qnaNo){
 		
 //삭제버튼 누를때 
 function deleteQnaComment(obj,qcommentNo,qnaNo){
-	console.log(qcommentNo);
-	location.href = "/deleteQnaComment.do?qcommentNo="+qcommentNo+"&qnaNo="+qnaNo;
+	const result = confirm('삭제하시겠습니까?');
+	if(result){
+		//yes
+	location.href = "/deleteQnaComment.do?qcommentNo="+qcommentNo+"&qnaNo="+qnaNo;		
+	} else {
+		//no
+	}
 }

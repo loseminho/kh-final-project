@@ -7,7 +7,9 @@
 </select>
 <!-- 문의내역 더보기 -->
 <select id="moreAdminQna" parameterType="map" resultType="aq">
-select
+    select *
+    from (select rownum as rnum, q.* 
+    from (select
 	qna_no as qnaNo,
 	substr(replace(qna_writer,substr(qna_writer,2,2),'**'),1,instr(qna_writer,'@',1,1)-1)as qnaWriter,
 	qna_title as qnaTitle,
@@ -15,35 +17,20 @@ select
 	qna_views as qnaViews,
 	qna_date as qnaDate,
 	qna_cate_no as qnaCateNo,
-	qna_status as qnaStatus
-from(select rownum as rnum, q.* from(select * from qna_tbl order by 1 desc)q) where rnum between #{start} and #{end}
-</select>
-<!-- 문의내역 검색 -->
-<select id="searchAdminQna" parameterType="aq" resultType="aq">
-select
-	qna_no as qnaNo,
-		substr(replace(qna_writer,substr(qna_writer,2,2),'**'),1,instr(qna_writer,'@',1,1)-1)as qnaWriter,
-		qna_title as qnaTitle,
-		qna_content as qnaContent,
-		qna_views as qnaViews,
-		qna_date as qnaDate,
-		qna_cate_no as qnaCateNo,
-		qna_status as qnaStatus
-	from qna_tbl
-	<choose>
-		<when test="searchType.equals('nonAnswer')">
+	qna_status as qnaStatus,
+	qna_secret as qnaSecret
+    
+    from qna_tbl
+    <choose>
+		<when test="optionVal == 0">
 			where qna_status = 0
 		</when>
-		<when test="searchType.equals('answer')">
+		<when test="optionVal == 1">
 			where qna_status = 1
 		</when>
-		<when test="searchType.equals('qnaType')">
-			where qna_cate_no like '%'||#{keyword}||'%'
-		</when>
-		<when test="searchType.equals('qnaWriter')">
-			where qna_writer like '%'||#{keyword}||'%'
-		</when>
 	</choose>
+    order by 1 desc)q)
+    where rnum between #{start} and #{end}
 </select>
 <!-- 신고하기 총 게시물 수  -->
 <select id="adminReportCount" resultType="_int">

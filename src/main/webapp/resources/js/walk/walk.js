@@ -111,7 +111,7 @@ function modalViews(e){
 	data: {wmNo : e},
 	success : function(data){
 		
-		console.log(data);
+		
 		$(".up-btn").trigger("click");
 		
 		//로그인한 유저의 세션값
@@ -120,6 +120,10 @@ function modalViews(e){
 		const memberPhoto = document.getElementById('login-memberPhoto').value;
 		const memberNickname = document.getElementById('login-memberNickname').value;
 		
+		
+		//댓글달기 wmNo 주기
+		let inputWmNo = "<input type='hidden' name='wmNo' id='input-wmNo' value='"+data.wmNo+"'>";
+		$(".write_reply").after(inputWmNo);
 		
 		//승인멤버, 비승인멤버 수 체크
 		let ApplyMemberNum = 0;
@@ -211,9 +215,17 @@ function modalViews(e){
 		var html5 = "";
 		html5 += "<li><span class='material-symbols-outlined'>groups</span> 총 인원 :"+data.wmRangeMember+"</li>";
 		html5 += "<li><span class='material-symbols-outlined'>person</span> 현재 인원 :"+ApplyMemberNum+"</li>";
+		html5 += "<li><span class='material-symbols-outlined'>person</span> 대기 인원 :"+NoApplyMemberNum+"</li>";
 		html5 += "<li><span class='material-symbols-outlined'>event_available</span> 모임 시간 :"+data.wmMeetTime+"</li>";
 		html5 += "<li><span class='material-symbols-outlined'>map</span> 모임 장소 : "+data.wmAddr+"</li>";
-		html5 += "<li id='m_reply"+data.wmNo+"'><span class='material-symbols-outlined'>map</span> 댓글수 : "+data.wmAddr+"</li>";
+		html5 += "<li id='m_reply"+data.wmNo+"'><span class='material-symbols-outlined'>map</span> 댓글수 : ";
+		if(data.wmcList.length!=0){
+			html5 += data.wmcList.length
+			html5 += "</li>";
+		}else{
+			html5 += "현재 작성된 댓글이 없습니다!";
+			html5 += "</li>";
+		}
 		$(".mate-info-list").html(html5);
 		
 		var html6 = "";
@@ -282,8 +294,9 @@ function modalViews(e){
 		
 		
 		$(".comment-list-box").addClass('reply-list'+data.wmNo);
-		console.log(loginId);
+		
 		let listHtml = "";
+		let listInputHtml = "";
 		if(data.wmcList.length ==0){
 			//해당 게시물에 작성된 댓글이 없다면.
 		}else{
@@ -295,19 +308,32 @@ function modalViews(e){
 				//작성된 댓글의 길이만큼 반복한다.
 				if(data.wmcList[q].wmcClass ==0 ){
 					//해당 댓글이 일반 댓글인 경우
+						//유저 사진이 없으면
+						if(data.wmcList[q].memberPhoto === undefined){
+							data.wmcList[q].memberPhoto = "default_profile.png"; 
+							}
 						listHtml += "<div class='input-comment-box-view views-list'>";
 						listHtml += "<div class='input-comment-writer-profil'><img src='/resources/upload/member/"+data.wmcList[q].memberPhoto+"'></div>";
+						listHtml += "<div class='give-wmcGroup' style='display:none;'>"+data.wmcList[q].wmcGroup+"</div>";
 						listHtml +=	"<div class='comment-member-view'>";
 						listHtml +=  "<span>"+data.wmcList[q].memberNickname+"</span>";
 						listHtml += data.wmcList[q].wmcContent;
 						if(loginId.length >= 1 ){
 							//현재 로그인 상태이고,
 							if(data.wmcList[q].memberNo == loginNo){
-								//현재 사용자가 이 댓글의 작정자 일때 삭제 버튼 생성
-								listHtml += "<div class='view-sub clear-comments'><span class='material-symbols-outlined'>map</span>"+data.wmcList[q].wmcDate+" · <div class='recomment-input'>댓글달기</div><div class='delete-inputs-comment'>삭제하기</div><div class='show-recomments'>덮기</div></div>";
+								//현재 사용자가 이 댓글의 작성자 일때 삭제 버튼 생성
+								listHtml += "<div class='view-sub clear-comments'><span class='material-symbols-outlined'>map</span>"+data.wmcList[q].wmcDate+" · <div class='recomment-input'>댓글달기</div><div class='delete-inputs-comment'>삭제하기</div><div class='show-recomments'>덮기</div>";
+								listHtml += "<input type='hidden' class='helpWmcGroup' value='"+data.wmcList[q].wmcGroup+"'>"
+								listHtml += "<form action='/deleteMainComment.do' method='post'>";								
+								listHtml += "<input type='hidden' name='wmNo' value='"+data.wmNo+"'>";
+								listHtml += "<input type='submit' class='deleteMainCommentBtn'>";
+								listHtml += "</form>";
+								listHtml += "</div>";
+								listHtml += "<input type='hidden' name='wmcGroup' class='helpWmcGroup' value='"+data.wmcList[q].wmcGroup+"'>"
 							}else{
 								// 댓글 작성 div를 작동 시키기 위해서는  게시글 번호(wmNo), 댓글번호(wmcNo), 댓글 작성자(memberNo)를 인자로 담아서 넘겨주어야함.							
 								listHtml += "<div class='view-sub clear-comments'><span class='material-symbols-outlined'>map</span>"+data.wmcList[q].wmcDate+" · <div class='recomment-input'>댓글달기</div><div class='show-recomments'>덮기</div></div>";
+								listHtml += "<input type='hidden' class='helpWmcGroup' value='"+data.wmcList[q].wmcGroup+"'>"
 							}
 						}else{
 							listHtml += "<div class='view-sub clear-comments'><span class='material-symbols-outlined'>map</span>"+data.wmcList[q].wmcDate+" <div class='show-recomments'>덮기</div></div>";
@@ -316,7 +342,10 @@ function modalViews(e){
 						listHtml += "</div>" ;
 				}else{
 					//해당 댓글이 대댓글인 경우
-					listHtml += "<div class='input-comment-box-view reviews recomments"+data.wmcList[q].wmcGroup+"'>";
+					if(data.wmcList[q].memberPhoto === undefined){
+							data.wmcList[q].memberPhoto = "default_profile.png"; 
+							}
+					listHtml += "<div class='input-comment-box-view reviews'>";
 					listHtml += "<div class='input-comment-writer-profil'><img src='/resources/upload/member/"+data.wmcList[q].memberPhoto+"'></div>";
 					listHtml +=	"<div class='comment-member-view reviews-sub'>";
 					listHtml +=  "<span>"+data.wmcList[q].memberNickname+"</span>";
@@ -324,8 +353,15 @@ function modalViews(e){
 					if(loginId.length >= 1 ){
 							//현재 로그인 상태이고,
 							if(data.wmcList[q].memberNo == loginNo){
-								//현재 사용자가 이 댓글의 작정자 일때 삭제 버튼 생성
-								listHtml += "<div class='view-sub'>"+data.wmcList[q].wmcDate+"<div class='delete-inputs-comment'>삭제하기</div></div>";
+								//현재 사용자가 이 대댓글의 작성자 일때 대댓글 삭제 버튼 생성
+								listHtml += "<form action='/deleteSubComment.do' method='post'>";								
+								listHtml += "<div class='view-sub'>"+data.wmcList[q].wmcDate+"<div class='delete-inputs-sub-comment'>삭제하기</div></div>";
+								listHtml += "<input type='hidden' name='wmcNo' value='"+data.wmcList[q].wmcNo+"'>";
+								listHtml += "<input type='submit' class='deleteSubCommentBtn'>";
+								listHtml += "</form>";
+								
+								
+								
 								}else{
 									listHtml += "<div class='view-sub'>"+data.wmcList[q].wmcDate+"</div>";	
 								}
@@ -342,24 +378,58 @@ function modalViews(e){
 		
 		
 		
-		let listInputHtml = "";
+		listInputHtml += "<form action='/insertSubComment.do' method='post'>";
 		listInputHtml += "<div class='input-comment-box-view reviews'>";
 		listInputHtml += "<div class='input-comment-writer-profil'><img src='"+memberPhoto+"'></div>";
 		listInputHtml += "<div class='comment-member-view reviews-sub rereviews'>";
 		listInputHtml += "<span>"+memberNickname+"</span>";
-		listInputHtml += "<input type='text' name='' class='reviews-input' id='' placeholder='대댓글 달기...'>";
+		//wmNo번호
+		listInputHtml += "<input type='hidden' name='wmNo' id='input-wmNo' value='"+data.wmNo+"'>";
+		//memberNo
+		listInputHtml += "<input type='hidden' name='memberNo' value='"+loginNo+"'>";
+		//wmcGroup
+		listInputHtml += "<input type='hidden' name='wmcGroup' id='input-wmcGroup'>";
+		//wmcContent
+		listInputHtml += "<input type='text' name='wmcContent' class='reviews-input' placeholder='대댓글 달기...'>";
 		listInputHtml += "</div>";
-		listInputHtml += "<button type='button' name='' class='rereviews-btn' id=''>등록</button>";
+		listInputHtml += "<button type='submit' class='rereviews-btn'>등록</button>";
 		listInputHtml += "</div>";
+		listInputHtml += "</form>";
+		
+		//댓글에 대댓글 달때
 		$(".recomment-input").one("click",function(){
-			$(this).parent().parent().parent().after(listInputHtml);
-		});
-		$(".rereviews-btn").on("click",function(){
+			//댓글에 심어둔 그룹번호 조회
+			//console.log($(this).parent().next().val());
 			
+			//대댓글 input 생성
+			$(this).parent().parent().parent().after(listInputHtml);
+			//대댓글 input에 댓글의 그룹번호 전송
+			//요기요기
+			const commentWmcGroup = $(this).parent().next().val();
+			$("#input-wmcGroup").val(commentWmcGroup);
+			
+			//대댓글 등록 시 공백잇으면 전송 x
+			$(".rereviews-btn").click(function(){
+				if($('.reviews-input').val().trim() ==''){
+					alert('댓글 내용은 필수 입력입니다.');
+					$('.reviews-input').val('');
+			        $('.reviews-input').focus();
+			        return false;
+				}
+			});
 		});
 		
 		
-		//몇번째 대댓글on/off인지 index만 세주는거;
+		$(".delete-inputs-comment").on("click",function(){
+			$(this).siblings(".deleteMainCommentBtn").trigger("click");
+			
+		})
+		$(".delete-inputs-sub-comment").on("click",function(){
+			$(this).parent().siblings(".deleteSubCommentBtn").trigger("click");
+			
+		})
+		
+		// 대댓글 보이기 숨기기
 		$(".show-recomments").on("click",function(){
 			if($(this).parents(".views-list").nextUntil(".views-list").css('display') ==='none'){
 				$(this).parents(".views-list").nextUntil(".views-list").slideDown();
@@ -371,7 +441,7 @@ function modalViews(e){
 		});
 		
 		
-		// ${"recomments"+A+"")를 누르면 대댓글 on/off
+		
 		
 		
 		// 화면 호출
@@ -390,7 +460,7 @@ function modalApplyView(){
 	modalView();
 	const infoSection = document.getElementById("info-of-main");
 	infoSection.style.display = "none";
-	window.scrollTo(0,0);
+	$(".up-btn").trigger("click");
 }
 function modalApplyViewOff(){
 	const applySection = document.getElementById("applySection");
@@ -403,6 +473,9 @@ function modalApplyViewOff(){
 function modalWrites(){
 	const infoSection = document.getElementById("info-of-main");
 	infoSection.style.display = "block"
+	const applySection = document.getElementById("applySection");
+	applySection.style.display = "none";
+	
 	$(".modal-writer-content-box").html('');
 	const loginNickname = document.getElementById('login-memberNickname').value;
 	const loginPhoto = document.getElementById('login-memberPhoto').value;
@@ -420,6 +493,24 @@ function modalWrites(){
 		modalView();
 		modalViewOff();
 		modalWriteOn();
+}
+
+//신청 작성 확인
+function inputMainBtn() {
+	Swal.fire({
+        title: '신청 등록',
+        text: "모임 신청을 하겠습니까?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#ccc',
+        confirmButtonText: '신청하기',
+        cancelButtonText: '취소'
+    }).then((result) => {
+        if (result.isConfirmed) {
+			$(".input-main-inputs").trigger("click");
+        }
+    })
 }
 
 //모임 인원 숫자 수 제한
@@ -497,137 +588,13 @@ $(document).ready(function(){
 });
 
 
-//댓글 대댓글 호출
-/*
-function commentLoad(e){
-	$.ajax({
-		url : "/commentLoad.do",
-		type : "get",
-		data : {
-			wmNo : e
-		},
-		success : function(data){
-			console.log("댓글 리스트 호출 성공");
-			console.log(data);
-			
-			//로그인 유무 파악
-			const loginId = document.getElementById('login-memberId').value;
-			const loginNo = document.getElementById('login-memberNo').value;
-			const memberPhoto = document.getElementById('login-memberPhoto').value;
-			
-			let listHtml = "";
-			for(const i in data){
-				let wmcNo = data[i].wmcNo;
-				let wmNo = data[i].wmNo;
-				let wmcGroup = data[i].wmcGroup;
-				let wmcGroupOrder = data[i].wmcGroupOrder;
-				let wmcClass = data[i].wmcClass;
-				let memberNo = data[i].memberNo;
-				let wmcContent = data[i].wmcContent;
-				let wmcDate = data[i].wmcDate;
-				let wgap = data[i].wgap;
-				let profile = data[i].profile;
-				
-				console.log(wmcClass); // 댓글은 0, 대댓글은 1
-				
-				if(wmcContent == ""){
-					// 컨텐츠가 비었을 때 == 삭제된 댓글일 때
-					listHtml += "<div class='input-comment-box-view views-list'>";
-					listHtml += "<div class='input-comment-writer-profil'><img src='/resources/img/default_profile.png'></div>";
-					listHtml +=	"<div class='comment-member-view'>";
-					listHtml +=  "<span>없음</span>";
-					listHtml += "(삭제 된 댓글입니다.)";
-					listHtml += "<div class='view-sub'><span class='material-symbols-outlined'>map</span>해당 게시물은 삭제 되었습니다.  </div>";
-					listHtml += "</div>";
-					listHtml += "</div>";
-				}else{
-					if(wmcClass ==0){
-						//댓글일 때
-						listHtml += "<div class='input-comment-box-view views-list'>";
-						listHtml += "<div class='input-comment-writer-profil'><img src='/resources/upload/member/"+memberPhoto+"'></div>";
-						listHtml +=	"<div class='comment-member-view'>";
-						listHtml +=  "<span>"+memberNickname+"</span>";
-						listHtml += wmcContent;
-						listHtml += "<div class='view-sub clear-comments'><span class='material-symbols-outlined'>map</span>[수정된 댓글]"+wmcDate+" · </div>";
-						listHtml += "</div>";
-						listHtml += "</div>" ;
-						if(loginId.length >= 1 ){
-							//로그인 상태일 때, 댓글 작성 div 생성
-							// 댓글 작성 div를 작동 시키기 위해서는  게시글 번호(wmNo), 댓글번호(wmcNo), 댓글 작성자(memberNo)를 인자로 담아서 넘겨주어야함.
-							$(".clear-comments span").after("<div class='recomment-input'>댓글달기</div>");
-						}
-					}else{
-						//대댓글 일 때,
-						listHtml += "<div class='input-comment-box-view reviews'>";
-						listHtml += "<div class='input-comment-writer-profil'><img src='/resources/upload/member/"+memberPhoto+"'></div>";
-						listHtml +=	"<div class='comment-member-view reviews-sub'>";
-						listHtml +=  "<span>"+memberNickname+"</span>";
-						listHtml += wmcContent;
-						listHtml += "<div class='view-sub clear-comments'><span class='material-symbols-outlined'>map</span>[수정된 댓글]"+wmcDate+" · </div>";
-						listHtml += "</div>";
-						listHtml += "</div>";
-						if(loginId.length >= 1){
-							//현재 로그인 상태이고,
-							if(memberNo == loginNo){
-								//현재 사용자가 이 댓글의 작정자 일때 삭제 버튼 생성
-								$(".recomment-input").after("<div class='delete-inputs-comment'>삭제하기</div>");
-							}
-						}
-						
-						//댓글에 댓글달기를 누르면 대댓글 입력란 형성
-						listHtml += "<div class='input-comment-box-view reviews'>";
-						listHtml += "<div class='input-comment-writer-profil'><img src='/resources/upload/member/"+memberPhoto+"'></div>";
-						listHtml +=	"<div class='comment-member-view reviews-sub rereviews'>";
-						listHtml +=  "<span>"+memberNickname+"</span>";
-						listHtml += wmcContent;
-						listHtml += "<input type='text' name='' class='reviews-input' id='input_rereply"+no+"' placeholder='대댓글 달기...'>";
-						listHtml += "</div>";
-						listHtml += "<button type='submit' name='' class='rereviews-btn' id='input_rereply"+wmcNo+"' wmcNo='"+wmcNo+"' wmcNo='"+wmcNo+"'>등록</button>";
-						listHtml += "</div>";
-						// 대댓글을 입력하면 댓글의 번호와 게시물 번호가 함수에 전달.
-						// 댓글 번호 (wmcNo), 게시물 번호 (wmNo)
-						// ----- 대댓글 입력 끝
-					};
-					// 댓글 목록이 들어가는 공간에 받아온 댓글 리스트 넣기
-					$(".comment-list-box").html(listHtml);
-					
-					// 댓글을 작성한 후에 등록을 누르면 그 click event를 jquery로 처리
-					$("rereviews-btn").on("click",function(){
-						console.log('wmcNo',$(this).attr('wmcNo'));
-						console.log('wmNo',$(this).attr('wmNo'));
-						
-						//댓글을 DB에 저장하는 함수 호출, wmcNo와 wmNo를 같이 넘겨주어야 함.
-						//여기여기 - 함수 생성해야함
-						//WriteReRePly($(this).attr('wmNo'),$(this).attr('wmcNo'));
-					});
-					// 삭제 버튼을 누른 경우,
-					$(".delete-inputs-comment").on("click",function(){
-						if($(this).attr('wmcClass') == 0){
-							//댓글 삭제일때,
-							//여기여기 - 함수 생성해야함
-							//DeleteReply($(this).attr('wmcNo'),$(this).attr('wmNo'));
-						}else{
-							//대댓글 삭제일때,
-							//여기여기 - 함수 생성해야함
-							//DeleteReply($(this).attr('wmcNo'),$(this).attr('wmNo'),$(this).attr('wmcGroup'));
-						}
-					
-					})											
 
-				}
-			
-			}
-		}
-	});
-};
-*/
 /*
 /*
 const WriteReReply = function(wmNo,wmcNo){
-	console.log(wmNo);
-	console.log(wmcNo);
+
 	
-	console.log($("#input_rereply" + wmcNo).val());
+	
 	let wmcContent = $("#input_rereply" + wmcNo).val();
 	wmcContent = wmcContent.trim();
 	if(wmcContent == ""){
@@ -695,6 +662,7 @@ const WriteReReply = function(wmNo,wmcNo){
 }
 */
 
+
 $(".write_reply").click(function(){
 	if($('.writer-comment-input').val().trim() ==''){
 		alert('댓글 내용은 필수 입력입니다.');
@@ -705,6 +673,8 @@ $(".write_reply").click(function(){
 });
 
 
+
+//esc 누를 시 modal 창 닫힘
 $(document).keyup(function(e) {
    if ( e.keyCode == 27) {
        modalOff();

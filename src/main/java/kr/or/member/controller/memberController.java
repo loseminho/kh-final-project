@@ -657,6 +657,8 @@ public class memberController {
 	public String walkMatePage(int wmNo, Model model) {
 		Walk w = service.selectOneWalkMate(wmNo);
 		
+		System.out.println(w.getWmLeader());
+		
 		model.addAttribute("w", w);
 		return "myWalkMate/walkMatePage/walkMatePage";
 	}
@@ -673,6 +675,14 @@ public class memberController {
 	@RequestMapping(value="/updateApplyStat.do")
 	public int updateApplyStat(WmApply wmApply) {
 		int result = service.updateApplyStat(wmApply);
+		
+		return result;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/updateWalkMate.do")
+	public int updateWalkMate(Walk w) {
+		int result = service.updateWalkMate(w);
 		
 		return result;
 	}

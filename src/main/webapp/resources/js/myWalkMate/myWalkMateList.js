@@ -13,8 +13,6 @@ $("#appliedWalkMateList").one("click", function(){
 		},
 		dataType:"json",
 		success: function(wpd){
-			console.log(wpd);
-			
 			if(wpd.list.length != 0){
 				const table = $("<table>");
 				
@@ -109,9 +107,6 @@ $("#attendWalkMateList").one("click", function(){
 				}
 			});
 			
-			console.log(scheduledList);
-			console.log(proceededList);
-			
 			if(scheduledList.length != 0){
 				const table = $("<table>");
 				
@@ -126,7 +121,14 @@ $("#attendWalkMateList").one("click", function(){
 				for(let i=0; i<scheduledList.length; i++){
 					const tr = $("<tr>");
 					
-					tr.append("<td>" + scheduledList[i].wmTitle + "</td>");
+					tr.append(
+						"<td>" + 
+							"<a href='/walkMatePage.do?wmNo=" + scheduledList[i].wmNo + "'>" + 
+								scheduledList[i].wmTitle + 
+							"</a>" + 
+						"</td>"
+					);
+
 					tr.append("<td>" + scheduledList[i].wmMeetTime + "</td>");
 					tr.append("<td>" + scheduledList[i].wmAddr + "</td>");
 					
@@ -152,7 +154,14 @@ $("#attendWalkMateList").one("click", function(){
 				for(let i=0; i<proceededList.length; i++){
 					const tr = $("<tr>");
 					
-					tr.append("<td>" + proceededList[i].wmTitle + "</td>");
+					tr.append(
+						"<td>" + 
+							"<a href='/walkMatePage.do?wmNo=" + proceededList[i].wmNo + "'>" + 
+								proceededList[i].wmTitle + 
+							"</a>" + 
+						"</td>"
+					);
+					
 					tr.append("<td>" + proceededList[i].wmMeetTime + "</td>");
 					tr.append("<td>" + proceededList[i].wmAddr + "</td>");
 					

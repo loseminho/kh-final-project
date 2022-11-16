@@ -898,7 +898,12 @@ header{
     font-size: 15px;
     float: left;
 }
-
+.input-main-inputs{
+	width: 0; 
+ height: 0;
+ font-size: 0;
+ line-height: 0;
+}
 .comment-member-view span{
     display: block;
     text-align: left;
@@ -1017,4 +1022,16 @@ header{
 	margin-top: 0px;
 	font-size: 11px;
 	vertical-align: middle;
+}
+.deleteMainCommentBtn{
+width: 0; 
+ height: 0;
+ font-size: 0;
+ line-height: 0;
+}
+.deleteSubCommentBtn{
+width: 0; 
+ height: 0;
+ font-size: 0;
+ line-height: 0;	
 }

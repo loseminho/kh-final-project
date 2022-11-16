@@ -33,9 +33,12 @@ public class AdminController {
 	//관리자 문의내역 리스트 더보기 
 	@ResponseBody
 	@RequestMapping(value="/adminQnaAjax.do", produces = "application/json;charset=utf-8")
-	public String adminQnaAjax (int start, int amount) {
+	public String adminQnaAjax (int start, int amount, AdminQna q) {
 		int totalCount = service.adminQnaCount();
-		ArrayList<AdminQna> list = service.moreAdminQna(start, amount);	
+		ArrayList<AdminQna> list = service.moreAdminQna(start, amount,q);	
+		list.get(0).setTotalCount(totalCount);
+		System.out.println(totalCount);
+		System.out.println("컨트롤러"+list);
 		Gson gson = new Gson();
 		String result = gson.toJson(list);
 		return result;

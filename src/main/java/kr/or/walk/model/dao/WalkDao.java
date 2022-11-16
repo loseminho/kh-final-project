@@ -41,6 +41,28 @@ public class WalkDao {
 	public int inputWmApply(WmApply wa) {
 		return sqlSession.insert("walkmate.inputWmApply",wa);
 	}
+
+	public int insertMainComment(WalkMateComment wmc) {
+		return sqlSession.insert("walkmate.insertMainComment",wmc);
+	}
+
+	public int insertSubComment(WalkMateComment wmc) {
+		WalkMateComment to = new WalkMateComment();
+		to.setWmcGroup(wmc.getWmcGroup());
+		to.setWmNo(wmc.getWmNo());
+		int maxOrder = sqlSession.selectOne("walkmate.maxGroupOrder",to);
+		wmc.setWmcGroupOrder(maxOrder+1);
+		return sqlSession.insert("walkmate.insertSubComment",wmc);
+	}
+
+	public int deleteMainComment(WalkMateComment wmc) {
+		return sqlSession.delete("walkmate.deleteMainComment",wmc);
+	}
+
+	public int deleteSubComment(WalkMateComment wmc) {
+		return sqlSession.delete("walkmate.deleteSubComment",wmc);
+	}
+	
 	
 //	// 댓글 작성
 //	public Walk writeReply(WalkMateComment wmc) {

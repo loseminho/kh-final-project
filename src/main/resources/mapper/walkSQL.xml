@@ -151,8 +151,7 @@ LEFT JOIN MEMBER_TBL B ON A.wmLeader = B.MEMBER_NO WHERE A.wmNo =#{_parameter}
 			#{applyContent},
 			#{applyStat}
 		)
-	</insert>	
-	<!-- 
+	</insert>
 	<select id="selectMaxSeq" resultType="int">
 		SELECT 
 			MAX(WM_NO)
@@ -169,17 +168,56 @@ LEFT JOIN MEMBER_TBL B ON A.wmLeader = B.MEMBER_NO WHERE A.wmNo =#{_parameter}
 			#{wmAddr},
 			#{wmRangeMember},
 			#{wmContent},
-			0,
-			to_char(sysdate,'yyyy-mm-dd HH24:MI')
+			to_char(sysdate,'yyyy-mm-dd HH24:MI'),
+			0
 		)
 	</insert>
-
 	<insert id="inputWalkFile" parameterType="wf">
 		INSERT INTO WM_FILE_TBL 
 			VALUES(WM_FILE_SEQ.NEXTVAL,#{wmNo},#{filename},#{filepath})
 	</insert>
-	 -->
 	<!-- 댓글 쓰기 -->
+	<insert id="insertMainComment" parameterType="wmc">
+		INSERT INTO WMC_TBL VALUES(
+			WMC_SEQ.NEXTVAL,
+			#{wmNo},
+			WMC_GROUP_SEQ.NEXTVAL,
+			0,
+			0,
+			#{memberNo},
+			#{wmcContent},
+			to_char(sysdate,'yyyy-mm-dd HH24:MI')
+		)
+	</insert>
+	<select id="maxGroupOrder" parameterType="wmc" resultType="_int">
+		SELECT MAX(WMC_GROUP_ORDER)
+		FROM WMC_TBL
+		WHERE WMC_GROUP = #{wmcGroup} AND WM_NO = #{wmNo}
+	</select>
+	<insert id="insertSubComment" parameterType="wmc">
+		INSERT INTO WMC_TBL VALUES(
+			WMC_SEQ.NEXTVAL,
+			#{wmNo},
+			#{wmcGroup},
+			#{wmcGroupOrder},
+			1,
+			#{memberNo},
+			#{wmcContent},
+			to_char(sysdate,'yyyy-mm-dd HH24:MI')
+		)
+	</insert>
+	<delete id="deleteMainComment" parameterType="wmc">
+		DELETE FROM WMC_TBL 
+		WHERE WMC_NO IN (
+			SELECT WMC_NO FROM WMC_TBL
+			WHERE WMC_GROUP =#{wmcGroup} AND
+				WM_NO =#{wmNo}
+		)
+	</delete>
+	<delete id="deleteSubComment" parameterType="wmc">
+		DELETE FROM WMC_TBL 
+		WHERE WMC_NO = #{wmcNo}
+	</delete>
 	<!-- 
 	<insert id="picture_reply_write" parameterType="wmc">
 		INSERT INTO WMC_TBL VALUES(

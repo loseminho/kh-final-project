@@ -42,6 +42,25 @@ public class WalkService {
 		int result = dao.inputWmApply(wa);
 		return result;
 	}
+
+	public int insertMainComment(WalkMateComment wmc) {
+		return dao.insertMainComment(wmc);
+	}
+
+	public int insertSubComment(WalkMateComment wmc) {
+		int result = dao.insertSubComment(wmc);
+		return result;
+	}
+
+	public int deleteMainComment(WalkMateComment wmc) {
+		int result = dao.deleteMainComment(wmc);
+		return result;
+	}
+
+	public int deleteSubComment(WalkMateComment wmc) {
+		int result = dao.deleteSubComment(wmc);
+		return result;
+	}
 	
 //	//댓글 작성
 //	public Walk writeReply(WalkMateComment wmc) {

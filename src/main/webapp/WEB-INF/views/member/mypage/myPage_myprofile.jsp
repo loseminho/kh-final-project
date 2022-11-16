@@ -44,6 +44,10 @@
 	        <button type="button" id="addr-btn" onclick="searchAddr();">주소찾기</button>
 	    </div>
 	</div>
+	<div id="bonus-section">
+		<img src="/resources/img/member/coggi.png">
+		<span id="bonus-ment">추가 정보를<br>입력하시개!</span>
+	</div>
 </div>
 	<div id="last-section">
 	    <div class="intro-box">

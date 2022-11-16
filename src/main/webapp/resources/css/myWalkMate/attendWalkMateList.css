@@ -51,3 +51,20 @@
 	padding-left: 15px;
 	padding-right: 15px;
 }
+
+.attendList-content table td>a{
+	color: black;
+	text-decoration: none;
+}
+
+.attendList-content table td>a:hover{
+	color: #1abc9c;
+}
+
+.attendList-content table td>a:visited{
+	color: black;
+}
+
+.attendList-content table td>a:visited:hover{
+	color: #1abc9c;
+}
