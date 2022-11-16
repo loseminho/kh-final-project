@@ -19,13 +19,7 @@
 	                <li class="section"><a href="#">내 정보</a></li>
 	                <li class="section"><a href="#">반려견 정보</a></li>
 	                <li class="section"><a href="#">내 일정 보기</a></li>
-	                <li>
-	                    <a href="#">신고</a>
-	                    <ul class="sub-menu">
-	                        <li class="section" id="report-list"><a href="#">- 신고 내역</a></li>
-	                        <li class="section"><a href="#">- 제재 내역</a></li>
-	                    </ul>
-	                </li>
+	                <li class="section" id="report-list"><a href="#">신고 내역</a></li>
 	                <li>
 	                    <a href="#">쪽지</a>
 	                    <ul class="sub-menu">
@@ -53,11 +47,6 @@
 			    <!-- 신고 내역 -->
 			    <div class="reportList" style="display: none;">
 			        <jsp:include page="/WEB-INF/views/member/mypage/reportList.jsp"/>
-			    </div>
-			    
-			    <!-- 제재 내역 -->
-			    <div class="penaltyList" style="display: none;">
-			        <jsp:include page="/WEB-INF/views/member/mypage/penaltyList.jsp"/>
 			    </div>
 			    
 			    <!-- 받은 쪽지함 -->

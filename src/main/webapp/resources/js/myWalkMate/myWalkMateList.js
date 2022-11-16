@@ -49,7 +49,7 @@ $("#appliedWalkMateList").one("click", function(){
 				
 				$(".appliedList-content").append(table);
 			}else{
-				$(".appliedList-content").append("<h2>" + "참가 신청한 산책 모임이 존재하지 않습니다." + "</h2>");
+				$(".appliedList-content").append("<p>" + "참가 신청한 산책 모임이 존재하지 않습니다." + "</p>");
 			}
 		}
 	});
@@ -137,7 +137,7 @@ $("#attendWalkMateList").one("click", function(){
 				
 				$("#scheduledList").append(table);
 			}else{
-				$("#scheduledList").append("<h2>" + "예정된 산책 모임이 존재하지 않습니다." + "</h2>");
+				$("#scheduledList").append("<p>" + "예정된 산책 모임이 존재하지 않습니다." + "</p>");
 			}
 			
 			if(proceededList.length != 0){
@@ -170,7 +170,7 @@ $("#attendWalkMateList").one("click", function(){
 				
 				$("#proceededList").append(table);
 			}else{
-				$("#proceededList").append("<h2>" + "진행된 산책 모임이 존재하지 않습니다." + "</h2>");
+				$("#proceededList").append("<p>" + "진행된 산책 모임이 존재하지 않습니다." + "</p>");
 			}
 		}
 	});
