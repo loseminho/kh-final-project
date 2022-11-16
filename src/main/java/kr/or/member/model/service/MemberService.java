@@ -580,4 +580,8 @@ public class MemberService {
 	public int updateApplyStat(WmApply wmApply) {
 		return dao.updateApplyStat(wmApply);
 	}
+
+	public int updateWalkMate(Walk w) {
+		return dao.updateWalkMate(w);
+	}
 }

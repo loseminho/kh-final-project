@@ -47,6 +47,8 @@
 	<select id="selectOneWalkMate" parameterType="_int" resultType="w">
 		select
 			wm_no as wmNo,
+			wm_leader as wmLeader,
+			member_nickname as leaderNickname,
 			wm_title as wmTitle,
 			wm_sub_title as wmSubTitle,
 			wm_tag as wmTag,
@@ -56,6 +58,8 @@
 			wm_content as wmContent
 		from
 			walk_mate_tbl
+		join
+			member_tbl on(wm_leader = member_no)
 		where
 			wm_no = #{_parameter} 
 	</select>
@@ -95,5 +99,17 @@
 			apply_stat = #{applyStat}
 		where
 			wm_apply_no = #{wmApplyNo}
+	</update>
+	
+	<update id="updateWalkMate" parameterType="w">
+		update
+			walk_mate_tbl
+		set
+			wm_sub_title = #{wmSubTitle},
+			wm_meet_time = #{wmMeetTime},
+			wm_tag = #{wmTag},
+			wm_content = #{wmContent}
+		where
+			wm_no = #{wmNo}
 	</update>
 </mapper>
