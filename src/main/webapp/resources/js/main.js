@@ -7,7 +7,7 @@ $(function(){
 		const title = $(".title");
 
 		mHtml.animate({
-			scrollTop : 0
+			scrollTop : 19000
 		}, 10);
 
 		$(window).on("wheel", function(e) { 
@@ -111,9 +111,7 @@ $(".popup-back").on("click",function(){
 
 
 /*section3이벤트*/
-
-$(".customer-center").click(function(){
-	$(".customer-center").children().animate({
-		rotateY:'180deg'
-	},4000,'swing');
+$(".customer-center").on("click",function(){
+		$(this).slideUp();
+		$(".section").children("div").slideDown();
 });
