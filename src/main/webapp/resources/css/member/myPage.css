@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+body{
+	overflow-y:scroll;
+}
 
 .page-content {
 	display: flex;

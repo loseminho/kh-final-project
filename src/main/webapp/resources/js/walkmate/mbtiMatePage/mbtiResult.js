@@ -113,7 +113,7 @@ $(".sendBtn").on("click", function(){
         data : {"receiverNo" : receiver, "dmContent" : dmContent},
         type : 'post',
         success : function(data){
-        	console.log(data);
+        	// console.log(data);
         	
 			$("#send-dm-input").val("");
 			$("#dmBtn").show();

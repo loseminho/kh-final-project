@@ -20,7 +20,7 @@ a, button {
     width: 15px;
 }
 ::-webkit-scrollbar-track {
-    background-color: transparent;
+    background-color: #f0eee9;
 }
 ::-webkit-scrollbar-thumb {
 	background-color:#DDD7CB;
