@@ -15,7 +15,7 @@
 		<div id="rowSession1">
 			<ul class="main-menu">
                 <li class="section"><a href="#">모임 정보</a></li>
-                <li class="section"><a href="#">모임 참가자</a></li>
+                <li class="section"><a href="#" id="wmAttendProfile">모임 참가자</a></li>
                 
                 <c:if test="${sessionScope.m.memberNo eq w.wmLeader }">
 	                <li>
