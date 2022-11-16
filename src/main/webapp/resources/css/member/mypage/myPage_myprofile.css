@@ -77,7 +77,7 @@ input, button, #photoBtn {
 
 /* 프로필 정보 영역 */
 .myprofile #info-section {
-    width: 650px;
+    width: 550px;
     margin-left:50px;
 }
 
@@ -117,6 +117,21 @@ input, button, #photoBtn {
 	width:60px;
 	border-radius:5px;
 	line-height:25px;
+}
+
+/* 코기 그림 영역 */
+.myprofile #bonus-section {
+	width: 100px;
+	text-align:right;
+}
+
+.myprofile #bonus-section #bonus-ment {
+	font-size:12px;
+	color:#1abc9c;
+}
+
+.myprofile #bonus-section img {
+	max-width:100%;
 }
 
 /* 자기소개 및 버튼 영역 */

@@ -19,4 +19,5 @@ public class WmApply {
 	private String memberNickname;
 	private String memberPhoto;
 	private String memberIntro;
+	private int memberNo;
 }

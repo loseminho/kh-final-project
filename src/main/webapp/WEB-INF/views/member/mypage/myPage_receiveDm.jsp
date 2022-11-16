@@ -11,6 +11,14 @@
 	    	<option value="0">입양문의</option>
 	    	<option value="1">친구해요</option>
 	    </select>
+	    <div class="dmSearchWrap">
+			<select id="receiveDmSearch" name="dmSearch">
+		    	<option value="sender" selected>이름으로 검색</option>
+		    	<option value="dmContent">내용으로 검색</option>
+		    </select>
+		    <input type="text" name="dmKeyword" id="receiveDmKeyword">
+		    <button type="button" id="receiveDmSearchBtn" onclick="receiveDmSearch(1);">검색</button>
+	    </div>
 	</div>
 	<table id="receiveDmTable" class="dmTable">
 		<thead>

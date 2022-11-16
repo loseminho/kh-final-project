@@ -27,7 +27,7 @@ $(function(){
 				scrollTop : posTop
 			});
 
-			if (page == 1) {
+			if (page == 1 && !$.cookie("wmCookie")) {
 				$(".popup-modal").fadeIn(400);
 			}else{
 				$(".popup-modal").fadeOut(400);
@@ -107,4 +107,13 @@ $(".popup-back").on("click",function(){
 		$(".popup-back").css("display","block");
 		page--;
 	}
+});
+
+
+/*section3이벤트*/
+
+$(".customer-center").click(function(){
+	$(".customer-center").children().animate({
+		rotateY:'180deg'
+	},4000,'swing');
 });

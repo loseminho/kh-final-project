@@ -35,7 +35,8 @@
 }
 .list-one-wrap:hover{
 	background-color: #ccc;
-	border:1px solid #ccc;
+	transition-duration: 0.5s;
+	font-size: 1.1em;
 	box-shadow: 0 1px 3px 0 rgba( 31, 38, 135, 0.37 );
 }
 .search-wrap{

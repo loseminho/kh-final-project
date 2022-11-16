@@ -35,9 +35,10 @@
 }
 
 #report-reason{
-	width: 298px;
-	height: 198px;
+	width: 258px;
+	height: 158px;
 	overflow: auto; 
+	padding: 20px;
 	border: 1px solid black;
 }
 

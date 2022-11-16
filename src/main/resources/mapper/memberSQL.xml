@@ -102,8 +102,14 @@
 		<if test="dmCate == 0">
 		and dm_cate = 0
 		</if>
-		<if test="dmCate== 1">
+		<if test="dmCate == 1">
 		and dm_cate = 1
+		</if>
+		<if test="dmSearch != null and dmSearch.equals('receiver')">
+		and m.member_nickname like '%'||#{dmKeyword}||'%'
+		</if>
+		<if test="dmSearch != null and dmSearch.equals('dmContent')">
+		and dm_content like '%'||#{dmKeyword}||'%'
 		</if>
 		order by dm_no desc)s)
 		WHERE RNUM BETWEEN #{start} AND #{end}
@@ -115,18 +121,24 @@
 		from (select
 		    dm_no as dmNo,
 		    dm_content as dmContent,
-		    member_nickname as senderName,
-		    member_id as senderId,
+		    m.member_nickname as senderName,
+		    m.member_id as senderId,
 		    to_char(dm_date, 'yy/mm/dd') as dmDate,
 		    read_check as readCheck,
 		    dm_cate as dmCate
-		from dm
+		from dm d left join member_tbl m on (d.sender = m.member_no)
 		where receiver = #{memberNo}
 		<if test="dmCate == 0">
 		and dm_cate = 0
 		</if>
-		<if test="dmCate== 1">
+		<if test="dmCate == 1">
 		and dm_cate = 1
+		</if>
+		<if test="dmSearch != null and dmSearch.equals('sender')">
+		and m.member_nickname like '%'||#{dmKeyword}||'%'
+		</if>
+		<if test="dmSearch != null and dmSearch.equals('dmContent')">
+		and dm_content like '%'||#{dmKeyword}||'%'
 		</if>
 		order by dm_no desc)r)
 		WHERE RNUM BETWEEN #{start} AND #{end}
@@ -150,12 +162,12 @@
 		    dm_no as dmNo,
 		    dm_content as dmContent,
 		    sender as senderNo,
-		    member_nickname as senderName,
-		    member_id as senderId,
+		    m.member_nickname as senderName,
+		    m.member_id as senderId,
 		    to_char(dm_date, 'yy/mm/dd') as dmDate,
 		    read_check as readCheck,
 		    dm_cate as dmCate
-		from dm d
+		from dm d left join member_tbl m on (d.sender = m.member_no)
 		where dm_no = #{_parameter}
 	</select>
 	
@@ -171,22 +183,38 @@
 	</update>
 	
 	<select id="selectSendDmCount" parameterType="map" resultType="int">
-		select count(*) from dm where sender = #{memberNo}
+		select count(*) 
+		from dm d left join member_tbl m on (d.receiver = m.member_no)
+		where sender = #{memberNo}
 		<if test="dmCate == 0">
 		and dm_cate = 0
 		</if>
 		<if test="dmCate== 1">
 		and dm_cate = 1
+		</if>
+		<if test="dmSearch != null and dmSearch.equals('receiver')">
+		and m.member_nickname like '%'||#{dmKeyword}||'%'
+		</if>
+		<if test="dmSearch != null and dmSearch.equals('dmContent')">
+		and dm_content like '%'||#{dmKeyword}||'%'
 		</if>
 	</select>
 	
 	<select id="selectReceiveDmCount" parameterType="map" resultType="int">
-		select count(*) from dm where receiver = #{memberNo}
+		select count(*) 
+		from dm d left join member_tbl m on (d.sender = m.member_no)
+		where receiver = #{memberNo}
 		<if test="dmCate == 0">
 		and dm_cate = 0
 		</if>
 		<if test="dmCate== 1">
 		and dm_cate = 1
+		</if>
+		<if test="dmSearch != null and dmSearch.equals('sender')">
+		and m.member_nickname like '%'||#{dmKeyword}||'%'
+		</if>
+		<if test="dmSearch != null and dmSearch.equals('dmContent')">
+		and dm_content like '%'||#{dmKeyword}||'%'
 		</if>
 	</select>
 	
