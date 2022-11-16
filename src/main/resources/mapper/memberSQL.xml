@@ -84,6 +84,17 @@
 		where 
 		    member_id = #{_parameter}
 		    and apply_stat = 0	
+		  
+		union
+		   
+		select
+	        w.wm_no as wmNo,
+	        w.wm_title as wmTitle,
+	        substr(w.wm_meet_time, 0, 10) as wmMeetTime,
+	        w.wm_addr as wmAddr
+		from walk_mate_tbl w inner join member_tbl m on(w.wm_leader = m.member_no)
+		where
+		    m.member_id = #{_parameter}
 	</select>
 	
 	<select id="selectAllSendDm" parameterType="map" resultType="dm">
