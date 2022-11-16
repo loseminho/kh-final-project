@@ -1,3 +1,4 @@
+//첫 로딩 화면
 $(document).ready(function(){
     $.ajax({
         url : "/allWalkListAjax.do",
@@ -111,7 +112,7 @@ function modalViews(e){
 	data: {wmNo : e},
 	success : function(data){
 		
-		
+		console.log(data);
 		$(".up-btn").trigger("click");
 		
 		//로그인한 유저의 세션값
@@ -213,11 +214,11 @@ function modalViews(e){
 		$(".member-info-ul").html(html4);
 		
 		var html5 = "";
-		html5 += "<li><span class='material-symbols-outlined'>groups</span> 총 인원 :"+data.wmRangeMember+"</li>";
-		html5 += "<li><span class='material-symbols-outlined'>person</span> 현재 인원 :"+ApplyMemberNum+"</li>";
-		html5 += "<li><span class='material-symbols-outlined'>person</span> 대기 인원 :"+NoApplyMemberNum+"</li>";
-		html5 += "<li><span class='material-symbols-outlined'>event_available</span> 모임 시간 :"+data.wmMeetTime+"</li>";
+		html5 += "<li><span class='material-symbols-outlined'>groups</span> 모임 최대 인원 : "+data.wmRangeMember+"</li>";
+		html5 += "<li><span class='material-symbols-outlined'>event_available</span> 모임 시간 : "+data.wmMeetTime+"</li>";
 		html5 += "<li><span class='material-symbols-outlined'>map</span> 모임 장소 : "+data.wmAddr+"</li>";
+		html5 += "<li><span class='material-symbols-outlined'>person</span> 현재 인원 : "+ApplyMemberNum+"</li>";
+		html5 += "<li><span class='material-symbols-outlined'>person</span> 대기 인원 : "+NoApplyMemberNum+"</li>";
 		html5 += "<li id='m_reply"+data.wmNo+"'><span class='material-symbols-outlined'>map</span> 댓글수 : ";
 		if(data.wmcList.length!=0){
 			html5 += data.wmcList.length
@@ -278,6 +279,7 @@ function modalViews(e){
 		}else{
 			if(loginId.length >= 1 ){
 					//현재 로그인 상태라면 신청 가능,
+					
 					if(loginNo == data.wmLeader){
 						//만약 로그인한 회원이 모임장 일 때,
 						$("#view-section6").attr("disabled",false).attr("onclick", "location.href='/walkMatePage.do?wmNo="+data.wmNo+"'").text('모임관리').css("backgroundColor","#1abc9c").css("border","2px solid #1abc9c");
@@ -285,6 +287,7 @@ function modalViews(e){
 						$("#view-section6").attr("disabled",false).attr("onclick", "modalApplyView();").text('신청하기').css("backgroundColor","#1abc9c").css("border","2px solid #1abc9c");
 					}
 			}else{
+				//로그인을 안했을때, 신청을 못함
 					$("#view-section6").attr("disabled",true).text('로그인 요망').css("backgroundColor","#1abc9c").css("border","2px solid #1abc9c");
 			}
 		}
@@ -318,22 +321,20 @@ function modalViews(e){
 						listHtml +=	"<div class='comment-member-view'>";
 						listHtml +=  "<span>"+data.wmcList[q].memberNickname+"</span>";
 						listHtml += data.wmcList[q].wmcContent;
+						
 						if(loginId.length >= 1 ){
 							//현재 로그인 상태이고,
 							if(data.wmcList[q].memberNo == loginNo){
 								//현재 사용자가 이 댓글의 작성자 일때 삭제 버튼 생성
 								listHtml += "<div class='view-sub clear-comments'><span class='material-symbols-outlined'>map</span>"+data.wmcList[q].wmcDate+" · <div class='recomment-input'>댓글달기</div><div class='delete-inputs-comment'>삭제하기</div><div class='show-recomments'>덮기</div>";
-								listHtml += "<input type='hidden' class='helpWmcGroup' value='"+data.wmcList[q].wmcGroup+"'>"
-								listHtml += "<form action='/deleteMainComment.do' method='post'>";								
-								listHtml += "<input type='hidden' name='wmNo' value='"+data.wmNo+"'>";
-								listHtml += "<input type='submit' class='deleteMainCommentBtn'>";
-								listHtml += "</form>";
 								listHtml += "</div>";
 								listHtml += "<input type='hidden' name='wmcGroup' class='helpWmcGroup' value='"+data.wmcList[q].wmcGroup+"'>"
+								listHtml += "<input type='hidden' class='helpWmcGroup' value='"+data.wmcList[q].wmcGroup+"'>";														
+								listHtml += "<input type='hidden' class='helpWmNo' name='wmNo' value='"+data.wmNo+"'>"
 							}else{
 								// 댓글 작성 div를 작동 시키기 위해서는  게시글 번호(wmNo), 댓글번호(wmcNo), 댓글 작성자(memberNo)를 인자로 담아서 넘겨주어야함.							
 								listHtml += "<div class='view-sub clear-comments'><span class='material-symbols-outlined'>map</span>"+data.wmcList[q].wmcDate+" · <div class='recomment-input'>댓글달기</div><div class='show-recomments'>덮기</div></div>";
-								listHtml += "<input type='hidden' class='helpWmcGroup' value='"+data.wmcList[q].wmcGroup+"'>"
+								listHtml += "<input type='hidden' value='"+data.wmcList[q].wmcGroup+"'>"
 							}
 						}else{
 							listHtml += "<div class='view-sub clear-comments'><span class='material-symbols-outlined'>map</span>"+data.wmcList[q].wmcDate+" <div class='show-recomments'>덮기</div></div>";
@@ -419,16 +420,20 @@ function modalViews(e){
 			});
 		});
 		
-		
+		//댓글 삭제
 		$(".delete-inputs-comment").on("click",function(){
-			$(this).siblings(".deleteMainCommentBtn").trigger("click");
-			
-		})
+			console.log("댓글 삭제 시도");
+			 const wmcGroups = $(this).parent().siblings(".helpWmcGroup").val();
+			 const wmNos = $(this).parent().siblings(".helpWmNo").val();
+			 $("#thankWmcGroup").val(wmcGroups);
+			 $("#thankWmNo").val(wmNos);
+			 $(".thankBtn").trigger("click");
+		});
+		//대댓글 삭제
 		$(".delete-inputs-sub-comment").on("click",function(){
 			$(this).parent().siblings(".deleteSubCommentBtn").trigger("click");
 			
-		})
-		
+		});
 		// 대댓글 보이기 숨기기
 		$(".show-recomments").on("click",function(){
 			if($(this).parents(".views-list").nextUntil(".views-list").css('display') ==='none'){
@@ -487,12 +492,13 @@ function modalWrites(){
     var html = "";
 		html += "<div class='writer-id'>"+loginNickname+"</div>";
 		html += "<h2 id='view-section2' style='display:none;'></h2>";
-		html += "<input type='text' name='wmTitle' id='write-section1' placeholder='제목을 입력해주세요'style='display:block;' maxlength='25' >";
-		html += "<input type='text' name='wmSubTitle' id='write-section6' placeholder='모임을 위한 한줄평을 작성하세요!'style='display:block;' maxlength='20' >";
+		html += "<input type='text' name='wmTitle' id='write-section1' placeholder='제목을 입력해주세요'style='display:block;' maxlength='25'>";
+		html += "<input type='text' name='wmSubTitle' id='write-section6' placeholder='모임을 위한 한줄평을 작성하세요!'style='display:block;' maxlength='20'>";
 		$(".modal-writer-content-box").html(html);
 		modalView();
 		modalViewOff();
 		modalWriteOn();
+		
 }
 
 //신청 작성 확인
@@ -680,4 +686,125 @@ $(document).keyup(function(e) {
        modalOff();
    };
 });
+
+
+
+//카테고리 클릭 시 화면
+$(".category-li").on('click',function(){
+    var cate = $(this).text();
+    $.ajax({
+        url : "/categoryList.do",
+        type : "post",
+        data : {
+             wmTag : cate
+        },
+        success : function(data){
+var html = "";
+			html += "<div class='write-new-content-btn'>";
+			const loginId = document.getElementById('login-memberId').value;
+			if(loginId.length >= 1 ){
+				html += "<button type='button' onclick='modalWrites();'>모임 만들기</button>";						
+			}else{
+				html += "<button style='visibility:hidden;' type='button' onclick='modalWrites();'>모임 만들기</button>";
+			}
+			html += "</div>";            
+            for(let i=0; i<data.length; i++){
+				html += "<div class='content-box' onclick='modalViews("+data[i].wmNo+");'>";
+				html += "<div class='content-box-list img'>";
+				
+				if(data[i].fileList.length != 0){
+					html += "<img src='/resources/upload/walkmate/"+data[i].fileList[0].filepath+"'>";
+				}else{
+					html += "<img src='/resources/img/walkmate/liry1.jpg'>";
+				}
+				
+				html += "</div>";
+				html += "<div class='content-box-list titles'>";
+				html += "<a href=''>"+data[i].wmTag+"</a>";
+				html += "<h2>"+data[i].wmTitle+"</h2>";
+				html += "<div class='titles-sub'>"+data[i].wmSubTitle+"</div>";
+				let shortDate = data[i].wmMeetTime.slice(5, data[i].wmMeetTime.length);
+				let countApply = 0;
+				let noCountApply =0;
+				for(let q=0; q<data[i].wList.length; q++){
+					if(data[i].wList[q].applyStat ==0){
+						countApply++
+					}else{
+						noCountApply++
+					}
+				}
+				
+				//승인멤버, 비승인멤버 수 체크
+				let ApplyMemberNum = 0;
+				let NoApplyMemberNum = 0;
+				
+				if(data[i].wList.length != 0){
+					for(let q=0; q<data[i].wList.length; q++){
+								if(data[i].wList[q].applyStat==2){
+								
+								}else if(data[i].wList[q].applyStat==1){
+									NoApplyMemberNum++
+								}else if(data[i].wList[q].applyStat==0){
+									ApplyMemberNum++
+								}
+							}
+				}
+				
+				
+				html += "<div class='titles-info'><span class='material-symbols-outlined'>map</span> "+data[i].wmAddr+" · "+shortDate+"  <span class='material-symbols-outlined'>group</span>"+countApply+"/"+data[i].wmRangeMember+"</div>";
+				html += "<ul class='user-profil'>";
+				if(ApplyMemberNum == 0){
+				 html += "등록된 회원이 없습니다! 모임에 참가 해주세요~ㅎ";
+				}else{
+					for(let j=0; j<data[i].wList.length; j++){
+						if(data[i].wList[j].applyStat ==0){
+							html += "<li>";
+							html += "<img src='/resources/img/member/";
+							if(data[i].wList[j].memberPhoto != null){
+								html += data[i].wList[j].memberPhoto;
+								html +="'>";
+								html += "</li>";
+							}else{
+								html += "카카오톡기본프로필.png";
+								html +="'>";
+								html += "</li>";
+								}
+						}else{
+							/*아직 승인되지 못한 인원 리스트*/
+						}
+						
+					}
+					if(ApplyMemberNum != data[i].wmRangeMember){
+						html += "<li><span class='material-symbols-outlined'>add</span></li>"					
+					}else{
+						html += "(임시 메세지)모임 마감!";
+					}
+				}
+				html += "</ul>";
+				html += "</div>";
+				html += "</div>";
+            }
+                $(".content-bottom").html(html);
+                
+                
+                var reviewsInput =$(".reviews-input");
+                var rereviewsBtn = $(".rereviews-btn");
+                rereviewsBtn.fadeOut(1000); 
+                reviewsInput.focus(function(){
+        			rereviewsBtn.fadeIn(1000);
+                });
+                reviewsInput.blur(function(){
+        			rereviewsBtn.fadeOut(1000);        	
+                });
+                
+
+        },
+        error : function(data){
+            alert('error');
+        }//error
+    })//ajax
+});
+
+
+
 
