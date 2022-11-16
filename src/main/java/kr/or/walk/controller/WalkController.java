@@ -121,7 +121,26 @@ public class WalkController {
 			return "redirect:walkMateFrm.do";
 		}
 	}
-	
+	//댓글 삭제
+	@RequestMapping(value="/deleteMainComment.do", produces="application/json;charset=utf-8")
+	public String deleteMainComment(WalkMateComment wmc) {
+		int result = service.deleteMainComment(wmc);
+		if(result > 0) {
+			return "redirect:walkMateFrm.do";
+		} else {
+			return "redirect:walkMateFrm.do";
+		}
+	}
+	//대댓글 삭제
+		@RequestMapping(value="/deleteSubComment.do", produces="application/json;charset=utf-8")
+		public String deleteSubComment(WalkMateComment wmc) {
+			int result = service.deleteSubComment(wmc);
+			if(result > 0) {
+				return "redirect:walkMateFrm.do";
+			} else {
+				return "redirect:walkMateFrm.do";
+			}
+		}
 //	//댓글 작성
 //	@ResponseBody
 //	@RequestMapping(value="/picture_replyList.do", produces="application/json;charset=utf-8")
