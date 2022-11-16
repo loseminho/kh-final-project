@@ -62,6 +62,16 @@ public class WalkDao {
 	public int deleteSubComment(WalkMateComment wmc) {
 		return sqlSession.delete("walkmate.deleteSubComment",wmc);
 	}
+
+	public ArrayList<Walk> selectCategoryList(Walk w) {
+		if(w.getWmTag().equals("전체")) {
+			List list = sqlSession.selectList("walkmate.allWalkList");
+			return (ArrayList<Walk>)list;
+		}else {
+			List list = sqlSession.selectList("walkmate.selectCategoryList",w);			
+			return (ArrayList<Walk>)list;
+		}
+	}
 	
 	
 //	// 댓글 작성

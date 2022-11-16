@@ -61,6 +61,11 @@ public class WalkService {
 		int result = dao.deleteSubComment(wmc);
 		return result;
 	}
+
+	public ArrayList<Walk> selectCategoryList(Walk w) {
+		ArrayList<Walk> list = dao.selectCategoryList(w);
+		return list;
+	}
 	
 //	//댓글 작성
 //	public Walk writeReply(WalkMateComment wmc) {
