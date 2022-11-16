@@ -161,4 +161,8 @@ public class MemberDao {
 	public int updateApplyStat(WmApply wmApply) {
 		return sqlSession.update("myWalkMate.updateApplyStat", wmApply);
 	}
+
+	public int updateWalkMate(Walk w) {
+		return sqlSession.update("myWalkMate.updateWalkMate", w);
+	}
 }

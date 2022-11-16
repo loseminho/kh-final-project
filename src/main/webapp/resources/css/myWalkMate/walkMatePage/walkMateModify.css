@@ -31,7 +31,7 @@
 .wm-modify-box1 input{
 	width: 496px;
 	height: 36px;
-	font-size: 20px;
+	font-size: 16px;
 }
 
 .wm-sub-title-modify{
@@ -95,10 +95,10 @@
 	border: 1px solid #1abc9c;
 }
 
-.wm-content-modify{
-	width: 458px;
-	height: 158px;
-	padding: 20px;
+.wm-content-modify>textarea{
+	width: 498px;
+	height: 198px;
+	resize: none;
 	margin-top: 50px;
 	border: 1px solid #e1e1e1;
 }
