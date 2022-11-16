@@ -6,10 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>산책갈개</title>
-<!-- 부트스트랩  -->
-<link rel="stylesheet" href="/resources/css/board/bootstrap.css"/>
 <!--css-->
-<link rel="stylesheet" href="/resources/css/board/notice.css">
+<link rel="stylesheet" href="/resources/css/board/notice.css?after">
 <!--fonts-->
 <link rel="stylesheet" href="/resources/css/gmarket.css">
 <!--jQuery-->

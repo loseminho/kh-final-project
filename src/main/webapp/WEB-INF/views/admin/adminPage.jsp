@@ -34,17 +34,27 @@
 			<!-- adminPage-main-header 끝-->
 			<div class="adminPage-content">
 				<div class="search-box">
+					<select name="adminQnaSearchType" id="adminQnaSearchType" onchange="qnaList();">
+						<option value="2" selected>전체</option>
+						<option value="0" >답변대기</option>
+						<option value="1" >답변완료</option>
+					</select>
+				</div>
+				<!--
+				<div class="search-box">
 					<select name="searchType" id="searchType"
 						class="search-qnaStatus-form">
 						<option value="nonAnswer" selected="selected">답변대기중</option>
 						<option value="answer">답변완료</option>
 						<option value="qnaType">문의유형</option>
 						<option value="qnaWriter">작성자</option>
-					</select> <input type="text" class="adminQna-input" name="keyword"
+					</select> 
+					<input type="text" class="adminQna-input" name="keyword"
 						id="keyword">
 					<button type="button" class="search-qnaStatus-btn"
 						id="searchQnaStatusAjax">검색</button>
 				</div>
+				 -->
 				<!-- 상세보기 이동 form -->
 				<form action="/qnaView.do" method="post" id="qnaViewFrm">
 					<input type="hidden" id="qnaBoardNo" type="text" name=qnaNo
@@ -66,7 +76,7 @@
 				<!--ajax 결과 페이지 끝  -->
 				<div class="adminQna-add-btn">
 					<button id="adminQnaAjax-btn" totalCount="${totalCount }"
-						currentCount="0" value="1">더보기</button>
+						currentCount="0" value="1" onclick="qnaList();">더보기</button>
 				</div>
 			</div>
 			<!-- 관리자페이지 메인 문의내역 끝  -->

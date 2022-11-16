@@ -78,8 +78,78 @@ tabs.on("click",function(){
         $("#adminReportAjax-btn").trigger("click");
     }
 });
+//문의내역 리스트 더보기
+function qnaList(){
+	let amount = 7;
+	let start = $("#adminQnaAjax-btn").val();
+	console.log(start);
+	let optionVal = $("#adminQnaSearchType").val();
+	console.log(optionVal);
+	
+	$.ajax({
+		url : "/adminQnaAjax.do",
+		type: "post",
+		data: {start : start, amount :amount, optionVal : optionVal},
+		success : function(data){
+			const table = $(".adminPageQna-table");
+			const titleTr = $(".admin-qna-tr");
+			console.log(data);
+			console.log(data.length);
+			for(let i=0; i<data.length; i++){
+				const tr = $("<tr>");
+				tr.attr('class','admin-qna-row');
+				tr.append("<td>"+data[i].qnaNo+"</td>");
+				if(data[i].qnaCateNo == 1) {
+              	tr.append("<td>"+"산책메이트 찾기"+"</td>"); 
+              	}
+              	if(data[i].qnaCateNo == 2) {
+              	tr.append("<td>"+"애견용품 나눔"+"</td>"); 
+              	}
+              	if(data[i].qnaCateNo == 3) {
+              	tr.append("<td>"+"입양"+"</td>"); 
+              	}
+              	if(data[i].qnaCateNo == 4) {
+              	tr.append("<td>"+"회원관련"+"</td>"); 
+              	}
+              	if(data[i].qnaCateNo == 5) {
+              	tr.append("<td>"+"기타"+"</td>"); 
+              	} 
+                tr.append("<td>"+data[i].qnaTitle+"</td>");
+                tr.append("<td>"+data[i].qnaWriter+"</td>");
+                tr.append("<td>"+data[i].qnaDate+"</td>");
+                
+                if(data[i].qnaStatus == 0) {
+              	tr.append("<td>"+"답변대기중"+"</td>"); 
+              	}
+              	if(data[i].qnaStatus == 1) {
+              	tr.append("<td>"+"답변완료"+"</td>");
+              	}
+              	tr.append("<td>"+"<button class='answer-btn'>"+"답변하기"+"</button>"+"</td>");
+              	
+              	table.append(tr);
+			}
+			$(".adminQnaAjaxResult").html(table);
+			
+			//value 증가 
+			$("#adminQnaAjax-btn").val(Number(start)+Number(amount));
+			//currentCount 값도 읽어온 만큼 수정
+			const currentCount = Number($("#adminQnaAjax-btn").attr("currentCount"))+data.length;
+			$("#adminQnaAjax-btn").attr("currentCount",currentCount);
+			const totalCount = $("#adminQnaAjax-btn").attr("totalCount");
+			if(totalCount == currentCount){
+				$("#adminQnaAjax-btn").attr("disabled",true);
+				$("#adminQnaAjax-btn").css ("cursor","not-allowed");
+				$("#adminQnaAjax-btn").text("마지막 게시물입니다 ");
+			}
+		},
+		error : function() {
+			console.log("에러발생");
+		}
+	});
+}
 
-// 문의내역 리스트 + 더보기 
+
+/* 문의내역 리스트 + 더보기 
 $("#adminQnaAjax-btn").on("click",function(){
 	let amount = 7;
 	let start = $(this).val();
@@ -144,6 +214,8 @@ $("#adminQnaAjax-btn").on("click",function(){
 	}); //ajax 
 });
 
+*/
+
 // 답변하기 버튼 
 
 $(document).on("click",".answer-btn",function(){
@@ -153,71 +225,6 @@ $(document).on("click",".answer-btn",function(){
 	let qnaNo = btn.eq(index).parent().siblings().first().text();
 	$("#qnaBoardNo").val(btn.eq(index).parent().siblings().first().text());
 	$("#qnaViewFrm").submit();
-});
-
-//관리자 문의내역 검색 ajax
-
-$("#searchQnaStatusAjax").on("click",function(){
-
-	const searchType = $("#searchType").val();
-	const keyword = $("#keyword").val();
-	
-	if(searchType != 0 ){
-
-	$.ajax({
-		url : "/searchAdminQna.do?searchType="+searchType+"&keyword="+keyword,
-        type : "post",
-        success : function(data){
-        //테이블 초기화 
-        console.log(data);
-        $(".admin-qna-row").remove();
-        if(data.length>=1){
-        
-         	const table = $(".adminPageQna-table");
-            const titleTr = $(".admin-qna-tr");
-
-            for(let i=0; i<data.length; i++){
-                const tr = $("<tr>");
-                tr.attr('class','admin-qna-row');
-                tr.append("<td>"+data[i].qnaNo+"</td>");
-              if(data[i].qnaCateNo == 1) {
-              	tr.append("<td>"+"산책메이트 찾기"+"</td>"); 
-              }
-              if(data[i].qnaCateNo == 2) {
-              	tr.append("<td>"+"애견용품 나눔"+"</td>"); 
-              }
-              if(data[i].qnaCateNo == 3) {
-              	tr.append("<td>"+"입양"+"</td>"); 
-              }
-              if(data[i].qnaCateNo == 4) {
-              	tr.append("<td>"+"회원관련"+"</td>"); 
-              }
-              if(data[i].qnaCateNo == 5) {
-              	tr.append("<td>"+"기타"+"</td>"); 
-              } 
-                tr.append("<td>"+data[i].qnaTitle+"</td>");
-                tr.append("<td>"+data[i].qnaWriter+"</td>");
-                tr.append("<td>"+data[i].qnaDate+"</td>");
-              
-              if(data[i].qnaStatus == 0) {
-              	tr.append("<td>"+"답변대기중"+"</td>"); 
-              }
-              if(data[i].qnaStatus == 1) {
-              	tr.append("<td>"+"답변완료"+"</td>"); 
-              }
-              tr.append("<td>"+"<button class='answer-btn'>"+"답변하기"+"</button>"+"</td>");
-              table.append(tr);
-              
-                
-            }
-            $(".adminQnaAjaxResult").html(table);
-        }
-        }
-	});
-	
-	} else {
-		alert(" 문의유형을 선택하고 검색어를 입력하세요  ");
-	}
 });
 
 
@@ -335,7 +342,18 @@ $("#adminMemberAjax-btn").on("click",function(){
 				tr.append("<td>"+list[i].memberId+"</td>");
 				tr.append("<td>"+list[i].memberNickname+"</td>");
                 tr.append("<td>"+list[i].enrollDate+"</td>");
-                tr.append("<td>"+list[i].memberLevel+"</td>");
+                if(list[i].memberLevel == 1) {
+              	tr.append("<td>"+"회원"+"</td>"); 
+              	}
+              	if(list[i].memberLevel == 2) {
+              	tr.append("<td>"+"관리자"+"</td>"); 
+              	}
+              	if(list[i].memberLevel == 3) {
+              	tr.append("<td>"+"접근제한 회원"+"</td>"); 
+              	}
+              	if(list[i].memberLevel == 4) {
+              	tr.append("<td>"+"이용제한 회원"+"</td>"); 
+              	}
               	tr.append("<td>"+"<select class='changeLevel-select'>"+
 				"<option value='1'>"+"회원"+"</option>"+
 				"<option value='3'>"+"접근제한 회원"+"</option>"+

@@ -18,7 +18,7 @@ public class AdminQna {
 	private int qnaStatus;
 	
 	//검색필터
-	private String searchType;
+	private String optionVal;
 	private String keyword;
 	
 	//총게시물 수 
