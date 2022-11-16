@@ -120,7 +120,7 @@ function modalViews(e){
 		const memberPhoto = document.getElementById('login-memberPhoto').value;
 		const memberNickname = document.getElementById('login-memberNickname').value;
 		
-		console.log(data);
+		
 		//댓글달기 wmNo 주기
 		let inputWmNo = "<input type='hidden' name='wmNo' id='input-wmNo' value='"+data.wmNo+"'>";
 		$(".write_reply").after(inputWmNo);
@@ -321,9 +321,15 @@ function modalViews(e){
 						if(loginId.length >= 1 ){
 							//현재 로그인 상태이고,
 							if(data.wmcList[q].memberNo == loginNo){
-								//현재 사용자가 이 댓글의 작정자 일때 삭제 버튼 생성
-								listHtml += "<div class='view-sub clear-comments'><span class='material-symbols-outlined'>map</span>"+data.wmcList[q].wmcDate+" · <div class='recomment-input'>댓글달기</div><div class='delete-inputs-comment'>삭제하기</div><div class='show-recomments'>덮기</div></div>";
+								//현재 사용자가 이 댓글의 작성자 일때 삭제 버튼 생성
+								listHtml += "<div class='view-sub clear-comments'><span class='material-symbols-outlined'>map</span>"+data.wmcList[q].wmcDate+" · <div class='recomment-input'>댓글달기</div><div class='delete-inputs-comment'>삭제하기</div><div class='show-recomments'>덮기</div>";
 								listHtml += "<input type='hidden' class='helpWmcGroup' value='"+data.wmcList[q].wmcGroup+"'>"
+								listHtml += "<form action='/deleteMainComment.do' method='post'>";								
+								listHtml += "<input type='hidden' name='wmNo' value='"+data.wmNo+"'>";
+								listHtml += "<input type='submit' class='deleteMainCommentBtn'>";
+								listHtml += "</form>";
+								listHtml += "</div>";
+								listHtml += "<input type='hidden' name='wmcGroup' class='helpWmcGroup' value='"+data.wmcList[q].wmcGroup+"'>"
 							}else{
 								// 댓글 작성 div를 작동 시키기 위해서는  게시글 번호(wmNo), 댓글번호(wmcNo), 댓글 작성자(memberNo)를 인자로 담아서 넘겨주어야함.							
 								listHtml += "<div class='view-sub clear-comments'><span class='material-symbols-outlined'>map</span>"+data.wmcList[q].wmcDate+" · <div class='recomment-input'>댓글달기</div><div class='show-recomments'>덮기</div></div>";
@@ -347,8 +353,15 @@ function modalViews(e){
 					if(loginId.length >= 1 ){
 							//현재 로그인 상태이고,
 							if(data.wmcList[q].memberNo == loginNo){
-								//현재 사용자가 이 댓글의 작정자 일때 삭제 버튼 생성
-								listHtml += "<div class='view-sub'>"+data.wmcList[q].wmcDate+"<div class='delete-inputs-comment'>삭제하기</div></div>";
+								//현재 사용자가 이 대댓글의 작성자 일때 대댓글 삭제 버튼 생성
+								listHtml += "<form action='/deleteSubComment.do' method='post'>";								
+								listHtml += "<div class='view-sub'>"+data.wmcList[q].wmcDate+"<div class='delete-inputs-sub-comment'>삭제하기</div></div>";
+								listHtml += "<input type='hidden' name='wmcNo' value='"+data.wmcList[q].wmcNo+"'>";
+								listHtml += "<input type='submit' class='deleteSubCommentBtn'>";
+								listHtml += "</form>";
+								
+								
+								
 								}else{
 									listHtml += "<div class='view-sub'>"+data.wmcList[q].wmcDate+"</div>";	
 								}
@@ -382,6 +395,7 @@ function modalViews(e){
 		listInputHtml += "<button type='submit' class='rereviews-btn'>등록</button>";
 		listInputHtml += "</div>";
 		listInputHtml += "</form>";
+		
 		//댓글에 대댓글 달때
 		$(".recomment-input").one("click",function(){
 			//댓글에 심어둔 그룹번호 조회
@@ -390,6 +404,7 @@ function modalViews(e){
 			//대댓글 input 생성
 			$(this).parent().parent().parent().after(listInputHtml);
 			//대댓글 input에 댓글의 그룹번호 전송
+			//요기요기
 			const commentWmcGroup = $(this).parent().next().val();
 			$("#input-wmcGroup").val(commentWmcGroup);
 			
@@ -405,8 +420,16 @@ function modalViews(e){
 		});
 		
 		
+		$(".delete-inputs-comment").on("click",function(){
+			$(this).siblings(".deleteMainCommentBtn").trigger("click");
+			
+		})
+		$(".delete-inputs-sub-comment").on("click",function(){
+			$(this).parent().siblings(".deleteSubCommentBtn").trigger("click");
+			
+		})
 		
-		//몇번째 대댓글on/off인지 index만 세주는거;
+		// 대댓글 보이기 숨기기
 		$(".show-recomments").on("click",function(){
 			if($(this).parents(".views-list").nextUntil(".views-list").css('display') ==='none'){
 				$(this).parents(".views-list").nextUntil(".views-list").slideDown();
@@ -418,7 +441,7 @@ function modalViews(e){
 		});
 		
 		
-		// ${"recomments"+A+"")를 누르면 대댓글 on/off
+		
 		
 		
 		// 화면 호출
@@ -569,10 +592,9 @@ $(document).ready(function(){
 /*
 /*
 const WriteReReply = function(wmNo,wmcNo){
-	console.log(wmNo);
-	console.log(wmcNo);
+
 	
-	console.log($("#input_rereply" + wmcNo).val());
+	
 	let wmcContent = $("#input_rereply" + wmcNo).val();
 	wmcContent = wmcContent.trim();
 	if(wmcContent == ""){
