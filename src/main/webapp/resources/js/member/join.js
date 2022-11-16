@@ -273,7 +273,7 @@ function sendMsg() {
         	$(".verifyInput").val("");
         	$(".verifyMsg").text("");
         	resultCode = data;
-        	console.log(resultCode);
+        	// console.log(resultCode);
         	verifyCount();
         }
     });

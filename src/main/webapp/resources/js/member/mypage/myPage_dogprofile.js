@@ -47,7 +47,7 @@ $("#addDog").on("click", function(){
 
 $("#dogType2").on("change", function(){
 	const result = $("#dogType2").val();
-	console.log(result);
+	// console.log(result);
 	if(result == "user") {
 		$("#dogType1").show();
 		$("#dogType1").css("width", "200px");
@@ -61,7 +61,7 @@ $("#dogType2").on("change", function(){
 
 $("#typeSize").on("change", function(){
 	const size = $(this).val();
-	console.log(size);
+	// console.log(size);
 });
 
 function dogModal(dogNo) {
@@ -159,8 +159,8 @@ $("#dogPhoto").on("change", function(event) {
     }
     const name = $("#dogPhoto").attr("name");
     
-    console.log(name);
-    console.log(val);
+    // console.log(name);
+    // console.log(val);
 });
 
 
