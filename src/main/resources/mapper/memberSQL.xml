@@ -103,8 +103,8 @@
 		from (select
 		    dm_no as dmNo,
 		    dm_content as dmContent,
-		    m.member_nickname as receiverName,
-		    m.member_id as receiverId,
+		    NVL(m.member_nickname, '탈퇴회원') as receiverName,
+		    NVL(m.member_id, '-') as receiverId,
 		    to_char(dm_date, 'yy/mm/dd') as dmDate,
 		    read_check as readCheck,
 		    dm_cate as dmCate
@@ -159,8 +159,8 @@
 		select
 		    dm_no as dmNo,
 		    dm_content as dmContent,
-		    m.member_nickname as receiverName,
-		    m.member_id as receiverId,
+		    NVL(m.member_nickname, '탈퇴회원') as receiverName,
+		    NVL(m.member_id, '-') as receiverId,
 		    to_char(dm_date, 'yy/mm/dd') as dmDate,
 		    read_check as readCheck,
 		    dm_cate as dmCate
