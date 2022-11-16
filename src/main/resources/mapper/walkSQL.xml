@@ -206,6 +206,18 @@ LEFT JOIN MEMBER_TBL B ON A.wmLeader = B.MEMBER_NO WHERE A.wmNo =#{_parameter}
 			to_char(sysdate,'yyyy-mm-dd HH24:MI')
 		)
 	</insert>
+	<delete id="deleteMainComment" parameterType="wmc">
+		DELETE FROM WMC_TBL 
+		WHERE WMC_NO IN (
+			SELECT WMC_NO FROM WMC_TBL
+			WHERE WMC_GROUP =#{wmcGroup} AND
+				WM_NO =#{wmNo}
+		)
+	</delete>
+	<delete id="deleteSubComment" parameterType="wmc">
+		DELETE FROM WMC_TBL 
+		WHERE WMC_NO = #{wmcNo}
+	</delete>
 	<!-- 
 	<insert id="picture_reply_write" parameterType="wmc">
 		INSERT INTO WMC_TBL VALUES(

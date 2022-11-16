@@ -1023,3 +1023,15 @@ header{
 	font-size: 11px;
 	vertical-align: middle;
 }
+.deleteMainCommentBtn{
+width: 0; 
+ height: 0;
+ font-size: 0;
+ line-height: 0;
+}
+.deleteSubCommentBtn{
+width: 0; 
+ height: 0;
+ font-size: 0;
+ line-height: 0;	
+}
