@@ -42,16 +42,24 @@
 		where member_id = #{memberId}
 	</update>
 	
-	<select id="selectApplyList" parameterType="string" resultType="rl">
-		select 
-		    wm_no as boardNo,
-		    member_id as memberId,
-		    apply_stat as status,
-		    wm_title as boardTitle,
-    		wm_leader as wmLeader
-	    from wm_apply_tbl 
-	   		join walk_mate_tbl using(wm_no)
-		where member_id = #{_parameter} and apply_stat = 0
+	<select id="selectApplyList" parameterType="m" resultType="rl">
+   select
+          wm_no as boardNo,
+          member_id as memberId,
+          wm_title as boardTitle,
+          wm_leader as wmLeader
+       from wm_apply_tbl 
+            join walk_mate_tbl using(wm_no)
+      where (member_id = #{memberId} and apply_stat = 0)
+union      
+select
+        wm_no as boardNo,
+          m.member_id as memberId,
+          wm_title as boardTitle,
+          wm_leader as wmLeader
+from walk_mate_tbl w inner join member_tbl m on(w.wm_leader = m.member_no)
+where
+    m.member_no =#{memberNo}
 	</select>
 	
 	<insert id="saveData" parameterType="hashmap">

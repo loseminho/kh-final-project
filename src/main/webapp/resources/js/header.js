@@ -73,9 +73,11 @@ $(document).on("click",".init-chat",function(){
 $(document).ready(function(){
 	$(".chat-name").text("채팅목록을 클릭해보세요!!");
 	let memberId = $("#chatMemberId").val();
+	let memberNo = $("#chatMemberNo").val();
+	console.log(memberNo);
 	$.ajax({
 		url:"/selectApplyList.do",
-		data:{memberId:memberId},
+		data:{memberId:memberId, memberNo:memberNo},
 		success:function(data){
 			if(data.length==0){
 				var html = "";

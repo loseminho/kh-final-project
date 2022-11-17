@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import kr.or.chat.model.dao.ChatDao;
 import kr.or.chat.model.vo.ChatHistory;
 import kr.or.chat.model.vo.RequireList;
+import kr.or.member.model.vo.Member;
 
 @Service
 public class ChatService {
@@ -32,8 +33,8 @@ public class ChatService {
 		dao.insertRoomList(roomList);
 	}
 
-	public ArrayList<RequireList> selectApplyList(String memberId) {
-		return dao.selectApplyList(memberId);
+	public ArrayList<RequireList> selectApplyList(Member m) {
+		return dao.selectApplyList(m);
 	}
 
 	public void saveData(int boardNo, String sendMsg, String memberId, int memberNo) {
