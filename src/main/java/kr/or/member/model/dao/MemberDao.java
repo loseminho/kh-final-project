@@ -15,6 +15,7 @@ import kr.or.member.model.vo.MyCalendar;
 import kr.or.member.model.vo.Report;
 import kr.or.walk.model.vo.AppliedWalkInfo;
 import kr.or.walk.model.vo.Walk;
+import kr.or.walk.model.vo.WalkFile;
 import kr.or.walk.model.vo.WmApply;
 
 @Repository
@@ -134,18 +135,23 @@ public class MemberDao {
 		return (ArrayList<AppliedWalkInfo>)list;
 	}
 
-	public ArrayList<Walk> selectMyMadeList(int memberNo) {
-		List list = sqlSession.selectList("myWalkMate.selectMyMadeList", memberNo);
+	public ArrayList<Walk> selectMyAttendList(int memberNo) {
+		List list = sqlSession.selectList("myWalkMate.selectMyAttendList", memberNo);
 		return (ArrayList<Walk>)list;
 	}
 
-	public ArrayList<Walk> selectMyAppliedList(String memberId) {
-		List list = sqlSession.selectList("myWalkMate.selectMyAppliedList", memberId);
+	public ArrayList<Walk> selectOtherAttendList(String memberId) {
+		List list = sqlSession.selectList("myWalkMate.selectOtherAttendList", memberId);
 		return (ArrayList<Walk>)list;
 	}
 
 	public Walk selectOneWalkMate(int wmNo) {
 		return sqlSession.selectOne("myWalkMate.selectOneWalkMate", wmNo);
+	}
+	
+	public ArrayList<WalkFile> selectWalkMateFileList(int wmNo) {
+		List list = sqlSession.selectList("myWalkMate.selectWalkMateFileList", wmNo);
+		return (ArrayList<WalkFile>)list;
 	}
 	
 	public Member selectLeaderProfile(int wmNo) {

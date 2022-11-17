@@ -20,6 +20,7 @@ import kr.or.member.model.vo.MyCalendar;
 import kr.or.member.model.vo.Report;
 import kr.or.walk.model.vo.AppliedWalkInfo;
 import kr.or.walk.model.vo.Walk;
+import kr.or.walk.model.vo.WalkFile;
 import kr.or.walk.model.vo.WalkPageData;
 import kr.or.walk.model.vo.WmApply;
 
@@ -548,25 +549,26 @@ public class MemberService {
 		}
 		pageNavi += "</ul>";
 		
-		WalkPageData<AppliedWalkInfo> wpd = new WalkPageData<>(appliedShowList, pageNavi);
+		//WalkPageData<AppliedWalkInfo> wpd = new WalkPageData<>(appliedShowList, pageNavi);
+		WalkPageData<AppliedWalkInfo> wpd = new WalkPageData<>(appliedAllList, pageNavi);
 		
 		return wpd;
 	}
 
-	public ArrayList<Walk> selectMyAttendList(int memberNo, String memberId) {
-		ArrayList<Walk> myMadeList = dao.selectMyMadeList(memberNo);
-		
-		ArrayList<Walk> myAppliedList = dao.selectMyAppliedList(memberId);
-		
-		ArrayList<Walk> myAttendList = new ArrayList<Walk>();
-		myAttendList.addAll(myMadeList);
-		myAttendList.addAll(myAppliedList);
-		
-		return myAttendList;
+	public ArrayList<Walk> selectMyAttendList(int memberNo) {
+		return dao.selectMyAttendList(memberNo);
+	}
+	
+	public ArrayList<Walk> selectOtherAttendList(String memberId) {
+		return dao.selectOtherAttendList(memberId);
 	}
 
 	public Walk selectOneWalkMate(int wmNo) {
-		return dao.selectOneWalkMate(wmNo);
+		Walk w = dao.selectOneWalkMate(wmNo);
+		ArrayList<WalkFile> fileList= dao.selectWalkMateFileList(wmNo);
+		w.setFileList(fileList);
+		
+		return w;
 	}
 
 	public ArrayList<Member> selectAttendProfileList(int wmNo) {

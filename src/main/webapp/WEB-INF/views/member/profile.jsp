@@ -22,8 +22,10 @@
 	        			<div class="profile-header">
 			        		<h1>${other.memberNickname }</h1>
 			        		
-			        		<c:if test="${sessionScope.m.memberLevel == 1 }">
-			        			<p id="report-modal-open">신고</p>
+			        		<c:if test="${sessionScope.m.memberLevel eq 1 }">
+			        			<c:if test="${sessionScope.m.memberNo ne other.memberNo }">
+			        				<p id="report-modal-open">신고</p>
+			        			</c:if>
 			        		</c:if>
 			        	</div>
 			            

@@ -48,11 +48,17 @@
 		</div>
 	</div>
 	
+	<div class="wm-apply-view-modal">
+		<jsp:include page="/WEB-INF/views/myWalkMate/walkMatePage/walkMateApplyView.jsp"/>
+	</div>
+	
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 	
 	<script>
 		const wmNo = ${w.wmNo };
 	</script>
 	<script src="/resources/js/myWalkMate/walkMatePage/walkMatePage.js"></script>
+	<script src="/resources/js/myWalkMate/walkMatePage/selectWalkMateApplyList.js"></script>
+	<script src="/resources/js/myWalkMate/walkMatePage/walkMateApplyView.js"></script>
 </body>
 </html>
