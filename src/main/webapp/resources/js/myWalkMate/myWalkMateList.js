@@ -27,12 +27,11 @@ $(document).ready(function(){
 	$.ajax({
 		url: "/selectMyApplyList.do",
 		data: { 
-			memberId : applyId,
-			reqPage : 1
+			memberId : applyId
 		},
 		dataType:"json",
-		success: function(wpd){
-			if(wpd.list.length != 0){
+		success: function(myApplyList){
+			if(myApplyList.length != 0){
 				const table = $("<table>");
 				
 				const titleTr = $("<tr>");
@@ -44,14 +43,14 @@ $(document).ready(function(){
 				);
 				table.append(titleTr);
 				
-				for(let i=0; i<wpd.list.length; i++){
+				for(let i=0; i<myApplyList.length; i++){
 					const tr = $("<tr>");
 					
-					tr.append("<td>" + "<a href='/walkMatePage.do?wmNo=" + wpd.list[i].wmNo + "'>" + wpd.list[i].wmTitle + "</a>" + "</td>");
-					tr.append("<td>" + wpd.list[i].wmMeetTime + "</td>");
-					tr.append("<td>" + wpd.list[i].wmAddr + "</td>");
+					tr.append("<td>" + "<a href='/walkMatePage.do?wmNo=" + myApplyList[i].wmNo + "'>" + myApplyList[i].wmTitle + "</a>" + "</td>");
+					tr.append("<td>" + myApplyList[i].wmMeetTime + "</td>");
+					tr.append("<td>" + myApplyList[i].wmAddr + "</td>");
 					
-					switch(wpd.list[i].applyStat){
+					switch(myApplyList[i].applyStat){
 						case 0:
 							tr.append("<td>" + "승인" + "</td>");
 							break;

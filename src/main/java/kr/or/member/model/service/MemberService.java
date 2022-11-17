@@ -21,7 +21,6 @@ import kr.or.member.model.vo.Report;
 import kr.or.walk.model.vo.AppliedWalkInfo;
 import kr.or.walk.model.vo.Walk;
 import kr.or.walk.model.vo.WalkFile;
-import kr.or.walk.model.vo.WalkPageData;
 import kr.or.walk.model.vo.WmApply;
 
 @Service
@@ -487,72 +486,8 @@ public class MemberService {
 
 	/*****************************************************/
 	
-	public WalkPageData<AppliedWalkInfo> selectMyApplyList(String memberId, int reqPage) {
-		int numPerPage = 10;
-		
-		int end = numPerPage * reqPage - 1;
-		int start = end - numPerPage + 1;
-		
-		ArrayList<AppliedWalkInfo> appliedAllList = dao.selectMyApplyList(memberId, start, end);
-		
-		ArrayList<AppliedWalkInfo> appliedShowList = new ArrayList<AppliedWalkInfo>();
-		for(int i=start; i<=end; i++) {
-			if(i == appliedAllList.size()) {
-				break;
-			}
-			
-			appliedShowList.add(appliedAllList.get(i));
-		}
-		
-		int totalCount = appliedAllList.size();
-		int totalPage = 0;
-		if(totalCount % numPerPage == 0) {
-			totalPage = totalCount / numPerPage;
-		}else {
-			totalPage = totalCount / numPerPage + 1;
-		}
-		
-		int pageNaviSize = 5;
-		int pageNo = ((reqPage-1) / pageNaviSize) * pageNaviSize + 1;
-		
-		String pageNavi = "<ul>";
-		if(pageNo != 1) {
-			pageNavi += "<li>";
-			pageNavi += "<a href='/selectMyApplyList.do?memberId=" + memberId + "&reqPage=" + (pageNo-1) + "'>";
-			pageNavi += "<span>&lt;</span>";
-			pageNavi += "</a></li>";
-		}
-
-		for(int i=0; i<pageNaviSize; i++) {
-			if(pageNo == reqPage) {
-				pageNavi += "<li>";
-				pageNavi += "<a href='/selectMyApplyList.do?memberId=" + memberId + "&reqPage=" + pageNo + "'>";
-				pageNavi += pageNo;
-				pageNavi += "</a></li>";
-			}else {
-				pageNavi += "<li>";
-				pageNavi += "<a href='/selectMyApplyList.do?memberId=" + memberId + "&reqPage=" + pageNo + "'>";
-				pageNavi += pageNo;
-				pageNavi += "</a></li>";
-			}
-			pageNo++;
-			if(pageNo > totalPage) {
-				break;
-			}
-		}
-
-		if(pageNo <= totalPage) {
-			pageNavi += "<li>";
-			pageNavi += "<a href='/selectMyApplyList.do?memberId=" + memberId + "&reqPage=" + pageNo + "'>";
-			pageNavi += "<span>&gt;</span>";
-			pageNavi += "</a></li>";
-		}
-		pageNavi += "</ul>";
-		
-		//WalkPageData<AppliedWalkInfo> wpd = new WalkPageData<>(appliedShowList, pageNavi);
-		WalkPageData<AppliedWalkInfo> wpd = new WalkPageData<>(appliedAllList, pageNavi);
-		
-		return wpd;
+	public ArrayList<AppliedWalkInfo> selectMyApplyList(String memberId) {
+		return dao.selectMyApplyList(memberId);
 	}
 
 	public ArrayList<Walk> selectMyAttendList(int memberNo) {
@@ -579,6 +514,7 @@ public class MemberService {
 		return attendList;
 	}
 	
+	@Transactional
 	public int leaveWalkMate(int memberNo) {
 		return dao.leaveWalkMate(memberNo);
 	}
@@ -587,14 +523,17 @@ public class MemberService {
 		return dao.selectWalkMateApplyList(wmNo);
 	}
 	
+	@Transactional
 	public int updateApplyStat(WmApply wmApply) {
 		return dao.updateApplyStat(wmApply);
 	}
 
+	@Transactional
 	public int updateWalkMate(Walk w) {
 		return dao.updateWalkMate(w);
 	}
 
+	@Transactional
 	public int deleteWalkMate(int wmNo) {
 		return dao.deleteWalkMate(wmNo);
 	}

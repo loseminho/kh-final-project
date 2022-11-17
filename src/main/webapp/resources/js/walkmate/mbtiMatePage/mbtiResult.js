@@ -1,4 +1,4 @@
-$(window).scrollTop(100);
+$(window).scrollTop(130);
 
 $(".content-top-button-left").on("click", function(){
 	location.href="/walkMateFrm.do";
