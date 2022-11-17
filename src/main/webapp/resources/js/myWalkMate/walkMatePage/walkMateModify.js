@@ -8,7 +8,6 @@ function modifyWalkMate(){
 	wmTag = $("input[name=wmTag]:checked").val();
 	const wmContent = $("#input-wm-content").val();
 	
-	// 조건을 충족하면 수정할 수 있게 해준다.
 	now = new Date();
 	const newDateTime = new Date(wmDateTime);
 	
@@ -23,7 +22,7 @@ function modifyWalkMate(){
 	$.ajax({
 		url: "/updateWalkMate.do",
 		data: { 
-			wmNo : wmNo,
+			wmNo : walkMateNo,
 			wmSubTitle : wmSubTitle,
 			wmMeetTime : wmDateTime,
 			wmTag : wmTag,
@@ -49,7 +48,7 @@ function deleteWalkMate(){
 	$.ajax({
 		url: "/deleteWalkMate.do",
 		data: {
-			wmNo : wmNo
+			wmNo : walkMateNo
 		},
 		success: function(result){
 			if(result > 0){

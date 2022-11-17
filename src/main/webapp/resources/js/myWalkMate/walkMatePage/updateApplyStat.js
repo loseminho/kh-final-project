@@ -20,6 +20,14 @@ function updateApplyStat(wmApplyNo, applyStat, obj){
 		success: function(result){
 			if(result > 0){
 				$(obj).closest("tr").remove();
+				
+				const content = $(".wm-apply-meangement-content");
+				const trCount = content.find("tr").length;
+				
+				if(trCount == 1){
+					content.find("table").remove();
+					content.append("<p>" + "신청 대기 중인 사람이 없습니다." + "</p>");
+				}
 			
 				if(applyStat == 0){
 					alert("수락하였습니다.");

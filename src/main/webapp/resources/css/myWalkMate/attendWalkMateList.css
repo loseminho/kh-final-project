@@ -2,8 +2,14 @@
 	margin-top: 20px;
 }
 
-.attendList-content>div{
+.scheduledList-header, .proceededList-header{
 	margin-top: 50px;
+}
+
+.attendList{
+	width: 815px;
+	height: 257px;
+	overflow: auto;
 }
 
 .attendList>table{
@@ -67,6 +73,10 @@
 
 .attendList-content table td>a:visited:hover{
 	color: #1abc9c;
+}
+
+.proceededList{
+	margin-bottom: 100px;
 }
 
 .scheduledList>p, .proceededList>p{

@@ -3,6 +3,10 @@
 
 <link rel="stylesheet" href="/resources/css/myWalkMate/appliedWalkMateList.css">
 
-<div class="appliedList-content">
+<div class="appliedList-header">
 	<h1>산책 메이트 신청 내역</h1>
+</div>
+
+<div class="appliedList-content">
+	
 </div>

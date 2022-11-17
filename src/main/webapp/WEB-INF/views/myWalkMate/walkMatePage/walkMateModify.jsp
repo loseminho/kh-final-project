@@ -83,9 +83,9 @@
 </div>
 
 <script>
-	const wmNo = ${w.wmNo };
+	const walkMateNo = ${w.wmNo };
 	
-	const now = new Date();
+	let now = new Date();
 	const oldDate = "${w.wmMeetTime }".substring(0, 10);
 	const oldTime = "${w.wmMeetTime }".substring(11, 16);
 	const oldDateTime = new Date("${w.wmMeetTime }");

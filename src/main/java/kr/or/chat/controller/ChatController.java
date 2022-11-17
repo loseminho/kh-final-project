@@ -13,6 +13,7 @@ import com.google.gson.Gson;
 import kr.or.chat.model.service.ChatService;
 import kr.or.chat.model.vo.ChatHistory;
 import kr.or.chat.model.vo.RequireList;
+import kr.or.member.model.vo.Member;
 
 @Controller
 public class ChatController {
@@ -53,8 +54,10 @@ public class ChatController {
 	}
 	@ResponseBody
 	@RequestMapping(value="/selectApplyList.do", produces = "application/json;charset=utf-8")
-	public String selectApplyList(String memberId) {
-		ArrayList<RequireList> list = service.selectApplyList(memberId);
+	public String selectApplyList(Member m) {
+		System.out.println(m.getMemberId());
+		System.out.println(m.getMemberNo());
+		ArrayList<RequireList> list = service.selectApplyList(m);
 		return new Gson().toJson(list);
 	}
 	

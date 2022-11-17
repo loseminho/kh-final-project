@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.or.chat.model.vo.ChatHistory;
 import kr.or.chat.model.vo.RequireList;
+import kr.or.member.model.vo.Member;
 
 @Repository
 public class ChatDao {
@@ -32,8 +33,8 @@ public class ChatDao {
 		sqlSession.insert("chat.insertRoomList",roomList);
 	}
 
-	public ArrayList<RequireList> selectApplyList(String memberId) {
-		List list = sqlSession.selectList("chat.selectApplyList",memberId);
+	public ArrayList<RequireList> selectApplyList(Member m) {
+		List list = sqlSession.selectList("chat.selectApplyList",m);
 		return (ArrayList<RequireList>)list;
 	}
 
