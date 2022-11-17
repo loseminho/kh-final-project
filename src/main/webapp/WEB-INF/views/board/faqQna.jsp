@@ -49,8 +49,8 @@
 					</div>
 					<div class="faqList">
 						<div class="faq-box">
-							<div class="faq-wrap" id="walk-question">
-								<div class="question">
+							<div class="faq-wrap">
+								<div class="question walk-question">
 									<a> <span class="category-walk">우리동네 산책찾기</span> <span
 										class="question-title">첫번째 질문</span> <span
 										class="material-symbols-outlined">expand_more</span>
@@ -60,7 +60,7 @@
 									<a> <span>첫번째 답변</span>
 									</a>
 								</div>
-								<div class="question" name="walk-question">
+								<div class="question walk-question">
 									<a> <span class="category-walk">우리동네 산책찾기</span> <span
 										class="question-title">두번째 질문</span> <span
 										class="material-symbols-outlined">expand_more</span>
@@ -70,7 +70,7 @@
 									<a> <span>두번째 답변</span>
 									</a>
 								</div>
-								<div class="question" name="walk-question">
+								<div class="question walk-question">
 									<a> <span class="category-walk">우리동네 산책찾기</span> <span
 										class="question-title">여덟번째 질문</span> <span
 										class="material-symbols-outlined">expand_more</span>
@@ -80,7 +80,7 @@
 									<a> <span>여덟번째 답변</span>
 									</a>
 								</div>
-								<div class="question" name="walk-question">
+								<div class="question walk-question">
 									<a> <span class="category-walk">우리동네 산책찾기</span> <span
 										class="question-title">아홉번째 질문</span> <span
 										class="material-symbols-outlined">expand_more</span>
@@ -90,7 +90,7 @@
 									<a> <span>아홉번째 답변</span>
 									</a>
 								</div>
-								<div class="question" name="walk-question">
+								<div class="question walk-question">
 									<a> <span class="category-walk">우리동네 산책찾기</span> <span
 										class="question-title">열번째 질문</span> <span
 										class="material-symbols-outlined">expand_more</span>
@@ -100,7 +100,7 @@
 									<a> <span>열번째 답변</span>
 									</a>
 								</div>
-									<div class="question" name="walk-question">
+									<div class="question walk-question">
 									<a> <span class="category-walk">우리동네 산책찾기</span> <span
 										class="question-title">열한번째 질문</span> <span
 										class="material-symbols-outlined">expand_more</span>
@@ -110,7 +110,7 @@
 									<a> <span>열한번째 답변</span>
 									</a>
 								</div>
-									<div class="question" name="walk-question">
+									<div class="question walk-question">
 									<a> <span class="category-walk">우리동네 산책찾기</span> <span
 										class="question-title">열두번째 질문</span> <span
 										class="material-symbols-outlined">expand_more</span>
@@ -121,8 +121,8 @@
 									</a>
 								</div>
 							</div>
-							<div class="faq-wrap" id="sharing-question">
-								<div class="question">
+							<div class="faq-wrap">
+								<div class="question sharing-question">
 									<a> <span class="category-sharing">애견용품 나눔</span> <span
 										class="question-title">세번째 질문</span> <span
 										class="material-symbols-outlined">expand_more</span>
@@ -133,8 +133,8 @@
 									</a>
 								</div>
 							</div>
-							<div class="faq-wrap" id="adoption-question">
-								<div class="question">
+							<div class="faq-wrap">
+								<div class="question adoption-question">
 									<a> <span class="category-adoption">입양</span> <span
 										class="question-title">네번째 질문</span> <span
 										class="material-symbols-outlined">expand_more</span>
@@ -145,8 +145,8 @@
 									</a>
 								</div>
 							</div>
-							<div class="faq-wrap" id="member-question">
-								<div class="question">
+							<div class="faq-wrap">
+								<div class="question member-question">
 									<a> <span class="category-member">회원</span> <span
 										class="question-title">다섯번째 질문</span> <span
 										class="material-symbols-outlined">expand_more</span>
@@ -157,8 +157,8 @@
 									</a>
 								</div>
 							</div>
-							<div class="faq-wrap" id="etc-question">
-								<div class="question">
+							<div class="faq-wrap">
+								<div class="question etc-question">
 									<a> <span class="category-etc">기타</span> <span
 										class="question-title">여섯번째 질문</span> <span
 										class="material-symbols-outlined">expand_more</span>
@@ -168,7 +168,7 @@
 									<a> <span>여섯번째 답변</span>
 									</a>
 								</div>
-								<div class="question">
+								<div class="question etc-question">
 									<a> <span class="category-etc">기타</span> <span
 										class="question-title">일곱번째 질문</span> <span
 										class="material-symbols-outlined">expand_more</span>
@@ -194,6 +194,7 @@
 					<input type="hidden" id="qnaBoardNo" type="text" name=qnaNo
 						value="">
 					<input type="hidden" id="memberNo" type="text" name=memberNo value="${sessionScope.m.memberNo }">
+					<input type="hidden" id="memberLevel" type="text" name=memberLevel value="${sessionScope.m.memberLevel }">
 					
 				</form>
 				<div class="qna-content">
