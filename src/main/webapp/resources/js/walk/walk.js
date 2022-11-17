@@ -213,7 +213,7 @@ $(document).on("click",".add-btn",function(){
  				break;
  				allList();
  			}else{
- 				$(".add-btn").text("목록 더 보기");
+ 				$(".add-btn").text("목록 더 보기 (+)");
 				totalCnt ++;
 				allList();
  			}
@@ -450,7 +450,7 @@ function modalViews(e){
 					}
 			}else{
 				//로그인을 안했을때, 신청을 못함
-					$("#view-section6").attr("disabled",true).text('로그인 요망').css("backgroundColor","#1abc9c").css("border","2px solid #1abc9c");
+					$("#view-section6").attr("disabled",true).text('로그인을 해야 참여가 가능합니다.').css("backgroundColor","#1abc9c").css("border","2px solid #1abc9c");
 					$("#deleteWm").text('창닫기 >> ').attr("onclick", "modalOff();").css("color","#1abc9c").css("border","2px solid #1abc9c");
 			}
 		}
@@ -459,7 +459,7 @@ function modalViews(e){
 		
 		
 		
-		$(".comment-list-box").addClass('reply-list'+data.wmNo);
+		$(".comment-list-box").addClass('reply-list');
 		
 		let listHtml = "";
 		let listInputHtml = "";
@@ -468,9 +468,7 @@ function modalViews(e){
 		}else{
 			//해당 게시물에 작성된 댓글이 있다면
 			for(let q=0; q<data.wmcList.length; q++){
-			
-				
-				
+
 				//작성된 댓글의 길이만큼 반복한다.
 				if(data.wmcList[q].wmcClass ==0 ){
 					//해당 댓글이 일반 댓글인 경우
@@ -483,7 +481,7 @@ function modalViews(e){
 						listHtml += "<div class='give-wmcGroup' style='display:none;'>"+data.wmcList[q].wmcGroup+"</div>";
 						listHtml +=	"<div class='comment-member-view'>";
 						listHtml +=  "<span>"+data.wmcList[q].memberNickname+"</span>";
-						listHtml += data.wmcList[q].wmcContent;
+						listHtml += "<p>"+data.wmcList[q].wmcContent+"</p>";
 						
 						if(loginId.length >= 1 ){
 							//현재 로그인 상태이고,
@@ -554,7 +552,7 @@ function modalViews(e){
 		//wmcGroup
 		listInputHtml += "<input type='hidden' name='wmcGroup' id='input-wmcGroup'>";
 		//wmcContent
-		listInputHtml += "<input type='text' name='wmcContent' class='reviews-input' placeholder='대댓글 달기...'>";
+		listInputHtml += "<input type='text' name='wmcContent' class='reviews-input' placeholder='대댓글 달기...' maxlength='55'>";
 		listInputHtml += "</div>";
 		listInputHtml += "<button type='submit' class='rereviews-btn'>등록</button>";
 		listInputHtml += "</div>";
@@ -596,6 +594,7 @@ function modalViews(e){
 		for(var v=0; v< imgClick.length; v++){
 			imgClick.item(v).onclick=function(){fnImgPop(this.src)};
 		}
+		//이미지 팝업으로 띄우기 펑션
 		function fnImgPop(url){
 		  var img=new Image();
 		  img.src=url;
@@ -1053,7 +1052,7 @@ $(".category-li").on('click',function(){
 		            	
 	            }else{
 	            	//만약 게시물의 수가 6보다 크면 (더 보여줄 컨텐츠가 있다면)
-	            	$(".add-btn").text("목록 더 보기");
+	            	$(".add-btn").text("목록 더 보기 (+)");
 	            	for(let i=0; i<totalCnt; i++){
 						html += "<div class='content-box' onclick='modalViews("+data[i].wmNo+");'>";
 						html += "<div class='content-box-list img'>";
