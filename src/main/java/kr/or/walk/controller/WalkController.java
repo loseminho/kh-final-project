@@ -149,6 +149,13 @@ public class WalkController {
 		ArrayList<Walk> list = service.selectCategoryList(w);
 		return new Gson().toJson(list);
 	}
+	@ResponseBody
+	@RequestMapping(value="/getAmount.do", produces="application/json;charset=utf-8")
+	public String getAmount(int memberNo) {
+		System.out.println(memberNo);
+		int amount = service.getAmount(memberNo);
+		return new Gson().toJson(amount);
+	}
 //	//댓글 작성
 //	@ResponseBody
 //	@RequestMapping(value="/picture_replyList.do", produces="application/json;charset=utf-8")
