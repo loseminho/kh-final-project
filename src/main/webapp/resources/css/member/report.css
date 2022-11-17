@@ -55,7 +55,6 @@
 	width: 150px;
 	font-family:gs-Medium;
 	font-size: 16px;
-	font-family:gs-Medium;
 	outline: none;
 	margin-left: 10px;
 	border: 1px solid #ccc;
@@ -89,7 +88,8 @@
 	border: 1px solid black;
 	width: 100px;
 	height: 27px;
-	font-weight: bold;font-family:gs-Medium;
+	font-weight: bold;
+	font-family:gs-Medium;
 	outline: none;
 	border:none;
 	color:white;
