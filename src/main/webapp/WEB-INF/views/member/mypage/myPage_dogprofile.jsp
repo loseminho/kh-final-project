@@ -60,7 +60,7 @@
 	            	<p id="updateMent" style="font-size:14px; color:#ccc;"><span style="color:#1abc9c;">*</span> : 수정 가능한 정보</p>
 				    <div class="info-box">
 				        <label for="dogName">이름</label>
-				        <input type="text" name="dogName" id="dogName" class="input">
+				        <input type="text" name="dogName" id="dogName" class="input" maxlength="10">
 				    </div>
 				    <div class="info-box">
 				        <label for="dogType">품종</label>

@@ -33,12 +33,10 @@ public class AdminController {
 	//관리자 문의내역 리스트 더보기 
 	@ResponseBody
 	@RequestMapping(value="/adminQnaAjax.do", produces = "application/json;charset=utf-8")
-	public String adminQnaAjax (int start, int amount, AdminQna q) {
+	public String adminQnaAjax (int start, int amount) {
 		int totalCount = service.adminQnaCount();
-		ArrayList<AdminQna> list = service.moreAdminQna(start, amount,q);	
+		ArrayList<AdminQna> list = service.moreAdminQna(start, amount);	
 		list.get(0).setTotalCount(totalCount);
-		System.out.println(totalCount);
-		System.out.println("컨트롤러"+list);
 		Gson gson = new Gson();
 		String result = gson.toJson(list);
 		return result;
@@ -59,7 +57,6 @@ public class AdminController {
 	@RequestMapping(value="/adminReportAjax.do",produces = "application/json;charset=utf-8")
 	public String adminReport(int start, int amount) {
 		int totalCount = service.adminReportCount();
-		System.out.println("total : "+totalCount);
 		ArrayList<AdminReport> list = service.moreAdminReport(start, amount);
 		//totalCount 값 전달
 		HashMap<String, Object>map = new HashMap<String, Object>();
@@ -73,7 +70,6 @@ public class AdminController {
 	//신고처리하기 
 	@RequestMapping(value="/reportMember.do")
 	public String reportMember(AdminReport ar, Model model) {
-		System.out.println("컨트롤러"+ar);
 		int result = service.reportMember(ar);
 		if(result>0) {
 			model.addAttribute("title", "정보 수정 완료");
@@ -116,5 +112,21 @@ public class AdminController {
 			return null;
 		}
 		
+	}
+	
+	//회원 등급 리스트 검색 
+	@ResponseBody
+	@RequestMapping(value="/searchAdminMember.do",produces = "application/json;charset=utf-8")
+	public String adminSearchMemberList(Member m, int start, int amount) {
+		int totalCount = service.adminMemberList();
+		System.out.println("total : "+totalCount);
+		ArrayList<Member>list = service.adminSearchMemberList(start,amount,m);
+		HashMap<String, Object>map = new HashMap<String, Object>();
+		map.put("totalCount", totalCount);
+		map.put("list", list);
+		Gson gson = new Gson();
+		String result = gson.toJson(map);
+		System.out.println("회원등급리스트"+result);
+		return result;
 	}
 }

@@ -87,7 +87,7 @@ public class WalkController {
 					wf.setFilepath(filepath);
 					wf.setFilename(filename);
 					list.add(wf);
-					w.setFileList(list);
+					
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -97,6 +97,7 @@ public class WalkController {
 				}
 			}
 		}
+		w.setFileList(list);
 		int result = service.inputWalk(w);
 		return "redirect:walkMateFrm.do";
 	}
@@ -132,15 +133,40 @@ public class WalkController {
 		}
 	}
 	//대댓글 삭제
-		@RequestMapping(value="/deleteSubComment.do", produces="application/json;charset=utf-8")
-		public String deleteSubComment(WalkMateComment wmc) {
-			int result = service.deleteSubComment(wmc);
-			if(result > 0) {
-				return "redirect:walkMateFrm.do";
-			} else {
-				return "redirect:walkMateFrm.do";
-			}
+	@RequestMapping(value="/deleteSubComment.do", produces="application/json;charset=utf-8")
+	public String deleteSubComment(WalkMateComment wmc) {
+		int result = service.deleteSubComment(wmc);
+		if(result > 0) {
+			return "redirect:walkMateFrm.do";
+		} else {
+			return "redirect:walkMateFrm.do";
 		}
+	}
+	//글삭제
+	
+	@RequestMapping(value="/deleteWm.do", produces="application/json;charset=utf-8")
+	public String deleteWmNo(Walk w) {
+		int result = service.deleteWmNo(w);
+		if(result > 0) {
+			return "redirect:walkMateFrm.do";
+		} else {
+			return "redirect:walkMateFrm.do";
+		}
+	}
+	@ResponseBody
+	@RequestMapping(value="/categoryList.do", produces="application/json;charset=utf-8")
+	public String selectCategoryList(Walk w) {
+		ArrayList<Walk> list = service.selectCategoryList(w);
+		return new Gson().toJson(list);
+	}
+	@ResponseBody
+	@RequestMapping(value="/getAmount.do", produces="application/json;charset=utf-8")
+	public String getAmount(int memberNo) {
+		int amount = service.getAmount(memberNo);
+		return new Gson().toJson(amount);
+	}
+	
+	
 //	//댓글 작성
 //	@ResponseBody
 //	@RequestMapping(value="/picture_replyList.do", produces="application/json;charset=utf-8")

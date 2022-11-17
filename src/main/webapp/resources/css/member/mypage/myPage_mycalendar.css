@@ -12,3 +12,7 @@
 	width: 100%;
 	margin:30px auto;
 }
+
+.mycalendar #calendar .fc-daygrid-more-link {
+	display:block;
+}

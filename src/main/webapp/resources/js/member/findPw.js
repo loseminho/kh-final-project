@@ -113,7 +113,7 @@ $("#sendBtn").on("click", function() {
 	        	$(".verifyInput").val("");
 	        	$(".verifyMsg").text("");
 	        	resultCode = data;
-	        	console.log(resultCode);
+	        	// console.log(resultCode);
 	        	verifyCount();
 	        }
 	    });

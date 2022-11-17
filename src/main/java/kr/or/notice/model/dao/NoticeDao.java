@@ -64,6 +64,10 @@ public class NoticeDao {
 	public int deleteFile(int fileNo) {
 		return sqlSession.delete("notice.deleteNoticeFile",fileNo);
 	}
+	//공지사항 파일 다운
+	public NoticeFile noticeFileDown(int fileNo) {
+		return sqlSession.selectOne("notice.noticeFileDown",fileNo);
+	}
 	
 
 }

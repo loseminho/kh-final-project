@@ -1,35 +1,118 @@
 let page = 0;
-//처음페이지 셋팅 
-$(document).ready(function(){
-	$(".faqqna-tab>li").eq(0).click();
-	category.on("click", function(){
-		var $index = category.index(this);
-		if($index == 0){
-			
-		}
-	});
-	
-});
-
-// 더보기 구현
-//전체 문의사항 질문 개수 
-let qnaTotal = $(".question").length;
-
-$(".add-btn>button").on("click",function(){
-	for(let i=6; i<qnaTotal; i++){
-		$(".question").eq(i).show();
-		$(this).text("마지막 게시물 입니다 ");
-	}
-});
-
-
-//faq, qna 이동 
-
+let totalCount = $(".question").length;//전체 게시물갯수
+let showCount = 6; //처음보여줄갯수
 const tabs = $(".faqqna-tab>li");
+
+const allQuestion = $(".question");
+const walkQuestion = $(".walk-question");
+const sharingQuestion = $(".sharing-question");
+const adoptionQuestion = $(".adoption-question");
+const memberQuestion = $(".member-question");
+const etcQuestion = $(".etc-question");
+
+//각각 카테고리별로 갯수 구분
+let allQuestionCnt = $(".question").length;
+let walkQuestionCnt = $(".walk-question").length;
+let sharingQuestionCnt = $(".sharing-question").length;
+let adoptionQuestionCnt = $(".adoption-question").length;
+let memberQuestionCnt = $(".member-question").length;
+let etcQuestionCnt = $(".etc-question").length;
+
+//페이지 시작할 때 시작하는 메소드
+$(document).ready(function(){
+    const question = $(".question");
+    $(".faq-category>li").eq(0).trigger("click");
+    $(".qna-content").hide();
+});
+
+$(".faq-category>li").on("click",function(){
+    $(".answer").hide();
+    const cateIdx = $(".faq-category>li").index(this);
+    console.log("123123:::::"+cateIdx);
+
+    $(".faq-category>li").css({
+        "background-color":"#fff",
+        "color":"black"
+    });
+    $(".faq-category>li").eq(cateIdx).css({
+        "background-color":"#1abc9c",
+        "color":"#fff"
+    });
+    if(cateIdx==0){
+        showMenu(allQuestion,allQuestionCnt);
+        page = 0;
+        showCount = 6;
+        totalCount = allQuestionCnt;
+        $(".add-btn").css("display","block");
+        
+    }else if(cateIdx==1){
+        showMenu(walkQuestion,walkQuestionCnt);
+        page = 1;
+        showCount = 6;
+        totalCount = walkQuestionCnt;
+        $(".add-btn").css("display","block");
+    }else if(cateIdx==2){
+        showMenu(sharingQuestion,sharingQuestionCnt);
+        page = 2;
+        showCount = 6;
+        totalCount = sharingQuestionCnt;
+        $(".add-btn").css("display","block");
+    }else if(cateIdx==3){
+        showMenu(adoptionQuestion,adoptionQuestionCnt);
+        page = 3;
+        showCount = 6;
+        totalCount = adoptionQuestionCnt;
+        $(".add-btn").css("display","block");
+    }else if(cateIdx==4){
+        showMenu(memberQuestion,memberQuestionCnt);
+        page = 4;
+        showCount = 6;
+        totalCount = memberQuestionCnt;
+        $(".add-btn").css("display","block");
+    }else if(cateIdx==5){
+        showMenu(etcQuestion,etcQuestionCnt);
+        page = 5;
+        showCount = 6;
+        totalCount = etcQuestionCnt;
+        $(".add-btn").css("display","block");
+    }
+});
+
+function showMenu(value, totalCount){
+    console.log(totalCount);
+    console.log("showCount:::"+showCount);
+    $(".question").css("display","none");
+    for(let i=0;i<showCount;i++){
+        value.eq(i).css("display","block");
+    }
+    if(showCount >= totalCount){
+        showCount = 6;
+        $(".add-btn").css("display","none");
+    }
+}
+
+$(".add-btn").on("click",function(){
+    showCount += 3;
+    if(page==0){
+        showMenu(allQuestion,allQuestionCnt);
+    }else if(page==1){
+        showMenu(walkQuestion,walkQuestionCnt);
+    }else if(page==2){
+        showMenu(sharingQuestion,sharingQuestionCnt);
+    }else if(page==3){
+        showMenu(adoptionQuestion,adoptionQuestionCnt);
+    }else if(page==4){
+        showMenu(memberQuestion,memberQuestionCnt);
+    }else if(page==5){
+        showMenu(etcQuestion,etcQuestionCnt);
+    }
+
+});
 
 tabs.on("click",function(){
     const index = $(this).index();
-    if(index-page<1){
+    console.log("index"+index)
+    if(index == 0){
         tabs.eq(0).css({
             "border-bottom" : "2px solid #1abc9c"
         });
@@ -38,9 +121,7 @@ tabs.on("click",function(){
         });
         $(".qna-content").hide();
         $(".faq-content").show();
-         $(".qna-row").remove();
-
-        
+        $(".qna-row").remove();
     }else{
         tabs.eq(1).css({
             "border-bottom" : "2px solid #1abc9c"
@@ -56,55 +137,10 @@ tabs.on("click",function(){
 		$("#qnaAjaxAdd-btn").css ("cursor","pointer");
 		$("#qnaAjaxAdd-btn").text("더보기");
         $("#qnaAjaxAdd-btn").trigger("click");
-
     }
 });
 
-
-
-//카테고리별 이동 
-let category = $(".faq-category>li");
-category.on("click",function(){
-    const categoryIndex = category.index(this); //클릭한 카테고리 
-	console.log(categoryIndex);
-        if(categoryIndex == 0){ //전체카테고리 
-            $(".answer").hide();
-            $(".question").hide();
-        	for(let i=0; i<6; i++){
-            $(".question").eq(i).show(); 
-            $(".add-btn>button").show();
-            $(".add-btn>button").text("더보기");       		
-        	};
-  
-
-        }else{
-        	
-            const categoryPage = $(".faq-wrap").eq(categoryIndex-1); //카테고리페이지 
-			const categoryQ = categoryPage.children(); //카테고리페이지 질문
-			console.log(categoryQ); 
-            $(".faq-wrap").hide();
-            $(".answer").hide();
-            $(".faq-wrap").eq(categoryIndex-1).show();
-            if(categoryIndex-1>0){
-            	for(let i=0; i<6; i++){
-            		categoryQ.eq(i).show();
-            	$(".add-btn>button").show();
-            	}
-            }
-            $(".add-btn>button").hide();
-        }
-        
-        category.css({
-            "background-color":"#fff",
-            "color":"black"
-        });
-        category.eq(categoryIndex).css({
-            "background-color":"#1abc9c",
-            "color":"#fff"
-        });
-});
-
-//질문 클릭시 답변 나옴 
+//답변보이기
 let question = $(".question");
 question.on("click", function(){
     const questionIndex = question.index(this);
@@ -113,6 +149,18 @@ question.on("click", function(){
     $(this).next().slideToggle();
 });
 
+$(".faqqna-tab>li").eq(0).click();
+
+let tr = $(".qna-table>tr").children('tr');
+let qnaNo = tr.find('td:eq(0)').val();
+
+tr.on("click",function(){
+    console.log(qnaNo);
+});
+
+$(".qna-table tr").on("click",function(){
+    console.log(this);
+});
 
 /* write 폼 이동  */
 
@@ -124,10 +172,29 @@ $("#writeQna").on("click",function(){
 $(document).on("click",".qna-row",function(){
 	const tr = $(".qna-row");
 	var idx = tr.index(this);
-	console.log(idx);
-	console.log(tr.eq(idx).children().first().text());
-	$("#qnaBoardNo").val(tr.eq(idx).children().first().text());
-	$("#qnaViewFrm").submit();
+	
+	//세션
+	const memberNo = $("#memberNo").val();
+	const memberLevel = $("#memberLevel").val();
+	//ajax 
+	const sendQnaSecret = $(".sendQnaSecret").eq(idx).val();
+	const sendMemberNo = $(".sendMemberNo").eq(idx).val();
+	const qnaNo = $(".sendQnaNo").eq(idx).val();
+	
+	console.log(sendQnaSecret);
+	console.log("회원등급"+memberLevel);
+	
+	if(sendQnaSecret == 1){
+		if(memberNo == sendMemberNo || memberLevel == 2){
+			location.href="/qnaView.do?qnaNo="+qnaNo;
+		} else {
+			alert("비밀글은 작성자와 관리자만 볼 수 있습니다.");
+		}
+	} else{
+		location.href="/qnaView.do?qnaNo="+qnaNo;
+	}
+	
+	
 });
 
 
@@ -175,10 +242,10 @@ $("#searchQnaAjax").on("click",function(){
               if(data[i].qnaCateNo == 5) {
               	tr.append("<td>"+"기타"+"</td>"); 
               } 
-              if(data[i].qnaSecret == 2){
-                tr.append("<td>"+data[i].qnaTitle+"</td>");
+              if(data[i].qnaSecret == 1) {
+                tr.append("<td>"+"<i class='fa-solid fa-lock'></i>비밀글입니다."+"</td>");              	
               }
-             	tr.append("<td>"+비밀글입니다+"</td>");
+                tr.append("<td>"+data[i].qnaTitle+"</td>");
                 tr.append("<td>"+data[i].qnaWriter+"</td>");
               
               if(data[i].qnaStatus == 0) {
@@ -189,6 +256,9 @@ $("#searchQnaAjax").on("click",function(){
               }
                 tr.append("<td>"+data[i].qnaDate+"</td>");
                 tr.append("<td>"+data[i].qnaViews+"</td>");
+                tr.append("<input type='hidden' class='sendMemberNo' value="+data[i].memberNo+">");	
+                tr.append("<input type='hidden' class='sendQnaNo' value="+data[i].qnaNo+">");	
+                tr.append("<input type='hidden' class='sendQnaSecret' value="+data[i].qnaSecret+">");
                 table.append(tr);
                 
                 
@@ -220,6 +290,7 @@ $("#qnaAjaxAdd-btn").on("click",function(){
             const titleTr = $(".qna-tr");
             
 			for(let i=0; i<data.length; i++){
+				console.log(data[i].qnaSecret);
 				 const tr = $("<tr>");
                 tr.attr('class','qna-row');
                 tr.append("<td>"+data[i].qnaNo+"</td>");
@@ -238,7 +309,11 @@ $("#qnaAjaxAdd-btn").on("click",function(){
               if(data[i].qnaCateNo == 5) {
               	tr.append("<td>"+"기타"+"</td>"); 
               } 
-                tr.append("<td>"+data[i].qnaTitle+"</td>");
+              if(data[i].qnaSecret == 1) {
+                tr.append("<td>"+"<i class='fa-solid fa-lock'></i>비밀글입니다."+"</td>");              	
+              } else {
+              	tr.append("<td>"+data[i].qnaTitle+"</td>");              
+              }
                 tr.append("<td>"+data[i].qnaWriter+"</td>");
               
               if(data[i].qnaStatus == 0) {
@@ -249,6 +324,9 @@ $("#qnaAjaxAdd-btn").on("click",function(){
               }
                 tr.append("<td>"+data[i].qnaDate+"</td>");
                 tr.append("<td>"+data[i].qnaViews+"</td>");
+                tr.append("<input type='hidden' class='sendMemberNo' value="+data[i].memberNo+">");	
+                tr.append("<input type='hidden' class='sendQnaNo' value="+data[i].qnaNo+">");	
+                tr.append("<input type='hidden' class='sendQnaSecret' value="+data[i].qnaSecret+">");
                 table.append(tr);
                 
 			}

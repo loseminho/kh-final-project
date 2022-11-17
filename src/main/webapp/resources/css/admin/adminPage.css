@@ -376,3 +376,35 @@ content{
 #adminMemberAjax-btn:hover{
 	color: #1abc9c;
 }
+/* 검색창 */
+.member-search-box{
+	width:1200px;
+	margin: 0 auto;
+    margin-bottom : 8px;
+	display:flex;
+	justify-content: right;
+}
+.search-member-form{
+    border: 1px solid #1e1e1e;
+    border-radius: 3px;
+    height: 32px;
+   	width : 110px;
+   	font-size: 18px;
+}
+.search-input{
+    border: 1px solid #1e1e1e;
+    border-radius: 3px;
+    height: 30px;
+    width: 180px;
+    font-size: 18px;
+}
+.search-btn{
+	border-radius: 3px;
+    border: 1px solid #1abc9c;
+    background-color: #1abc9c;
+    height: 40px;
+    width: 80px;
+    font-size: 18px;
+    color: #fff;
+    font-family: gs-medium;
+}

@@ -15,6 +15,23 @@
 	<!-- 헤더  -->
 	<jsp:include page="/WEB-INF/views/common/header.jsp" />
     
+    <!-- 메인댓글용 삭제 -->
+    <form action="/deleteMainComment.do" method="post">
+    	<input type="hidden" name="wmcGroup" id="thankWmcGroup" value="">
+    	<input type="hidden" name="wmNo" id="thankWmNo" value="">
+    	<input type="submit" class="thankBtn">
+    </form>
+    <!-- 대댓글용 삭제 -->
+    <form action="/deleteSubComment.do" method="post">
+    	<input type="hidden" name="wmcNo" id="thankSubWmNo" value="">
+    	<input type="submit" class="thankSubBtn">
+    </form>
+    <!-- 글삭제 -->
+    <form action="/deleteWm.do" method="post">
+    	<input type="hidden" name="wmNo" id="thankMainWmNo" value="">
+    	<input type="submit" class="thankMainBtn">
+    </form>
+    
     <input type="hidden" id="login-memberId" value="${sessionScope.m.memberId}">
     <input type="hidden" id="login-memberNo" value="${sessionScope.m.memberNo}">
     <input type="hidden" id="login-memberNickname" value="${sessionScope.m.memberNickname}">
@@ -48,8 +65,8 @@
                     <div class="modal-writer-content-box">
                         <div class="writer-id">user03</div>
                         <h2 id="view-section2">골든 리트리버 상동 호수공원 같이 가요~</h2>
-                        <input type="text" id="write-section1" placeholder="제목을 입력해주세요.">
-                        <input type="text" id="write-section6" placeholder="모임을 위한 한줄평을 작성하세요!">
+                        <input type="text" id="write-section1" placeholder="제목을 입력해주세요." required>
+                        <input type="text" id="write-section6" placeholder="모임을 위한 한줄평을 작성하세요!" required>required
                     </div>
                 </div>
                 <div class="modal-window-bottom" id="info-of-main">
@@ -60,18 +77,19 @@
                             <div class="write-content-input-box titles">
                                 <label for="writeTitle2"><span>*</span>모임 장소</label>
                                 <input type="text" name="wmAddr" id="writeTitle2" placeholder="서울시 - 은평구" readonly>
+                                <input type="text" id="hideWriteTitle2" required>
                                 <button type="button" class="adressBtn" onclick="searchAddr();">주소 찾기</button>
                             </div>
                             <div class="write-content-input-box titles">
                                 <label for="writeTitle3"><span>*</span>모임 인원</label>
-                                <input type="text" name="wmRangeMember" id="writeTitle3" placeholder="ex) 5"> 
+                                <input type="text" name="wmRangeMember" id="writeTitle3" placeholder="ex) 5" required> 
                             </div>
                             <div class="write-content-input-box titles">
                                 <label for="writeDate" id="writeDate-lable"><span>*</span>모임 요일</label>
                                 <label for="writeTime" style="display: none;" id="writeTime-lable"><span>*</span>모임 시간</label>
-                                <input type="date" name="writeDate" id="writeDate" value="">
-                                <input type="time" name="writeTime" id="writeTime" style="display: none;">
-                                <input type="hidden" name="wmMeetTime" id="meetTime">
+                                <input type="date" name="writeDate" id="writeDate" value="" required>
+                                <input type="time" name="writeTime" id="writeTime" style="display: none;" required>
+                                <input type="hidden" name="wmMeetTime" id="meetTime" required>
                                 <button type="button" class="back-time-btn" onclick="backTime();">뒤로</button> 
                             </div>
                         </div>
@@ -98,6 +116,7 @@
                                 <input id="imageFile1"  type="file" class="photo" name="photo" style="display:none;">
                                 <div class="preview-box">
                                     <div class="input-btn">+</div>
+                                    <div class="input-btn-main">*메인 사진</div>
                                     <img src="" class="preview">
                                 </div>
                                 <input id="imageFile2"  type="file" class="photo" name="photo" style="display:none;">
@@ -118,13 +137,13 @@
                             </div>
                             <div class="input-tag-contents">
                                 <span>*</span>태그 : 
-                                <input type="radio" id="공원&산책로" name="wmTag" value="공원&산책로"><label for="공원&산책로">공원&산책로</label>
+                                <input type="radio" id="공원&산책로" name="wmTag" value="공원&산책로" checked><label for="공원&산책로">공원&산책로</label>
                                 <input type="radio" id="둘레길&등산" name="wmTag" value="둘레길&등산"><label for="둘레길&등산">둘레길&등산</label>
                                 <input type="radio" id="여행" name="wmTag" value="여행"><label for="여행">여행</label>
                                 <input type="radio" id="운동" name="wmTag" value="운동"><label for="운동">운동</label>
                                 <input type="radio" id="페스티벌" name="wmTag" value="페스티벌"><label for="페스티벌">페스티벌</label>
                             </div>
-                            <textarea name="wmContent" id="" placeholder="산책 모임에 대해 자세히 설명해주세요."></textarea>
+                            <textarea name="wmContent" id="" placeholder="산책 모임에 대해 자세히 설명해주세요." required></textarea>
                         </div>
                  </form>
                  
@@ -229,7 +248,8 @@
                     <div class="bottom-content-btn">
                         <button type="submit" class="input-main-btn" id="write-section5" onclick="" >작성 완료</button>
                         <button type="button" class="input-main-btn" id="view-section6" onclick="modalApplyView();">신청 하기</button>
-                        <button type="button" class="next-btn-member" id="" onclick="modalNextContents('');">돌아가기 >> </button>
+                        <button type="button" class="next-btn-member" id="deleteWm" onclick="modalNextContents('');">돌아가기 >> </button>
+                        <input type="hidden" id="hiddenDeleteWm">
                     </div>
                 </div>
     			
@@ -272,7 +292,7 @@
 
         <div class="content-middle">
             <ul class="walkmate-category">
-                <li>전체</li>
+                <li class="category-li">전체</li>
                 <li class="category-li">공원&산책로</li>
                 <li class="category-li">둘레길&등산</li>
                 <li class="category-li">여행</li>
@@ -307,13 +327,8 @@
                 </div>
             </div>
             
-
-
-
-
-
-
         </div>
+        <div class="add-btn">목록 더 보기</div>
     </div>
     <!-- End Content -->
     

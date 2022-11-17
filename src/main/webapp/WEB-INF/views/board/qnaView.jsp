@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>상세보기 </title>
+<title>산책갈개 </title>
 <!--fonts-->
     <link rel="stylesheet" href="/resources/css/gmarket.css">
     <!--css-->
@@ -54,14 +54,14 @@
                         <th>첨부파일</th>
                         <c:forEach items="${qb.fileList}" var="qf">
                         <td>
-                        <img src="/img/file.png" width="16px">
+                        <img src="/img/${qf.filename }" width="16px">
                         <a href="/qnaFileDown.do?fileNo=${qf.fileNo }">${qf.filename}</a>
                         </td>
                         </c:forEach>
                     </tr>
                     <tr>
                         <th>내용</th>
-                        <td colspan="9">${qb.qnaContent}</td>
+                        <td colspan="9" id="qnaContent">${qb.qnaContent}</td>
                     </tr>
                 </table>
                 <!--댓글 등록-->

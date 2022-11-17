@@ -178,8 +178,14 @@ function sendDmSearch(reqPage){
     });
 }
 
-$(document).keyup(function(e) {
-   if ( e.keyCode == 27) {
+$(document).keyup(function(e) { // 모달창 esc키 눌렀을 때
+   if (e.keyCode == 27) {
        closeSendDmModal();
    };
+});
+
+$("#sendDmKeyword").keyup(function(e) { // 검색 enter키 눌렀을 때
+   if(e.keyCode == 13) {
+		sendDmSearch(1);
+	}
 });

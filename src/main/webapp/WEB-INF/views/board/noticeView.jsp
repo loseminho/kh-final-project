@@ -41,11 +41,13 @@
                         <tr>
                         	<th>첨부파일 </th>
                         	<c:forEach items="${n.fileList}" var="nf">
-                        	<th>${nf.filename} </th>
+                        	<td>
+                        	<img src="/img/file.png" width="16px">
+                        	<a href="/noticeFileDown.do?fileNo=${nf.fileNo }">${nf.filename} </a></td>
                         	</c:forEach>
                         </tr>
                         <tr>
-                            <td colspan="5">${n.noticeContent}</td>
+                            <td colspan="5" id="noticeContent">${n.noticeContent}</td>
                         </tr>
                     </table>
                 </div>
@@ -61,6 +63,10 @@
     	$(".back-noticeList").on("click",function(){
     		location.href="/notice.do?reqPage=1";
     	});
+    	//textarea 엔터 
+    	var str = $('#noticeContent').html();
+    	str = str.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+    	$('#noticeContent').html(str);
     </script>
 </body>
 </html>

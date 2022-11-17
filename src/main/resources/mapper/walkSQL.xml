@@ -218,97 +218,75 @@ LEFT JOIN MEMBER_TBL B ON A.wmLeader = B.MEMBER_NO WHERE A.wmNo =#{_parameter}
 		DELETE FROM WMC_TBL 
 		WHERE WMC_NO = #{wmcNo}
 	</delete>
-	<!-- 
-	<insert id="picture_reply_write" parameterType="wmc">
-		INSERT INTO WMC_TBL VALUES(
-			0,
-			#{wmNo},
-			#{wmcGroup},
-			0,
-			0,
-			#{memberNickname},
-			#{wmcContent},
-			now()
-		)
-	</insert>
-	 -->
-	<!-- 댓글일 경우  wmcNo, wmcGroup를 같게 만듬 -->
-	<!-- 
-	<update id="picture_reply_check" parameterType="wmc">
-		UPDATE WMC_TBL SET WMC_GROUP=#{wmcGroup}
-				WHERE WMC_NO != WMC_GROUP
-	</update>
-	 -->
-	<!-- 댓글이 삭제된 댓글일때, 그에 딸린 답글이 삭제되면 테이블에서 완전히 삭제된다 -->
-	 <!-- 
-	<delete id="picture_reply_delete_after_rereply_delete" parameterType="wmc">
-		DELETE FROM WMC_TBL
-		WHERE WMC_CONTENT="" AND WMC_GROUP={wmcGroup}
+	<delete id="deleteWmNo"	parameterType="w">
+		DELETE FROM WALK_MATE_TBL
+		WHERE WM_NO = #{wmNo}
 	</delete>
-	 -->	
-	<!-- 대댓글 쓰기 -->
-	<!-- 
-	<insert id="picture_rereply_write" parameterType="wmc">
-		INSERT INTO WMC_TBL
-		VALUES(0,
-			#{wmcNo},
-			#{wmcGroup},
-			0,
-			#{wmcClass},
-			#{memberNickname},
-			#{wmcContent},
-			now()
-		)
-	</insert>
-	 -->
-	<!-- 보드의 댓글 수 증가 -->
-	<!-- 
-	<update id="picture_reply_up" parameterType="w">
-		UPDATE WALK_MATE_TBL SET REPLY=REPLY+1
-		WHERE WM_NO=#{wmNo}
-	</update>
-	 -->
-	 <!-- 댓글 리스트 가져오기 -->
-	 <!-- 
-	<select id="picutre_replyList" parameterType="wmc" resultType="wmc">
-	SELECT 
-		r.WMC_NO AS wmcNo, 
-		r.WM_NO AS wmNO,
-		 r.WMC_GROUP AS wmcGroup,
-		  r.WMC_CLASS AS wmcClass,
-		   r.MEMBER_NICKNAME AS memberNickname,
-		    r.WMC_CONTENT AS wmcContent,
-		     DATE_FORMAT(WMC_DATE,'%Y-%m-%d') AS wmcDate,
-		      DATEDIFF(NOW(), WMC_DATE) wgap,
-		       u.MEMBER_PHOTO AS memberPhoto
-	 FROM WMC_TBL r LEFT OUTER JOIN MEMBER_TBL u ON r.MEMBER_NICKNAME = u.MEMBER_NICKNAME
-	 WHERE r.WM_NO = #{wmNo};
-		 order by WMC_GROUP ASC, WMC_GROUP ORDER DESC
+	
+	
+	<select id="selectCategoryList" resultMap="getMembersTags" parameterType="w">
+	SELECT ROWNUM AS RNUM, W.* FROM ((SELECT
+	    WM_NO AS wmNo,
+	    WM_LEADER AS wmLeader,
+	    WM_TITLE AS wmTitle,
+	    WM_SUB_TITLE AS wmSubTitle,
+	    WM_TAG AS wmTag,
+	    WM_MEET_TIME AS wmMeetTime,
+	    WM_ADDR AS wmAddr,
+	    WM_RANGE_MEMBER AS wmRangeMember,
+	    WM_CONTENT AS wmContent,
+	    REPLY AS reply,
+	    WM_DATE AS wmDate
+	FROM walk_mate_tbl ORDER BY WM_NO DESC)W) WHERE wmTag=#{wmTag}
 	</select>
-	<select id="picture_reply_count" parameterType="w" resultType="w">
-		SELECT reply
-		FROM WALK_MATE_TBL
-		WHERE WM_NO = #{wmNo};
+	<select id="selectMemberProfilTags" resultType="wa" parameterType="_int">
+	SELECT A.WM_APPLY_NO AS wmApplyNo,
+        A.WM_NO AS wmNo, 
+        A.MEMBER_ID AS memberId,
+        A.APPLY_CONTENT AS applyContent,
+        A.APPLY_STAT AS applyStat,
+        B.MEMBER_NICKNAME AS memberNickname, 
+        B.MEMBER_PHOTO AS memberPhoto,
+        B.MEMBER_INTRO AS memberIntro
+	FROM (SELECT * FROM WM_APPLY_TBL)A LEFT JOIN MEMBER_TBL B ON A.MEMBER_ID = B.MEMBER_ID where wm_No=#{_parameter}
 	</select>
-	<select id="picture_count_rereply" parameterType="wmc" resultType="int">
-		SELECT COUNT(WMC_NO) FROM WMC_TBL
-		WHERE WMC_NO != #{wmcNo} AND WMC_GROUP = #{wmcNo};
+	<select id="selectFileListTags" resultType="wf" parameterType="_int">
+		SELECT FILE_NO AS fileNo,
+	        WM_NO AS wmNo,
+	        FILENAME AS filename,    
+	        FILEPATH AS filepath
+		FROM WM_FILE_TBL WHERE WM_NO=#{_parameter}
 	</select>
-	<select id="picture_count_rereply_fromrereply" parameterType="wmc" resultType="int">
-		SELECT COUNT()
+	<resultMap type="w" id="getMembersTags">
+			<result column="wmNo" property="wmNo"/>
+			<result column="wmLeader" property="wmLeader"/>
+			<result column="wmTitle" property="wmTitle"/>
+			<result column="wmSubTitle" property="wmSubTitle"/>
+			<result column="wmTag" property="wmTag"/>
+			<result column="wmMeetTime" property="wmMeetTime"/>
+			<result column="wmAddr" property="wmAddr"/>
+			<result column="wmRangeMember" property="wmRangeMember"/>
+			<result column="wmContent" property="wmContent"/>
+			<result column="reply" property="reply"/>
+			<result column="wmDate" property="wmDate"/>
+			<result column="rnum" property="rnum"/>
+		<collection property="wList"
+					select="selectMemberProfilTags"
+					column="wmNo"
+					ofType="wa"
+					javaType="java.util.ArrayList"
+		/>
+		<collection property="fileList"
+					select="selectFileListTags"
+					column="wmNo"
+					ofType="wf"
+					javaType="java.util.ArrayList"
+		/>
+	</resultMap>
+	
+	<select id="getAmount" resultType="int">
+		select count(*) from member_tbl join dog_tbl
+		using(member_no) where member_no=#{_parameter}	
 	</select>
-	<delete id="picture_reply_delete" parameterType="wmc">
-		DELETE FROM WMC_TBL
-		WHERE WMC_NO = ${wmcNo}
-	</delete>
-	<update id="picture_reply_not_delete" parameterType="wmc">
-		UPDATE WMC_TBL SET WMC_CONTENT=""
-		WHERE WMC_NO=#{wmcNo}
-	</update>
-	<update id="picture_reply_down" parameterType="w">
-		UPDATE WALK_MATE_TBL 
-		SET REPLY=REPLY-1 
-		WHERE WM_NO=#{wmNo}
-	</update>
-	 -->
+	
 </mapper>

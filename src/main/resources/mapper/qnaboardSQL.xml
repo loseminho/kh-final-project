@@ -32,6 +32,10 @@
 		<result column="qna_content" property="qnaContent"/>
 		<result column="qna_views" property="qnaViews"/>
 		<result column="qna_date" property="qnaDate"/>
+		<result column="qna_cate_no" property="qnaCateNo"/>
+		<result column="qna_status" property="qnaStatus"/>
+		<result column="qna_secret" property="qnaSecret"/>
+		
 		<collection property="fileList"
 			select="selectFileList"
 			column = "qna_no"
@@ -126,8 +130,12 @@ select
 	qna_views as qnaViews,
 	qna_date as qnaDate,
 	qna_cate_no as qnaCateNo,
-	qna_status as qnaStatus
-from(select rownum as rnum, q.* from(select * from qna_tbl order by 1 desc)q) where rnum between #{start} and #{end}
+	qna_status as qnaStatus,
+	qna_secret as qnaSecret,
+	member_no as memberNo
+from(select rownum as rnum, q.* from(select * from qna_tbl order by 1 desc)q) 
+join member_tbl on member_id = qna_writer
+where rnum between #{start} and #{end}
 </select>
 <!-- 전체 게시물 수  -->
 <select id="qnaTotalCount" resultType="_int">

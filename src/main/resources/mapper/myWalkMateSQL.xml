@@ -64,17 +64,52 @@
 			wm_no = #{_parameter} 
 	</select>
 	
-	<select id="selectAttendMemberList" parameterType="_int" resultType="m">
+	<select id="selectLeaderProfile" parameterType="_int" resultType="m">
 		select
 			member_no as memberNo,
-			member_nickname as mameberNickname
+			member_nickname as memberNickname,
+			member_photo as memberPhoto,
+			member_intro as memberIntro
+		from
+			member_tbl
+		join
+			walk_mate_tbl on(member_no = wm_leader)
+		where
+			wm_no = #{_parameter}
+	</select>
+	
+	<select id="selectAttendProfileList" parameterType="_int" resultType="m">
+		select
+			member_no as memberNo,
+			member_nickname as memberNickname,
+			member_photo as memberPhoto,
+			member_intro as memberIntro
 		from
 			member_tbl
 		join
 			wm_apply_tbl using(member_id)
 		where
-			wm_no = #{_parameter} 
+			wm_no = #{_parameter}  
+			and
+			apply_stat = 0
+		order by
+			member_nickname
 	</select>
+	
+	<delete id="leaveWalkMate" parameterType="_int">
+		delete
+			from
+				wm_apply_tbl
+			where
+				member_id = 
+				
+		(select 
+			member_id 
+		from 
+			member_tbl
+		where
+			member_no = #{_parameter})
+	</delete>
 	
 	<select id="selectWalkMateApplyList" parameterType="_int" resultType="wa">
 		select 
@@ -112,4 +147,12 @@
 		where
 			wm_no = #{wmNo}
 	</update>
+	
+	<delete id="deleteWalkMate" parameterType="_int">
+		delete
+			from
+				walk_mate_tbl
+			where
+				wm_no = #{_parameter}
+	</delete>
 </mapper>

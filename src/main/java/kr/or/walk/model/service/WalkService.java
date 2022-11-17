@@ -31,11 +31,16 @@ public class WalkService {
 		int wmNo = dao.selectWmNo();
 		ArrayList<WalkFile> wf = new ArrayList<WalkFile>();
 		wf = w.getFileList();
-		for(int i=0; i<wf.size(); i++) {
-			wf.get(i).setWmNo(wmNo);
-			dao.inputWalkFile(wf.get(i));
+	
+		if(!wf.isEmpty()) {
+			for(int i=0; i<wf.size(); i++) {
+				wf.get(i).setWmNo(wmNo);
+				dao.inputWalkFile(wf.get(i));
+			}
+			return 0;			
+		}else {
+			return 0;
 		}
-		return 0;
 	}
 
 	public int inputWmApply(WmApply wa) {
@@ -60,6 +65,19 @@ public class WalkService {
 	public int deleteSubComment(WalkMateComment wmc) {
 		int result = dao.deleteSubComment(wmc);
 		return result;
+	}
+
+	public ArrayList<Walk> selectCategoryList(Walk w) {
+		ArrayList<Walk> list = dao.selectCategoryList(w);
+		return list;
+	}
+
+	public int getAmount(int memberNo) {
+		return dao.getAmount(memberNo);
+	}
+
+	public int deleteWmNo(Walk w) {
+		return dao.deleteWmNo(w);
 	}
 	
 //	//댓글 작성

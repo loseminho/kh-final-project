@@ -1,3 +1,10 @@
+$(function(){
+	const qnaCateNo = $("#qnaCateNo").val();
+	$("#qnaCateNo").val("${qb.qnaCateNo}").attr("selected","selected");
+});
+
+
+
 const fileZone = $(".fileZone");
 const files = new Array();
 //드래그 되는 영역에 들어올때 

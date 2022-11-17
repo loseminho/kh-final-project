@@ -193,7 +193,7 @@ content{
     width: 80px;
     font-size: 18px;
     color: #fff;
-    font-family: gs-medium;
+    font-family: gs-Medium;
 }
 /* 문의게시판 start */
 
@@ -278,7 +278,7 @@ content{
 }
 .qna-table tr th{
 	background-color: #1abc9c;
-	font-family: gs-medium;
+	font-family: gs-Medium;
 	color: #fff;
 }
 .qna-table th:first-child{
@@ -296,7 +296,10 @@ content{
 .qna-table th:nth-child(6){
 	width: 50%;
 }
-
+/* 비밀글 설정 */
+.fa-solid{
+	padding-right : 5px;
+}
 /* 더보기 버튼 */
 .qna-add-btn{
     margin: 0 auto;
@@ -310,7 +313,7 @@ content{
 #qnaAjaxAdd-btn{
 	background-color: transparent;
     border: none;
-    font-family: gs-medium;
+    font-family: gs-Medium;
     font-size: 20px;
 }
 #qnaAjaxAdd-btn:hover{

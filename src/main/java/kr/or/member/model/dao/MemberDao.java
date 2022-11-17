@@ -147,12 +147,20 @@ public class MemberDao {
 	public Walk selectOneWalkMate(int wmNo) {
 		return sqlSession.selectOne("myWalkMate.selectOneWalkMate", wmNo);
 	}
-
-	public ArrayList<Member> selectAttendMemberList(int wmNo) {
-		List list = sqlSession.selectList("myWalkMate.selectAttendMemberList", wmNo);
+	
+	public Member selectLeaderProfile(int wmNo) {
+		return sqlSession.selectOne("myWalkMate.selectLeaderProfile", wmNo);
+	}
+	
+	public ArrayList<Member> selectAttendProfileList(int wmNo) {
+		List list = sqlSession.selectList("myWalkMate.selectAttendProfileList", wmNo);
 		return (ArrayList<Member>)list;
 	}
 
+	public int leaveWalkMate(int memberNo) {
+		return sqlSession.delete("myWalkMate.leaveWalkMate", memberNo);
+	}
+	
 	public ArrayList<WmApply> selectWalkMateApplyList(int wmNo) {
 		List list = sqlSession.selectList("myWalkMate.selectWalkMateApplyList", wmNo);
 		return (ArrayList<WmApply>)list;
@@ -164,5 +172,9 @@ public class MemberDao {
 
 	public int updateWalkMate(Walk w) {
 		return sqlSession.update("myWalkMate.updateWalkMate", w);
+	}
+
+	public int deleteWalkMate(int wmNo) {
+		return sqlSession.delete("myWalkMate.deleteWalkMate", wmNo);
 	}
 }

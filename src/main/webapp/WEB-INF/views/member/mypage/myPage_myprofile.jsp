@@ -46,7 +46,22 @@
 	</div>
 	<div id="bonus-section">
 		<img src="/resources/img/member/coggi.png">
-		<span id="bonus-ment">추가 정보를<br>입력하시개!</span>
+		<c:if test="${sessionScope.m.memberCity eq null && sessionScope.m.memberIntro ne null}">
+			<!-- 활동지역만 null인 경우 -->
+			<span id="bonus-ment">활동지역을<br>입력하시개!</span>
+		</c:if>
+		<c:if test="${sessionScope.m.memberCity ne null && sessionScope.m.memberIntro eq null}">
+			<!-- 자기소개만 null인 경우 -->
+			<span id="bonus-ment">자기소개를<br>입력하시개!</span>
+		</c:if>
+		<c:if test="${sessionScope.m.memberCity eq null && sessionScope.m.memberIntro eq null}">
+			<!-- 둘 다 null인 경우 -->
+			<span id="bonus-ment">지역과 소개를<br>입력하시개!</span>
+		</c:if>
+		<c:if test="${sessionScope.m.memberCity ne null && sessionScope.m.memberIntro ne null}">
+			<!-- 둘 다 null이 아닌 경우 -->
+			<span id="bonus-ment">좋은 하루<br>보내시개!</span>
+		</c:if>	
 	</div>
 </div>
 	<div id="last-section">

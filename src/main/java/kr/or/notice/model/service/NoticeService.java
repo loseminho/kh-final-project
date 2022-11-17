@@ -128,5 +128,9 @@ public class NoticeService {
 		}
 		return result;
 	}
+	//공지사항 파일 다운 
+	public NoticeFile noticeFileDown(int fileNo) {
+		return dao.noticeFileDown(fileNo);
+	}
 
 }

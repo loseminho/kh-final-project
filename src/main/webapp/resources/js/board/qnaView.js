@@ -72,3 +72,8 @@ function deleteQnaComment(obj,qcommentNo,qnaNo){
 		//no
 	}
 }
+
+//textarea 엔터 
+var str = $('#qnaContent').html();
+str = str.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+$('#qnaContent').html(str);

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>문의내역 수정  </title>
+<title>산책갈개 </title>
 <!--fonts-->
     <link rel="stylesheet" href="/resources/css/gmarket.css">
     <!--css-->
@@ -29,7 +29,7 @@
                         <div class="qna-input-box">
                         <label for="qnaCateNo">문의유형</label>
                         <select name="qnaCateNo" id="qnaCateNo" class="write-qna-form" value="${qb.qnaCateNo }">
-                            <option value="0" selected="selected">선택해주세요</option>
+                            <option value="0">선택해주세요</option>
                             <option value="1">산책메이트 찾기</option>
                             <option value="2">애견용품 나눔</option>
                             <option value="3">입양</option>
@@ -60,7 +60,14 @@
                         <div class="fileMsg">* 첨부파일을 놓아주세요</div>
                         <div class="qna-check-box">
                             <label class="secret-check-label">비밀글 설정</label>
-                            <input class="form-check-input" type="checkbox" name="secret" id="secret" value="${qb.qnaSecret}">
+                            <c:choose>
+                            <c:when test="${qb.qnaSecret eq 1 }">
+                            <input class="form-check-input" type="checkbox" name="secret" id="secret" checked>
+                            </c:when>
+                            <c:otherwise>
+                            <input class="form-check-input" type="checkbox" name="secret" id="secret" value="${qb.qnaSecret }">
+                            </c:otherwise>
+                        	</c:choose>
                         </div>
                         <!--display: none-->
                         <input type="file" name="boardFile" multiple style="display:none;">
