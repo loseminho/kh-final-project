@@ -41,7 +41,7 @@
 						<ul class="faq-category">
 							<li>전체</li>
 							<li>산책 메이트 찾기</li>
-							<li>애견 용품 나눔</li>
+							<li>사이트 이용</li>
 							<li>입양</li>
 							<li>회원관련</li>
 							<li>기타</li>
@@ -51,7 +51,7 @@
 						<div class="faq-box">
 							<div class="faq-wrap">
 								<div class="question walk-question">
-									<a> <span class="category-walk">우리동네 산책찾기</span> <span
+									<a> <span class="category-walk">산책메이트 찾기</span> <span
 										class="question-title">첫번째 질문</span> <span
 										class="material-symbols-outlined">expand_more</span>
 									</a>
@@ -61,7 +61,7 @@
 									</a>
 								</div>
 								<div class="question walk-question">
-									<a> <span class="category-walk">우리동네 산책찾기</span> <span
+									<a> <span class="category-walk">산책메이트 찾기</span> <span
 										class="question-title">두번째 질문</span> <span
 										class="material-symbols-outlined">expand_more</span>
 									</a>
@@ -71,7 +71,7 @@
 									</a>
 								</div>
 								<div class="question walk-question">
-									<a> <span class="category-walk">우리동네 산책찾기</span> <span
+									<a> <span class="category-walk">산책메이트 찾기</span> <span
 										class="question-title">여덟번째 질문</span> <span
 										class="material-symbols-outlined">expand_more</span>
 									</a>
@@ -81,7 +81,7 @@
 									</a>
 								</div>
 								<div class="question walk-question">
-									<a> <span class="category-walk">우리동네 산책찾기</span> <span
+									<a> <span class="category-walk">산책메이트 찾기</span> <span
 										class="question-title">아홉번째 질문</span> <span
 										class="material-symbols-outlined">expand_more</span>
 									</a>
@@ -91,7 +91,7 @@
 									</a>
 								</div>
 								<div class="question walk-question">
-									<a> <span class="category-walk">우리동네 산책찾기</span> <span
+									<a> <span class="category-walk">산책메이트 찾기</span> <span
 										class="question-title">열번째 질문</span> <span
 										class="material-symbols-outlined">expand_more</span>
 									</a>
@@ -101,7 +101,7 @@
 									</a>
 								</div>
 									<div class="question walk-question">
-									<a> <span class="category-walk">우리동네 산책찾기</span> <span
+									<a> <span class="category-walk">산책메이트 찾기</span> <span
 										class="question-title">열한번째 질문</span> <span
 										class="material-symbols-outlined">expand_more</span>
 									</a>
@@ -111,7 +111,7 @@
 									</a>
 								</div>
 									<div class="question walk-question">
-									<a> <span class="category-walk">우리동네 산책찾기</span> <span
+									<a> <span class="category-walk">산책메이트 찾기</span> <span
 										class="question-title">열두번째 질문</span> <span
 										class="material-symbols-outlined">expand_more</span>
 									</a>
@@ -123,7 +123,7 @@
 							</div>
 							<div class="faq-wrap">
 								<div class="question sharing-question">
-									<a> <span class="category-sharing">애견용품 나눔</span> <span
+									<a> <span class="category-sharing">사이트 이용</span> <span
 										class="question-title">세번째 질문</span> <span
 										class="material-symbols-outlined">expand_more</span>
 									</a>
@@ -147,7 +147,7 @@
 							</div>
 							<div class="faq-wrap">
 								<div class="question member-question">
-									<a> <span class="category-member">회원</span> <span
+									<a> <span class="category-member">회원관련</span> <span
 										class="question-title">다섯번째 질문</span> <span
 										class="material-symbols-outlined">expand_more</span>
 									</a>

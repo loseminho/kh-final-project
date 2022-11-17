@@ -1,7 +1,8 @@
-$(function(){
+function selectbox(){
 	const qnaCateNo = $("#qnaCateNo").val();
-	$("#qnaCateNo").val("${qb.qnaCateNo}").attr("selected","selected");
-});
+	console.log(qnaCateNo);
+	$("#qnaCateNo").val(qnaCateNo).attr("selected","selected");
+};
 
 
 

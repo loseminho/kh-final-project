@@ -23,6 +23,7 @@ tabs.on("click",function(){
         $(".reportPage-content").hide();
         $(".admin-qna-row").remove();
         $(".admin-report-row").remove();
+        $(".admin-memberList-row").remove();
         $("#adminMemberAjax-btn").attr("value","1");
         $("#adminMemberAjax-btn").attr("currentCount","0");
         $("#adminMemberAjax-btn").attr("disabled",false);
@@ -47,6 +48,7 @@ tabs.on("click",function(){
         $(".reportPage-content").hide();
         $(".admin-report-row").remove();
         $(".admin-memberList-row").remove();
+        $(".admin-qna-row").remove();
         $("#adminQnaAjax-btn").attr("value","1");
         $("#adminQnaAjax-btn").attr("currentCount","0");
         $("#adminQnaAjax-btn").attr("disabled",false);
@@ -70,6 +72,7 @@ tabs.on("click",function(){
         $(".reportPage-content").show();
         $(".admin-qna-row").remove();
         $(".admin-memberList-row").remove();
+        $(".admin-report-row").remove();
         $("#adminReportAjax-btn").attr("value","1");
         $("#adminReportAjax-btn").attr("currentCount","0");
         $("#adminReportAjax-btn").attr("disabled",false);
@@ -167,6 +170,7 @@ $("#adminReportAjax-btn").on("click",function(){
 		success : function(data){
 		
 			const list = data.list;
+			console.log(list);
 			const totalCount = data.totalCount;
 
 			const table = $(".admin-report-table");

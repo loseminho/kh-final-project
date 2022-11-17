@@ -161,13 +161,13 @@ public class BoardController {
 	public String qnaBoardUpdateFrm(int qnaNo,Model model) {
 		QnaBoard qb = service.selectOneQna(qnaNo);
 		model.addAttribute("qb",qb);
-		System.out.println("수정게시판이동 ::::"+qb);
 		return "board/qnaUpdate";
 	}
 	
 	//문의게시판 수정  
 	@RequestMapping(value="/qnaUpdate.do")
-	public String qnaUpdate(QnaBoard q,int[]fileNoList,String[]filepathList, MultipartFile[] boardFile, HttpServletRequest request) {
+	public String qnaUpdate(QnaBoard q,int[]fileNoList,String[]filepathList, MultipartFile[] boardFile, HttpServletRequest request,Model model) {
+		System.out.println("글 수정 :::::"+q);
 		ArrayList<QnaFile> fileList = new ArrayList<QnaFile>();
 		String savepath = request.getSession().getServletContext().getRealPath("/resources/upload/board/");
 		
@@ -212,7 +212,11 @@ public class BoardController {
 				}
 			}
 		}
-		return "redirect:/qnaView.do?qnaNo="+q.getQnaNo();
+		model.addAttribute("title", "게시글 수정 완료");
+		model.addAttribute("msg", "수정이 완료되었습니다.");
+		model.addAttribute("icon", "success");
+		model.addAttribute("loc", "/qnaView.do?qnaNo="+q.getQnaNo());
+		return "common/msg";
 	}
 	
 	//문의게시판 검색하기 

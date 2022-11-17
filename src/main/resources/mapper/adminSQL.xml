@@ -30,7 +30,7 @@
 </select>
 <!-- 신고하기 리스트 더보기  -->
 <select id="moreAdminReport" parameterType="map" resultType="ar">
-	select 
+	    select 
 		report_no as reportNo,
 		report_member_no as reportMemberNo,
 		report_member_nickname as reportMemberNickname,
@@ -41,13 +41,14 @@
 		report_date as reportDate,
 		report_status as reportStatus,
 		reportCount
-	from (select rownum as rnum, r.* from(select * from report_tbl order by 1 desc)r)
-	join (select count(reported_member_no)as reportCount,
+	from (select rownum as rnum, r.* from(select * from report_tbl 
+    join (select count(reported_member_no)as reportCount,
 		reported_member_no
 		from report_tbl
-		group by reported_member_no, report_member_nickname
+		group by reported_member_no
 	)
 	using (reported_member_no)
+    order by report_no desc)r)
     where rnum between #{start} and #{end}
 </select>
 <!-- 신고처리 회원 등급 업데이트 -->
