@@ -28,13 +28,13 @@
                     <div class="writeQna-content">
                         <div class="qna-input-box">
                         <label for="qnaCateNo">문의유형</label>
-                        <select name="qnaCateNo" id="qnaCateNo" class="write-qna-form" value="${qb.qnaCateNo }">
+                        <select name="qnaCateNo" id="qnaCateNo" class="write-qna-form">
                             <option value="0">선택해주세요</option>
-                            <option value="1">산책메이트 찾기</option>
-                            <option value="2">애견용품 나눔</option>
-                            <option value="3">입양</option>
-                            <option value="4">회원관련</option>
-                            <option value="5">기타</option>
+                            <option value="1" <c:if test="${qb.qnaCateNo == '1' }">selected="selected"</c:if>>산책메이트 찾기</option>
+                            <option value="2" <c:if test="${qb.qnaCateNo == '2' }">selected="selected"</c:if>>입양</option>
+                            <option value="3" <c:if test="${qb.qnaCateNo == '3' }">selected="selected"</c:if>>회원관련</option>
+                            <option value="4" <c:if test="${qb.qnaCateNo == '4' }">selected="selected"</c:if>>사이트 이용</option>
+                            <option value="5" <c:if test="${qb.qnaCateNo == '5' }">selected="selected"</c:if>>기타</option>
                         </select>
                         </div>
                         <div class="qna-input-box">
@@ -62,10 +62,10 @@
                             <label class="secret-check-label">비밀글 설정</label>
                             <c:choose>
                             <c:when test="${qb.qnaSecret eq 1 }">
-                            <input class="form-check-input" type="checkbox" name="secret" id="secret" checked>
+                            <input class="form-check-input" type="checkbox" name="qnaSecret" id="qnaSecret" value="1" checked >
                             </c:when>
                             <c:otherwise>
-                            <input class="form-check-input" type="checkbox" name="secret" id="secret" value="${qb.qnaSecret }">
+                            <input class="form-check-input" type="checkbox" name="qnaSecret" id="qnaSecret" value="1">
                             </c:otherwise>
                         	</c:choose>
                         </div>

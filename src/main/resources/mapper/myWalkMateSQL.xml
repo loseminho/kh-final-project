@@ -16,7 +16,7 @@
 			member_id = #{_parameter}
 	</select>
 	
-	<select id="selectMyMadeList" parameterType="_int" resultType="w">
+	<select id="selectMyAttendList" parameterType="_int" resultType="w">
 		select
 			wm_no as wmNo,
 			wm_title as wmTitle,
@@ -28,7 +28,7 @@
 			wm_leader = #{_parameter}
 	</select>
 	
-	<select id="selectMyAppliedList" parameterType="string" resultType="w">
+	<select id="selectOtherAttendList" parameterType="string" resultType="w">
 		select
 			wm_no as wmNo,
 			wm_title as wmTitle,
@@ -62,6 +62,17 @@
 			member_tbl on(wm_leader = member_no)
 		where
 			wm_no = #{_parameter} 
+	</select>
+	
+	<select id="selectWalkMateFileList" parameterType="_int" resultType="wf">
+		select
+			filepath
+		from
+			wm_file_tbl
+		where
+			wm_no = #{_parameter} 
+		order by
+			file_no
 	</select>
 	
 	<select id="selectLeaderProfile" parameterType="_int" resultType="m">

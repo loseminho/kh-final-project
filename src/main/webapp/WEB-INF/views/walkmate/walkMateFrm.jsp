@@ -208,39 +208,23 @@
                         	
                         	<!-- 댓글 목록이 들어가는 곳 -->
                         	<div class="comment-list-box">                        	
-	                        	<!-- 댓글 view  -->
-	                        	<div class="input-comment-box-view views-list">
-		                        	<div class="input-comment-writer-profil"><img src="/resources/img/default_profile.png"></div>
-		                        	<div class="comment-member-view">
-	                                    <span>로즈</span>
-	                                    	산책하며 힐링도 하고 운동도 해요.
-	                                    	<div class="view-sub"><span class="material-symbols-outlined">map</span>2022-11-12 23:30 · <div class="recomment-input">댓글달기</div><div class="delete-inputs-comment">삭제하기</div></div>
-	                                </div>
-	                        	</div>
-	                        	<!-- 대댓글 input -->
-	                        	<form action="/insertSubComment.do" method="post">
-	                        	<div class="input-comment-box-view reviews">
-		                        	<div class="input-comment-writer-profil"><img src="/resources/img/walkmate/liry1.jpg"></div>
-		                        	<div class="comment-member-view reviews-sub rereviews">
-	                                    <span>피오스</span>
-	                                    <input type="text" name="" class="reviews-input" id="" placeholder="대댓글 달기...">
-	                                </div>
-	                                <button type="submit" name="" class="rereviews-btn" id="">등록</button>
-	                        	</div>
-	                        	</form>
-	                        	
-	                        	<!-- 대댓글 view -->
-	                        	<div class="input-comment-box-view reviews">
-		                        	<div class="input-comment-writer-profil"><img src="/resources/img/walkmate/liry1.jpg"></div>
-		                        	<div class="comment-member-view reviews-sub">
-	                                    <span>민호</span>
-	                                    	대댓글 대댓글 대댓글 대댓글 대댓글 대댓글 대댓글 대댓글 대댓글 대댓글 
-	                                    	<div class="view-sub"><span class="material-symbols-outlined">map</span>2022-11-12 23:30 · <div>댓글달기</div></div>
-	                                </div>
-	                        	</div>
                         	</div>
-                        	
-
+                        </div>
+                        <div class="info-titles">모임 사진</div>
+                        <div class="info-titles sub">모임장이 올린 사진입니다! (클릭 시 원본 이미지로 볼 수 있습니다.)</div>
+                        <div class="wm-img-wrapper">
+                        	<div class="wm-img-preview-box">
+                        		<img class="wm-img-preview-img" src="">
+                        	</div>
+                        	<div class="wm-img-preview-box">
+                        		<img class="wm-img-preview-img" src="">
+                        	</div>
+                        	<div class="wm-img-preview-box">
+                        		<img class="wm-img-preview-img" src="">
+                        	</div>
+                        	<div class="wm-img-preview-box">
+                        		<img class="wm-img-preview-img" src="">
+                        	</div>
                         </div>
                         
                         

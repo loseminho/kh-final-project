@@ -77,7 +77,7 @@ public class NoticeController {
 	}
 	//공지사항 insert
 	@RequestMapping(value="/writeNotice.do")
-	public String writeNotice(Notice n, MultipartFile[] noticeFile, HttpServletRequest request) {
+	public String writeNotice(Notice n, MultipartFile[] noticeFile, HttpServletRequest request,Model model) {
 		ArrayList<NoticeFile> fileList = new ArrayList<NoticeFile>();
 		if(!noticeFile[0].isEmpty()) {
 			String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/notice/");
@@ -105,7 +105,12 @@ public class NoticeController {
 		}
 		n.setFileList(fileList);
 		int result = service.insertNotice(n);
-		return "redirect:/notice.do?reqPage=1";
+		model.addAttribute("title", "공지사항 등록 완료");
+		model.addAttribute("msg", "등록이 완료되었습니다.");
+		model.addAttribute("icon", "success");
+		model.addAttribute("loc", "/notice.do?reqPage=1");
+		return "common/msg";
+		
 	}
 	
 	//공지사항 상세보기 
@@ -119,7 +124,7 @@ public class NoticeController {
 	
 	//공지사항 삭제 
 	@RequestMapping(value="/noticeDelete.do")
-	public String noticeDelete(int noticeNo, HttpServletRequest request) {
+	public String noticeDelete(int noticeNo, HttpServletRequest request,Model model) {
 		System.out.println(noticeNo);
 		ArrayList<NoticeFile>list = service.deleteNotice(noticeNo);
 		//파일삭제
@@ -130,7 +135,11 @@ public class NoticeController {
 				delFile.delete();
 			}
 		}
-		return "redirect:/notice.do?reqPage=1";
+		model.addAttribute("title", "공지사항 삭제 완료");
+		model.addAttribute("msg", "삭제가 완료되었습니다.");
+		model.addAttribute("icon", "success");
+		model.addAttribute("loc", "/notice.do?reqPage=1");
+		return "common/msg";
 	}
 	
 	//공지사항 수정페이지 이동 
@@ -142,8 +151,7 @@ public class NoticeController {
 	}
 	//공지사항 수정
 	@RequestMapping(value="/noticeUpdate.do")
-	public String noticeUpdate(Notice n, int[]fileNoList, String[]filepathList,MultipartFile[]noticeFile, HttpServletRequest request) {
-		System.out.println(n);
+	public String noticeUpdate(Notice n, int[]fileNoList, String[]filepathList,MultipartFile[]noticeFile, HttpServletRequest request,Model model) {
 		ArrayList<NoticeFile>fileList = new ArrayList<NoticeFile>();
 		String savepath = request.getSession().getServletContext().getRealPath("/resources/upload/notice/");
 		
@@ -183,8 +191,11 @@ public class NoticeController {
 				}
 			}
 		}
-		System.out.println(n);
-		return "redirect:/noticeView.do?noticeNo="+n.getNoticeNo();
+		model.addAttribute("title", "공지사항 수정 완료");
+		model.addAttribute("msg", "수정이 완료되었습니다.");
+		model.addAttribute("icon", "success");
+		model.addAttribute("loc", "/noticeView.do?noticeNo="+n.getNoticeNo());
+		return "common/msg";
 	}
 	
 	

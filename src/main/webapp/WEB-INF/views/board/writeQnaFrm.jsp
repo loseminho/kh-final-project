@@ -31,9 +31,9 @@
                         <select name="qnaCateNo" id="qnaCateNo" class="write-qna-form">
                             <option value="0" selected="selected">선택해주세요</option>
                             <option value="1">산책메이트 찾기</option>
-                            <option value="2">애견용품 나눔</option>
-                            <option value="3">입양</option>
-                            <option value="4">회원관련</option>
+                            <option value="2">입양</option>
+                            <option value="3">회원관련</option>
+                            <option value="4">사이트이용</option>
                             <option value="5">기타</option>
                         </select>
                         </div>
@@ -62,7 +62,7 @@
                     </div><!--writeqna content 끝-->
                     <div class="writeQna-footer">
                         <div class="submit-btn">
-                            <button type="button" class="back-btn">취소</button>
+                            <button type="button" class="qna-back-btn">취소</button>
                             <button type="submit" class="finish-btn">등록</button>
                         </div>
                     </div>
