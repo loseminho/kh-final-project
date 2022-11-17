@@ -275,7 +275,8 @@ $(".add-btn>button").on("click",function(){
    	 		const sale = $(".sale");
    	 		const sessionMemberNo = $("#sessionMemberNo").val();
    	 		const sessionMember = $("#sessionMember").val();
-    		$("#modal-wrap").fadeIn(300) ;
+    		$("#modal-wrap").fadeIn(300);
+    		$(".modal-content").scrollTop(0);
     		$("body").css("overflow","hidden");
     		let idx = sale.index(this);
     		let data = marketNo.eq(idx).val();

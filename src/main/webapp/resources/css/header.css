@@ -389,6 +389,8 @@ footer > .footer-content {
 	align-items: center;
 	padding:10px;
 	box-sizing: border-box;
+	overflow:scroll;
+	overflow-x:hidden;
 }
 .chat-list li{
 	text-align:center;

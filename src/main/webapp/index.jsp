@@ -71,30 +71,66 @@
 
 		<div class="info-card-wrap3">
 			<div>조원 소개♥</div>
-			<div class="team-info-title">신다혜</div>
+			<div class="team-info-title">고유빈</div>
 			<div class="team-info-box">
-				<div class="sy-wrap">
-					<div class="sy-content">
-						<div class="sy-photo-wrap member-photo-wrap">
-							<a href="https://github.com/loseminho">
-								<img src="/resources/img/heeok.png">
+				<div class="yubin-wrap team-select">
+					<div class="yubin-content">
+						<div class="yubin-photo-wrap member-photo-wrap">
+							<a href="https://github.com/fgjkqm20">
+								<img src="/resources/img/yubin.png">
 							</a>
 						</div>
-						<img id="sy-job" src="/resources/img/heeok-job.png">
+						<img id="yubin-job" src="/resources/img/yubin-job.png">
+					</div>
+					<div class="part-info-wrap">
+						<div>- 데이터베이스설계</div>
+						<div>- 마이페이지 신고목록</div>
+						<div>- 마이페이지 신고하기</div>
+						<div>- 산책메이트 과거내역</div>
+						<div>- 산책메이트 신청 관리</div>
+						<div>- 산책메이트 수락/거절</div>
+					</div>
+				</div>
+				<div class="dahe-wrap team-select">
+					<div class="dahe-content">
+						<div class="dahe-photo-wrap member-photo-wrap">
+							<a href="https://github.com/danashinnn">
+								<img src="/resources/img/dahe.jpg">
+							</a>
+						</div>
+						<img id="dahe-job" src="/resources/img/dahe-job.png">
+					</div>
+					<div class="part-info-wrap">
+						<div>- 로그인/회원가입</div>
+						<div>- 마이페이지(정보수정)</div>
+						<div>- 아이디/비밀번호 찾기</div>
+						<div>- 강아지 매칭 시스템</div>
+						<div>- 멍BTI 검사</div>
+						<div>- 달력 일정관리</div>
+					</div>
+				</div>				
+				<div class="sy-wrap team-select">
+					<div class="sy-content">
+						<div class="sy-photo-wrap member-photo-wrap">
+							<a href="https://github.com/aidencjswo">
+								<img src="/resources/img/sy.png">
+							</a>
+						</div>
+						<img id="sy-job" src="/resources/img/sy-job.png">
 					</div>
 					<div class="part-info-wrap">
 						<div>- 메인페이지</div>
-						<div>- 관리자페이지</div>
-						<div>- 공지사항 작성</div>
-						<div>- 문의내역</div>
-						<div>- 신고회원관리</div>
-						<div>- 회원등급관리</div>
+						<div>- 입양페이지</div>
+						<div>- 입양등록/수정</div>
+						<div>- 입양쪽지함</div>
+						<div>- 모임 채팅</div>
+						<div>- 팀장</div>
 					</div>
 				</div>
-				<div class="heeok-wrap">
+				<div class="heeok-wrap team-select">
 					<div class="heeok-content">
 						<div class="heeok-photo-wrap member-photo-wrap">
-							<a href="https://github.com/loseminho">
+							<a href="https://github.com/hyogiii">
 								<img src="/resources/img/heeok.png">
 							</a>
 						</div>
@@ -109,7 +145,7 @@
 						<div>- 회원등급관리</div>
 					</div>
 				</div>
-				<div class="minho-wrap">
+				<div class="minho-wrap team-select">
 					<div class="minho-content">
 						<div class="minho-photo-wrap member-photo-wrap">
 							<a href="https://github.com/loseminho">
@@ -127,57 +163,6 @@
 						<div>- UI/UX 디자인</div>
 					</div>
 				</div>
-				<div class="yubin-wrap">
-					<div class="yubin-content">
-						<div class="yubin-photo-wrap member-photo-wrap">
-							<a href="https://github.com/danashinnn">
-								<img src="/resources/img/yubin.png">
-							</a>
-						</div>
-						<img id="yubin-job" src="/resources/img/yubin-job.png">
-					</div>
-					<div class="part-info-wrap">
-						<div>- 데이터베이스설계</div>
-						<div>- 마이페이지 신고목록</div>
-						<div>- 마이페이지 신고하기</div>
-						<div>- 산책메이트 과거내역</div>
-						<div>- 산책메이트 신청 관리</div>
-						<div>- 산책메이트 수락/거절</div>
-					</div>
-				</div>
-				<div class="dahe-wrap">
-					<div class="dahe-content">
-						<div class="dahe-photo-wrap member-photo-wrap">
-							<a href="https://github.com/danashinnn">
-								<img src="/resources/img/dahe.jpg">
-							</a>
-						</div>
-						<img id="dahe-job" src="/resources/img/dahe-job.png">
-					</div>
-					<div class="part-info-wrap">
-						<div>- 로그인/회원가입</div>
-						<div>- 마이페이지(정보수정)</div>
-						<div>- 아이디/비밀번호 찾기</div>
-						<div>- 강아지 매칭 시스템</div>
-						<div>- 멍BTI 검사</div>
-						<div>- 달력 일정관리</div>
-					</div>
-				</div>
-
-				<!-- 
-				<div class="dahe-photo-wrap">
-					<img src="/resources/img/qrcode.png">
-				</div>
-				<div class="sy-photo-wrap">
-					<img src="/resources/img/qrcode.png">
-				</div>
-				<div class="minho-photo-wrap">
-					<img src="/resources/img/qrcode.png">
-				</div>
-				<div class="heeok-photo-wrap">
-					<img src="/resources/img/qrcode.png">
-				</div>
-				 -->
 			</div>
 			<div class="name-box">
 				<div class="yubin-info name-title">
@@ -189,11 +174,11 @@
 				<div class="sy-info name-title">
 				안상영
 				</div>
-				<div class="minho-info name-title">
-				진민호
-				</div>
 				<div class="heeok-info name-title">
 				유희옥
+				</div>
+				<div class="minho-info name-title">
+				진민호
 				</div>
 			</div>
 		</div>

@@ -35,8 +35,8 @@ public class MarketDao {
 		return sqlSession.insert("market.inputMarket",md);
 	}
 
-	public ArrayList<DogType> selectTypeList() {
-		List list = sqlSession.selectList("market.selectTypeList");
+	public ArrayList<DogType> selectTypeList(Integer userInput) {
+		List list = sqlSession.selectList("market.selectTypeList",userInput);
 		return (ArrayList<DogType>)list;
 	}
 

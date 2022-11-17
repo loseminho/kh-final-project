@@ -110,3 +110,25 @@ $(".popup-back").on("click",function(){
 		page--;
 	}
 });
+
+/*조원소개*/
+
+$(".name-title").on("click",function(){
+	const index = $(".name-title").index(this);
+	console.log(index);
+	const select = $(".team-select").eq(index);
+	$(".team-select").eq(index).fadeIn();
+	$(".team-select").not(select).css("display","none");
+	if(index==0){
+		$(".team-info-title").text('고유빈');
+	}else if(index==1){
+	$(".team-info-title").text('신다혜');
+	}else if(index==2){
+	$(".team-info-title").text('안상영');
+	}else if(index==3){
+	$(".team-info-title").text('유희옥');
+	}else if(index==4){
+	$(".team-info-title").text('진민호');
+	}
+});
+
