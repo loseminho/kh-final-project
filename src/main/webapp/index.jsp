@@ -50,7 +50,7 @@
 				<img src="/resources/img/qrcode.png">
 			</div>
 			<div>
-			Contect us 산책갈개
+			Contact us 산책갈개
 			</div>
 		</div>
 		<div class="info-card-wrap2">
@@ -64,7 +64,7 @@
 			<div>
 			지도지도
 			</div>
-			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1995.053112767938!2d126.89570580446775!3d37.533821730309754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c9ec3afcd675b%3A0x1d3b8e50a735e00a!2z7J2066CI67mM65Sp!5e0!3m2!1sko!2skr!4v1668564804018!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+			<iframe src="">
 			</iframe>
 			</div>
 			</div>
@@ -74,9 +74,15 @@
 			조원 소개♥
 			</div>
 			<div class="team-info-box">
-				<div class="yubin-photo-wrap">
-					<img src="/resources/img/qrcode.png">
+				<div class="dahe-content">
+					<div class="dahe-photo-wrap member-photo-wrap">
+						<a href="https://github.com/danashinnn">
+							<img src="/resources/img/dahe.jpg">
+						</a>
+					</div>
+					<div>신다혜</div>
 				</div>
+				<div></div>
 				<!-- 
 				<div class="dahe-photo-wrap">
 					<img src="/resources/img/qrcode.png">

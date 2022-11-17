@@ -55,10 +55,10 @@
                         <div class="saleList">
                             <div class="sale-box">
 	                            <div class="market-list-title">
-	                       			<div>분양 리스트</div>
+	                       			<div>입양 리스트</div>
 	                       			<c:choose>
 	                       			<c:when test="${not empty sessionScope.m }">
-	                       			<button onclick="location.href='writeFrm.do'">분양관리</button>
+	                       			<button onclick="location.href='writeFrm.do'">입양관리</button>
 	                       			</c:when>
 	                       			</c:choose>
 	                       		</div>

@@ -50,17 +50,17 @@
 			</div>
 			<div class="row-part">
 			<div class="sub-title"><span>*</span>이름 :</div>
-				<input type="text" name="callName" autocomplete="off">
+				<input type="text" name="callName" autocomplete="off" required>
 			</div>
 			<div class="row-part">
 			<div class="sub-title"><span>*</span>품종선택 :</div>
-				<select id="select-box" name="typeCode">
+				<select id="select-box" name="typeCode" required>
 				<!-- 강아지 종류 option 넣는 자리 -->
 				</select>
 			</div>
 			<div class="row-part">
 			<div class="sub-title"><span>*</span>나이(개월) :</div>
-			<input type="number" name="age" min="0" max="24" placeholder="0~24개월" autocomplete="off">
+			<input type="number" name="age" min="0" max="24" placeholder="0~24개월" autocomplete="off" required>
 			<span style="color:red; font-size:12px;">*입력해주세요</span>
 			</div>
 			<div class="row-part">
@@ -82,13 +82,13 @@
 		    <label for="price"><span>*</span>분양가격 :</label>
 		    </div>
 		    <div class="box">
-		        <input type="number" name="price" id="price" min="0" max="100000000" step="10000" placeholder="숫자만입력해주세요" autocomplete="off">\
+		        <input type="number" name="price" id="price" min="0" max="100000000" step="10000" placeholder="숫자만입력해주세요" autocomplete="off" required>
 		        <span style="color:red; font-size:12px;"> *만원단위로 입력 할 수 있어요</span>
 		    </div>
 		    </div>
 			<div class="sub-title">*소개</div>
 			<div class="row-part">
-			<textarea name="saleInfo"></textarea>
+			<textarea name="saleInfo" required></textarea>
 	        </div>
 	        <br>
 			<input type="submit" id="submit-btn" value="전송">

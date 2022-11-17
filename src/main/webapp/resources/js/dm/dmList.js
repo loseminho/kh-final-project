@@ -21,7 +21,7 @@ $(".cancel").on("click",function(){
 $(document).ready(function(){
 	$.ajax({
 		url:"/selectDmList.do",
-		data:{receiverNo:sessionMemberNo},
+		data:{receiverNo:sessionMemberNo, dmCate:0},
 		success:function(data){
 		console.log(data);
 		if(data.length == 0 ){
@@ -34,7 +34,7 @@ $(document).ready(function(){
 				html += "<input class='sender-no' type='hidden' value="+value.senderNo+">";
 				html += "<input class='receiver-id' type='hidden' value="+value.receiverId+">";
 				html += "<input class='dmNo' type='hidden' value="+value.dmNo+">";
-				html += "<span class='category' style='width:90px;'>분양문의</span>";
+				html += "<span class='category' style='width:90px;'>입양문의</span>";
 				html += "<span class='dmContent'  style='width:500px;'>"+value.dmContent+"</span>";
 				html += "<span class='receiveDate' style='width:120px;'>"+value.dmDate+"</span>";
 				html += "<span class='senderName' style='width:120px;'>"+value.senderName+"</span>";
@@ -64,7 +64,8 @@ $(".send-dm-btn").on("click",function(){
 					senderId:senderId,
 					senderNo:senderNo,
 					receiverId:receiverId,
-					senderName:senderName},
+					senderName:senderName,
+					dmCate:0},
 				success:function(data){
 					console.log(1);		
 				}
