@@ -280,7 +280,9 @@ LEFT JOIN MEMBER_TBL B ON A.wmLeader = B.MEMBER_NO WHERE A.wmNo =#{_parameter}
 		/>
 	</resultMap>
 	
-	
-	
+	<select id="getAmount" resultType="int">
+		select count(*) from member_tbl join dog_tbl
+		using(member_no) where member_no=#{_parameter}	
+	</select>
 	
 </mapper>

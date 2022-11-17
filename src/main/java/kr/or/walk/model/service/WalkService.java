@@ -66,6 +66,10 @@ public class WalkService {
 		ArrayList<Walk> list = dao.selectCategoryList(w);
 		return list;
 	}
+
+	public int getAmount(int memberNo) {
+		return dao.getAmount(memberNo);
+	}
 	
 //	//댓글 작성
 //	public Walk writeReply(WalkMateComment wmc) {
