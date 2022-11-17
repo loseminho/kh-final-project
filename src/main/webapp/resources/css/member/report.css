@@ -75,6 +75,10 @@
 	height: 294px;
 	border: 1px solid #ccc;
 	border-radius:10px;
+	outline:none;
+	padding: 10px;
+	font-family:gs-Medium;
+	box-sizing:border-box;
 }
 
 .report-btn-box{
