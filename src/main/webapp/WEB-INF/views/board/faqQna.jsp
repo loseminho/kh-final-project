@@ -52,22 +52,22 @@
 							<div class="faq-wrap">
 								<div class="question walk-question">
 									<a> <span class="category-walk">산책메이트 찾기</span> <span
-										class="question-title">첫번째 질문</span> <span
+										class="question-title">모임관리자는 어떻게 할 수 있나요?</span> <span
 										class="material-symbols-outlined">expand_more</span>
 									</a>
 								</div>
 								<div class="answer">
-									<a> <span>첫번째 답변</span>
+									<a> <span>메이트 찾기 페이지에서 모임 만들기 버튼을 통해 할 수 있습니다. 누구나 모임 관리자를 할 수 있으나, 회원으로 부터 불편사항 신고 접수시 접근제한 될 수 있습니다.</span>
 									</a>
 								</div>
 								<div class="question walk-question">
 									<a> <span class="category-walk">산책메이트 찾기</span> <span
-										class="question-title">두번째 질문</span> <span
+										class="question-title">신청 받고 싶은 참가자만 받을 수 있나요?</span> <span
 										class="material-symbols-outlined">expand_more</span>
 									</a>
 								</div>
 								<div class="answer">
-									<a> <span>두번째 답변</span>
+									<a> <span>모임장은 신청한 참가자중 원하는 사람을 수락 할 수 있습니다.</span>
 									</a>
 								</div>
 								<div class="question walk-question">
@@ -110,72 +110,82 @@
 									<a> <span>열한번째 답변</span>
 									</a>
 								</div>
-									<div class="question walk-question">
-									<a> <span class="category-walk">산책메이트 찾기</span> <span
-										class="question-title">열두번째 질문</span> <span
-										class="material-symbols-outlined">expand_more</span>
-									</a>
-								</div>
-								<div class="answer">
-									<a> <span>열두번째 답변</span>
-									</a>
-								</div>
 							</div>
 							<div class="faq-wrap">
 								<div class="question sharing-question">
 									<a> <span class="category-sharing">사이트 이용</span> <span
-										class="question-title">세번째 질문</span> <span
+										class="question-title">채팅은 어떻게 이용하나요?</span> <span
 										class="material-symbols-outlined">expand_more</span>
 									</a>
 								</div>
 								<div class="answer">
-									<a> <span>세번째 답변</span>
+									<a> <span>같은 모임에 참여한 사람들끼리 이용이 가능합니다. </span>
 									</a>
 								</div>
 							</div>
 							<div class="faq-wrap">
 								<div class="question adoption-question">
 									<a> <span class="category-adoption">입양</span> <span
-										class="question-title">네번째 질문</span> <span
+										class="question-title">책임비는 어떻게 지불하나요?</span> <span
 										class="material-symbols-outlined">expand_more</span>
 									</a>
 								</div>
 								<div class="answer">
-									<a> <span>네번째 답변</span>
+									<a> <span>책임비의 경우 입양 등록자에게 지불해주시면 됩니다. 개인간의 약속이므로 신중히 고민하고 입양해주세요.  </span>
 									</a>
 								</div>
 							</div>
 							<div class="faq-wrap">
 								<div class="question member-question">
 									<a> <span class="category-member">회원관련</span> <span
-										class="question-title">다섯번째 질문</span> <span
+										class="question-title">회원 탈퇴는 어떻게 하나요?</span> <span
 										class="material-symbols-outlined">expand_more</span>
 									</a>
 								</div>
 								<div class="answer">
-									<a> <span>다섯번째 답변</span>
+									<a> <span>회원 탈퇴는 언제든지 요청할 수 있으며, 요청 즉시 탈퇴됩니다. 탈퇴시 이용하신 일부 서비스의 정보는 남아있을 수 있습니다. </span>
+									</a>
+								</div>
+								<div class="question member-question">
+									<a> <span class="category-member">회원관련</span> <span
+										class="question-title">비밀번호를 잊어버린경우 어떻게 확인하나요?</span> <span
+										class="material-symbols-outlined">expand_more</span>
+									</a>
+								</div>
+								<div class="answer">
+									<a> <span>로그인 화면 하단 비밀번호 찾기를 통해 비밀번호를 찾을 수 있습니다.</span>
 									</a>
 								</div>
 							</div>
 							<div class="faq-wrap">
 								<div class="question etc-question">
 									<a> <span class="category-etc">기타</span> <span
-										class="question-title">여섯번째 질문</span> <span
+										class="question-title">회원 신고 후 신고 처리 절차가 궁금합니다.</span><span
 										class="material-symbols-outlined">expand_more</span>
 									</a>
 								</div>
 								<div class="answer">
-									<a> <span>여섯번째 답변</span>
+									<a> <span>회원 신고 접수 후 신고된 회원의 신고된 횟수를 기준으로 접근제한 또는 이용정지로 처리됩니다. </span>
 									</a>
 								</div>
 								<div class="question etc-question">
 									<a> <span class="category-etc">기타</span> <span
-										class="question-title">일곱번째 질문</span> <span
+										class="question-title">신고는 어떻게 할 수 있나요?</span> <span
 										class="material-symbols-outlined">expand_more</span>
 									</a>
 								</div>
 								<div class="answer">
-									<a> <span>일곱번째 답변</span>
+									<a> <span>내 산책메이트 > 신청내역 또는 참가 내역 > 모임정보 > 모임 글 제목 클릭 > 모임참가자 프로필 보기에서 신고 할 수 있습니다. </span>
+									</a>
+								</div>
+									<div class="question etc-question">
+									<a> <span class="category-etc">기타</span> <span
+										class="question-title">MBTI </span> <span
+										class="material-symbols-outlined">expand_more</span>
+									</a>
+								</div>
+								<div class="answer">
+									<a> <span>내 산책메이트 > 신청내역 또는 참가 내역 > 모임정보 > 모임 글 제목 클릭 > 모임참가자 프로필 보기에서 신고 할 수 있습니다. </span>
 									</a>
 								</div>
 							</div>
