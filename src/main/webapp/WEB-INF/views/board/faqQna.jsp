@@ -17,6 +17,8 @@
 <!--구글 아이콘-->
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<!-- 비밀글 아이콘 -->
+<script src="https://kit.fontawesome.com/7b7a761eb5.js" crossorigin="anonymous"></script>
 </head>
 <body>
 	<!-- 헤더  -->
@@ -191,6 +193,8 @@
 				<form action="/qnaView.do" method="post" id="qnaViewFrm">
 					<input type="hidden" id="qnaBoardNo" type="text" name=qnaNo
 						value="">
+					<input type="hidden" id="memberNo" type="text" name=memberNo value="${sessionScope.m.memberNo }">
+					
 				</form>
 				<div class="qna-content">
 					<div class="qna-header">

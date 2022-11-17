@@ -72,3 +72,13 @@ function deleteQnaComment(obj,qcommentNo,qnaNo){
 		//no
 	}
 }
+
+//줄바꿈 부분 
+//textarea 엔터 
+var str = $('#textarea').val();
+str = str.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+$('#textarea').val(str);
+
+var str = $('.#textarea').val();
+str = str.split('<br/>').join("\r\n");
+$('#textarea').val(str);

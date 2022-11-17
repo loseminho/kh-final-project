@@ -67,5 +67,9 @@ public class AdminDao {
 	public int changeMemberLevel(Member m) {
 		return sqlSession.update("admin.updateMemberLevel",m);
 	}
+	public ArrayList<Member> adminSearchMemberList(HashMap<String, Object> map) {
+		List list = sqlSession.selectList("admin.adminSearchMemberList",map);
+		return (ArrayList<Member>)list;
+	}
 
 }

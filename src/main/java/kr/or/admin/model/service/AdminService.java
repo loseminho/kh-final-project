@@ -23,14 +23,12 @@ public class AdminService {
 		return totalCount;
 	}
 	
-	public ArrayList<AdminQna> moreAdminQna(int start, int amount, AdminQna q) {
+	public ArrayList<AdminQna> moreAdminQna(int start, int amount) {
 		int end = start+amount -1;
 		HashMap<String , Object> map = new HashMap<String, Object>();
 		map.put("start", start);
 		map.put("amount", amount);
 		map.put("end", end);
-		map.put("optionVal",q.getOptionVal());
-		System.out.println("optionVal:::::"+map.get("optionVal"));
 		ArrayList<AdminQna>list = dao.moreAdminQna(map);
 		return list;
 	}
@@ -111,5 +109,20 @@ public class AdminService {
 	public int changeMemberLevel(Member m) {
 		int result = dao.changeMemberLevel(m);
 		return result;
+	}
+
+	public ArrayList<Member> adminSearchMemberList(int start, int amount, Member m) {
+		int end = start + amount -1;
+		HashMap<String, Object>map = new HashMap<String, Object>();
+		map.put("start", start);
+		map.put("amount", amount);
+		map.put("end",end);
+		map.put("optionVal",m.getOptionVal());
+		map.put("keyword",m.getKeyword());
+		System.out.println(m.getOptionVal());
+
+		ArrayList<Member>list = dao.adminSearchMemberList(map);
+		System.out.println("서비스"+list);
+		return list;
 	}
 }

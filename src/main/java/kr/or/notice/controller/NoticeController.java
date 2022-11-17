@@ -1,14 +1,18 @@
 package kr.or.notice.controller;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletContext;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +48,33 @@ public class NoticeController {
 	public String writeNoticeFrm() {
 		return "board/writeNotice";
 	}
-	
+	//공지사항 파일 다운 
+	@RequestMapping(value="/noticeFileDown.do")
+	public void noticeFileDown(int fileNo, HttpServletRequest request, HttpServletResponse response) throws IOException {
+		NoticeFile file = service.noticeFileDown(fileNo);
+		String savePath = request.getSession().getServletContext().getRealPath("/resources/upload/notice/");
+		String downFile = savePath+file.getFilepath();
+		
+		FileInputStream fis = new FileInputStream(downFile);
+		BufferedInputStream bis = new BufferedInputStream(fis);
+		ServletOutputStream sos = response.getOutputStream();
+		BufferedOutputStream bos = new BufferedOutputStream(sos);
+		
+		String resFilename = new String (file.getFilename().getBytes("UTF-8"),"ISO-8859-1");
+		response.setContentType("application/octet-stream");
+		response.setHeader("Content-Disposition", "attachment;filename="+resFilename);
+		
+		while(true) {
+			int read = bis.read();
+			if(read != -1) {
+				bos.write(read);
+			} else {
+				break;
+			}
+		}
+		bos.close();
+		bis.close();
+	}
 	//공지사항 insert
 	@RequestMapping(value="/writeNotice.do")
 	public String writeNotice(Notice n, MultipartFile[] noticeFile, HttpServletRequest request) {
@@ -156,4 +186,7 @@ public class NoticeController {
 		System.out.println(n);
 		return "redirect:/noticeView.do?noticeNo="+n.getNoticeNo();
 	}
+	
+	
+	
 }

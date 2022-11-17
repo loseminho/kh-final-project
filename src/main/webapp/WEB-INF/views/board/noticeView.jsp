@@ -41,7 +41,9 @@
                         <tr>
                         	<th>첨부파일 </th>
                         	<c:forEach items="${n.fileList}" var="nf">
-                        	<th>${nf.filename} </th>
+                        	<td>
+                        	<img src="/img/file.png" width="16px">
+                        	<a href="/noticeFileDown.do?fileNo=${nf.fileNo }">${nf.filename} </a></td>
                         	</c:forEach>
                         </tr>
                         <tr>

@@ -24,6 +24,7 @@ public class QnaBoard {
 	//검색필터
 	private String searchType;
 	private String keyword;
+	private int memberNo;
 	
 	//총게시물 수 
 	private int totalCount;

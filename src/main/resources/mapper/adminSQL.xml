@@ -21,14 +21,6 @@
 	qna_secret as qnaSecret
     
     from qna_tbl
-    <choose>
-		<when test="optionVal == 0">
-			where qna_status = 0
-		</when>
-		<when test="optionVal == 1">
-			where qna_status = 1
-		</when>
-	</choose>
     order by 1 desc)q)
     where rnum between #{start} and #{end}
 </select>
@@ -107,4 +99,27 @@ from(select rownum as rnum, m.* from(select * from member_tbl order by 1 desc)m)
 	</choose>
 	where member_no = #{memberNo}
 </update>
+<!-- 회원 검색창 -->
+<select id="adminSearchMemberList" resultType="m" parameterType="map">
+    select *
+    from (select rownum as rnum, m.* 
+    from (select
+	member_no as memberNo,
+	member_id as memberId,
+    member_nickname as memberNickname,
+	enroll_date as enrollDate,
+	member_level as memberLevel
+    
+    from member_tbl
+<choose>
+<when test="optionVal.equals('memberId')">
+where member_id like '%'||#{keyword}||'%'
+</when>
+<when test="optionVal.equals('memberName')">
+where member_nickname like '%'||#{keyword}||'%'
+</when>
+</choose>
+order by 1 desc)m)
+    where rnum between #{start} and #{end}
+</select>
 </mapper>

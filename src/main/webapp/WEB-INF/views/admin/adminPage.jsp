@@ -33,6 +33,7 @@
 			</div>
 			<!-- adminPage-main-header 끝-->
 			<div class="adminPage-content">
+				<!--
 				<div class="search-box">
 					<select name="adminQnaSearchType" id="adminQnaSearchType" onchange="qnaList();">
 						<option value="2" selected>전체</option>
@@ -40,7 +41,6 @@
 						<option value="1" >답변완료</option>
 					</select>
 				</div>
-				<!--
 				<div class="search-box">
 					<select name="searchType" id="searchType"
 						class="search-qnaStatus-form">
@@ -106,14 +106,15 @@
 			<div class="userLevel-content">
 				<div class="member-search-box">
 					<form action="#">
-						<select name="searchType" id="searchType" class="search-qna-form">
-							<option value="0" selected="selected"></option>
-							<option value="title">제목</option>
-							<option value="content">내용</option>
-							<option value="writer">작성자</option>
+						<select name="searchType" id="searchType" class="search-member-form">
+							<option value="memberId" selected="selected">아이디</option>
+							<option value="memberName">닉네임</option>
 						</select> <input type="text" class="search-input" name="keyword"
 							id="keyword">
-						<button type="button" class="search-btn" id="searchQnaAjax">검색</button>
+						<button type="button" class="search-btn" id="searchMemberAjax"
+						totalCount="${totalCount }"
+						currentCount="0" value="1"
+						>검색</button>
 					</form>
 				</div>
 				<div class="userLevelAjax-result">

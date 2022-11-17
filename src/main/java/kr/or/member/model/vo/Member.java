@@ -25,5 +25,6 @@ public class Member {
 	private ArrayList<Dog> dogList;
 	
 	//select 값 
-	private int optionVal;
+	private String optionVal;
+	private String keyword;
 }
