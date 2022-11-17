@@ -224,13 +224,15 @@ $(document).on("click",".add-btn",function(){
 let dogAmount = 0;
 function modalViews(e){
 	const loginNo1 = document.getElementById('login-memberNo').value;
-	$.ajax({
-		url:"/getAmount.do",
-		data:{memberNo:loginNo1},
-		success:function(data){
-			dogAmount = data;
-		}
-	});
+	if(loginNo1 != null){
+		$.ajax({
+			url:"/getAmount.do",
+			data:{memberNo:loginNo1},
+			success:function(data){
+				dogAmount = data;
+			}
+		});	
+	}
 	$.ajax({
 	url : "/selectContentBox.do",
 	data: {wmNo : e},
@@ -424,13 +426,10 @@ function modalViews(e){
 							//개가 잇을ㄸ쨰
 							let checkk=0;
 							for(let x=0; x<data.wList.length; x++){
-								console.log(memberNickname);
 								if(memberNickname == data.wList[x].memberNickname){
-									console.log("넌 로그인 했다!!");
 									checkk = 3;
 									break;
 								}else{
-									console.log("넌 로그인 안했다!!");
 									checkk=0;
 								}
 							}
@@ -583,6 +582,32 @@ function modalViews(e){
 				}
 			});
 		});
+		
+		//모임 이미지 리스트
+		var htmlImg = "";
+		for(let t=0; t<data.fileList.length; t++){
+			htmlImg += "<div class='wm-img-preview-box'>";
+			htmlImg += "<img class='wm-img-preview-img' src='/resources/upload/walkmate/"+data.fileList[t].filename+"'>";
+			htmlImg += "</div>";
+		}
+		$(".wm-img-wrapper").html(htmlImg);
+		
+		var imgClick = document.getElementsByClassName('wm-img-preview-img');
+		for(var v=0; v< imgClick.length; v++){
+			imgClick.item(v).onclick=function(){fnImgPop(this.src)};
+		}
+		function fnImgPop(url){
+		  var img=new Image();
+		  img.src=url;
+		  var img_width=img.width;
+		  var win_width=img.width+25;
+		  var img_height=img.height;
+		  var win=img.height+30;
+		  var OpenWindow=window.open('','_blank', 'width='+img_width+', height='+img_height+', menubars=no, scrollbars=auto');
+		  OpenWindow.document.write("<style>body{margin:0px;}</style><img src='"+url+"' width='"+win_width+"'>");
+		 }
+		
+		
 		
 		//댓글 삭제
 		$(".delete-inputs-comment").on("click",function(){
