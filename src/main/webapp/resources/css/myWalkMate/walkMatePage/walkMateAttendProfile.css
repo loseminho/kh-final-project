@@ -25,6 +25,7 @@
 }
 
 .attend-nicname>p:nth-child(1){
+	color: #1abc9c;
 	float: left;
 }
 

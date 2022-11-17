@@ -30,7 +30,7 @@
 }
 
 .appliedList-content>table th:nth-child(1){
-	width: 40%;
+	width: 34%;
 }
 
 .appliedList-content>table th:nth-child(2){
@@ -38,11 +38,11 @@
 }
 
 .appliedList-content>table th:nth-child(3){
-	width: 18%%;
+	width: 24%;
 }
 
 .appliedList-content>table th:nth-child(4){
-	width: 18%%;
+	width: 18%;
 }
 
 .appliedList-content>table td{
