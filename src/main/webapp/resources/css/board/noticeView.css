@@ -74,8 +74,14 @@ content{
     color: black;
     
 }
+.noticeView-content th:nth-child(1){
+    width: 13%;
+}
 .noticeView-content th:nth-child(3){
     width: 50%;
+}
+.noticeView-content th:nth-child(4){
+    width: 10%;
 }
 .noticeView-footer{
     margin: 0 auto;

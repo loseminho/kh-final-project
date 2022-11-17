@@ -32,6 +32,10 @@
 		<result column="qna_content" property="qnaContent"/>
 		<result column="qna_views" property="qnaViews"/>
 		<result column="qna_date" property="qnaDate"/>
+		<result column="qna_cate_no" property="qnaCateNo"/>
+		<result column="qna_status" property="qnaStatus"/>
+		<result column="qna_secret" property="qnaSecret"/>
+		
 		<collection property="fileList"
 			select="selectFileList"
 			column = "qna_no"

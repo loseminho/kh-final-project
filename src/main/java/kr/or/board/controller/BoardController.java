@@ -158,9 +158,10 @@ public class BoardController {
 	}
 	//문의게시판 수정 페이지 이동 
 	@RequestMapping(value="/qnaBoardUpdateFrm.do")
-	public String qnaBoardUpdateFrm(int qnaNo, Model model) {
+	public String qnaBoardUpdateFrm(int qnaNo,Model model) {
 		QnaBoard qb = service.selectOneQna(qnaNo);
 		model.addAttribute("qb",qb);
+		System.out.println("수정게시판이동 ::::"+qb);
 		return "board/qnaUpdate";
 	}
 	

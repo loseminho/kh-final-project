@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Qna</title>
+<title>산책갈개</title>
 	<!--fonts-->
     <link rel="stylesheet" href="/resources/css/gmarket.css">
     <!--css-->

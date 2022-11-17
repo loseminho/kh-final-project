@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>산책갈개</title>
 <!--css-->
 <link rel="stylesheet" href="/resources/css/board/writeNotice.css">
 <!--fonts-->

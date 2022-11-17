@@ -93,12 +93,4 @@ $(".qna-back-btn").on("click",function(){
     location.href="/faqQnaBoardFrm.do"
 });
 
-//textarea 엔터 
-var str = $('#qnaContent').val();
-str = str.replace(/(?:\r\n|\r|\n)/g, '<br/>');
-$('#qnaContent').val(str);
-
-var str = $('.#qnaContent').val();
-str = str.split('<br/>').join("\r\n");
-$('#qnaContent').val(str);
 
