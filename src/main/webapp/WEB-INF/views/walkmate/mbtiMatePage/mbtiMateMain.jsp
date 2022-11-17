@@ -25,7 +25,7 @@
             <section id="content-top">
                 <div class="content-top-button">
                     <div class="content-top-button-left">산책 메이트</div>
-                    <div class="content-top-button-right">💖메이트</div>
+                    <div class="content-top-button-right">💖 메이트</div>
                 </div>
             </section>
             
