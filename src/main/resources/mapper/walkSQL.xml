@@ -218,6 +218,10 @@ LEFT JOIN MEMBER_TBL B ON A.wmLeader = B.MEMBER_NO WHERE A.wmNo =#{_parameter}
 		DELETE FROM WMC_TBL 
 		WHERE WMC_NO = #{wmcNo}
 	</delete>
+	<delete id="deleteWmNo"	parameterType="w">
+		DELETE FROM WALK_MATE_TBL
+		WHERE WM_NO = #{wmNo}
+	</delete>
 	
 	
 	<select id="selectCategoryList" resultMap="getMembersTags" parameterType="w">

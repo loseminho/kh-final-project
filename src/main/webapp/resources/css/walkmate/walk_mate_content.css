@@ -440,6 +440,7 @@ header{
     border: 1px solid rgb(156,156,156);
     display: inline-block;
     margin-bottom: 20px;
+    position : relative;
 }
 .preview-box{
 	cursor:pointer;
@@ -856,7 +857,8 @@ header{
 	overflow: hidden;
 	float: left;
 }
-.input-comment-writer-comment input{
+
+.input-comment-writer-comment .writer-comment-input{
 	font-size: 15px;
 	padding: 20px;
 	padding-top: 30px;
@@ -869,10 +871,10 @@ header{
 	border: none;
 	float: left;
 }
-.comment-box-wrapper .input-comment-box .input-comment-writer-comment input:focus{
+.comment-box-wrapper .input-comment-box .input-comment-writer-comment .writer-comment-input:focus{
 	outline: none;
 }
-.comment-box-wrapper .input-comment-box .input-comment-writer-comment button{
+.comment-box-wrapper .input-comment-box .input-comment-writer-comment .write_reply{
 	margin-top: 8px;
 	font-family: gs-Medium;
 	border: none;
@@ -884,9 +886,10 @@ header{
 	opacity: 0;
 	cursor: none;
 }
-.comment-box-wrapper .input-comment-box .input-comment-writer-comment input:focus + button{
+.comment-box-wrapper .input-comment-box .input-comment-writer-comment input:focus + .write_reply{
 	opacity: 1;
 	transition-duration: 0.5s;
+	cursor: pointer;
 }
 .comment-member-view{
     width: 500px;
@@ -1035,10 +1038,26 @@ width: 0;
  font-size: 0;
  line-height: 0;	
 }
-.thankBtn{
+.thankBtn, .thankSubBtn, #hideWriteTitle2, .thankMainBtn{
 width: 0; 
  height: 0;
  font-size: 0;
- line-height: 0;	
+ line-height: 0;
+ padding: 0;
+ border:none;
 	}
+.input-btn-main{
+	position: absolute;
+    height: 20px;
+    top: -75px;
+    left: 10px;
+    font-weight: 700;
+}
+.add-btn{
+	background-color: rgb(190,205,177);
+	height: 40px;
+	font-size: 20px;
+	vertical-align: middle;
+	line-height: 40px;
+	cursor: pointer;
 }
