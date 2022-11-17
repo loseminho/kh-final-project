@@ -409,7 +409,7 @@ function modalViews(e){
 			if(loginNo == data.wmLeader){
 				//만약 로그인한 회원이 모임장 일 때,
 				$("#view-section6").attr("disabled",false).attr("onclick", "location.href='/walkMatePage.do?wmNo="+data.wmNo+"'").text('모임관리').css("backgroundColor","#1abc9c").css("border","2px solid #1abc9c");
-				$("#deleteWm").text('모임 삭제 >>').attr("onclick", "deleteCommentMSG();").css("color","#ff4c4c").css("border","2px solid #ff4c4c");
+				$("#deleteWm").text('모임 삭제 >>').attr("onclick", "deleteWmMSG();").css("color","#ff4c4c").css("border","2px solid #ff4c4c");
 				$("#thankMainWmNo").attr('value','+data.wmNo+');
 			}else{
 				$("#view-section6").attr("disabled",true).text('모임 마감').css("backgroundColor","#9d9d9d").css("border","2px solid #9c9c9c").text('모임삭제').css("display","block");
@@ -420,7 +420,7 @@ function modalViews(e){
 					if(loginNo == data.wmLeader){
 						//만약 로그인한 회원이 모임장 일 때,
 						$("#view-section6").attr("disabled",false).attr("onclick", "location.href='/walkMatePage.do?wmNo="+data.wmNo+"'").text('모임관리').css("backgroundColor","#1abc9c").css("border","2px solid #1abc9c");
-						$("#deleteWm").text('모임 삭제 >>').attr("onclick", "deleteCommentMSG();").css("color","#ff4c4c").css("border","2px solid #ff4c4c").css("display","block");
+						$("#deleteWm").text('모임 삭제 >>').attr("onclick", "deleteWmMSG();").css("color","#ff4c4c").css("border","2px solid #ff4c4c").css("display","block");
 						$("#thankMainWmNo").attr('value',data.wmNo);
 					}else{
 						if(dogAmount > 0){
@@ -621,8 +621,8 @@ function inputMainBtn() {
 //댓글 삭제 확인 메세지
 function deleteCommentMSG() {
 	Swal.fire({
-        title: '모임 삭제',
-        text: "모임을 삭제 하겠습니까?",
+        title: '댓글 삭제',
+        text: "댓글을 삭제 하겠습니까?",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#d33',
@@ -631,11 +631,11 @@ function deleteCommentMSG() {
         cancelButtonText: '취소'
     }).then((result) => {
         if (result.isConfirmed) {
-			$(".thankMainBtn").trigger("click");
+			$(".thankBtn").trigger("click");
         }
     })
 }
-//댓글 삭제 확인 메세지
+//대댓글 삭제 확인 메세지
 function deleteSubCommentMSG() {
 	Swal.fire({
         title: '대댓글 삭제',
@@ -652,25 +652,20 @@ function deleteSubCommentMSG() {
         }
     })
 }
-//모임 삭제 확인 메세지
-deleteWm("+data.wmNo+")
-function deleteWm(){
-	
-}
-
+//모임 삭제 메세지
 function deleteWmMSG() {
 	Swal.fire({
-        title: '대댓글 삭제',
-        text: "대댓글을 삭제 하겠습니까?",
+        title: '모임 삭제',
+        text: "모임글을 없애겠습니까?",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#d33',
         cancelButtonColor: '#ccc',
-        confirmButtonText: '삭제하기',
+        confirmButtonText: '없애기',
         cancelButtonText: '취소'
     }).then((result) => {
         if (result.isConfirmed) {
-			$(".thankSubBtn").trigger("click");
+			$(".thankMainBtn").trigger("click");
         }
     })
 }
