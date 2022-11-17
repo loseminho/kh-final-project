@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <footer>
 	<div class="footer-title">
-        <h2>산책가조</h2>
+        <h2>산책갈개</h2>
     </div>
     <div class="footer-content">
         <p>소재지 : 서울시 영등포구 선유로 57 이레빌딩 19F / A</p>

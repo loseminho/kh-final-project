@@ -85,8 +85,12 @@
 		</div>
 	</div>
 	<div id="chat-board" style="display:none;">
-		<div class="chat-drag">드래그해보셈!</div>
 		<c:choose>
+			<c:when test="${sessionScope.m.memberLevel == 3}">
+				<div class="require-login">
+					<div>이용이 제한된 계정입니다.</div>
+				</div>
+			</c:when>
 			<c:when test="${empty sessionScope.m }">
 				<div class="require-login">
 					<div>로그인이필요한 서비스 입니다.</div>
