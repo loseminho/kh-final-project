@@ -72,6 +72,10 @@ public class WalkDao {
 			return (ArrayList<Walk>)list;
 		}
 	}
+
+	public int getAmount(int memberNo) {
+		return sqlSession.selectOne("walkmate.getAmount",memberNo);
+	}
 	
 	
 //	// 댓글 작성

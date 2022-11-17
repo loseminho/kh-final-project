@@ -106,7 +106,19 @@ $(document).ready(function(){
     })
 });
 
+
+let dogAmount = 0;
 function modalViews(e){
+	const loginNo1 = document.getElementById('login-memberNo').value;
+	$.ajax({
+		url:"/getAmount.do",
+		data:{memberNo:loginNo1},
+		success:function(data){
+			dogAmount = data;
+		}
+	});
+	
+		
 	$.ajax({
 	url : "/selectContentBox.do",
 	data: {wmNo : e},
@@ -268,8 +280,16 @@ function modalViews(e){
 		const applySection = document.getElementById("applySection");
 		applySection.style.display = "none";
 		
+		
+		var memberDogCount = loginMemberDog(loginNo);
+		
+		function loginMemberDog(e){
+			
+		}
+		
+		//산책메이트 신청 버튼 기능들
 		if(ApplyMemberNum ==data.wmRangeMember){
-			// 마감 되어서 신청 못하게
+			// 인원이 가득 찼을 때,
 			if(loginNo == data.wmLeader){
 				//만약 로그인한 회원이 모임장 일 때,
 				$("#view-section6").attr("disabled",false).attr("onclick", "location.href='/walkMatePage.do?wmNo="+data.wmNo+"'").text('모임관리').css("backgroundColor","#1abc9c").css("border","2px solid #1abc9c");
@@ -279,12 +299,17 @@ function modalViews(e){
 		}else{
 			if(loginId.length >= 1 ){
 					//현재 로그인 상태라면 신청 가능,
-					
 					if(loginNo == data.wmLeader){
 						//만약 로그인한 회원이 모임장 일 때,
 						$("#view-section6").attr("disabled",false).attr("onclick", "location.href='/walkMatePage.do?wmNo="+data.wmNo+"'").text('모임관리').css("backgroundColor","#1abc9c").css("border","2px solid #1abc9c");
 					}else{
-						$("#view-section6").attr("disabled",false).attr("onclick", "modalApplyView();").text('신청하기').css("backgroundColor","#1abc9c").css("border","2px solid #1abc9c");
+						if(dogAmount > 0){
+							//개가 잇을ㄸ쨰
+							$("#view-section6").attr("disabled",false).attr("onclick", "modalApplyView();").text('신청하기').css("backgroundColor","#1abc9c").css("border","2px solid #1abc9c");
+						}else{
+							//개 없을때 
+							$("#view-section6").attr("disabled",true).text('등록된 강아지가 없습니다.').css("backgroundColor","#1abc9c").css("border","2px solid #1abc9c");
+						}
 					}
 			}else{
 				//로그인을 안했을때, 신청을 못함
@@ -518,6 +543,9 @@ function inputMainBtn() {
         }
     })
 }
+//여기기
+
+
 
 //모임 인원 숫자 수 제한
 $("#writeTitle3").on('keyup', function() {
@@ -691,6 +719,8 @@ $(document).keyup(function(e) {
 
 //카테고리 클릭 시 화면
 $(".category-li").on('click',function(){
+	$(this).css('background-color', '#1abc9c').css('color', 'white');
+	$(".category-li").not($(this)).css('background-color', 'white').css('color', '#000000');
     var cate = $(this).text();
     $.ajax({
         url : "/categoryList.do",
