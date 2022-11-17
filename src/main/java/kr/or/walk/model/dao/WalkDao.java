@@ -62,7 +62,10 @@ public class WalkDao {
 	public int deleteSubComment(WalkMateComment wmc) {
 		return sqlSession.delete("walkmate.deleteSubComment",wmc);
 	}
-
+	public int deleteWmNo(Walk w) {
+		return sqlSession.delete("walkmate.deleteWmNo",w);
+	}
+	
 	public ArrayList<Walk> selectCategoryList(Walk w) {
 		if(w.getWmTag().equals("전체")) {
 			List list = sqlSession.selectList("walkmate.allWalkList");
@@ -76,6 +79,8 @@ public class WalkDao {
 	public int getAmount(int memberNo) {
 		return sqlSession.selectOne("walkmate.getAmount",memberNo);
 	}
+
+	
 	
 	
 //	// 댓글 작성

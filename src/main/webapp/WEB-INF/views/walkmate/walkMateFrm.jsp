@@ -21,6 +21,16 @@
     	<input type="hidden" name="wmNo" id="thankWmNo" value="">
     	<input type="submit" class="thankBtn">
     </form>
+    <!-- 대댓글용 삭제 -->
+    <form action="/deleteSubComment.do" method="post">
+    	<input type="hidden" name="wmcNo" id="thankSubWmNo" value="">
+    	<input type="submit" class="thankSubBtn">
+    </form>
+    <!-- 글삭제 -->
+    <form action="/deleteWm.do" method="post">
+    	<input type="hidden" name="wmNo" id="thankMainWmNo" value="">
+    	<input type="submit" class="thankMainBtn">
+    </form>
     
     <input type="hidden" id="login-memberId" value="${sessionScope.m.memberId}">
     <input type="hidden" id="login-memberNo" value="${sessionScope.m.memberNo}">
@@ -56,7 +66,7 @@
                         <div class="writer-id">user03</div>
                         <h2 id="view-section2">골든 리트리버 상동 호수공원 같이 가요~</h2>
                         <input type="text" id="write-section1" placeholder="제목을 입력해주세요." required>
-                        <input type="text" id="write-section6" placeholder="모임을 위한 한줄평을 작성하세요!" required>
+                        <input type="text" id="write-section6" placeholder="모임을 위한 한줄평을 작성하세요!" required>required
                     </div>
                 </div>
                 <div class="modal-window-bottom" id="info-of-main">
@@ -67,6 +77,7 @@
                             <div class="write-content-input-box titles">
                                 <label for="writeTitle2"><span>*</span>모임 장소</label>
                                 <input type="text" name="wmAddr" id="writeTitle2" placeholder="서울시 - 은평구" readonly>
+                                <input type="text" id="hideWriteTitle2" required>
                                 <button type="button" class="adressBtn" onclick="searchAddr();">주소 찾기</button>
                             </div>
                             <div class="write-content-input-box titles">
@@ -76,8 +87,8 @@
                             <div class="write-content-input-box titles">
                                 <label for="writeDate" id="writeDate-lable"><span>*</span>모임 요일</label>
                                 <label for="writeTime" style="display: none;" id="writeTime-lable"><span>*</span>모임 시간</label>
-                                <input type="date" name="writeDate" id="writeDate" value="">
-                                <input type="time" name="writeTime" id="writeTime" style="display: none;">
+                                <input type="date" name="writeDate" id="writeDate" value="" required>
+                                <input type="time" name="writeTime" id="writeTime" style="display: none;" required>
                                 <input type="hidden" name="wmMeetTime" id="meetTime" required>
                                 <button type="button" class="back-time-btn" onclick="backTime();">뒤로</button> 
                             </div>
@@ -105,6 +116,7 @@
                                 <input id="imageFile1"  type="file" class="photo" name="photo" style="display:none;">
                                 <div class="preview-box">
                                     <div class="input-btn">+</div>
+                                    <div class="input-btn-main">*메인 사진</div>
                                     <img src="" class="preview">
                                 </div>
                                 <input id="imageFile2"  type="file" class="photo" name="photo" style="display:none;">
@@ -236,7 +248,8 @@
                     <div class="bottom-content-btn">
                         <button type="submit" class="input-main-btn" id="write-section5" onclick="" >작성 완료</button>
                         <button type="button" class="input-main-btn" id="view-section6" onclick="modalApplyView();">신청 하기</button>
-                        <button type="button" class="next-btn-member" id="" onclick="modalNextContents('');">돌아가기 >> </button>
+                        <button type="button" class="next-btn-member" id="deleteWm" onclick="modalNextContents('');">돌아가기 >> </button>
+                        <input type="hidden" id="hiddenDeleteWm">
                     </div>
                 </div>
     			
@@ -314,13 +327,8 @@
                 </div>
             </div>
             
-
-
-
-
-
-
         </div>
+        <div class="add-btn">목록 더 보기</div>
     </div>
     <!-- End Content -->
     

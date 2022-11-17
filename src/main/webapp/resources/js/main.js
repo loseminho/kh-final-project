@@ -1,4 +1,5 @@
-$(function(){
+$(document).ready(function(){
+console.log(1);
 	var mHtml = $("html");
 		var page = 1;
 		const headerWrap = $(".header-wrap");
@@ -33,6 +34,7 @@ $(function(){
 				$(".popup-modal").fadeOut(400);
 			}
 			if (page == 3) {
+				$("iframe").attr("src","https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1995.053112767938!2d126.89570580446775!3d37.533821730309754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c9ec3afcd675b%3A0x1d3b8e50a735e00a!2z7J2066CI67mM65Sp!5e0!3m2!1sko!2skr!4v1668564804018!5m2!1sko!2skr' width='600' height='450' style='border:0;' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade");
 				
 			}
 		});
@@ -108,6 +110,3 @@ $(".popup-back").on("click",function(){
 		page--;
 	}
 });
-
-
-/*section3이벤트*/
