@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <link rel="stylesheet" href="/resources/css/myWalkMate/walkMatePage/walkMateModify.css">
 
@@ -40,8 +42,7 @@
 			
 			<div class="wm-addr-modify">
 				<label for="input-wm-addr">모임 장소</label>
-				<input type="text" id="input-wm-addr" value="${w.wmAddr }" readonly>
-				<button type="button" id="wm-addr-modify-btn">주소 찾기</button>
+				<input type="text" id="input-wm-addr" value="${w.wmAddr }" disabled>
 			</div>
 			
 			<div class="wm-tag-modify">
@@ -52,6 +53,22 @@
 	            <input type="radio" id="운동" name="wmTag" value="운동"><label for="운동">운동</label>
 	            <input type="radio" id="페스티벌" name="wmTag" value="페스티벌"><label for="페스티벌">페스티벌</label>
 			</div>
+		</div>
+		
+		<div class="wm-all-img-box">
+			<c:forEach items="${w.fileList }" var="file">
+				<div class="wm-one-img-box">
+					<img src="/resources/upload/walkmate/${file.filepath }">
+				</div>
+			</c:forEach>
+		
+			<c:set var="noImgIndex" value="${4 - fn:length(w.fileList) }" />
+		
+			<c:forEach begin="1" end="${noImgIndex }" step="1" >
+				<div class="wm-one-img-box">
+					<p>no image</p>
+				</div>
+			</c:forEach>
 		</div>
 		
 		<div class="wm-content-modify">
@@ -67,6 +84,16 @@
 
 <script>
 	const wmNo = ${w.wmNo };
+	
+	const now = new Date();
+	const oldDate = "${w.wmMeetTime }".substring(0, 10);
+	const oldTime = "${w.wmMeetTime }".substring(11, 16);
+	const oldDateTime = new Date("${w.wmMeetTime }");
+	
+	if(oldDateTime < now){
+			$("#wm-modify-btn").attr("disabled", true);
+	}
+	
 	let wmTag = "${w.wmTag }";
 	$(".wm-tag-modify>input[value='" + wmTag + "']").prop('checked', true);
 </script>

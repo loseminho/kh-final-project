@@ -647,8 +647,16 @@ public class memberController {
 	
 	@ResponseBody
 	@RequestMapping(value="/selectMyAttendList.do", produces="application/json;charset=utf-8")
-	public String selectMyAttendList(int memberNo, String memberId) {
-		ArrayList<Walk> list = service.selectMyAttendList(memberNo, memberId);
+	public String selectMyAttendList(int memberNo) {
+		ArrayList<Walk> list = service.selectMyAttendList(memberNo);
+		
+		return new Gson().toJson(list);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/selectOtherAttendList.do", produces="application/json;charset=utf-8")
+	public String selectOtherAttendList(String memberId) {
+		ArrayList<Walk> list = service.selectOtherAttendList(memberId);
 		
 		return new Gson().toJson(list);
 	}

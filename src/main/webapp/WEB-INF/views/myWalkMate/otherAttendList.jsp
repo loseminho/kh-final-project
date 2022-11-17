@@ -4,15 +4,15 @@
 <link rel="stylesheet" href="/resources/css/myWalkMate/attendWalkMateList.css">
 
 <div class="attendList-header">
-	<h1>산책 메이트 참가 내역</h1>
+	<h1>그 밖의 모임</h1>
 </div>
 
-<div class="attendList-content">
-	<div class="attendList" id="scheduledList">
+<div class="attendList-content" id="otherAttendListJsp">
+	<div class="attendList scheduledList">
 		<h2>예정된 모임</h2>
 	</div>
 	
-	<div class="attendList" id="proceededList">
+	<div class="attendList proceededList">
 		<h2>진행된 모임</h2>
 	</div>
 </div>

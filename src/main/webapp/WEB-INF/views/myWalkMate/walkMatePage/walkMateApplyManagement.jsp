@@ -7,4 +7,4 @@
 	<h1>모임 신청자 관리</h1>
 </div>
 
-<script src="/resources/js/myWalkMate/walkMatePage/walkMateApplyManagement.js"></script>
+<script src="/resources/js/myWalkMate/walkMatePage/updateApplyStat.js"></script>
