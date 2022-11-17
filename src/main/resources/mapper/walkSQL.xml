@@ -63,21 +63,21 @@
 	
 	
 	<select id="selectContentBox" parameterType="_int" resultMap="getContentBox">
-SELECT A.*, B.MEMBER_NICKNAME AS leaderNickname FROM
-    (SELECT ROWNUM AS RNUM, W.* FROM ((SELECT
-            WM_NO AS wmNo,
-            WM_LEADER AS wmLeader,
-            WM_TITLE AS wmTitle,
-            WM_SUB_TITLE AS wmSubTitle,
-            WM_TAG AS wmTag,
-            WM_MEET_TIME AS wmMeetTime,
-            WM_ADDR AS wmAddr,
-            WM_RANGE_MEMBER AS wmRangeMember,
-            WM_CONTENT AS wmContent,
-            REPLY AS reply,
-            WM_DATE AS wmDate
-        FROM walk_mate_tbl ORDER BY WM_NO DESC)W))A
-LEFT JOIN MEMBER_TBL B ON A.wmLeader = B.MEMBER_NO WHERE A.wmNo =#{_parameter}
+    SELECT A.*, B.MEMBER_NICKNAME AS leaderNickname, B.MEMBER_PHOTO AS leaderPhoto FROM
+	    (SELECT ROWNUM AS RNUM, W.* FROM ((SELECT
+	            WM_NO AS wmNo,
+	            WM_LEADER AS wmLeader,
+	            WM_TITLE AS wmTitle,
+	            WM_SUB_TITLE AS wmSubTitle,
+	            WM_TAG AS wmTag,
+	            WM_MEET_TIME AS wmMeetTime,
+	            WM_ADDR AS wmAddr,
+	            WM_RANGE_MEMBER AS wmRangeMember,
+	            WM_CONTENT AS wmContent,
+	            REPLY AS reply,
+	            WM_DATE AS wmDate
+	        FROM walk_mate_tbl ORDER BY WM_NO DESC)W))A
+	LEFT JOIN MEMBER_TBL B ON A.wmLeader = B.MEMBER_NO WHERE A.wmNo =#{_parameter}
 	</select>
 	<select id="selectMembers" resultType="wa" parameterType="_int">
 	SELECT A.WM_APPLY_NO AS wmApplyNo,
