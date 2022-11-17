@@ -21,7 +21,7 @@
 			<div class="adminPage-main-header">
 				<h1>관리자페이지</h1>
 				<div class="adminPage-link-box">
-					<a href="/writeNoticeFrm.do">공지사항 글쓰기</a> <a href="#">쪽지함</a>
+					<a href="/writeNoticeFrm.do">공지사항 글쓰기</a>
 				</div>
 				<div class="admin-main-tab">
 					<ul class="admin-tab">
