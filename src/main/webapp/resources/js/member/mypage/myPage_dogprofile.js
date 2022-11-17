@@ -199,7 +199,7 @@ $("#dogBtn").on("click", function(){
 			})
 		} else if(!nameReg.test(nameVal)) {
 			Swal.fire({
-				text: '10글자까지만 입력 가능합니다.',
+				html: '이름은 특수문자를 제외한<br>10글자까지만 입력 가능합니다.',
 				confirmButtonColor: '#1abc9c'
 			})
 		} 
