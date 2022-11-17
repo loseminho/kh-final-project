@@ -42,7 +42,7 @@
 			</c:forEach>
 			</div>
 			</div>
-		</div>
+		</div> 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 </body>
 <script src="/resources/js/market/writeFrmContent.js"></script>

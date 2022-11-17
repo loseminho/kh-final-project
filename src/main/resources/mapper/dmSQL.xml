@@ -27,7 +27,7 @@
 	    member_id as receiverId,
 	    read_check as readCheck
 	from dm
-	where receiver = #{receiverNo} order by 1 desc
+	where receiver = #{receiverNo} and dm_cate = #{dmCate} order by 1 desc
 	</select>
 	<select id="searchDmList" parameterType="hashmap" resultType="dm">
 	select 
