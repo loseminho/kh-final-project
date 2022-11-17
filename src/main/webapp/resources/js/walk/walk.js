@@ -15,8 +15,6 @@ function allList(){
 	        success : function(data){
 	            var html = "";
 	            totalList = data.length;
-				
-	            
 	            
 				html += "<div class='write-new-content-btn'>";
 				const loginId = document.getElementById('login-memberId').value;
@@ -209,7 +207,7 @@ $(document).on("click",".add-btn",function(){
 	console.log("totalList : " +totalList);
 	console.log("totalCnt : " +totalCnt);
 	//더보기 버튼을 눌렀을 때, 화면에 보여줄 리스트 갯수 늘려주는 코드
- 		for(let i=0;i<2;i++){
+ 		for(let i=0;i<4;i++){
  			if(totalCnt == totalList){
  				$(".add-btn").text("더 이상 목록이 없습니다.");
  				break;
@@ -233,8 +231,6 @@ function modalViews(e){
 			dogAmount = data;
 		}
 	});
-	
-		
 	$.ajax({
 	url : "/selectContentBox.do",
 	data: {wmNo : e},
@@ -242,7 +238,7 @@ function modalViews(e){
 		
 		console.log(data);
 		$(".up-btn").trigger("click");
-		
+		$(".modal-writer-profil img").attr('src',"/resources/upload/member/"+data.leaderPhoto).attr("id","view-section1");
 		//로그인한 유저의 세션값
 		const loginId = document.getElementById('login-memberId').value;
 		const loginNo = document.getElementById('login-memberNo').value;
@@ -413,6 +409,7 @@ function modalViews(e){
 				$("#thankMainWmNo").attr('value','+data.wmNo+');
 			}else{
 				$("#view-section6").attr("disabled",true).text('모임 마감').css("backgroundColor","#9d9d9d").css("border","2px solid #9c9c9c").text('모임삭제').css("display","block");
+				$("#deleteWm").text('창닫기 >> ').attr("onclick", "modalOff();").css("color","#1abc9c").css("border","2px solid #1abc9c");
 			}
 		}else{
 			if(loginId.length >= 1 ){
@@ -426,14 +423,17 @@ function modalViews(e){
 						if(dogAmount > 0){
 							//개가 잇을ㄸ쨰
 							$("#view-section6").attr("disabled",false).attr("onclick", "modalApplyView();").text('신청하기').css("backgroundColor","#1abc9c").css("border","2px solid #1abc9c");
+							$("#deleteWm").text('창닫기 >> ').attr("onclick", "modalOff();").css("color","#1abc9c").css("border","2px solid #1abc9c");
 						}else{
 							//개 없을때 
 							$("#view-section6").attr("disabled",true).text('등록된 강아지가 없습니다.').css("backgroundColor","#1abc9c").css("border","2px solid #1abc9c");
+							$("#deleteWm").text('창닫기 >> ').attr("onclick", "modalOff();").css("color","#1abc9c").css("border","2px solid #1abc9c");
 						}
 					}
 			}else{
 				//로그인을 안했을때, 신청을 못함
 					$("#view-section6").attr("disabled",true).text('로그인 요망').css("backgroundColor","#1abc9c").css("border","2px solid #1abc9c");
+					$("#deleteWm").text('창닫기 >> ').attr("onclick", "modalOff();").css("color","#1abc9c").css("border","2px solid #1abc9c");
 			}
 		}
 		
@@ -705,7 +705,7 @@ function modalWrites(){
 	var html1 = "";
 		html1 += "<img src='"+loginPhoto+"'>";
 		$(".modal-writer-profil").html(html1);
-	$("#deleteWm").text('창 닫기 >>').attr("onclick", "modalOff();").css("color","#ff4c4c").css("border","2px solid #ff4c4c").css("display","block");
+	$("#deleteWm").text('창닫기 >> ').attr("onclick", "modalOff();").css("color","#1abc9c").css("border","2px solid #1abc9c");
     var html = "";
 		html += "<div class='writer-id'>"+loginNickname+"</div>";
 		html += "<h2 id='view-section2' style='display:none;'></h2>";

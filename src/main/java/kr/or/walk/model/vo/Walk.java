@@ -27,4 +27,5 @@ public class Walk {
 	private ArrayList<WmApply>	wList;		// 참여 멤버 프로필들
 	private ArrayList<WalkFile> fileList;	//
 	private ArrayList<WalkMateComment> wmcList;
+	private String leaderPhoto;
 }
