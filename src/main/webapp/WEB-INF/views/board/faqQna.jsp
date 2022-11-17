@@ -72,42 +72,12 @@
 								</div>
 								<div class="question walk-question">
 									<a> <span class="category-walk">산책메이트 찾기</span> <span
-										class="question-title">여덟번째 질문</span> <span
+										class="question-title">강아지에게 맞는 친구와 산책하고 싶어요</span> <span
 										class="material-symbols-outlined">expand_more</span>
 									</a>
 								</div>
 								<div class="answer">
-									<a> <span>여덟번째 답변</span>
-									</a>
-								</div>
-								<div class="question walk-question">
-									<a> <span class="category-walk">산책메이트 찾기</span> <span
-										class="question-title">아홉번째 질문</span> <span
-										class="material-symbols-outlined">expand_more</span>
-									</a>
-								</div>
-								<div class="answer">
-									<a> <span>아홉번째 답변</span>
-									</a>
-								</div>
-								<div class="question walk-question">
-									<a> <span class="category-walk">산책메이트 찾기</span> <span
-										class="question-title">열번째 질문</span> <span
-										class="material-symbols-outlined">expand_more</span>
-									</a>
-								</div>
-								<div class="answer">
-									<a> <span>열번째 답변</span>
-									</a>
-								</div>
-									<div class="question walk-question">
-									<a> <span class="category-walk">산책메이트 찾기</span> <span
-										class="question-title">열한번째 질문</span> <span
-										class="material-symbols-outlined">expand_more</span>
-									</a>
-								</div>
-								<div class="answer">
-									<a> <span>열한번째 답변</span>
+									<a> <span> 반려견을 내정보에서 등록 후, 메이트 찾기에 있는 메이트 또는 메인페이지에 있는 MBTI 테스트를 통해 반려견과 잘 맞는 친구를 찾아주세요 ! </span>
 									</a>
 								</div>
 							</div>
@@ -120,6 +90,16 @@
 								</div>
 								<div class="answer">
 									<a> <span>같은 모임에 참여한 사람들끼리 이용이 가능합니다. </span>
+									</a>
+								</div>
+								<div class="question sharing-question">
+									<a> <span class="category-sharing">사이트 이용</span> <span
+										class="question-title">쪽지는 어떻게 이용하나요?</span> <span
+										class="material-symbols-outlined">expand_more</span>
+									</a>
+								</div>
+								<div class="answer">
+									<a> <span>입양을 원할시에 개인끼리 쪽지를 주고 받을 수 있습니다. </span>
 									</a>
 								</div>
 							</div>
@@ -171,16 +151,6 @@
 								<div class="question etc-question">
 									<a> <span class="category-etc">기타</span> <span
 										class="question-title">신고는 어떻게 할 수 있나요?</span> <span
-										class="material-symbols-outlined">expand_more</span>
-									</a>
-								</div>
-								<div class="answer">
-									<a> <span>내 산책메이트 > 신청내역 또는 참가 내역 > 모임정보 > 모임 글 제목 클릭 > 모임참가자 프로필 보기에서 신고 할 수 있습니다. </span>
-									</a>
-								</div>
-									<div class="question etc-question">
-									<a> <span class="category-etc">기타</span> <span
-										class="question-title">MBTI </span> <span
 										class="material-symbols-outlined">expand_more</span>
 									</a>
 								</div>
