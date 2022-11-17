@@ -12,7 +12,7 @@
        
 	    <!-- 신고 유형 -->
 	    <div class="report-type">
-	        <p>신고 유형</p>
+	        <h3>신고 유형</h3>
 	        <select id="reportType">
 	            <option value=1>언어 폭력</option>
 	            <option value=2>성희롱</option>
@@ -24,7 +24,7 @@
 	    
 	    <!-- 신고 상세 이유 -->
 	    <div class="report-reason">
-	        <p>신고 상세 이유</p>
+	        <h3>신고 상세 이유</h3>
 	        
 	        <!-- 신고 상세 이유 입력 -->
 	        <div class="report-input">
@@ -34,7 +34,7 @@
 	    
 	    <!-- 신고하기 버튼 -->
 	    <div class="report-btn-box">
-	        <button type="button" onclick="report()">신고 하기</button>
+	        <button type="button" onclick="report()">신고하기</button>
 	    </div>
     </div>
 </div>
