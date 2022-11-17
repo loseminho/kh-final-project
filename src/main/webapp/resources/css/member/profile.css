@@ -1,6 +1,7 @@
 /* 전체  */
 .profile-content-wrap{
 	display: flex;
+	font-family:gs-Medium;
 }
 
 /* 왼쪽  */
@@ -12,8 +13,8 @@
 .profile-content{
 	width: 620px;
 	min-height: calc(100vh - 410px);
-	margin-top: 180px;
-	margin-bottom: 100px;
+	margin-top: 120px;
+	margin-bottom: 50px;
 }
 
 .person-profile, .dog-profile{
@@ -38,18 +39,27 @@
     height: 198px;
     float: left;
     overflow: hidden;
-    border: 1px solid black;
+    border: 1px solid #ccc;
+    border-radius: 100%;
+    position:relative;
+    margin-top:20px;
 }
 
 .profile-photo{
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+    max-width: 100%;
+    position:absolute;
+   	top:50%;
+   	left:50%;
+   	transform: translate(-50%, -50%);
+}
+
+.person-id {
+    margin-top:20px;
 }
 
 .person-id, .person-city{
-	width: 400px;
-	margin-left: 20px;
+	width: 390px;
+	margin-left: 30px;
 	margin-bottom: 30px;
 	float: right;
 }
@@ -69,21 +79,25 @@
 }
 
 .person-intro>p{
-	width: 400px;
+	width: 390px;
 	float: right;
 }
 
 .person-intro>p>b{
 	display:block;
-	line-height: 20px;	
+	line-height: 20px;
+	margin-bottom:10px;	
 }
 
 .person-intro>div{
-	width: 398px;
-    height: 78px;
+	width: 370px;
+    height: 50px;
     float: right;
-    border: 1px solid black;
+    border: 1px solid #ccc;
     overflow: auto; 
+    border-radius: 10px;
+    padding:10px;
+    
 }
 
 .dog-profile{
@@ -93,19 +107,19 @@
 	
 .dog-info{
 	overflow: auto; 
+    margin-top:20px;
 }
 	
 .dog-info>table{
-    width: 400px;
+    width: 390px;
     height: 200px;
     float: right;
-	border: 1px solid black;
     border-collapse: collapse;
 }
 
+
 .dog-info>table th, .dog-info>table td{
 	text-align: center;
-	border: 1px solid black;
 }
 
 .dog-info>table th{
@@ -113,7 +127,7 @@
 }
 
 .before-link-box{
-	margin-top: 20px;
+	margin-top: 80px;
 	text-align: right;
 }
 
@@ -138,25 +152,27 @@
 .profile-right{
 	width: calc(calc(calc(100% - 620px) / 2) - 100);
 	height: 100%;
-	margin-top: 516px;
-	margin-bottom: 100px;	
+	margin-top: 450px;
+	margin-bottom: 80px;	
 	margin-left: 100px;
 }
 
 .dog-list{
 	width: 150px;
 	overflow: auto; 
+    margin-top:20px;
 }
 
 .dog-list>table{
 	width: 100%;
-	border: 1px solid black;
+	border: 1px solid #ccc;
     border-collapse: collapse;
 }
 
 .dog-list>table th, .dog-list>table td{
 	text-align: center;
-	border: 1px solid black;
+	border: 1px solid #ccc;
+	height:40px;
 }
 
 .dog-list>table td>a{
@@ -200,4 +216,5 @@
     
     background: rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(1.5px);
+    font-family:gs-Medium;
 }

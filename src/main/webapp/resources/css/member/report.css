@@ -12,6 +12,8 @@
     
     background-color: white;
     z-index:9999;
+    border-radius: 21px;
+	border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
 #report-modal-close{
@@ -51,6 +53,11 @@
 
 .report-type>select{
 	width: 150px;
+	font-family:gs-Medium;
+	font-size: 16px;
+	outline: none;
+	margin-left: 10px;
+	border: 1px solid #ccc;
 }
 
 .report-reason{
@@ -66,6 +73,8 @@
 	font-size: 16px;
 	width: 294px;
 	height: 294px;
+	border: 1px solid #ccc;
+	border-radius:10px;
 }
 
 .report-btn-box{
@@ -80,4 +89,9 @@
 	width: 100px;
 	height: 27px;
 	font-weight: bold;
+	font-family:gs-Medium;
+	outline: none;
+	border:none;
+	color:white;
+	line-height:27px;
 }
