@@ -596,6 +596,14 @@ content{
 .info-right2{
 	background-image:url("/resources/img/market/liry.png");
 }
+.info-left3{
+	background-image:url("/resources/img/market/reviewimg3.png");
+	background-size: 100%;
+}
+.info-right3{
+	background-image:url("/resources/img/market/review3.png");
+	background-size: 100%;
+}
 .modal-detail-info{
 	width:100%;
 	height:60px;
