@@ -1054,7 +1054,7 @@ width: 0;
     font-weight: 700;
 }
 .add-btn{
-	background-color: rgb(190,205,177);
+	/*background-color: rgb(190,205,177);*/
 	height: 40px;
 	font-size: 20px;
 	vertical-align: middle;
