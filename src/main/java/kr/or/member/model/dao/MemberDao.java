@@ -130,7 +130,7 @@ public class MemberDao {
 
 	/*****************************************************/
 	
-	public ArrayList<AppliedWalkInfo> selectMyApplyList(String memberId, int start, int end) {
+	public ArrayList<AppliedWalkInfo> selectMyApplyList(String memberId) {
 		List list = sqlSession.selectList("myWalkMate.selectMyApplyList", memberId);
 		return (ArrayList<AppliedWalkInfo>)list;
 	}

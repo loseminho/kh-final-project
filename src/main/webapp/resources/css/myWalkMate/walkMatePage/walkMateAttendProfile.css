@@ -3,6 +3,10 @@
 	min-height: calc(100vh - 230px);
 }
 
+.wm-attend-profile-content{
+	margin-bottom: 100px;
+}
+
 .wm-attend-profile-content>p{
 	margin-top: 50px;
 	font-size: 24px;
