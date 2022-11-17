@@ -80,7 +80,7 @@ function allList(){
 							for(let j=0; j<data[i].wList.length; j++){
 								if(data[i].wList[j].applyStat ==0){
 									html += "<li>";
-									html += "<img src='/resources/img/member/";
+									html += "<img src='/resources/upload/member/";
 									if(data[i].wList[j].memberPhoto != null){
 										html += data[i].wList[j].memberPhoto;
 										html +="'>";
@@ -159,7 +159,7 @@ function allList(){
 							for(let j=0; j<data[i].wList.length; j++){
 								if(data[i].wList[j].applyStat ==0){
 									html += "<li>";
-									html += "<img src='/resources/img/member/";
+									html += "<img src='/resources/upload/member/";
 									if(data[i].wList[j].memberPhoto != null){
 										html += data[i].wList[j].memberPhoto;
 										html +="'>";
@@ -303,7 +303,7 @@ function modalViews(e){
 					
 					}else if(data.wList[i].applyStat==0){
 						html4 += "<li class='member-info-list'>";
-						html4 += "<div class='member-info-profil'><img src='/resources/img/member/";
+						html4 += "<div class='member-info-profil'><img src='/resources/upload/member/";
 						if(data.wList[i].memberPhoto != null){
 							html4 += data.wList[i].memberPhoto;
 						}else{
@@ -422,8 +422,27 @@ function modalViews(e){
 					}else{
 						if(dogAmount > 0){
 							//개가 잇을ㄸ쨰
-							$("#view-section6").attr("disabled",false).attr("onclick", "modalApplyView();").text('신청하기').css("backgroundColor","#1abc9c").css("border","2px solid #1abc9c");
-							$("#deleteWm").text('창닫기 >> ').attr("onclick", "modalOff();").css("color","#1abc9c").css("border","2px solid #1abc9c");
+							let checkk=0;
+							for(let x=0; x<data.wList.length; x++){
+								console.log(memberNickname);
+								if(memberNickname == data.wList[x].memberNickname){
+									console.log("넌 로그인 했다!!");
+									checkk = 3;
+									break;
+								}else{
+									console.log("넌 로그인 안했다!!");
+									checkk=0;
+								}
+							}
+							if(checkk > 0){
+								//이미 신청한 유저인지
+								$("#view-section6").attr("disabled",true).attr("onclick", "modalApplyView();").text('신청이 완료된 유저입니다.').css("backgroundColor","#1abc9c").css("border","2px solid #1abc9c");
+								$("#deleteWm").text('창닫기 >> ').attr("onclick", "modalOff();").css("color","#1abc9c").css("border","2px solid #1abc9c");
+							}else{
+								//신청 안했던
+								$("#view-section6").attr("disabled",false).attr("onclick", "modalApplyView();").text('신청하기').css("backgroundColor","#1abc9c").css("border","2px solid #1abc9c");
+								$("#deleteWm").text('창닫기 >> ').attr("onclick", "modalOff();").css("color","#1abc9c").css("border","2px solid #1abc9c");
+							}
 						}else{
 							//개 없을때 
 							$("#view-section6").attr("disabled",true).text('등록된 강아지가 없습니다.').css("backgroundColor","#1abc9c").css("border","2px solid #1abc9c");
@@ -981,7 +1000,7 @@ $(".category-li").on('click',function(){
 							for(let j=0; j<data[i].wList.length; j++){
 								if(data[i].wList[j].applyStat ==0){
 									html += "<li>";
-									html += "<img src='/resources/img/member/";
+									html += "<img src='/resources/upload/member/";
 									if(data[i].wList[j].memberPhoto != null){
 										html += data[i].wList[j].memberPhoto;
 										html +="'>";
@@ -1061,7 +1080,7 @@ $(".category-li").on('click',function(){
 							for(let j=0; j<data[i].wList.length; j++){
 								if(data[i].wList[j].applyStat ==0){
 									html += "<li>";
-									html += "<img src='/resources/img/member/";
+									html += "<img src='/resources/upload/member/";
 									if(data[i].wList[j].memberPhoto != null){
 										html += data[i].wList[j].memberPhoto;
 										html +="'>";
