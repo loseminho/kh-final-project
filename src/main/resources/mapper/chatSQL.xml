@@ -51,7 +51,7 @@
     		wm_leader as wmLeader
 	    from wm_apply_tbl 
 	   		join walk_mate_tbl using(wm_no)
-		where member_id =	#{_parameter}
+		where member_id = #{_parameter} and apply_stat = 0
 	</select>
 	
 	<insert id="saveData" parameterType="hashmap">

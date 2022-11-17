@@ -62,7 +62,7 @@
 			</div>
 			<div>
 			<div>
-			지도지도
+			지도
 			</div>
 			<iframe src="">
 			</iframe>
@@ -70,19 +70,46 @@
 			</div>
 
 		<div class="info-card-wrap3">
-			<div>
-			조원 소개♥
-			</div>
+			<div>조원 소개♥</div>
+			<div class="team-info-title">신다혜</div>
 			<div class="team-info-box">
-				<div class="dahe-content">
-					<div class="dahe-photo-wrap member-photo-wrap">
-						<a href="https://github.com/danashinnn">
-							<img src="/resources/img/dahe.jpg">
-						</a>
+				<div class="yubin-wrap">
+					<div class="yubin-content">
+						<div class="dahe-photo-wrap member-photo-wrap">
+							<a href="https://github.com/danashinnn">
+								<img src="/resources/img/yubin.png">
+							</a>
+						</div>
+						<img id="yubin-job" src="/resources/img/dahe-job.png">
 					</div>
-					<div>신다혜</div>
+					<div class="part-info-wrap">
+						<div>- 로그인/회원가입</div>
+						<div>- 마이페이지(정보수정)</div>
+						<div>- 아이디/비밀번호 찾기</div>
+						<div>- 강아지 매칭 시스템</div>
+						<div>- 멍BTI 검사</div>
+						<div>- 달력 일정관리</div>
+					</div>
 				</div>
-				<div></div>
+				<div class="dahe-wrap">
+					<div class="dahe-content">
+						<div class="dahe-photo-wrap member-photo-wrap">
+							<a href="https://github.com/danashinnn">
+								<img src="/resources/img/dahe.jpg">
+							</a>
+						</div>
+						<img id="dahe-job" src="/resources/img/dahe-job.png">
+					</div>
+					<div class="part-info-wrap">
+						<div>- 로그인/회원가입</div>
+						<div>- 마이페이지(정보수정)</div>
+						<div>- 아이디/비밀번호 찾기</div>
+						<div>- 강아지 매칭 시스템</div>
+						<div>- 멍BTI 검사</div>
+						<div>- 달력 일정관리</div>
+					</div>
+				</div>
+
 				<!-- 
 				<div class="dahe-photo-wrap">
 					<img src="/resources/img/qrcode.png">

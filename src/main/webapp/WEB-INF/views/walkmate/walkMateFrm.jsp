@@ -63,8 +63,8 @@
                         <img src="/resources/img/walkmate/profil.png">
                     </div>
                     <div class="modal-writer-content-box">
-                        <div class="writer-id">user03</div>
-                        <h2 id="view-section2">골든 리트리버 상동 호수공원 같이 가요~</h2>
+                        <div class="writer-id"></div>
+                        <h2 id="view-section2"></h2>
                         <input type="text" id="write-section1" placeholder="제목을 입력해주세요." required>
                         <input type="text" id="write-section6" placeholder="모임을 위한 한줄평을 작성하세요!" required>required
                     </div>
@@ -99,13 +99,6 @@
                     <!-- modal-contents (글쓴이 작성 글)-->
                     <div class="bottom-content" id="modal-contents">
                         <textarea id="view-section4" disabled>
-                            	안녕하세요. 리트리버맘 입니다. :)<br>
-                            	골든 리프리버 파티를 구하고 있어요! 주로 호수공원이나 시냇물공원으로 해서 <br>
-                            	20:00 ~ 21:00 (2시간) 정도 돌고 있습니다!.<br>
-                            <br>
-                            	저희 산책파티는 각자 목줄, 배변봉투, 입마개 등 지참해오는 것이니<br>
-                           	 이점 명시해서 지원해주세요~<br>
-                            
                         </textarea>
                         
                         <div id="write-section3">
@@ -199,7 +192,7 @@
 	                        		<form action="/insertMainComment.do" method="post">
 			                        	<div class="input-comment-writer-comment">
 				                        			<input type="hidden" name="memberNo" value="${sessionScope.m.memberNo }">
-					                        		<input type="text" name="wmcContent" class="writer-comment-input"  placeholder="댓글 달기...">
+					                        		<input type="text" name="wmcContent" class="writer-comment-input"  placeholder="댓글 달기..." maxlength="60">
 					                        		<button type="submit" class="write_reply">등록</button>		                        		
 			                        	</div>
 	                        		</form>
@@ -208,39 +201,23 @@
                         	
                         	<!-- 댓글 목록이 들어가는 곳 -->
                         	<div class="comment-list-box">                        	
-	                        	<!-- 댓글 view  -->
-	                        	<div class="input-comment-box-view views-list">
-		                        	<div class="input-comment-writer-profil"><img src="/resources/img/default_profile.png"></div>
-		                        	<div class="comment-member-view">
-	                                    <span>로즈</span>
-	                                    	산책하며 힐링도 하고 운동도 해요.
-	                                    	<div class="view-sub"><span class="material-symbols-outlined">map</span>2022-11-12 23:30 · <div class="recomment-input">댓글달기</div><div class="delete-inputs-comment">삭제하기</div></div>
-	                                </div>
-	                        	</div>
-	                        	<!-- 대댓글 input -->
-	                        	<form action="/insertSubComment.do" method="post">
-	                        	<div class="input-comment-box-view reviews">
-		                        	<div class="input-comment-writer-profil"><img src="/resources/img/walkmate/liry1.jpg"></div>
-		                        	<div class="comment-member-view reviews-sub rereviews">
-	                                    <span>피오스</span>
-	                                    <input type="text" name="" class="reviews-input" id="" placeholder="대댓글 달기...">
-	                                </div>
-	                                <button type="submit" name="" class="rereviews-btn" id="">등록</button>
-	                        	</div>
-	                        	</form>
-	                        	
-	                        	<!-- 대댓글 view -->
-	                        	<div class="input-comment-box-view reviews">
-		                        	<div class="input-comment-writer-profil"><img src="/resources/img/walkmate/liry1.jpg"></div>
-		                        	<div class="comment-member-view reviews-sub">
-	                                    <span>민호</span>
-	                                    	대댓글 대댓글 대댓글 대댓글 대댓글 대댓글 대댓글 대댓글 대댓글 대댓글 
-	                                    	<div class="view-sub"><span class="material-symbols-outlined">map</span>2022-11-12 23:30 · <div>댓글달기</div></div>
-	                                </div>
-	                        	</div>
                         	</div>
-                        	
-
+                        </div>
+                        <div class="info-titles">모임 사진</div>
+                        <div class="info-titles sub">모임장이 올린 사진입니다! (클릭 시 원본 이미지로 볼 수 있습니다.)</div>
+                        <div class="wm-img-wrapper">
+                        	<div class="wm-img-preview-box">
+                        		<img class="wm-img-preview-img" src="">
+                        	</div>
+                        	<div class="wm-img-preview-box">
+                        		<img class="wm-img-preview-img" src="">
+                        	</div>
+                        	<div class="wm-img-preview-box">
+                        		<img class="wm-img-preview-img" src="">
+                        	</div>
+                        	<div class="wm-img-preview-box">
+                        		<img class="wm-img-preview-img" src="">
+                        	</div>
                         </div>
                         
                         
@@ -263,10 +240,10 @@
                 <div class="modal-window-bottom" id="applySection">
 	                <div class="bottom-content member-info">
 	                	<div class="info-titles">신청 하기</div>
-	                    <div class="info-titles sub">모임장에게 보낼 신청 메세지를 보내보세요!</div>                
+	                    <div class="info-titles sub">모임장 및 회원들이 볼 수 있는 신청 메세지를 보내보세요!</div>                
 	                </div>
                 	<div class="bottom-content apply-content-box">                	
-	                	<textarea name="applyContent" class="apply-text" placeholder="모임장에게 보낼 신청 메세지를 작성해주세요."></textarea>
+	                	<textarea name="applyContent" class="apply-text" placeholder="모임장 및 회원들이 볼 수 있는 신청 메세지를 작성해주세요."></textarea>
                 	</div>
 	                <div class="bottom-content-btn">
 		                <button type="button" class="input-main-btn" id="write-section5" onclick="inputMainBtn();" >신청 작성 완료</button>
@@ -328,7 +305,7 @@
             </div>
             
         </div>
-        <div class="add-btn">목록 더 보기</div>
+        <div class="add-btn">목록 더 보기 (+)</div>
     </div>
     <!-- End Content -->
     

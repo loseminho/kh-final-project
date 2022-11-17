@@ -3,19 +3,29 @@ function modifyWalkMate(){
 	
 	const wmDate = $("#input-wm-date").val();
 	const wmTime = $("#input-wm-time").val();
-	const wmMeetTime = wmDate + " " + wmTime;
+	const wmDateTime = wmDate + " " + wmTime;
 	
 	wmTag = $("input[name=wmTag]:checked").val();
 	const wmContent = $("#input-wm-content").val();
 	
 	// 조건을 충족하면 수정할 수 있게 해준다.
+	now = new Date();
+	const newDateTime = new Date(wmDateTime);
+	
+	if(newDateTime < now){
+		alert("이미 지난 날짜/시간입니다. 만날 수 있는 날짜/시간을 선택해주세요.");
+		
+		$("#input-wm-date").val(oldDate);
+		$("#input-wm-time").val(oldTime);
+		return;
+	}
 	
 	$.ajax({
 		url: "/updateWalkMate.do",
 		data: { 
 			wmNo : wmNo,
 			wmSubTitle : wmSubTitle,
-			wmMeetTime : wmMeetTime,
+			wmMeetTime : wmDateTime,
 			wmTag : wmTag,
 			wmContent : wmContent
 		},

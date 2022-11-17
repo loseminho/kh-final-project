@@ -41,6 +41,12 @@
 			<div class="add-info info-right2">
 			</div>
 		</div>
+		<div class="add-info-wrap">
+			<div class="add-info info-left3">
+			</div> 
+			<div class="add-info info-right3">
+			</div>
+		</div>
 
 		
 		<!-- 데이터 저장용 input tags -->

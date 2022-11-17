@@ -78,7 +78,9 @@
                 </div><!--qna-box 끝-->
             </div><!--faqqna-content 끝-->
         </div><!--faqqna-wrap 끝-->
+        </div>
     </content><!--컨텐츠 끝-->
+   <jsp:include page="/WEB-INF/views/common/footer.jsp" />
     <!-- 모달시작 -->
 	<jsp:include page="/WEB-INF/views/market/modal.jsp"/>
 	<script src="/resources/js/market/saleDog.js"></script>
