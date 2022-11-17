@@ -43,7 +43,6 @@ import kr.or.member.model.vo.MyCalendar;
 import kr.or.member.model.vo.Report;
 import kr.or.walk.model.vo.AppliedWalkInfo;
 import kr.or.walk.model.vo.Walk;
-import kr.or.walk.model.vo.WalkPageData;
 import kr.or.walk.model.vo.WmApply;
 
 @Controller
@@ -639,10 +638,10 @@ public class memberController {
 	
 	@ResponseBody
 	@RequestMapping(value="/selectMyApplyList.do", produces="application/json;charset=utf-8")
-	public String selectMyApplyList(String memberId, int reqPage) {
-		WalkPageData<AppliedWalkInfo> wpd = service.selectMyApplyList(memberId, reqPage);
+	public String selectMyApplyList(String memberId) {
+		ArrayList<AppliedWalkInfo> myApplyList = service.selectMyApplyList(memberId);
 		
-		return new Gson().toJson(wpd);
+		return new Gson().toJson(myApplyList);
 	}
 	
 	@ResponseBody

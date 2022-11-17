@@ -8,11 +8,19 @@
 </div>
 
 <div class="attendList-content" id="myAttendListJsp">
-	<div class="attendList scheduledList">
+	<div class="scheduledList-header">
 		<h2>예정된 모임</h2>
+	</div>
+
+	<div class="attendList scheduledList">
+		
+	</div>
+	
+	<div class="proceededList-header">
+		<h2>진행된 모임</h2>
 	</div>
 	
 	<div class="attendList proceededList">
-		<h2>진행된 모임</h2>
+		
 	</div>
 </div>

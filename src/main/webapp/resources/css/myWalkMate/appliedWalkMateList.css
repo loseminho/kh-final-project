@@ -1,5 +1,12 @@
-.appliedList-content{
+.appliedList-header{
 	margin-top: 20px;
+}
+
+.appliedList-content{
+	width: 815px;
+	height: 466px;
+	margin-top: 50px;
+	overflow: auto;
 }
 
 .appliedList-content>p{
@@ -9,7 +16,6 @@
 
 .appliedList-content>table{
 	width: 800px;
-	margin-top: 50px;
     table-layout: fixed;
     border-collapse: collapse;
 }
