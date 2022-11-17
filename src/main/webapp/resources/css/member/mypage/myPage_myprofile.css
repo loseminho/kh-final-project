@@ -125,6 +125,11 @@ input, button, #photoBtn {
 	text-align:right;
 }
 
+.myprofile #bonus-section:hover {
+	animation-name: sectionTitleAni;
+	animation-duration:1s;
+} 
+
 .myprofile #bonus-section #bonus-ment {
 	font-size:12px;
 	color:#1abc9c;
@@ -308,4 +313,40 @@ input, button, #photoBtn {
 	border-radius:5px;
 	line-height:25px;
 	font-size:25px;
+}
+
+@keyframes sectionTitleAni{
+    0%{
+        transform: rotate(1deg);
+    }
+    10%{
+        transform: rotate(0deg);
+    }
+    20%{
+        transform: rotate(1deg);
+    }
+    30%{
+        transform: rotate(0deg);
+    }
+    40%{
+        transform: rotate(1deg);
+    }
+    50%{
+        transform: rotate(0deg);
+    }
+    60%{
+        transform: rotate(1deg);
+    }
+    70%{
+        transform: rotate(0deg);
+    }    
+    80%{
+        transform: rotate(1deg);
+    } 
+    90%{
+        transform: rotate(0deg);
+    }    
+    100%{
+        transform: rotate(1deg);
+    }
 }

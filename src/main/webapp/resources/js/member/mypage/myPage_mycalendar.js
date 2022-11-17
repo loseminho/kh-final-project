@@ -35,7 +35,7 @@ function mycalendar(){
 	                        }); // push() 끝
 	                        
 	                   } // for문 끝
-                       console.log(events);
+                       //console.log(events);
                    }//if문 끝                          
                    successCallback(events);                               
                }//success 끝                         

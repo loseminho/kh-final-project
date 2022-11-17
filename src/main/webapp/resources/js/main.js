@@ -111,9 +111,3 @@ $(".popup-back").on("click",function(){
 
 
 /*section3이벤트*/
-
-$(".customer-center").click(function(){
-	$(".customer-center").children().animate({
-		rotateY:'180deg'
-	},4000,'swing');
-});

@@ -117,6 +117,23 @@
 	text-align: right;
 }
 
+.before-link{
+	color: black;
+	text-decoration: none;
+}
+
+.before-link:hover{
+	color: #1abc9c;
+}
+
+.before-link:visited{
+	color: black;
+}
+
+.before-link:visited:hover{
+	color: #1abc9c;
+}
+
 /* 오른쪽  */
 .profile-right{
 	width: calc(calc(calc(100% - 620px) / 2) - 100);
@@ -140,6 +157,23 @@
 .dog-list>table th, .dog-list>table td{
 	text-align: center;
 	border: 1px solid black;
+}
+
+.dog-list>table td>a{
+	color: black;
+	text-decoration: none;
+}
+
+.dog-list>table td>a:hover{
+	color: #1abc9c;
+}
+
+.dog-list>table td>a:visited{
+	color: black;
+}
+
+.dog-list>table td>a:visited:hover{
+	color: #1abc9c;
 }
 
 .dog-list>table th{

@@ -132,15 +132,23 @@ public class WalkController {
 		}
 	}
 	//대댓글 삭제
-		@RequestMapping(value="/deleteSubComment.do", produces="application/json;charset=utf-8")
-		public String deleteSubComment(WalkMateComment wmc) {
-			int result = service.deleteSubComment(wmc);
-			if(result > 0) {
-				return "redirect:walkMateFrm.do";
-			} else {
-				return "redirect:walkMateFrm.do";
-			}
+	@RequestMapping(value="/deleteSubComment.do", produces="application/json;charset=utf-8")
+	public String deleteSubComment(WalkMateComment wmc) {
+		int result = service.deleteSubComment(wmc);
+		if(result > 0) {
+			return "redirect:walkMateFrm.do";
+		} else {
+			return "redirect:walkMateFrm.do";
 		}
+	}
+		
+	
+	@ResponseBody
+	@RequestMapping(value="/categoryList.do", produces="application/json;charset=utf-8")
+	public String selectCategoryList(Walk w) {
+		ArrayList<Walk> list = service.selectCategoryList(w);
+		return new Gson().toJson(list);
+	}
 //	//댓글 작성
 //	@ResponseBody
 //	@RequestMapping(value="/picture_replyList.do", produces="application/json;charset=utf-8")

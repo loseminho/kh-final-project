@@ -226,8 +226,14 @@ function receiveDmSearch(reqPage){
     });
 }
 
-$(document).keyup(function(e) {
+$(document).keyup(function(e) { // 모달창 esc키 눌렀을 때
    if ( e.keyCode == 27) {
        closeReceiveDmModal();
    };
+});
+
+$("#receiveDmKeyword").keyup(function(e) { // 검색 enter키 눌렀을 때
+   if(e.keyCode == 13) {
+		receiveDmSearch(1);
+	}
 });

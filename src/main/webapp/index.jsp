@@ -33,12 +33,83 @@
 			</div>
 		</div>
 	</div>
-	<div class="section" id="section3">
-		<div class="section3Content">
-			<div class="customer-center">
-				<span>산책갈개 소개</span>
-				<span>click!</span>
+	<div class="section" id="section3" style="position:relative;">
+		<div class="section3-info-wrap">
+		<div class="info-card-wrap1">
+			<div>
+			산책갈개 플러스친구
 			</div>
+			<div>
+				<p>급한 문의가 있다면 카카오톡 플러스를 이용해보세요!</p>
+				
+			</div>
+			<span>
+				<img src="/resources/img/dogfoot.png">
+			</span>
+			<div>
+				<img src="/resources/img/qrcode.png">
+			</div>
+			<div>
+			Contect us 산책갈개
+			</div>
+		</div>
+		<div class="info-card-wrap2">
+			<div>
+			오시는길
+			</div>
+			<div>
+			서울시 영등포구 선유로 57 이레빌딩 19F / A
+			</div>
+			<div>
+			<div>
+			지도지도
+			</div>
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1995.053112767938!2d126.89570580446775!3d37.533821730309754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c9ec3afcd675b%3A0x1d3b8e50a735e00a!2z7J2066CI67mM65Sp!5e0!3m2!1sko!2skr!4v1668564804018!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+			</iframe>
+			</div>
+			</div>
+
+		<div class="info-card-wrap3">
+			<div>
+			조원 소개♥
+			</div>
+			<div class="team-info-box">
+				<div class="yubin-photo-wrap">
+					<img src="/resources/img/qrcode.png">
+				</div>
+				<!-- 
+				<div class="dahe-photo-wrap">
+					<img src="/resources/img/qrcode.png">
+				</div>
+				<div class="sy-photo-wrap">
+					<img src="/resources/img/qrcode.png">
+				</div>
+				<div class="minho-photo-wrap">
+					<img src="/resources/img/qrcode.png">
+				</div>
+				<div class="heeok-photo-wrap">
+					<img src="/resources/img/qrcode.png">
+				</div>
+				 -->
+			</div>
+			<div class="name-box">
+				<div class="yubin-info name-title">
+				고유빈
+				</div>
+				<div class="dahe-info name-title">
+				신다혜
+				</div>
+				<div class="sy-info name-title">
+				안상영
+				</div>
+				<div class="minho-info name-title">
+				진민호
+				</div>
+				<div class="heeok-info name-title">
+				유희옥
+				</div>
+			</div>
+		</div>
 		</div>
 	</div>
 	<div class="popup-modal" style="display:none;">

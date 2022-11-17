@@ -60,44 +60,14 @@
 	</div>
 	
 	<div class="wm-modify-footer">
-		<button type="button" id="wm-modify-btn" onclick="walkMateModify()">수정하기</button>
+		<button type="button" id="wm-modify-btn" onclick="modifyWalkMate()">수정하기</button>
+		<button type="button" id="wm-delete-btn" onclick="deleteWalkMate()">삭제하기</button>
 	</div>
 </div>
 
 <script>
+	const wmNo = ${w.wmNo };
 	let wmTag = "${w.wmTag }";
 	$(".wm-tag-modify>input[value='" + wmTag + "']").prop('checked', true);
-	
-	function walkMateModify(){
-		const wmNo = ${w.wmNo };
-		const wmSubTitle = $("#input-wm-sub-title").val();
-		
-		const wmDate = $("#input-wm-date").val();
-		const wmTime = $("#input-wm-time").val();
-		const wmMeetTime = wmDate + " " + wmTime;
-		
-		wmTag = $("input[name=wmTag]:checked").val();
-		console.log(wmTag);
-		const wmContent = $("#input-wm-content").val();
-		
-		// 조건을 충족하면 수정할 수 있게 해준다.
-		
-		$.ajax({
-			url: "/updateWalkMate.do",
-			data: { 
-				wmNo : wmNo,
-				wmSubTitle : wmSubTitle,
-				wmMeetTime : wmMeetTime,
-				wmTag : wmTag,
-				wmContent : wmContent
-			},
-			success: function(result){
-				if(result > 0){
-					alert("수정하였습니다.");
-				}else{
-					alert("문제가 발생하였습니다. 관리자에게 문의해주세요.");
-				}
-			}
-		});
-	}
 </script>
+<script src="/resources/js/myWalkMate/walkMatePage/walkMateModify.js"></script>

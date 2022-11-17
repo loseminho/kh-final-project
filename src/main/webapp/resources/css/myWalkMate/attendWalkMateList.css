@@ -68,3 +68,7 @@
 .attendList-content table td>a:visited:hover{
 	color: #1abc9c;
 }
+
+#scheduledList>p, #proceededList>p{
+	font-size: 24px;
+}

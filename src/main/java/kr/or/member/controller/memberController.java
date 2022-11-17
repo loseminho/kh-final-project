@@ -656,11 +656,18 @@ public class memberController {
 	@RequestMapping(value="/walkMatePage.do")
 	public String walkMatePage(int wmNo, Model model) {
 		Walk w = service.selectOneWalkMate(wmNo);
-		
-		System.out.println(w.getWmLeader());
+		ArrayList<Member> attendList = service.selectAttendProfileList(wmNo);
 		
 		model.addAttribute("w", w);
+		model.addAttribute("attendList", attendList);
+		
 		return "myWalkMate/walkMatePage/walkMatePage";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/leaveWalkMate.do")
+	public int leaveWalkMate(int memberNo) {
+		return service.leaveWalkMate(memberNo);
 	}
 	
 	@ResponseBody
@@ -674,16 +681,18 @@ public class memberController {
 	@ResponseBody
 	@RequestMapping(value="/updateApplyStat.do")
 	public int updateApplyStat(WmApply wmApply) {
-		int result = service.updateApplyStat(wmApply);
-		
-		return result;
+		return service.updateApplyStat(wmApply);
 	}
 	
 	@ResponseBody
 	@RequestMapping(value="/updateWalkMate.do")
 	public int updateWalkMate(Walk w) {
-		int result = service.updateWalkMate(w);
-		
-		return result;
+		return service.updateWalkMate(w);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/deleteWalkMate.do")
+	public int deleteWalkMate(int wmNo) {
+		return service.deleteWalkMate(wmNo);
 	}
 }
