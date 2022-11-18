@@ -88,7 +88,7 @@
                             <div class="write-content-input-box titles">
                                 <label for="writeDate" id="writeDate-lable"><span>*</span>모임 요일</label>
                                 <label for="writeTime" style="display: none;" id="writeTime-lable"><span>*</span>모임 시간</label>
-                                <input type="date" name="writeDate" id="writeDate" value="" required>
+                                <input type="date" name="writeDate" id="writeDate" value="" min="2022-11-18" required>
                                 <input type="time" name="writeTime" id="writeTime" style="display: none;" required>
                                 <input type="hidden" name="wmMeetTime" id="meetTime" required>
                                 <button type="button" class="back-time-btn" onclick="backTime();">뒤로</button> 
