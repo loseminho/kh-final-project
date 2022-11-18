@@ -5,7 +5,13 @@ let totalCnt =6; // 화면에 보여줄 리스트의 개수
 //여기여기
 //첫 로딩 화면
 $(document).ready(function(){
-	allList();
+	var loginLevel = document.getElementById('login-level').value;
+	if(loginLevel != 3){
+		allList();	
+	}else{
+		alert("블랙리스트 된 회원입니다. 메이페이지와 문의페이지를 확인하세요!");
+		$(location).attr('href', '/')
+	}
 });
 
 function allList(){
@@ -98,7 +104,7 @@ function allList(){
 							if(ApplyMemberNum != data[i].wmRangeMember){
 								html += "<li><span class='material-symbols-outlined'>add</span></li>"					
 							}else{
-								html += "(임시 메세지)모임 마감!";
+								html += "해당 모임은 마감되었어요ㅠ";
 							}
 						}
 						html += "</ul>";
@@ -177,7 +183,7 @@ function allList(){
 							if(ApplyMemberNum != data[i].wmRangeMember){
 								html += "<li><span class='material-symbols-outlined'>add</span></li>"					
 							}else{
-								html += "(임시 메세지)모임 마감!";
+								html += "해당 모임은 마감되었어요ㅠ";
 							}
 						}
 						html += "</ul>";
@@ -410,7 +416,7 @@ function modalViews(e){
 				$("#deleteWm").text('모임 삭제 >>').attr("onclick", "deleteWmMSG();").css("color","#ff4c4c").css("border","2px solid #ff4c4c");
 				$("#thankMainWmNo").attr('value','+data.wmNo+');
 			}else{
-				$("#view-section6").attr("disabled",true).text('모임 마감').css("backgroundColor","#9d9d9d").css("border","2px solid #9c9c9c").text('모임삭제').css("display","block");
+				$("#view-section6").attr("disabled",true).text('모임 마감').css("backgroundColor","#9d9d9d").css("border","2px solid #9c9c9c").css("display","block");
 				$("#deleteWm").text('창닫기 >> ').attr("onclick", "modalOff();").css("color","#1abc9c").css("border","2px solid #1abc9c");
 			}
 		}else{
@@ -1042,7 +1048,7 @@ $(".category-li").on('click',function(){
 							if(ApplyMemberNum != data[i].wmRangeMember){
 								html += "<li><span class='material-symbols-outlined'>add</span></li>"					
 							}else{
-								html += "(임시 메세지)모임 마감!";
+								html += "해당 모임은 마감되었어요ㅠ";
 							}
 						}
 						html += "</ul>";
@@ -1122,7 +1128,7 @@ $(".category-li").on('click',function(){
 							if(ApplyMemberNum != data[i].wmRangeMember){
 								html += "<li><span class='material-symbols-outlined'>add</span></li>"					
 							}else{
-								html += "(임시 메세지)모임 마감!";
+								html += "해당 모임은 마감되었어요ㅠ";
 							}
 						}
 						html += "</ul>";

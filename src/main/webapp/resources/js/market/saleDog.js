@@ -28,7 +28,6 @@ tabs.on("click",function(){
 let question = $(".question");
 question.on("click", function(){
     const questionIndex = question.index(this);
-    console.log(questionIndex);
     $(this).toggleClass("active");
     $(this).next().slideToggle();
 });
@@ -78,10 +77,7 @@ $(".add-btn>button").on("click",function(){
         		url: "/selectFilterList.do",
         		data: {typeSize : -1},
         		success:function(data){
-        			console.log(data);
         			var html = "";
-        			console.log(totalCnt);
-        			console.log(data.length);
         		if(totalCnt >= data.length){
         			for(let i=0;i<data.length;i++){
 	        				html += "<div class='sale'>";
@@ -116,10 +112,7 @@ $(".add-btn>button").on("click",function(){
         		url: "/selectFilterList.do",
         		data: {typeSize : 0},
         		success:function(data){
-        			console.log(data);
         			var html = "";
-        			console.log(totalCnt);
-        			console.log(data.length);
         		if(totalCnt >= data.length){
         			for(let i=0;i<data.length;i++){
 	        				html += "<div class='sale'>";
@@ -154,10 +147,7 @@ $(".add-btn>button").on("click",function(){
         		url: "/selectFilterList.do",
         		data: {typeSize : 1},
         		success:function(data){
-        			console.log(data);
         			var html = "";
-        			console.log(totalCnt);
-        			console.log(data.length);
         		if(totalCnt >= data.length){
         			for(let i=0;i<data.length;i++){
 	        				html += "<div class='sale'>";
@@ -192,10 +182,7 @@ $(".add-btn>button").on("click",function(){
         		url: "/selectFilterList.do",
         		data: {typeSize : 2},
         		success:function(data){
-        			console.log(data);
         			var html = "";
-        			console.log(totalCnt);
-        			console.log(data.length);
         		if(totalCnt >= data.length){
         			for(let i=0;i<data.length;i++){
 	        				html += "<div class='sale'>";
@@ -243,7 +230,6 @@ $(".add-btn>button").on("click",function(){
     		url: "/selectFilterList.do",
     		data: {typeSize:typeSize},
     		success:function(data){
-    			console.log("totalCnt"+totalCnt);
     			var html = "";
     			for(let i=0;i<totalCnt;i++){
     				html += "<div class='sale'>";
@@ -284,7 +270,6 @@ $(".add-btn>button").on("click",function(){
     			url: "/searchOneInfo.do",
     			data: {marketNo:data},
     			success : function(data){
-    			console.log(data);
     			$("#receiverNickname").val(data.memberNickname);
     			$("#receiverMemberId").val(data.memberId);
     			$("#detailMemberNo").val(data.memberNo);
@@ -308,7 +293,6 @@ $(".add-btn>button").on("click",function(){
     				$(".require-btn").html(html);
     			}
     			
-    			console.log(data);
     				if(data.fileList.length == 1){
     					detailImg.eq(0).attr("src","/resources/upload/market/"+data.fileList[0].filePath+"");
     				}else if(data.fileList.length == 2){
@@ -350,7 +334,6 @@ $(".add-btn>button").on("click",function(){
     	});
     	
  function dmModalOn(){
- 	console.log(1);
  };
  
  $(document).on("click","#loginFrm",function(){
