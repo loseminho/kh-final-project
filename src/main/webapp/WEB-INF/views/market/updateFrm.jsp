@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="/resources/css/market/writeFrm.css">
 <link rel="stylesheet" href="/resources/css/market/writeFrmContent.css">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<link rel="icon" href="/resources/img/favicon.ico" type="image/x-icon" sizes="16x16">
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>

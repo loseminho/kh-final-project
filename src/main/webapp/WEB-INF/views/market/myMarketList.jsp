@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>산책갈개</title>
+<link rel="icon" href="/resources/img/favicon.ico" type="image/x-icon" sizes="16x16">
 <link rel="stylesheet" href="/resources/css/market/writeFrm.css">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <link rel="stylesheet" href="/resources/css/market/myMarketList.css">

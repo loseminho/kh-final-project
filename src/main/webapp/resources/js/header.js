@@ -53,7 +53,6 @@ $(document).on("click",".init-chat",function(){
 		url:"/getLastChat.do",
 		data:{boardNo:boardNo},
 		success:function(data){
-			console.log(data);
 			var html = "";
 			$.each(data,function(idx,value){
 				if(value.memberNo != memberNo){
@@ -74,7 +73,6 @@ $(document).ready(function(){
 	$(".chat-name").text("채팅목록을 클릭해보세요!!");
 	let memberId = $("#chatMemberId").val();
 	let memberNo = $("#chatMemberNo").val();
-	console.log(memberNo);
 	$.ajax({
 		url:"/selectApplyList.do",
 		data:{memberId:memberId, memberNo:memberNo},
@@ -105,8 +103,7 @@ $(".chat-icon").on("click",function(){
 let ws;
 let chatIndex;
 function initChat(boardNo, boardTitle, memberId,memberNickname, wmLeader){
-	console.log(wmLeader);
-	ws = new WebSocket("ws://192.168.35.51/chat.do");
+	ws = new WebSocket("ws://192.168.10.33/chat.do");
 	ws.onopen = startChat;
 	ws.onmessage = receiveMsg;
 	
@@ -146,7 +143,6 @@ $("#send-msg").on("keyup",function(key){
 });
 
 $(document).on("click",".back-btn>span",function(){
-	console.log(123);
 	ws.close();
 	$(".chat-list").css("display","block");
 	$(".chat-form").css("display","none");

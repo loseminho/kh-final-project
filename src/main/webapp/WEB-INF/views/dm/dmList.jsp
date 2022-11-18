@@ -5,11 +5,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>산책갈개</title>
 <link rel="stylesheet" href="/resources/css/market/writeFrm.css">
 <link rel="stylesheet" href="/resources/css/dm/dmList.css">
 <link rel="stylesheet" href="/resources/css/dm/dmModal.css">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<link rel="icon" href="/resources/img/favicon.ico" type="image/x-icon" sizes="16x16">
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>

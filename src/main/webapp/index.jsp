@@ -112,7 +112,7 @@
 				<div class="sy-wrap team-select">
 					<div class="sy-content">
 						<div class="sy-photo-wrap member-photo-wrap">
-							<a href="https://github.com/aidencjswo">
+							<a href="https://blog.naver.com/aidencjswo">
 								<img src="/resources/img/sy.png">
 							</a>
 						</div>
