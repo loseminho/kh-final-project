@@ -231,13 +231,13 @@ $("#searchQnaAjax").on("click",function(){
                       tr.append("<td>"+"산책메이트 찾기"+"</td>"); 
                   }
                   if(list[i].qnaCateNo == 2) {
-                      tr.append("<td>"+"애견용품 나눔"+"</td>"); 
-                  }
-                  if(list[i].qnaCateNo == 3) {
                       tr.append("<td>"+"입양"+"</td>"); 
                   }
-                  if(list[i].qnaCateNo == 4) {
+                  if(list[i].qnaCateNo == 3) {
                       tr.append("<td>"+"회원관련"+"</td>"); 
+                  }
+                  if(list[i].qnaCateNo == 4) {
+                      tr.append("<td>"+"사이트 이용"+"</td>"); 
                   }
                   if(list[i].qnaCateNo == 5) {
                       tr.append("<td>"+"기타"+"</td>"); 
@@ -304,13 +304,13 @@ $("#qnaAjaxAdd-btn").on("click",function(){
               	tr.append("<td>"+"산책메이트 찾기"+"</td>"); 
               }
               if(list[i].qnaCateNo == 2) {
-              	tr.append("<td>"+"애견용품 나눔"+"</td>"); 
-              }
-              if(list[i].qnaCateNo == 3) {
               	tr.append("<td>"+"입양"+"</td>"); 
               }
-              if(list[i].qnaCateNo == 4) {
+              if(list[i].qnaCateNo == 3) {
               	tr.append("<td>"+"회원관련"+"</td>"); 
+              }
+              if(list[i].qnaCateNo == 4) {
+              	tr.append("<td>"+"사이트이용"+"</td>"); 
               }
               if(list[i].qnaCateNo == 5) {
               	tr.append("<td>"+"기타"+"</td>"); 
