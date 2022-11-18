@@ -119,8 +119,17 @@ public class BoardService {
 	}
 
 	//문의내역 검색 
-	public ArrayList<QnaBoard> searchQnaBoard(QnaBoard q) {
-		return dao.searchQnaBoard(q);
+	public ArrayList<QnaBoard> searchQnaBoard(QnaBoard q, int start, int amount) {
+		int end = start +amount -1;
+		HashMap<String, Object>map = new HashMap<String, Object>();
+		map.put("start", start);
+		map.put("amount", amount);
+		map.put("end",end);
+		map.put("searchType", q.getSearchType());
+		map.put("keyword", q.getKeyword());
+		
+		ArrayList<QnaBoard>list = dao.searchQnaBoard(map);
+		return list;
 	}
 
 	//qna 더보기 버튼 
@@ -130,12 +139,9 @@ public class BoardService {
 		map.put("start", start);
 		map.put("amount", amount);
 		map.put("end", end);
-		System.out.println("start"+start);
-		System.out.println("amount"+amount);
-		System.out.println("end"+end);
-		
+
+	
 		ArrayList<QnaBoard>list = dao.moreQna(map);
-		System.out.println(list);
 		return list;
 	}
 

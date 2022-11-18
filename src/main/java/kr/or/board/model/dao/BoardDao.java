@@ -73,8 +73,8 @@ public class BoardDao {
 		return sqlsession.delete("qnaboard.deleteFile",fileNo);
 	}
 	//게시판 검색창  
-	public ArrayList<QnaBoard> searchQnaBoard(QnaBoard q) {
-		List list = sqlsession.selectList("qnaboard.searchQnaBoard",q);
+	public ArrayList<QnaBoard> searchQnaBoard(HashMap<String, Object> map) {
+		List list = sqlsession.selectList("qnaboard.searchQnaBoard",map);
 		return (ArrayList<QnaBoard>)list;
 	}
 	//게시판 조회수 

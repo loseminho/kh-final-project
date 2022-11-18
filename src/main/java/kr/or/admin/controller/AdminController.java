@@ -126,7 +126,6 @@ public class AdminController {
 		map.put("list", list);
 		Gson gson = new Gson();
 		String result = gson.toJson(map);
-		System.out.println("회원등급리스트"+result);
 		return result;
 	}
 }
