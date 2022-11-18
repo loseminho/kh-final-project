@@ -28,7 +28,6 @@ $(document).ready(function(){
 $(".faq-category>li").on("click",function(){
     $(".answer").hide();
     const cateIdx = $(".faq-category>li").index(this);
-    console.log("123123:::::"+cateIdx);
 
     $(".faq-category>li").css({
         "background-color":"#fff",
@@ -79,8 +78,6 @@ $(".faq-category>li").on("click",function(){
 });
 
 function showMenu(value, totalCount){
-    console.log(totalCount);
-    console.log("showCount:::"+showCount);
     $(".question").css("display","none");
     for(let i=0;i<showCount;i++){
         value.eq(i).css("display","block");
@@ -111,7 +108,6 @@ $(".add-btn").on("click",function(){
 
 tabs.on("click",function(){
     const index = $(this).index();
-    console.log("index"+index)
     if(index == 0){
         tabs.eq(0).css({
             "border-bottom" : "2px solid #1abc9c"
@@ -131,6 +127,7 @@ tabs.on("click",function(){
         });
         $(".faq-content").hide();
         $(".qna-content").show();
+        $(".qna-row").remove();
         $("#qnaAjaxAdd-btn").attr("value","1");
         $("#qnaAjaxAdd-btn").attr("currentCount","0");
         $("#qnaAjaxAdd-btn").attr("disabled",false);
@@ -154,13 +151,6 @@ $(".faqqna-tab>li").eq(0).click();
 let tr = $(".qna-table>tr").children('tr');
 let qnaNo = tr.find('td:eq(0)').val();
 
-tr.on("click",function(){
-    console.log(qnaNo);
-});
-
-$(".qna-table tr").on("click",function(){
-    console.log(this);
-});
 
 /* write 폼 이동  */
 
@@ -202,75 +192,89 @@ $(document).on("click",".qna-row",function(){
 
 $("#searchQnaAjax").on("click",function(){
 
-	const searchType = $("#searchType").val();
-	const keyword = $("#keyword").val();
-	
-	if(searchType != 0 ){
-
-	$.ajax({
-		url : "/searchQnaAjax.do?searchType="+searchType+"&keyword="+keyword,
-        type : "post",
-        success : function(data){
-        	console.log(data);
-        //테이블 초기화 
-        $(".qna-table").empty();
-        if(data.length>=1){
-        
-         const table = $("<table>");
-            table.attr('class','qna-table');
-            const titleTr = $("<tr>");
-            titleTr.html("<th>글번호</th><th>문의유형</th><th>제목</th><th>작성자</th><th>처리상태</th><th>문의날짜</th><th>조회수</th>");
-            titleTr.attr('class','qna-tr');
-            titleTr.attr("scope","col");
-            table.append(titleTr);
-            for(let i=0; i<data.length; i++){
-                const tr = $("<tr>");
-                tr.attr('class','qna-row');
-                tr.append("<td>"+data[i].qnaNo+"</td>");
-              if(data[i].qnaCateNo == 1) {
-              	tr.append("<td>"+"산책메이트 찾기"+"</td>"); 
-              }
-              if(data[i].qnaCateNo == 2) {
-              	tr.append("<td>"+"애견용품 나눔"+"</td>"); 
-              }
-              if(data[i].qnaCateNo == 3) {
-              	tr.append("<td>"+"입양"+"</td>"); 
-              }
-              if(data[i].qnaCateNo == 4) {
-              	tr.append("<td>"+"회원관련"+"</td>"); 
-              }
-              if(data[i].qnaCateNo == 5) {
-              	tr.append("<td>"+"기타"+"</td>"); 
-              } 
-              if(data[i].qnaSecret == 1) {
-                tr.append("<td>"+"<i class='fa-solid fa-lock'></i>비밀글입니다."+"</td>");              	
-              }
-                tr.append("<td>"+data[i].qnaTitle+"</td>");
-                tr.append("<td>"+data[i].qnaWriter+"</td>");
-              
-              if(data[i].qnaStatus == 0) {
-              	tr.append("<td>"+"답변대기중"+"</td>"); 
-              }
-              if(data[i].qnaStatus == 1) {
-              	tr.append("<td>"+"답변완료"+"</td>"); 
-              }
-                tr.append("<td>"+data[i].qnaDate+"</td>");
-                tr.append("<td>"+data[i].qnaViews+"</td>");
-                tr.append("<input type='hidden' class='sendMemberNo' value="+data[i].memberNo+">");	
-                tr.append("<input type='hidden' class='sendQnaNo' value="+data[i].qnaNo+">");	
-                tr.append("<input type='hidden' class='sendQnaSecret' value="+data[i].qnaSecret+">");
-                table.append(tr);
+   const searchType = $("#searchType").val();
+   const keyword = $("#keyword").val();
+   if(keyword == ''){
+      alert ("검색어를 입력하세요");
+      	const table = $(".qna-table");
+        $(".qna-row").remove();
+        var html = "<tr>조회된데이터가없습니다.</tr>";
+        table.append(html);
+        $("#qnaAjaxAdd-btn").attr("disabled",true);
+        $("#qnaAjaxAdd-btn").css ("cursor","not-allowed");
+        $("#qnaAjaxAdd-btn").text("마지막 게시물 입니다 ");
+   }else{
+        let amount = 7;
+        let start = $(this).val();
+        if(searchType != 0 ){
+        $.ajax({
+            url : "/searchQnaAjax.do",
+            data : {searchType : searchType, keyword : keyword, start : start, amount : amount },
+            type : "post",
+            success : function(data){
+            //테이블 초기화 
+            $(".qna-row").remove();
+            const list = data.list;
+            const totalCount = data.totalCount;
+            const qnaKeyword = data.keyword;
+            
+            
+            if(list.length != 0){
+                const table = $(".qna-table");
+                const titleTr = $(".qna-tr");
                 
-                
+                for(let i=0; i<list.length; i++){
+                    const tr = $("<tr>");
+                    tr.attr('class','qna-row');
+                    tr.append("<td>"+list[i].qnaNo+"</td>");
+                  if(list[i].qnaCateNo == 1) {
+                      tr.append("<td>"+"산책메이트 찾기"+"</td>"); 
+                  }
+                  if(list[i].qnaCateNo == 2) {
+                      tr.append("<td>"+"애견용품 나눔"+"</td>"); 
+                  }
+                  if(list[i].qnaCateNo == 3) {
+                      tr.append("<td>"+"입양"+"</td>"); 
+                  }
+                  if(list[i].qnaCateNo == 4) {
+                      tr.append("<td>"+"회원관련"+"</td>"); 
+                  }
+                  if(list[i].qnaCateNo == 5) {
+                      tr.append("<td>"+"기타"+"</td>"); 
+                  } 
+                  if(list[i].qnaSecret == 1) {
+                    tr.append("<td>"+"<i class='fa-solid fa-lock'></i>비밀글입니다."+"</td>");                 
+                  }
+                    tr.append("<td>"+list[i].qnaTitle+"</td>");
+                    tr.append("<td>"+list[i].qnaWriter+"</td>");
+                  
+                  if(list[i].qnaStatus == 0) {
+                      tr.append("<td>"+"답변대기중"+"</td>"); 
+                  }
+                  if(list[i].qnaStatus == 1) {
+                      tr.append("<td>"+"답변완료"+"</td>"); 
+                  }
+                    tr.append("<td>"+list[i].qnaDate+"</td>");
+                    tr.append("<td>"+list[i].qnaViews+"</td>");
+                    tr.append("<input type='hidden' class='sendMemberNo' value="+list[i].memberNo+">");   
+                    tr.append("<input type='hidden' class='sendQnaNo' value="+list[i].qnaNo+">");   
+                    tr.append("<input type='hidden' class='sendQnaSecret' value="+list[i].qnaSecret+">");
+                    table.append(tr);
+                    
+                    
+                }
+                $("#qnaAjaxResult").html(table);
+                $("#qnaAjaxAdd-btn").attr("disabled",true);
+                $("#qnaAjaxAdd-btn").css ("cursor","not-allowed");
+                $("#qnaAjaxAdd-btn").text("마지막 게시물 입니다 ");
+               
+            } 
             }
-            $("#qnaAjaxResult").html(table);
-        }
-        }
-	});
-	
-	} else {
-		alert(" 문의유형을 선택하고 검색어를 입력하세요  ");
-	}
+        });
+    }
+
+   
+   } 
 });
 
 
@@ -285,48 +289,50 @@ $("#qnaAjaxAdd-btn").on("click",function(){
 		type: "post",
 		data: {start : start, amount : amount},
 		success : function(data){
-
+			const list = data.list;
+			const totalCount = data.totalCount;
+			
 			const table = $(".qna-table");
             const titleTr = $(".qna-tr");
+		
             
-			for(let i=0; i<data.length; i++){
-				console.log(data[i].qnaSecret);
+			for(let i=0; i<list.length; i++){
 				 const tr = $("<tr>");
                 tr.attr('class','qna-row');
-                tr.append("<td>"+data[i].qnaNo+"</td>");
-              if(data[i].qnaCateNo == 1) {
+                tr.append("<td>"+list[i].qnaNo+"</td>");
+              if(list[i].qnaCateNo == 1) {
               	tr.append("<td>"+"산책메이트 찾기"+"</td>"); 
               }
-              if(data[i].qnaCateNo == 2) {
+              if(list[i].qnaCateNo == 2) {
               	tr.append("<td>"+"애견용품 나눔"+"</td>"); 
               }
-              if(data[i].qnaCateNo == 3) {
+              if(list[i].qnaCateNo == 3) {
               	tr.append("<td>"+"입양"+"</td>"); 
               }
-              if(data[i].qnaCateNo == 4) {
+              if(list[i].qnaCateNo == 4) {
               	tr.append("<td>"+"회원관련"+"</td>"); 
               }
-              if(data[i].qnaCateNo == 5) {
+              if(list[i].qnaCateNo == 5) {
               	tr.append("<td>"+"기타"+"</td>"); 
               } 
-              if(data[i].qnaSecret == 1) {
+              if(list[i].qnaSecret == 1) {
                 tr.append("<td>"+"<i class='fa-solid fa-lock'></i>비밀글입니다."+"</td>");              	
               } else {
-              	tr.append("<td>"+data[i].qnaTitle+"</td>");              
+              	tr.append("<td>"+list[i].qnaTitle+"</td>");              
               }
-                tr.append("<td>"+data[i].qnaWriter+"</td>");
+                tr.append("<td>"+list[i].qnaWriter+"</td>");
               
-              if(data[i].qnaStatus == 0) {
+              if(list[i].qnaStatus == 0) {
               	tr.append("<td>"+"답변대기중"+"</td>"); 
               }
-              if(data[i].qnaStatus == 1) {
+              if(list[i].qnaStatus == 1) {
               	tr.append("<td>"+"답변완료"+"</td>"); 
               }
-                tr.append("<td>"+data[i].qnaDate+"</td>");
-                tr.append("<td>"+data[i].qnaViews+"</td>");
-                tr.append("<input type='hidden' class='sendMemberNo' value="+data[i].memberNo+">");	
-                tr.append("<input type='hidden' class='sendQnaNo' value="+data[i].qnaNo+">");	
-                tr.append("<input type='hidden' class='sendQnaSecret' value="+data[i].qnaSecret+">");
+                tr.append("<td>"+list[i].qnaDate+"</td>");
+                tr.append("<td>"+list[i].qnaViews+"</td>");
+                tr.append("<input type='hidden' class='sendMemberNo' value="+list[i].memberNo+">");	
+                tr.append("<input type='hidden' class='sendQnaNo' value="+list[i].qnaNo+">");	
+                tr.append("<input type='hidden' class='sendQnaSecret' value="+list[i].qnaSecret+">");
                 table.append(tr);
                 
 			}
@@ -335,11 +341,10 @@ $("#qnaAjaxAdd-btn").on("click",function(){
 			//value 증가 
 			$("#qnaAjaxAdd-btn").val(Number(start)+Number(amount));
 			//currentCount 값도 읽어온 만큼 수정
-			const currentCount = Number($("#qnaAjaxAdd-btn").attr("currentCount"))+data.length;
+			const currentCount = Number($("#qnaAjaxAdd-btn").attr("currentCount"))+list.length;
 			$("#qnaAjaxAdd-btn").attr("currentCount",currentCount);
-			const totalCount = $("#qnaAjaxAdd-btn").attr("totalCount");
-			console.log(totalCount, currentCount);
-			if(totalCount == currentCount){
+			const totalCount2 = $("#qnaAjaxAdd-btn").attr("totalCount");
+			if(totalCount2 == currentCount){
 				$("#qnaAjaxAdd-btn").attr("disabled",true);
 				$("#qnaAjaxAdd-btn").css ("cursor","not-allowed");
 				$("#qnaAjaxAdd-btn").text("마지막 게시물 입니다 ");

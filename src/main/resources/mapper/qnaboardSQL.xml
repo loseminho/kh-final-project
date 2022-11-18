@@ -97,8 +97,10 @@
  	where qna_no = #{_parameter}
 </update>
 <!-- 검색창  -->
-<select id="searchQnaBoard" parameterType="q" resultType="q">
-	select
+<select id="searchQnaBoard" parameterType="map" resultType="q">
+    select *
+    from(select rownum as rnum, q.* 
+    from(select
 	qna_no as qnaNo,
 		substr(replace(qna_writer,substr(qna_writer,2,2),'**'),1,instr(qna_writer,'@',1,1)-1)as qnaWriter,
 		qna_title as qnaTitle,
@@ -119,6 +121,8 @@
 		where qna_content like '%'||#{keyword}||'%'
 		</when>
 	</choose>
+	 order by 1 desc)q)
+    where rnum between #{start} and #{end}
 </select>
 <!-- 더보기 리스트 불러오기  -->
 <select id="moreQna" parameterType="map" resultType="q">

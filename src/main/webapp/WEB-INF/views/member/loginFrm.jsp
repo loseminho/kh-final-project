@@ -46,7 +46,7 @@
                     <div class="hrDiv">
                         <hr><span class="easyLogin">간편 로그인</span><hr>
                     </div>
-                    <a href="https://kauth.kakao.com/oauth/authorize?client_id=e400fe38f12604a2937ea759fe0166f7&redirect_uri=http://localhost/kakaoLogin.do&response_type=code">
+                    <a href="https://kauth.kakao.com/oauth/authorize?client_id=e400fe38f12604a2937ea759fe0166f7&redirect_uri=http://192.168.10.33/kakaoLogin.do&response_type=code">
                         <img src="/resources/img/kakao_login_medium_wide.png">
                     </a>
                 </form>
@@ -68,7 +68,7 @@
 					<div class="hrDiv joinHr">
                         <hr><span class="easyLogin">간편 회원가입</span><hr>
                     </div>
-					<a href="https://kauth.kakao.com/oauth/authorize?client_id=e400fe38f12604a2937ea759fe0166f7&redirect_uri=http://localhost/kakaoLogin.do&response_type=code">
+					<a href="https://kauth.kakao.com/oauth/authorize?client_id=e400fe38f12604a2937ea759fe0166f7&redirect_uri=http://192.168.10.33/kakaoLogin.do&response_type=code">
                         <img src="/resources/img/kakao_join_medium_wide.png">
                     </a>
 				</div>

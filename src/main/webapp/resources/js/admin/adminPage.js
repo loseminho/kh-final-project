@@ -121,7 +121,13 @@ $("#adminQnaAjax-btn").on("click",function(){
               	if(data[i].qnaStatus == 1) {
               	tr.append("<td>"+"답변완료"+"</td>");
               	}
+              	if(data[i].qnaStatus == 0) {
               	tr.append("<td>"+"<button class='answer-btn'>"+"답변하기"+"</button>"+"</td>");
+              	}
+              	if(data[i].qnaStatus == 1) {
+              	tr.append("<td>"+"<button class='answer-btn'>"+"완료"+"</button>"+"</td>");
+              	}
+              	
               	
               	table.append(tr);
 			}
@@ -254,7 +260,6 @@ $(document).on("click",".adminAnswer",function(){
 $("#adminMemberAjax-btn").on("click",function(){
 	let amount = 7;
 	let start = $(this).val();
-	console.log(start);
 	$.ajax({
 		url: "/adminMemberList.do",
 		type: "post",
@@ -337,14 +342,21 @@ $("#searchMemberAjax").on("click",function(){
 
 	const optionVal = $("#searchType").val();
 	const keyword = $("#keyword").val();
+	if(keyword == ''){
+		alert ("검색어를 입력하세요");
+		const table = $(".adminPage-userLevel-table");
+		$(".admin-memberList-row").remove();
+		var html = "<tr>조회된 데이터가 없습니다.</tr>";
+		table.append(html);
+		$("#adminMemberAjax-btn").attr("disabled",true);
+		$("#adminMemberAjax-btn").css ("cursor","not-allowed");
+		$("#adminMemberAjax-btn").text("마지막 게시물입니다 ");
+		
+	} else{
 	
 	let amount = 7;
 	let start = $(this).val();
-	
-	console.log("회원리스트"+start);
-	console.log("회원리스트"+ optionVal);
-	console.log("회원리스트"+keyword);
-	
+		
 	$.ajax({
 		url : "/searchAdminMember.do",
        data : {optionVal : optionVal, keyword : keyword, start:start, amount:amount},
@@ -353,7 +365,6 @@ $("#searchMemberAjax").on("click",function(){
         //테이블 초기화 
         $(".admin-memberList-row").remove();
         
-        console.log("데이터",data);
         const list = data.list;
 		const totalCount = data.totalCount;
 		
@@ -406,5 +417,6 @@ $("#searchMemberAjax").on("click",function(){
         }
         
 	});
+	}
 
 });

@@ -9,6 +9,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.ProcessBuilder.Redirect;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -222,10 +223,14 @@ public class BoardController {
 	//문의게시판 검색하기 
 	@ResponseBody
 	@RequestMapping (value="/searchQnaAjax.do",produces = "application/json;charset=utf-8")
-	public String searchQnaboard(QnaBoard q) {
-		ArrayList<QnaBoard> list = service.searchQnaBoard(q);
+	public String searchQnaboard(QnaBoard q, int start, int amount) {
+		int totalCount = service.selectQnaCount();
+		ArrayList<QnaBoard> list = service.searchQnaBoard(q,start,amount);
+		HashMap<String, Object>map = new HashMap<String, Object>();
+		map.put("totalCount", totalCount);
+		map.put("list", list);
 		Gson gson = new Gson();
-		String result = gson.toJson(list);
+		String result = gson.toJson(map);
 		return result;
 	}
 	//더보기 버튼 
@@ -233,10 +238,13 @@ public class BoardController {
 	@RequestMapping(value="/moreQna.do", produces = "application/json;charset=utf-8")
 	public String moreQnaAjax(int start, int amount) {
 		int totalCount = service.selectQnaCount();
+		System.out.println("total : "+totalCount);
 		ArrayList<QnaBoard> list = service.moreQna(start,amount);
+		HashMap<String, Object>map = new HashMap<String, Object>();
+		map.put("totalCount",totalCount);
+		map.put("list",list);
 		Gson gson = new Gson();
-		String result = gson.toJson(list);
-		System.out.println(result);
+		String result = gson.toJson(map);
 		return result;
 	}
 

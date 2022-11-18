@@ -196,7 +196,8 @@
 									<option value="writer">작성자</option>
 								</select> <input type="text" class="search-input"
 									 name="keyword" id="keyword">
-								<button type="button" class="search-btn" id="searchQnaAjax">검색</button>
+								<button type="button" class="search-btn" id="searchQnaAjax" totalCount="${totalCount }"
+						currentCount="0" value="1">검색</button>
 							</form>
 						</div>
 						<div id="qnaAjaxResult">

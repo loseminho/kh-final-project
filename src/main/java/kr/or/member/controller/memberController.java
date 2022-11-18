@@ -173,7 +173,7 @@ public class memberController {
             StringBuilder sb = new StringBuilder();
             sb.append("grant_type=authorization_code");
             sb.append("&client_id=e400fe38f12604a2937ea759fe0166f7"); //본인이 발급받은 REST API key
-            sb.append("&redirect_uri=http://localhost/kakaoLogin.do"); // 본인이 설정해 놓은 경로 localhost
+            sb.append("&redirect_uri=http://192.168.10.33/kakaoLogin.do"); // 본인이 설정해 놓은 경로 localhost
             sb.append("&code=" + authorize_code);
             bw.write(sb.toString());
             bw.flush();
