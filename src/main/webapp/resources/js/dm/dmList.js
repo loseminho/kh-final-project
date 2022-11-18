@@ -46,6 +46,16 @@ $(document).ready(function(){
 	});
 });
 
+$("#searchKeyword").keydown(function(keyNum){
+	//현재의 키보드의 입력값을 keyNum으로 받음
+	if(keyNum.keyCode == 13){ 
+		// keydown으로 발생한 keyNum의 숫자체크
+		// 숫자가 enter의 아스키코드 13과 같으면
+		// 기존에 정의된 클릭함수를 호출
+		$("#searchList").trigger("click");
+	}
+});
+
 $(".send-dm-btn").on("click",function(){
 	const dmContent = $(".redirect-content").val();
 	const receiverNo = $("#receiverNo").val();

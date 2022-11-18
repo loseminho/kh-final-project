@@ -106,7 +106,7 @@ let ws;
 let chatIndex;
 function initChat(boardNo, boardTitle, memberId,memberNickname, wmLeader){
 	console.log(wmLeader);
-	ws = new WebSocket("ws://192.168.10.33/chat.do");
+	ws = new WebSocket("ws://192.168.35.51/chat.do");
 	ws.onopen = startChat;
 	ws.onmessage = receiveMsg;
 	

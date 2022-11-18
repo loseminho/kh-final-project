@@ -119,8 +119,8 @@ public class MarketController {
 	}
 	@ResponseBody
 	@RequestMapping(value="/selectTypeList.do", produces="application/json;charset=utf-8")
-	public String selectTypeList() {
-		ArrayList<DogType> list = service.selectTypeList();
+	public String selectTypeList(Integer userInput) {
+		ArrayList<DogType> list = service.selectTypeList(userInput);
 		return new Gson().toJson(list);
 	}
 	@RequestMapping(value="/myMarketList.do")

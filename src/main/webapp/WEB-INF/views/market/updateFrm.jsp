@@ -166,6 +166,7 @@
 	$(document).ready(function(){
 		$.ajax({
 			url:"/selectTypeList.do",
+			data:{userInput:0},
 			success:function(data){
 				$.each(data,function(idx,value){
 					var option = "<option value='"+value.typeCode+"'>"+value.typeName+"</option>";

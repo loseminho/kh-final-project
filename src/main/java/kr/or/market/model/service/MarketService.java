@@ -60,8 +60,8 @@ public class MarketService {
 		return 0;
 	}
 
-	public ArrayList<DogType> selectTypeList() {
-		return dao.selectTypeList();
+	public ArrayList<DogType> selectTypeList(Integer userInput) {
+		return dao.selectTypeList(userInput);
 	}
 
 	public ArrayList<MarketDog> myMarketList(Member m) {
