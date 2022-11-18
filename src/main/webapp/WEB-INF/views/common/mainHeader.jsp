@@ -60,7 +60,7 @@
 							</c:when>
 							<c:otherwise>
 								<c:if test="${sessionScope.m.joinType eq '카카오'}">
-									<a href="https://kauth.kakao.com/oauth/logout?client_id=e400fe38f12604a2937ea759fe0166f7&logout_redirect_uri=http://localhost/logout.do">로그아웃</a>
+									<a href="https://kauth.kakao.com/oauth/logout?client_id=e400fe38f12604a2937ea759fe0166f7&logout_redirect_uri=http://192.168.10.33/logout.do">로그아웃</a>
 								</c:if>
 								<c:if test="${sessionScope.m.joinType eq '일반가입'}">
 									<a onclick="logout();">로그아웃</a>
