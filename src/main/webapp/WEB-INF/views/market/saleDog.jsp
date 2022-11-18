@@ -25,6 +25,7 @@
 <!-- 헤더  -->
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <content>
+    <input type="hidden" id="memberLevel" value="${sessionScope.m.memberLevel }">;
         <div class="dogMarket-wrap">
             <div class="dogMarket-content">
                 <div class=faq-box>
@@ -58,7 +59,7 @@
 	                       			<div>입양 리스트</div>
 	                       			<c:choose>
 	                       			<c:when test="${not empty sessionScope.m }">
-	                       			<button onclick="location.href='writeFrm.do'">입양관리</button>
+	                       			<button id="sale-dog-writeFrm" onclick="location.href='writeFrm.do'">입양관리</button>
 	                       			</c:when>
 	                       			</c:choose>
 	                       		</div>

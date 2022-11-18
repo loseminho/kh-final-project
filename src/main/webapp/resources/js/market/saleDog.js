@@ -342,3 +342,14 @@ $(".add-btn>button").on("click",function(){
  $(document).on("click","#myMarketList",function(){
  	window.location.href="/myMarketList.do";
  });
+
+ $(document).ready(function(){
+   var loginLevel = document.getElementById('memberLevel').value;
+   if(loginLevel != 3){
+      //원래 로직 돌림
+      allList();   
+   }else{
+      alert("블랙리스트 된 회원입니다. 메이페이지와 문의페이지를 확인하세요!");
+      $(location).attr('href', '/')
+   }
+});
