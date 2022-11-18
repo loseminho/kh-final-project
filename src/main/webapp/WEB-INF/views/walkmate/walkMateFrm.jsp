@@ -35,6 +35,7 @@
     <input type="hidden" id="login-memberId" value="${sessionScope.m.memberId}">
     <input type="hidden" id="login-memberNo" value="${sessionScope.m.memberNo}">
     <input type="hidden" id="login-memberNickname" value="${sessionScope.m.memberNickname}">
+    <input type="hidden" id="login-level" value="${sessionScope.m.memberLevel }">
     <input type="hidden" id="login-memberPhoto" value="
     <c:choose>
    		<c:when test="${sessionScope.m.memberPhoto eq null}">
